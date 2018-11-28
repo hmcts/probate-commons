@@ -115,11 +115,20 @@ ext {
   lombokVersion = '1.16.18'
 }
 
-dependencies {
+def versions = [
+        lombok: '1.16.18',
+        jackson: '2.9.7',
+        apacheCommons: '3.8.1',
+        hibernateValidator: '6.0.13.Final',
+        springfoxSwagger: '2.9.2'
+]
 
-  compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
-  testCompileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
-  apt group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+dependencies {
+  compile group: 'org.projectlombok', name: 'lombok', version: versions.lombok
+  compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
+  compile group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
+  compile group: 'org.hibernate.validator', name: 'hibernate-validator',  version: versions.hibernateValidator
+  compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
 
 }
 
@@ -129,10 +138,6 @@ wrapper {
 
 test {
   useJUnitPlatform()
-}
-
-bootJar {
-  enabled = false
 }
 
 jar {
