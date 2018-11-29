@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE module PUBLIC
   "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
-  "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+  "http://checkstyle.sourceforge.net/dtds/configuration_1_3.dtd">
 
 <!--
     Checkstyle configuration that checks the Google coding conventions from Google Java Style
@@ -86,6 +86,7 @@
       <property name="allowNoEmptyLineBetweenFields" value="true"/>
     </module>
     <module name="SeparatorWrap">
+      <property name="id" value="SeparatorWrapDot"/>
       <property name="tokens" value="DOT"/>
       <property name="option" value="nl"/>
     </module>
@@ -177,13 +178,13 @@
     </module>
     <module name="AbbreviationAsWordInName">
       <property name="ignoreFinal" value="false"/>
-      <property name="allowedAbbreviations" value="JNDI,UUID"/>
+      <property name="allowedAbbreviationLength" value="1"/>
     </module>
     <module name="OverloadMethodsDeclarationOrder"/>
     <module name="VariableDeclarationUsageDistance"/>
     <module name="CustomImportOrder">
       <property name="sortImportsInGroupAlphabetically" value="true"/>
-      <property name="separateLineBetweenGroups" value="false"/>
+      <property name="separateLineBetweenGroups" value="true"/>
       <property name="customImportOrderRules" value="THIRD_PARTY_PACKAGE###STANDARD_JAVA_PACKAGE###STATIC"/>
     </module>
     <module name="MethodParamPad"/>
@@ -207,6 +208,9 @@
     </module>
     <module name="NonEmptyAtclauseDescription"/>
     <module name="JavadocTagContinuationIndentation"/>
+    <module name="SummaryJavadoc">
+      <property name="forbiddenSummaryFragments" value="^@return the *|^This method returns |^A [{]@code [a-zA-Z0-9]+[}]( is a )"/>
+    </module>
     <module name="JavadocParagraph"/>
     <module name="AtclauseOrder">
       <property name="tagOrder" value="@param, @return, @throws, @deprecated"/>

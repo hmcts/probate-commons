@@ -8,7 +8,7 @@ plugins {
   id 'net.ltgt.apt' version '0.18'
 }
 
-group 'uk.gov.hmcts.reform'
+group 'uk.gov.hmcts.reform.probate'
 version '1.0.0'
 
 checkstyle {
@@ -116,11 +116,13 @@ ext {
 }
 
 def versions = [
+        jupiter: '5.3.2',
         lombok: '1.16.18',
         jackson: '2.9.7',
         apacheCommons: '3.8.1',
         hibernateValidator: '6.0.13.Final',
-        springfoxSwagger: '2.9.2'
+        springfoxSwagger: '2.9.2',
+        springBoot: '2.1.0.RELEASE',
 ]
 
 dependencies {
@@ -130,6 +132,8 @@ dependencies {
   compile group: 'org.hibernate.validator', name: 'hibernate-validator',  version: versions.hibernateValidator
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
 
+  testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
+  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
 }
 
 wrapper {
