@@ -13,3 +13,17 @@ deploy:
   on:
     repo: hmcts/probate-commons
     tags: true
+- provider: releases
+  api_key:
+    secure: Need Key 
+  file: build/libs/probate-commons-*.jar
+  file_glob: true
+  skip_cleanup: true
+  on:
+    repo: hmcts/probate-commons
+    tags: true
+env:
+  global:
+  - secure: Need Key
+  - secure: Need key
+
