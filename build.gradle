@@ -129,8 +129,8 @@ def versions = [
 dependencies {
   compile group: 'org.projectlombok', name: 'lombok', version: versions.lombok
   compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
-  compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: '2.9.7'
-  compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.7'
+  compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', versions.jackson
+  compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', versions.jackson
 
   compile group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
   compile group: 'org.hibernate.validator', name: 'hibernate-validator',  version: versions.hibernateValidator
