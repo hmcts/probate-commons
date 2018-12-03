@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
@@ -13,7 +14,8 @@ import uk.gov.hmcts.reform.probate.model.cases.AliasName;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.Payment;
-import uk.gov.hmcts.reform.probate.model.cases.YesNo;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,13 +28,19 @@ public class GrantOfRepresentation extends CaseData {
 
     private LocalDate applicationSubmittedDate;
 
-    private YesNo deceasedDomicileInEngWales;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedDomicileInEngWales;
 
     private String ihtFormId;
 
-    private YesNo ihtFormCompletedOnline;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean ihtFormCompletedOnline;
 
-    private YesNo softStop;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean softStop;
 
     private String registryLocation;
 
@@ -43,13 +51,17 @@ public class GrantOfRepresentation extends CaseData {
 
     private Long extraCopiesOfGrant;
 
-    private YesNo deceasedAnyOtherNames;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedAnyOtherNames;
 
     private Long numberOfExecutors;
 
     private Address deceasedAddress;
 
-    private YesNo willHasCodicils;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willHasCodicils;
 
     private Long willNumberOfCodicils;
 
@@ -59,7 +71,9 @@ public class GrantOfRepresentation extends CaseData {
 
     private LegalStatement legalStatement;
 
-    private YesNo deceasedMarriedAfterWillOrCodicilDate;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedMarriedAfterWillOrCodicilDate;
 
     private String deceasedForenames;
 
@@ -71,7 +85,9 @@ public class GrantOfRepresentation extends CaseData {
 
     private Long numberOfApplicants;
 
-    private YesNo willAccessOriginal;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willAccessOriginal;
 
     @JsonSerialize(using = ToStringSerializer.class)
     private Long ihtNetValue;
@@ -85,15 +101,21 @@ public class GrantOfRepresentation extends CaseData {
 
     private Address primaryApplicantAddress;
 
-    private YesNo primaryApplicantIsApplying;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean primaryApplicantIsApplying;
 
-    private YesNo willExists;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willExists;
 
     private String primaryApplicantForenames;
 
     private String primaryApplicantSurname;
 
-    private YesNo primaryApplicantSameWillName;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean primaryApplicantSameWillName;
 
     private String primaryApplicantAlias;
 
@@ -103,7 +125,9 @@ public class GrantOfRepresentation extends CaseData {
 
     private String primaryApplicantPhoneNumber;
 
-    private YesNo willLatestCodicilHasDate;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willLatestCodicilHasDate;
 
     @JsonProperty(value = "executorsApplying")
     private List<CollectionMember<AdditionalExecutorApplying>> additionalExecutorsApplying;

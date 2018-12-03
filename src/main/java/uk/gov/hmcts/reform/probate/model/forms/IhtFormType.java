@@ -1,6 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
-public enum IhtMethod {
+public enum IhtFormType {
 
-    ONLINE, BY_POST
+    IHT205, IHT400421
 }

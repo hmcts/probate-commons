@@ -24,6 +24,8 @@ public class IntestacyFormTest {
     public void shouldDeserializeIntestacyFormCorrectly() throws IOException {
         String jsonFromFile = TestUtils.getJsonFromFile("intestacyForm.json");
         Form form = objectMapper.readValue(jsonFromFile, Form.class);
+
+        String s = objectMapper.writeValueAsString(form);
         assertThat(form, instanceOf(IntestacyForm.class));
     }
 }

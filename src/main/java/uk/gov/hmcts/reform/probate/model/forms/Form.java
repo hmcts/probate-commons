@@ -26,4 +26,6 @@ public abstract class Form {
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "type")
     @JsonSubTypes({@JsonSubTypes.Type(value = IntestacyApplicant.class, name = ProbateType.Constants.INTESTACY_NAME)})
     private Applicant applicant;
+
+    private String uploadDocumentUrl;
 }
