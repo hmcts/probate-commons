@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModel;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import uk.gov.hmcts.reform.probate.ProbateType;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.AliasName;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
@@ -35,7 +36,7 @@ public class GrantOfRepresentation extends CaseData {
 
     private String registryLocation;
 
-    private String applicationType;
+    private ProbateType applicationType;
 
     @JsonProperty(value = "outsideUKGrantCopies")
     private Integer outsideUkGrantCopies;

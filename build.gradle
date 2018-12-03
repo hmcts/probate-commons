@@ -123,17 +123,23 @@ def versions = [
         hibernateValidator: '6.0.13.Final',
         springfoxSwagger: '2.9.2',
         springBoot: '2.1.0.RELEASE',
+        commonsIo: '2.6'
 ]
 
 dependencies {
   compile group: 'org.projectlombok', name: 'lombok', version: versions.lombok
   compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
+  compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: '2.9.7'
+  compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.7'
+
   compile group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
   compile group: 'org.hibernate.validator', name: 'hibernate-validator',  version: versions.hibernateValidator
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
 
   testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
   testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
+  testCompile group: 'commons-io', name: 'commons-io', version: versions.commonsIo
+
 }
 
 wrapper {
