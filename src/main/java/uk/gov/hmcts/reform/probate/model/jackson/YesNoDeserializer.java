@@ -24,9 +24,9 @@ public class YesNoDeserializer extends JsonDeserializer<Boolean> {
             } else if (text == null) {
                 return null;
             }
-            throw context.mappingException("String value needs to be 'yes' or 'no'", text);
+            throw context.weirdStringException(text, Boolean.class, "String value needs to be 'yes' or 'no'");
         }
-        throw context.mappingException("Cannot deserialize for non string value", currentToken);
+        throw new IllegalArgumentException("Cannot deserialize for non string value");
     }
 }
 

@@ -8,13 +8,13 @@ import uk.gov.hmcts.reform.probate.model.cases.Address;
 @Builder
 public class AdditionalExecutorApplying {
 
-    private final String applyingExecutorName;
+    private String applyingExecutorName;
 
-    private final String applyingExecutorPhoneNumber;
+    private String applyingExecutorPhoneNumber;
 
-    private final String applyingExecutorEmail;
+    private String applyingExecutorEmail;
 
-    private final Address applyingExecutorAddress;
+    private Address applyingExecutorAddress;
 
     private String applyingExecutorOtherNames;
 

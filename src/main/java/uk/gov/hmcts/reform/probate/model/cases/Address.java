@@ -13,23 +13,23 @@ import java.io.Serializable;
 public class Address implements Serializable {
 
     @JsonProperty(value = "AddressLine1")
-    private final String addressLine1;
+    private String addressLine1;
 
     @JsonProperty(value = "AddressLine2")
-    private final String addressLine2;
+    private String addressLine2;
 
     @JsonProperty(value = "AddressLine3")
-    private final String addressLine3;
+    private String addressLine3;
 
     @JsonProperty(value = "County")
-    private final String county;
+    private String county;
 
     @JsonProperty(value = "PostTown")
-    private final String postTown;
+    private String postTown;
 
     @JsonProperty(value = "PostCode")
-    private final String postCode;
+    private String postCode;
 
     @JsonProperty(value = "Country")
-    private final String country;
+    private String country;
 }

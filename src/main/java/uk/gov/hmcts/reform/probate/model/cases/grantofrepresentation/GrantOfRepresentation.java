@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModel;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import uk.gov.hmcts.reform.probate.ProbateType;
+import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.AliasName;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
@@ -23,7 +23,7 @@ import java.util.List;
 @ApiModel(value = "GrantOfRepresentation", parent = CaseData.class)
 @Data
 @Builder
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 public class GrantOfRepresentation extends CaseData {
 
     private LocalDate applicationSubmittedDate;
@@ -138,4 +138,5 @@ public class GrantOfRepresentation extends CaseData {
     private String totalFee;
 
     private List<CollectionMember<AliasName>> deceasedAliasNameList;
+
 }

@@ -1,12 +1,12 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.Value;
 
 import java.util.List;
 
+@Value
 @Data
-@Builder
 public class LegalStatement {
 
     private final String intro;
