@@ -1,13 +1,88 @@
 {
   "type": "Intestacy",
   "applicant": {
+    "email": "jon.snow@thenorth.com",
     "firstName": "Jon",
-    "lastName": "Snow"
+    "lastName": "Snow",
+    "address": "Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT",
+    "postCode": "SW17 0QT",
+    "phoneNumber": "123455678",
+    "addressFound": "true",
+    "freeTextAddress": null,
+    "relationshipToDeceased": "Adopted Child",
+    "adoptionInEnglandOrWales": "Yes",
+    "spouseNotApplyingReason": "Mentally incapable",
+    "deceasedOtherChildren": "Yes",
+    "allDeceasedChildrenOverEighteen": "Yes",
+    "anyDeceasedChildrenDieBeforeDeceased": "No",
+    "anyDeceasedGrandchildrenUnderEighteen": "No",
+    "deceasedAnyChildren": "No"
   },
   "deceased": {
     "firstName": "Ned",
     "lastName": "Stark",
-    "dob_date":"1930-01-01",
-    "dod_date":"2018-01-01"
-  }
+    "dob_date": "1930-01-01",
+    "dod_date": "2018-01-01",
+    "address": "Winterfell, Westeros",
+    "addressFound": "false",
+    "freeTextAddress": "Winterfell, Westeros",
+    "alias": "Yes",
+    "otherNames": {
+      "name_0": {
+        "lastName": "North",
+        "firstName": "King"
+      }
+    },
+    "maritalStatus": "Married or in civil partnership",
+    "divorcedInEnglandOrWales": "No"
+  },
+  "iht": {
+    "form": "IHT205",
+    "method": "Through the HMRC online service",
+    "netValue": 100000,
+    "grossValue": 100000,
+    "identifier": "GOT123456"
+  },
+  "assets": {
+    "assetsOverseasNetValue": 100.50,
+    "assetsOverseas": "Yes"
+  },
+  "copies": {
+    "uk": 5,
+    "overseas": 6
+  },
+  "ccdCase": {
+    "id": 1535574519543819,
+    "state": "CaseCreated"
+  },
+  "registry": {
+    "name": "Birmingham",
+    "email": "birmingham@email.com",
+    "address": "Line 1 Bham\nLine 2 Bham\nLine 3 Bham\nPostCode Bham",
+    "sequenceNumber": 20075
+  },
+  "declaration": {
+    "declarationCheckbox": "true"
+  },
+  "payment": {
+    "date": "2018-12-03T15:58:44.954+0000",
+    "amount": 220.5,
+    "copies": {
+      "uk": {
+        "cost": 2.5,
+        "number": 5
+      },
+      "overseas": {
+        "cost": 3,
+        "number": 6
+      }
+    },
+    "siteId": "P223",
+    "status": "Success",
+    "channel": "online",
+    "reference": "RC-1543-8527-2465-2900",
+    "transactionId": "v5bf26kn5rq9rvdq7gsvn7v11d",
+    "applicationFee": 215
+  },
+  "uploadDocumentUrl": "http://document-management/document/12345"
 }

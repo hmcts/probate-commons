@@ -1,19 +1,19 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
-import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
 
-@Value
-@Builder
+import java.math.BigDecimal;
+
+@Data
 public class InheritanceTax {
 
     private IhtMethod method;
 
     private IhtFormType form;
 
-    private String ihtIdentifier;
+    private String identifier;
 
-    private Long grossValue;
+    private BigDecimal grossValue;
 
-    private Long netValue;
+    private BigDecimal netValue;
 }

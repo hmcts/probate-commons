@@ -117,7 +117,7 @@ ext {
 
 def versions = [
         jupiter: '5.3.2',
-        lombok: '1.16.18',
+        lombok: '1.18.4',
         jackson: '2.9.7',
         apacheCommons: '3.8.1',
         hibernateValidator: '6.0.13.Final',
