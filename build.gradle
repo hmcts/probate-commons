@@ -135,10 +135,15 @@ dependencies {
   compile group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
   compile group: 'org.hibernate.validator', name: 'hibernate-validator',  version: versions.hibernateValidator
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
+  compile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+  compile group: 'commons-beanutils' , name: 'commons-beanutils' , version: '1.9.3'
 
   testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
   testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
   testCompile group: 'commons-io', name: 'commons-io', version: versions.commonsIo
+  testCompile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+  testCompile group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
+
 
 }
 
