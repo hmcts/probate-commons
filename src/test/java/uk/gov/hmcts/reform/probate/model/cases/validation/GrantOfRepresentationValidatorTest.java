@@ -1,7 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.cases.validation;
 
-
-import org.hamcrest.*;
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,15 +10,12 @@ import uk.gov.hmcts.reform.probate.model.cases.Relationship;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
 
+import java.time.LocalDate;
+import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Set;
 
 
 public class GrantOfRepresentationValidatorTest {
@@ -40,12 +36,13 @@ public class GrantOfRepresentationValidatorTest {
         // when
         Set<ConstraintViolation<GrantOfRepresentation>> violations = validator.validate(grantOfRepresentation);
         // then
-        Assert.assertThat(violations.size() , Matchers.equalTo(0));
+        Assert.assertThat(violations.size(), Matchers.equalTo(0));
 
     }
 
     @Test
-    public void shouldRaiseContraintViolationWhenRelationshipToDeceasedIsAdoptedChildAndDeceasedOtherChildrenIsNull() throws Exception {
+    public void shouldRaiseContraintViolationWhenRelationshipToDeceasedIsAdoptedChildAndDeceasedOtherChildrenIsNull()
+        throws Exception {
         // given
         GrantOfRepresentation grantOfRepresentation = buildValidGrantOfRepresentation();
         grantOfRepresentation.setRelationshipToDeceased(Relationship.ADOPTED_CHILD);
@@ -60,7 +57,8 @@ public class GrantOfRepresentationValidatorTest {
     }
 
     @Test
-    public void shouldRaiseContraintViolationWhenRelationshipToDeceasedIsChildAndDeceasedOtherChildrenIsNull() throws Exception {
+    public void shouldRaiseContraintViolationWhenRelationshipToDeceasedIsChildAndDeceasedOtherChildrenIsNull()
+        throws Exception {
         // given
         GrantOfRepresentation grantOfRepresentation = buildValidGrantOfRepresentation();
         grantOfRepresentation.setRelationshipToDeceased(Relationship.CHILD);
@@ -69,11 +67,13 @@ public class GrantOfRepresentationValidatorTest {
         Set<ConstraintViolation<GrantOfRepresentation>> violations = validator.validate(grantOfRepresentation);
         // then
         Assert.assertThat(violations.size(), Matchers.equalTo(1));
-        Assert.assertThat(violations.iterator().next().getMessage(), Matchers.equalTo("NotNullIfFieldHasEitherValue"));
+        Assert.assertThat(violations.iterator().next().getMessage(),
+            Matchers.equalTo("NotNullIfFieldHasEitherValue"));
     }
 
     @Test
-    public void shouldNotRaiseContraintViolationWhenRelationshipToDeceasedIsChildAndDeceasedOtherChildrenIsPopulated() throws Exception {
+    public void shouldNotRaiseContraintViolationWhenRelationshipToDeceasedIsChildAndDeceasedOtherChildrenIsPopulated()
+        throws Exception {
         // given
         GrantOfRepresentation grantOfRepresentation = buildValidGrantOfRepresentation();
         grantOfRepresentation.setRelationshipToDeceased(Relationship.CHILD);
@@ -86,7 +86,8 @@ public class GrantOfRepresentationValidatorTest {
     }
 
     @Test
-    public void shouldRaiseContraintViolationWhenDeceasedMaritalStatusIsDivorcedAndDivorcedInEnglandOrWalesIsNull() throws Exception {
+    public void shouldRaiseContraintViolationWhenDeceasedMaritalStatusIsDivorcedAndDivorcedInEnglandOrWalesIsNull()
+        throws Exception {
         // given
         GrantOfRepresentation grantOfRepresentation = buildValidGrantOfRepresentation();
         grantOfRepresentation.setDeceasedMaritalStatus(MaritalStatus.DIVORCED);
@@ -94,11 +95,13 @@ public class GrantOfRepresentationValidatorTest {
         Set<ConstraintViolation<GrantOfRepresentation>> violations = validator.validate(grantOfRepresentation);
         // then
         Assert.assertThat(violations.size(), Matchers.equalTo(1));
-        Assert.assertThat(violations.iterator().next().getMessage(), Matchers.equalTo("NotNullIfFieldHasEitherValue"));
+        Assert.assertThat(violations.iterator().next().getMessage(),
+            Matchers.equalTo("NotNullIfFieldHasEitherValue"));
     }
 
     @Test
-    public void shouldRaiseContraintViolationWhenDeceasedMaritalStatusIsSeperatedAndDivorcedInEnglandOrWalesIsNull() throws Exception {
+    public void shouldRaiseContraintViolationWhenDeceasedMaritalStatusIsSeperatedAndDivorcedInEnglandOrWalesIsNull()
+        throws Exception {
         // given
         GrantOfRepresentation grantOfRepresentation = buildValidGrantOfRepresentation();
         grantOfRepresentation.setDeceasedMaritalStatus(MaritalStatus.JUDICIALLY_SEPERATED);
@@ -106,11 +109,13 @@ public class GrantOfRepresentationValidatorTest {
         Set<ConstraintViolation<GrantOfRepresentation>> violations = validator.validate(grantOfRepresentation);
         // then
         Assert.assertThat(violations.size(), Matchers.equalTo(1));
-        Assert.assertThat(violations.iterator().next().getMessage(), Matchers.equalTo("NotNullIfFieldHasEitherValue"));
+        Assert.assertThat(violations.iterator().next().getMessage(),
+            Matchers.equalTo("NotNullIfFieldHasEitherValue"));
     }
 
     @Test
-    public void shouldRaiseContraintViolationWhenDeceasedHasOtherChildrenAnAllDeceasedChildrenOverEighteenIsNull() throws Exception {
+    public void shouldRaiseContraintViolationWhenDeceasedHasOtherChildrenAnAllDeceasedChildrenOverEighteenIsNull()
+        throws Exception {
         // given
         GrantOfRepresentation grantOfRepresentation = buildValidGrantOfRepresentation();
         grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
@@ -118,11 +123,13 @@ public class GrantOfRepresentationValidatorTest {
         Set<ConstraintViolation<GrantOfRepresentation>> violations = validator.validate(grantOfRepresentation);
         // then
         Assert.assertThat(violations.size(), Matchers.equalTo(1));
-        Assert.assertThat(violations.iterator().next().getMessage(), Matchers.equalTo("NotNullIfFieldHasValueValidator"));
+        Assert.assertThat(violations.iterator().next().getMessage(),
+            Matchers.equalTo("NotNullIfFieldHasValueValidator"));
     }
 
     @Test
-    public void shoulNotRaiseContraintViolationWhenDeceasedHasOtherChildrenAnAllDeceasedChildrenOverEighteenIsPopulated() throws Exception {
+    public void shouldNotRaiseContraintViolationWhenDeceasedHasOtherChildrenAllDeceasedChildrenOverEighteenIsPopulated()
+        throws Exception {
         // given
         GrantOfRepresentation grantOfRepresentation = buildValidGrantOfRepresentation();
         grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
@@ -134,7 +141,8 @@ public class GrantOfRepresentationValidatorTest {
     }
 
     @Test
-    public void shouldRaiseContraintViolationWhenDeceasedHasOtherChildrenAndAllDeceasedChildrenOverEighteenIsTrueAndAnyDeceasedChildrenDieBeforeDeceasedIsNull() throws Exception {
+    public void shouldFailDeceasedHasOtherChildrenAllDeceasedChildrenOverEighteenAnyDeceasedChildrenDieBeforeDeceased()
+        throws Exception {
         // given
         GrantOfRepresentation grantOfRepresentation = buildValidGrantOfRepresentation();
         grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
@@ -143,11 +151,12 @@ public class GrantOfRepresentationValidatorTest {
         Set<ConstraintViolation<GrantOfRepresentation>> violations = validator.validate(grantOfRepresentation);
         // then
         Assert.assertThat(violations.size(), Matchers.equalTo(1));
-        Assert.assertThat(violations.iterator().next().getMessage(), Matchers.equalTo("NotNullIfAllFieldsHaveValueValidator"));
+        Assert.assertThat(violations.iterator().next().getMessage(),
+            Matchers.equalTo("NotNullIfAllFieldsHaveValueValidator"));
     }
 
     @Test
-    public void shouldRaiseContraintViolationWhenDeceasedHasOtherChildrenAndAllDeceasedChildrenOverEighteenIsTrueAndAnyDeceasedChildrenDieBeforeDeceasedAndAnyDeceasedGrandchildrenUnderEighteenIsNull() throws Exception {
+    public void shouldFailWhenDeceasedHasOtherChildrenAndDeceasedGrandchildrenUnderEighteenIsNull() throws Exception {
         // given
         GrantOfRepresentation grantOfRepresentation = buildValidGrantOfRepresentation();
         grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
@@ -158,23 +167,27 @@ public class GrantOfRepresentationValidatorTest {
         Set<ConstraintViolation<GrantOfRepresentation>> violations = validator.validate(grantOfRepresentation);
         // then
         Assert.assertThat(violations.size(), Matchers.equalTo(1));
-        Assert.assertThat(violations.iterator().next().getMessage(), Matchers.equalTo("NotNullIfAllFieldsHaveValueValidator"));
+        Assert.assertThat(violations.iterator().next().getMessage(),
+            Matchers.equalTo("NotNullIfAllFieldsHaveValueValidator"));
     }
 
 
     @Test
-    public void shouldRaiseContraintViolationWhenAssetsOverseasNotPopulatedAndIHTNetValueLessThanOrEqualTo250000() throws Exception {
+    public void shouldRaiseContraintViolationWhenAssetsOverseasNotPopulatedAndIhtNetValueLessThanOrEqualTo250000()
+        throws Exception {
         GrantOfRepresentation grantOfRepresentation = buildValidGrantOfRepresentation();
         grantOfRepresentation.setIhtNetValue(250000L);
         // when
         Set<ConstraintViolation<GrantOfRepresentation>> violations = validator.validate(grantOfRepresentation);
         // then
         Assert.assertThat(violations.size(), Matchers.equalTo(1));
-        Assert.assertThat(violations.iterator().next().getMessage(), Matchers.equalTo("AssetsOverseasMandatory"));
+        Assert.assertThat(violations.iterator().next().getMessage(),
+            Matchers.equalTo("AssetsOverseasMandatory"));
     }
 
     @Test
-    public void shouldNotRaiseContraintViolationWhenAssetsOverseasNotPopulatedAndIHTNetValueMoreThan250000() throws Exception {
+    public void shouldNotRaiseContraintViolationWhenAssetsOverseasNotPopulatedAndIhtNetValueMoreThan250000()
+        throws Exception {
         //given
         GrantOfRepresentation grantOfRepresentation = buildValidGrantOfRepresentation();
         grantOfRepresentation.setIhtNetValue(250001L);
@@ -203,17 +216,17 @@ public class GrantOfRepresentationValidatorTest {
         LocalDate deceasedDob = LocalDate.of(1954, 9, 18);
 
         return GrantOfRepresentation.builder()
-                .ihtNetValue(260000L)
-                .deceasedAddress(Address.builder().addressLine1("addressLine1").postCode("postcode").build())
-                .relationshipToDeceased(Relationship.SPOUSE)
-                .deceasedMaritalStatus(MaritalStatus.MARRIED)
-                .deceasedAnyOtherNames(Boolean.FALSE)
-                .deceasedAnyChildren(Boolean.TRUE)
-                .deceasedForenames("John")
-                .deceasedSurname("Hughes")
-                .deceasedDateOfDeath(deceasedDod)
-                .deceasedDateOfBirth(deceasedDob)
-                .ihtGrossValue(290000L)
-                .build();
+            .ihtNetValue(260000L)
+            .deceasedAddress(Address.builder().addressLine1("addressLine1").postCode("postcode").build())
+            .relationshipToDeceased(Relationship.SPOUSE)
+            .deceasedMaritalStatus(MaritalStatus.MARRIED)
+            .deceasedAnyOtherNames(Boolean.FALSE)
+            .deceasedAnyChildren(Boolean.TRUE)
+            .deceasedForenames("John")
+            .deceasedSurname("Hughes")
+            .deceasedDateOfDeath(deceasedDod)
+            .deceasedDateOfBirth(deceasedDob)
+            .ihtGrossValue(290000L)
+            .build();
     }
 }

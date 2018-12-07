@@ -19,7 +19,7 @@ import uk.gov.hmcts.reform.probate.model.cases.Relationship;
 import uk.gov.hmcts.reform.probate.model.cases.validation.AliasNamesMandatory;
 import uk.gov.hmcts.reform.probate.model.cases.validation.AssetsOverseasMandatory;
 import uk.gov.hmcts.reform.probate.model.cases.validation.DateOfDeathBeforeDateOfBirth;
-import uk.gov.hmcts.reform.probate.model.cases.validation.NetIHTLessThanGrossIHT;
+import uk.gov.hmcts.reform.probate.model.cases.validation.NetIhtLessThanGrossIht;
 import uk.gov.hmcts.reform.probate.model.cases.validation.NetValueAssetsOverseasMandatory;
 import uk.gov.hmcts.reform.probate.model.cases.validation.NotNullIfAllFieldsHaveValue;
 import uk.gov.hmcts.reform.probate.model.cases.validation.NotNullIfFieldHasEitherValue;
@@ -28,12 +28,10 @@ import uk.gov.hmcts.reform.probate.model.cases.validation.SpouseNotApplyingReaso
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
-import javax.validation.constraints.Size;
-
 import java.time.LocalDate;
 import java.util.List;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @ApiModel(value = "GrantOfRepresentation", parent = CaseData.class)
 @Data
@@ -42,43 +40,44 @@ import java.util.List;
 @AssetsOverseasMandatory
 @NetValueAssetsOverseasMandatory
 @DateOfDeathBeforeDateOfBirth
-@NetIHTLessThanGrossIHT
+@NetIhtLessThanGrossIht
 @AliasNamesMandatory
 @SpouseNotApplyingReasonMandatory
 @NotNullIfFieldHasEitherValue.List({
-        @NotNullIfFieldHasEitherValue(
-                fieldName = "relationshipToDeceased",
-                fieldValues = {"ADOPTED_CHILD", "CHILD"},
-                dependFieldName = "deceasedOtherChildren"),
-        @NotNullIfFieldHasEitherValue(
-                fieldName = "deceasedMaritalStatus",
-                fieldValues = {"DIVORCED", "JUDICIALLY_SEPERATED"},
-                dependFieldName = "divorcedInEnglandOrWales")
+    @NotNullIfFieldHasEitherValue(
+        fieldName = "relationshipToDeceased",
+        fieldValues = {"ADOPTED_CHILD", "CHILD"},
+        dependFieldName = "deceasedOtherChildren"),
+    @NotNullIfFieldHasEitherValue(
+        fieldName = "deceasedMaritalStatus",
+        fieldValues = {"DIVORCED", "JUDICIALLY_SEPERATED"},
+        dependFieldName = "divorcedInEnglandOrWales")
 })
 @NotNullIfFieldHasValue.List({
-        @NotNullIfFieldHasValue(
-                fieldName="deceasedOtherChildren",
-                fieldValue = "true",
-                dependFieldName = "allDeceasedChildrenOverEighteen"),
-        @NotNullIfFieldHasValue(
-                fieldName="relationshipToDeceased",
-                fieldValue = "ADOPTED_CHILD",
-                dependFieldName = "adoptionInEnglandOrWales"),
-        @NotNullIfFieldHasValue(
-                fieldName="relationshipToDeceased",
-                fieldValue = "SPOUSE",
-                dependFieldName = "deceasedAnyChildren")
+    @NotNullIfFieldHasValue(
+        fieldName = "deceasedOtherChildren",
+        fieldValue = "true",
+        dependFieldName = "allDeceasedChildrenOverEighteen"),
+    @NotNullIfFieldHasValue(
+        fieldName = "relationshipToDeceased",
+        fieldValue = "ADOPTED_CHILD",
+        dependFieldName = "adoptionInEnglandOrWales"),
+    @NotNullIfFieldHasValue(
+        fieldName = "relationshipToDeceased",
+        fieldValue = "SPOUSE",
+        dependFieldName = "deceasedAnyChildren")
 })
 @NotNullIfAllFieldsHaveValue.List({
-        @NotNullIfAllFieldsHaveValue(
-                fieldNames = {"deceasedOtherChildren", "allDeceasedChildrenOverEighteen"},
-                fieldValues = {"true","true"},
-                dependFieldName = "anyDeceasedChildrenDieBeforeDeceased"),
-        @NotNullIfAllFieldsHaveValue(
-                fieldNames = {"deceasedOtherChildren", "allDeceasedChildrenOverEighteen","anyDeceasedChildrenDieBeforeDeceased"},
-                fieldValues = {"true","true","true"},
-                dependFieldName = "anyDeceasedGrandchildrenUnderEighteen"
-        )
+    @NotNullIfAllFieldsHaveValue(
+        fieldNames = {"deceasedOtherChildren", "allDeceasedChildrenOverEighteen"},
+        fieldValues = {"true", "true"},
+        dependFieldName = "anyDeceasedChildrenDieBeforeDeceased"),
+    @NotNullIfAllFieldsHaveValue(
+        fieldNames = {"deceasedOtherChildren", "allDeceasedChildrenOverEighteen",
+            "anyDeceasedChildrenDieBeforeDeceased"},
+        fieldValues = {"true", "true", "true"},
+        dependFieldName = "anyDeceasedGrandchildrenUnderEighteen"
+    )
 })
 public class GrantOfRepresentation extends CaseData {
 
@@ -113,11 +112,11 @@ public class GrantOfRepresentation extends CaseData {
     private Boolean deceasedMarriedAfterWillOrCodicilDate;
 
     @NotNull
-    @Size(min=2)
+    @Size(min = 2)
     private String deceasedForenames;
 
     @NotNull
-    @Size(min=2)
+    @Size(min = 2)
     private String deceasedSurname;
 
     @NotNull
@@ -146,11 +145,11 @@ public class GrantOfRepresentation extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private  Boolean adoptionInEnglandOrWales;
+    private Boolean adoptionInEnglandOrWales;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private  Boolean divorcedInEnglandOrWales;
+    private Boolean divorcedInEnglandOrWales;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)

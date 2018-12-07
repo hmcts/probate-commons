@@ -5,17 +5,16 @@ import org.junit.Assert;
 import org.junit.Test;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
 
-public class NetValueAssetsOverseasMandatoryValidatorTest {
+public class NetIhtLessThanGrossIhtValidatorTest {
 
-    NetValueAssetsOverseasMandatoryValidator netValueAssetsOverseasMandatoryValidator
-        = new NetValueAssetsOverseasMandatoryValidator();
+    NetIhtLessThanGrossIhtValidator netIhtLessThanGrossIhtValidator = new NetIhtLessThanGrossIhtValidator();
 
     @Test
     public void shouldReturnFalseIfGrossIhtLessThanNetIhtValue() {
 
         GrantOfRepresentation grantOfRepresentation =
-            GrantOfRepresentation.builder().assetsOverseas(Boolean.TRUE).build();
-        boolean result = netValueAssetsOverseasMandatoryValidator.isValid(grantOfRepresentation, null);
+            GrantOfRepresentation.builder().ihtNetValue(250000L).ihtGrossValue(240000L).build();
+        boolean result = netIhtLessThanGrossIhtValidator.isValid(grantOfRepresentation, null);
         Assert.assertThat(result, Matchers.equalTo(Boolean.FALSE));
     }
 
@@ -23,8 +22,9 @@ public class NetValueAssetsOverseasMandatoryValidatorTest {
     public void shouldReturnTrueIfGrossIhtMoreThanNetIhtValue() {
 
         GrantOfRepresentation grantOfRepresentation =
-            GrantOfRepresentation.builder().assetsOverseas(Boolean.TRUE).netValueAssestsOverseas(200000L).build();
-        boolean result = netValueAssetsOverseasMandatoryValidator.isValid(grantOfRepresentation, null);
+            GrantOfRepresentation.builder().ihtNetValue(20000L).ihtGrossValue(240000L).build();
+        boolean result = netIhtLessThanGrossIhtValidator.isValid(grantOfRepresentation, null);
         Assert.assertThat(result, Matchers.equalTo(Boolean.TRUE));
     }
 }
+

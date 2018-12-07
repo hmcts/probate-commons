@@ -1,6 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.cases.validation;
 
-import org.hamcrest.*;
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
@@ -18,7 +18,8 @@ class AssetsOverseasMandatoryValidatorTest {
 
     @Test
     void shouldVReturnTrueIfDeceasedHasOtherNamesAndAliasListPopulated() {
-        GrantOfRepresentation grantOfRepresentation = GrantOfRepresentation.builder().ihtNetValue(250000L).assetsOverseas(Boolean.FALSE).build();
+        GrantOfRepresentation grantOfRepresentation =
+            GrantOfRepresentation.builder().ihtNetValue(250000L).assetsOverseas(Boolean.FALSE).build();
         boolean result = assetsOverseasMandatoryValidator.isValid(grantOfRepresentation, null);
         Assert.assertThat(result, Matchers.equalTo(Boolean.TRUE));
     }

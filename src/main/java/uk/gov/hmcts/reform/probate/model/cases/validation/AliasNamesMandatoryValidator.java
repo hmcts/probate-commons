@@ -7,10 +7,11 @@ import javax.validation.ConstraintValidatorContext;
 
 public class AliasNamesMandatoryValidator implements ConstraintValidator<AliasNamesMandatory, GrantOfRepresentation> {
     @Override
-    public boolean isValid(GrantOfRepresentation grantOfRepresentation, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(GrantOfRepresentation grantOfRepresentation,
+                           ConstraintValidatorContext constraintValidatorContext) {
         return !(grantOfRepresentation.getDeceasedAnyOtherNames() != null
-                && grantOfRepresentation.getDeceasedAnyOtherNames()
-                && (grantOfRepresentation.getDeceasedAliasNameList() == null
-                || grantOfRepresentation.getDeceasedAliasNameList().isEmpty()));
+            && grantOfRepresentation.getDeceasedAnyOtherNames()
+            && (grantOfRepresentation.getDeceasedAliasNameList() == null
+            || grantOfRepresentation.getDeceasedAliasNameList().isEmpty()));
     }
 }

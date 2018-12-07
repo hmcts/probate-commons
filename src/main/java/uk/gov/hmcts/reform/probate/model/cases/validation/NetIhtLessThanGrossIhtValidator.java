@@ -5,10 +5,12 @@ import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepr
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class NetIHTLessThanGrossIHTValidator implements ConstraintValidator<NetIHTLessThanGrossIHT, GrantOfRepresentation> {
+public class NetIhtLessThanGrossIhtValidator implements
+    ConstraintValidator<NetIhtLessThanGrossIht, GrantOfRepresentation> {
 
     @Override
-    public boolean isValid(GrantOfRepresentation grantOfRepresentation, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(GrantOfRepresentation grantOfRepresentation,
+                           ConstraintValidatorContext constraintValidatorContext) {
         Long netIhtValue = grantOfRepresentation.getIhtNetValue();
         Long grossIhtValue = grantOfRepresentation.getIhtGrossValue();
         return !(netIhtValue > grossIhtValue);

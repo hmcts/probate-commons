@@ -6,13 +6,15 @@ import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepr
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class SpouseNotApplyingReasonMandatoryValidator implements ConstraintValidator<SpouseNotApplyingReasonMandatory, GrantOfRepresentation> {
+public class SpouseNotApplyingReasonMandatoryValidator implements
+    ConstraintValidator<SpouseNotApplyingReasonMandatory, GrantOfRepresentation> {
     @Override
-    public boolean isValid(GrantOfRepresentation grantOfRepresentation, ConstraintValidatorContext constraintValidatorContext) {
-        return !(grantOfRepresentation.getIhtNetValue()!=null
-                && grantOfRepresentation.getIhtNetValue() > 250000
-                && grantOfRepresentation.getRelationshipToDeceased()!=null
-                && !grantOfRepresentation.getRelationshipToDeceased().equals(Relationship.SPOUSE)
-                && grantOfRepresentation.getSpouseNotApplyingReason() ==null);
+    public boolean isValid(GrantOfRepresentation grantOfRepresentation,
+                           ConstraintValidatorContext constraintValidatorContext) {
+        return !(grantOfRepresentation.getIhtNetValue() != null
+            && grantOfRepresentation.getIhtNetValue() > 250000
+            && grantOfRepresentation.getRelationshipToDeceased() != null
+            && !grantOfRepresentation.getRelationshipToDeceased().equals(Relationship.SPOUSE)
+            && grantOfRepresentation.getSpouseNotApplyingReason() == null);
     }
 }
