@@ -1,155 +1,163 @@
 plugins {
-  id 'checkstyle'
-  id 'com.jfrog.bintray' version '1.8.4'
-  id 'com.github.ben-manes.versions' version '0.20.0'
-  id 'java-library'
-  id 'maven'
-  id 'maven-publish'
-  id 'net.ltgt.apt' version '0.18'
+    id 'checkstyle'
+    id 'com.jfrog.bintray' version '1.8.4'
+    id 'com.github.ben-manes.versions' version '0.20.0'
+    id 'java-library'
+    id 'maven'
+    id 'maven-publish'
+    id 'net.ltgt.apt' version '0.18'
 }
 
 group 'uk.gov.hmcts.reform.probate'
 version '0.0.1'
 
 checkstyle {
-  maxWarnings = 0
-  toolVersion = '8.5'
+    maxWarnings = 0
+    toolVersion = '8.5'
 }
 
 sourceCompatibility = 1.8
 
 compileJava {
-  options.compilerArgs << '-parameters' << '-Xlint:deprecation'
+    options.compilerArgs << '-parameters' << '-Xlint:deprecation'
 }
 
 compileTestJava {
-  options.compilerArgs << '-Xlint:deprecation'
+    options.compilerArgs << '-Xlint:deprecation'
 }
 
 repositories {
-  mavenLocal()
-  jcenter()
+    mavenLocal()
+    jcenter()
 }
 
 jar {
-  manifest {
-    attributes 'Implementation-Title': project.name, 'Implementation-Version': project.version
-  }
+    manifest {
+        attributes 'Implementation-Title': project.name, 'Implementation-Version': project.version
+    }
 }
 
 task printVersion {
-  doLast {
-    print project.version
-  }
+    doLast {
+        print project.version
+    }
 }
 
 def pomConfig = {
-  licenses {
-    license {
-      name "MIT License"
-      url "http://www.opensource.org/licenses/mit-license.php"
-      distribution "repo"
+    licenses {
+        license {
+            name "MIT License"
+            url "http://www.opensource.org/licenses/mit-license.php"
+            distribution "repo"
+        }
     }
-  }
 
-  scm {
-    url "https://github.com/hmcts/probate-commons"
-  }
+    scm {
+        url "https://github.com/hmcts/probate-commons"
+    }
 }
 
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-  classifier = 'sources'
-  from sourceSets.main.allSource
+    classifier = 'sources'
+    from sourceSets.main.allSource
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-  classifier = 'javadoc'
-  from javadoc.destinationDir
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }
 
 artifacts {
-  archives sourcesJar
-  archives javadocJar
+    archives sourcesJar
+    archives javadocJar
 }
 
 publishing {
-  publications {
-    Main(MavenPublication) {
-      from components.java
-      artifact sourcesJar
-      artifact javadocJar
-      groupId project.group
-      artifactId 'probate-commons'
-      version project.version
+    publications {
+        Main(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId project.group
+            artifactId 'probate-commons'
+            version project.version
 
-      pom.withXml {
-        def root = asNode()
-        root.appendNode('description', 'Probate commons')
-        root.appendNode('name', 'Probate commons')
-        root.appendNode('url', 'https://github.com/hmcts/probate-commons')
-        root.children().last() + pomConfig
-      }
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', 'Probate commons')
+                root.appendNode('name', 'Probate commons')
+                root.appendNode('url', 'https://github.com/hmcts/probate-commons')
+                root.children().last() + pomConfig
+            }
+        }
     }
-  }
 }
 
 bintray {
-  user = System.getenv('BINTRAY_USER')
-  key = System.getenv('BINTRAY_KEY')
-  publications = ['Main']
-  publish = true
-  pkg {
-    repo = 'hmcts-maven'
-    name = 'probate-commons'
-    userOrg = 'hmcts'
-    licenses = ['MIT']
-    vcsUrl = 'https://github.com/hmcts/probate-commons'
-    version {
-      name = project.version
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['Main']
+    publish = true
+    pkg {
+        repo = 'hmcts-maven'
+        name = 'probate-commons'
+        userOrg = 'hmcts'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/hmcts/probate-commons'
+        version {
+            name = project.version
+        }
     }
-  }
 }
 
 ext {
-  lombokVersion = '1.16.18'
+    lombokVersion = '1.16.18'
 }
 
 def versions = [
-        jupiter: '5.3.2',
-        lombok: '1.18.4',
-        jackson: '2.9.7',
-        apacheCommons: '3.8.1',
+        jupiter           : '5.3.2',
+        lombok            : '1.18.4',
+        jackson           : '2.9.7',
+        apacheCommons     : '3.8.1',
         hibernateValidator: '6.0.13.Final',
-        springfoxSwagger: '2.9.2',
-        springBoot: '2.1.0.RELEASE',
-        commonsIo: '2.6'
+        springfoxSwagger  : '2.9.2',
+        springBoot        : '2.1.0.RELEASE',
+        commonsIo         : '2.6'
 ]
 
 dependencies {
-  compile group: 'org.projectlombok', name: 'lombok', version: versions.lombok
-  compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
-  compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
-  compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
+    compile group: 'org.projectlombok', name: 'lombok', version: versions.lombok
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
 
-  compile group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
-  compile group: 'org.hibernate.validator', name: 'hibernate-validator',  version: versions.hibernateValidator
-  compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
+    compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: versions.hibernateValidator
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
+    compile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
 
-  testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
-  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
-  testCompile group: 'commons-io', name: 'commons-io', version: versions.commonsIo
+    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
+    testCompile group: 'commons-io', name: 'commons-io', version: versions.commonsIo
+    testCompile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+    testCompile group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
+
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.2")
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.3.2')
 
 }
 
 wrapper {
-  distributionType = Wrapper.DistributionType.ALL
+    distributionType = Wrapper.DistributionType.ALL
 }
 
 test {
-  useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 jar {
-  enabled = true
+    enabled = true
 }
