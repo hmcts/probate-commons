@@ -25,10 +25,6 @@ public class Payment {
 
     private PaymentStatus status;
 
-    private BigDecimal applicationFee;
-
     private String channel;
-
-    private CopiesPayment copies;
 
 }

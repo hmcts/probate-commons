@@ -1,13 +1,13 @@
-package uk.gov.hmcts.reform.probate.model.forms;
+package uk.gov.hmcts.reform.probate.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import static uk.gov.hmcts.reform.probate.model.forms.Relationship.Constants.ADOPTED_CHILD_DESC;
-import static uk.gov.hmcts.reform.probate.model.forms.Relationship.Constants.CHILD_DESC;
-import static uk.gov.hmcts.reform.probate.model.forms.Relationship.Constants.OTHER_DESC;
-import static uk.gov.hmcts.reform.probate.model.forms.Relationship.Constants.SPOUSE_DESC;
+import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.ADOPTED_CHILD_DESC;
+import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.CHILD_DESC;
+import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.OTHER_DESC;
+import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.SPOUSE_DESC;
 
 @RequiredArgsConstructor
 public enum Relationship {

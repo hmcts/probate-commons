@@ -1,11 +1,16 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
 @Data
-@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Declaration {
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Boolean declarationCheckbox;
 
     private String accept;
 

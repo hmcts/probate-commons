@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.model.cases.validation;
+package uk.gov.hmcts.reform.probate.model.validation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -12,10 +12,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({TYPE, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = {AliasNamesMandatoryValidator.class})
+@Constraint(validatedBy = {AtLeastOneNonEmptyFieldValidator.class})
 @Documented
-public @interface AliasNamesMandatory {
-    String message() default "AliasNamesMandatory";
+public @interface AtLeastOneNonEmptyField {
+
+    String message() default "AtLeastOneNonEmptyField";
 
     Class<?>[] groups() default {};
 

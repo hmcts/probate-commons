@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.model.forms;
+package uk.gov.hmcts.reform.probate.model;
 
 public enum IhtFormType {
 

@@ -8,15 +8,9 @@
     "postCode": "SW17 0QT",
     "phoneNumber": "123455678",
     "addressFound": "true",
-    "freeTextAddress": null,
+    "freeTextAddress": "Pret a Manger St. Georges Hospital Blackshaw Road",
     "relationshipToDeceased": "Adopted Child",
-    "adoptionInEnglandOrWales": "Yes",
-    "spouseNotApplyingReason": "Mentally incapable",
-    "deceasedOtherChildren": "Yes",
-    "allDeceasedChildrenOverEighteen": "Yes",
-    "anyDeceasedChildrenDieBeforeDeceased": "No",
-    "anyDeceasedGrandchildrenUnderEighteen": "No",
-    "deceasedAnyChildren": "No"
+    "adoptionInEnglandOrWales": "Yes"
   },
   "deceased": {
     "firstName": "Ned",
@@ -34,7 +28,13 @@
       }
     },
     "maritalStatus": "Married or in civil partnership",
-    "divorcedInEnglandOrWales": "No"
+    "divorcedInEnglandOrWales": "No",
+    "spouseNotApplyingReason": "Mentally incapable",
+    "otherChildren": "Yes",
+    "allDeceasedChildrenOverEighteen": "Yes",
+    "anyDeceasedChildrenDieBeforeDeceased": "No",
+    "anyDeceasedGrandchildrenUnderEighteen": "No",
+    "anyChildren": "No"
   },
   "iht": {
     "form": "IHT205",
@@ -67,22 +67,11 @@
   "payment": {
     "date": "2018-12-03T15:58:44.954+0000",
     "amount": 220.5,
-    "copies": {
-      "uk": {
-        "cost": 2.5,
-        "number": 5
-      },
-      "overseas": {
-        "cost": 3,
-        "number": 6
-      }
-    },
     "siteId": "P223",
     "status": "Success",
     "channel": "online",
     "reference": "RC-1543-8527-2465-2900",
-    "transactionId": "v5bf26kn5rq9rvdq7gsvn7v11d",
-    "applicationFee": 215
+    "transactionId": "v5bf26kn5rq9rvdq7gsvn7v11d"
   },
   "uploadDocumentUrl": "http://document-management/document/12345"
 }

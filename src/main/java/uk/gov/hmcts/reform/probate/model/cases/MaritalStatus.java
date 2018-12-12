@@ -18,7 +18,7 @@ public enum MaritalStatus {
     @JsonProperty(DIVORCED_VALUE) DIVORCED("Divorced or civil partnership dissolved"),
     @JsonProperty(WIDOWED_VALUE) WIDOWED("Widowed"),
     @JsonProperty(NEVER_MARRIED_VALUE) NEVER_MARRIED("Never married"),
-    @JsonProperty(JUDICIALLY_SEPARATED_VALUE) JUDICIALLY_SEPERATED("Judicially separated");
+    @JsonProperty(JUDICIALLY_SEPARATED_VALUE) JUDICIALLY_SEPARATED("Judicially separated");
 
     @Getter
     private final String description;

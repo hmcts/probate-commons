@@ -1,86 +1,71 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.annotations.ApiModel;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import uk.gov.hmcts.reform.probate.model.ProbateType;
+import uk.gov.hmcts.reform.probate.model.IhtFormType;
+import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.AliasName;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
-import uk.gov.hmcts.reform.probate.model.cases.Payment;
-import uk.gov.hmcts.reform.probate.model.cases.Relationship;
-import uk.gov.hmcts.reform.probate.model.cases.validation.AliasNamesMandatory;
-import uk.gov.hmcts.reform.probate.model.cases.validation.AssetsOverseasMandatory;
-import uk.gov.hmcts.reform.probate.model.cases.validation.DateOfDeathBeforeDateOfBirth;
-import uk.gov.hmcts.reform.probate.model.cases.validation.NetIhtLessThanGrossIht;
-import uk.gov.hmcts.reform.probate.model.cases.validation.NetValueAssetsOverseasMandatory;
-import uk.gov.hmcts.reform.probate.model.cases.validation.NotNullIfAllFieldsHaveValue;
-import uk.gov.hmcts.reform.probate.model.cases.validation.NotNullIfFieldHasEitherValue;
-import uk.gov.hmcts.reform.probate.model.cases.validation.NotNullIfFieldHasValue;
-import uk.gov.hmcts.reform.probate.model.cases.validation.SpouseNotApplyingReasonMandatory;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
+import uk.gov.hmcts.reform.probate.model.validation.AssertExpression;
+import uk.gov.hmcts.reform.probate.model.validation.groups.SubmissionGroup;
 
 import java.time.LocalDate;
 import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "GrantOfRepresentation", parent = CaseData.class)
 @Data
-@Builder
 @EqualsAndHashCode(callSuper = false)
-@AssetsOverseasMandatory
-@NetValueAssetsOverseasMandatory
-@DateOfDeathBeforeDateOfBirth
-@NetIhtLessThanGrossIht
-@AliasNamesMandatory
-@SpouseNotApplyingReasonMandatory
-@NotNullIfFieldHasEitherValue.List({
-    @NotNullIfFieldHasEitherValue(
-        fieldName = "relationshipToDeceased",
-        fieldValues = {"ADOPTED_CHILD", "CHILD"},
-        dependFieldName = "deceasedOtherChildren"),
-    @NotNullIfFieldHasEitherValue(
-        fieldName = "deceasedMaritalStatus",
-        fieldValues = {"DIVORCED", "JUDICIALLY_SEPERATED"},
-        dependFieldName = "divorcedInEnglandOrWales")
-})
-@NotNullIfFieldHasValue.List({
-    @NotNullIfFieldHasValue(
-        fieldName = "deceasedOtherChildren",
-        fieldValue = "true",
-        dependFieldName = "allDeceasedChildrenOverEighteen"),
-    @NotNullIfFieldHasValue(
-        fieldName = "relationshipToDeceased",
-        fieldValue = "ADOPTED_CHILD",
-        dependFieldName = "adoptionInEnglandOrWales"),
-    @NotNullIfFieldHasValue(
-        fieldName = "relationshipToDeceased",
-        fieldValue = "SPOUSE",
-        dependFieldName = "deceasedAnyChildren")
-})
-@NotNullIfAllFieldsHaveValue.List({
-    @NotNullIfAllFieldsHaveValue(
-        fieldNames = {"deceasedOtherChildren", "allDeceasedChildrenOverEighteen"},
-        fieldValues = {"true", "true"},
-        dependFieldName = "anyDeceasedChildrenDieBeforeDeceased"),
-    @NotNullIfAllFieldsHaveValue(
-        fieldNames = {"deceasedOtherChildren", "allDeceasedChildrenOverEighteen",
-            "anyDeceasedChildrenDieBeforeDeceased"},
-        fieldValues = {"true", "true", "true"},
-        dependFieldName = "anyDeceasedGrandchildrenUnderEighteen"
-    )
-})
+@AssertExpression(value = "!(#isTrue(deceasedOtherNames) && #isEmpty(deceasedAliasNameList))",
+        groups = SubmissionGroup.class)
+@AssertExpression(value = "!(#L(ihtNetValue) <= 250000 && !#isTrue(assetsOverseas))", groups = SubmissionGroup.class)
+@AssertExpression(value = "!(#isTrue(assetsOverseas) && #L(assetsOverseasNetValue) == 0)",
+        groups = SubmissionGroup.class)
+@AssertExpression(value = "deceasedDateOfBirth.isBefore(deceasedDateOfDeath)", groups = SubmissionGroup.class)
+@AssertExpression(value = "#L(ihtNetValue) <= #L(ihtGrossValue)", groups = SubmissionGroup.class)
+@AssertExpression(value = "!((#L(ihtNetValue) > 250000) && !#isSpouse(primaryApplicantRelationshipToDeceased) "
+        + "&& (deceasedSpouseNotApplyingReason == null))", groups = SubmissionGroup.class)
+@AssertExpression(value = "{'ADOPTED_CHILD', 'CHILD'}.contains(#R(primaryApplicantRelationshipToDeceased)) ? "
+        + " deceasedOtherChildren != null "
+        + ": true", groups = SubmissionGroup.class)
+@AssertExpression(value = "#isTrue(deceasedDivorcedInEnglandOrWales) ? "
+        + "{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMaritalStatus)) "
+        + ": !{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMaritalStatus))",
+        groups = SubmissionGroup.class)
+@AssertExpression(value = "#isTrue(deceasedOtherChildren) ? deceasedAllDeceasedChildrenOverEighteen != null : true",
+        groups = SubmissionGroup.class)
+@AssertExpression(value = "#R(primaryApplicantRelationshipToDeceased) == 'ADOPTED_CHILD' ? "
+        + "primaryApplicantAdoptionInEnglandOrWales != null : true", groups = SubmissionGroup.class)
+@AssertExpression(value = "#R(primaryApplicantRelationshipToDeceased) == 'SPOUSE' ? deceasedAnyChildren != null : true",
+        groups = SubmissionGroup.class)
+@AssertExpression(value = "#isTrue(deceasedOtherChildren) && #isTrue(deceasedAllDeceasedChildrenOverEighteen) ? "
+        + "deceasedAnyDeceasedChildrenDieBeforeDeceased != null : true", groups = SubmissionGroup.class)
+@AssertExpression(value = "#isTrue(deceasedOtherChildren) && #isTrue(deceasedAllDeceasedChildrenOverEighteen) "
+        + "&& #isTrue(deceasedAnyDeceasedChildrenDieBeforeDeceased) ? "
+        + "deceasedAnyDeceasedGrandchildrenUnderEighteen != null : true", groups = SubmissionGroup.class)
 public class GrantOfRepresentation extends CaseData {
 
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     private LocalDate applicationSubmittedDate;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -89,17 +74,10 @@ public class GrantOfRepresentation extends CaseData {
 
     private String registryLocation;
 
-    private ProbateType applicationType;
-
     @JsonProperty(value = "outsideUKGrantCopies")
-    private Integer outsideUkGrantCopies;
+    private Long outsideUkGrantCopies;
 
     private Long extraCopiesOfGrant;
-
-    @NotNull
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean deceasedAnyOtherNames;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -107,28 +85,46 @@ public class GrantOfRepresentation extends CaseData {
 
     private Address deceasedAddress;
 
+    private String deceasedFreeTextAddress;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Boolean deceasedAddressFound;
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedMarriedAfterWillOrCodicilDate;
 
-    @NotNull
-    @Size(min = 2)
+    @NotNull(groups = SubmissionGroup.class)
+    @Size(min = 2, groups = SubmissionGroup.class)
     private String deceasedForenames;
 
-    @NotNull
-    @Size(min = 2)
+    @NotNull(groups = SubmissionGroup.class)
+    @Size(min = 2, groups = SubmissionGroup.class)
     private String deceasedSurname;
 
-    @NotNull
+    @NotNull(groups = SubmissionGroup.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     private LocalDate deceasedDateOfDeath;
 
-    @NotNull
+    @NotNull(groups = SubmissionGroup.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     private LocalDate deceasedDateOfBirth;
 
-    @NotNull
+    @NotNull(groups = SubmissionGroup.class)
     private MaritalStatus deceasedMaritalStatus;
 
+    @NotNull(groups = SubmissionGroup.class)
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedOtherNames;
+
     private List<CollectionMember<AliasName>> deceasedAliasNameList;
+
+    private SpouseNotApplyingReason deceasedSpouseNotApplyingReason;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -138,32 +134,23 @@ public class GrantOfRepresentation extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedOtherChildren;
 
-    @NotNull
-    private Relationship relationshipToDeceased;
-
-    private SpouseNotApplyingReason spouseNotApplyingReason;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedDivorcedInEnglandOrWales;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean adoptionInEnglandOrWales;
+    private Boolean deceasedAnyDeceasedChildrenDieBeforeDeceased;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean divorcedInEnglandOrWales;
+    private Boolean deceasedAllDeceasedChildrenOverEighteen;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean anyDeceasedChildrenDieBeforeDeceased;
+    private Boolean deceasedAnyDeceasedGrandchildrenUnderEighteen;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean allDeceasedChildrenOverEighteen;
-
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean anyDeceasedGrandchildrenUnderEighteen;
-
-    private String ihtFormId;
+    private IhtFormType ihtForm;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -180,6 +167,11 @@ public class GrantOfRepresentation extends CaseData {
     private String primaryApplicantEmailAddress;
 
     private Address primaryApplicantAddress;
+
+    private String primaryApplicantFreeTextAddress;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Boolean primaryApplicantAddressFound;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -200,6 +192,13 @@ public class GrantOfRepresentation extends CaseData {
     private String primaryApplicantOtherReason;
 
     private String primaryApplicantPhoneNumber;
+
+    @NotNull(groups = SubmissionGroup.class)
+    private Relationship primaryApplicantRelationshipToDeceased;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean primaryApplicantAdoptionInEnglandOrWales;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -231,8 +230,6 @@ public class GrantOfRepresentation extends CaseData {
 
     private Declaration declaration;
 
-    private List<CollectionMember<Payment>> payments;
-
     private LegalStatement legalStatement;
 
     private Long numberOfApplicants;
@@ -242,7 +239,7 @@ public class GrantOfRepresentation extends CaseData {
     private Boolean assetsOverseas;
 
     @JsonSerialize(using = ToStringSerializer.class)
-    private Long netValueAssestsOverseas;
+    private Long assetsOverseasNetValue;
 
-
+    private String uploadDocumentUrl;
 }

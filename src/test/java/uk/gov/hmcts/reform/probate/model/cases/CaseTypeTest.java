@@ -15,8 +15,7 @@ public class CaseTypeTest {
 
     @Test
     public void shouldGetCaseType() {
-        CaseData caseData = GrantOfRepresentation.builder()
-                .build();
+        CaseData caseData = new GrantOfRepresentation();
         CaseType caseType = CaseType.getCaseType(caseData);
         assertThat(caseType, is(CaseType.GRANT_OF_REPRESENTATION));
     }

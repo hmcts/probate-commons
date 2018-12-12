@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
 import lombok.Data;
+import uk.gov.hmcts.reform.probate.model.IhtFormType;
 
 import java.math.BigDecimal;
 
