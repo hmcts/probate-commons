@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.model.cases.validation;
+package uk.gov.hmcts.reform.probate.model.validation;
 
 import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.expression.EvaluationContext;
@@ -10,9 +10,9 @@ import org.springframework.util.CollectionUtils;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 
+import java.util.Collection;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.util.Collection;
 
 public class AssertExpressionValidator implements ConstraintValidator<AssertExpression, Object> {
 
@@ -37,7 +37,8 @@ public class AssertExpressionValidator implements ConstraintValidator<AssertExpr
             context.registerFunction("isTrue", BooleanUtils.class.getDeclaredMethod("isTrue", Boolean.class));
             context.registerFunction("isEmpty", CollectionUtils.class.getDeclaredMethod("isEmpty", Collection.class));
             context.registerFunction("L", ValidationUtils.class.getDeclaredMethod("defaultNullToZero", Long.class));
-            context.registerFunction("isSpouse", ValidationUtils.class.getDeclaredMethod("isSpouse", Relationship.class));
+            context.registerFunction("isSpouse",
+                    ValidationUtils.class.getDeclaredMethod("isSpouse", Relationship.class));
             context.registerFunction("R", ValidationUtils.class.getDeclaredMethod("getName", Relationship.class));
             context.registerFunction("MS", ValidationUtils.class.getDeclaredMethod("getName", MaritalStatus.class));
         } catch (NoSuchMethodException e) {

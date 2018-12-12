@@ -3,7 +3,6 @@ package uk.gov.hmcts.reform.probate.model.cases;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
-import lombok.Builder;
 import lombok.Data;
 
 @Data

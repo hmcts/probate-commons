@@ -1,11 +1,8 @@
-package uk.gov.hmcts.reform.probate.model.cases.validation;
+package uk.gov.hmcts.reform.probate.model.validation;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ValidationUtils {
 
     public static Long defaultNullToZero(Long value) {
@@ -24,4 +21,6 @@ public class ValidationUtils {
         return maritalStatus == null ? "" : maritalStatus.name();
     }
 
+    private ValidationUtils() {
+    }
 }

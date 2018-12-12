@@ -2,13 +2,12 @@ package uk.gov.hmcts.reform.probate.model.cases;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeId;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
-import uk.gov.hmcts.reform.probate.model.cases.validation.AtLeastOneNonEmptyField;
+import uk.gov.hmcts.reform.probate.model.validation.AtLeastOneNonEmptyField;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ import java.util.List;
 @JsonSubTypes({@JsonSubTypes.Type(value = GrantOfRepresentation.class,
         name = CaseType.Constants.GRANT_OF_REPRESENTATION_NAME)})
 @Data
-//@AtLeastOneNonEmptyField
+@AtLeastOneNonEmptyField
 public abstract class CaseData {
 
     private CaseType type;

@@ -18,14 +18,14 @@ import uk.gov.hmcts.reform.probate.model.cases.AliasName;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
-import uk.gov.hmcts.reform.probate.model.cases.validation.AssertExpression;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
+import uk.gov.hmcts.reform.probate.model.validation.AssertExpression;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "GrantOfRepresentation", parent = CaseData.class)
@@ -36,23 +36,23 @@ import java.util.List;
 @AssertExpression("!(#isTrue(assetsOverseas) && #L(assetsOverseasNetValue) == 0)")
 @AssertExpression("deceasedDateOfBirth.isBefore(deceasedDateOfDeath)")
 @AssertExpression("#L(ihtNetValue) <= #L(ihtGrossValue)")
-@AssertExpression("!((#L(ihtNetValue) > 250000) && !#isSpouse(primaryApplicantRelationshipToDeceased) " +
-        "&& (deceasedSpouseNotApplyingReason == null))")
-@AssertExpression("{'ADOPTED_CHILD', 'CHILD'}.contains(#R(primaryApplicantRelationshipToDeceased)) ? " +
-        " deceasedOtherChildren != null " +
-        ": true")
-@AssertExpression("#isTrue(deceasedDivorcedInEnglandOrWales) ? " +
-        "{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMaritalStatus)) " +
-        ": !{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMaritalStatus))")
+@AssertExpression("!((#L(ihtNetValue) > 250000) && !#isSpouse(primaryApplicantRelationshipToDeceased) "
+        + "&& (deceasedSpouseNotApplyingReason == null))")
+@AssertExpression("{'ADOPTED_CHILD', 'CHILD'}.contains(#R(primaryApplicantRelationshipToDeceased)) ? "
+        + " deceasedOtherChildren != null "
+        + ": true")
+@AssertExpression("#isTrue(deceasedDivorcedInEnglandOrWales) ? "
+        + "{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMaritalStatus)) "
+        + ": !{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMaritalStatus))")
 @AssertExpression("#isTrue(deceasedOtherChildren) ? deceasedAllDeceasedChildrenOverEighteen != null : true")
-@AssertExpression("#R(primaryApplicantRelationshipToDeceased) == 'ADOPTED_CHILD' ? " +
-        "primaryApplicantAdoptionInEnglandOrWales != null : true")
+@AssertExpression("#R(primaryApplicantRelationshipToDeceased) == 'ADOPTED_CHILD' ? "
+        + "primaryApplicantAdoptionInEnglandOrWales != null : true")
 @AssertExpression("#R(primaryApplicantRelationshipToDeceased) == 'SPOUSE' ? deceasedAnyChildren != null : true")
-@AssertExpression("#isTrue(deceasedOtherChildren) && #isTrue(deceasedAllDeceasedChildrenOverEighteen) ? " +
-        "deceasedAnyDeceasedChildrenDieBeforeDeceased != null : true")
-@AssertExpression("#isTrue(deceasedOtherChildren) && #isTrue(deceasedAllDeceasedChildrenOverEighteen) " +
-        "&& #isTrue(deceasedAnyDeceasedChildrenDieBeforeDeceased) ? " +
-        "deceasedAnyDeceasedGrandchildrenUnderEighteen != null : true")
+@AssertExpression("#isTrue(deceasedOtherChildren) && #isTrue(deceasedAllDeceasedChildrenOverEighteen) ? "
+        + "deceasedAnyDeceasedChildrenDieBeforeDeceased != null : true")
+@AssertExpression("#isTrue(deceasedOtherChildren) && #isTrue(deceasedAllDeceasedChildrenOverEighteen) "
+        + "&& #isTrue(deceasedAnyDeceasedChildrenDieBeforeDeceased) ? "
+        + "deceasedAnyDeceasedGrandchildrenUnderEighteen != null : true")
 public class GrantOfRepresentation extends CaseData {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";

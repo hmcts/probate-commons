@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.model.cases.validation;
+package uk.gov.hmcts.reform.probate.model.validation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -12,11 +12,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({TYPE, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = {NetValueAssetsOverseasMandatoryValidator.class})
+@Constraint(validatedBy = {AtLeastOneNonEmptyFieldValidator.class})
 @Documented
-public @interface NetValueAssetsOverseasMandatory {
+public @interface AtLeastOneNonEmptyField {
 
-    String message() default "NetValueAssetsOverseasMandatory";
+    String message() default "AtLeastOneNonEmptyField";
 
     Class<?>[] groups() default {};
 
