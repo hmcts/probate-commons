@@ -1,23 +1,38 @@
 package uk.gov.hmcts.reform.probate.model.cases;
 
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.Data;
+import uk.gov.hmcts.reform.probate.model.PaymentStatus;
+
+import java.time.LocalDate;
 
 @Data
-@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Payment {
 
-    private final String status;
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
 
-    private final String date;
+    private PaymentStatus status;
 
-    private final String reference;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate date;
 
-    private final String amount;
+    private String reference;
 
-    private final String method;
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long amount;
 
-    private final String transactionId;
+    private String method;
 
-    private final String siteId;
+    private String transactionId;
+
+    private String siteId;
 }

@@ -1,18 +1,16 @@
 package uk.gov.hmcts.reform.probate.model.cases;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
-import lombok.Builder;
 import lombok.Data;
 
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
-@Builder
 @ApiModel(value = "CollectionMember", description = "Represents collection member")
 public class CollectionMember<T> {
 
-    private final String id;
+    private String id;
 
-    private final T value;
+    private T value;
 }

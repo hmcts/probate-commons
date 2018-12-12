@@ -10,15 +10,16 @@ import java.time.LocalDate;
 public class DateOfBirthBeforeDateOfDeathValidatorTest {
 
     DateOfBirthBeforeDateOfDeathValidator dateOfBirthBeforeDateOfDeathValidator =
-        new DateOfBirthBeforeDateOfDeathValidator();
+            new DateOfBirthBeforeDateOfDeathValidator();
     LocalDate afterDate = LocalDate.of(2018, 9, 12);
     LocalDate beforeDate = LocalDate.of(1954, 9, 18);
 
     @Test
     public void shouldReturnFalseIfDodB4Dob() {
 
-        GrantOfRepresentation grantOfRepresentation =
-            GrantOfRepresentation.builder().deceasedDateOfBirth(afterDate).deceasedDateOfDeath(beforeDate).build();
+        GrantOfRepresentation grantOfRepresentation = new GrantOfRepresentation();
+        grantOfRepresentation.setDeceasedDateOfBirth(afterDate);
+        grantOfRepresentation.setDeceasedDateOfDeath(beforeDate);
         boolean result = dateOfBirthBeforeDateOfDeathValidator.isValid(grantOfRepresentation, null);
         Assert.assertThat(result, Matchers.equalTo(Boolean.FALSE));
     }
@@ -26,8 +27,9 @@ public class DateOfBirthBeforeDateOfDeathValidatorTest {
     @Test
     public void shouldReturnTrueIfDodAfterDob() {
 
-        GrantOfRepresentation grantOfRepresentation =
-            GrantOfRepresentation.builder().deceasedDateOfBirth(beforeDate).deceasedDateOfDeath(afterDate).build();
+        GrantOfRepresentation grantOfRepresentation = new GrantOfRepresentation();
+        grantOfRepresentation.setDeceasedDateOfBirth(beforeDate);
+        grantOfRepresentation.setDeceasedDateOfDeath(afterDate);
         boolean result = dateOfBirthBeforeDateOfDeathValidator.isValid(grantOfRepresentation, null);
         Assert.assertThat(result, Matchers.equalTo(Boolean.TRUE));
     }

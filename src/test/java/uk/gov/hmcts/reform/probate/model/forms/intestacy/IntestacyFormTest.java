@@ -8,20 +8,18 @@ import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
+import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
-import uk.gov.hmcts.reform.probate.model.forms.CopiesPayment;
-import uk.gov.hmcts.reform.probate.model.forms.CopiesPaymentDetail;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
-import uk.gov.hmcts.reform.probate.model.forms.IhtFormType;
+import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.forms.IhtMethod;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
-import uk.gov.hmcts.reform.probate.model.forms.Relationship;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -54,7 +52,7 @@ public class IntestacyFormTest {
         intestacyForm.setUploadDocumentUrl("http://document-management/document/12345");
 
         IntestacyApplicant intestacyApplicant = new IntestacyApplicant();
-        intestacyApplicant.setFreeTextAddress(null);
+        intestacyApplicant.setFreeTextAddress("Pret a Manger St. Georges Hospital Blackshaw Road");
         intestacyApplicant.setAddressFound(true);
         intestacyApplicant.setEmail("jon.snow@thenorth.com");
         intestacyApplicant.setFirstName("Jon");
@@ -63,13 +61,7 @@ public class IntestacyFormTest {
         intestacyApplicant.setPostCode("SW17 0QT");
         intestacyApplicant.setPhoneNumber("123455678");
         intestacyApplicant.setAdoptionInEnglandOrWales(true);
-        intestacyApplicant.setAllDeceasedChildrenOverEighteen(true);
-        intestacyApplicant.setAnyDeceasedChildrenDieBeforeDeceased(false);
-        intestacyApplicant.setAnyDeceasedGrandchildrenUnderEighteen(false);
-        intestacyApplicant.setDeceasedAnyChildren(false);
-        intestacyApplicant.setDeceasedOtherChildren(true);
         intestacyApplicant.setRelationshipToDeceased(Relationship.ADOPTED_CHILD);
-        intestacyApplicant.setSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE);
         intestacyForm.setApplicant(intestacyApplicant);
 
         IntestacyDeceased intestacyDeceased = new IntestacyDeceased();
@@ -86,7 +78,13 @@ public class IntestacyFormTest {
         aliasOtherNames.setLastName("North");
         intestacyDeceased.setOtherNames(ImmutableMap.of("name_0", aliasOtherNames));
         intestacyDeceased.setDivorcedInEnglandOrWales(false);
+        intestacyDeceased.setSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE);
         intestacyDeceased.setMaritalStatus(MaritalStatus.MARRIED);
+        intestacyDeceased.setAllDeceasedChildrenOverEighteen(true);
+        intestacyDeceased.setAnyDeceasedChildrenDieBeforeDeceased(false);
+        intestacyDeceased.setAnyDeceasedGrandchildrenUnderEighteen(false);
+        intestacyDeceased.setAnyChildren(false);
+        intestacyDeceased.setOtherChildren(true);
         intestacyForm.setDeceased(intestacyDeceased);
 
         InheritanceTax inheritanceTax = new InheritanceTax();
@@ -128,23 +126,12 @@ public class IntestacyFormTest {
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_STR_ISO8601);
         payment.setDate(formatter.parse(dateStr));
         payment.setAmount(new BigDecimal("220.5"));
-        CopiesPayment copiesPayment = new CopiesPayment();
-        CopiesPaymentDetail copiesPaymentDetailUk = new CopiesPaymentDetail();
-        copiesPaymentDetailUk.setCost(new BigDecimal("2.5"));
-        copiesPaymentDetailUk.setNumber(5L);
-        copiesPayment.setUk(copiesPaymentDetailUk);
-        CopiesPaymentDetail copiesPaymentDetailOverseas = new CopiesPaymentDetail();
-        copiesPaymentDetailOverseas.setCost(new BigDecimal("3"));
-        copiesPaymentDetailOverseas.setNumber(6L);
-        copiesPayment.setOverseas(copiesPaymentDetailOverseas);
-        payment.setCopies(copiesPayment);
         payment.setSiteId("P223");
         payment.setStatus(PaymentStatus.SUCCESS);
         payment.setChannel("online");
         payment.setReference("RC-1543-8527-2465-2900");
         payment.setTransactionId("v5bf26kn5rq9rvdq7gsvn7v11d");
         payment.setAmount(new BigDecimal("220.5"));
-        payment.setApplicationFee(new BigDecimal("215"));
         intestacyForm.setPayment(payment);
     }
 

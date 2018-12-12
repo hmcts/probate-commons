@@ -7,6 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 
 public class AssetsOverseasMandatoryValidator implements
     ConstraintValidator<AssetsOverseasMandatory, GrantOfRepresentation> {
+
     @Override
     public boolean isValid(GrantOfRepresentation grantOfRepresentation,
                            ConstraintValidatorContext constraintValidatorContext) {

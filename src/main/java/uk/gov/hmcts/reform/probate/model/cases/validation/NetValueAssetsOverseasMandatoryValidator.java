@@ -5,13 +5,13 @@ import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepr
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class NetValueAssetsOverseasMandatoryValidator implements
-    ConstraintValidator<NetValueAssetsOverseasMandatory, GrantOfRepresentation> {
+public class NetValueAssetsOverseasMandatoryValidator implements ConstraintValidator<NetValueAssetsOverseasMandatory, GrantOfRepresentation> {
+
     @Override
     public boolean isValid(GrantOfRepresentation grantOfRepresentation,
                            ConstraintValidatorContext constraintValidatorContext) {
         return !(grantOfRepresentation.getAssetsOverseas() != null
-            && grantOfRepresentation.getAssetsOverseas()
-            && grantOfRepresentation.getNetValueAssestsOverseas() == null);
+                && grantOfRepresentation.getAssetsOverseas()
+                && grantOfRepresentation.getAssetsOverseasNetValue() == null);
     }
 }

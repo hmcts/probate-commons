@@ -1,6 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.cases.validation;
 
-import uk.gov.hmcts.reform.probate.model.cases.Relationship;
+import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
 
 import javax.validation.ConstraintValidator;
@@ -13,8 +13,8 @@ public class SpouseNotApplyingReasonMandatoryValidator implements
                            ConstraintValidatorContext constraintValidatorContext) {
         return !(grantOfRepresentation.getIhtNetValue() != null
             && grantOfRepresentation.getIhtNetValue() > 250000
-            && grantOfRepresentation.getRelationshipToDeceased() != null
-            && !grantOfRepresentation.getRelationshipToDeceased().equals(Relationship.SPOUSE)
-            && grantOfRepresentation.getSpouseNotApplyingReason() == null);
+            && grantOfRepresentation.getPrimaryApplicantRelationshipToDeceased() != null
+            && !grantOfRepresentation.getPrimaryApplicantRelationshipToDeceased().equals(Relationship.SPOUSE)
+            && grantOfRepresentation.getDeceasedSpouseNotApplyingReason() == null);
     }
 }

@@ -1,12 +1,12 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import lombok.Value;
 
 import java.util.List;
 
-@Value
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class LegalStatement {
 
     private final String intro;

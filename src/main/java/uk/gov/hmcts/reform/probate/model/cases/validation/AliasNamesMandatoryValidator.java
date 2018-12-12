@@ -5,13 +5,15 @@ import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepr
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import static org.apache.commons.lang3.BooleanUtils.isTrue;
+import static org.springframework.util.CollectionUtils.isEmpty;
+
 public class AliasNamesMandatoryValidator implements ConstraintValidator<AliasNamesMandatory, GrantOfRepresentation> {
+
     @Override
     public boolean isValid(GrantOfRepresentation grantOfRepresentation,
                            ConstraintValidatorContext constraintValidatorContext) {
-        return !(grantOfRepresentation.getDeceasedAnyOtherNames() != null
-            && grantOfRepresentation.getDeceasedAnyOtherNames()
-            && (grantOfRepresentation.getDeceasedAliasNameList() == null
-            || grantOfRepresentation.getDeceasedAliasNameList().isEmpty()));
+        return !(isTrue(grantOfRepresentation.getDeceasedOtherNames())
+                && isEmpty(grantOfRepresentation.getDeceasedAliasNameList()));
     }
 }

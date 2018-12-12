@@ -3,21 +3,22 @@ package uk.gov.hmcts.reform.probate.model.cases.validation;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
-import uk.gov.hmcts.reform.probate.model.cases.Relationship;
+import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
 
 public class SpouseNotApplyingReasonMandatoryValidatorTest {
 
     SpouseNotApplyingReasonMandatoryValidator spouseNotApplyingReasonMandatoryValidator
-        = new SpouseNotApplyingReasonMandatoryValidator();
+            = new SpouseNotApplyingReasonMandatoryValidator();
 
     @Test
     public void shouldReturnFalseIfGrossIhtLessThanNetIhtValue() {
 
-        GrantOfRepresentation grantOfRepresentation = GrantOfRepresentation.builder().ihtNetValue(250001L)
-            .relationshipToDeceased(Relationship.CHILD)
-            .build();
+        GrantOfRepresentation grantOfRepresentation = new GrantOfRepresentation();
+
+        grantOfRepresentation.setIhtNetValue(250001L);
+        grantOfRepresentation.setPrimaryApplicantRelationshipToDeceased(Relationship.CHILD);
         boolean result = spouseNotApplyingReasonMandatoryValidator.isValid(grantOfRepresentation, null);
         Assert.assertThat(result, Matchers.equalTo(Boolean.FALSE));
     }
@@ -25,9 +26,10 @@ public class SpouseNotApplyingReasonMandatoryValidatorTest {
     @Test
     public void shouldReturnTrueIfGrossIhtMoreThanNetIhtValue() {
 
-        GrantOfRepresentation grantOfRepresentation =
-            GrantOfRepresentation.builder().assetsOverseas(Boolean.TRUE)
-                .netValueAssestsOverseas(280000L).spouseNotApplyingReason(SpouseNotApplyingReason.RENUNCIATED).build();
+        GrantOfRepresentation grantOfRepresentation = new GrantOfRepresentation();
+        grantOfRepresentation.setAssetsOverseas(Boolean.TRUE);
+        grantOfRepresentation.setAssetsOverseasNetValue(280000L);
+        grantOfRepresentation.setDeceasedSpouseNotApplyingReason(SpouseNotApplyingReason.RENUNCIATED);
         boolean result = spouseNotApplyingReasonMandatoryValidator.isValid(grantOfRepresentation, null);
         Assert.assertThat(result, Matchers.equalTo(Boolean.TRUE));
     }

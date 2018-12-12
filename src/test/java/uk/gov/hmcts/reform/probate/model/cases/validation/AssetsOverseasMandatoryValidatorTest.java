@@ -11,15 +11,17 @@ class AssetsOverseasMandatoryValidatorTest {
 
     @Test
     void shouldVReturnFalseIfDeceasedHasOtherNamesAndAliasListIsNull() {
-        GrantOfRepresentation grantOfRepresentation = GrantOfRepresentation.builder().ihtNetValue(250000L).build();
+        GrantOfRepresentation grantOfRepresentation = new GrantOfRepresentation();
+        grantOfRepresentation.setIhtNetValue(250000L);
         boolean result = assetsOverseasMandatoryValidator.isValid(grantOfRepresentation, null);
         Assert.assertThat(result, Matchers.equalTo(Boolean.FALSE));
     }
 
     @Test
     void shouldVReturnTrueIfDeceasedHasOtherNamesAndAliasListPopulated() {
-        GrantOfRepresentation grantOfRepresentation =
-            GrantOfRepresentation.builder().ihtNetValue(250000L).assetsOverseas(Boolean.FALSE).build();
+        GrantOfRepresentation grantOfRepresentation = new GrantOfRepresentation();
+        grantOfRepresentation.setIhtNetValue(250000L);
+        grantOfRepresentation.setAssetsOverseas(Boolean.FALSE);
         boolean result = assetsOverseasMandatoryValidator.isValid(grantOfRepresentation, null);
         Assert.assertThat(result, Matchers.equalTo(Boolean.TRUE));
     }

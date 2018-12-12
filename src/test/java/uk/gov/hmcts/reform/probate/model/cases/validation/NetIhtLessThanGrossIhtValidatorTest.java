@@ -12,8 +12,9 @@ public class NetIhtLessThanGrossIhtValidatorTest {
     @Test
     public void shouldReturnFalseIfGrossIhtLessThanNetIhtValue() {
 
-        GrantOfRepresentation grantOfRepresentation =
-            GrantOfRepresentation.builder().ihtNetValue(250000L).ihtGrossValue(240000L).build();
+        GrantOfRepresentation grantOfRepresentation = new GrantOfRepresentation();
+        grantOfRepresentation.setIhtNetValue(250000L);
+        grantOfRepresentation.setIhtGrossValue(240000L);
         boolean result = netIhtLessThanGrossIhtValidator.isValid(grantOfRepresentation, null);
         Assert.assertThat(result, Matchers.equalTo(Boolean.FALSE));
     }
@@ -21,8 +22,9 @@ public class NetIhtLessThanGrossIhtValidatorTest {
     @Test
     public void shouldReturnTrueIfGrossIhtMoreThanNetIhtValue() {
 
-        GrantOfRepresentation grantOfRepresentation =
-            GrantOfRepresentation.builder().ihtNetValue(20000L).ihtGrossValue(240000L).build();
+        GrantOfRepresentation grantOfRepresentation = new GrantOfRepresentation();
+        grantOfRepresentation.setIhtNetValue(20000L);
+        grantOfRepresentation.setIhtGrossValue(240000L);
         boolean result = netIhtLessThanGrossIhtValidator.isValid(grantOfRepresentation, null);
         Assert.assertThat(result, Matchers.equalTo(Boolean.TRUE));
     }
