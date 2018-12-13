@@ -32,7 +32,7 @@ import javax.validation.constraints.Size;
 @ApiModel(value = "GrantOfRepresentation", parent = CaseData.class)
 @Data
 @EqualsAndHashCode(callSuper = false)
-@AssertExpression(value = "!(#isTrue(deceasedOtherNames) && #isEmpty(deceasedAliasNameList))",
+@AssertExpression(value = "!(#isTrue(deceasedAnyOtherNames) && #isEmpty(deceasedAliasNameList))",
         groups = SubmissionGroup.class)
 @AssertExpression(value = "!(#L(ihtNetValue) <= 250000 && !#isTrue(assetsOverseas))", groups = SubmissionGroup.class)
 @AssertExpression(value = "!(#isTrue(assetsOverseas) && #L(assetsOverseasNetValue) == 0)",
@@ -120,7 +120,7 @@ public class GrantOfRepresentation extends CaseData {
     @NotNull(groups = SubmissionGroup.class)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean deceasedOtherNames;
+    private Boolean deceasedAnyOtherNames;
 
     private List<CollectionMember<AliasName>> deceasedAliasNameList;
 
@@ -150,7 +150,7 @@ public class GrantOfRepresentation extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedAnyDeceasedGrandchildrenUnderEighteen;
 
-    private IhtFormType ihtForm;
+    private IhtFormType ihtFormId;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)

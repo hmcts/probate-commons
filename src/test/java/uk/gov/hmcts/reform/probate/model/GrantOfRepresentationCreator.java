@@ -41,7 +41,7 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentation.setDeceasedAddress(deceasedAddress);
         grantOfRepresentation.setDeceasedFreeTextAddress("Winterfell, Westeros");
         grantOfRepresentation.setDeceasedAddressFound(true);
-        grantOfRepresentation.setDeceasedOtherNames(true);
+        grantOfRepresentation.setDeceasedAnyOtherNames(true);
         CollectionMember<AliasName> aliasNameCollectionMember = new CollectionMember<>();
         AliasName aliasName = new AliasName();
         aliasName.setForenames("King");
@@ -55,12 +55,12 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentation.setDeceasedAnyDeceasedGrandchildrenUnderEighteen(false);
         grantOfRepresentation.setDeceasedAllDeceasedChildrenOverEighteen(true);
         grantOfRepresentation.setDeceasedAnyChildren(false);
-        grantOfRepresentation.setDeceasedOtherNames(false);
+        grantOfRepresentation.setDeceasedAnyOtherNames(false);
 
         grantOfRepresentation.setRegistryLocation("Birmingham");
         grantOfRepresentation.setAssetsOverseas(true);
         grantOfRepresentation.setAssetsOverseasNetValue(10050L);
-        grantOfRepresentation.setIhtForm(IhtFormType.IHT205);
+        grantOfRepresentation.setIhtFormId(IhtFormType.IHT205);
         grantOfRepresentation.setIhtFormCompletedOnline(true);
         grantOfRepresentation.setIhtGrossValue(100000L);
         grantOfRepresentation.setIhtNetValue(100000L);

@@ -22,10 +22,10 @@ public enum Relationship {
 
     public static class Constants {
 
-        public static final String SPOUSE_DESC = "Spouse";
-        public static final String CHILD_DESC = "Child";
-        public static final String ADOPTED_CHILD_DESC = "Adopted Child";
-        public static final String OTHER_DESC = "Other";
+        public static final String SPOUSE_DESC = "spouse";
+        public static final String CHILD_DESC = "child";
+        public static final String ADOPTED_CHILD_DESC = "adoptedChild";
+        public static final String OTHER_DESC = "other";
 
         private Constants() {
         }

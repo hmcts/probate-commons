@@ -10,9 +10,8 @@
   "primaryApplicantFreeTextAddress": "Pret a Manger St. Georges Hospital Blackshaw Road",
   "primaryApplicantAddressFound": "true",
   "primaryApplicantPhoneNumber": "123455678",
-  "primaryApplicantRelationshipToDeceased": "Adopted Child",
+  "primaryApplicantRelationshipToDeceased": "adoptedChild",
   "primaryApplicantAdoptionInEnglandOrWales": "Yes",
-  "deceasedSpouseNotApplyingReason": "mentallyIncapable",
   "deceasedForenames": "Ned",
   "deceasedSurname": "Stark",
   "deceasedDateOfBirth": "1930-01-01",
@@ -22,7 +21,7 @@
   },
   "deceasedFreeTextAddress": "Winterfell, Westeros",
   "deceasedAddressFound": "true",
-  "deceasedOtherNames": "No",
+  "deceasedAnyOtherNames": "No",
   "deceasedAliasNameList": [
     {
       "value": {
@@ -42,7 +41,7 @@
   "registryLocation": "Birmingham",
   "assetsOverseasNetValue": "10050",
   "assetsOverseas": "Yes",
-  "ihtForm": "IHT205",
+  "ihtFormId": "IHT205",
   "ihtFormCompletedOnline": "Yes",
   "ihtGrossValue": "100000",
   "ihtNetValue": "100000",
