@@ -1,14 +1,17 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
 @Data
 public abstract class Declaration {
 
-    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     @JsonProperty(value = "declarationCheckbox")
     private Boolean declarationAgreement;
 }
