@@ -3,7 +3,6 @@ package uk.gov.hmcts.reform.probate.model;
 import com.google.common.collect.Lists;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.AliasName;
-import uk.gov.hmcts.reform.probate.model.cases.CaseType;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.Payment;
@@ -17,7 +16,6 @@ public class GrantOfRepresentationCreator {
 
     public static GrantOfRepresentation createIntestacyCase() {
         GrantOfRepresentation grantOfRepresentation = new GrantOfRepresentation();
-        grantOfRepresentation.setType(CaseType.GRANT_OF_REPRESENTATION);
         grantOfRepresentation.setApplicationType(ProbateType.INTESTACY);
         grantOfRepresentation.setPrimaryApplicantEmailAddress("jon.snow@thenorth.com");
         grantOfRepresentation.setPrimaryApplicantForenames("Jon");

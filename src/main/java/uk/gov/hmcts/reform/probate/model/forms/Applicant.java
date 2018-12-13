@@ -1,9 +1,11 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -21,7 +23,8 @@ public abstract class Applicant {
 
     private String address;
 
-    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean addressFound;
 
     private String freeTextAddress;

@@ -3,7 +3,6 @@ package uk.gov.hmcts.reform.probate.model.validation;
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
-import uk.gov.hmcts.reform.probate.model.cases.CaseType;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
 
 import javax.validation.Validation;
@@ -26,14 +25,12 @@ public class AtLeastOneNonEmptyFieldValidatorTest {
     @Test
     public void shouldFailWhenNoFieldIsSet() {
         CaseData caseData = new GrantOfRepresentation();
-        caseData.setType(CaseType.GRANT_OF_REPRESENTATION);
         assertThat(validator.validate(caseData), hasSize(1));
     }
 
     @Test
     public void shouldSucceedWhenAtLeastFieldIsSet() {
         CaseData caseData = new GrantOfRepresentation();
-        caseData.setType(CaseType.GRANT_OF_REPRESENTATION);
         ((GrantOfRepresentation) caseData).setDeceasedSurname("Stark");
         assertThat(validator.validate(caseData), hasSize(0));
     }
