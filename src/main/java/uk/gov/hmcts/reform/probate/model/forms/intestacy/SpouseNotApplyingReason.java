@@ -20,9 +20,9 @@ public enum SpouseNotApplyingReason {
 
     public static class Constants {
 
-        public static final String RENUNCIATED_DESC = "Renunciated";
-        public static final String MENTALLY_INCAPABLE_DESC = "Mentally incapable";
-        public static final String OTHER_DESC = "Other";
+        public static final String RENUNCIATED_DESC = "renunciated";
+        public static final String MENTALLY_INCAPABLE_DESC = "mentallyIncapable";
+        public static final String OTHER_DESC = "other";
 
         private Constants() {
         }

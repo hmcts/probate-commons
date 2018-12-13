@@ -38,14 +38,14 @@ public class AssertExpressionValidatorTest {
 
     @Test
     public void shouldVReturnFalseIfDeceasedHasOtherNamesAndAliasListIsNull() {
-        grantOfRepresentation.setDeceasedOtherNames(Boolean.TRUE);
+        grantOfRepresentation.setDeceasedAnyOtherNames(Boolean.TRUE);
         grantOfRepresentation.setDeceasedAliasNameList(Collections.emptyList());
         assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldVReturnTrueIfDeceasedHasOtherNamesAndAliasListPopulated() {
-        grantOfRepresentation.setDeceasedOtherNames(Boolean.FALSE);
+        grantOfRepresentation.setDeceasedAnyOtherNames(Boolean.FALSE);
         assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(0));
     }
 
