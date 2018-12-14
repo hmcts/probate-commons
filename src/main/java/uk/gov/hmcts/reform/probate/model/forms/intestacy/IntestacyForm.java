@@ -8,11 +8,12 @@ import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class IntestacyForm extends Form {
+public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant, IntestacyDeclaration> {
 
     private Copies copies;
 
     private IntestacyAssets assets;
 
     private InheritanceTax iht;
+
 }

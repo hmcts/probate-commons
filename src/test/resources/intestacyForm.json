@@ -27,9 +27,9 @@
         "firstName": "King"
       }
     },
-    "maritalStatus": "Married or in civil partnership",
+    "maritalStatus": "marriedCivilPartnership",
     "divorcedInEnglandOrWales": "No",
-    "spouseNotApplyingReason": "Mentally incapable",
+    "spouseNotApplyingReason": "mentallyIncapable",
     "otherChildren": "Yes",
     "allDeceasedChildrenOverEighteen": "Yes",
     "anyDeceasedChildrenDieBeforeDeceased": "No",

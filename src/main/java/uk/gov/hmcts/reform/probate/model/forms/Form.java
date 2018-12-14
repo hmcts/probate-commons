@@ -14,12 +14,12 @@ import uk.gov.hmcts.reform.probate.model.forms.intestacy.IntestacyForm;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "Form", description = "Abstract base model for all form types", discriminator = Form.TYPE_FIELD,
-        subTypes = {IntestacyForm.class})
+    subTypes = {IntestacyForm.class})
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 @JsonSubTypes({@JsonSubTypes.Type(value = IntestacyForm.class,
-        name = ProbateType.Constants.INTESTACY_NAME)})
+    name = ProbateType.Constants.INTESTACY_NAME)})
 @Data
-public abstract class Form {
+public abstract class Form<D extends Deceased, A extends Applicant, E extends Declaration> {
 
     public static final String TYPE_FIELD = "type";
 
@@ -28,15 +28,15 @@ public abstract class Form {
 
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = TYPE_FIELD)
     @JsonSubTypes({@JsonSubTypes.Type(value = IntestacyDeceased.class, name = ProbateType.Constants.INTESTACY_NAME)})
-    private Deceased deceased;
+    private D deceased;
 
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = TYPE_FIELD)
     @JsonSubTypes({@JsonSubTypes.Type(value = IntestacyApplicant.class, name = ProbateType.Constants.INTESTACY_NAME)})
-    private Applicant applicant;
+    private A applicant;
 
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = TYPE_FIELD)
     @JsonSubTypes({@JsonSubTypes.Type(value = IntestacyDeclaration.class, name = ProbateType.Constants.INTESTACY_NAME)})
-    private Declaration declaration;
+    private E declaration;
 
     private String uploadDocumentUrl;
 
