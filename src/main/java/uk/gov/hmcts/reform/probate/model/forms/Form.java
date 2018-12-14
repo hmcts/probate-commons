@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeId;
@@ -18,6 +19,7 @@ import uk.gov.hmcts.reform.probate.model.forms.intestacy.IntestacyForm;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 @JsonSubTypes({@JsonSubTypes.Type(value = IntestacyForm.class,
     name = ProbateType.Constants.INTESTACY_NAME)})
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public abstract class Form<D extends Deceased, A extends Applicant, E extends Declaration> {
 
