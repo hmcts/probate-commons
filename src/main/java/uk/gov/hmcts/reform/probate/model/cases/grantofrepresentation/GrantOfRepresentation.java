@@ -9,13 +9,17 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.annotations.ApiModel;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
+import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.AliasName;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
+import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
@@ -31,6 +35,7 @@ import javax.validation.constraints.Size;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "GrantOfRepresentation", parent = CaseData.class)
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @AssertExpression(value = "!(#isTrue(deceasedAnyOtherNames) && #isEmpty(deceasedAliasNameList))",
         groups = SubmissionGroup.class)
@@ -244,4 +249,110 @@ public class GrantOfRepresentation extends CaseData {
     private Long assetsOverseasNetValue;
 
     private String uploadDocumentUrl;
+
+    private String registryAddress;
+
+    private String registryEmail;
+
+    private String registrySequenceNumber;
+
+    @Builder
+    public GrantOfRepresentation(ProbateType applicationType, List<CollectionMember<CasePayment>> payments,
+                                 LocalDate applicationSubmittedDate, Boolean softStop, String registryLocation,
+                                 Long outsideUkGrantCopies, Long extraCopiesOfGrant,
+                                 Boolean deceasedDomicileInEngWales, Address deceasedAddress,
+                                 String deceasedFreeTextAddress, Boolean deceasedAddressFound,
+                                 Boolean deceasedMarriedAfterWillOrCodicilDate,
+                                 String deceasedForenames, String deceasedSurname, LocalDate deceasedDateOfDeath,
+                                 LocalDate deceasedDateOfBirth, MaritalStatus deceasedMaritalStatus,
+                                 Boolean deceasedAnyOtherNames,
+                                 List<CollectionMember<AliasName>> deceasedAliasNameList,
+                                 SpouseNotApplyingReason deceasedSpouseNotApplyingReason,
+                                 Boolean deceasedAnyChildren, Boolean deceasedOtherChildren,
+                                 Boolean deceasedDivorcedInEnglandOrWales,
+                                 Boolean deceasedAnyDeceasedChildrenDieBeforeDeceased,
+                                 Boolean deceasedAllDeceasedChildrenOverEighteen,
+                                 Boolean deceasedAnyDeceasedGrandchildrenUnderEighteen, IhtFormType ihtFormId,
+                                 Boolean ihtFormCompletedOnline, Long ihtNetValue, Long ihtGrossValue,
+                                 String ihtReferenceNumber, String primaryApplicantEmailAddress,
+                                 Address primaryApplicantAddress, String primaryApplicantFreeTextAddress,
+                                 Boolean primaryApplicantAddressFound, Boolean primaryApplicantIsApplying,
+                                 String primaryApplicantForenames, String primaryApplicantSurname,
+                                 Boolean primaryApplicantSameWillName, String primaryApplicantAlias,
+                                 String primaryApplicantAliasReason, String primaryApplicantOtherReason,
+                                 String primaryApplicantPhoneNumber,
+                                 Relationship primaryApplicantRelationshipToDeceased,
+                                 Boolean primaryApplicantAdoptionInEnglandOrWales, Boolean willLatestCodicilHasDate,
+                                 Boolean willExists, Boolean willAccessOriginal, Boolean willHasCodicils,
+                                 Long willNumberOfCodicils, Long numberOfExecutors,
+                                 List<CollectionMember<AdditionalExecutorApplying>> additionalExecutorsApplying,
+                                 List<CollectionMember<AdditionalExecutorNotApplying>> additionalExecutorsNotApplying,
+                                 String totalFee, Declaration declaration, LegalStatement legalStatement,
+                                 Long numberOfApplicants, Boolean assetsOverseas, Long assetsOverseasNetValue,
+                                 String uploadDocumentUrl, String registryAddress, String registryEmail,
+                                 String registrySequenceNumber) {
+        super(applicationType, payments);
+        this.applicationSubmittedDate = applicationSubmittedDate;
+        this.softStop = softStop;
+        this.registryLocation = registryLocation;
+        this.outsideUkGrantCopies = outsideUkGrantCopies;
+        this.extraCopiesOfGrant = extraCopiesOfGrant;
+        this.deceasedDomicileInEngWales = deceasedDomicileInEngWales;
+        this.deceasedAddress = deceasedAddress;
+        this.deceasedFreeTextAddress = deceasedFreeTextAddress;
+        this.deceasedAddressFound = deceasedAddressFound;
+        this.deceasedMarriedAfterWillOrCodicilDate = deceasedMarriedAfterWillOrCodicilDate;
+        this.deceasedForenames = deceasedForenames;
+        this.deceasedSurname = deceasedSurname;
+        this.deceasedDateOfDeath = deceasedDateOfDeath;
+        this.deceasedDateOfBirth = deceasedDateOfBirth;
+        this.deceasedMaritalStatus = deceasedMaritalStatus;
+        this.deceasedAnyOtherNames = deceasedAnyOtherNames;
+        this.deceasedAliasNameList = deceasedAliasNameList;
+        this.deceasedSpouseNotApplyingReason = deceasedSpouseNotApplyingReason;
+        this.deceasedAnyChildren = deceasedAnyChildren;
+        this.deceasedOtherChildren = deceasedOtherChildren;
+        this.deceasedDivorcedInEnglandOrWales = deceasedDivorcedInEnglandOrWales;
+        this.deceasedAnyDeceasedChildrenDieBeforeDeceased = deceasedAnyDeceasedChildrenDieBeforeDeceased;
+        this.deceasedAllDeceasedChildrenOverEighteen = deceasedAllDeceasedChildrenOverEighteen;
+        this.deceasedAnyDeceasedGrandchildrenUnderEighteen = deceasedAnyDeceasedGrandchildrenUnderEighteen;
+        this.ihtFormId = ihtFormId;
+        this.ihtFormCompletedOnline = ihtFormCompletedOnline;
+        this.ihtNetValue = ihtNetValue;
+        this.ihtGrossValue = ihtGrossValue;
+        this.ihtReferenceNumber = ihtReferenceNumber;
+        this.primaryApplicantEmailAddress = primaryApplicantEmailAddress;
+        this.primaryApplicantAddress = primaryApplicantAddress;
+        this.primaryApplicantFreeTextAddress = primaryApplicantFreeTextAddress;
+        this.primaryApplicantAddressFound = primaryApplicantAddressFound;
+        this.primaryApplicantIsApplying = primaryApplicantIsApplying;
+        this.primaryApplicantForenames = primaryApplicantForenames;
+        this.primaryApplicantSurname = primaryApplicantSurname;
+        this.primaryApplicantSameWillName = primaryApplicantSameWillName;
+        this.primaryApplicantAlias = primaryApplicantAlias;
+        this.primaryApplicantAliasReason = primaryApplicantAliasReason;
+        this.primaryApplicantOtherReason = primaryApplicantOtherReason;
+        this.primaryApplicantPhoneNumber = primaryApplicantPhoneNumber;
+        this.primaryApplicantRelationshipToDeceased = primaryApplicantRelationshipToDeceased;
+        this.primaryApplicantAdoptionInEnglandOrWales = primaryApplicantAdoptionInEnglandOrWales;
+        this.willLatestCodicilHasDate = willLatestCodicilHasDate;
+        this.willExists = willExists;
+        this.willAccessOriginal = willAccessOriginal;
+        this.willHasCodicils = willHasCodicils;
+        this.willNumberOfCodicils = willNumberOfCodicils;
+        this.numberOfExecutors = numberOfExecutors;
+        this.additionalExecutorsApplying = additionalExecutorsApplying;
+        this.additionalExecutorsNotApplying = additionalExecutorsNotApplying;
+        this.totalFee = totalFee;
+        this.declaration = declaration;
+        this.legalStatement = legalStatement;
+        this.numberOfApplicants = numberOfApplicants;
+        this.assetsOverseas = assetsOverseas;
+        this.assetsOverseasNetValue = assetsOverseasNetValue;
+        this.uploadDocumentUrl = uploadDocumentUrl;
+        this.registryAddress = registryAddress;
+        this.registryEmail = registryEmail;
+        this.registrySequenceNumber = registrySequenceNumber;
+    }
+
 }

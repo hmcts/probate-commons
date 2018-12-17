@@ -3,14 +3,16 @@ package uk.gov.hmcts.reform.probate.model;
 import com.google.common.collect.Lists;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.AliasName;
+import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
-import uk.gov.hmcts.reform.probate.model.cases.Payment;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.Declaration;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class GrantOfRepresentationCreator {
 
@@ -71,10 +73,12 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentation.setExtraCopiesOfGrant(5L);
         grantOfRepresentation.setOutsideUkGrantCopies(6L);
 
-        final CollectionMember<Payment> paymentCollectionMember = new CollectionMember<>();
-        Payment payment = new Payment();
+        final CollectionMember<CasePayment> paymentCollectionMember = new CollectionMember<>();
+        CasePayment payment = new CasePayment();
         payment.setStatus(PaymentStatus.SUCCESS);
-        payment.setDate(LocalDate.of(2018, 12, 3));
+
+        Date date = Date.from(LocalDate.of(2018, 12, 3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+        payment.setDate(date);
         payment.setReference("RC-1537-1988-5489-1985");
         payment.setAmount(22050L);
         payment.setMethod("online");

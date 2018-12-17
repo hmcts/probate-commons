@@ -1,28 +1,34 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LegalStatement {
 
-    private final String intro;
+    private String intro;
 
-    private final String applicant;
+    private String applicant;
 
-    private final String deceased;
+    private String deceased;
 
-    private final String deceasedOtherNames;
+    private String deceasedOtherNames;
 
-    private final String deceasedEstateValue;
+    private String deceasedEstateValue;
 
-    private final String deceasedEstateLand;
+    private String deceasedEstateLand;
 
-    private final List<LegalStatementExecutorsNotApplying> executorsNotApplying;
+    private List<LegalStatementExecutorsNotApplying> executorsNotApplying;
 
-    private final List<LegalStatementExecutorsApplying> executorsApplying;
+    private List<LegalStatementExecutorsApplying> executorsApplying;
 
 }

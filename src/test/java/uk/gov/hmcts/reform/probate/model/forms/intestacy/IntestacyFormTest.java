@@ -2,6 +2,7 @@ package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import org.json.JSONException;
 import org.junit.Before;
 import org.junit.Test;
@@ -129,11 +130,11 @@ public class IntestacyFormTest {
         payment.setAmount(new BigDecimal("220.5"));
         payment.setSiteId("P223");
         payment.setStatus(PaymentStatus.SUCCESS);
-        payment.setChannel("online");
+        payment.setMethod("online");
         payment.setReference("RC-1543-8527-2465-2900");
         payment.setTransactionId("v5bf26kn5rq9rvdq7gsvn7v11d");
         payment.setAmount(new BigDecimal("220.5"));
-        intestacyForm.setPayment(payment);
+        intestacyForm.setPayments(Lists.newArrayList(payment));
     }
 
     @Test

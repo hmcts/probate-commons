@@ -7,7 +7,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.YesNo;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
@@ -16,6 +18,8 @@ import java.time.LocalDate;
 import java.util.Map;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class Deceased {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";

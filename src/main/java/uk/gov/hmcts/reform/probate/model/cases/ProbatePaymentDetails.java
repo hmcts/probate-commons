@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.model.forms;
+package uk.gov.hmcts.reform.probate.model.cases;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AliasOtherNames {
+public class ProbatePaymentDetails {
 
-    private String firstName;
+    private CaseType caseType;
 
-    private String lastName;
+    private CasePayment payment;
 }

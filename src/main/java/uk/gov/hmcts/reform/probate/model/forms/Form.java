@@ -6,21 +6,27 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeId;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.intestacy.IntestacyApplicant;
 import uk.gov.hmcts.reform.probate.model.forms.intestacy.IntestacyDeceased;
 import uk.gov.hmcts.reform.probate.model.forms.intestacy.IntestacyDeclaration;
 import uk.gov.hmcts.reform.probate.model.forms.intestacy.IntestacyForm;
 
+import java.util.List;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "Form", description = "Abstract base model for all form types", discriminator = Form.TYPE_FIELD,
-    subTypes = {IntestacyForm.class})
+        subTypes = {IntestacyForm.class})
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 @JsonSubTypes({@JsonSubTypes.Type(value = IntestacyForm.class,
-    name = ProbateType.Constants.INTESTACY_NAME)})
+        name = ProbateType.Constants.INTESTACY_NAME)})
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class Form<D extends Deceased, A extends Applicant, E extends Declaration> {
 
     public static final String TYPE_FIELD = "type";
@@ -46,5 +52,5 @@ public abstract class Form<D extends Deceased, A extends Applicant, E extends De
 
     private CcdCase ccdCase;
 
-    private Payment payment;
+    private List<Payment> payments;
 }

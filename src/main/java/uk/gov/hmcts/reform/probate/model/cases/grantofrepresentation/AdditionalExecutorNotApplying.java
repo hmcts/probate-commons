@@ -1,19 +1,25 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdditionalExecutorNotApplying {
 
-    private final String notApplyingExecutorName;
+    private String notApplyingExecutorName;
 
-    private final String notApplyingExecutorNameOnWill;
+    private String notApplyingExecutorNameOnWill;
 
-    private final String notApplyingExecutorNameDifferenceComment;
+    private String notApplyingExecutorNameDifferenceComment;
 
-    private final String notApplyingExecutorReason;
+    private String notApplyingExecutorReason;
 
-    private final String notApplyingExecutorNotified;
+    private String notApplyingExecutorNotified;
 }

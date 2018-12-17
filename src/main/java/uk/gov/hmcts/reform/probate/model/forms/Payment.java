@@ -1,7 +1,10 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 
 import java.math.BigDecimal;
@@ -10,6 +13,9 @@ import java.util.Date;
 import static com.fasterxml.jackson.databind.util.StdDateFormat.DATE_FORMAT_STR_ISO8601;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Payment {
 
     private String reference;
@@ -25,6 +31,6 @@ public class Payment {
 
     private PaymentStatus status;
 
-    private String channel;
+    private String method;
 
 }

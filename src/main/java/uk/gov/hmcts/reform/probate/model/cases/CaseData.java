@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
 import uk.gov.hmcts.reform.probate.model.validation.AtLeastOneNonEmptyField;
@@ -18,11 +20,13 @@ import java.util.List;
 @JsonSubTypes({@JsonSubTypes.Type(value = GrantOfRepresentation.class,
         name = CaseType.Constants.GRANT_OF_REPRESENTATION_NAME)})
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @AtLeastOneNonEmptyField
 public abstract class CaseData {
 
     private ProbateType applicationType;
 
-    private List<CollectionMember<Payment>> payments;
+    private List<CollectionMember<CasePayment>> payments;
 
 }
