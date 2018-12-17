@@ -72,9 +72,9 @@ public class IntestacyDeceased extends Deceased {
                              MaritalStatus maritalStatus, Boolean divorcedInEnglandOrWales,
                              SpouseNotApplyingReason spouseNotApplyingReason, Boolean otherChildren,
                              Boolean allDeceasedChildrenOverEighteen, Boolean anyDeceasedChildrenDieBeforeDeceased,
-                             Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren) {
+                             Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren, String postCode) {
         super(firstName, lastName, domiciledInEnglandOrWales, dateOfBirth, dateOfDeath, addressFound, address,
-                freeTextAddress, alias, otherNames);
+                freeTextAddress, alias, otherNames, postCode);
         this.maritalStatus = maritalStatus;
         this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;
         this.spouseNotApplyingReason = spouseNotApplyingReason;

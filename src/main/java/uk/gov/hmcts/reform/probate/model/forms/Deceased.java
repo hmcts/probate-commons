@@ -58,4 +58,6 @@ public abstract class Deceased {
     private Boolean alias;
 
     private Map<String, AliasOtherNames> otherNames;
+
+    private String postCode;
 }
