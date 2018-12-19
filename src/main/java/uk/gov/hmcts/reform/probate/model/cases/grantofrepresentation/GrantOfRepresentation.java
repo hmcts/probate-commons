@@ -170,8 +170,6 @@ public class GrantOfRepresentation extends CaseData {
 
     private String ihtReferenceNumber;
 
-    private String primaryApplicantEmailAddress;
-
     private Address primaryApplicantAddress;
 
     private String primaryApplicantFreeTextAddress;
@@ -291,7 +289,7 @@ public class GrantOfRepresentation extends CaseData {
                                  Long numberOfApplicants, Boolean assetsOverseas, Long assetsOverseasNetValue,
                                  String uploadDocumentUrl, String registryAddress, String registryEmail,
                                  String registrySequenceNumber) {
-        super(applicationType, payments);
+        super(applicationType, primaryApplicantEmailAddress, payments);
         this.applicationSubmittedDate = applicationSubmittedDate;
         this.softStop = softStop;
         this.registryLocation = registryLocation;
@@ -321,7 +319,6 @@ public class GrantOfRepresentation extends CaseData {
         this.ihtNetValue = ihtNetValue;
         this.ihtGrossValue = ihtGrossValue;
         this.ihtReferenceNumber = ihtReferenceNumber;
-        this.primaryApplicantEmailAddress = primaryApplicantEmailAddress;
         this.primaryApplicantAddress = primaryApplicantAddress;
         this.primaryApplicantFreeTextAddress = primaryApplicantFreeTextAddress;
         this.primaryApplicantAddressFound = primaryApplicantAddressFound;

@@ -27,6 +27,8 @@ public abstract class CaseData {
 
     private ProbateType applicationType;
 
+    private String primaryApplicantEmailAddress;
+
     private List<CollectionMember<CasePayment>> payments;
 
 }
