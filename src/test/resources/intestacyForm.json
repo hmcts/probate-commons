@@ -19,6 +19,7 @@
     "dod_date": "2018-01-01",
     "address": "Winterfell, Westeros",
     "addressFound": "Yes",
+    "postCode": "SW17 0QT",
     "freeTextAddress": "Winterfell, Westeros",
     "alias": "Yes",
     "otherNames": {
