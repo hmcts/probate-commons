@@ -5,14 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 import uk.gov.hmcts.reform.probate.model.CaveatCreator;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.Caveat;
-import uk.gov.hmcts.reform.probate.model.validation.groups.SubmissionGroup;
 
+import java.time.LocalDate;
+import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.groups.Default;
-import java.time.LocalDate;
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -20,16 +19,16 @@ import static org.hamcrest.Matchers.is;
 
 public class CaveatValidationTest {
 
-
     private Validator validator;
 
     private Caveat caveat;
 
     private LocalDate dod = LocalDate.of(1910, 4, 4);
 
-    private final String MIN_CHARS = "size must be between 2 and 2147483647";
-    private final String NULL_VALIDATION = "must not be null";
-    private final String DOD_IS_BEFORE_DECEASED_DOB = "deceasedDateOfBirth.isBefore(deceasedDateOfDeath) is false";
+    private static final String MIN_CHARS = "size must be between 2 and 2147483647";
+    private static final String NULL_VALIDATION = "must not be null";
+    private static final String DOD_IS_BEFORE_DECEASED_DOB =
+            "deceasedDateOfBirth.isBefore(deceasedDateOfDeath) is false";
 
     @Before
     public void setUp() {

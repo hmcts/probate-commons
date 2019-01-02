@@ -8,7 +8,6 @@ import uk.gov.hmcts.reform.probate.model.cases.caveat.Caveat;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 public class CaveatCreator {
 
@@ -51,5 +50,8 @@ public class CaveatCreator {
         address.setPostCode(name + " post code");
         address.setCountry(name + " country");
         return address;
+    }
+
+    private CaveatCreator() {
     }
 }
