@@ -39,8 +39,9 @@ import javax.validation.constraints.Size;
 @EqualsAndHashCode(callSuper = false)
 @AssertExpression(value = "!(#isTrue(deceasedAnyOtherNames) && #isEmpty(deceasedAliasNameList))",
     groups = SubmissionGroup.class)
-@AssertExpression(value = "!(#L(ihtNetValue) <= 250000 && !#isTrue(assetsOverseas))", groups = SubmissionGroup.class)
-@AssertExpression(value = "!(#isTrue(assetsOverseas) && #L(assetsOverseasNetValue) == 0)",
+@AssertExpression(value = "!(#L(ihtNetValue) <= 250000 && !#isTrue(deceasedHasAssetsOutsideUk))",
+    groups = SubmissionGroup.class)
+@AssertExpression(value = "!(#isTrue(deceasedHasAssetsOutsideUk) && #L(assetsOverseasNetValue) == 0)",
     groups = SubmissionGroup.class)
 @AssertExpression(value = "deceasedDateOfBirth.isBefore(deceasedDateOfDeath)", groups = SubmissionGroup.class)
 @AssertExpression(value = "#L(ihtNetValue) <= #L(ihtGrossValue)", groups = SubmissionGroup.class)
@@ -241,7 +242,7 @@ public class GrantOfRepresentation extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean deceasedHasAssetsOutsideUK;
+    private Boolean deceasedHasAssetsOutsideUk;
 
     @JsonSerialize(using = ToStringSerializer.class)
     private Long assetsOverseasNetValue;
@@ -286,9 +287,9 @@ public class GrantOfRepresentation extends CaseData {
                                  List<CollectionMember<AdditionalExecutorApplying>> additionalExecutorsApplying,
                                  List<CollectionMember<AdditionalExecutorNotApplying>> additionalExecutorsNotApplying,
                                  String totalFee, Declaration declaration, LegalStatement legalStatement,
-                                 Long numberOfApplicants, Boolean deceasedHasAssetsOutsideUK, Long assetsOverseasNetValue,
-                                 String uploadDocumentUrl, String registryAddress, String registryEmail,
-                                 String registrySequenceNumber) {
+                                 Long numberOfApplicants, Boolean deceasedHasAssetsOutsideUk,
+                                 Long assetsOverseasNetValue, String uploadDocumentUrl, String registryAddress,
+                                 String registryEmail, String registrySequenceNumber) {
         super(applicationType, primaryApplicantEmailAddress, payments);
         this.applicationSubmittedDate = applicationSubmittedDate;
         this.softStop = softStop;
@@ -344,7 +345,7 @@ public class GrantOfRepresentation extends CaseData {
         this.declaration = declaration;
         this.legalStatement = legalStatement;
         this.numberOfApplicants = numberOfApplicants;
-        this.deceasedHasAssetsOutsideUK = deceasedHasAssetsOutsideUK;
+        this.deceasedHasAssetsOutsideUk = deceasedHasAssetsOutsideUk;
         this.assetsOverseasNetValue = assetsOverseasNetValue;
         this.uploadDocumentUrl = uploadDocumentUrl;
         this.registryAddress = registryAddress;
