@@ -61,7 +61,7 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentation.setDeceasedAnyOtherNames(false);
 
         grantOfRepresentation.setRegistryLocation("Birmingham");
-        grantOfRepresentation.setAssetsOverseas(true);
+        grantOfRepresentation.setDeceasedHasAssetsOutsideUk(true);
         grantOfRepresentation.setAssetsOverseasNetValue(10050L);
         grantOfRepresentation.setIhtFormId(IhtFormType.IHT205);
         grantOfRepresentation.setIhtFormCompletedOnline(true);
