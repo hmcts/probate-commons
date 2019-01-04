@@ -3,11 +3,13 @@ package uk.gov.hmcts.reform.probate.model;
 import com.google.common.collect.Lists;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.AliasName;
+import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.Declaration;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
+import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantType;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
 
 import java.time.LocalDate;
@@ -18,7 +20,8 @@ public class GrantOfRepresentationCreator {
 
     public static GrantOfRepresentation createIntestacyCase() {
         GrantOfRepresentation grantOfRepresentation = new GrantOfRepresentation();
-        grantOfRepresentation.setApplicationType(ProbateType.INTESTACY);
+        grantOfRepresentation.setApplicationType(ApplicationType.PERSONAL);
+        grantOfRepresentation.setCaseType(GrantType.INTESTACY);
         grantOfRepresentation.setPrimaryApplicantEmailAddress("jon.snow@thenorth.com");
         grantOfRepresentation.setPrimaryApplicantForenames("Jon");
         grantOfRepresentation.setPrimaryApplicantSurname("Snow");
@@ -48,12 +51,12 @@ public class GrantOfRepresentationCreator {
         aliasName.setLastName("North");
         aliasNameCollectionMember.setValue(aliasName);
         grantOfRepresentation.setDeceasedAliasNameList(Lists.newArrayList(aliasNameCollectionMember));
-        grantOfRepresentation.setDeceasedMaritalStatus(MaritalStatus.MARRIED);
+        grantOfRepresentation.setDeceasedMartialStatus(MaritalStatus.MARRIED);
         grantOfRepresentation.setDeceasedDivorcedInEnglandOrWales(false);
         grantOfRepresentation.setDeceasedOtherChildren(true);
-        grantOfRepresentation.setDeceasedAnyDeceasedChildrenDieBeforeDeceased(false);
-        grantOfRepresentation.setDeceasedAnyDeceasedGrandchildrenUnderEighteen(false);
-        grantOfRepresentation.setDeceasedAllDeceasedChildrenOverEighteen(true);
+        grantOfRepresentation.setChildrenDied(false);
+        grantOfRepresentation.setGrandChildrenSurvivedUnderEighteen(false);
+        grantOfRepresentation.setChildrenOverEighteenSurvived(true);
         grantOfRepresentation.setDeceasedAnyChildren(false);
         grantOfRepresentation.setDeceasedAnyOtherNames(false);
 

@@ -93,14 +93,14 @@ public class AssertExpressionValidatorTest {
 
     @Test
     public void shouldFailValidationWhenDeceasedMaritalStatusIsDivorcedAndDivorcedInEnglandOrWalesIsNull() {
-        grantOfRepresentation.setDeceasedMaritalStatus(MaritalStatus.DIVORCED);
+        grantOfRepresentation.setDeceasedMartialStatus(MaritalStatus.DIVORCED);
         grantOfRepresentation.setDeceasedDivorcedInEnglandOrWales(null);
         assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldFailValidationDeceasedMaritalStatusIsSeparatedAndDivorcedInEnglandOrWalesIsNull() {
-        grantOfRepresentation.setDeceasedMaritalStatus(MaritalStatus.JUDICIALLY_SEPARATED);
+        grantOfRepresentation.setDeceasedMartialStatus(MaritalStatus.JUDICIALLY_SEPARATED);
         grantOfRepresentation.setDeceasedDivorcedInEnglandOrWales(null);
         assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
 
@@ -109,32 +109,31 @@ public class AssertExpressionValidatorTest {
     @Test
     public void shouldFailValidationWhenDeceasedHasOtherChildrenAnAllDeceasedChildrenOverEighteenIsNull() {
         grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
-        grantOfRepresentation.setDeceasedAllDeceasedChildrenOverEighteen(null);
+        grantOfRepresentation.setChildrenOverEighteenSurvived(null);
         assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldPassValidationWhenDeceasedHasOtherChildrenAllDeceasedChildrenOverEighteenIsPopulated() {
         grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
-        grantOfRepresentation.setDeceasedAllDeceasedChildrenOverEighteen(Boolean.FALSE);
+        grantOfRepresentation.setChildrenOverEighteenSurvived(Boolean.FALSE);
         assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(0));
     }
 
     @Test
     public void shouldFailDeceasedHasOtherChildrenAllDeceasedChildrenOverEighteenDeceasedChildrenDieBeforeDeceased() {
         grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
-        grantOfRepresentation.setDeceasedAllDeceasedChildrenOverEighteen(Boolean.TRUE);
-        grantOfRepresentation.setDeceasedAnyDeceasedChildrenDieBeforeDeceased(null);
+        grantOfRepresentation.setChildrenOverEighteenSurvived(Boolean.TRUE);
+        grantOfRepresentation.setChildrenDied(null);
         assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldFailWhenDeceasedHasOtherChildrenAndDeceasedGrandchildrenUnderEighteenIsNull() {
         grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
-        grantOfRepresentation.setDeceasedAllDeceasedChildrenOverEighteen(Boolean.TRUE);
-        grantOfRepresentation.setDeceasedAnyDeceasedChildrenDieBeforeDeceased(Boolean.TRUE);
-        grantOfRepresentation.setDeceasedAllDeceasedChildrenOverEighteen(Boolean.TRUE);
-        grantOfRepresentation.setDeceasedAnyDeceasedGrandchildrenUnderEighteen(null);
+        grantOfRepresentation.setChildrenOverEighteenSurvived(Boolean.TRUE);
+        grantOfRepresentation.setChildrenDied(Boolean.TRUE);
+        grantOfRepresentation.setGrandChildrenSurvivedUnderEighteen(null);
         assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
@@ -153,10 +152,10 @@ public class AssertExpressionValidatorTest {
 
     @Test
     public void shouldRaiseMultipleConstraintViolations() {
-        grantOfRepresentation.setDeceasedMaritalStatus(MaritalStatus.JUDICIALLY_SEPARATED);
+        grantOfRepresentation.setDeceasedMartialStatus(MaritalStatus.JUDICIALLY_SEPARATED);
         grantOfRepresentation.setPrimaryApplicantRelationshipToDeceased(Relationship.CHILD);
         grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
-        grantOfRepresentation.setDeceasedAllDeceasedChildrenOverEighteen(null);
+        grantOfRepresentation.setChildrenOverEighteenSurvived(null);
         grantOfRepresentation.setDeceasedDateOfBirth(afterDate);
         grantOfRepresentation.setDeceasedDateOfDeath(beforeDate);
 

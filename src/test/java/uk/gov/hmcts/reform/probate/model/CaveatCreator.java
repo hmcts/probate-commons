@@ -15,7 +15,6 @@ public class CaveatCreator {
 
         Caveat caveat = new Caveat();
 
-        caveat.setApplicationType(ProbateType.PERSONAL);
         caveat.setCaveatorAddress(getAddress("caveator"));
         caveat.setCaveatorEmailAddress("caveator@email.com");
         caveat.setCaveatorForenames("caveator forename");

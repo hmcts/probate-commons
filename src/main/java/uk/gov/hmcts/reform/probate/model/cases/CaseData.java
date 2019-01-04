@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.Caveat;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
 import uk.gov.hmcts.reform.probate.model.validation.AtLeastOneNonEmptyField;
@@ -27,8 +26,6 @@ import java.util.List;
 @NoArgsConstructor
 @AtLeastOneNonEmptyField
 public abstract class CaseData {
-
-    private ProbateType applicationType;
 
     private String primaryApplicantEmailAddress;
 

@@ -10,7 +10,7 @@ public class ValidationUtils {
     }
 
     public static Boolean isSpouse(Relationship relationship) {
-        return relationship != null && relationship.equals(Relationship.SPOUSE);
+        return relationship != null && relationship.equals(Relationship.PARTNER);
     }
 
     public static String getName(Relationship relationship) {
