@@ -74,7 +74,10 @@ public class IntestacyFormTest {
         intestacyDeceased.setAddress("Winterfell, Westeros");
         intestacyDeceased.setAddressFound(false);
         intestacyDeceased.setFreeTextAddress("Winterfell, Westeros");
+        intestacyDeceased.setAddressFound(true);
+        intestacyDeceased.setPostCode("SW17 0QT");
         intestacyDeceased.setAlias(true);
+        intestacyDeceased.setDomiciledInEnglandOrWales(true);
         AliasOtherNames aliasOtherNames = new AliasOtherNames();
         aliasOtherNames.setFirstName("King");
         aliasOtherNames.setLastName("North");

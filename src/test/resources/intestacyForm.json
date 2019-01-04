@@ -9,7 +9,7 @@
     "phoneNumber": "123455678",
     "addressFound": "Yes",
     "freeTextAddress": "Pret a Manger St. Georges Hospital Blackshaw Road",
-    "relationshipToDeceased": "Adopted Child",
+    "relationshipToDeceased": "adoptedChild",
     "adoptionInEnglandOrWales": "Yes"
   },
   "deceased": {
@@ -35,7 +35,8 @@
     "allDeceasedChildrenOverEighteen": "Yes",
     "anyDeceasedChildrenDieBeforeDeceased": "No",
     "anyDeceasedGrandchildrenUnderEighteen": "No",
-    "anyChildren": "No"
+    "anyChildren": "No",
+    "domiciledInEnglandOrWales": "Yes"
   },
   "iht": {
     "form": "IHT205",
