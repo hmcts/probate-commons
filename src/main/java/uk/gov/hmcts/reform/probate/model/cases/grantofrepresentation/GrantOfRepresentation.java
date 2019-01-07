@@ -39,9 +39,9 @@ import javax.validation.constraints.Size;
 @EqualsAndHashCode(callSuper = false)
 @AssertExpression(value = "!(#isTrue(deceasedAnyOtherNames) && #isEmpty(deceasedAliasNameList))",
     groups = SubmissionGroup.class)
-@AssertExpression(value = "!(#L(ihtNetValue) <= 250000 && !#isTrue(deceasedHasAssetsOutsideUk))",
+@AssertExpression(value = "!(#L(ihtNetValue) <= 250000 && !#isTrue(deceasedHasAssetsOutsideUK))",
     groups = SubmissionGroup.class)
-@AssertExpression(value = "!(#isTrue(deceasedHasAssetsOutsideUk) && #L(assetsOverseasNetValue) == 0)",
+@AssertExpression(value = "!(#isTrue(deceasedHasAssetsOutsideUK) && #L(assetsOverseasNetValue) == 0)",
     groups = SubmissionGroup.class)
 @AssertExpression(value = "deceasedDateOfBirth.isBefore(deceasedDateOfDeath)", groups = SubmissionGroup.class)
 @AssertExpression(value = "#L(ihtNetValue) <= #L(ihtGrossValue)", groups = SubmissionGroup.class)
@@ -269,7 +269,8 @@ public class GrantOfRepresentation extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean deceasedHasAssetsOutsideUk;
+    @SuppressWarnings({"AbbreviationAsWordInName"})
+    private Boolean deceasedHasAssetsOutsideUK;
 
     @JsonSerialize(using = ToStringSerializer.class)
     private Long assetsOverseasNetValue;
@@ -284,6 +285,7 @@ public class GrantOfRepresentation extends CaseData {
 
     private GrantType caseType;
 
+    @SuppressWarnings({"AbbreviationAsWordInName"})
     @Builder
     public GrantOfRepresentation(String primaryApplicantEmailAddress, List<CollectionMember<CasePayment>> payments,
                                  ApplicationType applicationType, LocalDate applicationSubmittedDate, Boolean softStop,
@@ -314,7 +316,7 @@ public class GrantOfRepresentation extends CaseData {
                                  List<CollectionMember<AdditionalExecutorApplying>> additionalExecutorsApplying,
                                  List<CollectionMember<AdditionalExecutorNotApplying>> additionalExecutorsNotApplying,
                                  String totalFee, Declaration declaration, LegalStatement legalStatement,
-                                 Long numberOfApplicants, Boolean deceasedHasAssetsOutsideUk,
+                                 Long numberOfApplicants, Boolean deceasedHasAssetsOutsideUK,
                                  Long assetsOverseasNetValue, String uploadDocumentUrl, String registryAddress,
                                  String registryEmail, String registrySequenceNumber, GrantType caseType,
                                  Boolean deceasedAnyChildren) {
@@ -379,7 +381,7 @@ public class GrantOfRepresentation extends CaseData {
         this.declaration = declaration;
         this.legalStatement = legalStatement;
         this.numberOfApplicants = numberOfApplicants;
-        this.deceasedHasAssetsOutsideUk = deceasedHasAssetsOutsideUk;
+        this.deceasedHasAssetsOutsideUK = deceasedHasAssetsOutsideUK;
         this.assetsOverseasNetValue = assetsOverseasNetValue;
         this.uploadDocumentUrl = uploadDocumentUrl;
         this.registryAddress = registryAddress;
