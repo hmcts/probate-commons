@@ -283,7 +283,6 @@ public class GrantOfRepresentation extends CaseData {
     private GrantType caseType;
 
     @Builder
-
     public GrantOfRepresentation(String primaryApplicantEmailAddress, List<CollectionMember<CasePayment>> payments,
                                  ApplicationType applicationType, LocalDate applicationSubmittedDate, Boolean softStop,
                                  String registryLocation, Long outsideUkGrantCopies, Long extraCopiesOfGrant,
