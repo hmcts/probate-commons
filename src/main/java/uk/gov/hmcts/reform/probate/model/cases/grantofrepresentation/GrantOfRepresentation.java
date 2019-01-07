@@ -27,10 +27,10 @@ import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.AssertExpression;
 import uk.gov.hmcts.reform.probate.model.validation.groups.SubmissionGroup;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "GrantOfRepresentation", parent = CaseData.class)
@@ -38,32 +38,34 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @AssertExpression(value = "!(#isTrue(deceasedAnyOtherNames) && #isEmpty(deceasedAliasNameList))",
-        groups = SubmissionGroup.class)
-@AssertExpression(value = "!(#L(ihtNetValue) <= 250000 && !#isTrue(deceasedHasAssetsOutsideUK))", groups = SubmissionGroup.class)
-@AssertExpression(value = "!(#isTrue(deceasedHasAssetsOutsideUK) && #L(assetsOverseasNetValue) == 0)",
-        groups = SubmissionGroup.class)
+    groups = SubmissionGroup.class)
+@AssertExpression(value = "!(#L(ihtNetValue) <= 250000 && !#isTrue(deceasedHasAssetsOutsideUk))",
+    groups = SubmissionGroup.class)
+@AssertExpression(value = "!(#isTrue(deceasedHasAssetsOutsideUk) && #L(assetsOverseasNetValue) == 0)",
+    groups = SubmissionGroup.class)
 @AssertExpression(value = "deceasedDateOfBirth.isBefore(deceasedDateOfDeath)", groups = SubmissionGroup.class)
 @AssertExpression(value = "#L(ihtNetValue) <= #L(ihtGrossValue)", groups = SubmissionGroup.class)
 @AssertExpression(value = "!((#L(ihtNetValue) > 250000) && !#isSpouse(primaryApplicantRelationshipToDeceased) "
-        + "&& (deceasedSpouseNotApplyingReason == null))", groups = SubmissionGroup.class)
+    + "&& (deceasedSpouseNotApplyingReason == null))", groups = SubmissionGroup.class)
 @AssertExpression(value = "{'ADOPTED_CHILD', 'CHILD'}.contains(#R(primaryApplicantRelationshipToDeceased)) ? "
-        + " deceasedOtherChildren != null "
-        + ": true", groups = SubmissionGroup.class)
+    + " deceasedOtherChildren != null "
+    + ": true", groups = SubmissionGroup.class)
 @AssertExpression(value = "#isTrue(deceasedDivorcedInEnglandOrWales) ? "
-        + "{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMartialStatus)) "
-        + ": !{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMartialStatus))",
-        groups = SubmissionGroup.class)
+    + "{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMartialStatus)) "
+    + ": !{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMartialStatus))",
+    groups = SubmissionGroup.class)
 @AssertExpression(value = "#isTrue(deceasedOtherChildren) ? childrenOverEighteenSurvived != null : true",
-        groups = SubmissionGroup.class)
+    groups = SubmissionGroup.class)
 @AssertExpression(value = "#R(primaryApplicantRelationshipToDeceased) == 'ADOPTED_CHILD' ? "
-        + "primaryApplicantAdoptionInEnglandOrWales != null : true", groups = SubmissionGroup.class)
-@AssertExpression(value = "#R(primaryApplicantRelationshipToDeceased) == 'PARTNER' ? deceasedAnyChildren != null : true",
-        groups = SubmissionGroup.class)
+    + "primaryApplicantAdoptionInEnglandOrWales != null : true", groups = SubmissionGroup.class)
+@AssertExpression(value =
+    "#R(primaryApplicantRelationshipToDeceased) == 'PARTNER' ? deceasedAnyChildren != null : true",
+    groups = SubmissionGroup.class)
 @AssertExpression(value = "#isTrue(deceasedOtherChildren) && #isTrue(childrenOverEighteenSurvived) ? "
-        + "childrenDied != null : true", groups = SubmissionGroup.class)
+    + "childrenDied != null : true", groups = SubmissionGroup.class)
 @AssertExpression(value = "#isTrue(deceasedOtherChildren) && #isTrue(childrenOverEighteenSurvived) "
-        + "&& #isTrue(childrenDied) ? "
-        + "grandChildrenSurvivedUnderEighteen != null : true", groups = SubmissionGroup.class)
+    + "&& #isTrue(childrenDied) ? "
+    + "grandChildrenSurvivedUnderEighteen != null : true", groups = SubmissionGroup.class)
 public class GrantOfRepresentation extends CaseData {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
@@ -267,7 +269,7 @@ public class GrantOfRepresentation extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean deceasedHasAssetsOutsideUK;
+    private Boolean deceasedHasAssetsOutsideUk;
 
     @JsonSerialize(using = ToStringSerializer.class)
     private Long assetsOverseasNetValue;
@@ -313,7 +315,7 @@ public class GrantOfRepresentation extends CaseData {
                                  List<CollectionMember<AdditionalExecutorApplying>> additionalExecutorsApplying,
                                  List<CollectionMember<AdditionalExecutorNotApplying>> additionalExecutorsNotApplying,
                                  String totalFee, Declaration declaration, LegalStatement legalStatement,
-                                 Long numberOfApplicants, Boolean deceasedHasAssetsOutsideUK,
+                                 Long numberOfApplicants, Boolean deceasedHasAssetsOutsideUk,
                                  Long assetsOverseasNetValue, String uploadDocumentUrl, String registryAddress,
                                  String registryEmail, String registrySequenceNumber, GrantType caseType,
                                  Boolean deceasedAnyChildren) {
@@ -378,7 +380,7 @@ public class GrantOfRepresentation extends CaseData {
         this.declaration = declaration;
         this.legalStatement = legalStatement;
         this.numberOfApplicants = numberOfApplicants;
-        this.deceasedHasAssetsOutsideUK = deceasedHasAssetsOutsideUK;
+        this.deceasedHasAssetsOutsideUk = deceasedHasAssetsOutsideUk;
         this.assetsOverseasNetValue = assetsOverseasNetValue;
         this.uploadDocumentUrl = uploadDocumentUrl;
         this.registryAddress = registryAddress;
