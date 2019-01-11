@@ -1,0 +1,54 @@
+{
+  "type": "StandingSearch",
+  "applicationType": "Personal",
+  "registryLocation": "Winchester",
+  "deceasedNameSection": "ssDeceasedNameSection",
+  "deceasedForenames": "ssDeceasedForeNames",
+  "deceasedSurname": "ssDeceasedSurname",
+  "deceasedDateOfDeath": "2018-11-20",
+  "deceasedDateOfBirth": "1966-03-04",
+  "deceasedAnyOtherNames": "ssDeceasedAnyOtherNames",
+  "deceasedFullAliasNameList": [
+    {
+      "value": {
+        "FullAliasName": "fullAliasName"
+      }
+    }
+  ],
+  "deceasedAddress": {
+    "AddressLine1": "ssDeceased address line 1",
+    "AddressLine2": "ssDeceased address line 2",
+    "AddressLine3": "ssDeceased address line 3",
+    "County": "ssDeceased county",
+    "PostTown": "ssDeceased post town",
+    "PostCode": "ssDeceased post code",
+    "Country": "ssDeceased country"
+  },
+  "applicantNameSection": "ssApplicantNameSection",
+  "applicantForenames": "ssApplicantForenames",
+  "applicantSurname": "ssApplicantSurname",
+  "applicantEmailAddress": "ssApplicantEmailAddress",
+  "applicantAddress": {
+    "AddressLine1": "ssApplicant address line 1",
+    "AddressLine2": "ssApplicant address line 2",
+    "AddressLine3": "ssApplicant address line 3",
+    "County": "ssApplicant county",
+    "PostTown": "ssApplicant post town",
+    "PostCode": "ssApplicant post code",
+    "Country": "ssApplicant country"
+  },
+  "numberOfCopies": "12",
+  "expiryDate": "2019-01-01",
+  "documentsUploaded": [
+    {
+      "value": {
+        "DocumentLink": {
+          "document_url": "ssDocumentUrl",
+          "document_binary_url": "ssDocumentBinaryUrl",
+          "document_filename": "ssDocumentFileName"
+        },
+        "Comment": "ssComment"
+      }
+    }
+  ]
+}

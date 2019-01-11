@@ -7,14 +7,16 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
+import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
-import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.AssertExpression;
@@ -26,20 +28,22 @@ import javax.validation.GroupSequence;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@GroupSequence({Caveat.class, SubmissionGroup.class})
+@GroupSequence({CaveatData.class, SubmissionGroup.class})
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "Caveat", parent = CaseData.class)
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @EqualsAndHashCode(callSuper = false)
 @AssertExpression(value = "deceasedDateOfBirth.isBefore(deceasedDateOfDeath)", groups = SubmissionGroup.class)
 @AssertExpression(value = "!(#isTrue(deceasedAnyOtherNames) && #isEmpty(deceasedFullAliasNameList))",
         groups = SubmissionGroup.class)
-public class Caveat extends CaseData {
+public class CaveatData extends CaseData {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 
-    RegistryLocation registryLocation = RegistryLocation.OXFORD;
+    private RegistryLocation registryLocation;
 
     @NotNull
     @Size(min = 2, groups = SubmissionGroup.class)
@@ -65,7 +69,7 @@ public class Caveat extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedAnyOtherNames;
 
-    private List<CollectionMember<AliasOtherNames>> deceasedFullAliasNameList;
+    private List<CollectionMember<FullAliasName>> deceasedFullAliasNameList;
 
     private Address deceasedAddress;
 

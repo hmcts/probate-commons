@@ -1,22 +1,25 @@
 package uk.gov.hmcts.reform.probate.model.cases;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.validation.Valid;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProbateCaseDetails {
+public class UploadDocument {
 
-    @Valid
-    private CaseData caseData;
+    @JsonProperty("DocumentLink")
+    private DocumentLink documentLink;
 
-    private CaseInfo caseInfo;
+    @JsonProperty("DocumentType")
+    private DocumentType documentType;
+
+    @JsonProperty("Comment")
+    private String comment;
 }

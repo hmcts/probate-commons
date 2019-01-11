@@ -10,7 +10,7 @@ import static uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.Gran
 import static uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantType.Constants.GRANT_OF_PROBATE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantType.Constants.INTESTACY_NAME;
 
-@ApiModel(value = "ApplicationType", description = "Represents application type")
+@ApiModel(value = "GrantType", description = "Represents grant type")
 @RequiredArgsConstructor
 public enum GrantType {
 
@@ -25,7 +25,7 @@ public enum GrantType {
 
     public static class Constants {
 
-        public static final String GRANT_OF_PROBATE_NAME = "grantOfProbate";
+        public static final String GRANT_OF_PROBATE_NAME = "gop";
         public static final String INTESTACY_NAME = "intestacy";
         public static final String ADMON_WILL_NAME = "admonWill";
         public static final String EDGE_CASE_NAME = "edgeCase";

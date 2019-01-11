@@ -1,0 +1,54 @@
+{
+  "type": "WillLodgement",
+  "applicationType": "Personal",
+  "registryLocation": "Cardiff",
+  "lodgementType": "safeCustody",
+  "lodgedDate": "2018-02-02",
+  "willDate": "2008-11-05",
+  "codicilDate": "2018-02-01",
+  "numberOfCodicils": "13",
+  "jointWill": "No",
+  "deceasedForenames": "wlDeceasedForenames",
+  "deceasedSurname": "wlDeceasedSurname",
+  "deceasedGender": "male",
+  "deceasedDateOfBirth": "1975-01-01",
+  "deceasedDateOfDeath": "2019-01-01",
+  "deceasedTypeOfDeath": "Illness",
+  "deceasedAnyOtherNames": "Yes",
+  "deceasedFullAliasNameList": [
+    {
+      "value": {
+        "FullAliasName": "wlFullAliasName"
+      }
+    }
+  ],
+  "deceasedAddress": {
+    "AddressLine1": "wlDeceasedAddress address line 1",
+    "AddressLine2": "wlDeceasedAddress address line 2",
+    "AddressLine3": "wlDeceasedAddress address line 3",
+    "County": "wlDeceasedAddress county",
+    "PostTown": "wlDeceasedAddress post town",
+    "PostCode": "wlDeceasedAddress post code",
+    "Country": "wlDeceasedAddress country"
+  },
+  "deceasedEmailAddress": "wlEmailAddress",
+  "willExecutorList": [
+    {
+      "value": {
+        "willExecutorTitle": "willExecutorTitle",
+        "willExecutorForenames": "willExecutorForename",
+        "willExecutorSurname": "willExecutorSurname",
+        "willExecutorAddress": {
+          "AddressLine1": "willExecutorAddress address line 1",
+          "AddressLine2": "willExecutorAddress address line 2",
+          "AddressLine3": "willExecutorAddress address line 3",
+          "County": "willExecutorAddress county",
+          "PostTown": "willExecutorAddress post town",
+          "PostCode": "willExecutorAddress post code",
+          "Country": "willExecutorAddress country"
+        },
+        "willExecutorEmail": "willExecutorEmail"
+      }
+    }
+  ]
+}

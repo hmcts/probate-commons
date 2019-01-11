@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -17,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @ApiModel(value = "Address", description = "Represents address in CCD")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Address implements Serializable {
+public class Address {
 
     @NotNull
     @JsonProperty(value = "AddressLine1")

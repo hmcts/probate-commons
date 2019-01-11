@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,6 +23,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
+import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.AssertExpression;
@@ -33,44 +35,48 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@ApiModel(value = "GrantOfRepresentation", parent = CaseData.class)
+@ApiModel(value = "GrantOfRepresentationData", parent = CaseData.class)
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @EqualsAndHashCode(callSuper = false)
 @AssertExpression(value = "!(#isTrue(deceasedAnyOtherNames) && #isEmpty(deceasedAliasNameList))",
-    groups = SubmissionGroup.class)
+        groups = SubmissionGroup.class)
 @AssertExpression(value = "!(#L(ihtNetValue) <= 250000 && !#isTrue(deceasedHasAssetsOutsideUK))",
-    groups = SubmissionGroup.class)
+        groups = SubmissionGroup.class)
 @AssertExpression(value = "!(#isTrue(deceasedHasAssetsOutsideUK) && #L(assetsOverseasNetValue) == 0)",
-    groups = SubmissionGroup.class)
+        groups = SubmissionGroup.class)
 @AssertExpression(value = "deceasedDateOfBirth.isBefore(deceasedDateOfDeath)", groups = SubmissionGroup.class)
 @AssertExpression(value = "#L(ihtNetValue) <= #L(ihtGrossValue)", groups = SubmissionGroup.class)
 @AssertExpression(value = "!((#L(ihtNetValue) > 250000) && !#isSpouse(primaryApplicantRelationshipToDeceased) "
-    + "&& (deceasedSpouseNotApplyingReason == null))", groups = SubmissionGroup.class)
+        + "&& (deceasedSpouseNotApplyingReason == null))", groups = SubmissionGroup.class)
 @AssertExpression(value = "{'ADOPTED_CHILD', 'CHILD'}.contains(#R(primaryApplicantRelationshipToDeceased)) ? "
-    + " deceasedOtherChildren != null "
-    + ": true", groups = SubmissionGroup.class)
+        + " deceasedOtherChildren != null "
+        + ": true", groups = SubmissionGroup.class)
 @AssertExpression(value = "#isTrue(deceasedDivorcedInEnglandOrWales) ? "
-    + "{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMartialStatus)) "
-    + ": !{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMartialStatus))",
-    groups = SubmissionGroup.class)
+        + "{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMartialStatus)) "
+        + ": !{'DIVORCED', 'JUDICIALLY_SEPARATED'}.contains(#MS(deceasedMartialStatus))",
+        groups = SubmissionGroup.class)
 @AssertExpression(value = "#isTrue(deceasedOtherChildren) ? childrenOverEighteenSurvived != null : true",
-    groups = SubmissionGroup.class)
+        groups = SubmissionGroup.class)
 @AssertExpression(value = "#R(primaryApplicantRelationshipToDeceased) == 'ADOPTED_CHILD' ? "
-    + "primaryApplicantAdoptionInEnglandOrWales != null : true", groups = SubmissionGroup.class)
+        + "primaryApplicantAdoptionInEnglandOrWales != null : true", groups = SubmissionGroup.class)
 @AssertExpression(value =
-    "#R(primaryApplicantRelationshipToDeceased) == 'PARTNER' ? deceasedAnyChildren != null : true",
-    groups = SubmissionGroup.class)
+        "#R(primaryApplicantRelationshipToDeceased) == 'PARTNER' ? deceasedAnyChildren != null : true",
+        groups = SubmissionGroup.class)
 @AssertExpression(value = "#isTrue(deceasedOtherChildren) && #isTrue(childrenOverEighteenSurvived) ? "
-    + "childrenDied != null : true", groups = SubmissionGroup.class)
+        + "childrenDied != null : true", groups = SubmissionGroup.class)
 @AssertExpression(value = "#isTrue(deceasedOtherChildren) && #isTrue(childrenOverEighteenSurvived) "
-    + "&& #isTrue(childrenDied) ? "
-    + "grandChildrenSurvivedUnderEighteen != null : true", groups = SubmissionGroup.class)
-public class GrantOfRepresentation extends CaseData {
+        + "&& #isTrue(childrenDied) ? "
+        + "grandChildrenSurvivedUnderEighteen != null : true", groups = SubmissionGroup.class)
+public class GrantOfRepresentationData extends CaseData {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 
     private ApplicationType applicationType;
+
+    private String primaryApplicantEmailAddress;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -81,7 +87,7 @@ public class GrantOfRepresentation extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean softStop;
 
-    private String registryLocation;
+    private RegistryLocation registryLocation;
 
     @JsonProperty(value = "outsideUKGrantCopies")
     private Long outsideUkGrantCopies;
@@ -285,109 +291,5 @@ public class GrantOfRepresentation extends CaseData {
 
     private GrantType caseType;
 
-    @SuppressWarnings({"AbbreviationAsWordInName"})
-    @Builder
-    public GrantOfRepresentation(String primaryApplicantEmailAddress, List<CollectionMember<CasePayment>> payments,
-                                 ApplicationType applicationType, LocalDate applicationSubmittedDate, Boolean softStop,
-                                 String registryLocation, Long outsideUkGrantCopies, Long extraCopiesOfGrant,
-                                 Boolean deceasedDomicileInEngWales, Address deceasedAddress,
-                                 String deceasedFreeTextAddress, Boolean deceasedAddressFound,
-                                 Boolean deceasedMarriedAfterWillOrCodicilDate, String deceasedForenames,
-                                 String deceasedSurname, LocalDate deceasedDateOfDeath,
-                                 LocalDate deceasedDateOfBirth, MaritalStatus deceasedMartialStatus,
-                                 Boolean deceasedAnyOtherNames, List<CollectionMember<AliasName>> deceasedAliasNameList,
-                                 SpouseNotApplyingReason deceasedSpouseNotApplyingReason, Boolean deceasedOtherChildren,
-                                 Boolean deceasedDivorcedInEnglandOrWales, Boolean childrenDied,
-                                 Boolean childrenDiedOverEighteen, Boolean childrenDiedUnderEighteen,
-                                 Boolean childrenSurvived, Boolean childrenOverEighteenSurvived,
-                                 Boolean childrenUnderEighteenSurvived, Boolean grandChildrenSurvived,
-                                 Boolean grandChildrenSurvivedUnderEighteen, Boolean grandChildrenSurvivedOverEighteen,
-                                 IhtFormType ihtFormId, Boolean ihtFormCompletedOnline, Long ihtNetValue,
-                                 Long ihtGrossValue, String ihtReferenceNumber, Address primaryApplicantAddress,
-                                 String primaryApplicantFreeTextAddress, Boolean primaryApplicantAddressFound,
-                                 Boolean primaryApplicantIsApplying, String primaryApplicantForenames,
-                                 String primaryApplicantSurname, Boolean primaryApplicantSameWillName,
-                                 String primaryApplicantAlias, String primaryApplicantAliasReason,
-                                 String primaryApplicantOtherReason, String primaryApplicantPhoneNumber,
-                                 Relationship primaryApplicantRelationshipToDeceased,
-                                 Boolean primaryApplicantAdoptionInEnglandOrWales, Boolean willLatestCodicilHasDate,
-                                 Boolean willExists, Boolean willAccessOriginal, Boolean willHasCodicils,
-                                 Long willNumberOfCodicils, Long numberOfExecutors,
-                                 List<CollectionMember<AdditionalExecutorApplying>> additionalExecutorsApplying,
-                                 List<CollectionMember<AdditionalExecutorNotApplying>> additionalExecutorsNotApplying,
-                                 String totalFee, Declaration declaration, LegalStatement legalStatement,
-                                 Long numberOfApplicants, Boolean deceasedHasAssetsOutsideUK,
-                                 Long assetsOverseasNetValue, String uploadDocumentUrl, String registryAddress,
-                                 String registryEmail, String registrySequenceNumber, GrantType caseType,
-                                 Boolean deceasedAnyChildren) {
-        super(primaryApplicantEmailAddress, payments);
-        this.applicationType = applicationType;
-        this.applicationSubmittedDate = applicationSubmittedDate;
-        this.softStop = softStop;
-        this.registryLocation = registryLocation;
-        this.outsideUkGrantCopies = outsideUkGrantCopies;
-        this.extraCopiesOfGrant = extraCopiesOfGrant;
-        this.deceasedDomicileInEngWales = deceasedDomicileInEngWales;
-        this.deceasedAddress = deceasedAddress;
-        this.deceasedFreeTextAddress = deceasedFreeTextAddress;
-        this.deceasedAddressFound = deceasedAddressFound;
-        this.deceasedMarriedAfterWillOrCodicilDate = deceasedMarriedAfterWillOrCodicilDate;
-        this.deceasedForenames = deceasedForenames;
-        this.deceasedSurname = deceasedSurname;
-        this.deceasedDateOfDeath = deceasedDateOfDeath;
-        this.deceasedDateOfBirth = deceasedDateOfBirth;
-        this.deceasedMartialStatus = deceasedMartialStatus;
-        this.deceasedAnyOtherNames = deceasedAnyOtherNames;
-        this.deceasedAliasNameList = deceasedAliasNameList;
-        this.deceasedSpouseNotApplyingReason = deceasedSpouseNotApplyingReason;
-        this.deceasedOtherChildren = deceasedOtherChildren;
-        this.deceasedDivorcedInEnglandOrWales = deceasedDivorcedInEnglandOrWales;
-        this.childrenDied = childrenDied;
-        this.childrenDiedOverEighteen = childrenDiedOverEighteen;
-        this.childrenDiedUnderEighteen = childrenDiedUnderEighteen;
-        this.childrenSurvived = childrenSurvived;
-        this.childrenOverEighteenSurvived = childrenOverEighteenSurvived;
-        this.childrenUnderEighteenSurvived = childrenUnderEighteenSurvived;
-        this.grandChildrenSurvived = grandChildrenSurvived;
-        this.grandChildrenSurvivedUnderEighteen = grandChildrenSurvivedUnderEighteen;
-        this.grandChildrenSurvivedOverEighteen = grandChildrenSurvivedOverEighteen;
-        this.ihtFormId = ihtFormId;
-        this.ihtFormCompletedOnline = ihtFormCompletedOnline;
-        this.ihtNetValue = ihtNetValue;
-        this.ihtGrossValue = ihtGrossValue;
-        this.ihtReferenceNumber = ihtReferenceNumber;
-        this.primaryApplicantAddress = primaryApplicantAddress;
-        this.primaryApplicantFreeTextAddress = primaryApplicantFreeTextAddress;
-        this.primaryApplicantAddressFound = primaryApplicantAddressFound;
-        this.primaryApplicantIsApplying = primaryApplicantIsApplying;
-        this.primaryApplicantForenames = primaryApplicantForenames;
-        this.primaryApplicantSurname = primaryApplicantSurname;
-        this.primaryApplicantSameWillName = primaryApplicantSameWillName;
-        this.primaryApplicantAlias = primaryApplicantAlias;
-        this.primaryApplicantAliasReason = primaryApplicantAliasReason;
-        this.primaryApplicantOtherReason = primaryApplicantOtherReason;
-        this.primaryApplicantPhoneNumber = primaryApplicantPhoneNumber;
-        this.primaryApplicantRelationshipToDeceased = primaryApplicantRelationshipToDeceased;
-        this.primaryApplicantAdoptionInEnglandOrWales = primaryApplicantAdoptionInEnglandOrWales;
-        this.willLatestCodicilHasDate = willLatestCodicilHasDate;
-        this.willExists = willExists;
-        this.willAccessOriginal = willAccessOriginal;
-        this.willHasCodicils = willHasCodicils;
-        this.willNumberOfCodicils = willNumberOfCodicils;
-        this.numberOfExecutors = numberOfExecutors;
-        this.additionalExecutorsApplying = additionalExecutorsApplying;
-        this.additionalExecutorsNotApplying = additionalExecutorsNotApplying;
-        this.totalFee = totalFee;
-        this.declaration = declaration;
-        this.legalStatement = legalStatement;
-        this.numberOfApplicants = numberOfApplicants;
-        this.deceasedHasAssetsOutsideUK = deceasedHasAssetsOutsideUK;
-        this.assetsOverseasNetValue = assetsOverseasNetValue;
-        this.uploadDocumentUrl = uploadDocumentUrl;
-        this.registryAddress = registryAddress;
-        this.registryEmail = registryEmail;
-        this.registrySequenceNumber = registrySequenceNumber;
-        this.caseType = caseType;
-        this.deceasedAnyChildren = deceasedAnyChildren;
-    }
+    private List<CollectionMember<CasePayment>> payments;
 }

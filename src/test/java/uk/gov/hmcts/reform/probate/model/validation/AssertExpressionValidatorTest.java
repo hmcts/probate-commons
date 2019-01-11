@@ -5,7 +5,7 @@ import org.junit.Test;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
-import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentation;
+import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentationData;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
 import uk.gov.hmcts.reform.probate.model.validation.groups.SubmissionGroup;
 
@@ -23,7 +23,7 @@ public class AssertExpressionValidatorTest {
 
     private Validator validator;
 
-    private GrantOfRepresentation grantOfRepresentation;
+    private GrantOfRepresentationData grantOfRepresentationData;
 
     private LocalDate afterDate = LocalDate.of(2018, 9, 12);
     private LocalDate beforeDate = LocalDate.of(1954, 9, 18);
@@ -33,132 +33,132 @@ public class AssertExpressionValidatorTest {
         ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
         validator = validatorFactory.getValidator();
 
-        grantOfRepresentation = GrantOfRepresentationCreator.createIntestacyCase();
+        grantOfRepresentationData = GrantOfRepresentationCreator.createIntestacyCase();
     }
 
     @Test
     public void shouldVReturnFalseIfDeceasedHasOtherNamesAndAliasListIsNull() {
-        grantOfRepresentation.setDeceasedAnyOtherNames(Boolean.TRUE);
-        grantOfRepresentation.setDeceasedAliasNameList(Collections.emptyList());
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
+        grantOfRepresentationData.setDeceasedAnyOtherNames(Boolean.TRUE);
+        grantOfRepresentationData.setDeceasedAliasNameList(Collections.emptyList());
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldVReturnTrueIfDeceasedHasOtherNamesAndAliasListPopulated() {
-        grantOfRepresentation.setDeceasedAnyOtherNames(Boolean.FALSE);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(0));
+        grantOfRepresentationData.setDeceasedAnyOtherNames(Boolean.FALSE);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(0));
     }
 
     @Test
     public void shouldFailValidationWhenDodIsBeforeDob() {
-        grantOfRepresentation.setDeceasedDateOfBirth(afterDate);
-        grantOfRepresentation.setDeceasedDateOfDeath(beforeDate);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
+        grantOfRepresentationData.setDeceasedDateOfBirth(afterDate);
+        grantOfRepresentationData.setDeceasedDateOfDeath(beforeDate);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldFailValidationWhenDodIsAfterDob() {
-        grantOfRepresentation.setDeceasedDateOfBirth(beforeDate);
-        grantOfRepresentation.setDeceasedDateOfDeath(afterDate);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(0));
+        grantOfRepresentationData.setDeceasedDateOfBirth(beforeDate);
+        grantOfRepresentationData.setDeceasedDateOfDeath(afterDate);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(0));
     }
 
     @Test
     public void shouldPassValidationForValidGrantOfRepresentation() {
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(0));
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(0));
     }
 
     @Test
     public void shouldFailValidationWhenRelationshipToDeceasedIsAdoptedChildAndDeceasedOtherChildrenIsNull() {
-        grantOfRepresentation.setPrimaryApplicantRelationshipToDeceased(Relationship.ADOPTED_CHILD);
-        grantOfRepresentation.setDeceasedSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE);
-        grantOfRepresentation.setPrimaryApplicantAdoptionInEnglandOrWales(Boolean.FALSE);
-        grantOfRepresentation.setDeceasedOtherChildren(null);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
+        grantOfRepresentationData.setPrimaryApplicantRelationshipToDeceased(Relationship.ADOPTED_CHILD);
+        grantOfRepresentationData.setDeceasedSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE);
+        grantOfRepresentationData.setPrimaryApplicantAdoptionInEnglandOrWales(Boolean.FALSE);
+        grantOfRepresentationData.setDeceasedOtherChildren(null);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldFailValidationWhenRelationshipToDeceasedIsChildAndDeceasedOtherChildrenIsNull() {
-        grantOfRepresentation.setPrimaryApplicantRelationshipToDeceased(Relationship.CHILD);
-        grantOfRepresentation.setDeceasedOtherChildren(null);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
+        grantOfRepresentationData.setPrimaryApplicantRelationshipToDeceased(Relationship.CHILD);
+        grantOfRepresentationData.setDeceasedOtherChildren(null);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldFailValidationWhenRelationshipToDeceasedIsChildAndDeceasedOtherChildrenIsPopulated() {
-        grantOfRepresentation.setPrimaryApplicantRelationshipToDeceased(Relationship.CHILD);
-        grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(0));
+        grantOfRepresentationData.setPrimaryApplicantRelationshipToDeceased(Relationship.CHILD);
+        grantOfRepresentationData.setDeceasedOtherChildren(Boolean.TRUE);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(0));
     }
 
     @Test
     public void shouldFailValidationWhenDeceasedMaritalStatusIsDivorcedAndDivorcedInEnglandOrWalesIsNull() {
-        grantOfRepresentation.setDeceasedMartialStatus(MaritalStatus.DIVORCED);
-        grantOfRepresentation.setDeceasedDivorcedInEnglandOrWales(null);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
+        grantOfRepresentationData.setDeceasedMartialStatus(MaritalStatus.DIVORCED);
+        grantOfRepresentationData.setDeceasedDivorcedInEnglandOrWales(null);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldFailValidationDeceasedMaritalStatusIsSeparatedAndDivorcedInEnglandOrWalesIsNull() {
-        grantOfRepresentation.setDeceasedMartialStatus(MaritalStatus.JUDICIALLY_SEPARATED);
-        grantOfRepresentation.setDeceasedDivorcedInEnglandOrWales(null);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
+        grantOfRepresentationData.setDeceasedMartialStatus(MaritalStatus.JUDICIALLY_SEPARATED);
+        grantOfRepresentationData.setDeceasedDivorcedInEnglandOrWales(null);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(1));
 
     }
 
     @Test
     public void shouldFailValidationWhenDeceasedHasOtherChildrenAnAllDeceasedChildrenOverEighteenIsNull() {
-        grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
-        grantOfRepresentation.setChildrenOverEighteenSurvived(null);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
+        grantOfRepresentationData.setDeceasedOtherChildren(Boolean.TRUE);
+        grantOfRepresentationData.setChildrenOverEighteenSurvived(null);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldPassValidationWhenDeceasedHasOtherChildrenAllDeceasedChildrenOverEighteenIsPopulated() {
-        grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
-        grantOfRepresentation.setChildrenOverEighteenSurvived(Boolean.FALSE);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(0));
+        grantOfRepresentationData.setDeceasedOtherChildren(Boolean.TRUE);
+        grantOfRepresentationData.setChildrenOverEighteenSurvived(Boolean.FALSE);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(0));
     }
 
     @Test
     public void shouldFailDeceasedHasOtherChildrenAllDeceasedChildrenOverEighteenDeceasedChildrenDieBeforeDeceased() {
-        grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
-        grantOfRepresentation.setChildrenOverEighteenSurvived(Boolean.TRUE);
-        grantOfRepresentation.setChildrenDied(null);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
+        grantOfRepresentationData.setDeceasedOtherChildren(Boolean.TRUE);
+        grantOfRepresentationData.setChildrenOverEighteenSurvived(Boolean.TRUE);
+        grantOfRepresentationData.setChildrenDied(null);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldFailWhenDeceasedHasOtherChildrenAndDeceasedGrandchildrenUnderEighteenIsNull() {
-        grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
-        grantOfRepresentation.setChildrenOverEighteenSurvived(Boolean.TRUE);
-        grantOfRepresentation.setChildrenDied(Boolean.TRUE);
-        grantOfRepresentation.setGrandChildrenSurvivedUnderEighteen(null);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
+        grantOfRepresentationData.setDeceasedOtherChildren(Boolean.TRUE);
+        grantOfRepresentationData.setChildrenOverEighteenSurvived(Boolean.TRUE);
+        grantOfRepresentationData.setChildrenDied(Boolean.TRUE);
+        grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteen(null);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldFailValidationWhenAssetsOverseasNotPopulatedAndIhtNetValueLessThanOrEqualTo250000() {
-        grantOfRepresentation.setIhtNetValue(250000L);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(1));
+        grantOfRepresentationData.setIhtNetValue(250000L);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(1));
     }
 
     @Test
     public void shouldPassValidationWhenAssetsOverseasNotPopulatedAndIhtNetValueMoreThan250000() {
-        grantOfRepresentation.setIhtNetValue(250001L);
-        grantOfRepresentation.setIhtGrossValue(250002L);
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(0));
+        grantOfRepresentationData.setIhtNetValue(250001L);
+        grantOfRepresentationData.setIhtGrossValue(250002L);
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(0));
     }
 
     @Test
     public void shouldRaiseMultipleConstraintViolations() {
-        grantOfRepresentation.setDeceasedMartialStatus(MaritalStatus.JUDICIALLY_SEPARATED);
-        grantOfRepresentation.setPrimaryApplicantRelationshipToDeceased(Relationship.CHILD);
-        grantOfRepresentation.setDeceasedOtherChildren(Boolean.TRUE);
-        grantOfRepresentation.setChildrenOverEighteenSurvived(null);
-        grantOfRepresentation.setDeceasedDateOfBirth(afterDate);
-        grantOfRepresentation.setDeceasedDateOfDeath(beforeDate);
+        grantOfRepresentationData.setDeceasedMartialStatus(MaritalStatus.JUDICIALLY_SEPARATED);
+        grantOfRepresentationData.setPrimaryApplicantRelationshipToDeceased(Relationship.CHILD);
+        grantOfRepresentationData.setDeceasedOtherChildren(Boolean.TRUE);
+        grantOfRepresentationData.setChildrenOverEighteenSurvived(null);
+        grantOfRepresentationData.setDeceasedDateOfBirth(afterDate);
+        grantOfRepresentationData.setDeceasedDateOfDeath(beforeDate);
 
-        assertThat(validator.validate(grantOfRepresentation, Default.class, SubmissionGroup.class), hasSize(3));
+        assertThat(validator.validate(grantOfRepresentationData, Default.class, SubmissionGroup.class), hasSize(3));
     }
 }

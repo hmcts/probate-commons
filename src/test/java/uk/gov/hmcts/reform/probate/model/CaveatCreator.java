@@ -1,41 +1,38 @@
 package uk.gov.hmcts.reform.probate.model;
 
-import com.google.common.collect.Lists;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
+import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
-import uk.gov.hmcts.reform.probate.model.cases.caveat.Caveat;
-import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
+import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class CaveatCreator {
 
-    public static Caveat createCaveatCase() {
+    public static CaveatData createCaveatCase() {
 
-        Caveat caveat = new Caveat();
+        CaveatData caveatData = new CaveatData();
 
-        caveat.setCaveatorAddress(getAddress("caveator"));
-        caveat.setCaveatorEmailAddress("caveator@email.com");
-        caveat.setCaveatorForenames("caveator forename");
-        caveat.setCaveatorSurname("caveator surname");
+        caveatData.setCaveatorAddress(getAddress("caveator"));
+        caveatData.setCaveatorEmailAddress("caveator@email.com");
+        caveatData.setCaveatorForenames("caveator forename");
+        caveatData.setCaveatorSurname("caveator surname");
 
-        caveat.setDeceasedAddress(getAddress("deceased"));
-        caveat.setDeceasedAnyOtherNames(true);
-        CollectionMember<AliasOtherNames> aliasNameCollectionMember = new CollectionMember<>();
-        AliasOtherNames aon = new AliasOtherNames();
-        aon.setFirstName("deceased other firstname");
-        aon.setLastName("deceased other lastname");
-        aliasNameCollectionMember.setValue(aon);
-        caveat.setDeceasedFullAliasNameList(Lists.newArrayList(aliasNameCollectionMember));
-        caveat.setDeceasedDateOfBirth(LocalDate.of(1966, 3, 4));
-        caveat.setDeceasedDateOfDeath(LocalDate.of(2018, 11, 20));
-        caveat.setDeceasedForenames("deceased forename");
-        caveat.setDeceasedSurname("deceased surname");
-        caveat.setRegistryLocation(RegistryLocation.OXFORD);
-        caveat.setExpiryDate(LocalDate.of(2019, 2, 14));
+        caveatData.setDeceasedAddress(getAddress("deceased"));
+        caveatData.setDeceasedAnyOtherNames(true);
+        CollectionMember<FullAliasName> fullAliasNameCollectionMember = new CollectionMember<>();
+        fullAliasNameCollectionMember.setValue(FullAliasName.builder().fullAliasName("fullAliasName").build());
+        caveatData.setDeceasedFullAliasNameList(Arrays.asList(fullAliasNameCollectionMember));
+        caveatData.setDeceasedDateOfBirth(LocalDate.of(1966, 3, 4));
+        caveatData.setDeceasedDateOfDeath(LocalDate.of(2018, 11, 20));
+        caveatData.setDeceasedForenames("deceased forename");
+        caveatData.setDeceasedSurname("deceased surname");
+        caveatData.setRegistryLocation(RegistryLocation.OXFORD);
+        caveatData.setExpiryDate(LocalDate.of(2019, 2, 14));
 
-        return caveat;
+        return caveatData;
 
     }
 

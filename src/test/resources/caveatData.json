@@ -1,6 +1,6 @@
 {
   "type": "Caveat",
-  "registryLocation": "OXFORD",
+  "registryLocation": "Oxford",
   "deceasedForenames": "deceased forename",
   "deceasedSurname": "deceased surname",
   "deceasedDateOfDeath": "2018-11-20",
@@ -9,8 +9,7 @@
   "deceasedFullAliasNameList": [
     {
       "value": {
-        "firstName": "deceased other firstname",
-        "lastName": "deceased other lastname"
+        "FullAliasName": "fullAliasName"
       }
     }
   ],
