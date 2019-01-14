@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentationData;
 
+import java.util.List;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -30,6 +32,17 @@ public class CaseTypeTest {
     }
 
     public class RandomCaseData extends CaseData {
+
+
+        @Override
+        public List<CollectionMember<CasePayment>> getPayments() {
+            return null;
+        }
+
+        @Override
+        public void setPayments(List<CollectionMember<CasePayment>> payments) {
+
+        }
     }
 
 }

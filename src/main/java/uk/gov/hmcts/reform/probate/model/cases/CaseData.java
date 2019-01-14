@@ -12,6 +12,8 @@ import uk.gov.hmcts.reform.probate.model.cases.standingsearch.StandingSearchData
 import uk.gov.hmcts.reform.probate.model.cases.willlodgement.WillLodgementData;
 import uk.gov.hmcts.reform.probate.model.validation.AtLeastOneNonEmptyField;
 
+import java.util.List;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "CaseData", description = "Abstract base model for all case types", discriminator = "type",
         subTypes = {GrantOfRepresentationData.class, CaveatData.class})
@@ -28,4 +30,7 @@ import uk.gov.hmcts.reform.probate.model.validation.AtLeastOneNonEmptyField;
 @AtLeastOneNonEmptyField
 public abstract class CaseData {
 
+    public abstract List<CollectionMember<CasePayment>> getPayments();
+
+    public abstract void setPayments(List<CollectionMember<CasePayment>> payments);
 }

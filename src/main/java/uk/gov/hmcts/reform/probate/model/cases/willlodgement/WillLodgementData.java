@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
+import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.Gender;
@@ -38,7 +39,7 @@ public class WillLodgementData extends CaseData {
     private ApplicationType applicationType;
 
     private RegistryLocation registryLocation;
-    
+
     private LodgementType lodgementType;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -92,5 +93,7 @@ public class WillLodgementData extends CaseData {
     private String deceasedEmailAddress;
 
     private List<CollectionMember<WillExecutor>> willExecutorList;
+
+    private List<CollectionMember<CasePayment>> payments;
 
 }

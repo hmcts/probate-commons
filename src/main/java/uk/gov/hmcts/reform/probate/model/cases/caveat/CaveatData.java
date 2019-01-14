@@ -14,6 +14,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
+import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
@@ -92,5 +93,7 @@ public class CaveatData extends CaseData {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate expiryDate;
+
+    private List<CollectionMember<CasePayment>> payments;
 
 }

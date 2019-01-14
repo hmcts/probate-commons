@@ -17,6 +17,7 @@ import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CaseMatch;
+import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
@@ -57,7 +58,7 @@ public class StandingSearchData extends CaseData {
     private String deceasedAnyOtherNames;
 
     private List<CollectionMember<FullAliasName>> deceasedFullAliasNameList;
-    
+
     private Address deceasedAddress;
 
     private String applicantNameSection;
@@ -81,4 +82,7 @@ public class StandingSearchData extends CaseData {
     private List<CollectionMember<CaseMatch>> caseMatches;
 
     private List<CollectionMember<UploadDocument>> documentsUploaded;
+
+    private List<CollectionMember<CasePayment>> payments;
+
 }
