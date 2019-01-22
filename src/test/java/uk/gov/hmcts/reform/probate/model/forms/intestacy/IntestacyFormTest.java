@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
-import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
@@ -50,7 +49,7 @@ public class IntestacyFormTest {
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
 
         intestacyForm = new IntestacyForm();
-        intestacyForm.setType(ProbateType.INTESTACY);
+        //intestacyForm.setType(ProbateType.INTESTACY);
         intestacyForm.setUploadDocumentUrl("http://document-management/document/12345");
 
         IntestacyApplicant intestacyApplicant = new IntestacyApplicant();
