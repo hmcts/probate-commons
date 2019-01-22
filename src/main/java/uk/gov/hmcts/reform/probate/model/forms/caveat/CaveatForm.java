@@ -26,7 +26,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@JsonTypeName(ProbateType.Constants.CAVEAT_NAME)
 public class CaveatForm extends Form {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";

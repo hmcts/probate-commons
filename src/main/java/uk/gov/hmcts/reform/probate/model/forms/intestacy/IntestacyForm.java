@@ -18,7 +18,6 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-@JsonTypeName(ProbateType.Constants.INTESTACY_NAME)
 public class IntestacyForm extends Form {
 
     private IntestacyDeceased deceased;

@@ -49,7 +49,6 @@ public class IntestacyFormTest {
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
 
         intestacyForm = new IntestacyForm();
-        //intestacyForm.setType(ProbateType.INTESTACY);
         intestacyForm.setUploadDocumentUrl("http://document-management/document/12345");
 
         IntestacyApplicant intestacyApplicant = new IntestacyApplicant();
