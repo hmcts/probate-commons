@@ -11,6 +11,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
@@ -23,20 +24,10 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-public class CaveatForm extends Form {
+@EqualsAndHashCode(callSuper = true)
+public class CaveatForm extends Form<CaveatDeceased, CaveatApplicant> {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
-
-    private CaveatDeceased deceased;
-
-    private CaveatApplicant applicant;
-
-    private Registry registry;
-
-    private CcdCase ccdCase;
-
-    private List<Payment> payments;
 
     @ApiModelProperty(value = "expiry date of caveat")
     @JsonDeserialize(using = LocalDateDeserializer.class)
@@ -46,12 +37,9 @@ public class CaveatForm extends Form {
     private LocalDate expiryDate;
 
     @Builder
-    public CaveatForm(CaveatDeceased deceased, CaveatApplicant applicant,
+    public CaveatForm(ProbateType type, CaveatDeceased deceased, CaveatApplicant applicant,
                       Registry registry, CcdCase ccdCase, List<Payment> payments, LocalDate expiryDate) {
-        this.deceased = deceased;
-        this.applicant = applicant;
-        this.registry = registry;
-        this.ccdCase = ccdCase;
+        super(type, deceased, applicant, registry, ccdCase, payments);
         this.expiryDate = expiryDate;
     }
 

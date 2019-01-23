@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
+import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
@@ -42,6 +43,7 @@ public class CaveatFormTest {
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
 
         caveatForm = new CaveatForm();
+        caveatForm.setType(ProbateType.CAVEAT);
 
         CaveatApplicant caveatApplicant = new CaveatApplicant();
         caveatApplicant.setFreeTextAddress("Pret a Manger St. Georges Hospital Blackshaw Road");

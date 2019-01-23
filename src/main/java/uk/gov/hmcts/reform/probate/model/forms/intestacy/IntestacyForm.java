@@ -1,9 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
@@ -14,19 +12,13 @@ import uk.gov.hmcts.reform.probate.model.forms.Registry;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public class IntestacyForm extends Form {
-
-    private IntestacyDeceased deceased;
-
-    private IntestacyApplicant applicant;
+public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private IntestacyDeclaration declaration;
 
     private String uploadDocumentUrl;
-
-    private List<Payment> payments;
 
     private Copies copies;
 
@@ -34,24 +26,18 @@ public class IntestacyForm extends Form {
 
     private InheritanceTax iht;
 
-    private Registry registry;
-
-    private CcdCase ccdCase;
-
     @Builder
-    public IntestacyForm(IntestacyDeceased deceased, IntestacyApplicant applicant,
+    public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          IntestacyDeclaration declaration, String uploadDocumentUrl, Registry registry,
                          CcdCase ccdCase, List<Payment> payments, Copies copies, IntestacyAssets assets,
                          InheritanceTax iht) {
-        this.deceased = deceased;
-        this.applicant = applicant;
+
+        super(type, deceased, applicant, registry, ccdCase, payments);
         this.declaration = declaration;
         this.uploadDocumentUrl = uploadDocumentUrl;
-        this.registry = registry;
-        this.ccdCase = ccdCase;
-        this.payments = payments;
         this.copies = copies;
         this.assets = assets;
         this.iht = iht;
     }
+
 }
