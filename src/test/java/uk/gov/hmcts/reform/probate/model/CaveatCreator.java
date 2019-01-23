@@ -1,6 +1,10 @@
 package uk.gov.hmcts.reform.probate.model;
 
-import uk.gov.hmcts.reform.probate.model.cases.*;
+import uk.gov.hmcts.reform.probate.model.cases.Address;
+import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
+import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
+import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
+import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
 
 import java.time.LocalDate;
