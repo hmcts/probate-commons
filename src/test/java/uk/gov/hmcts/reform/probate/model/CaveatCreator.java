@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.probate.model;
 
 import uk.gov.hmcts.reform.probate.model.cases.Address;
+import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
@@ -14,6 +15,7 @@ public class CaveatCreator {
     public static CaveatData createCaveatCase() {
 
         CaveatData caveatData = new CaveatData();
+        caveatData.setApplicationType(ApplicationType.PERSONAL);
 
         caveatData.setCaveatorAddress(getAddress("caveator"));
         caveatData.setCaveatorEmailAddress("caveator@email.com");
