@@ -1,27 +1,68 @@
 package uk.gov.hmcts.reform.probate.model.forms.caveat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.YesNo;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.Deceased;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
 import java.time.LocalDate;
 import java.util.Map;
 
 @Data
+@Builder
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class CaveatDeceased extends Deceased {
 
-    @Builder
-    public CaveatDeceased(String firstName, String lastName, LocalDate dateOfBirth, LocalDate dateOfDeath,
-                          Boolean addressFound, String address, String freeTextAddress, Boolean alias,
-                          Map<String, AliasOtherNames> otherNames, String postCode) {
-        super(firstName, lastName, dateOfBirth, dateOfDeath, addressFound, address,
-                freeTextAddress, alias, otherNames, postCode);
-    }
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
+
+    private String firstName;
+
+    private String lastName;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    @JsonProperty(value = "dob_date")
+    private LocalDate dateOfBirth;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    @JsonProperty(value = "dod_date")
+    private LocalDate dateOfDeath;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean addressFound;
+
+    private String address;
+
+    private String freeTextAddress;
+
+    @ApiModelProperty(value = "Does the deceased have an alias?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean alias;
+
+    private Map<String, AliasOtherNames> otherNames;
+
+    private String postCode;
+
 }
 
 

@@ -1,8 +1,13 @@
 package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,9 +25,46 @@ import java.util.Map;
 
 
 @Data
+@Builder
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class IntestacyDeceased extends Deceased {
+
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
+
+    private String firstName;
+
+    private String lastName;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    @JsonProperty(value = "dob_date")
+    private LocalDate dateOfBirth;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    @JsonProperty(value = "dod_date")
+    private LocalDate dateOfDeath;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean addressFound;
+
+    private String address;
+
+    private String freeTextAddress;
+
+    @ApiModelProperty(value = "Does the deceased have an alias?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean alias;
+
+    private Map<String, AliasOtherNames> otherNames;
+
+    private String postCode;
 
     @ApiModelProperty(value = "Deceased marital status")
     private MaritalStatus maritalStatus;
@@ -69,24 +111,4 @@ public class IntestacyDeceased extends Deceased {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean anyChildren;
 
-    @Builder
-    public IntestacyDeceased(String firstName, String lastName, Boolean domiciledInEnglandOrWales,
-                             LocalDate dateOfBirth, LocalDate dateOfDeath, Boolean addressFound, String address,
-                             String freeTextAddress, Boolean alias, Map<String, AliasOtherNames> otherNames,
-                             MaritalStatus maritalStatus, Boolean divorcedInEnglandOrWales,
-                             SpouseNotApplyingReason spouseNotApplyingReason, Boolean otherChildren,
-                             Boolean allDeceasedChildrenOverEighteen, Boolean anyDeceasedChildrenDieBeforeDeceased,
-                             Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren, String postCode) {
-        super(firstName, lastName, dateOfBirth, dateOfDeath, addressFound, address,
-                freeTextAddress, alias, otherNames, postCode);
-        this.maritalStatus = maritalStatus;
-        this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
-        this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;
-        this.spouseNotApplyingReason = spouseNotApplyingReason;
-        this.otherChildren = otherChildren;
-        this.allDeceasedChildrenOverEighteen = allDeceasedChildrenOverEighteen;
-        this.anyDeceasedChildrenDieBeforeDeceased = anyDeceasedChildrenDieBeforeDeceased;
-        this.anyDeceasedGrandchildrenUnderEighteen = anyDeceasedGrandchildrenUnderEighteen;
-        this.anyChildren = anyChildren;
-    }
 }
