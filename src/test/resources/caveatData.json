@@ -1,5 +1,6 @@
 {
   "type": "Caveat",
+  "applicationType": "Personal",
   "registryLocation": "Oxford",
   "deceasedForenames": "deceased forename",
   "deceasedSurname": "deceased surname",

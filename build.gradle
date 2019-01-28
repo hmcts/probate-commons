@@ -9,7 +9,7 @@ plugins {
 }
 
 group 'uk.gov.hmcts.reform.probate'
-version '0.0.10'
+version '0.0.12'
 
 checkstyle {
     maxWarnings = 0
@@ -154,7 +154,10 @@ wrapper {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnit()
+    testLogging {
+        events "skipped", "failed"
+    }
 }
 
 jar {

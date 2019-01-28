@@ -22,7 +22,7 @@ public class GrantOfRepresentationCreator {
     public static GrantOfRepresentationData createIntestacyCase() {
         GrantOfRepresentationData grantOfRepresentationData = new GrantOfRepresentationData();
         grantOfRepresentationData.setApplicationType(ApplicationType.PERSONAL);
-        grantOfRepresentationData.setCaseType(GrantType.INTESTACY);
+        grantOfRepresentationData.setGrantType(GrantType.INTESTACY);
         grantOfRepresentationData.setPrimaryApplicantEmailAddress("jon.snow@thenorth.com");
         grantOfRepresentationData.setPrimaryApplicantForenames("Jon");
         grantOfRepresentationData.setPrimaryApplicantSurname("Snow");
@@ -31,7 +31,7 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setPrimaryApplicantAddress(primaryApplicantAddress);
         grantOfRepresentationData.setPrimaryApplicantAddressFound(true);
         grantOfRepresentationData
-                .setPrimaryApplicantFreeTextAddress("Pret a Manger St. Georges Hospital Blackshaw Road");
+            .setPrimaryApplicantFreeTextAddress("Pret a Manger St. Georges Hospital Blackshaw Road");
         grantOfRepresentationData.setPrimaryApplicantPhoneNumber("123455678");
         grantOfRepresentationData.setPrimaryApplicantRelationshipToDeceased(Relationship.ADOPTED_CHILD);
         grantOfRepresentationData.setPrimaryApplicantAdoptionInEnglandOrWales(true);

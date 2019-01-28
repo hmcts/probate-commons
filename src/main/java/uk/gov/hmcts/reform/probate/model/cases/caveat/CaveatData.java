@@ -13,6 +13,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
+import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
@@ -95,5 +96,8 @@ public class CaveatData extends CaseData {
     private LocalDate expiryDate;
 
     private List<CollectionMember<CasePayment>> payments;
+
+    @NotNull
+    private ApplicationType applicationType;
 
 }

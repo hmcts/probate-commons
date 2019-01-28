@@ -28,10 +28,6 @@ public abstract class Deceased {
 
     private String lastName;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean domiciledInEnglandOrWales;
-
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
