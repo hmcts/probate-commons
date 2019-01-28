@@ -1,30 +1,28 @@
 {
   "type": "Caveat",
+  "deceased": {
+    "firstName": "Ned",
+    "lastName": "Stark",
+    "address": {
+      "addressLine1": "Winterfell, Westeros"
+    },
+    "otherNames": {
+      "name_0": {
+        "firstName": "King",
+        "lastName": "North"
+      }
+    },
+    "dob_date": "1930-01-01",
+    "dod_date": "2018-01-01"
+  },
   "applicant": {
     "email": "jon.snow@thenorth.com",
     "firstName": "Jon",
     "lastName": "Snow",
-    "address": "Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT",
-    "postCode": "SW17 0QT",
-    "phoneNumber": "123455678",
-    "addressFound": "Yes",
-    "freeTextAddress": "Pret a Manger St. Georges Hospital Blackshaw Road"
-  },
-  "deceased": {
-    "firstName": "Ned",
-    "lastName": "Stark",
-    "dob_date": "1930-01-01",
-    "dod_date": "2018-01-01",
-    "address": "Winterfell, Westeros",
-    "addressFound": "Yes",
-    "postCode": "SW17 0QT",
-    "freeTextAddress": "Winterfell, Westeros",
-    "alias": "Yes",
-    "otherNames": {
-      "name_0": {
-        "lastName": "North",
-        "firstName": "King"
-      }
+    "address": {
+      "addressLine1": "156 Blackshaw Road",
+      "postTown": "London",
+      "postCode": "SW17 0QT"
     }
   },
   "ccdCase": {
@@ -32,10 +30,7 @@
     "state": "CaseCreated"
   },
   "registry": {
-    "name": "Birmingham",
-    "email": "birmingham@email.com",
-    "address": "Line 1 Bham\nLine 2 Bham\nLine 3 Bham\nPostCode Bham",
-    "sequenceNumber": 20075
+    "name": "Birmingham"
   },
   "expiryDate": "2020-02-02",
   "payments": [

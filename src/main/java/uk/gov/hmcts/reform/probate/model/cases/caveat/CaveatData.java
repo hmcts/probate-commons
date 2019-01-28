@@ -19,8 +19,6 @@ import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.AssertExpression;
 import uk.gov.hmcts.reform.probate.model.validation.groups.SubmissionGroup;
 
@@ -39,8 +37,6 @@ import javax.validation.constraints.Size;
 @Builder
 @EqualsAndHashCode(callSuper = false)
 @AssertExpression(value = "deceasedDateOfBirth.isBefore(deceasedDateOfDeath)", groups = SubmissionGroup.class)
-@AssertExpression(value = "!(#isTrue(deceasedAnyOtherNames) && #isEmpty(deceasedFullAliasNameList))",
-        groups = SubmissionGroup.class)
 public class CaveatData extends CaseData {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
@@ -65,11 +61,6 @@ public class CaveatData extends CaseData {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate deceasedDateOfBirth;
-
-    @NotNull
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean deceasedAnyOtherNames;
 
     private List<CollectionMember<FullAliasName>> deceasedFullAliasNameList;
 

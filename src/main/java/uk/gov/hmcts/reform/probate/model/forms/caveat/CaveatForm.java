@@ -24,7 +24,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class CaveatForm extends Form<CaveatDeceased, CaveatApplicant> {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";

@@ -13,15 +13,20 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Registry {
+public class Address {
 
     @NotNull
-    private String name;
+    private String addressLine1;
 
-    private String email;
+    private String addressLine2;
 
-    private String address;
+    private String addressLine3;
 
-    private Long sequenceNumber;
+    private String county;
 
+    private String postTown;
+
+    private String postCode;
+
+    private String country;
 }
