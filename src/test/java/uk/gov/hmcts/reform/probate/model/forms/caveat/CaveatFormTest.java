@@ -10,6 +10,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
@@ -46,14 +47,15 @@ public class CaveatFormTest {
         caveatForm.setType(ProbateType.CAVEAT);
 
         CaveatApplicant caveatApplicant = new CaveatApplicant();
-        caveatApplicant.setFreeTextAddress("Pret a Manger St. Georges Hospital Blackshaw Road");
-        caveatApplicant.setAddressFound(true);
         caveatApplicant.setEmail("jon.snow@thenorth.com");
         caveatApplicant.setFirstName("Jon");
         caveatApplicant.setLastName("Snow");
-        caveatApplicant.setAddress("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT");
-        caveatApplicant.setPostCode("SW17 0QT");
-        caveatApplicant.setPhoneNumber("123455678");
+        Address caveatAddress = Address.builder()
+                .addressLine1("156 Blackshaw Road")
+                .postTown("London")
+                .postCode("SW17 0QT")
+                .build();
+        caveatApplicant.setAddress(caveatAddress);
         caveatForm.setApplicant(caveatApplicant);
 
         CaveatDeceased caveatDeceased = new CaveatDeceased();
@@ -61,12 +63,10 @@ public class CaveatFormTest {
         caveatDeceased.setLastName("Stark");
         caveatDeceased.setDateOfBirth(LocalDate.of(1930, 1, 1));
         caveatDeceased.setDateOfDeath(LocalDate.of(2018, 1, 1));
-        caveatDeceased.setAddress("Winterfell, Westeros");
-        caveatDeceased.setAddressFound(false);
-        caveatDeceased.setFreeTextAddress("Winterfell, Westeros");
-        caveatDeceased.setAddressFound(true);
-        caveatDeceased.setPostCode("SW17 0QT");
-        caveatDeceased.setAlias(true);
+        Address deceasedAddress = Address.builder()
+                .addressLine1("Winterfell, Westeros")
+                .build();
+        caveatDeceased.setAddress(deceasedAddress);
         AliasOtherNames aliasOtherNames = new AliasOtherNames();
         aliasOtherNames.setFirstName("King");
         aliasOtherNames.setLastName("North");
@@ -82,9 +82,6 @@ public class CaveatFormTest {
 
         Registry registry = new Registry();
         registry.setName("Birmingham");
-        registry.setEmail("birmingham@email.com");
-        registry.setAddress("Line 1 Bham\nLine 2 Bham\nLine 3 Bham\nPostCode Bham");
-        registry.setSequenceNumber(20075L);
         caveatForm.setRegistry(registry);
 
         Payment payment = new Payment();
@@ -102,14 +99,14 @@ public class CaveatFormTest {
     }
 
     @Test
-    public void shouldDeserializeIntestacyFormCorrectly() throws IOException {
+    public void shouldDeserializeCaveatFormCorrectly() throws IOException {
         Form form = objectMapper.readValue(formJsonFromFile, Form.class);
 
         assertThat(form, is(equalTo(caveatForm)));
     }
 
     @Test
-    public void shouldSerializeIntestacyFormCorrectly() throws IOException, JSONException {
+    public void shouldSerializeCaveatFormCorrectly() throws IOException, JSONException {
         String caveatFormAsJsonStr = objectMapper.writeValueAsString(caveatForm);
 
         JSONAssert.assertEquals(formJsonFromFile, caveatFormAsJsonStr, true);
