@@ -23,7 +23,6 @@ public class CaveatCreator {
         caveatData.setCaveatorSurname("caveator surname");
 
         caveatData.setDeceasedAddress(getAddress("deceased"));
-        caveatData.setDeceasedAnyOtherNames(true);
         CollectionMember<FullAliasName> fullAliasNameCollectionMember = new CollectionMember<>();
         fullAliasNameCollectionMember.setValue(FullAliasName.builder().fullAliasName("fullAliasName").build());
         caveatData.setDeceasedFullAliasNameList(Arrays.asList(fullAliasNameCollectionMember));

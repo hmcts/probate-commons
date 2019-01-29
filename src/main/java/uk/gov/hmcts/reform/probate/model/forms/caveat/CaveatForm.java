@@ -16,15 +16,13 @@ import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
-import uk.gov.hmcts.reform.probate.model.forms.caveat.CaveatApplicant;
-import uk.gov.hmcts.reform.probate.model.forms.caveat.CaveatDeceased;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class CaveatForm extends Form<CaveatDeceased, CaveatApplicant> {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
