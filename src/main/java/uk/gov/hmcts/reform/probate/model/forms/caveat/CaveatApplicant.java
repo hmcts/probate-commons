@@ -1,19 +1,31 @@
 package uk.gov.hmcts.reform.probate.model.forms.caveat;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.Applicant;
 
+import javax.validation.constraints.NotNull;
+
 @Data
+@Builder
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class CaveatApplicant extends Applicant {
 
-    @Builder
-    public CaveatApplicant(String email, String firstName, String lastName, String postCode,
-                              String phoneNumber, String address, Boolean addressFound, String freeTextAddress) {
-        super(email, firstName, lastName, postCode, phoneNumber, address, addressFound, freeTextAddress);
-    }
+    @NotNull
+    private String email;
+
+    @NotNull
+    private String firstName;
+
+    @NotNull
+    private String lastName;
+
+    private Address address;
+
 }
