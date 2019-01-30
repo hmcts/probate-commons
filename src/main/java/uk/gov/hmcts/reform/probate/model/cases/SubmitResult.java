@@ -14,5 +14,5 @@ public class SubmitResult {
 
     private ProbateCaseDetails probateCaseDetails;
 
-    private ValidatorResults validatorResults;
+    private final ValidatorResults validatorResults = new ValidatorResults();
 }
