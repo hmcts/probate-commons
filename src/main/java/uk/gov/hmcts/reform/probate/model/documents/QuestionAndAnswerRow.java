@@ -2,11 +2,11 @@ package uk.gov.hmcts.reform.probate.model.documents;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.validation.constraints.NotBlank;
 
 public class QuestionAndAnswerRow implements Serializable {
 
