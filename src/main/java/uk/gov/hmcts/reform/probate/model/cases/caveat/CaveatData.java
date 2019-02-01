@@ -40,11 +40,11 @@ public class CaveatData extends CaseData {
     private RegistryLocation registryLocation;
 
     @NotNull
-    @Size(min = 2, groups = SubmissionGroup.class)
+    @Size(min = 2)
     private String deceasedForenames;
 
     @NotNull
-    @Size(min = 2, groups = SubmissionGroup.class)
+    @Size(min = 2)
     private String deceasedSurname;
 
     @NotNull
@@ -63,11 +63,11 @@ public class CaveatData extends CaseData {
     private Address deceasedAddress;
 
     @NotNull
-    @Size(min = 2, groups = SubmissionGroup.class)
+    @Size(min = 2)
     private String caveatorForenames;
 
     @NotNull
-    @Size(min = 2, groups = SubmissionGroup.class)
+    @Size(min = 2)
     private String caveatorSurname;
 
     @NotNull
