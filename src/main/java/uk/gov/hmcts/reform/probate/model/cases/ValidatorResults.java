@@ -14,8 +14,4 @@ public class ValidatorResults {
 
     private final List<String> validationMessages = new ArrayList<>();
 
-    public boolean isValid() {
-        return validationMessages.isEmpty();
-    }
-
 }

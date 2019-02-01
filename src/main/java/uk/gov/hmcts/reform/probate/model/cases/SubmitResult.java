@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Optional;
+
 
 @Data
 @AllArgsConstructor
@@ -14,5 +16,17 @@ public class SubmitResult {
 
     private ProbateCaseDetails probateCaseDetails;
 
-    private final ValidatorResults validatorResults = new ValidatorResults();
+    private ValidatorResults validatorResults;
+
+    public Optional<ValidatorResults> getValidatorResults() {
+        return Optional.ofNullable(validatorResults);
+    }
+
+    public boolean isValid() {
+
+        if (getValidatorResults().isPresent()) {
+            return getValidatorResults().get().getValidationMessages().isEmpty();
+        }
+        return true;
+    }
 }
