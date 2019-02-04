@@ -16,8 +16,6 @@ import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
-import uk.gov.hmcts.reform.probate.model.forms.caveat.CaveatApplicant;
-import uk.gov.hmcts.reform.probate.model.forms.caveat.CaveatDeceased;
 
 import java.time.LocalDate;
 import java.util.List;

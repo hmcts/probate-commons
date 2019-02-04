@@ -27,8 +27,6 @@ public class CaveatDataValidationTest {
 
     private static final String MIN_CHARS = "size must be between 2 and 2147483647";
     private static final String NULL_VALIDATION = "must not be null";
-    private static final String DOD_IS_BEFORE_DECEASED_DOB =
-            "deceasedDateOfBirth.isBefore(deceasedDateOfDeath) is false";
 
     @Before
     public void setUp() {
@@ -74,16 +72,6 @@ public class CaveatDataValidationTest {
         violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(1));
         assertThat(violations.iterator().next().getMessage(), is(equalTo(NULL_VALIDATION)));
-    }
-
-    @Test
-    public void shouldEnsureThatDeceasedDateOfDeathIsNotBeforeDateOfBirth() {
-        Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
-        assertThat(violations, Matchers.hasSize(0));
-        caveatData.setDeceasedDateOfDeath(dod);
-        violations = executeCaveatValidator();
-        assertThat(violations, Matchers.hasSize(1));
-        assertThat(violations.iterator().next().getMessage(), is(equalTo(DOD_IS_BEFORE_DECEASED_DOB)));
     }
 
     @Test

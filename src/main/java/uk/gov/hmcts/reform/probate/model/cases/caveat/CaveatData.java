@@ -19,16 +19,12 @@ import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
-import uk.gov.hmcts.reform.probate.model.validation.AssertExpression;
-import uk.gov.hmcts.reform.probate.model.validation.groups.SubmissionGroup;
 
 import java.time.LocalDate;
 import java.util.List;
-import javax.validation.GroupSequence;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@GroupSequence({CaveatData.class, SubmissionGroup.class})
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "Caveat", parent = CaseData.class)
 @Data
@@ -36,7 +32,6 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = false)
-@AssertExpression(value = "deceasedDateOfBirth.isBefore(deceasedDateOfDeath)", groups = SubmissionGroup.class)
 public class CaveatData extends CaseData {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
@@ -44,11 +39,11 @@ public class CaveatData extends CaseData {
     private RegistryLocation registryLocation;
 
     @NotNull
-    @Size(min = 2, groups = SubmissionGroup.class)
+    @Size(min = 2)
     private String deceasedForenames;
 
     @NotNull
-    @Size(min = 2, groups = SubmissionGroup.class)
+    @Size(min = 2)
     private String deceasedSurname;
 
     @NotNull
@@ -67,11 +62,11 @@ public class CaveatData extends CaseData {
     private Address deceasedAddress;
 
     @NotNull
-    @Size(min = 2, groups = SubmissionGroup.class)
+    @Size(min = 2)
     private String caveatorForenames;
 
     @NotNull
-    @Size(min = 2, groups = SubmissionGroup.class)
+    @Size(min = 2)
     private String caveatorSurname;
 
     @NotNull
