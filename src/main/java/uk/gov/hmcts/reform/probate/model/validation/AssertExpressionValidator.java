@@ -10,9 +10,9 @@ import org.springframework.util.CollectionUtils;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 
+import java.util.Collection;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.util.Collection;
 
 public class AssertExpressionValidator implements ConstraintValidator<AssertExpression, Object> {
 

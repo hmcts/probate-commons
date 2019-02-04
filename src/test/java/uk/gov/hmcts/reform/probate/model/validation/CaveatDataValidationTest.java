@@ -6,12 +6,12 @@ import org.junit.Test;
 import uk.gov.hmcts.reform.probate.model.CaveatCreator;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
 
+import java.time.LocalDate;
+import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.groups.Default;
-import java.time.LocalDate;
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
