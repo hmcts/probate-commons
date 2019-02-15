@@ -264,4 +264,9 @@ public class GrantOfRepresentationData extends CaseData {
 
     private List<CollectionMember<CasePayment>> payments;
 
+    private String legacyId;
+
+    private String legacyType;
+
+    private String legacyCaseViewUrl;
 }

@@ -92,6 +92,10 @@ public class GrantOfRepresentationCreator {
         paymentCollectionMember.setValue(payment);
         grantOfRepresentationData.setPayments(Lists.newArrayList(paymentCollectionMember));
         grantOfRepresentationData.setUploadDocumentUrl("http://document-management/document/12345");
+
+        grantOfRepresentationData.setLegacyId("123456");
+        grantOfRepresentationData.setLegacyType("Legacy LEGACY GRANT");
+        grantOfRepresentationData.setLegacyCaseViewUrl("http://locahost:8080/cases/1");
         return grantOfRepresentationData;
     }
 
