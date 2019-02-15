@@ -65,5 +65,8 @@
       }
     }
   ],
-  "uploadDocumentUrl": "http://document-management/document/12345"
+  "uploadDocumentUrl": "http://document-management/document/12345",
+  "legacyId": "123456",
+  "legacyType": "Legacy LEGACY GRANT",
+  "legacyCaseViewUrl": "http://locahost:8080/cases/1"
 }
