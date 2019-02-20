@@ -96,6 +96,19 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setLegacyId("123456");
         grantOfRepresentationData.setLegacyType("Legacy LEGACY GRANT");
         grantOfRepresentationData.setLegacyCaseViewUrl("http://locahost:8080/cases/1");
+
+        Address solicitorAddress = Address.builder()
+                .addressLine1("Sol Address Line 1")
+                .addressLine2("Sol Address Line 2")
+                .addressLine3("Sol Address Line 3")
+                .country("UK")
+                .county("Middlesex")
+                .postCode("HA1 4ET")
+                .postTown("Harrow")
+                .build();
+        grantOfRepresentationData.setSolsSolicitorAddress(solicitorAddress);
+        grantOfRepresentationData.setSolsSolicitorAppReference("Solicitor Application Reference");
+
         return grantOfRepresentationData;
     }
 

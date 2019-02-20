@@ -68,5 +68,15 @@
   "uploadDocumentUrl": "http://document-management/document/12345",
   "legacyId": "123456",
   "legacyType": "Legacy LEGACY GRANT",
-  "legacyCaseViewUrl": "http://locahost:8080/cases/1"
+  "legacyCaseViewUrl": "http://locahost:8080/cases/1",
+  "solsSolicitorAppReference" : "Solicitor Application Reference",
+  "solsSolicitorAddress" : {
+    "AddressLine1": "Sol Address Line 1",
+    "AddressLine2": "Sol Address Line 2",
+    "AddressLine3": "Sol Address Line 3",
+    "Country": "UK",
+    "County": "Middlesex",
+    "PostTown": "Harrow",
+    "PostCode": "HA1 4ET"
+  }
 }

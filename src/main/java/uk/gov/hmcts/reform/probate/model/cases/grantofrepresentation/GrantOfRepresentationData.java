@@ -269,4 +269,9 @@ public class GrantOfRepresentationData extends CaseData {
     private String legacyType;
 
     private String legacyCaseViewUrl;
+
+    //todo alignment with BO case data needed here
+    private String solsSolicitorAppReference;
+
+    private Address solsSolicitorAddress;
 }
