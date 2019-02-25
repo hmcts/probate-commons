@@ -86,6 +86,8 @@ public class CaveatData extends CaseData {
     @NotNull
     private ApplicationType applicationType;
 
+    private String recordId;
+
     private String legacyId;
 
     private String legacyType;

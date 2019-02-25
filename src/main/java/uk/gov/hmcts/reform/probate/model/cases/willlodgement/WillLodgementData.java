@@ -96,6 +96,8 @@ public class WillLodgementData extends CaseData {
 
     private List<CollectionMember<CasePayment>> payments;
 
+    private String recordId;
+
     private String legacyId;
 
     private String legacyType;
