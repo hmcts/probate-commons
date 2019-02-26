@@ -85,6 +85,17 @@ public class CaveatDataValidationTest {
     }
 
     @Test
+    public void shouldEnsureThatDeceasedAddressIsNotNull() {
+        Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
+        assertThat(violations, Matchers.hasSize(0));
+        caveatData.setDeceasedAddress(null);
+        violations = executeCaveatValidator();
+        assertThat(violations, Matchers.hasSize(1));
+        assertThat(violations.iterator().next().getMessage(), is(equalTo(NULL_VALIDATION)));
+    }
+
+
+    @Test
     public void shouldEnsureThatCaveatorFornamesIsLongerThan2Chars() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
