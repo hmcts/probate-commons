@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Arrays;
+
 import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.Constants.BIRMINGHAM_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.Constants.BRIGHTON_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.Constants.CARDIFF_NAME;
@@ -31,6 +33,14 @@ public enum RegistryLocation {
 
     @Getter
     private final String name;
+
+    public static RegistryLocation findRegistryLocationByName(String name) {
+        return Arrays.stream(RegistryLocation.values())
+                .filter(e -> e.name().equalsIgnoreCase(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(
+                        String.format("Unsupported RegistryLocation %s.", name)));
+    }
 
     public static class Constants {
 

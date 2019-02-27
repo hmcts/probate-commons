@@ -33,7 +33,6 @@ public class CaseTypeTest {
 
     public class RandomCaseData extends CaseData {
 
-
         @Override
         public List<CollectionMember<CasePayment>> getPayments() {
             return null;
@@ -41,6 +40,11 @@ public class CaseTypeTest {
 
         @Override
         public void setPayments(List<CollectionMember<CasePayment>> payments) {
+
+        }
+
+        @Override
+        public void setRegistryLocation(RegistryLocation registryLocation) {
 
         }
     }
