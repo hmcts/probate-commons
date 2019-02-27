@@ -59,6 +59,7 @@ public class CaveatData extends CaseData {
 
     private List<CollectionMember<FullAliasName>> deceasedFullAliasNameList;
 
+    @NotNull
     private Address deceasedAddress;
 
     @NotNull

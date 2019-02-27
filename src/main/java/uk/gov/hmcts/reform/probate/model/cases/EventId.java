@@ -12,7 +12,9 @@ public enum EventId {
     GOP_CREATE_CASE("createCase"),
     GOP_PAYMENT_FAILED("createCasePaymentFailed"),
     GOP_PAYMENT_FAILED_TO_SUCCESS("createCasePaymentSuccess"),
-    GOP_PAYMENT_FAILED_AGAIN("createCasePaymentFailedMultiple");
+    GOP_PAYMENT_FAILED_AGAIN("createCasePaymentFailedMultiple"),
+
+    CAVEAT_APPLY_FOR_CAVEAT("applyForCaveat");
 
     @Getter
     private final String name;
