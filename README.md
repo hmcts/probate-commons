@@ -41,6 +41,15 @@ To run all checks (including unit tests) please execute the following command:
 We use [SemVer](http://semver.org/) for versioning.
 For the versions available, see the tags on this repository.
 
+## Versioning
+- Update version number in build.gradle:
+version '0.0.17'
+- Locally get latest of master
+- Create tag:
+"git tag 0.0.17"
+- Push tags:
+"git push --tags"
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
