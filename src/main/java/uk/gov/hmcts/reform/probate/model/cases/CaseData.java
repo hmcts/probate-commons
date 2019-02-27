@@ -33,4 +33,6 @@ public abstract class CaseData {
     public abstract List<CollectionMember<CasePayment>> getPayments();
 
     public abstract void setPayments(List<CollectionMember<CasePayment>> payments);
+
+    public abstract void setRegistryLocation(RegistryLocation registryLocation);
 }
