@@ -1,0 +1,33 @@
+Index: Jenkinsfile_CNP
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Jenkinsfile_CNP	(revision 09aa80e3ea736c7116fca7b45aa0418b37fcdb56)
++++ Jenkinsfile_CNP	(date 1549739167000)
+@@ -37,6 +37,8 @@
+ withPipeline("java", product, component) {
+   setVaultName('probate')
+   env.PACT_BROKER_URL = "pact-broker.platform.hmcts.net"
++  env.pact.provider.version = getCheckedOutGitCommitHash()
++  env.pact.verifier.publishResults=true
+   loadVaultSecrets(secrets)
+   enableSlackNotifications('#probate-jenkins')
+   enableDockerBuild()
+@@ -45,7 +47,8 @@
+   after('test') {
+     try {
+        // sh './gradlew pitest'
+-      sh './gradlew pactTask --debug'
++      sh './gradlew pactTask'
++
+       archiveArtifacts 'build/reports/pact-report.html'
+ 
+       publishHTML target: [
+@@ -110,3 +113,6 @@
+       ]
+   }
+ }
++def getCheckedOutGitCommitHash() {
++  'git rev-parse --verify --short HEAD'.execute().text.trim()
++}
