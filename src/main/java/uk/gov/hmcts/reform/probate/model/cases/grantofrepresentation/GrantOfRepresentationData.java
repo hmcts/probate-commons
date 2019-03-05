@@ -276,4 +276,6 @@ public class GrantOfRepresentationData extends CaseData {
     private String solsSolicitorAppReference;
 
     private Address solsSolicitorAddress;
+
+    private String solsSolicitorFirmName;
 }
