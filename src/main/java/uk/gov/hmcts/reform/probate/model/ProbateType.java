@@ -8,14 +8,14 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseType;
 
 import static uk.gov.hmcts.reform.probate.model.ProbateType.Constants.CAVEAT_NAME;
 import static uk.gov.hmcts.reform.probate.model.ProbateType.Constants.INTESTACY_NAME;
-import static uk.gov.hmcts.reform.probate.model.ProbateType.Constants.PERSONAL_NAME;
+import static uk.gov.hmcts.reform.probate.model.ProbateType.Constants.PA_NAME;
 
 @ApiModel(value = "ProbateType", description = "Represents probate type")
 @RequiredArgsConstructor
 public enum ProbateType {
 
     @JsonProperty(INTESTACY_NAME) INTESTACY(INTESTACY_NAME, CaseType.GRANT_OF_REPRESENTATION),
-    @JsonProperty(PERSONAL_NAME) PERSONAL(PERSONAL_NAME, CaseType.GRANT_OF_REPRESENTATION),
+    @JsonProperty(PA_NAME) PA(PA_NAME, CaseType.GRANT_OF_REPRESENTATION),
     @JsonProperty(CAVEAT_NAME) CAVEAT(CAVEAT_NAME, CaseType.CAVEAT);
 
     @Getter
@@ -27,7 +27,7 @@ public enum ProbateType {
     public static class Constants {
 
         public static final String INTESTACY_NAME = "Intestacy";
-        public static final String PERSONAL_NAME = "Personal";
+        public static final String PA_NAME = "PA";
         public static final String CAVEAT_NAME = "Caveat";
 
         private Constants() {
