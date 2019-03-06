@@ -108,6 +108,7 @@ public class GrantOfRepresentationCreator {
                 .build();
         grantOfRepresentationData.setSolsSolicitorAddress(solicitorAddress);
         grantOfRepresentationData.setSolsSolicitorAppReference("Solicitor Application Reference");
+        grantOfRepresentationData.setSolsSolicitorFirmName("Solicitor Firm Name");
 
         return grantOfRepresentationData;
     }

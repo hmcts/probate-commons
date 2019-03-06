@@ -70,6 +70,7 @@
   "legacyType": "Legacy LEGACY GRANT",
   "legacyCaseViewUrl": "http://locahost:8080/cases/1",
   "solsSolicitorAppReference" : "Solicitor Application Reference",
+  "solsSolicitorFirmName" : "Solicitor Firm Name",
   "solsSolicitorAddress" : {
     "AddressLine1": "Sol Address Line 1",
     "AddressLine2": "Sol Address Line 2",
