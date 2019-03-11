@@ -27,6 +27,9 @@ public class Payment {
 
     private BigDecimal amount;
 
+    //Remove this after refactoring FE, use amount instead
+    private BigDecimal total;
+
     private String siteId;
 
     private PaymentStatus status;

@@ -11,17 +11,12 @@ import uk.gov.hmcts.reform.probate.model.forms.Applicant;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
-import javax.validation.constraints.NotNull;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = false)
 public class PaApplicant extends Applicant {
-
-    @NotNull
-    private String email;
 
     private String firstName;
 
@@ -32,6 +27,8 @@ public class PaApplicant extends Applicant {
     private String aliasReason;
 
     private String address;
+
+    private String postcode;
 
     private String phoneNumber;
 

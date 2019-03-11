@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.forms.pa;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Executor {
+
+    private String fullName;
 
     private String lastName;
 
@@ -17,5 +21,28 @@ public class Executor {
 
     private Boolean isApplying;
 
-    private Boolean isApplicant;
+    private Boolean hasOtherName;
+
+    private String currentName;
+
+    private String currentNameReason;
+
+    private String email;
+
+    private String mobile;
+
+    private String address;
+
+    private String freeTextAddress;
+
+    private String inviteId;
+
+    private Boolean emailSent;
+
+    private String notApplyingReason;
+
+    private String notApplyingKey;
+
+    private String otherReason;
+
 }

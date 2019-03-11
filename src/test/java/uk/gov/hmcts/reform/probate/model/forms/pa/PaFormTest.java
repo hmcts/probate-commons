@@ -46,6 +46,7 @@ public class PaFormTest {
 
         paForm = PaForm.builder()
                 .type(ProbateType.PA)
+                .applicantEmail("jon.snow.got1234@gmail.com")
                 .iht(InheritanceTax.builder()
                         .method(IhtMethod.ONLINE)
                         .netValue(new BigDecimal("20000"))
@@ -101,7 +102,6 @@ public class PaFormTest {
                 .applicant(PaApplicant.builder()
                         .alias("King of the North")
                         .aliasReason("Title Given")
-                        .email("jon.snow.got1234@gmail.com")
                         .address("The Wall, North, Westeros, GOT567")
                         .lastName("Snow")
                         .firstName("Jon")
@@ -114,7 +114,6 @@ public class PaFormTest {
                                         .lastName("Snow")
                                         .firstName("Jon")
                                         .isApplying(true)
-                                        .isApplicant(false)
                                         .build()
                         ))
                         .executorsNumber(1)

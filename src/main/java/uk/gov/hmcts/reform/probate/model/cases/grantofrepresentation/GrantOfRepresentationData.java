@@ -229,11 +229,9 @@ public class GrantOfRepresentationData extends CaseData {
 
     private Long numberOfExecutors;
 
-    @JsonProperty(value = "executorsApplying")
-    private List<CollectionMember<AdditionalExecutorApplying>> additionalExecutorsApplying;
+    private List<CollectionMember<ExecutorApplying>> executorsApplying;
 
-    @JsonProperty(value = "executorsNotApplying")
-    private List<CollectionMember<AdditionalExecutorNotApplying>> additionalExecutorsNotApplying;
+    private List<CollectionMember<ExecutorNotApplying>> executorsNotApplying;
 
     private String totalFee;
 
@@ -278,4 +276,8 @@ public class GrantOfRepresentationData extends CaseData {
     private Address solsSolicitorAddress;
 
     private String solsSolicitorFirmName;
+
+    // Will this be required if we remove submissionReference??
+    @SuppressWarnings({"AbbreviationAsWordInName"})
+    private Long applicationID;
 }
