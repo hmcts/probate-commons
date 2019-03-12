@@ -6,6 +6,7 @@
   "deceasedSurname": "deceased surname",
   "deceasedDateOfDeath": "2018-11-20",
   "deceasedDateOfBirth": "1966-03-04",
+  "deceasedAnyOtherNames" : "Yes",
   "deceasedFullAliasNameList": [
     {
       "value": {

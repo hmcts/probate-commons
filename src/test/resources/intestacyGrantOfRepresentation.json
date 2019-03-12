@@ -23,6 +23,13 @@
   "deceasedFreeTextAddress": "Winterfell, Westeros",
   "deceasedAddressFound": "Yes",
   "deceasedAnyOtherNames": "No",
+  "solsDeceasedAliasNameList": [
+    {
+      "value": {
+        "SolsAliasname": "King North"
+      }
+    }
+  ],
   "deceasedAliasNameList": [
     {
       "value": {

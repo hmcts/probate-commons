@@ -24,6 +24,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
+import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.groups.SubmissionGroup;
@@ -109,6 +110,8 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean deceasedAnyOtherNames;
 
     private List<CollectionMember<AliasName>> deceasedAliasNameList;
+
+    private List<CollectionMember<SolsAliasName>> solsDeceasedAliasNameList;
 
     private SpouseNotApplyingReason deceasedSpouseNotApplyingReason;
 
