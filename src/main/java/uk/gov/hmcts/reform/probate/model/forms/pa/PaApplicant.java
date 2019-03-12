@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.forms.pa;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,7 @@ import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = false)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PaApplicant extends Applicant {
 
     private String firstName;
@@ -35,4 +37,6 @@ public class PaApplicant extends Applicant {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean nameAsOnTheWill;
+
+    private String otherReason;
 }

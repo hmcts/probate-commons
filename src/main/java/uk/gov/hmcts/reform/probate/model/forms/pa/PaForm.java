@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.Assets;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
+import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
@@ -20,7 +21,6 @@ import uk.gov.hmcts.reform.probate.model.forms.Will;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -39,7 +39,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private String uploadDocumentUrl;
 
-    private Map<String, PaCopies> copies;
+    private Copies copies;
 
     private Assets assets;
 
@@ -66,7 +66,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   PaDeclaration declaration, String uploadDocumentUrl, Registry registry,
-                  CcdCase ccdCase, List<Payment> payments, Map<String, PaCopies> copies, Assets assets,
+                  CcdCase ccdCase, List<Payment> payments, Copies copies, Assets assets,
                   InheritanceTax iht, Will will, Summary summary, Executors executors, Boolean paymentPending,
                   Boolean creatingPayment, LocalDate applicationSubmittedDate, Long submissionReference) {
         super(type, deceased, applicant, registry, ccdCase, payments);

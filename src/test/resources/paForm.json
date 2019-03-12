@@ -40,7 +40,17 @@
       "amount": 215.5,
       "siteId": "P223",
       "status": "Success",
-      "method": "online"
+      "method": "online",
+      "copies": {
+        "uk": {
+          "cost": 0.5,
+          "number": 1
+        },
+        "overseas": {
+          "cost": 0,
+          "number": 0
+        }
+      }
     }
   ],
   "declaration": {
@@ -88,14 +98,8 @@
     ]
   },
   "copies": {
-    "uk": {
-      "cost": 0.5,
-      "number": 1
-    },
-    "overseas": {
-      "cost": 0,
-      "number": 0
-    }
+    "uk": 1,
+    "overseas": 0
   },
   "iht": {
     "method": "Through the HMRC online service",

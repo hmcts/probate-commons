@@ -20,5 +20,5 @@ public abstract class Assets {
     @ApiModelProperty(value = "Was adoption in England or Wales", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    protected Boolean assetsOverseas;
+    protected Boolean assetsoverseas;
 }

@@ -1,7 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.forms.pa;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import org.json.JSONException;
 import org.junit.Before;
@@ -11,10 +10,13 @@ import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
+import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.IhtMethod;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
+import uk.gov.hmcts.reform.probate.model.forms.PaymentCopies;
+import uk.gov.hmcts.reform.probate.model.forms.PaymentCopiesForRegion;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
 import uk.gov.hmcts.reform.probate.model.forms.Will;
 
@@ -56,16 +58,12 @@ public class PaFormTest {
                 .will(Will.builder()
                         .codicils(false)
                         .build())
-                .copies(ImmutableMap.<String, PaCopies>builder()
-                        .put("uk", PaCopies.builder()
-                                .cost(BigDecimal.valueOf(0.5))
-                                .number(1)
-                                .build())
-                        .put("overseas", PaCopies.builder()
-                                .cost(BigDecimal.valueOf(0))
-                                .number(0)
-                                .build())
-                        .build())
+                .copies(
+                        Copies.builder()
+                                .overseas(0L)
+                                .uk(1L)
+                                .build()
+                )
                 .ccdCase(CcdCase.builder()
                         .id(1551365512754035L)
                         .state("CaseCreated")
@@ -79,6 +77,16 @@ public class PaFormTest {
                                 .method("online")
                                 .reference("RC-1551-3655-7880-7354")
                                 .transactionId("kp5i7giksdji0ucuuaktsgt9t7")
+                                .copies(PaymentCopies.builder()
+                                        .uk(PaymentCopiesForRegion.builder()
+                                                .cost(BigDecimal.valueOf(0.5))
+                                                .number(1)
+                                                .build())
+                                        .overseas(PaymentCopiesForRegion.builder()
+                                                .cost(BigDecimal.valueOf(0))
+                                                .number(0)
+                                                .build())
+                                        .build())
                                 .build()
                 ))
                 .summary(Summary.builder()
