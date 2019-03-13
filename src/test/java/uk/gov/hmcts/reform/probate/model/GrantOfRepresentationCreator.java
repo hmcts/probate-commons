@@ -60,7 +60,7 @@ public class GrantOfRepresentationCreator {
         SolsAliasName fullAliasName = new SolsAliasName();
         fullAliasName.setSolsAliasname("King North");
         solsAliasNameCollectionMember.setValue(fullAliasName);
-        grantOfRepresentationData.setSolsDeceasedAliasNameList(Lists.newArrayList(solsAliasNameCollectionMember));
+        grantOfRepresentationData.setSolsDeceasedAliasNamesList(Lists.newArrayList(solsAliasNameCollectionMember));
 
         grantOfRepresentationData.setDeceasedMartialStatus(MaritalStatus.MARRIED);
         grantOfRepresentationData.setDeceasedDivorcedInEnglandOrWales(false);

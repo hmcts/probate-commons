@@ -111,7 +111,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     private List<CollectionMember<AliasName>> deceasedAliasNameList;
 
-    private List<CollectionMember<SolsAliasName>> solsDeceasedAliasNameList;
+    private List<CollectionMember<SolsAliasName>> solsDeceasedAliasNamesList;
 
     private SpouseNotApplyingReason deceasedSpouseNotApplyingReason;
 
