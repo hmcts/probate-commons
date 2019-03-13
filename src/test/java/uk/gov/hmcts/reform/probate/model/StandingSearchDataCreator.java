@@ -24,7 +24,7 @@ public class StandingSearchDataCreator {
                 .applicantSurname("ssApplicantSurname")
                 .applicationType(ApplicationType.PERSONAL)
                 .deceasedAddress(getAddress("ssDeceased"))
-                .deceasedAnyOtherNames("ssDeceasedAnyOtherNames")
+                .deceasedAnyOtherNames(true)
                 .deceasedDateOfBirth(LocalDate.of(1966, 3, 4))
                 .deceasedDateOfDeath(LocalDate.of(2018, 11, 20))
                 .deceasedForenames("ssDeceasedForeNames")
