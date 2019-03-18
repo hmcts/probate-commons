@@ -102,7 +102,7 @@ public class IntestacyFormTest {
 
         IntestacyAssets intestacyAssets = new IntestacyAssets();
         intestacyAssets.setAssetsOverseasNetValue(new BigDecimal("100.50"));
-        intestacyAssets.setAssetsoverseas(true);
+        intestacyAssets.setAssetsOverseas(true);
         intestacyForm.setAssets(intestacyAssets);
 
         Copies copies = new Copies();

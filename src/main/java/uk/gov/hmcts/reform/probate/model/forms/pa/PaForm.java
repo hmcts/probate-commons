@@ -10,7 +10,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
-import uk.gov.hmcts.reform.probate.model.forms.Assets;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
@@ -41,7 +40,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private Copies copies;
 
-    private Assets assets;
+    private PaAssets assets;
 
     private InheritanceTax iht;
 
@@ -66,7 +65,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   PaDeclaration declaration, String uploadDocumentUrl, Registry registry,
-                  CcdCase ccdCase, List<Payment> payments, Copies copies, Assets assets,
+                  CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
                   InheritanceTax iht, Will will, Summary summary, Executors executors, Boolean paymentPending,
                   Boolean creatingPayment, LocalDate applicationSubmittedDate, Long submissionReference) {
         super(type, deceased, applicant, registry, ccdCase, payments);

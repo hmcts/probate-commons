@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.model.forms;
+package uk.gov.hmcts.reform.probate.model.forms.pa;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -15,10 +15,11 @@ import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public abstract class Assets {
+public class PaAssets {
 
     @ApiModelProperty(value = "Was adoption in England or Wales", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    protected Boolean assetsOverseas;
+    protected Boolean assetsoverseas;
+
 }
