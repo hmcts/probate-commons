@@ -90,7 +90,7 @@ public class PaFormTest {
                                 .build()
                 ))
                 .summary(Summary.builder()
-                        .readToDeclare(true)
+                        .readyToDeclare(true)
                         .build())
                 .deceased(PaDeceased.builder()
                         .alias(false)

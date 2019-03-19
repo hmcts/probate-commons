@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Summary {
 
-    private boolean readToDeclare;
+    private boolean readyToDeclare;
 }

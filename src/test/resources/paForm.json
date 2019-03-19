@@ -111,7 +111,7 @@
     "codicils": "No"
   },
   "summary": {
-    "readToDeclare": true
+    "readyToDeclare": true
   },
   "paymentPending": false,
   "creatingPayment": false
