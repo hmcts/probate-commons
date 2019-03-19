@@ -22,6 +22,8 @@ import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -55,7 +57,9 @@ public class StandingSearchData extends CaseData {
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate deceasedDateOfBirth;
 
-    private String deceasedAnyOtherNames;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedAnyOtherNames;
 
     private List<CollectionMember<FullAliasName>> deceasedFullAliasNameList;
 

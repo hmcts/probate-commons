@@ -8,6 +8,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
+import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.Declaration;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentationData;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantType;
@@ -47,12 +48,20 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setDeceasedFreeTextAddress("Winterfell, Westeros");
         grantOfRepresentationData.setDeceasedAddressFound(true);
         grantOfRepresentationData.setDeceasedAnyOtherNames(true);
+
         CollectionMember<AliasName> aliasNameCollectionMember = new CollectionMember<>();
         AliasName aliasName = new AliasName();
         aliasName.setForenames("King");
         aliasName.setLastName("North");
         aliasNameCollectionMember.setValue(aliasName);
         grantOfRepresentationData.setDeceasedAliasNameList(Lists.newArrayList(aliasNameCollectionMember));
+
+        CollectionMember<SolsAliasName> solsAliasNameCollectionMember = new CollectionMember<>();
+        SolsAliasName fullAliasName = new SolsAliasName();
+        fullAliasName.setSolsAliasname("King North");
+        solsAliasNameCollectionMember.setValue(fullAliasName);
+        grantOfRepresentationData.setSolsDeceasedAliasNamesList(Lists.newArrayList(solsAliasNameCollectionMember));
+
         grantOfRepresentationData.setDeceasedMartialStatus(MaritalStatus.MARRIED);
         grantOfRepresentationData.setDeceasedDivorcedInEnglandOrWales(false);
         grantOfRepresentationData.setDeceasedOtherChildren(true);

@@ -21,7 +21,7 @@ public class CaveatCreator {
         caveatData.setCaveatorEmailAddress("caveator@email.com");
         caveatData.setCaveatorForenames("caveator forename");
         caveatData.setCaveatorSurname("caveator surname");
-
+        caveatData.setDeceasedAnyOtherNames(true);
         caveatData.setDeceasedAddress(getAddress("deceased"));
         CollectionMember<FullAliasName> fullAliasNameCollectionMember = new CollectionMember<>();
         fullAliasNameCollectionMember.setValue(FullAliasName.builder().fullAliasName("fullAliasName").build());
