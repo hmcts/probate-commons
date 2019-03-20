@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.model.forms.pa;
+package uk.gov.hmcts.reform.probate.model.forms;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PaCopies {
+public class PaymentCopiesForRegion {
 
     private BigDecimal cost;
 

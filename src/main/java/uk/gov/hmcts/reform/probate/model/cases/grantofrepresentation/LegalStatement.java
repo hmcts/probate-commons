@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class LegalStatement {
 
     private String deceasedEstateLand;
 
-    private List<LegalStatementExecutorsNotApplying> executorsNotApplying;
+    private List<CollectionMember<LegalStatementExecutorNotApplying>> executorsNotApplying;
 
-    private List<LegalStatementExecutorsApplying> executorsApplying;
+    private List<CollectionMember<LegalStatementExecutorApplying>> executorsApplying;
 
 }

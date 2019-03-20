@@ -12,7 +12,7 @@ import uk.gov.hmcts.reform.probate.model.cases.Address;
 @NoArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AdditionalExecutorApplying {
+public class ExecutorApplying {
 
     private String applyingExecutorName;
 

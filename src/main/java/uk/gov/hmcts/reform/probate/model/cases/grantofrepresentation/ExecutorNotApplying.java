@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AdditionalExecutorNotApplying {
+public class ExecutorNotApplying {
 
     private String notApplyingExecutorName;
 
@@ -19,7 +19,8 @@ public class AdditionalExecutorNotApplying {
 
     private String notApplyingExecutorNameDifferenceComment;
 
-    private String notApplyingExecutorReason;
+    private ExecutorNotApplyingReason notApplyingExecutorReason;
 
     private String notApplyingExecutorNotified;
+
 }

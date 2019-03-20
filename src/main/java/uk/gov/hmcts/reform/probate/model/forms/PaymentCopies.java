@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.model.forms.pa;
+package uk.gov.hmcts.reform.probate.model.forms;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Summary {
+public class PaymentCopies {
 
-    private boolean readyToDeclare;
+    private PaymentCopiesForRegion uk;
+    
+    private PaymentCopiesForRegion overseas;
 }

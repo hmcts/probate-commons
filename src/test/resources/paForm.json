@@ -1,5 +1,6 @@
 {
   "type": "PA",
+  "applicantEmail": "jon.snow.got1234@gmail.com",
   "deceased": {
     "firstName": "Ned",
     "lastName": "Stark",
@@ -12,9 +13,7 @@
     "dob_date": "1900-01-01",
     "dod_date": "2019-01-01"
   },
-  "type": "PA",
   "applicant": {
-    "email": "jon.snow.got1234@gmail.com",
     "firstName": "Jon",
     "lastName": "Snow",
     "alias": "King of the North",
@@ -23,7 +22,6 @@
     "phoneNumber": "3234324",
     "nameAsOnTheWill": "Yes"
   },
-  "type": "PA",
   "registry": {
     "name": "Manchester",
     "email": "manchester@email.com",
@@ -42,7 +40,17 @@
       "amount": 215.5,
       "siteId": "P223",
       "status": "Success",
-      "method": "online"
+      "method": "online",
+      "copies": {
+        "uk": {
+          "cost": 0.5,
+          "number": 1
+        },
+        "overseas": {
+          "cost": 0,
+          "number": 0
+        }
+      }
     }
   ],
   "declaration": {
@@ -85,20 +93,13 @@
       {
         "lastName": "Snow",
         "firstName": "Jon",
-        "isApplying": true,
-        "isApplicant": false
+        "isApplying": true
       }
     ]
   },
   "copies": {
-    "uk": {
-      "cost": 0.5,
-      "number": 1
-    },
-    "overseas": {
-      "cost": 0,
-      "number": 0
-    }
+    "uk": 1,
+    "overseas": 0
   },
   "iht": {
     "method": "Through the HMRC online service",
@@ -110,7 +111,7 @@
     "codicils": "No"
   },
   "summary": {
-    "readToDeclare": true
+    "readyToDeclare": true
   },
   "paymentPending": false,
   "creatingPayment": false

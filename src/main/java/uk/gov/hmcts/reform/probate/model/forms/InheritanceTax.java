@@ -22,6 +22,8 @@ public class InheritanceTax {
 
     private IhtMethod method;
 
+    private String ihtFormId;
+
     private IhtFormType form;
 
     private String identifier;

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class IntestacyAssets extends Assets {
 
     private BigDecimal assetsOverseasNetValue;
