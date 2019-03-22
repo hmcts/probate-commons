@@ -15,6 +15,7 @@ public class CaveatCreator {
     public static CaveatData createCaveatCase() {
 
         CaveatData caveatData = new CaveatData();
+        caveatData.setApplicationId("Id");
         caveatData.setApplicationType(ApplicationType.PERSONAL);
 
         caveatData.setCaveatorAddress(getAddress("caveator"));
