@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.forms.pa;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -25,6 +26,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";

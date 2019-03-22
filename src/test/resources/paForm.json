@@ -5,11 +5,8 @@
     "firstName": "Ned",
     "lastName": "Stark",
     "alias": "No",
-    "otherNames": null,
     "married": "No",
     "address": "Winterfell, North, Westeros, GOT123",
-    "postcode": null,
-    "domicile": null,
     "dob_date": "1900-01-01",
     "dod_date": "2019-01-01"
   },
