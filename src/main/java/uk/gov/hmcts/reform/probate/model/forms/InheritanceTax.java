@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -18,6 +19,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(value = {"grossValueOnline", "netValueOnline"}, allowGetters = true)
 public class InheritanceTax {
 
     private IhtMethod method;
@@ -35,4 +37,18 @@ public class InheritanceTax {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean completed;
+
+    public String getGrossValueOnline() {
+        if (grossValue == null) {
+            return null;
+        }
+        return grossValue.toPlainString();
+    }
+
+    public String getNetValueOnline() {
+        if (netValue == null) {
+            return null;
+        }
+        return netValue.toPlainString();
+    }
 }
