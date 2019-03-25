@@ -45,6 +45,15 @@ public class CaveatDataValidationTest {
     }
 
     @Test
+    public void shouldEnsureThatApplicationIdIsNotNull() {
+        Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
+        assertThat(violations, Matchers.hasSize(0));
+        caveatData.setApplicationId(null);
+        violations = executeCaveatValidator();
+        assertThat(violations.iterator().next().getMessage(), is(equalTo(NULL_VALIDATION)));
+    }
+
+    @Test
     public void shouldEnsureThatDeceasedFornamesIsNotNull() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
