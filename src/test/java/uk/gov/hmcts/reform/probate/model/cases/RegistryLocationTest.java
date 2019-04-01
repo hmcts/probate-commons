@@ -30,7 +30,7 @@ public class RegistryLocationTest {
     @Test
     public void shouldThrowIllegalArgumentExceptionWhenRegistryLocationDoesNotExist() {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Unsupported RegistryLocation Birminghen.");
+        exception.expectMessage("Unsupported RegistryLocation Birminghen");
 
         RegistryLocation registryLocation = RegistryLocation.findRegistryLocationByName("Birminghen");
         fail();
