@@ -9,6 +9,7 @@ import java.util.Arrays;
 import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.Constants.BIRMINGHAM_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.Constants.BRIGHTON_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.Constants.CARDIFF_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.Constants.CTSC_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.Constants.LEEDS_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.Constants.LIVERPOOL_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.Constants.LONDON_NAME;
@@ -20,6 +21,7 @@ import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.Constants
 @RequiredArgsConstructor
 public enum RegistryLocation {
 
+
     @JsonProperty(OXFORD_NAME) OXFORD(OXFORD_NAME),
     @JsonProperty(BIRMINGHAM_NAME) BIRMINGHAM(BIRMINGHAM_NAME),
     @JsonProperty(MANCHESTER_NAME) MANCHESTER(MANCHESTER_NAME),
@@ -29,7 +31,8 @@ public enum RegistryLocation {
     @JsonProperty(LONDON_NAME) LONDON(LONDON_NAME),
     @JsonProperty(CARDIFF_NAME) CARDIFF(CARDIFF_NAME),
     @JsonProperty(NEWCASTLE_NAME) NEWCASTLE(NEWCASTLE_NAME),
-    @JsonProperty(WINCHESTER_NAME) WINCHESTER(WINCHESTER_NAME);
+    @JsonProperty(WINCHESTER_NAME) WINCHESTER(WINCHESTER_NAME),
+    @JsonProperty(CTSC_NAME) CTSC(CTSC_NAME);
 
     @Getter
     private final String name;
@@ -39,7 +42,7 @@ public enum RegistryLocation {
                 .filter(e -> e.name().equalsIgnoreCase(name))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(
-                        String.format("Unsupported RegistryLocation %s.", name)));
+                        String.format("Unsupported RegistryLocation %s", name)));
     }
 
     public static class Constants {
@@ -63,6 +66,8 @@ public enum RegistryLocation {
         public static final String NEWCASTLE_NAME = "Newcastle";
 
         public static final String WINCHESTER_NAME = "Winchester";
+
+        public static final String CTSC_NAME = "ctsc";
 
         private Constants() {
         }
