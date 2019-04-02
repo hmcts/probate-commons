@@ -2,8 +2,10 @@ package uk.gov.hmcts.reform.probate.model.forms;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,6 +35,30 @@ public class InheritanceTax {
     private BigDecimal grossValue;
 
     private BigDecimal netValue;
+
+    @JsonProperty("grossIHT205")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal grossIht205;
+
+    @JsonProperty("netIHT205")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal netIht205;
+
+    @JsonProperty("grossIHT207")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal grossIht207;
+
+    @JsonProperty("netIHT207")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal netIht207;
+
+    @JsonProperty("grossIHT400421")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal grossIht400421;
+
+    @JsonProperty("netIHT400421")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal netIht400421;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)

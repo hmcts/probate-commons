@@ -236,6 +236,18 @@ public class GrantOfRepresentationData extends CaseData {
 
     private Long numberOfExecutors;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean executorsAllAlive;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean otherExecutorsApplying;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean executorsHaveAlias;
+
     private List<CollectionMember<ExecutorApplying>> executorsApplying;
 
     private List<CollectionMember<ExecutorNotApplying>> executorsNotApplying;

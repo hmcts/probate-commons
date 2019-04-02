@@ -91,7 +91,7 @@
       "accept": "I confirm that I will administer the estate of the person who died according to law, and that my application is truthful.",
       "submitWarning": "Once you click &lsquo;Save and continue&rsquo;, you cannot change your answers."
     },
-    "declarationCheckbox": true
+    "declarationCheckbox": "Yes"
   },
   "applicantEmail": "jon.snow.got1234@gmail.com",
   "executors": {

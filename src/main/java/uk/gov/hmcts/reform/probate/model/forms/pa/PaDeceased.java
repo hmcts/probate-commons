@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.AllArgsConstructor;
@@ -16,6 +15,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.Deceased;
+import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneSerializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
@@ -31,7 +32,7 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(value = {"grossValueOnline", "netValueOnline", "dod_day", "dod_month", "dod_year",
-        "dob_day", "dob_month", "dob_year", "dob_formattedDate", "dod_formattedDate"}, allowGetters = true)
+    "dob_day", "dob_month", "dob_year", "dob_formattedDate", "dod_formattedDate"}, allowGetters = true)
 public class PaDeceased extends Deceased {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
@@ -58,7 +59,8 @@ public class PaDeceased extends Deceased {
 
     private String freeTextAddress;
 
-    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
+    @JsonSerialize(using = BooleanAndNoneSerializer.class)
     private Boolean addressFound;
 
     private List<Map<String, String>> addresses;

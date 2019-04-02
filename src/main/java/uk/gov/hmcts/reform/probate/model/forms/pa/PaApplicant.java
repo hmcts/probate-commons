@@ -3,13 +3,14 @@ package uk.gov.hmcts.reform.probate.model.forms.pa;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.forms.Applicant;
+import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneSerializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
@@ -40,7 +41,8 @@ public class PaApplicant extends Applicant {
 
     private String freeTextAddress;
 
-    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
+    @JsonSerialize(using = BooleanAndNoneSerializer.class)
     private Boolean addressFound;
 
     private List<Map<String, String>> addresses;
