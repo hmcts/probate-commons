@@ -16,7 +16,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type", visible = true)
-@JsonSubTypes(value = {})
+@JsonSubTypes(value = {
+        @JsonSubTypes.Type(value = ApiClientErrorResponse.class, name = ErrorType.Constants.API_CLIENT_ERROR)})
 public abstract class ErrorResponse {
 
     @JsonTypeId
