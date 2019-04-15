@@ -27,6 +27,10 @@ public class CaveatForm extends Form<CaveatDeceased, CaveatApplicant> {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 
+    @ApiModelProperty(value = "unique application id")
+    @JsonProperty(value = "applicationId")
+    private String applicationId;
+
     @ApiModelProperty(value = "expiry date of caveat")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -36,9 +40,11 @@ public class CaveatForm extends Form<CaveatDeceased, CaveatApplicant> {
 
     @Builder
     public CaveatForm(ProbateType type, CaveatDeceased deceased, CaveatApplicant applicant,
-                      Registry registry, CcdCase ccdCase, List<Payment> payments, LocalDate expiryDate) {
+                      Registry registry, CcdCase ccdCase, List<Payment> payments, LocalDate expiryDate,
+                      String applicationId) {
         super(type, deceased, applicant, registry, ccdCase, payments);
         this.expiryDate = expiryDate;
+        this.applicationId = applicationId;
     }
 
 }

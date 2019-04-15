@@ -38,6 +38,9 @@ public class CaveatData extends CaseData {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 
+    @NotNull
+    private String applicationId;
+
     private RegistryLocation registryLocation;
 
     @NotNull
