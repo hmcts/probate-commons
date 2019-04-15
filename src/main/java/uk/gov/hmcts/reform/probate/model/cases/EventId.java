@@ -9,6 +9,7 @@ public enum EventId {
     GOP_CREATE_DRAFT("createDraft"),
     GOP_UPDATE_DRAFT("updateDraft"),
     GOP_CREATE_APPLICATION("createApplication"),
+    GOP_UPDATE_APPLICATION("updateApplication"),
     GOP_CREATE_CASE("createCase"),
     GOP_PAYMENT_FAILED("createCasePaymentFailed"),
     GOP_PAYMENT_FAILED_TO_SUCCESS("createCasePaymentSuccess"),

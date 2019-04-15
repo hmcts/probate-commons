@@ -45,7 +45,7 @@ public class PaApplicant extends Applicant {
     @JsonSerialize(using = BooleanAndNoneSerializer.class)
     private Boolean addressFound;
 
-    private List<Map<String, String>> addresses;
+    private List<Map<String, Object>> addresses;
 
     private String phoneNumber;
 

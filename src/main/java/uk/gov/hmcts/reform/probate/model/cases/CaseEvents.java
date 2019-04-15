@@ -13,6 +13,8 @@ public class CaseEvents {
 
     private final EventId createCaseApplicationEventId;
 
+    private final EventId updateCaseApplicationEventId;
+
     private final EventId createCaseEventId;
 
     private final EventId paymentFailedEventId;

@@ -63,7 +63,7 @@ public class PaDeceased extends Deceased {
     @JsonSerialize(using = BooleanAndNoneSerializer.class)
     private Boolean addressFound;
 
-    private List<Map<String, String>> addresses;
+    private List<Map<String, Object>> addresses;
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
