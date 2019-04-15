@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
@@ -96,8 +97,8 @@ public class PaFormTest {
                         .alias(false)
                         .address("Winterfell, North, Westeros, GOT123")
                         .married(false)
-                        .dateOfBirth(LocalDate.of(1900, 1, 1))
-                        .dateOfDeath(LocalDate.of(2019, 1, 1))
+                        .dateOfBirth(LocalDateTime.of(1900, 1, 23, 0, 0, 0))
+                        .dateOfDeath(LocalDateTime.of(2019, 1, 1, 0, 0, 0))
                         .lastName("Stark")
                         .firstName("Ned")
                         .build())

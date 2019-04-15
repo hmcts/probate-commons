@@ -1,8 +1,11 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +21,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(value = {"grossValueOnline", "netValueOnline"}, allowGetters = true)
 public class InheritanceTax {
 
     private IhtMethod method;
@@ -32,7 +36,45 @@ public class InheritanceTax {
 
     private BigDecimal netValue;
 
+    @JsonProperty("grossIHT205")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal grossIht205;
+
+    @JsonProperty("netIHT205")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal netIht205;
+
+    @JsonProperty("grossIHT207")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal grossIht207;
+
+    @JsonProperty("netIHT207")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal netIht207;
+
+    @JsonProperty("grossIHT400421")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal grossIht400421;
+
+    @JsonProperty("netIHT400421")
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal netIht400421;
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean completed;
+
+    public String getGrossValueOnline() {
+        if (grossValue == null) {
+            return null;
+        }
+        return grossValue.toPlainString();
+    }
+
+    public String getNetValueOnline() {
+        if (netValue == null) {
+            return null;
+        }
+        return netValue.toPlainString();
+    }
 }

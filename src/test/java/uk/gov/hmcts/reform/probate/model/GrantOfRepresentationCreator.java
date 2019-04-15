@@ -9,7 +9,6 @@ import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
-import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.Declaration;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentationData;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantType;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
@@ -80,9 +79,7 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setIhtNetValue(100000L);
         grantOfRepresentationData.setIhtReferenceNumber("GOT123456");
 
-        Declaration declaration = new Declaration();
-        declaration.setDeclarationCheckbox(true);
-        grantOfRepresentationData.setDeclaration(declaration);
+        grantOfRepresentationData.setDeclarationCheckbox(true);
 
         grantOfRepresentationData.setExtraCopiesOfGrant(5L);
         grantOfRepresentationData.setOutsideUkGrantCopies(6L);
