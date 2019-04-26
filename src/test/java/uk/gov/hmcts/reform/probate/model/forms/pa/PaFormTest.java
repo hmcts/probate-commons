@@ -178,8 +178,6 @@ public class PaFormTest {
                         .hasEmailChanged(false)
                         .declarationCheckbox(true)
                         .build())
-                .paymentPending(false)
-                .creatingPayment(false)
                 .build();
 
 

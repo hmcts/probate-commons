@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.Builder;
@@ -52,12 +51,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private Summary summary;
 
-    @JsonSerialize(using = ToStringSerializer.class)
-    private Boolean paymentPending;
-
-    @JsonSerialize(using = ToStringSerializer.class)
-    private Boolean creatingPayment;
-
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
@@ -76,8 +69,8 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   PaDeclaration declaration, String uploadDocumentUrl, Registry registry,
                   CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
-                  InheritanceTax iht, Will will, Summary summary, Executors executors, Boolean paymentPending,
-                  Boolean creatingPayment, LocalDate applicationSubmittedDate, Long submissionReference,
+                  InheritanceTax iht, Will will, Summary summary, Executors executors,
+                  LocalDate applicationSubmittedDate, Long submissionReference,
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment) {
         super(type, deceased, applicant, registry, ccdCase, payments);
         this.applicantEmail = applicantEmail;
@@ -89,8 +82,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.will = will;
         this.summary = summary;
         this.executors = executors;
-        this.paymentPending = paymentPending;
-        this.creatingPayment = creatingPayment;
         this.applicationSubmittedDate = applicationSubmittedDate;
         this.submissionReference = submissionReference;
         this.legalDeclaration = legalDeclaration;
