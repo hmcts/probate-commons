@@ -1,18 +1,23 @@
 {
   "type": "PA",
-  "applicantEmail": "jon.snow.got1234@gmail.com",
   "deceased": {
     "firstName": "Ned",
     "lastName": "Stark",
     "alias": "No",
-    "otherNames": null,
     "married": "No",
     "address": "Winterfell, North, Westeros, GOT123",
-    "postcode": null,
-    "domicile": null,
-    "dob_date": "1900-01-01",
-    "dod_date": "2019-01-01"
+    "dob_date": "1900-01-23T00:00:00.000Z",
+    "dod_date": "2019-01-01T00:00:00.000Z",
+    "dod_day": 1,
+    "dod_month": 1,
+    "dod_year": 2019,
+    "dob_day": 23,
+    "dob_month": 1,
+    "dob_year": 1900,
+    "dob_formattedDate": "23 January 1900",
+    "dod_formattedDate": "1 January 2019"
   },
+  "type": "PA",
   "applicant": {
     "firstName": "Jon",
     "lastName": "Snow",
@@ -22,6 +27,7 @@
     "phoneNumber": "3234324",
     "nameAsOnTheWill": "Yes"
   },
+  "type": "PA",
   "registry": {
     "name": "Manchester",
     "email": "manchester@email.com",
@@ -85,8 +91,9 @@
       "accept": "I confirm that I will administer the estate of the person who died according to law, and that my application is truthful.",
       "submitWarning": "Once you click &lsquo;Save and continue&rsquo;, you cannot change your answers."
     },
-    "declarationCheckbox": true
+    "declarationCheckbox": "true"
   },
+  "applicantEmail": "jon.snow.got1234@gmail.com",
   "executors": {
     "executorsNumber": 1,
     "list": [
@@ -105,7 +112,9 @@
     "method": "Through the HMRC online service",
     "identifier": "IHT1234567",
     "grossValue": 20000,
-    "netValue": 20000
+    "netValue": 20000,
+    "grossValueOnline": "20000",
+    "netValueOnline": "20000"
   },
   "will": {
     "codicils": "No"
@@ -113,6 +122,6 @@
   "summary": {
     "readyToDeclare": true
   },
-  "paymentPending": false,
-  "creatingPayment": false
+  "paymentPending": "false",
+  "creatingPayment": "false"
 }

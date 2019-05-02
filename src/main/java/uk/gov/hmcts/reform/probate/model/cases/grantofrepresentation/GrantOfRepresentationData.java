@@ -27,12 +27,9 @@ import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
-import uk.gov.hmcts.reform.probate.model.validation.groups.SubmissionGroup;
 
 import java.time.LocalDate;
 import java.util.List;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "GrantOfRepresentationData", parent = CaseData.class)
@@ -77,34 +74,28 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedAddressFound;
 
+    private String deceasedAddresses;
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedMarriedAfterWillOrCodicilDate;
 
-    @NotNull(groups = SubmissionGroup.class)
-    @Size(min = 2, groups = SubmissionGroup.class)
     private String deceasedForenames;
 
-    @NotNull(groups = SubmissionGroup.class)
-    @Size(min = 2, groups = SubmissionGroup.class)
     private String deceasedSurname;
 
-    @NotNull(groups = SubmissionGroup.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     private LocalDate deceasedDateOfDeath;
 
-    @NotNull(groups = SubmissionGroup.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     private LocalDate deceasedDateOfBirth;
 
-    @NotNull(groups = SubmissionGroup.class)
     private MaritalStatus deceasedMartialStatus;
 
-    @NotNull(groups = SubmissionGroup.class)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedAnyOtherNames;
@@ -185,6 +176,8 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean primaryApplicantAddressFound;
 
+    private String primaryApplicantAddresses;
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean primaryApplicantIsApplying;
@@ -205,7 +198,6 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String primaryApplicantPhoneNumber;
 
-    @NotNull(groups = SubmissionGroup.class)
     private Relationship primaryApplicantRelationshipToDeceased;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -231,6 +223,18 @@ public class GrantOfRepresentationData extends CaseData {
     private Long willNumberOfCodicils;
 
     private Long numberOfExecutors;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean executorsAllAlive;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean otherExecutorsApplying;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean executorsHaveAlias;
 
     private List<CollectionMember<ExecutorApplying>> executorsApplying;
 
@@ -283,4 +287,20 @@ public class GrantOfRepresentationData extends CaseData {
     // Will this be required if we remove submissionReference??
     @SuppressWarnings({"AbbreviationAsWordInName"})
     private Long applicationID;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean declarationCheckbox;
+
+    private String legalDeclarationJson;
+
+    private String checkAnswersSummaryJson;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean paymentPending;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean creatingPayment;
 }

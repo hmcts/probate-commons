@@ -1,8 +1,10 @@
 package uk.gov.hmcts.reform.probate.model.forms.pa;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.Builder;
@@ -20,11 +22,13 @@ import uk.gov.hmcts.reform.probate.model.forms.Will;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
@@ -48,10 +52,10 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private Summary summary;
 
-    //Do we need this?
+    @JsonSerialize(using = ToStringSerializer.class)
     private Boolean paymentPending;
 
-    //Do we need this?
+    @JsonSerialize(using = ToStringSerializer.class)
     private Boolean creatingPayment;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
@@ -62,12 +66,19 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
     //submissionReference may need to be removed later on.
     private Long submissionReference;
 
+    private Map<String, Object> legalDeclaration;
+
+    private Map<String, Object> checkAnswersSummary;
+
+    private Payment payment;
+
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   PaDeclaration declaration, String uploadDocumentUrl, Registry registry,
                   CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
                   InheritanceTax iht, Will will, Summary summary, Executors executors, Boolean paymentPending,
-                  Boolean creatingPayment, LocalDate applicationSubmittedDate, Long submissionReference) {
+                  Boolean creatingPayment, LocalDate applicationSubmittedDate, Long submissionReference,
+                  Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment) {
         super(type, deceased, applicant, registry, ccdCase, payments);
         this.applicantEmail = applicantEmail;
         this.declaration = declaration;
@@ -82,5 +93,8 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.creatingPayment = creatingPayment;
         this.applicationSubmittedDate = applicationSubmittedDate;
         this.submissionReference = submissionReference;
+        this.legalDeclaration = legalDeclaration;
+        this.checkAnswersSummary = checkAnswersSummary;
+        this.payment = payment;
     }
 }
