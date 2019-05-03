@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
+import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
@@ -65,13 +66,15 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private Payment payment;
 
+    private Fees fees;
+
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   PaDeclaration declaration, String uploadDocumentUrl, Registry registry,
                   CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
                   InheritanceTax iht, Will will, Summary summary, Executors executors,
                   LocalDate applicationSubmittedDate, Long submissionReference,
-                  Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment) {
+                  Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment, Fees fees) {
         super(type, deceased, applicant, registry, ccdCase, payments);
         this.applicantEmail = applicantEmail;
         this.declaration = declaration;
@@ -87,5 +90,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.legalDeclaration = legalDeclaration;
         this.checkAnswersSummary = checkAnswersSummary;
         this.payment = payment;
+        this.fees = fees;
     }
 }
