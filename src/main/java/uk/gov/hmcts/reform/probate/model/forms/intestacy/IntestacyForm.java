@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
+import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
@@ -33,9 +34,9 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          IntestacyDeclaration declaration, String uploadDocumentUrl, Registry registry,
                          CcdCase ccdCase, List<Payment> payments, Copies copies, IntestacyAssets assets,
-                         InheritanceTax iht) {
+                         InheritanceTax iht, Fees fees) {
 
-        super(type, deceased, applicant, registry, ccdCase, payments);
+        super(type, deceased, applicant, registry, ccdCase, payments, fees);
         this.declaration = declaration;
         this.uploadDocumentUrl = uploadDocumentUrl;
         this.copies = copies;

@@ -1,11 +1,11 @@
 package uk.gov.hmcts.reform.probate.model.cases;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
@@ -13,14 +13,28 @@ import java.math.BigDecimal;
 @Builder
 public class ProbateCalculatedFees {
 
-    private String status;
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long applicationFee;
 
-    private BigDecimal applicationFee;
+    private String applicationFeeCode;
 
-    private BigDecimal ukCopiesFee;
+    private String applicationFeeVersion;
 
-    private BigDecimal overseasCopiesFee;
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long ukCopiesFee;
 
-    private BigDecimal total;
+    private String ukCopiesFeeCode;
+
+    private String ukCopiesFeeVersion;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long overseasCopiesFee;
+
+    private String overseasCopiesFeeCode;
+
+    private String overseasCopiesFeeVersion;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long total;
 
 }
