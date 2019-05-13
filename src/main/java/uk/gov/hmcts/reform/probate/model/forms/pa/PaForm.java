@@ -42,8 +42,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private String uploadDocumentUrl;
 
-    private Copies copies;
-
     private PaAssets assets;
 
     private InheritanceTax iht;
@@ -74,11 +72,10 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   LocalDate applicationSubmittedDate, Long submissionReference,
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees) {
-        super(type, deceased, applicant, registry, ccdCase, payments, fees);
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies);
         this.applicantEmail = applicantEmail;
         this.declaration = declaration;
         this.uploadDocumentUrl = uploadDocumentUrl;
-        this.copies = copies;
         this.assets = assets;
         this.iht = iht;
         this.will = will;

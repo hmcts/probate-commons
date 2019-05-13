@@ -24,8 +24,6 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String uploadDocumentUrl;
 
-    private Copies copies;
-
     private IntestacyAssets assets;
 
     private InheritanceTax iht;
@@ -36,10 +34,9 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
                          CcdCase ccdCase, List<Payment> payments, Copies copies, IntestacyAssets assets,
                          InheritanceTax iht, Fees fees) {
 
-        super(type, deceased, applicant, registry, ccdCase, payments, fees);
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies);
         this.declaration = declaration;
         this.uploadDocumentUrl = uploadDocumentUrl;
-        this.copies = copies;
         this.assets = assets;
         this.iht = iht;
     }

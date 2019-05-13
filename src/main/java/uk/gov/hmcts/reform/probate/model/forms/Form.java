@@ -64,4 +64,6 @@ public abstract class Form<D extends Deceased, A extends Applicant> {
     private List<Payment> payments;
 
     private Fees fees;
+
+    private Copies copies;
 }
