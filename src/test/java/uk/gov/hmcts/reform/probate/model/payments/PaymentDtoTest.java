@@ -1,9 +1,16 @@
 package uk.gov.hmcts.reform.probate.model.payments;
 
-import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONException;
+import org.junit.Before;
+import org.junit.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
+
+import uk.gov.hmcts.reform.probate.model.TestUtils;
+import uk.gov.hmcts.reform.probate.model.payments.FeeDto;
+import uk.gov.hmcts.reform.probate.model.payments.PaymentDto;
+import uk.gov.hmcts.reform.probate.model.payments.PaymentDto.LinkDto;
+import uk.gov.hmcts.reform.probate.model.payments.PaymentDto.LinksDto;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -13,25 +20,18 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import org.json.JSONException;
-import org.junit.Before;
-import org.junit.Test;
-import org.skyscreamer.jsonassert.JSONAssert;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import uk.gov.hmcts.reform.probate.model.TestUtils;
-import uk.gov.hmcts.reform.probate.model.payments.FeeDto;
-import uk.gov.hmcts.reform.probate.model.payments.PaymentDto;
-import uk.gov.hmcts.reform.probate.model.payments.PaymentDto.LinkDto;
-import uk.gov.hmcts.reform.probate.model.payments.PaymentDto.LinksDto;
-
+import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 public class PaymentDtoTest {
 
     private ObjectMapper objectMapper;
 
-    private String jsonFromFile, jsonSerializedVersionFromFile;
+    private String jsonFromFile;
+    
+    private String jsonSerializedVersionFromFile;
     
     private PaymentDto paymentDto;
     
@@ -55,8 +55,6 @@ public class PaymentDtoTest {
         fee3.setVersion("3");
         fee3.setVolume(new Integer("1"));
         fee3.setCalculatedAmount(new BigDecimal("0.50"));
-        
-        List<FeeDto> fees = Arrays.asList(fee1, fee2, fee3);
         
         LinkDto self = new LinkDto();
         self.setHref("http://payment.service.gov.uk");
@@ -84,6 +82,8 @@ public class PaymentDtoTest {
         paymentDtoData.setLinks(links);
         paymentDtoData.setDateCreated(dateCreated);
         paymentDtoData.setDateUpdated(dateUpdated);
+        
+        List<FeeDto> fees = Arrays.asList(fee1, fee2, fee3);
         paymentDtoData.setFees(fees);
 
         return paymentDtoData;
