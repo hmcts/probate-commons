@@ -23,4 +23,6 @@ public class CaseEvents {
 
     private final EventId paymentFailedAgainEventId;
 
+    private final EventId updatePaymentFailedEventId;
+
 }

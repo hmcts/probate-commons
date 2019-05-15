@@ -13,6 +13,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
+import uk.gov.hmcts.reform.probate.model.forms.Copies;
+import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
@@ -41,8 +43,8 @@ public class CaveatForm extends Form<CaveatDeceased, CaveatApplicant> {
     @Builder
     public CaveatForm(ProbateType type, CaveatDeceased deceased, CaveatApplicant applicant,
                       Registry registry, CcdCase ccdCase, List<Payment> payments, LocalDate expiryDate,
-                      String applicationId) {
-        super(type, deceased, applicant, registry, ccdCase, payments);
+                      String applicationId, Fees fees, Copies copies) {
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies);
         this.expiryDate = expiryDate;
         this.applicationId = applicationId;
     }
