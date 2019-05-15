@@ -1,16 +1,18 @@
 package uk.gov.hmcts.reform.probate.model.cases;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class ValidatorResults {
 
-    private final List<String> validationMessages;
+    private List<String> validationMessages;
 
 }
