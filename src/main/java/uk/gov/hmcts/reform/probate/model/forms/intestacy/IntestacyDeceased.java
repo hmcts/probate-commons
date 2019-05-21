@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.YesNo;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.Deceased;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
@@ -53,7 +54,7 @@ public class IntestacyDeceased extends Deceased {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean addressFound;
 
-    private String address;
+    private Address address;
 
     private String freeTextAddress;
 

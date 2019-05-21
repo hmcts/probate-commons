@@ -29,4 +29,6 @@ public class Address {
     private String postCode;
 
     private String country;
+
+    private String formattedAddress;
 }

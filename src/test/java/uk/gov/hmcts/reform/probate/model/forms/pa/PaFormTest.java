@@ -9,6 +9,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
@@ -95,7 +96,8 @@ public class PaFormTest {
                         .build())
                 .deceased(PaDeceased.builder()
                         .alias(false)
-                        .address("Winterfell, North, Westeros, GOT123")
+                        .address(Address.builder().addressLine1("Winterfell").postTown("North Westeros")
+                                .postCode("GOT123").build())
                         .married(false)
                         .dateOfBirth(LocalDateTime.of(1900, 1, 23, 0, 0, 0))
                         .dateOfDeath(LocalDateTime.of(2019, 1, 1, 0, 0, 0))
@@ -111,7 +113,8 @@ public class PaFormTest {
                 .applicant(PaApplicant.builder()
                         .alias("King of the North")
                         .aliasReason("Title Given")
-                        .address("The Wall, North, Westeros, GOT567")
+                        .address(Address.builder().addressLine1("The Wall").postTown("North Westeros")
+                                .postCode("GOT567").build())
                         .lastName("Snow")
                         .firstName("Jon")
                         .phoneNumber("3234324")
