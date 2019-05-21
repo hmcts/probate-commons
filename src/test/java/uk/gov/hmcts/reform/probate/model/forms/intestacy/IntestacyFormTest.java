@@ -55,7 +55,6 @@ public class IntestacyFormTest {
         intestacyForm.setUploadDocumentUrl("http://document-management/document/12345");
 
         IntestacyApplicant intestacyApplicant = new IntestacyApplicant();
-        intestacyApplicant.setFreeTextAddress("Pret a Manger St. Georges Hospital Blackshaw Road");
         intestacyApplicant.setAddressFound(true);
         intestacyApplicant.setEmail("jon.snow@thenorth.com");
         intestacyApplicant.setFirstName("Jon");
@@ -84,8 +83,6 @@ public class IntestacyFormTest {
                 .formattedAddress("Winterfell Kings Landing Win1 Westeros")
                 .postCode("Win1").country("Westeros").build();
         intestacyDeceased.setAddress(deceasedAddress);
-        intestacyDeceased.setAddressFound(false);
-        intestacyDeceased.setFreeTextAddress("Winterfell, Westeros");
         intestacyDeceased.setAddressFound(true);
         intestacyDeceased.setPostCode("SW17 0QT");
         intestacyDeceased.setAlias(true);

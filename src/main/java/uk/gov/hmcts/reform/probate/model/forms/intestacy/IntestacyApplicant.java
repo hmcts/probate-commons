@@ -41,8 +41,6 @@ public class IntestacyApplicant extends Applicant {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean addressFound;
 
-    private String freeTextAddress;
-
     @ApiModelProperty(value = "Relationship to the deceased")
     private Relationship relationshipToDeceased;
 

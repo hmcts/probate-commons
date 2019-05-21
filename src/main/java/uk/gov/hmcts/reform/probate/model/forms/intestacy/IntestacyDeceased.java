@@ -56,8 +56,6 @@ public class IntestacyDeceased extends Deceased {
 
     private Address address;
 
-    private String freeTextAddress;
-
     @ApiModelProperty(value = "Does the deceased have an alias?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
