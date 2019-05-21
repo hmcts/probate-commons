@@ -71,8 +71,6 @@ public class GrantOfRepresentationData extends CaseData {
 
     private Address deceasedAddress;
 
-    private String deceasedFreeTextAddress;
-
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedAddressFound;
@@ -86,6 +84,8 @@ public class GrantOfRepresentationData extends CaseData {
     private String deceasedForenames;
 
     private String deceasedSurname;
+
+    private String deceasedPostCode;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -173,13 +173,13 @@ public class GrantOfRepresentationData extends CaseData {
 
     private Address primaryApplicantAddress;
 
-    private String primaryApplicantFreeTextAddress;
-
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean primaryApplicantAddressFound;
 
     private String primaryApplicantAddresses;
+
+    private String primaryApplicantPostCode;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)

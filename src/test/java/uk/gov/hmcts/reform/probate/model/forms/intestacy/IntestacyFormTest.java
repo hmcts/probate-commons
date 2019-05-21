@@ -14,6 +14,7 @@ import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
@@ -59,7 +60,14 @@ public class IntestacyFormTest {
         intestacyApplicant.setEmail("jon.snow@thenorth.com");
         intestacyApplicant.setFirstName("Jon");
         intestacyApplicant.setLastName("Snow");
-        intestacyApplicant.setAddress("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT");
+        Address applicantAddress = Address.builder().addressLine1("Pret a Manger")
+                .addressLine2("St. Georges Hospital")
+                .addressLine3("Blackshaw Road")
+                .postTown("London")
+                .postCode("SW17 0QT")
+                .formattedAddress("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT")
+                .build();
+        intestacyApplicant.setAddress(applicantAddress);
         intestacyApplicant.setPostCode("SW17 0QT");
         intestacyApplicant.setPhoneNumber("123455678");
         intestacyApplicant.setAdoptionInEnglandOrWales(true);
@@ -71,7 +79,11 @@ public class IntestacyFormTest {
         intestacyDeceased.setLastName("Stark");
         intestacyDeceased.setDateOfBirth(LocalDate.of(1930, 1, 1));
         intestacyDeceased.setDateOfDeath(LocalDate.of(2018, 1, 1));
-        intestacyDeceased.setAddress("Winterfell, Westeros");
+        Address deceasedAddress = Address.builder().addressLine1("Winterfell")
+                .postTown("Kings Landing")
+                .formattedAddress("Winterfell Kings Landing Win1 Westeros")
+                .postCode("Win1").country("Westeros").build();
+        intestacyDeceased.setAddress(deceasedAddress);
         intestacyDeceased.setAddressFound(false);
         intestacyDeceased.setFreeTextAddress("Winterfell, Westeros");
         intestacyDeceased.setAddressFound(true);
