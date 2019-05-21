@@ -1,7 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.documents;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +8,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-@JsonRootName(value = "legalDeclaration")
 public class LegalDeclaration implements BusinessDocument {
 
     @NotEmpty

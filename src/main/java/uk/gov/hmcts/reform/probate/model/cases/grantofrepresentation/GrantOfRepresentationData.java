@@ -27,7 +27,9 @@ import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
+import uk.gov.hmcts.reform.probate.utils.CollectionUtils;
 
+import java.beans.Transient;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -303,4 +305,65 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean creatingPayment;
+
+    @Transient
+    public void setInvitationDetailsForExecutorApplying(String invitationId, String email, String leadApplicantName) {
+        this.getExecutorsApplying().stream()
+            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorEmail() != null
+                && executorApplying.getValue().getApplyingExecutorEmail()
+                .equals(email)).map(CollectionMember::getValue)
+            .forEach(e -> {
+                e.setApplyingExecutorInvitiationId(invitationId);
+                e.setApplyingExecutorLeadName(leadApplicantName);
+            });
+    }
+
+
+    @Transient
+    public void deleteInvitation(String invitationId) {
+        this.getExecutorsApplying().stream()
+            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitiationId() != null
+                && executorApplying.getValue().getApplyingExecutorInvitiationId()
+                .equals(invitationId)).map(CollectionMember::getValue)
+            .forEach(e -> {
+                e.setApplyingExecutorInvitiationId(null);
+            });
+    }
+
+    @Transient
+    public void updateInvitationContactDetailsForExecutorApplying(String invitationId, String email,
+                                                                  String phoneNumber) {
+        this.getExecutorsApplying().stream()
+            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitiationId() != null
+                && executorApplying.getValue().getApplyingExecutorInvitiationId()
+                .equals(invitationId)).map(CollectionMember::getValue)
+            .forEach(e -> {
+                e.setApplyingExecutorEmail(email);
+                e.setApplyingExecutorPhoneNumber(phoneNumber);
+            });
+
+    }
+
+    @Transient
+    public void setInvitationAgreedFlagForExecutorApplying(String invitationId, Boolean invitationAgreed) {
+        this.getExecutorsApplying().stream()
+            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitiationId() != null
+                && executorApplying.getValue().getApplyingExecutorInvitiationId()
+                .equals(invitationId)).map(CollectionMember::getValue)
+            .collect(CollectionUtils.toSingleton()).setApplyingExecutorAgreed(invitationAgreed);
+    }
+
+    @Transient
+    public Boolean haveAllExecutorsAgreed() {
+        return this.getExecutorsApplying().stream().allMatch(
+            executorApplying -> executorApplying.getValue().getApplyingExecutorAgreed() != null
+                && executorApplying.getValue().getApplyingExecutorAgreed())
+            && this.getDeclarationCheckbox();
+    }
+
+    @Transient
+    public void resetExecutorsApplyingAgreedFlags() {
+        this.getExecutorsApplying().forEach(
+            executorsApplying -> executorsApplying.getValue().setApplyingExecutorAgreed(null));
+    }
 }
