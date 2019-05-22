@@ -40,8 +40,6 @@ public class PaApplicant extends Applicant {
 
     private String postcodeAddress;
 
-    private String freeTextAddress;
-
     @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
     @JsonSerialize(using = BooleanAndNoneSerializer.class)
     private Boolean addressFound;
