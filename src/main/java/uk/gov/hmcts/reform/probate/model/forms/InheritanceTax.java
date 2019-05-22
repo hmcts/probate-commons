@@ -36,6 +36,10 @@ public class InheritanceTax {
 
     private BigDecimal netValue;
 
+    private String grossValueField;
+
+    private String netValueField;
+
     @JsonProperty("grossIHT205")
     @JsonSerialize(using = ToStringSerializer.class)
     private BigDecimal grossIht205;

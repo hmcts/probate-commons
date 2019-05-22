@@ -300,4 +300,8 @@ public class GrantOfRepresentationData extends CaseData {
     private String checkAnswersSummaryJson;
 
     private ProbateCalculatedFees fees;
+
+    private String ihtGrossValueField;
+
+    private String ihtNetValueField;
 }
