@@ -103,4 +103,8 @@ public class CaveatData extends CaseData {
     private String legacyType;
 
     private String legacyCaseViewUrl;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean caveatRaisedEmailNotificationRequested;
 }
