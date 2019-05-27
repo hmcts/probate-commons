@@ -32,9 +32,9 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          IntestacyDeclaration declaration, String uploadDocumentUrl, Registry registry,
                          CcdCase ccdCase, List<Payment> payments, Copies copies, IntestacyAssets assets,
-                         InheritanceTax iht, Fees fees) {
+                         InheritanceTax iht, Fees fees, Payment payment) {
 
-        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies);
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment);
         this.declaration = declaration;
         this.uploadDocumentUrl = uploadDocumentUrl;
         this.assets = assets;
