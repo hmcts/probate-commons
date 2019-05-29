@@ -33,6 +33,7 @@ public class StandingSearchDataCreator {
                 .deceasedSurname("ssDeceasedSurname")
                 .documentsUploaded(getDocumentsUploaded())
                 .expiryDate(LocalDate.of(2019, 1, 1))
+                .applicationSubmittedDate(LocalDate.of(2019, 1, 1))
                 .numberOfCopies(12L)
                 .registryLocation(RegistryLocation.WINCHESTER)
                 .build();
