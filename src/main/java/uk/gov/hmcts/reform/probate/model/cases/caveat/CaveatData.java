@@ -101,6 +101,11 @@ public class CaveatData extends CaseData {
 
     private String legacyId;
 
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate applicationSubmittedDate;
+
     private String legacyType;
 
     private String legacyCaseViewUrl;

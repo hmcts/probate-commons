@@ -29,6 +29,7 @@ public class CaveatCreator {
         caveatData.setDeceasedFullAliasNameList(Arrays.asList(fullAliasNameCollectionMember));
         caveatData.setDeceasedDateOfBirth(LocalDate.of(1966, 3, 4));
         caveatData.setDeceasedDateOfDeath(LocalDate.of(2018, 11, 20));
+        caveatData.setApplicationSubmittedDate(LocalDate.of(2018, 11, 20));
         caveatData.setDeceasedForenames("deceased forename");
         caveatData.setDeceasedSurname("deceased surname");
         caveatData.setRegistryLocation(RegistryLocation.OXFORD);
