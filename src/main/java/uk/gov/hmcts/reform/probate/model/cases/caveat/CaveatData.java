@@ -114,5 +114,5 @@ public class CaveatData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean caveatRaisedEmailNotificationRequested;
 
-    private List<ProbateDocument> notificationsGenerated;
+    private List<CollectionMember<ProbateDocument>> notificationsGenerated;
 }
