@@ -11,7 +11,8 @@ public enum CaseState {
     DRAFT("Draft"),
     PA_APP_CREATED("PAAppCreated"),
     CASE_PAYMENT_FAILED("CasePaymentFailed"),
-    CASE_CREATED("CaseCreated");
+    CASE_CREATED("CaseCreated"),
+    CAVEAT_RAISED("CaveatRaised");
 
     @Getter
     private final String name;
