@@ -90,6 +90,10 @@ public class StandingSearchData extends CaseData {
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate expiryDate;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean paperForm;
+
     private List<CollectionMember<CaseMatch>> caseMatches;
 
     private List<CollectionMember<UploadDocument>> documentsUploaded;

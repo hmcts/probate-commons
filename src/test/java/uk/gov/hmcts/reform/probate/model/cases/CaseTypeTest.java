@@ -47,6 +47,16 @@ public class CaseTypeTest {
         public void setRegistryLocation(RegistryLocation registryLocation) {
 
         }
+
+        @Override
+        public Boolean getPaperForm() {
+            return null;
+        }
+
+        @Override
+        public void setPaperForm(Boolean paperForm) {
+
+        }
     }
 
 }

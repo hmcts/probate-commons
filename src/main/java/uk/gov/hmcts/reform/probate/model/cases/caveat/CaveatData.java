@@ -92,6 +92,10 @@ public class CaveatData extends CaseData {
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate expiryDate;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean paperForm;
+
     private List<CollectionMember<CasePayment>> payments;
 
     @NotNull

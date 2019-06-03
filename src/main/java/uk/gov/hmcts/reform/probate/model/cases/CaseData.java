@@ -37,4 +37,9 @@ public abstract class CaseData {
     public abstract void setPayments(List<CollectionMember<CasePayment>> payments);
 
     public abstract void setRegistryLocation(RegistryLocation registryLocation);
+
+    public abstract Boolean getPaperForm();
+
+    public abstract void setPaperForm(Boolean paperForm);
+
 }
