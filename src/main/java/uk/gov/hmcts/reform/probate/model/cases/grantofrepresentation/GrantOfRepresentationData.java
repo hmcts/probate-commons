@@ -307,50 +307,28 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean creatingPayment;
 
     @Transient
-    public void setInvitationDetailsForExecutorApplying(String invitationId, String email, String leadApplicantName) {
-        this.getExecutorsApplying().stream()
-            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorEmail() != null
-                && executorApplying.getValue().getApplyingExecutorEmail()
-                .equals(email)).map(CollectionMember::getValue)
-            .forEach(e -> {
-                e.setApplyingExecutorInvitiationId(invitationId);
-                e.setApplyingExecutorLeadName(leadApplicantName);
-            });
+    public void setInvitationDetailsForExecutorApplying(String email, String invitationId, String leadApplicantName) {
+        ExecutorApplying e = this.getExecutorApplyingByEmailAddress(email);
+        e.setApplyingExecutorInvitiationId(invitationId);
+        e.setApplyingExecutorLeadName(leadApplicantName);
     }
-
 
     @Transient
     public void deleteInvitation(String invitationId) {
-        this.getExecutorsApplying().stream()
-            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitiationId() != null
-                && executorApplying.getValue().getApplyingExecutorInvitiationId()
-                .equals(invitationId)).map(CollectionMember::getValue)
-            .forEach(e -> {
-                e.setApplyingExecutorInvitiationId(null);
-            });
+        this.getExecutorApplyingByInviteId(invitationId).setApplyingExecutorInvitiationId(null);
     }
 
     @Transient
     public void updateInvitationContactDetailsForExecutorApplying(String invitationId, String email,
                                                                   String phoneNumber) {
-        this.getExecutorsApplying().stream()
-            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitiationId() != null
-                && executorApplying.getValue().getApplyingExecutorInvitiationId()
-                .equals(invitationId)).map(CollectionMember::getValue)
-            .forEach(e -> {
-                e.setApplyingExecutorEmail(email);
-                e.setApplyingExecutorPhoneNumber(phoneNumber);
-            });
-
+        ExecutorApplying e = this.getExecutorApplyingByInviteId(invitationId);
+        e.setApplyingExecutorPhoneNumber(phoneNumber);
+        e.setApplyingExecutorEmail(email);
     }
 
     @Transient
     public void setInvitationAgreedFlagForExecutorApplying(String invitationId, Boolean invitationAgreed) {
-        this.getExecutorsApplying().stream()
-            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitiationId() != null
-                && executorApplying.getValue().getApplyingExecutorInvitiationId()
-                .equals(invitationId)).map(CollectionMember::getValue)
-            .collect(CollectionUtils.toSingleton()).setApplyingExecutorAgreed(invitationAgreed);
+        this.getExecutorApplyingByInviteId(invitationId).setApplyingExecutorAgreed(invitationAgreed);
     }
 
     @Transient
@@ -366,4 +344,24 @@ public class GrantOfRepresentationData extends CaseData {
         this.getExecutorsApplying().forEach(
             executorsApplying -> executorsApplying.getValue().setApplyingExecutorAgreed(null));
     }
+
+    @Transient
+    public ExecutorApplying getExecutorApplyingByInviteId(String invitationId) {
+        return this.getExecutorsApplying().stream()
+            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitiationId() != null
+                && executorApplying.getValue().getApplyingExecutorInvitiationId()
+                .equals(invitationId)).map(CollectionMember::getValue)
+            .collect(CollectionUtils.toSingleton());
+    }
+
+    @Transient
+    public ExecutorApplying getExecutorApplyingByEmailAddress(String emailAddress) {
+        return this.getExecutorsApplying().stream()
+            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorEmail() != null
+                && executorApplying.getValue().getApplyingExecutorEmail()
+                .equals(emailAddress)).map(CollectionMember::getValue)
+            .collect(CollectionUtils.toSingleton());
+    }
+
+
 }
