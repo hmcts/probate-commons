@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ApiClientErrorResponse extends ErrorResponse {
 
-    ApiClientError error;
+    private ApiClientError error;
 
     @Builder
     public ApiClientErrorResponse(ApiClientError apiClientError) {
