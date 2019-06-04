@@ -97,7 +97,6 @@ public class GrantOfRepresentationCreator {
         Address deceasedAddress = new Address();
         deceasedAddress.setAddressLine1("Winterfell, Westeros");
         grantOfRepresentationData.setDeceasedAddress(deceasedAddress);
-        grantOfRepresentationData.setDeceasedFreeTextAddress("Winterfell, Westeros");
         grantOfRepresentationData.setDeceasedAddressFound(true);
         grantOfRepresentationData.setDeceasedAnyOtherNames(true);
     }
@@ -110,8 +109,6 @@ public class GrantOfRepresentationCreator {
         primaryApplicantAddress.setAddressLine1("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT");
         grantOfRepresentationData.setPrimaryApplicantAddress(primaryApplicantAddress);
         grantOfRepresentationData.setPrimaryApplicantAddressFound(true);
-        grantOfRepresentationData
-            .setPrimaryApplicantFreeTextAddress("Pret a Manger St. Georges Hospital Blackshaw Road");
         grantOfRepresentationData.setPrimaryApplicantPhoneNumber("123455678");
         grantOfRepresentationData.setPrimaryApplicantRelationshipToDeceased(Relationship.ADOPTED_CHILD);
         grantOfRepresentationData.setPrimaryApplicantAdoptionInEnglandOrWales(true);

@@ -62,8 +62,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private Map<String, Object> checkAnswersSummary;
 
-    private Payment payment;
-
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   PaDeclaration declaration, String uploadDocumentUrl, Registry registry,
@@ -72,7 +70,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   LocalDate applicationSubmittedDate, Long submissionReference,
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees) {
-        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies);
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment);
         this.applicantEmail = applicantEmail;
         this.declaration = declaration;
         this.uploadDocumentUrl = uploadDocumentUrl;
@@ -85,6 +83,5 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.submissionReference = submissionReference;
         this.legalDeclaration = legalDeclaration;
         this.checkAnswersSummary = checkAnswersSummary;
-        this.payment = payment;
     }
 }

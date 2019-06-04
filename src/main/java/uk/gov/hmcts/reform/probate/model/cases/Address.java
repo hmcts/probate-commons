@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.cases;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
@@ -16,6 +17,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @ApiModel(value = "Address", description = "Represents address in CCD")
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Address {
 
     @NotNull

@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.Applicant;
 import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneSerializer;
@@ -33,13 +34,11 @@ public class PaApplicant extends Applicant {
 
     private String aliasReason;
 
-    private String address;
+    private Address address;
 
     private String postcode;
 
     private String postcodeAddress;
-
-    private String freeTextAddress;
 
     @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
     @JsonSerialize(using = BooleanAndNoneSerializer.class)

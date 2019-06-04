@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.YesNo;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.Applicant;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
@@ -34,13 +35,11 @@ public class IntestacyApplicant extends Applicant {
 
     private String phoneNumber;
 
-    private String address;
+    private Address address;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean addressFound;
-
-    private String freeTextAddress;
 
     @ApiModelProperty(value = "Relationship to the deceased")
     private Relationship relationshipToDeceased;
