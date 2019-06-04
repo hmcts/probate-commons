@@ -37,6 +37,7 @@ public class WillLodgementDataCreator {
                 .registryLocation(RegistryLocation.CARDIFF)
                 .willDate(LocalDate.of(2008, 11, 5))
                 .willExecutorList(getWillExecutor())
+                .paperForm(false)
                 .build();
     }
 
