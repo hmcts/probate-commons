@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -23,6 +24,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
+import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
@@ -40,6 +42,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = false)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GrantOfRepresentationData extends CaseData {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
@@ -309,13 +312,13 @@ public class GrantOfRepresentationData extends CaseData {
     @Transient
     public void setInvitationDetailsForExecutorApplying(String email, String invitationId, String leadApplicantName) {
         ExecutorApplying e = this.getExecutorApplyingByEmailAddress(email);
-        e.setApplyingExecutorInvitiationId(invitationId);
+        e.setApplyingExecutorInvitationId(invitationId);
         e.setApplyingExecutorLeadName(leadApplicantName);
     }
 
     @Transient
     public void deleteInvitation(String invitationId) {
-        this.getExecutorApplyingByInviteId(invitationId).setApplyingExecutorInvitiationId(null);
+        this.getExecutorApplyingByInviteId(invitationId).setApplyingExecutorInvitationId(null);
     }
 
     @Transient
@@ -348,8 +351,8 @@ public class GrantOfRepresentationData extends CaseData {
     @Transient
     public ExecutorApplying getExecutorApplyingByInviteId(String invitationId) {
         return this.getExecutorsApplying().stream()
-            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitiationId() != null
-                && executorApplying.getValue().getApplyingExecutorInvitiationId()
+            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitationId() != null
+                && executorApplying.getValue().getApplyingExecutorInvitationId()
                 .equals(invitationId)).map(CollectionMember::getValue)
             .collect(CollectionUtils.toSingleton());
     }
@@ -364,4 +367,5 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
 
+    private ProbateCalculatedFees fees;
 }

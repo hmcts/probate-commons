@@ -37,6 +37,8 @@ import java.util.List;
 @Data
 public class StandingSearchData extends CaseData {
 
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
+
     private ApplicationType applicationType;
 
     private RegistryLocation registryLocation;
@@ -72,6 +74,11 @@ public class StandingSearchData extends CaseData {
     private String applicantSurname;
 
     private String applicantEmailAddress;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate applicationSubmittedDate;
 
     private Address applicantAddress;
 

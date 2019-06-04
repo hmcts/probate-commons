@@ -121,7 +121,5 @@
   },
   "summary": {
     "readyToDeclare": true
-  },
-  "paymentPending": "false",
-  "creatingPayment": "false"
+  }
 }

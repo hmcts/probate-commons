@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.Builder;
@@ -14,6 +13,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
+import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
@@ -42,8 +42,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private String uploadDocumentUrl;
 
-    private Copies copies;
-
     private PaAssets assets;
 
     private InheritanceTax iht;
@@ -51,12 +49,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
     private Will will;
 
     private Summary summary;
-
-    @JsonSerialize(using = ToStringSerializer.class)
-    private Boolean paymentPending;
-
-    @JsonSerialize(using = ToStringSerializer.class)
-    private Boolean creatingPayment;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -76,21 +68,19 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   PaDeclaration declaration, String uploadDocumentUrl, Registry registry,
                   CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
-                  InheritanceTax iht, Will will, Summary summary, Executors executors, Boolean paymentPending,
-                  Boolean creatingPayment, LocalDate applicationSubmittedDate, Long submissionReference,
-                  Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment) {
-        super(type, deceased, applicant, registry, ccdCase, payments);
+                  InheritanceTax iht, Will will, Summary summary, Executors executors,
+                  LocalDate applicationSubmittedDate, Long submissionReference,
+                  Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
+                  Fees fees) {
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies);
         this.applicantEmail = applicantEmail;
         this.declaration = declaration;
         this.uploadDocumentUrl = uploadDocumentUrl;
-        this.copies = copies;
         this.assets = assets;
         this.iht = iht;
         this.will = will;
         this.summary = summary;
         this.executors = executors;
-        this.paymentPending = paymentPending;
-        this.creatingPayment = creatingPayment;
         this.applicationSubmittedDate = applicationSubmittedDate;
         this.submissionReference = submissionReference;
         this.legalDeclaration = legalDeclaration;
