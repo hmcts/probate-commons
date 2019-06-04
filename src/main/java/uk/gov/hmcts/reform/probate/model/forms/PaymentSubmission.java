@@ -13,5 +13,7 @@ public class PaymentSubmission {
 
     private Form form;
 
+    private Boolean redirect;
+
     private String redirectUrl;
 }
