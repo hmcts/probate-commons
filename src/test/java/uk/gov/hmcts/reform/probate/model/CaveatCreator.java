@@ -34,6 +34,7 @@ public class CaveatCreator {
         caveatData.setDeceasedSurname("deceased surname");
         caveatData.setRegistryLocation(RegistryLocation.OXFORD);
         caveatData.setExpiryDate(LocalDate.of(2019, 2, 14));
+        caveatData.setPaperForm(false);
 
         return caveatData;
 

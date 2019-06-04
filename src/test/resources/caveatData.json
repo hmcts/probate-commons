@@ -37,5 +37,6 @@
     "PostCode": "caveator post code",
     "Country": "caveator country"
   },
-  "expiryDate": "2019-02-14"
+  "expiryDate": "2019-02-14",
+  "paperForm": "No"
 }

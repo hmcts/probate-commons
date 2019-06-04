@@ -116,6 +116,8 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setSolsSolicitorAppReference("Solicitor Application Reference");
         grantOfRepresentationData.setSolsSolicitorFirmName("Solicitor Firm Name");
 
+        grantOfRepresentationData.setPaperForm(false);
+
         return grantOfRepresentationData;
     }
 
