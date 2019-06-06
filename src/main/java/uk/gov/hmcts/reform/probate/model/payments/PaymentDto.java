@@ -51,6 +51,8 @@ public class PaymentDto {
 
     private String method;
 
+    private String paymentReference;
+
     @JsonProperty("external_provider")
     private String externalProvider;
 
