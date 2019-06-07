@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 
 public class NumberUtils {
 
+    private NumberUtils(){
+    }
+
     public static Boolean equals(BigDecimal a, BigDecimal b) {
         return (a == b) || (a != null && a.compareTo(b) == 0);
     }

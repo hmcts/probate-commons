@@ -73,26 +73,30 @@ public class PaymentDto {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PaymentDto)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof PaymentDto)) {
+            return false;
+        }
         PaymentDto that = (PaymentDto) o;
-        return Objects.equals(id, that.id) &&
-                NumberUtils.equals(amount, that.amount) &&
-                Objects.equals(description, that.description) &&
-                Objects.equals(reference, that.reference) &&
-                Objects.equals(dateCreated, that.dateCreated) &&
-                Objects.equals(dateUpdated, that.dateUpdated) &&
-                Objects.equals(currency, that.currency) &&
-                Objects.equals(ccdCaseNumber, that.ccdCaseNumber) &&
-                Objects.equals(channel, that.channel) &&
-                Objects.equals(method, that.method) &&
-                Objects.equals(paymentReference, that.paymentReference) &&
-                Objects.equals(externalProvider, that.externalProvider) &&
-                Objects.equals(externalReference, that.externalReference) &&
-                Objects.equals(siteId, that.siteId) &&
-                Objects.equals(status, that.status) &&
-                Objects.equals(fees, that.fees) &&
-                Objects.equals(links, that.links);
+        return Objects.equals(id, that.id)
+                && NumberUtils.equals(amount, that.amount)
+                && Objects.equals(description, that.description)
+                && Objects.equals(reference, that.reference)
+                && Objects.equals(dateCreated, that.dateCreated)
+                && Objects.equals(dateUpdated, that.dateUpdated)
+                && Objects.equals(currency, that.currency)
+                && Objects.equals(ccdCaseNumber, that.ccdCaseNumber)
+                && Objects.equals(channel, that.channel)
+                && Objects.equals(method, that.method)
+                && Objects.equals(paymentReference, that.paymentReference)
+                && Objects.equals(externalProvider, that.externalProvider)
+                && Objects.equals(externalReference, that.externalReference)
+                && Objects.equals(siteId, that.siteId)
+                && Objects.equals(status, that.status)
+                && Objects.equals(fees, that.fees)
+                && Objects.equals(links, that.links);
     }
 
     @Override

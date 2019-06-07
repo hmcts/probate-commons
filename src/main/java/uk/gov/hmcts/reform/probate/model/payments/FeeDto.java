@@ -38,16 +38,20 @@ public class FeeDto {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof FeeDto)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof FeeDto)) {
+            return false;
+        }
         FeeDto feeDto = (FeeDto) o;
-        return Objects.equals(code, feeDto.code) &&
-                Objects.equals(version, feeDto.version) &&
-                Objects.equals(volume, feeDto.volume) &&
-                NumberUtils.equals(calculatedAmount, feeDto.calculatedAmount) &&
-                Objects.equals(memoLine, feeDto.memoLine) &&
-                Objects.equals(ccdCaseNumber, feeDto.ccdCaseNumber) &&
-                Objects.equals(reference, feeDto.reference);
+        return Objects.equals(code, feeDto.code)
+                && Objects.equals(version, feeDto.version)
+                && Objects.equals(volume, feeDto.volume)
+                && NumberUtils.equals(calculatedAmount, feeDto.calculatedAmount)
+                && Objects.equals(memoLine, feeDto.memoLine)
+                && Objects.equals(ccdCaseNumber, feeDto.ccdCaseNumber)
+                && Objects.equals(reference, feeDto.reference);
     }
 
     @Override
