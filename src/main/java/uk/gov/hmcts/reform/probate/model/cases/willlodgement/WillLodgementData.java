@@ -86,6 +86,10 @@ public class WillLodgementData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedAnyOtherNames;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean paperForm;
+
     private List<CollectionMember<FullAliasName>> deceasedFullAliasNameList;
 
     private Address deceasedAddress;

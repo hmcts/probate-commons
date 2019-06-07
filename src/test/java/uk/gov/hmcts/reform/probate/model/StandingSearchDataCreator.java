@@ -36,6 +36,7 @@ public class StandingSearchDataCreator {
                 .applicationSubmittedDate(LocalDate.of(2019, 1, 1))
                 .numberOfCopies(12L)
                 .registryLocation(RegistryLocation.WINCHESTER)
+                .paperForm(false)
                 .build();
     }
 
