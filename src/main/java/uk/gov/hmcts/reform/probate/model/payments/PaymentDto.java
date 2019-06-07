@@ -9,11 +9,14 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.utils.NumberUtils;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
@@ -68,11 +71,43 @@ public class PaymentDto {
     @JsonProperty("_links")
     private LinksDto links;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PaymentDto)) return false;
+        PaymentDto that = (PaymentDto) o;
+        return Objects.equals(id, that.id) &&
+                NumberUtils.equals(amount, that.amount) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(reference, that.reference) &&
+                Objects.equals(dateCreated, that.dateCreated) &&
+                Objects.equals(dateUpdated, that.dateUpdated) &&
+                Objects.equals(currency, that.currency) &&
+                Objects.equals(ccdCaseNumber, that.ccdCaseNumber) &&
+                Objects.equals(channel, that.channel) &&
+                Objects.equals(method, that.method) &&
+                Objects.equals(paymentReference, that.paymentReference) &&
+                Objects.equals(externalProvider, that.externalProvider) &&
+                Objects.equals(externalReference, that.externalReference) &&
+                Objects.equals(siteId, that.siteId) &&
+                Objects.equals(status, that.status) &&
+                Objects.equals(fees, that.fees) &&
+                Objects.equals(links, that.links);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, amount, description, reference, dateCreated, dateUpdated, currency,
+                ccdCaseNumber, channel, method, paymentReference, externalProvider, externalReference,
+                siteId, status, fees, links);
+    }
+
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
     @JsonNaming(SnakeCaseStrategy.class)
     @JsonInclude(NON_NULL)
+    @EqualsAndHashCode
     public static class LinksDto {
         private LinkDto nextUrl;
         private LinkDto self;
@@ -83,6 +118,7 @@ public class PaymentDto {
     @AllArgsConstructor
     @NoArgsConstructor
     @JsonInclude(NON_NULL)
+    @EqualsAndHashCode
     public static class LinkDto {
         private String href;
         private String method;
