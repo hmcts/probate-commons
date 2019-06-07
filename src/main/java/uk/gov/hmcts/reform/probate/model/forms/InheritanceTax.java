@@ -40,27 +40,27 @@ public class InheritanceTax {
 
     private String netValueField;
 
-    @JsonProperty("grossIHT205")
+    @JsonProperty("grossValueFieldIHT205")
     @JsonSerialize(using = ToStringSerializer.class)
     private BigDecimal grossIht205;
 
-    @JsonProperty("netIHT205")
+    @JsonProperty("netValueFieldIHT205")
     @JsonSerialize(using = ToStringSerializer.class)
     private BigDecimal netIht205;
 
-    @JsonProperty("grossIHT207")
+    @JsonProperty("grossValueFieldIHT207")
     @JsonSerialize(using = ToStringSerializer.class)
     private BigDecimal grossIht207;
 
-    @JsonProperty("netIHT207")
+    @JsonProperty("netValueFieldIHT207")
     @JsonSerialize(using = ToStringSerializer.class)
     private BigDecimal netIht207;
 
-    @JsonProperty("grossIHT400421")
+    @JsonProperty("grossValueFieldIHT400421")
     @JsonSerialize(using = ToStringSerializer.class)
     private BigDecimal grossIht400421;
 
-    @JsonProperty("netIHT400421")
+    @JsonProperty("netValueFieldIHT400421")
     @JsonSerialize(using = ToStringSerializer.class)
     private BigDecimal netIht400421;
 
