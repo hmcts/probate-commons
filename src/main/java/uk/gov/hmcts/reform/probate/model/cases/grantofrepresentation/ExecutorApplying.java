@@ -32,7 +32,7 @@ public class ExecutorApplying {
 
     private String applyingExecutorOtherReason;
 
-    private String applyingExecutorInvitiationId;
+    private String applyingExecutorInvitationId;
 
     private String applyingExecutorLeadName;
 

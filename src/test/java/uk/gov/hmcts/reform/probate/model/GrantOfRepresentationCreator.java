@@ -9,31 +9,90 @@ import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
+import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.ExecutorApplying;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentationData;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantType;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class GrantOfRepresentationCreator {
 
-    public static GrantOfRepresentationData createIntestacyCase() {
+    public static GrantOfRepresentationData createProbateCase() {
         GrantOfRepresentationData grantOfRepresentationData = new GrantOfRepresentationData();
         grantOfRepresentationData.setApplicationType(ApplicationType.PERSONAL);
-        grantOfRepresentationData.setGrantType(GrantType.INTESTACY);
-        grantOfRepresentationData.setPrimaryApplicantEmailAddress("jon.snow@thenorth.com");
-        grantOfRepresentationData.setPrimaryApplicantForenames("Jon");
-        grantOfRepresentationData.setPrimaryApplicantSurname("Snow");
-        Address primaryApplicantAddress = new Address();
-        primaryApplicantAddress.setAddressLine1("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT");
-        grantOfRepresentationData.setPrimaryApplicantAddress(primaryApplicantAddress);
-        grantOfRepresentationData.setPrimaryApplicantAddressFound(true);
-        grantOfRepresentationData.setPrimaryApplicantPhoneNumber("123455678");
-        grantOfRepresentationData.setPrimaryApplicantRelationshipToDeceased(Relationship.ADOPTED_CHILD);
-        grantOfRepresentationData.setPrimaryApplicantAdoptionInEnglandOrWales(true);
+        grantOfRepresentationData.setGrantType(GrantType.GRANT_OF_PROBATE);
+        createPrimaryApplicantDetails(grantOfRepresentationData);
 
+        createDeceasedDetails(grantOfRepresentationData);
+
+        createAliasDetails(grantOfRepresentationData);
+
+        grantOfRepresentationData.setRegistryLocation(RegistryLocation.BIRMINGHAM);
+        grantOfRepresentationData.setDeceasedHasAssetsOutsideUK(true);
+        grantOfRepresentationData.setAssetsOverseasNetValue(10050L);
+        createIhtDetails(grantOfRepresentationData);
+
+        grantOfRepresentationData.setExtraCopiesOfGrant(5L);
+        grantOfRepresentationData.setOutsideUkGrantCopies(6L);
+
+        final CollectionMember<CasePayment> paymentCollectionMember = new CollectionMember<>();
+        CasePayment payment = new CasePayment();
+        payment.setStatus(PaymentStatus.SUCCESS);
+
+        createPaymentDetails(grantOfRepresentationData, paymentCollectionMember, payment);
+        grantOfRepresentationData.setUploadDocumentUrl("http://document-management/document/12345");
+
+        createLegacyDetails(grantOfRepresentationData);
+
+        createSolicitorDetails(grantOfRepresentationData);
+
+        grantOfRepresentationData.setPaperForm(false);
+
+        return grantOfRepresentationData;
+    }
+
+    public static void addExecutorApplying(GrantOfRepresentationData grantOfRepresentationData,
+                                           String applyingExecutorEmail) {
+        if (grantOfRepresentationData.getExecutorsApplying() == null) {
+            grantOfRepresentationData.setExecutorsApplying(new ArrayList<>());
+        }
+        ExecutorApplying executorApplying = new ExecutorApplying();
+        executorApplying.setApplyingExecutorEmail(applyingExecutorEmail);
+        grantOfRepresentationData.getExecutorsApplying().add(
+            new CollectionMember<ExecutorApplying>("1", executorApplying));
+    }
+
+    private static void createSolicitorDetails(GrantOfRepresentationData grantOfRepresentationData) {
+        Address solicitorAddress = Address.builder()
+            .addressLine1("Sol Address Line 1")
+            .addressLine2("Sol Address Line 2")
+            .addressLine3("Sol Address Line 3")
+            .country("UK")
+            .county("Middlesex")
+            .postCode("HA1 4ET")
+            .postTown("Harrow")
+            .build();
+        grantOfRepresentationData.setSolsSolicitorAddress(solicitorAddress);
+        grantOfRepresentationData.setSolsSolicitorAppReference("Solicitor Application Reference");
+        grantOfRepresentationData.setSolsSolicitorFirmName("Solicitor Firm Name");
+        grantOfRepresentationData.setSolsSolicitorAddress(solicitorAddress);
+        grantOfRepresentationData.setSolsSolicitorAppReference("Solicitor Application Reference");
+        grantOfRepresentationData.setSolsSolicitorFirmName("Solicitor Firm Name");
+    }
+
+    private static void createIhtDetails(GrantOfRepresentationData grantOfRepresentationData) {
+        grantOfRepresentationData.setIhtFormId(IhtFormType.IHT205);
+        grantOfRepresentationData.setIhtFormCompletedOnline(true);
+        grantOfRepresentationData.setIhtGrossValue(100000L);
+        grantOfRepresentationData.setIhtNetValue(100000L);
+        grantOfRepresentationData.setIhtReferenceNumber("GOT123456");
+    }
+
+    private static void createDeceasedDetails(GrantOfRepresentationData grantOfRepresentationData) {
         grantOfRepresentationData.setDeceasedSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE);
         grantOfRepresentationData.setDeceasedSurname("Stark");
         grantOfRepresentationData.setDeceasedForenames("Ned");
@@ -44,19 +103,32 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setDeceasedAddress(deceasedAddress);
         grantOfRepresentationData.setDeceasedAddressFound(true);
         grantOfRepresentationData.setDeceasedAnyOtherNames(true);
+    }
 
-        CollectionMember<AliasName> aliasNameCollectionMember = new CollectionMember<>();
-        AliasName aliasName = new AliasName();
-        aliasName.setForenames("King");
-        aliasName.setLastName("North");
-        aliasNameCollectionMember.setValue(aliasName);
-        grantOfRepresentationData.setDeceasedAliasNameList(Lists.newArrayList(aliasNameCollectionMember));
+    private static void createPrimaryApplicantDetails(GrantOfRepresentationData grantOfRepresentationData) {
+        grantOfRepresentationData.setPrimaryApplicantEmailAddress("jon.snow@thenorth.com");
+        grantOfRepresentationData.setPrimaryApplicantForenames("Jon");
+        grantOfRepresentationData.setPrimaryApplicantSurname("Snow");
+        Address primaryApplicantAddress = new Address();
+        primaryApplicantAddress.setAddressLine1("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT");
+        grantOfRepresentationData.setPrimaryApplicantAddress(primaryApplicantAddress);
+        grantOfRepresentationData.setPrimaryApplicantAddressFound(true);
+        grantOfRepresentationData.setPrimaryApplicantPhoneNumber("123455678");
+        grantOfRepresentationData.setPrimaryApplicantRelationshipToDeceased(Relationship.ADOPTED_CHILD);
+        grantOfRepresentationData.setPrimaryApplicantAdoptionInEnglandOrWales(true);
+    }
 
-        CollectionMember<SolsAliasName> solsAliasNameCollectionMember = new CollectionMember<>();
-        SolsAliasName fullAliasName = new SolsAliasName();
-        fullAliasName.setSolsAliasname("King North");
-        solsAliasNameCollectionMember.setValue(fullAliasName);
-        grantOfRepresentationData.setSolsDeceasedAliasNamesList(Lists.newArrayList(solsAliasNameCollectionMember));
+
+    public static GrantOfRepresentationData createIntestacyCase() {
+        GrantOfRepresentationData grantOfRepresentationData = new GrantOfRepresentationData();
+        grantOfRepresentationData.setApplicationType(ApplicationType.PERSONAL);
+        grantOfRepresentationData.setGrantType(GrantType.INTESTACY);
+
+        createPrimaryApplicantDetails(grantOfRepresentationData);
+
+        createDeceasedDetails(grantOfRepresentationData);
+
+        createAliasDetails(grantOfRepresentationData);
 
         grantOfRepresentationData.setDeceasedMartialStatus(MaritalStatus.MARRIED);
         grantOfRepresentationData.setDeceasedDivorcedInEnglandOrWales(false);
@@ -70,11 +142,8 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setRegistryLocation(RegistryLocation.BIRMINGHAM);
         grantOfRepresentationData.setDeceasedHasAssetsOutsideUK(true);
         grantOfRepresentationData.setAssetsOverseasNetValue(10050L);
-        grantOfRepresentationData.setIhtFormId(IhtFormType.IHT205);
-        grantOfRepresentationData.setIhtFormCompletedOnline(true);
-        grantOfRepresentationData.setIhtGrossValue(100000L);
-        grantOfRepresentationData.setIhtNetValue(100000L);
-        grantOfRepresentationData.setIhtReferenceNumber("GOT123456");
+
+        createIhtDetails(grantOfRepresentationData);
 
         grantOfRepresentationData.setDeclarationCheckbox(true);
 
@@ -85,7 +154,29 @@ public class GrantOfRepresentationCreator {
         CasePayment payment = new CasePayment();
         payment.setStatus(PaymentStatus.SUCCESS);
 
-        Date date = Date.from(LocalDate.of(2018, 12, 3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+        createPaymentDetails(grantOfRepresentationData, paymentCollectionMember, payment);
+        grantOfRepresentationData.setUploadDocumentUrl("http://document-management/document/12345");
+
+        createLegacyDetails(grantOfRepresentationData);
+
+        createSolicitorDetails(grantOfRepresentationData);
+
+        grantOfRepresentationData.setPaperForm(false);
+
+        return grantOfRepresentationData;
+    }
+
+    private static void createLegacyDetails(GrantOfRepresentationData grantOfRepresentationData) {
+        grantOfRepresentationData.setLegacyId("123456");
+        grantOfRepresentationData.setLegacyType("Legacy LEGACY GRANT");
+        grantOfRepresentationData.setLegacyCaseViewUrl("http://locahost:8080/cases/1");
+    }
+
+    private static void createPaymentDetails(GrantOfRepresentationData grantOfRepresentationData,
+                                             CollectionMember<CasePayment> paymentCollectionMember,
+                                             CasePayment payment) {
+        Date date = Date.from(LocalDate.of(2018, 12, 3)
+            .atStartOfDay(ZoneId.systemDefault()).toInstant());
         payment.setDate(date);
         payment.setReference("RC-1537-1988-5489-1985");
         payment.setAmount(22050L);
@@ -94,28 +185,23 @@ public class GrantOfRepresentationCreator {
         payment.setSiteId("P223");
         paymentCollectionMember.setValue(payment);
         grantOfRepresentationData.setPayments(Lists.newArrayList(paymentCollectionMember));
-        grantOfRepresentationData.setUploadDocumentUrl("http://document-management/document/12345");
 
-        grantOfRepresentationData.setLegacyId("123456");
-        grantOfRepresentationData.setLegacyType("Legacy LEGACY GRANT");
-        grantOfRepresentationData.setLegacyCaseViewUrl("http://locahost:8080/cases/1");
+    }
 
-        Address solicitorAddress = Address.builder()
-                .addressLine1("Sol Address Line 1")
-                .addressLine2("Sol Address Line 2")
-                .addressLine3("Sol Address Line 3")
-                .country("UK")
-                .county("Middlesex")
-                .postCode("HA1 4ET")
-                .postTown("Harrow")
-                .build();
-        grantOfRepresentationData.setSolsSolicitorAddress(solicitorAddress);
-        grantOfRepresentationData.setSolsSolicitorAppReference("Solicitor Application Reference");
-        grantOfRepresentationData.setSolsSolicitorFirmName("Solicitor Firm Name");
+    private static void createAliasDetails(GrantOfRepresentationData grantOfRepresentationData) {
+        CollectionMember<AliasName> aliasNameCollectionMember = new CollectionMember<>();
+        AliasName aliasName = new AliasName();
+        aliasName.setForenames("King");
+        aliasName.setLastName("North");
+        aliasNameCollectionMember.setValue(aliasName);
+        grantOfRepresentationData.setDeceasedAliasNameList(Lists.newArrayList(aliasNameCollectionMember));
 
-        grantOfRepresentationData.setPaperForm(false);
+        CollectionMember<SolsAliasName> solsAliasNameCollectionMember = new CollectionMember<>();
+        SolsAliasName fullAliasName = new SolsAliasName();
+        fullAliasName.setSolsAliasname("King North");
+        solsAliasNameCollectionMember.setValue(fullAliasName);
+        grantOfRepresentationData.setSolsDeceasedAliasNamesList(Lists.newArrayList(solsAliasNameCollectionMember));
 
-        return grantOfRepresentationData;
     }
 
     private GrantOfRepresentationCreator() {

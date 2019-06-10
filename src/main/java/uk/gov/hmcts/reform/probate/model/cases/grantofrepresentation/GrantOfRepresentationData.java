@@ -29,7 +29,9 @@ import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
+import uk.gov.hmcts.reform.probate.utils.CollectionUtils;
 
+import java.beans.Transient;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -302,6 +304,72 @@ public class GrantOfRepresentationData extends CaseData {
     private String legalDeclarationJson;
 
     private String checkAnswersSummaryJson;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean paymentPending;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean creatingPayment;
+
+    @Transient
+    public void setInvitationDetailsForExecutorApplying(String email, String invitationId, String leadApplicantName) {
+        ExecutorApplying e = this.getExecutorApplyingByEmailAddress(email);
+        e.setApplyingExecutorInvitationId(invitationId);
+        e.setApplyingExecutorLeadName(leadApplicantName);
+    }
+
+    @Transient
+    public void deleteInvitation(String invitationId) {
+        this.getExecutorApplyingByInviteId(invitationId).setApplyingExecutorInvitationId(null);
+    }
+
+    @Transient
+    public void updateInvitationContactDetailsForExecutorApplying(String invitationId, String email,
+                                                                  String phoneNumber) {
+        ExecutorApplying e = this.getExecutorApplyingByInviteId(invitationId);
+        e.setApplyingExecutorPhoneNumber(phoneNumber);
+        e.setApplyingExecutorEmail(email);
+    }
+
+    @Transient
+    public void setInvitationAgreedFlagForExecutorApplying(String invitationId, Boolean invitationAgreed) {
+        this.getExecutorApplyingByInviteId(invitationId).setApplyingExecutorAgreed(invitationAgreed);
+    }
+
+    @Transient
+    public Boolean haveAllExecutorsAgreed() {
+        return this.getExecutorsApplying().stream().allMatch(
+            executorApplying -> executorApplying.getValue().getApplyingExecutorAgreed() != null
+                && executorApplying.getValue().getApplyingExecutorAgreed())
+            && this.getDeclarationCheckbox();
+    }
+
+    @Transient
+    public void resetExecutorsApplyingAgreedFlags() {
+        this.getExecutorsApplying().forEach(
+            executorsApplying -> executorsApplying.getValue().setApplyingExecutorAgreed(null));
+    }
+
+    @Transient
+    public ExecutorApplying getExecutorApplyingByInviteId(String invitationId) {
+        return this.getExecutorsApplying().stream()
+            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitationId() != null
+                && executorApplying.getValue().getApplyingExecutorInvitationId()
+                .equals(invitationId)).map(CollectionMember::getValue)
+            .collect(CollectionUtils.toSingleton());
+    }
+
+    @Transient
+    public ExecutorApplying getExecutorApplyingByEmailAddress(String emailAddress) {
+        return this.getExecutorsApplying().stream()
+            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorEmail() != null
+                && executorApplying.getValue().getApplyingExecutorEmail()
+                .equals(emailAddress)).map(CollectionMember::getValue)
+            .collect(CollectionUtils.toSingleton());
+    }
+
 
     private ProbateCalculatedFees fees;
 

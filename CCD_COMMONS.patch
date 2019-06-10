@@ -1,0 +1,126 @@
+Index: src/pactTest/java/uk/gov/hmcts/probate/services/submit/controllers/v2/consumer/CcdConsumerTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/pactTest/java/uk/gov/hmcts/probate/services/submit/controllers/v2/consumer/CcdConsumerTest.java	(date 1558708481000)
++++ src/pactTest/java/uk/gov/hmcts/probate/services/submit/controllers/v2/consumer/CcdConsumerTest.java	(date 1558708481000)
+@@ -0,0 +1,118 @@
++package uk.gov.hmcts.probate.services.submit.controllers.v2.consumer;
++
++import au.com.dius.pact.consumer.Pact;
++import au.com.dius.pact.consumer.dsl.PactDslRootValue;
++import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
++import au.com.dius.pact.consumer.junit5.PactConsumerTestExt;
++import au.com.dius.pact.consumer.junit5.PactTestFor;
++import au.com.dius.pact.model.RequestResponsePact;
++import org.json.JSONException;
++import org.junit.jupiter.api.Test;
++import org.junit.jupiter.api.extension.ExtendWith;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.test.context.SpringBootTest;
++import org.springframework.http.MediaType;
++import org.springframework.test.context.junit.jupiter.SpringExtension;
++import uk.gov.hmcts.reform.ccd.client.CoreCaseDataApi;
++
++import java.io.IOException;
++
++import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
++
++
++@ExtendWith(PactConsumerTestExt.class)
++@ExtendWith(SpringExtension.class)
++@PactTestFor(providerName = "probate_core_case_data", port = "8894")
++@SpringBootTest({
++        // overriding provider address
++        "core_case_data.api.url : localhost:8894"
++})
++public class CcdConsumerTest {
++
++    @Autowired
++    private CoreCaseDataApi coreCaseDataApi;
++
++    @Autowired
++    protected ContractTestUtils contractTestUtils;
++
++    public static final String SOME_SESSION_ID = "someSessionId";
++
++    @Pact(state = "CCD start an event for a citizen", provider = "probate_core_case_data", consumer = "probate_submit_service")
++    public RequestResponsePact executeStartCcdCitizenEvent(PactDslWithProvider builder) throws IOException, JSONException {
++        // @formatter:off
++        return builder
++                .given("submit service requests a start event")
++                .uponReceiving("a request to start an event ")
++                .path("/citizens/userId/jurisdictions/jurisdictionId/case-types/caseType/event-triggers/eventId/token")
++                .method("GET")
++                .headers(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE, "Session-Id", SOME_SESSION_ID)
++                .body(contractTestUtils.createJsonObject("/invite/invitation.json"))
++                .willRespondWith()
++                .status(200)
++                .matchHeader("Content-Type", "text/plain;charset=UTF-8")
++                .body(PactDslRootValue.stringMatcher("^[0-9]*$", "12321321"))
++                .toPact();
++
++        // @formatter:on
++    }
++
++    @Pact(state = "business service resends invitation", provider = "probate_business_service_invite", consumer = "probate_orchestrator_service")
++    public RequestResponsePact executeResendInvitation(PactDslWithProvider builder) throws IOException, JSONException {
++        // @formatter:off
++        return builder
++                .given("business service resends invitation")
++                .uponReceiving("a request to POST resend Invitation ")
++                .path("/invite/54321")
++                .method("POST")
++                .headers(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE, "Session-Id", SOME_SESSION_ID)
++                .body(contractTestUtils.createJsonObject("/invite/invitationResend.json"))
++                .willRespondWith()
++                .status(200)
++                .matchHeader("Content-Type", "text/plain;charset=UTF-8")
++                .body(PactDslRootValue.stringMatcher("^[0-9]*$", "54321"))
++                .toPact();
++
++        // @formatter:on
++    }
++
++
++    @Pact(state = "business service generates pin number", provider = "probate_business_service_invite", consumer = "probate_orchestrator_service")
++    public RequestResponsePact executePinNumber(PactDslWithProvider builder) throws IOException, JSONException {
++        // @formatter:off
++        return builder
++                .given("business service generates pin number")
++                .uponReceiving("a request to GET a pin number ")
++                .path("/pin")
++                .method("GET")
++                .matchQuery("phoneNumber", "07986777788")
++                .headers("Session-Id", SOME_SESSION_ID)
++                .willRespondWith()
++                .status(200)
++                .matchHeader("Content-Type", "text/plain;charset=UTF-8")
++                .body(PactDslRootValue.stringMatcher("^[0-9]*$", "54321"))
++                .toPact();
++
++        // @formatter:on
++    }
++
++    @Test
++    @PactTestFor(pactMethod = "executeSendInvitation")
++    public void verifyExecuteSendInvitation() throws JSONException, IOException {
++        businessServiceApi.invite(contractTestUtils.getInvitation("/invite/invitation.json"), SOME_SESSION_ID);
++    }
++
++    @Test
++    @PactTestFor(pactMethod = "executeResendInvitation")
++    public void verifyExecuteResendInvitation() throws JSONException, IOException {
++        businessServiceApi.invite("54321", contractTestUtils.getInvitation("/invite/invitationResend.json"), SOME_SESSION_ID);
++    }
++
++    @Test
++    @PactTestFor(pactMethod = "executePinNumber")
++    public void verifyExecutePinNumber() throws JSONException, IOException {
++        businessServiceApi.pinNumber("07986777788", SOME_SESSION_ID);
++    }
++}
++
++
++
