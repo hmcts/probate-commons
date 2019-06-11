@@ -20,6 +20,10 @@ public class ExecutorApplying {
 
     private String applyingExecutorName;
 
+    private String applyingExecutorFirstName;
+
+    private String applyingExecutorLastName;
+
     private String applyingExecutorPhoneNumber;
 
     private String applyingExecutorEmail;
@@ -39,4 +43,9 @@ public class ExecutorApplying {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean applyingExecutorAgreed;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean applyingExecutorApplicant;
+
 }

@@ -26,6 +26,8 @@ public class Executor {
 
     private Boolean isApplying;
 
+    private Boolean isApplicant;
+
     private Boolean hasOtherName;
 
     private String currentName;
