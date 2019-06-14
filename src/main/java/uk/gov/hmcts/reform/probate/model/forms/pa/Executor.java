@@ -28,6 +28,12 @@ public class Executor {
 
     private Boolean isApplicant;
 
+    private Boolean isDead;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean diedBefore;
+
     private Boolean hasOtherName;
 
     private String currentName;

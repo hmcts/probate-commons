@@ -48,4 +48,8 @@ public class ExecutorApplying {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean applyingExecutorApplicant;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean applyingExecutorHasOtherName;
+
 }

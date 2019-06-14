@@ -130,4 +130,25 @@ public class GrantOfRepresentationTest {
         Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
             is(equalTo(null)));
     }
+
+    @Test
+    public void shouldDetermineWhetherInvitesHaveBeenSentForExecutorsReturnsFalse() {
+
+        Boolean result = grantOfRepresentationData.haveInvitesBeenSent();
+        Assert.assertThat(result,
+            is(equalTo(Boolean.FALSE)));
+    }
+
+    @Test
+    public void shouldDetermineWhetherInvitesHaveBeenSentForExecutorsReturnsTrue() {
+
+        String invitationId = "123455";
+        String email = "executor@email.com";
+        grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, invitationId,
+            "Graham Garderner");
+
+        Boolean result = grantOfRepresentationData.haveInvitesBeenSent();
+        Assert.assertThat(result,
+            is(equalTo(Boolean.TRUE)));
+    }
 }
