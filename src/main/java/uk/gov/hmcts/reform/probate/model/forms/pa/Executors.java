@@ -33,5 +33,9 @@ public class Executors {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean alias;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean invitesSent;
+
     private List<Executor> list;
 }

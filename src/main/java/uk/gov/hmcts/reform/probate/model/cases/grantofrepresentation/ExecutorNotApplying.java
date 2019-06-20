@@ -29,4 +29,12 @@ public class ExecutorNotApplying {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean notApplyingExecutorNotified;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean notApplyingExecutorIsDead;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean notApplyingExecutorDiedBefore;
+
 }

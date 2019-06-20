@@ -374,6 +374,13 @@ public class GrantOfRepresentationData extends CaseData {
             .collect(CollectionUtils.toSingleton());
     }
 
+    @Transient
+    public Boolean haveInvitesBeenSent() {
+        return this.getExecutorsApplying() != null ? this.getExecutorsApplying().stream()
+            .allMatch(e -> e.getValue().getApplyingExecutorInvitationId() != null) : null;
+
+    }
+
 
     private ProbateCalculatedFees fees;
 
