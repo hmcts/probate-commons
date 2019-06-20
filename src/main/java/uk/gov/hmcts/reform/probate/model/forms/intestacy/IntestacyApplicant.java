@@ -11,35 +11,18 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.YesNo;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
-import uk.gov.hmcts.reform.probate.model.forms.Applicant;
+import uk.gov.hmcts.reform.probate.model.forms.ProbateApplicant;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
-import javax.validation.constraints.NotNull;
+import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@EqualsAndHashCode(callSuper = false)
-public class IntestacyApplicant extends Applicant {
-
-    @NotNull
-    private String email;
-
-    private String firstName;
-
-    private String lastName;
-
-    private String postCode;
-
-    private String phoneNumber;
-
-    private Address address;
-
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean addressFound;
+@EqualsAndHashCode(callSuper = true)
+public class IntestacyApplicant extends ProbateApplicant {
 
     @ApiModelProperty(value = "Relationship to the deceased")
     private Relationship relationshipToDeceased;
@@ -49,4 +32,15 @@ public class IntestacyApplicant extends Applicant {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean adoptionInEnglandOrWales;
 
+    @Builder
+    public IntestacyApplicant(String firstName, String lastName, String alias, String aliasReason, Address address,
+                              String postcode, String postcodeAddress, Boolean addressFound,
+                              List<Map<String, Object>> addresses, String phoneNumber, Boolean nameAsOnTheWill,
+                              String otherReason, Relationship relationshipToDeceased,
+                              Boolean adoptionInEnglandOrWales) {
+        super(firstName, lastName, alias, aliasReason, address, postcode, postcodeAddress, addressFound, addresses,
+                phoneNumber, nameAsOnTheWill, otherReason);
+        this.relationshipToDeceased = relationshipToDeceased;
+        this.adoptionInEnglandOrWales = adoptionInEnglandOrWales;
+    }
 }

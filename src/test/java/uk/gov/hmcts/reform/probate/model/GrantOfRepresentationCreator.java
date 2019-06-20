@@ -33,7 +33,7 @@ public class GrantOfRepresentationCreator {
 
         grantOfRepresentationData.setRegistryLocation(RegistryLocation.BIRMINGHAM);
         grantOfRepresentationData.setDeceasedHasAssetsOutsideUK(true);
-        grantOfRepresentationData.setAssetsOverseasNetValue(10050L);
+        grantOfRepresentationData.setAssetsOutsideNetValue(10050L);
         createIhtDetails(grantOfRepresentationData);
 
         grantOfRepresentationData.setExtraCopiesOfGrant(5L);
@@ -141,7 +141,7 @@ public class GrantOfRepresentationCreator {
 
         grantOfRepresentationData.setRegistryLocation(RegistryLocation.BIRMINGHAM);
         grantOfRepresentationData.setDeceasedHasAssetsOutsideUK(true);
-        grantOfRepresentationData.setAssetsOverseasNetValue(10050L);
+        grantOfRepresentationData.setAssetsOutsideNetValue(10050L);
 
         createIhtDetails(grantOfRepresentationData);
 

@@ -171,6 +171,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = ToStringSerializer.class)
     private Long ihtGrossValue;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean assetsOutside;
+
     private String ihtReferenceNumber;
 
     private Address primaryApplicantAddress;
@@ -180,8 +184,6 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean primaryApplicantAddressFound;
 
     private String primaryApplicantAddresses;
-
-    private String primaryApplicantPostCode;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -204,6 +206,8 @@ public class GrantOfRepresentationData extends CaseData {
     private String primaryApplicantPhoneNumber;
 
     private Relationship primaryApplicantRelationshipToDeceased;
+
+    private String primaryApplicantPostCode;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -263,7 +267,7 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean deceasedHasAssetsOutsideUK;
 
     @JsonSerialize(using = ToStringSerializer.class)
-    private Long assetsOverseasNetValue;
+    private Long assetsOutsideNetValue;
 
     private String uploadDocumentUrl;
 

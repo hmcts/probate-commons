@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
+import uk.gov.hmcts.reform.probate.model.forms.Declaration;
 import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
@@ -33,7 +34,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 
-    private PaDeclaration declaration;
+    private Declaration declaration;
 
     @NotNull
     private String applicantEmail;
@@ -64,7 +65,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
-                  PaDeclaration declaration, String uploadDocumentUrl, Registry registry,
+                  Declaration declaration, String uploadDocumentUrl, Registry registry,
                   CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
                   InheritanceTax iht, Will will, Summary summary, Executors executors,
                   LocalDate applicationSubmittedDate, Long submissionReference,

@@ -81,4 +81,10 @@ public class InheritanceTax {
         }
         return netValue.toPlainString();
     }
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean assetsOutside;
+
+    private BigDecimal assetsOutsideNetValue;
 }

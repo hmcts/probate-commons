@@ -21,7 +21,6 @@
     "dob_formattedDate": "23 January 1900",
     "dod_formattedDate": "1 January 2019"
   },
-  "type": "PA",
   "applicant": {
     "firstName": "Jon",
     "lastName": "Snow",
@@ -35,7 +34,6 @@
     "phoneNumber": "3234324",
     "nameAsOnTheWill": "Yes"
   },
-  "type": "PA",
   "registry": {
     "name": "Manchester",
     "email": "manchester@email.com",

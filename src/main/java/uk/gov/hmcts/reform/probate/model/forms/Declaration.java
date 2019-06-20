@@ -1,21 +1,31 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
+import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneSerializer;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public abstract class Declaration {
+@AllArgsConstructor
+@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Declaration {
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    @JsonProperty(value = "declarationCheckbox")
-    private Boolean declarationAgreement;
+    private Boolean softStop;
+
+    private Boolean hasEmailChanged;
+
+    private LegalStatement legalStatement;
+
+    private DeclarationDeclaration declaration;
+
+    @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
+    @JsonSerialize(using = BooleanAndNoneSerializer.class)
+    private Boolean declarationCheckbox;
 }

@@ -1,7 +1,7 @@
 {
   "type": "Intestacy",
+  "applicantEmail": "jon.snow@thenorth.com",
   "applicant": {
-    "email": "jon.snow@thenorth.com",
     "firstName": "Jon",
     "lastName": "Snow",
     "address": {
@@ -14,15 +14,23 @@
     },
     "postCode": "SW17 0QT",
     "phoneNumber": "123455678",
-    "addressFound": "Yes",
+    "addressFound": "true",
     "relationshipToDeceased": "adoptedChild",
     "adoptionInEnglandOrWales": "Yes"
   },
   "deceased": {
     "firstName": "Ned",
     "lastName": "Stark",
-    "dob_date": "1930-01-01",
-    "dod_date": "2018-01-01",
+    "dob_day": 1,
+    "dob_month": 1,
+    "dob_year": 1930,
+    "dod_day": 1,
+    "dod_month": 1,
+    "dod_year": 2018,
+    "dob_date": "1930-01-01T00:00:00.000Z",
+    "dob_formattedDate": "1 January 1930",
+    "dod_date": "2018-01-01T00:00:00.000Z",
+    "dod_formattedDate": "1 January 2018",
     "address": {
       "addressLine1": "Winterfell",
       "formattedAddress": "Winterfell Kings Landing Win1 Westeros",
@@ -30,7 +38,29 @@
       "postCode": "Win1",
       "country": "Westeros"
     },
-    "addressFound": "Yes",
+    "addresses": [
+      {
+        "building_number": "102",
+        "organisation_name": "MINISTRY OF JUSTICE",
+        "post_town": "LONDON",
+        "postcode": "SW1H 9AJ",
+        "sub_building_name": "SEVENTH FLOOR",
+        "thoroughfare_name": "PETTY FRANCE",
+        "uprn": "10033604583",
+        "formatted_address": "Ministry of Justice\nSeventh Floor\n102 Petty France\nLondon\nSW1H 9AJ"
+      },
+      {
+        "building_number": "103",
+        "organisation_name": "MINISTRY OF JUSTICE",
+        "post_town": "LONDON",
+        "postcode": "SW1H 9AJ",
+        "sub_building_name": "SEVENTH FLOOR",
+        "thoroughfare_name": "PETTY FRANCE",
+        "uprn": "10033604583",
+        "formatted_address": "Ministry of Justice\nSeventh Floor\n103 Petty France\nLondon\nSW1H 9AJ"
+      }
+    ],
+    "addressFound": "true",
     "postCode": "SW17 0QT",
     "alias": "Yes",
     "otherNames": {
@@ -56,11 +86,9 @@
     "grossValue": 100000,
     "netValueOnline": "100000",
     "grossValueOnline": "100000",
-    "identifier": "GOT123456"
-  },
-  "assets": {
-    "assetsOverseasNetValue": 100.50,
-    "assetsOverseas": "Yes"
+    "identifier": "GOT123456",
+    "assetsOutsideNetValue": 100.50,
+    "assetsOutside": "Yes"
   },
   "copies": {
     "uk": 5,
@@ -77,7 +105,7 @@
     "sequenceNumber": 20075
   },
   "declaration": {
-    "declarationCheckbox": "Yes"
+    "declarationCheckbox": "true"
   },
   "payments": [
     {

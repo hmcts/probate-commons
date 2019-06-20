@@ -12,9 +12,13 @@ import uk.gov.hmcts.reform.probate.model.TestUtils;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
+import uk.gov.hmcts.reform.probate.model.forms.Declaration;
+import uk.gov.hmcts.reform.probate.model.forms.DeclarationDeclaration;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.IhtMethod;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
+import uk.gov.hmcts.reform.probate.model.forms.LegalStatement;
+import uk.gov.hmcts.reform.probate.model.forms.LegalStatementExecutorApplying;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.PaymentCopies;
 import uk.gov.hmcts.reform.probate.model.forms.PaymentCopiesForRegion;
@@ -130,10 +134,10 @@ public class PaFormTest {
                         ))
                         .executorsNumber(1)
                         .build())
-                .declaration(PaDeclaration.builder()
+                .declaration(Declaration.builder()
                         .softStop(false)
                         .declaration(
-                                PaDeclarationDeclaration.builder()
+                                DeclarationDeclaration.builder()
                                         .accept("I confirm that I will administer the estate of the person who died "
                                                 + "according to law, and that my application is truthful.")
                                         .confirm("I confirm that I will administer the estate of Ned Stark, "
@@ -154,7 +158,7 @@ public class PaFormTest {
                                                 + "me if I am found to have been deliberately untruthful or dishonest")
                                         .build()
                         )
-                        .legalStatement(PaLegalStatement.builder()
+                        .legalStatement(LegalStatement.builder()
                                 .intro("This statement is based on the information you&rsquo;ve given "
                                         + "in your application. It will be stored as a public record.")
                                 .deceased("Ned Stark was born on 1 January 1900 and died on 1 January 2019, "
@@ -162,7 +166,7 @@ public class PaFormTest {
                                 .applicant("I, Jon Snow of The Wall, North, Westeros, GOT567, "
                                         + "make the following statement:")
                                 .executorsApplying(Lists.newArrayList(
-                                        PaLegalStatementExecutorApplying.builder()
+                                        LegalStatementExecutorApplying.builder()
                                                 .name("I am an executor named in the will as Jon Snow, "
                                                         + "and I am applying for probate.")
                                                 .sign("I will send to the probate registry what I believe to be the "
