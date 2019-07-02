@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.validation.groups.submission.PaSubmission;
+
+import javax.validation.constraints.NotBlank;
 
 @Data
 @AllArgsConstructor
@@ -13,5 +16,6 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LegalStatementExecutorNotApplying {
 
+    @NotBlank(groups = {PaSubmission.class})
     private String executor;
 }

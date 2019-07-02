@@ -3,9 +3,9 @@ package uk.gov.hmcts.reform.probate.utils;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-public class CollectionUtils {
+public class CollectorUtils {
 
-    private CollectionUtils() {
+    private CollectorUtils() {
 
     }
 

@@ -17,6 +17,6 @@ public class CaseInfo {
 
     private String caseId;
 
-    private String state;
+    private CaseState state;
 
 }
