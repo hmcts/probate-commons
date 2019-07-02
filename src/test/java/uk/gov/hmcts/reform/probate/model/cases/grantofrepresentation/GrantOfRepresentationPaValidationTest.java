@@ -9,12 +9,12 @@ import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.PaCro
 import uk.gov.hmcts.reform.probate.model.validation.groups.fieldcheck.PaFieldCheck;
 import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.PaNullCheck;
 
+import java.time.LocalDate;
+import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.time.LocalDate;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
@@ -85,7 +85,8 @@ public class GrantOfRepresentationPaValidationTest {
 
         assertThat(violations).hasSize(1)
                 .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("primaryApplicantEmailAddress", "must be a well-formed email address"));
+                .containsExactlyInAnyOrder(
+                        tuple("primaryApplicantEmailAddress", "must be a well-formed email address"));
     }
 
     @Test

@@ -10,19 +10,19 @@ import uk.gov.hmcts.reform.probate.model.validation.groups.fieldcheck.PaFieldChe
 import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.PaNullCheck;
 import uk.gov.hmcts.reform.probate.model.validation.groups.submission.PaSubmission;
 
+import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
-public class GrantOfRepresentationPaPaSubmissionTest {
+public class GrantOfRepresentationPaSubmissionTest {
 
-    private static final Class[] PA_SUBMISSION = {PaNullCheck.class, PaFieldCheck.class, PaCrossFieldCheck.class,
-            PaSubmission.class};
+    private static final Class[] PA_SUBMISSION =
+        {PaNullCheck.class, PaFieldCheck.class, PaCrossFieldCheck.class, PaSubmission.class};
 
     private Validator validator;
 
@@ -108,8 +108,7 @@ public class GrantOfRepresentationPaPaSubmissionTest {
                         tuple("declaration.understandItem1", "must not be blank"),
                         tuple("declaration.understandItem2", "must not be blank"),
                         tuple("declaration.confirmItem3", "must not be blank"),
-                        tuple("declaration.accept", "must not be blank")
-                );
+                        tuple("declaration.accept", "must not be blank"));
     }
 
     @Test
@@ -138,8 +137,7 @@ public class GrantOfRepresentationPaPaSubmissionTest {
                         tuple("legalStatement.intro", "must not be blank"),
                         tuple("legalStatement.applicant", "must not be blank"),
                         tuple("legalStatement.deceased", "must not be blank"),
-                        tuple("legalStatement.executorsApplying", "must not be null")
-                );
+                        tuple("legalStatement.executorsApplying", "must not be null"));
     }
 
     @Test

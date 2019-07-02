@@ -24,12 +24,12 @@ import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.beans.Transient;
 import java.time.LocalDate;
 import java.util.List;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "Caveat", parent = CaseData.class)
@@ -126,7 +126,7 @@ public class CaveatData extends CaseData {
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
-        return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath) &&
-                deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
+        return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath)
+                && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
     }
 }

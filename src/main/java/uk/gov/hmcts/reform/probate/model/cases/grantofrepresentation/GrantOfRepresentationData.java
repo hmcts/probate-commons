@@ -32,15 +32,18 @@ import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.IntestacyCrossFieldCheck;
-import uk.gov.hmcts.reform.probate.model.validation.groups.fieldcheck.IntestacyFieldCheck;
-import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.IntestacyNullCheck;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.PaCrossFieldCheck;
+import uk.gov.hmcts.reform.probate.model.validation.groups.fieldcheck.IntestacyFieldCheck;
 import uk.gov.hmcts.reform.probate.model.validation.groups.fieldcheck.PaFieldCheck;
+import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.IntestacyNullCheck;
 import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.PaNullCheck;
 import uk.gov.hmcts.reform.probate.model.validation.groups.submission.IntestacySubmission;
 import uk.gov.hmcts.reform.probate.model.validation.groups.submission.PaSubmission;
 import uk.gov.hmcts.reform.probate.utils.CollectorUtils;
 
+import java.beans.Transient;
+import java.time.LocalDate;
+import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
@@ -48,9 +51,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.beans.Transient;
-import java.time.LocalDate;
-import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "GrantOfRepresentationData", parent = CaseData.class)
@@ -393,16 +393,16 @@ public class GrantOfRepresentationData extends CaseData {
 
     @Transient
     public Boolean haveAllExecutorsAgreed() {
-        return this.getExecutorsApplying().stream().allMatch(
-                executorApplying -> executorApplying.getValue().getApplyingExecutorAgreed() != null
-                        && executorApplying.getValue().getApplyingExecutorAgreed())
+        return this.getExecutorsApplying().stream().allMatch(executorApplying ->
+                executorApplying.getValue().getApplyingExecutorAgreed() != null
+                && executorApplying.getValue().getApplyingExecutorAgreed())
                 && this.getDeclarationCheckbox();
     }
 
     @Transient
     public void resetExecutorsApplyingAgreedFlags() {
-        this.getExecutorsApplying().forEach(
-                executorsApplying -> executorsApplying.getValue().setApplyingExecutorAgreed(null));
+        this.getExecutorsApplying().forEach(executorsApplying ->
+                executorsApplying.getValue().setApplyingExecutorAgreed(null));
     }
 
     @Transient
@@ -433,8 +433,8 @@ public class GrantOfRepresentationData extends CaseData {
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath",
             groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
-        return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath) &&
-                deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
+        return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath)
+                && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
     }
 
     @Transient
@@ -444,16 +444,17 @@ public class GrantOfRepresentationData extends CaseData {
                 && (deceasedAnyOtherNames && CollectionUtils.isEmpty(deceasedAliasNameList));
     }
 
+    @SuppressWarnings({"AbbreviationAsWordInName"})
     @Transient
-    @AssertTrue(message = "when ihtNetValue is less than 2500000, deceasedHasAssetsOutsideUK cannot be null",
+    @AssertTrue(message = "when ihtNetValue is less than 2500000, deceasedHasAssetsOutsideUk cannot be null",
             groups = {IntestacyCrossFieldCheck.class})
     public Boolean isDeceasedAssetsOutsideUKPopulated() {
         return ObjectUtils.allNotNull(ihtNetValue) && (ihtNetValue <= 2500000L && deceasedHasAssetsOutsideUK == null);
     }
 
     @Transient
-    @AssertTrue(message = "when relationshipToDeceasedIsAdoptedChild is ADOPTED_CHILD, " +
-            "deceasedOtherChildren cannot be null and primaryApplicantAdoptionInEnglandOrWales cannot be false",
+    @AssertTrue(message = "when relationshipToDeceasedIsAdoptedChild is ADOPTED_CHILD, "
+            + "deceasedOtherChildren cannot be null and primaryApplicantAdoptionInEnglandOrWales cannot be false",
             groups = {IntestacyCrossFieldCheck.class})
     public Boolean isDeceasedOtherChildPopulatedWhenRelationshipToDeceasedIsAdoptedChild() {
         return ObjectUtils.allNotNull(primaryApplicantRelationshipToDeceased, primaryApplicantAdoptionInEnglandOrWales)
@@ -479,8 +480,8 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
-    @AssertTrue(message = "when deceasedMartialStatus is JUDICIALLY_SEPARATED, " +
-            "deceasedDivorcedInEnglandOrWales cannot be null",
+    @AssertTrue(message = "when deceasedMartialStatus is JUDICIALLY_SEPARATED, "
+            + "deceasedDivorcedInEnglandOrWales cannot be null",
             groups = {IntestacyCrossFieldCheck.class})
     public Boolean isDivorcedInEnglandOrWalesPopulatedWhenDeceasedSeperated() {
         return ObjectUtils.allNotNull(deceasedMartialStatus)
@@ -504,8 +505,8 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
-    @AssertTrue(message = "when deceasedOtherChildren and childrenDied are true, " +
-            "childrenOverEighteenSurvived cannot be null",
+    @AssertTrue(message = "when deceasedOtherChildren and childrenDied are true, "
+            + "childrenOverEighteenSurvived cannot be null",
             groups = {IntestacyCrossFieldCheck.class})
     public Boolean isGrandChildrenSurvivedUnderEighteenPopulatedWhenMandatory() {
         return ObjectUtils.allNotNull(deceasedOtherChildren, childrenOverEighteenSurvived, childrenDied)

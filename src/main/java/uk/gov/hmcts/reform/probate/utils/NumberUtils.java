@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 @UtilityClass
 public class NumberUtils {
 
-    private final BigDecimal ONE_HUNDRED = BigDecimal.valueOf(100);
+    private static final BigDecimal ONE_HUNDRED = BigDecimal.valueOf(100);
 
     public Boolean equals(BigDecimal a, BigDecimal b) {
         return (a == b) || (a != null && a.compareTo(b) == 0);
