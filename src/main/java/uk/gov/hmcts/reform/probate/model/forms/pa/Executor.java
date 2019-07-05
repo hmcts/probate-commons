@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
@@ -25,6 +26,14 @@ public class Executor {
 
     private Boolean isApplying;
 
+    private Boolean isApplicant;
+
+    private Boolean isDead;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean diedBefore;
+
     private Boolean hasOtherName;
 
     private String currentName;
@@ -35,7 +44,7 @@ public class Executor {
 
     private String mobile;
 
-    private String address;
+    private Address address;
 
     private String freeTextAddress;
 
@@ -52,5 +61,11 @@ public class Executor {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean executorNotified;
+
+    private String leadExecutorName;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean executorAgreed;
 
 }

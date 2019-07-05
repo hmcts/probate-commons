@@ -1,11 +1,15 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
 @Data
 @AllArgsConstructor
@@ -15,6 +19,10 @@ import uk.gov.hmcts.reform.probate.model.cases.Address;
 public class ExecutorApplying {
 
     private String applyingExecutorName;
+
+    private String applyingExecutorFirstName;
+
+    private String applyingExecutorLastName;
 
     private String applyingExecutorPhoneNumber;
 
@@ -27,4 +35,21 @@ public class ExecutorApplying {
     private String applyingExecutorOtherNamesReason;
 
     private String applyingExecutorOtherReason;
+
+    private String applyingExecutorInvitationId;
+
+    private String applyingExecutorLeadName;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean applyingExecutorAgreed;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean applyingExecutorApplicant;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean applyingExecutorHasOtherName;
+
 }

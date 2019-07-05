@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.model.forms.pa;
+package uk.gov.hmcts.reform.probate.model.forms;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PaDeclarationDeclaration {
+public class DeclarationDeclaration {
 
     private String confirm;
 

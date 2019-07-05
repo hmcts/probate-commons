@@ -14,10 +14,11 @@ import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
-import uk.gov.hmcts.reform.probate.model.forms.Form;
+import uk.gov.hmcts.reform.probate.model.forms.Declaration;
 import uk.gov.hmcts.reform.probate.model.forms.IhtMethod;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
@@ -26,7 +27,11 @@ import uk.gov.hmcts.reform.probate.model.forms.Registry;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
 import static com.fasterxml.jackson.databind.util.StdDateFormat.DATE_FORMAT_STR_ISO8601;
@@ -52,14 +57,20 @@ public class IntestacyFormTest {
         intestacyForm = new IntestacyForm();
         intestacyForm.setType(ProbateType.INTESTACY);
         intestacyForm.setUploadDocumentUrl("http://document-management/document/12345");
+        intestacyForm.setApplicantEmail("jon.snow@thenorth.com");
 
         IntestacyApplicant intestacyApplicant = new IntestacyApplicant();
-        intestacyApplicant.setFreeTextAddress("Pret a Manger St. Georges Hospital Blackshaw Road");
         intestacyApplicant.setAddressFound(true);
-        intestacyApplicant.setEmail("jon.snow@thenorth.com");
         intestacyApplicant.setFirstName("Jon");
         intestacyApplicant.setLastName("Snow");
-        intestacyApplicant.setAddress("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT");
+        Address applicantAddress = Address.builder().addressLine1("Pret a Manger")
+                .addressLine2("St. Georges Hospital")
+                .addressLine3("Blackshaw Road")
+                .postTown("London")
+                .postCode("SW17 0QT")
+                .formattedAddress("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT")
+                .build();
+        intestacyApplicant.setAddress(applicantAddress);
         intestacyApplicant.setPostCode("SW17 0QT");
         intestacyApplicant.setPhoneNumber("123455678");
         intestacyApplicant.setAdoptionInEnglandOrWales(true);
@@ -69,11 +80,13 @@ public class IntestacyFormTest {
         IntestacyDeceased intestacyDeceased = new IntestacyDeceased();
         intestacyDeceased.setFirstName("Ned");
         intestacyDeceased.setLastName("Stark");
-        intestacyDeceased.setDateOfBirth(LocalDate.of(1930, 1, 1));
-        intestacyDeceased.setDateOfDeath(LocalDate.of(2018, 1, 1));
-        intestacyDeceased.setAddress("Winterfell, Westeros");
-        intestacyDeceased.setAddressFound(false);
-        intestacyDeceased.setFreeTextAddress("Winterfell, Westeros");
+        intestacyDeceased.setDateOfBirth(LocalDateTime.of(1930, 1, 1,0,0,0));
+        intestacyDeceased.setDateOfDeath(LocalDateTime.of(2018, 1, 1,0,0,0));
+        Address deceasedAddress = Address.builder().addressLine1("Winterfell")
+                .postTown("Kings Landing")
+                .formattedAddress("Winterfell Kings Landing Win1 Westeros")
+                .postCode("Win1").country("Westeros").build();
+        intestacyDeceased.setAddress(deceasedAddress);
         intestacyDeceased.setAddressFound(true);
         intestacyDeceased.setPostCode("SW17 0QT");
         intestacyDeceased.setAlias(true);
@@ -90,6 +103,8 @@ public class IntestacyFormTest {
         intestacyDeceased.setAnyDeceasedGrandchildrenUnderEighteen(false);
         intestacyDeceased.setAnyChildren(false);
         intestacyDeceased.setOtherChildren(true);
+
+        intestacyDeceased.setAddresses(getAddresses());
         intestacyForm.setDeceased(intestacyDeceased);
 
         InheritanceTax inheritanceTax = new InheritanceTax();
@@ -98,12 +113,9 @@ public class IntestacyFormTest {
         inheritanceTax.setNetValue(new BigDecimal("100000"));
         inheritanceTax.setGrossValue(new BigDecimal("100000"));
         inheritanceTax.setIdentifier("GOT123456");
+        inheritanceTax.setAssetsOutsideNetValue(new BigDecimal("100.50"));
+        inheritanceTax.setAssetsOutside(true);
         intestacyForm.setIht(inheritanceTax);
-
-        IntestacyAssets intestacyAssets = new IntestacyAssets();
-        intestacyAssets.setAssetsOverseasNetValue(new BigDecimal("100.50"));
-        intestacyAssets.setAssetsOverseas(true);
-        intestacyForm.setAssets(intestacyAssets);
 
         Copies copies = new Copies();
         copies.setOverseas(6L);
@@ -122,8 +134,7 @@ public class IntestacyFormTest {
         registry.setSequenceNumber(20075L);
         intestacyForm.setRegistry(registry);
 
-        IntestacyDeclaration intestacyDeclaration = new IntestacyDeclaration();
-        intestacyDeclaration.setDeclarationAgreement(true);
+        Declaration intestacyDeclaration = Declaration.builder().declarationCheckbox(true).build();
         intestacyForm.setDeclaration(intestacyDeclaration);
 
         Payment payment = new Payment();
@@ -140,9 +151,36 @@ public class IntestacyFormTest {
         intestacyForm.setPayments(Lists.newArrayList(payment));
     }
 
+    private List<Map<String, Object>> getAddresses() {
+        Map<String, Object> address1 = new HashMap<>();
+        address1.put("building_number", "102");
+        address1.put("organisation_name", "MINISTRY OF JUSTICE");
+        address1.put("post_town", "LONDON");
+        address1.put("postcode", "SW1H 9AJ");
+        address1.put("sub_building_name", "SEVENTH FLOOR");
+        address1.put("thoroughfare_name", "PETTY FRANCE");
+        address1.put("uprn", "10033604583");
+        address1.put("formatted_address", "Ministry of Justice\nSeventh Floor\n102 Petty France\nLondon\nSW1H 9AJ");
+
+        Map<String, Object> address2 = new HashMap<>();
+        address2.put("building_number", "103");
+        address2.put("organisation_name", "MINISTRY OF JUSTICE");
+        address2.put("post_town", "LONDON");
+        address2.put("postcode", "SW1H 9AJ");
+        address2.put("sub_building_name", "SEVENTH FLOOR");
+        address2.put("thoroughfare_name", "PETTY FRANCE");
+        address2.put("uprn", "10033604583");
+        address2.put("formatted_address", "Ministry of Justice\nSeventh Floor\n103 Petty France\nLondon\nSW1H 9AJ");
+
+        List<Map<String,Object>> addressList = new ArrayList<>();
+        addressList.add(address1);
+        addressList.add(address2);
+        return addressList;
+    }
+
     @Test
     public void shouldDeserializeIntestacyFormCorrectly() throws IOException {
-        Form form = objectMapper.readValue(formJsonFromFile, Form.class);
+        IntestacyForm form = objectMapper.readValue(formJsonFromFile, IntestacyForm.class);
 
         assertThat(form, is(equalTo(intestacyForm)));
     }

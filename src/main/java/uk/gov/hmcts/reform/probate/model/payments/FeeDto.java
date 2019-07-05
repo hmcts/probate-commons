@@ -7,8 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.utils.NumberUtils;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
@@ -34,4 +36,26 @@ public class FeeDto {
 
     private String reference;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof FeeDto)) {
+            return false;
+        }
+        FeeDto feeDto = (FeeDto) o;
+        return Objects.equals(code, feeDto.code)
+                && Objects.equals(version, feeDto.version)
+                && Objects.equals(volume, feeDto.volume)
+                && NumberUtils.equals(calculatedAmount, feeDto.calculatedAmount)
+                && Objects.equals(memoLine, feeDto.memoLine)
+                && Objects.equals(ccdCaseNumber, feeDto.ccdCaseNumber)
+                && Objects.equals(reference, feeDto.reference);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, version, volume, calculatedAmount, memoLine, ccdCaseNumber, reference);
+    }
 }

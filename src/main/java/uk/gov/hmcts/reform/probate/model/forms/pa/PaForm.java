@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
+import uk.gov.hmcts.reform.probate.model.forms.Declaration;
 import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
@@ -33,7 +34,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 
-    private PaDeclaration declaration;
+    private Declaration declaration;
 
     @NotNull
     private String applicantEmail;
@@ -62,17 +63,15 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private Map<String, Object> checkAnswersSummary;
 
-    private Payment payment;
-
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
-                  PaDeclaration declaration, String uploadDocumentUrl, Registry registry,
+                  Declaration declaration, String uploadDocumentUrl, Registry registry,
                   CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
                   InheritanceTax iht, Will will, Summary summary, Executors executors,
                   LocalDate applicationSubmittedDate, Long submissionReference,
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees) {
-        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies);
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment);
         this.applicantEmail = applicantEmail;
         this.declaration = declaration;
         this.uploadDocumentUrl = uploadDocumentUrl;
@@ -85,6 +84,5 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.submissionReference = submissionReference;
         this.legalDeclaration = legalDeclaration;
         this.checkAnswersSummary = checkAnswersSummary;
-        this.payment = payment;
     }
 }

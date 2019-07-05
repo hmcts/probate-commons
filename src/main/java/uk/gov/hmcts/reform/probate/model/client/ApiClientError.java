@@ -14,7 +14,10 @@ import lombok.NoArgsConstructor;
 public class ApiClientError {
 
     private String exception;
+
     private Integer status;
+
     private String error;
+
     private String path;
 }

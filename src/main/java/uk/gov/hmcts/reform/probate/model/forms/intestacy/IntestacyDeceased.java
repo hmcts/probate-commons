@@ -1,11 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,56 +11,21 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.YesNo;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
-import uk.gov.hmcts.reform.probate.model.forms.Deceased;
+import uk.gov.hmcts.reform.probate.model.forms.ProbateDeceased;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
-
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-public class IntestacyDeceased extends Deceased {
-
-    private static final String DATE_FORMAT = "yyyy-MM-dd";
-
-    private String firstName;
-
-    private String lastName;
-
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-    @JsonProperty(value = "dob_date")
-    private LocalDate dateOfBirth;
-
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-    @JsonProperty(value = "dod_date")
-    private LocalDate dateOfDeath;
-
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean addressFound;
-
-    private String address;
-
-    private String freeTextAddress;
-
-    @ApiModelProperty(value = "Does the deceased have an alias?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean alias;
-
-    private Map<String, AliasOtherNames> otherNames;
-
-    private String postCode;
+@EqualsAndHashCode(callSuper = true)
+public class IntestacyDeceased extends ProbateDeceased {
 
     @ApiModelProperty(value = "Deceased marital status")
     private MaritalStatus maritalStatus;
@@ -111,4 +72,25 @@ public class IntestacyDeceased extends Deceased {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean anyChildren;
 
+    @Builder
+    public IntestacyDeceased(String firstName, String lastName, Boolean alias, Map<String, AliasOtherNames> otherNames,
+                             Boolean married, Address address, String postcode, String postcodeAddress,
+                             Boolean addressFound, List<Map<String, Object>> addresses, LocalDateTime dateOfBirth,
+                             LocalDateTime dateOfDeath, String domicile, MaritalStatus maritalStatus,
+                             Boolean domiciledInEnglandOrWales, Boolean divorcedInEnglandOrWales,
+                             SpouseNotApplyingReason spouseNotApplyingReason, Boolean otherChildren,
+                             Boolean allDeceasedChildrenOverEighteen, Boolean anyDeceasedChildrenDieBeforeDeceased,
+                             Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren) {
+        super(firstName, lastName, alias, otherNames, married, address, postcode, postcodeAddress, addressFound,
+                addresses, dateOfBirth, dateOfDeath, domicile);
+        this.maritalStatus = maritalStatus;
+        this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
+        this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;
+        this.spouseNotApplyingReason = spouseNotApplyingReason;
+        this.otherChildren = otherChildren;
+        this.allDeceasedChildrenOverEighteen = allDeceasedChildrenOverEighteen;
+        this.anyDeceasedChildrenDieBeforeDeceased = anyDeceasedChildrenDieBeforeDeceased;
+        this.anyDeceasedGrandchildrenUnderEighteen = anyDeceasedGrandchildrenUnderEighteen;
+        this.anyChildren = anyChildren;
+    }
 }

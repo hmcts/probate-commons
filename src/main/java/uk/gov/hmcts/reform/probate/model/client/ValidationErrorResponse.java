@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ValidationErrorResponse extends ErrorResponse {
 
-    List<ValidationError> errors;
+    private List<ValidationError> errors;
 
     @Builder
     public ValidationErrorResponse(List<ValidationError> errors) {

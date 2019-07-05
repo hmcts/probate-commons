@@ -9,11 +9,16 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
+import uk.gov.hmcts.reform.probate.model.forms.Declaration;
+import uk.gov.hmcts.reform.probate.model.forms.DeclarationDeclaration;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.IhtMethod;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
+import uk.gov.hmcts.reform.probate.model.forms.LegalStatement;
+import uk.gov.hmcts.reform.probate.model.forms.LegalStatementExecutorApplying;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.PaymentCopies;
 import uk.gov.hmcts.reform.probate.model.forms.PaymentCopiesForRegion;
@@ -95,7 +100,8 @@ public class PaFormTest {
                         .build())
                 .deceased(PaDeceased.builder()
                         .alias(false)
-                        .address("Winterfell, North, Westeros, GOT123")
+                        .address(Address.builder().addressLine1("Winterfell").postTown("North Westeros")
+                                .postCode("GOT123").build())
                         .married(false)
                         .dateOfBirth(LocalDateTime.of(1900, 1, 23, 0, 0, 0))
                         .dateOfDeath(LocalDateTime.of(2019, 1, 1, 0, 0, 0))
@@ -111,7 +117,8 @@ public class PaFormTest {
                 .applicant(PaApplicant.builder()
                         .alias("King of the North")
                         .aliasReason("Title Given")
-                        .address("The Wall, North, Westeros, GOT567")
+                        .address(Address.builder().addressLine1("The Wall").postTown("North Westeros")
+                                .postCode("GOT567").build())
                         .lastName("Snow")
                         .firstName("Jon")
                         .phoneNumber("3234324")
@@ -127,10 +134,10 @@ public class PaFormTest {
                         ))
                         .executorsNumber(1)
                         .build())
-                .declaration(PaDeclaration.builder()
+                .declaration(Declaration.builder()
                         .softStop(false)
                         .declaration(
-                                PaDeclarationDeclaration.builder()
+                                DeclarationDeclaration.builder()
                                         .accept("I confirm that I will administer the estate of the person who died "
                                                 + "according to law, and that my application is truthful.")
                                         .confirm("I confirm that I will administer the estate of Ned Stark, "
@@ -151,7 +158,7 @@ public class PaFormTest {
                                                 + "me if I am found to have been deliberately untruthful or dishonest")
                                         .build()
                         )
-                        .legalStatement(PaLegalStatement.builder()
+                        .legalStatement(LegalStatement.builder()
                                 .intro("This statement is based on the information you&rsquo;ve given "
                                         + "in your application. It will be stored as a public record.")
                                 .deceased("Ned Stark was born on 1 January 1900 and died on 1 January 2019, "
@@ -159,7 +166,7 @@ public class PaFormTest {
                                 .applicant("I, Jon Snow of The Wall, North, Westeros, GOT567, "
                                         + "make the following statement:")
                                 .executorsApplying(Lists.newArrayList(
-                                        PaLegalStatementExecutorApplying.builder()
+                                        LegalStatementExecutorApplying.builder()
                                                 .name("I am an executor named in the will as Jon Snow, "
                                                         + "and I am applying for probate.")
                                                 .sign("I will send to the probate registry what I believe to be the "

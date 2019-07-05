@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.model.forms.pa;
+package uk.gov.hmcts.reform.probate.model.forms;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PaLegalStatement {
+public class LegalStatement {
 
     private String applicant;
 
@@ -21,7 +21,7 @@ public class PaLegalStatement {
 
     private String deceasedOtherNames;
 
-    private List<PaLegalStatementExecutorApplying> executorsApplying;
+    private List<LegalStatementExecutorApplying> executorsApplying;
 
     private String deceasedEstateValue;
 

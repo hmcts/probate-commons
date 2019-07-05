@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.validation;
 
+import org.assertj.core.api.Assertions;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,6 +14,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.groups.Default;
 
+import static org.assertj.core.api.Assertions.tuple;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -89,8 +91,12 @@ public class CaveatDataValidationTest {
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setDeceasedDateOfDeath(null);
         violations = executeCaveatValidator();
-        assertThat(violations, Matchers.hasSize(1));
-        assertThat(violations.iterator().next().getMessage(), is(equalTo(NULL_VALIDATION)));
+        
+        Assertions.assertThat(violations).hasSize(2)
+                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+                .containsExactlyInAnyOrder(tuple("deceasedDateOfDeath", NULL_VALIDATION),
+                        tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
+                                "deceasedDateOfBirth must be before deceasedDateOfDeath"));
     }
 
     @Test

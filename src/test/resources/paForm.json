@@ -5,7 +5,11 @@
     "lastName": "Stark",
     "alias": "No",
     "married": "No",
-    "address": "Winterfell, North, Westeros, GOT123",
+    "address": {
+      "addressLine1": "Winterfell",
+      "postTown": "North Westeros",
+      "postCode": "GOT123"
+    },
     "dob_date": "1900-01-23T00:00:00.000Z",
     "dod_date": "2019-01-01T00:00:00.000Z",
     "dod_day": 1,
@@ -17,17 +21,19 @@
     "dob_formattedDate": "23 January 1900",
     "dod_formattedDate": "1 January 2019"
   },
-  "type": "PA",
   "applicant": {
     "firstName": "Jon",
     "lastName": "Snow",
     "alias": "King of the North",
     "aliasReason": "Title Given",
-    "address": "The Wall, North, Westeros, GOT567",
+    "address": {
+      "addressLine1": "The Wall",
+      "postTown": "North Westeros",
+      "postCode": "GOT567"
+    },
     "phoneNumber": "3234324",
     "nameAsOnTheWill": "Yes"
   },
-  "type": "PA",
   "registry": {
     "name": "Manchester",
     "email": "manchester@email.com",
