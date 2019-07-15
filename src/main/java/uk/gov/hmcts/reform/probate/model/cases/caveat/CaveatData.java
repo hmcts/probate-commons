@@ -12,6 +12,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.ObjectUtils;
 import uk.gov.hmcts.reform.probate.model.ProbateDocument;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
@@ -23,8 +24,10 @@ import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
+import java.beans.Transient;
 import java.time.LocalDate;
 import java.util.List;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -119,4 +122,11 @@ public class CaveatData extends CaseData {
     private Boolean caveatRaisedEmailNotificationRequested;
 
     private List<CollectionMember<ProbateDocument>> notificationsGenerated;
+
+    @Transient
+    @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
+    public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
+        return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath)
+                && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
+    }
 }

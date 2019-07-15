@@ -1,33 +1,19 @@
 {
   "type": "GrantOfRepresentation",
   "applicationType": "Personal",
-  "caseType": "intestacy",
   "primaryApplicantEmailAddress": "jon.snow@thenorth.com",
-  "primaryApplicantForenames": "Jon",
-  "primaryApplicantSurname": "Snow",
-  "primaryApplicantAddress": {
-    "AddressLine1": "Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT"
+  "registryLocation": "Birmingham",
+  "extraCopiesOfGrant": 5,
+  "deceasedAddress": {
+    "AddressLine1": "Winterfell, Westeros",
+    "PostCode": "SW17 TYH"
   },
-  "primaryApplicantAddressFound": "Yes",
-  "primaryApplicantPhoneNumber": "123455678",
-  "primaryApplicantRelationshipToDeceased": "adoptedChild",
-  "primaryApplicantAdoptionInEnglandOrWales": "Yes",
   "deceasedForenames": "Ned",
   "deceasedSurname": "Stark",
-  "deceasedDateOfBirth": "1930-01-01",
   "deceasedDateOfDeath": "2018-01-01",
-  "deceasedAddress": {
-    "AddressLine1": "Winterfell, Westeros"
-  },
-  "deceasedAddressFound": "Yes",
+  "deceasedDateOfBirth": "1930-01-01",
+  "deceasedMartialStatus": "marriedCivilPartnership",
   "deceasedAnyOtherNames": "No",
-  "solsDeceasedAliasNamesList": [
-    {
-      "value": {
-        "SolsAliasname": "King North"
-      }
-    }
-  ],
   "deceasedAliasNameList": [
     {
       "value": {
@@ -36,25 +22,38 @@
       }
     }
   ],
-  "deceasedMartialStatus": "marriedCivilPartnership",
-  "deceasedDivorcedInEnglandOrWales": "No",
+  "solsDeceasedAliasNamesList": [
+    {
+      "value": {
+        "SolsAliasname": "King North"
+      }
+    }
+  ],
   "deceasedSpouseNotApplyingReason": "mentallyIncapable",
+  "deceasedDivorcedInEnglandOrWales": "No",
   "deceasedOtherChildren": "Yes",
-  "childrenOverEighteenSurvived": "Yes",
-  "childrenDied": "No",
-  "grandChildrenSurvivedUnderEighteen": "No",
   "deceasedAnyChildren": "No",
-  "registryLocation": "Birmingham",
-  "assetsOutsideNetValue": "10050",
-  "deceasedHasAssetsOutsideUK": "Yes",
+  "childrenDied": "No",
+  "childrenOverEighteenSurvived": "Yes",
+  "grandChildrenSurvivedUnderEighteen": "No",
   "ihtFormId": "IHT205",
   "ihtFormCompletedOnline": "Yes",
-  "ihtGrossValue": "100000",
   "ihtNetValue": "100000",
+  "ihtGrossValue": "100000",
   "ihtReferenceNumber": "GOT123456",
-  "declarationCheckbox": "Yes",
-  "extraCopiesOfGrant": 5,
-  "outsideUKGrantCopies": 6,
+  "primaryApplicantAddress": {
+    "AddressLine1": "Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT",
+    "PostCode": "SW17 0QT"
+  },
+  "primaryApplicantForenames": "Jon",
+  "primaryApplicantSurname": "Snow",
+  "primaryApplicantPhoneNumber": "123455678",
+  "primaryApplicantRelationshipToDeceased": "adoptedChild",
+  "primaryApplicantAdoptionInEnglandOrWales": "Yes",
+  "paperForm": "No",
+  "deceasedHasAssetsOutsideUK": "Yes",
+  "assetsOutsideNetValue": "10050",
+  "uploadDocumentUrl": "http://document-management/document/12345",
   "payments": [
     {
       "value": {
@@ -68,20 +67,23 @@
       }
     }
   ],
-  "uploadDocumentUrl": "http://document-management/document/12345",
   "legacyId": "123456",
   "legacyType": "Legacy LEGACY GRANT",
   "legacyCaseViewUrl": "http://locahost:8080/cases/1",
-  "solsSolicitorAppReference" : "Solicitor Application Reference",
-  "solsSolicitorFirmName" : "Solicitor Firm Name",
-  "solsSolicitorAddress" : {
+  "solsSolicitorAppReference": "Solicitor Application Reference",
+  "solsSolicitorAddress": {
     "AddressLine1": "Sol Address Line 1",
     "AddressLine2": "Sol Address Line 2",
     "AddressLine3": "Sol Address Line 3",
-    "Country": "UK",
     "County": "Middlesex",
     "PostTown": "Harrow",
-    "PostCode": "HA1 4ET"
+    "PostCode": "HA1 4ET",
+    "Country": "UK"
   },
-  "paperForm": "No"
+  "solsSolicitorFirmName": "Solicitor Firm Name",
+  "declarationCheckbox": "Yes",
+  "ihtGrossValueField": "100000",
+  "ihtNetValueField": "100000",
+  "outsideUKGrantCopies": 6,
+  "caseType": "intestacy"
 }

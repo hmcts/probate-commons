@@ -9,9 +9,12 @@ import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
+import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.Declaration;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.ExecutorApplying;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentationData;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantType;
+import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.LegalStatement;
+import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.LegalStatementExecutorApplying;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
 
 import java.time.LocalDate;
@@ -31,6 +34,11 @@ public class GrantOfRepresentationCreator {
 
         createAliasDetails(grantOfRepresentationData);
 
+        grantOfRepresentationData.setWillHasCodicils(false);
+        grantOfRepresentationData.setWillNumberOfCodicils(0L);
+        grantOfRepresentationData.setNumberOfApplicants(1L);
+        grantOfRepresentationData.setNumberOfExecutors(1L);
+        grantOfRepresentationData.setDeclarationCheckbox(true);
         grantOfRepresentationData.setRegistryLocation(RegistryLocation.BIRMINGHAM);
         grantOfRepresentationData.setDeceasedHasAssetsOutsideUK(true);
         grantOfRepresentationData.setAssetsOutsideNetValue(10050L);
@@ -52,6 +60,49 @@ public class GrantOfRepresentationCreator {
 
         grantOfRepresentationData.setPaperForm(false);
 
+        grantOfRepresentationData.setApplicationSubmittedDate(LocalDate.now());
+        grantOfRepresentationData.setLegalStatement(LegalStatement.builder()
+                .intro("This statement is based on the information you&rsquo;ve given in your application. "
+                        + "It will be stored as a public record.")
+                .applicant("I, Sansa Stark of Ronald McDonald House St. Georges Hospital Blackshaw Road London "
+                        + "SW17 0QT United Kingdom, make the following statement:")
+                .deceased("Rob Stark was born on 1 January 1900 and died on 1 January 2019, "
+                        + "domiciled in England and Wales.")
+                .deceasedOtherNames("")
+                .deceasedEstateValue("The gross value for the estate amounts to £20000.00 "
+                        + "and the net value for the estate amounts to £20000.00.")
+                .deceasedEstateLand("To the best of my knowledge, information and belief, "
+                        + "there was no land vested in Rob Stark which was settled previously to the death "
+                        + "(and not by the will) of Rob Stark and which remained "
+                        + "settled land notwithstanding such death.")
+                .executorsApplying(
+                        Lists.newArrayList(
+                                CollectionMember.<LegalStatementExecutorApplying>builder()
+                                        .value(LegalStatementExecutorApplying.builder()
+                                                .name("I am an executor named in the will as Sansa Stark, "
+                                                        + "and I am applying for probate.")
+                                                .sign("I will send to the probate registry what I believe to be the "
+                                                        + "true "
+                                                        + "and original last will and testament of Rob Stark.")
+                                                .build())
+                                        .build()
+                        ))
+                .build());
+        grantOfRepresentationData.setDeclaration(Declaration.builder()
+                .accept("I confirm that I will administer the estate of the person who died according to law, "
+                        + "and that my application is truthful.")
+                .confirm("I confirm that I will administer the estate of Rob Stark, according to law. I will:")
+                .requests("If the probate registry (court) asks me to do so, I will:")
+                .confirmItem1("I understand that:")
+                .confirmItem2("keep full details (an inventory) of the estate")
+                .confirmItem3("keep a full account of how the estate has been administered")
+                .requestsItem1("provide the full details of the estate and how it has been administered")
+                .requestsItem2("return the grant of probate to the court")
+                .understandItem1("my application will be rejected if I do not answer any questions "
+                        + "about the information I have given")
+                .understandItem2("criminal proceedings for fraud may be brought against me if I am found "
+                        + "to have been deliberately untruthful or dishonest")
+                .build());
         return grantOfRepresentationData;
     }
 
@@ -89,6 +140,8 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setIhtFormCompletedOnline(true);
         grantOfRepresentationData.setIhtGrossValue(100000L);
         grantOfRepresentationData.setIhtNetValue(100000L);
+        grantOfRepresentationData.setIhtNetValueField("100000");
+        grantOfRepresentationData.setIhtGrossValueField("100000");
         grantOfRepresentationData.setIhtReferenceNumber("GOT123456");
     }
 
@@ -100,8 +153,8 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setDeceasedDateOfDeath(LocalDate.of(2018, 1, 1));
         Address deceasedAddress = new Address();
         deceasedAddress.setAddressLine1("Winterfell, Westeros");
+        deceasedAddress.setPostCode("SW17 TYH");
         grantOfRepresentationData.setDeceasedAddress(deceasedAddress);
-        grantOfRepresentationData.setDeceasedAddressFound(true);
         grantOfRepresentationData.setDeceasedAnyOtherNames(true);
     }
 
@@ -111,8 +164,8 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setPrimaryApplicantSurname("Snow");
         Address primaryApplicantAddress = new Address();
         primaryApplicantAddress.setAddressLine1("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT");
+        primaryApplicantAddress.setPostCode("SW17 0QT");
         grantOfRepresentationData.setPrimaryApplicantAddress(primaryApplicantAddress);
-        grantOfRepresentationData.setPrimaryApplicantAddressFound(true);
         grantOfRepresentationData.setPrimaryApplicantPhoneNumber("123455678");
         grantOfRepresentationData.setPrimaryApplicantRelationshipToDeceased(Relationship.ADOPTED_CHILD);
         grantOfRepresentationData.setPrimaryApplicantAdoptionInEnglandOrWales(true);

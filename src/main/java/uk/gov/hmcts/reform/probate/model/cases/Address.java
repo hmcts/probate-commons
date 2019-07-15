@@ -8,8 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.IntestacyNullCheck;
+import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.PaNullCheck;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @AllArgsConstructor
@@ -20,7 +22,7 @@ import javax.validation.constraints.NotNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Address {
 
-    @NotNull
+    @NotBlank(groups = {IntestacyNullCheck.class, PaNullCheck.class})
     @JsonProperty(value = "AddressLine1")
     private String addressLine1;
 
@@ -36,7 +38,7 @@ public class Address {
     @JsonProperty(value = "PostTown")
     private String postTown;
 
-    @NotNull
+    @NotBlank(groups = {IntestacyNullCheck.class, PaNullCheck.class})
     @JsonProperty(value = "PostCode")
     private String postCode;
 
