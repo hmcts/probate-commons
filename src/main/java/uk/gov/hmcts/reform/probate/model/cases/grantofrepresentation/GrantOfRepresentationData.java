@@ -325,6 +325,13 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
+    public void setInvitationDetailsForExecutorApplying(String email, String invitationId, boolean agreed) {
+        ExecutorApplying e = this.getExecutorApplyingByEmailAddress(email);
+        e.setApplyingExecutorInvitationId(invitationId);
+        e.setApplyingExecutorAgreed(agreed);
+    }
+
+    @Transient
     public void deleteInvitation(String invitationId) {
         this.getExecutorApplyingByInviteId(invitationId).setApplyingExecutorInvitationId(null);
     }

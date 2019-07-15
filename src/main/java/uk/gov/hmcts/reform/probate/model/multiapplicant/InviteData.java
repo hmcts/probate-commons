@@ -27,6 +27,9 @@ public class InviteData {
     @JsonProperty("email")
     private String email;
 
+    @JsonProperty("agreed")
+    private Boolean agreed;
+
     public String getId() {
         return id;
     }
