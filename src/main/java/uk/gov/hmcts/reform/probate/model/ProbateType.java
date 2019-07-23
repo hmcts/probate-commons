@@ -26,8 +26,8 @@ public enum ProbateType {
 
     public static class Constants {
 
-        public static final String INTESTACY_NAME = "Intestacy";
-        public static final String PA_NAME = "PA";
+        public static final String INTESTACY_NAME = "intestacy";
+        public static final String PA_NAME = "gop";
         public static final String CAVEAT_NAME = "Caveat";
 
         private Constants() {
