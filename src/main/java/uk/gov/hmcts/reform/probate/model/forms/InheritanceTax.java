@@ -11,6 +11,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
+import uk.gov.hmcts.reform.probate.model.jackson.BigDecimalDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
@@ -42,26 +43,32 @@ public class InheritanceTax {
 
     @JsonProperty("grossValueFieldIHT205")
     @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BigDecimalDeserializer.class)
     private BigDecimal grossIht205;
 
     @JsonProperty("netValueFieldIHT205")
     @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BigDecimalDeserializer.class)
     private BigDecimal netIht205;
 
     @JsonProperty("grossValueFieldIHT207")
     @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BigDecimalDeserializer.class)
     private BigDecimal grossIht207;
 
     @JsonProperty("netValueFieldIHT207")
     @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BigDecimalDeserializer.class)
     private BigDecimal netIht207;
 
     @JsonProperty("grossValueFieldIHT400421")
     @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BigDecimalDeserializer.class)
     private BigDecimal grossIht400421;
 
     @JsonProperty("netValueFieldIHT400421")
     @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BigDecimalDeserializer.class)
     private BigDecimal netIht400421;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
