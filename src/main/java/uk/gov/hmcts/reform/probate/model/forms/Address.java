@@ -15,6 +15,9 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Address {
 
+    public Address(String address) {
+    }
+
     @NotNull
     private String addressLine1;
 

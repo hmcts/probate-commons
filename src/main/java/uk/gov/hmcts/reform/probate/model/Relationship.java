@@ -15,14 +15,23 @@ import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.SIBLING_D
 public enum Relationship {
 
     @JsonProperty(PARTNER_DESC) PARTNER(PARTNER_DESC),
-    @JsonProperty(CHILD_DESC) CHILD(CHILD_DESC),
-    @JsonProperty(ADOPTED_CHILD_DESC) ADOPTED_CHILD(ADOPTED_CHILD_DESC),
+    @JsonProperty(CHILD_DESC) CHILD("Child (this does not include stepchildren)"),
+    @JsonProperty(ADOPTED_CHILD_DESC) ADOPTED_CHILD("Child who was lawfully adopted"),
     @JsonProperty(SIBLING_DESC) SIBLING(SIBLING_DESC),
     @JsonProperty(PARENT_DESC) PARENT(PARENT_DESC),
     @JsonProperty(OTHER_DESC) OTHER(OTHER_DESC);
 
     @Getter
     private final String description;
+
+    public static Relationship fromString(String text) {
+        for (Relationship ms : Relationship.values()) {
+            if (ms.description.equalsIgnoreCase(text)) {
+                return ms;
+            }
+        }
+        return null;
+    }
 
     public static class Constants {
 

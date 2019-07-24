@@ -23,6 +23,16 @@ public enum MaritalStatus {
     @Getter
     private final String description;
 
+
+    public static MaritalStatus fromString(String text) {
+        for (MaritalStatus ms : MaritalStatus.values()) {
+            if (ms.description.equalsIgnoreCase(text)) {
+                return ms;
+            }
+        }
+        return null;
+    }
+
     public static class Constants {
 
         public static final String MARRIED_VALUE = "marriedCivilPartnership";
