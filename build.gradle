@@ -9,7 +9,7 @@ plugins {
 }
 
 group 'uk.gov.hmcts.reform.probate'
-version '0.0.39'
+version '0.0.40'
 
 checkstyle {
     maxWarnings = 0
@@ -117,7 +117,7 @@ ext {
 
 def versions = [
         jupiter           : '5.3.2',
-        lombok            : '1.18.4',
+        lombok            : '1.18.8',
         jackson           : '2.9.7',
         apacheCommons     : '3.8.1',
         hibernateValidator: '6.0.13.Final',

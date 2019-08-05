@@ -53,7 +53,6 @@
   "paperForm": "No",
   "deceasedHasAssetsOutsideUK": "Yes",
   "assetsOutsideNetValue": "10050",
-  "uploadDocumentUrl": "http://document-management/document/12345",
   "payments": [
     {
       "value": {

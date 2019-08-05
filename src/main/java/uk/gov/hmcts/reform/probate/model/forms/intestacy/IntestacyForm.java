@@ -14,6 +14,8 @@ import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Declaration;
+import uk.gov.hmcts.reform.probate.model.forms.DocumentUpload;
+import uk.gov.hmcts.reform.probate.model.forms.Documents;
 import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
@@ -38,7 +40,9 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
     @NotNull
     private String applicantEmail;
 
-    private String uploadDocumentUrl;
+    private Documents documents;
+
+    private DocumentUpload statementOfTruthDocument;
 
     private InheritanceTax iht;
 
@@ -53,20 +57,21 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     @Builder
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
-                         Declaration declaration, String uploadDocumentUrl, Registry registry,
+                         Declaration declaration, Documents documents, Registry registry,
                          CcdCase ccdCase, List<Payment> payments, Copies copies,
                          InheritanceTax iht, Fees fees, Payment payment, LocalDate applicationSubmittedDate,
                          Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary,
-                         String applicantEmail) {
+                         String applicantEmail, DocumentUpload statementOfTruthDocument) {
 
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment);
         this.declaration = declaration;
-        this.uploadDocumentUrl = uploadDocumentUrl;
+        this.documents = documents;
         this.iht = iht;
         this.applicationSubmittedDate = applicationSubmittedDate;
         this.legalDeclaration = legalDeclaration;
         this.checkAnswersSummary = checkAnswersSummary;
         this.applicantEmail = applicantEmail;
+        this.statementOfTruthDocument = statementOfTruthDocument;
     }
 
 }

@@ -193,7 +193,7 @@ public class PaFormTest {
     @Test
     public void shouldDeserializePaFormCorrectly() throws IOException {
         Form form = objectMapper.readValue(formJsonFromFile, Form.class);
-
+        boolean equals = form.getApplicant().equals(paForm.getApplicant());
         assertThat(form, is(equalTo(paForm)));
     }
 
