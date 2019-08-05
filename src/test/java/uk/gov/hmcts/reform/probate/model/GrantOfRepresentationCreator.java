@@ -52,7 +52,6 @@ public class GrantOfRepresentationCreator {
         payment.setStatus(PaymentStatus.SUCCESS);
 
         createPaymentDetails(grantOfRepresentationData, paymentCollectionMember, payment);
-        grantOfRepresentationData.setUploadDocumentUrl("http://document-management/document/12345");
 
         createLegacyDetails(grantOfRepresentationData);
 
@@ -208,7 +207,6 @@ public class GrantOfRepresentationCreator {
         payment.setStatus(PaymentStatus.SUCCESS);
 
         createPaymentDetails(grantOfRepresentationData, paymentCollectionMember, payment);
-        grantOfRepresentationData.setUploadDocumentUrl("http://document-management/document/12345");
 
         createLegacyDetails(grantOfRepresentationData);
 

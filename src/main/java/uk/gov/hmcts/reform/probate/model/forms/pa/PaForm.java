@@ -14,6 +14,8 @@ import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Declaration;
+import uk.gov.hmcts.reform.probate.model.forms.DocumentUpload;
+import uk.gov.hmcts.reform.probate.model.forms.Documents;
 import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
@@ -41,7 +43,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private Executors executors;
 
-    private String uploadDocumentUrl;
+    private Documents documents;
 
     private PaAssets assets;
 
@@ -63,18 +65,20 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private Map<String, Object> checkAnswersSummary;
 
+    private DocumentUpload statementOfTruthDocument;
+
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
-                  Declaration declaration, String uploadDocumentUrl, Registry registry,
+                  Declaration declaration, Registry registry,
                   CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
                   InheritanceTax iht, Will will, Summary summary, Executors executors,
                   LocalDate applicationSubmittedDate, Long submissionReference,
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
-                  Fees fees) {
+                  Fees fees, Documents documents, DocumentUpload statementOfTruthDocument) {
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment);
         this.applicantEmail = applicantEmail;
         this.declaration = declaration;
-        this.uploadDocumentUrl = uploadDocumentUrl;
+        this.documents = documents;
         this.assets = assets;
         this.iht = iht;
         this.will = will;
@@ -84,5 +88,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.submissionReference = submissionReference;
         this.legalDeclaration = legalDeclaration;
         this.checkAnswersSummary = checkAnswersSummary;
+        this.statementOfTruthDocument = statementOfTruthDocument;
     }
 }

@@ -1,9 +1,11 @@
 package uk.gov.hmcts.reform.probate.model.documents;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 import javax.validation.constraints.NotBlank;
 
+@JsonRootName(value = "bulkScanCoverSheet")
 public class BulkScanCoverSheet implements BusinessDocument {
 
     public static final String DEFAULT_TITLE = "Download Cover Sheet";

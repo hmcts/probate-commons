@@ -25,10 +25,12 @@ import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
+import uk.gov.hmcts.reform.probate.model.cases.DocumentLink;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
+import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.IntestacyCrossFieldCheck;
@@ -317,8 +319,6 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = ToStringSerializer.class)
     private Long assetsOutsideNetValue;
 
-    private String uploadDocumentUrl;
-
     @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
     @JsonProperty(value = "caseType")
     private GrantType grantType;
@@ -365,6 +365,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     @NotBlank(groups = {IntestacyNullCheck.class, PaNullCheck.class})
     private String ihtNetValueField;
+
+    private List<CollectionMember<UploadDocument>> boDocumentsUploaded;
+
+    private DocumentLink statementOfTruthDocument;
 
     @Transient
     public void setInvitationDetailsForExecutorApplying(String email, String invitationId, String leadApplicantName) {

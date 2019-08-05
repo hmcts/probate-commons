@@ -56,7 +56,6 @@ public class IntestacyFormTest {
 
         intestacyForm = new IntestacyForm();
         intestacyForm.setType(ProbateType.INTESTACY);
-        intestacyForm.setUploadDocumentUrl("http://document-management/document/12345");
         intestacyForm.setApplicantEmail("jon.snow@thenorth.com");
 
         IntestacyApplicant intestacyApplicant = new IntestacyApplicant();
