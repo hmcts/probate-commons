@@ -86,6 +86,12 @@ public class GrantOfRepresentationData extends CaseData {
 
     private RegistryLocation registryLocation;
 
+    private String registryAddress;
+
+    private String registryEmailAddress;
+
+    private Long registrySequenceNumber;
+
     @JsonProperty(value = "outsideUKGrantCopies")
     private Long outsideUkGrantCopies;
 
