@@ -26,8 +26,8 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties(value = {"grossValueOnline", "netValueOnline", "dod_day", "dod_month", "dod_year",
-        "dob_day", "dob_month", "dob_year", "dob_formattedDate", "dod_formattedDate"}, allowGetters = true)
+@JsonIgnoreProperties(value = {"grossValueOnline", "netValueOnline", "dod-day", "dod-month", "dod-year",
+    "dob-day", "dob-month", "dob-year", "dob-formattedDate", "dod-formattedDate"}, allowGetters = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class ProbateDeceased extends Deceased {
 
@@ -62,18 +62,18 @@ public abstract class ProbateDeceased extends Deceased {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-    @JsonProperty(value = "dob_date")
+    @JsonProperty(value = "dob-date")
     private LocalDateTime dateOfBirth;
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-    @JsonProperty(value = "dod_date")
+    @JsonProperty(value = "dod-date")
     private LocalDateTime dateOfDeath;
 
     private String domicile;
 
-    @JsonProperty(value = "dod_day")
+    @JsonProperty(value = "dod-day")
     public Integer getDodDay() {
         if (dateOfDeath == null) {
             return null;
@@ -81,7 +81,7 @@ public abstract class ProbateDeceased extends Deceased {
         return dateOfDeath.getDayOfMonth();
     }
 
-    @JsonProperty(value = "dod_month")
+    @JsonProperty(value = "dod-month")
     public Integer getDodMonth() {
         if (dateOfDeath == null) {
             return null;
@@ -89,7 +89,7 @@ public abstract class ProbateDeceased extends Deceased {
         return dateOfDeath.getMonthValue();
     }
 
-    @JsonProperty(value = "dod_year")
+    @JsonProperty(value = "dod-year")
     public Integer getDodYear() {
         if (dateOfDeath == null) {
             return null;
@@ -97,7 +97,7 @@ public abstract class ProbateDeceased extends Deceased {
         return dateOfDeath.getYear();
     }
 
-    @JsonProperty(value = "dob_day")
+    @JsonProperty(value = "dob-day")
     public Integer getDobDay() {
         if (dateOfBirth == null) {
             return null;
@@ -105,7 +105,7 @@ public abstract class ProbateDeceased extends Deceased {
         return dateOfBirth.getDayOfMonth();
     }
 
-    @JsonProperty(value = "dob_month")
+    @JsonProperty(value = "dob-month")
     public Integer getDobMonth() {
         if (dateOfBirth == null) {
             return null;
@@ -113,7 +113,7 @@ public abstract class ProbateDeceased extends Deceased {
         return dateOfBirth.getMonthValue();
     }
 
-    @JsonProperty(value = "dob_year")
+    @JsonProperty(value = "dob-year")
     public Integer getDobYear() {
         if (dateOfBirth == null) {
             return null;
@@ -121,7 +121,7 @@ public abstract class ProbateDeceased extends Deceased {
         return dateOfBirth.getYear();
     }
 
-    @JsonProperty(value = "dob_formattedDate")
+    @JsonProperty(value = "dob-formattedDate")
     public String getDobFormattedDate() {
         if (dateOfBirth == null) {
             return null;
@@ -129,7 +129,7 @@ public abstract class ProbateDeceased extends Deceased {
         return dateOfBirth.format(DateTimeFormatter.ofPattern("d MMMM yyyy"));
     }
 
-    @JsonProperty(value = "dod_formattedDate")
+    @JsonProperty(value = "dod-formattedDate")
     public String getDodFormattedDate() {
         if (dateOfDeath == null) {
             return null;
