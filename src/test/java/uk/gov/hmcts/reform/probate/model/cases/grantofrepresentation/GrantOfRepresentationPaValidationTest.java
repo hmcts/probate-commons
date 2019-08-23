@@ -342,4 +342,24 @@ public class GrantOfRepresentationPaValidationTest {
             .containsExactlyInAnyOrder(tuple("grantType", "must not be null"));
     }
 
+    @Test
+    public void shouldNotFailWhenIhtGrossValueFieldIsBlank() {
+        GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
+        caseData.setIhtGrossValueField(null);
+
+        Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
+
+        assertThat(violations).isEmpty();
+    }
+
+    @Test
+    public void shouldNotFailWhenIhtNetValueFieldIsBlank() {
+        GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
+        caseData.setIhtNetValueField(null);
+
+        Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
+
+        assertThat(violations).isEmpty();
+
+    }
 }

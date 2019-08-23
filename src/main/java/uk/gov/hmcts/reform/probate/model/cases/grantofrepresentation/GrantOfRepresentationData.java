@@ -366,6 +366,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     private ProbateCalculatedFees fees;
 
+    private String ihtGrossValueField;
+
+    private String ihtNetValueField;
+
     private List<CollectionMember<UploadDocument>> boDocumentsUploaded;
 
     private DocumentLink statementOfTruthDocument;
