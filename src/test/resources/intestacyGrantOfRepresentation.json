@@ -81,8 +81,6 @@
   },
   "solsSolicitorFirmName": "Solicitor Firm Name",
   "declarationCheckbox": "Yes",
-  "ihtGrossValueField": "100000",
-  "ihtNetValueField": "100000",
   "outsideUKGrantCopies": 6,
   "caseType": "intestacy"
 }

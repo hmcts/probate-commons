@@ -48,8 +48,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("primaryApplicantForenames", "must not be blank"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("primaryApplicantForenames", "must not be blank"));
     }
 
     @Test
@@ -60,8 +60,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("primaryApplicantSurname", "must not be blank"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("primaryApplicantSurname", "must not be blank"));
     }
 
     @Test
@@ -72,8 +72,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("primaryApplicantEmailAddress", "must not be blank"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("primaryApplicantEmailAddress", "must not be blank"));
     }
 
     @Test
@@ -84,9 +84,9 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(
-                        tuple("primaryApplicantEmailAddress", "must be a well-formed email address"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(
+                tuple("primaryApplicantEmailAddress", "must be a well-formed email address"));
     }
 
     @Test
@@ -97,8 +97,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("deceasedForenames", "must not be blank"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("deceasedForenames", "must not be blank"));
     }
 
     @Test
@@ -109,8 +109,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("deceasedSurname", "must not be blank"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("deceasedSurname", "must not be blank"));
     }
 
 
@@ -122,11 +122,11 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(2)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(
-                        tuple("deceasedDateOfBirth", "must not be null"),
-                        tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
-                                "deceasedDateOfBirth must be before deceasedDateOfDeath"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(
+                tuple("deceasedDateOfBirth", "must not be null"),
+                tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
+                    "deceasedDateOfBirth must be before deceasedDateOfDeath"));
     }
 
     @Test
@@ -137,11 +137,11 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(2)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(
-                        tuple("deceasedDateOfDeath", "must not be null"),
-                        tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
-                                "deceasedDateOfBirth must be before deceasedDateOfDeath"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(
+                tuple("deceasedDateOfDeath", "must not be null"),
+                tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
+                    "deceasedDateOfBirth must be before deceasedDateOfDeath"));
     }
 
     @Test
@@ -153,10 +153,10 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(
-                        tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
-                                "deceasedDateOfBirth must be before deceasedDateOfDeath"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(
+                tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
+                    "deceasedDateOfBirth must be before deceasedDateOfDeath"));
     }
 
     @Test
@@ -167,8 +167,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("applicationType", "must not be null"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("applicationType", "must not be null"));
     }
 
     @Test
@@ -179,8 +179,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("deceasedAddress", "must not be null"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("deceasedAddress", "must not be null"));
     }
 
     @Test
@@ -191,9 +191,9 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(2)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("deceasedAddress.addressLine1", "must not be blank"),
-                        tuple("deceasedAddress.postCode", "must not be blank"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("deceasedAddress.addressLine1", "must not be blank"),
+                tuple("deceasedAddress.postCode", "must not be blank"));
     }
 
     @Test
@@ -204,8 +204,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("primaryApplicantAddress", "must not be null"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("primaryApplicantAddress", "must not be null"));
     }
 
     @Test
@@ -216,9 +216,9 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(2)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("primaryApplicantAddress.addressLine1", "must not be blank"),
-                        tuple("primaryApplicantAddress.postCode", "must not be blank"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("primaryApplicantAddress.addressLine1", "must not be blank"),
+                tuple("primaryApplicantAddress.postCode", "must not be blank"));
     }
 
 
@@ -230,8 +230,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("ihtFormCompletedOnline", "must not be null"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("ihtFormCompletedOnline", "must not be null"));
     }
 
     @Test
@@ -242,8 +242,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("ihtNetValue", "must not be null"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("ihtNetValue", "must not be null"));
     }
 
     @Test
@@ -254,8 +254,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("ihtGrossValue", "must not be null"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("ihtGrossValue", "must not be null"));
     }
 
     @Test
@@ -266,8 +266,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("primaryApplicantPhoneNumber", "must not be blank"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("primaryApplicantPhoneNumber", "must not be blank"));
     }
 
     @Test
@@ -278,8 +278,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("willHasCodicils", "must not be null"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("willHasCodicils", "must not be null"));
     }
 
     @Test
@@ -290,8 +290,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("numberOfExecutors", "must not be null"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("numberOfExecutors", "must not be null"));
     }
 
     @Test
@@ -302,8 +302,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("numberOfExecutors", "must be greater than or equal to 1"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("numberOfExecutors", "must be greater than or equal to 1"));
     }
 
     @Test
@@ -314,8 +314,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("numberOfApplicants", "must not be null"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("numberOfApplicants", "must not be null"));
     }
 
     @Test
@@ -326,8 +326,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("numberOfApplicants", "must be greater than or equal to 1"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("numberOfApplicants", "must be greater than or equal to 1"));
     }
 
     @Test
@@ -338,31 +338,8 @@ public class GrantOfRepresentationPaValidationTest {
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
         assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("grantType", "must not be null"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("grantType", "must not be null"));
     }
 
-    @Test
-    public void shouldFailWhenIhtGrossValueFieldIsBlank() {
-        GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
-        caseData.setIhtGrossValueField(null);
-
-        Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
-
-        assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("ihtGrossValueField", "must not be blank"));
-    }
-
-    @Test
-    public void shouldFailWhenIhtNetValueFieldIsBlank() {
-        GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
-        caseData.setIhtNetValueField(null);
-
-        Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
-
-        assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("ihtNetValueField", "must not be blank"));
-    }
 }
