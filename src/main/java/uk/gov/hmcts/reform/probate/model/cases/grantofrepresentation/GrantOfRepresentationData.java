@@ -375,14 +375,16 @@ public class GrantOfRepresentationData extends CaseData {
     private DocumentLink statementOfTruthDocument;
 
     @Transient
-    public void setInvitationDetailsForExecutorApplying(String email, String invitationId, String leadApplicantName) {
-        ExecutorApplying e = this.getExecutorApplyingByEmailAddress(email);
+    public void setInvitationDetailsForExecutorApplying(String email, String invitationId, String leadApplicantName,
+                                                        String executorName) {
+        ExecutorApplying e = this.getExecutorApplyingByEmailAddress(email, executorName);
         e.setApplyingExecutorInvitationId(invitationId);
         e.setApplyingExecutorLeadName(leadApplicantName);
     }
 
     @Transient
-    public void setInvitationDetailsForExecutorApplying(String email, String invitationId, boolean agreed) {
+    public void setInvitationDetailsForExecutorApplying(String email, String invitationId,
+                                                        boolean agreed) {
         ExecutorApplying e = this.getExecutorApplyingByEmailAddress(email);
         e.setApplyingExecutorInvitationId(invitationId);
         e.setApplyingExecutorAgreed(agreed);
@@ -430,11 +432,22 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
+    public ExecutorApplying getExecutorApplyingByEmailAddress(String emailAddress, String executorName) {
+        return this.getExecutorsApplying().stream()
+            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorEmail() != null
+                && executorApplying.getValue().getApplyingExecutorEmail().equals(emailAddress)
+                && executorApplying.getValue().getApplyingExecutorName() != null
+                && executorApplying.getValue().getApplyingExecutorName().equals(executorName)
+            ).map(CollectionMember::getValue)
+            .collect(CollectorUtils.toSingleton());
+    }
+
+    @Transient
     public ExecutorApplying getExecutorApplyingByEmailAddress(String emailAddress) {
         return this.getExecutorsApplying().stream()
             .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorEmail() != null
-                && executorApplying.getValue().getApplyingExecutorEmail()
-                .equals(emailAddress)).map(CollectionMember::getValue)
+                && executorApplying.getValue().getApplyingExecutorEmail().equals(emailAddress)
+            ).map(CollectionMember::getValue)
             .collect(CollectorUtils.toSingleton());
     }
 

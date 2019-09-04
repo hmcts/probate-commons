@@ -61,57 +61,58 @@ public class GrantOfRepresentationCreator {
 
         grantOfRepresentationData.setApplicationSubmittedDate(LocalDate.now());
         grantOfRepresentationData.setLegalStatement(LegalStatement.builder()
-                .intro("This statement is based on the information you&rsquo;ve given in your application. "
-                        + "It will be stored as a public record.")
-                .applicant("I, Sansa Stark of Ronald McDonald House St. Georges Hospital Blackshaw Road London "
-                        + "SW17 0QT United Kingdom, make the following statement:")
-                .deceased("Rob Stark was born on 1 January 1900 and died on 1 January 2019, "
-                        + "domiciled in England and Wales.")
-                .deceasedOtherNames("")
-                .deceasedEstateValue("The gross value for the estate amounts to £20000.00 "
-                        + "and the net value for the estate amounts to £20000.00.")
-                .deceasedEstateLand("To the best of my knowledge, information and belief, "
-                        + "there was no land vested in Rob Stark which was settled previously to the death "
-                        + "(and not by the will) of Rob Stark and which remained "
-                        + "settled land notwithstanding such death.")
-                .executorsApplying(
-                        Lists.newArrayList(
-                                CollectionMember.<LegalStatementExecutorApplying>builder()
-                                        .value(LegalStatementExecutorApplying.builder()
-                                                .name("I am an executor named in the will as Sansa Stark, "
-                                                        + "and I am applying for probate.")
-                                                .sign("I will send to the probate registry what I believe to be the "
-                                                        + "true "
-                                                        + "and original last will and testament of Rob Stark.")
-                                                .build())
-                                        .build()
-                        ))
-                .build());
+            .intro("This statement is based on the information you&rsquo;ve given in your application. "
+                + "It will be stored as a public record.")
+            .applicant("I, Sansa Stark of Ronald McDonald House St. Georges Hospital Blackshaw Road London "
+                + "SW17 0QT United Kingdom, make the following statement:")
+            .deceased("Rob Stark was born on 1 January 1900 and died on 1 January 2019, "
+                + "domiciled in England and Wales.")
+            .deceasedOtherNames("")
+            .deceasedEstateValue("The gross value for the estate amounts to £20000.00 "
+                + "and the net value for the estate amounts to £20000.00.")
+            .deceasedEstateLand("To the best of my knowledge, information and belief, "
+                + "there was no land vested in Rob Stark which was settled previously to the death "
+                + "(and not by the will) of Rob Stark and which remained "
+                + "settled land notwithstanding such death.")
+            .executorsApplying(
+                Lists.newArrayList(
+                    CollectionMember.<LegalStatementExecutorApplying>builder()
+                        .value(LegalStatementExecutorApplying.builder()
+                            .name("I am an executor named in the will as Sansa Stark, "
+                                + "and I am applying for probate.")
+                            .sign("I will send to the probate registry what I believe to be the "
+                                + "true "
+                                + "and original last will and testament of Rob Stark.")
+                            .build())
+                        .build()
+                ))
+            .build());
         grantOfRepresentationData.setDeclaration(Declaration.builder()
-                .accept("I confirm that I will administer the estate of the person who died according to law, "
-                        + "and that my application is truthful.")
-                .confirm("I confirm that I will administer the estate of Rob Stark, according to law. I will:")
-                .requests("If the probate registry (court) asks me to do so, I will:")
-                .confirmItem1("I understand that:")
-                .confirmItem2("keep full details (an inventory) of the estate")
-                .confirmItem3("keep a full account of how the estate has been administered")
-                .requestsItem1("provide the full details of the estate and how it has been administered")
-                .requestsItem2("return the grant of probate to the court")
-                .understandItem1("my application will be rejected if I do not answer any questions "
-                        + "about the information I have given")
-                .understandItem2("criminal proceedings for fraud may be brought against me if I am found "
-                        + "to have been deliberately untruthful or dishonest")
-                .build());
+            .accept("I confirm that I will administer the estate of the person who died according to law, "
+                + "and that my application is truthful.")
+            .confirm("I confirm that I will administer the estate of Rob Stark, according to law. I will:")
+            .requests("If the probate registry (court) asks me to do so, I will:")
+            .confirmItem1("I understand that:")
+            .confirmItem2("keep full details (an inventory) of the estate")
+            .confirmItem3("keep a full account of how the estate has been administered")
+            .requestsItem1("provide the full details of the estate and how it has been administered")
+            .requestsItem2("return the grant of probate to the court")
+            .understandItem1("my application will be rejected if I do not answer any questions "
+                + "about the information I have given")
+            .understandItem2("criminal proceedings for fraud may be brought against me if I am found "
+                + "to have been deliberately untruthful or dishonest")
+            .build());
         return grantOfRepresentationData;
     }
 
     public static void addExecutorApplying(GrantOfRepresentationData grantOfRepresentationData,
-                                           String applyingExecutorEmail) {
+                                           String applyingExecutorEmail, String applyingExecutorName) {
         if (grantOfRepresentationData.getExecutorsApplying() == null) {
             grantOfRepresentationData.setExecutorsApplying(new ArrayList<>());
         }
         ExecutorApplying executorApplying = new ExecutorApplying();
         executorApplying.setApplyingExecutorEmail(applyingExecutorEmail);
+        executorApplying.setApplyingExecutorName(applyingExecutorName);
         grantOfRepresentationData.getExecutorsApplying().add(
             new CollectionMember<ExecutorApplying>("1", executorApplying));
     }
