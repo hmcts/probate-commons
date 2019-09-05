@@ -3,14 +3,10 @@ package uk.gov.hmcts.reform.probate.model.multiapplicant;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
 import java.io.Serializable;
 import javax.validation.constraints.Size;
@@ -22,6 +18,9 @@ import javax.validation.constraints.Size;
 @Builder
 @JsonRootName(value = "invitation")
 public class Invitation implements Serializable {
+
+    @JsonProperty("id")
+    private String id;
 
     @Size(min = 2, message = "fieldMinSize")
     private String firstName;
@@ -47,8 +46,6 @@ public class Invitation implements Serializable {
     @JsonProperty("inviteId")
     private String inviteId;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean agreed;
 
 }
