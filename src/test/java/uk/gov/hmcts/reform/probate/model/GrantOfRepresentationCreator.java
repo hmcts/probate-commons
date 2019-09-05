@@ -105,6 +105,21 @@ public class GrantOfRepresentationCreator {
         return grantOfRepresentationData;
     }
 
+
+    public static void addExecutorApplying(GrantOfRepresentationData grantOfRepresentationData,
+                                           String applyingExecutorEmail, String applyingExecutorName,
+                                           Boolean isApplicant) {
+        if (grantOfRepresentationData.getExecutorsApplying() == null) {
+            grantOfRepresentationData.setExecutorsApplying(new ArrayList<>());
+        }
+        ExecutorApplying executorApplying = new ExecutorApplying();
+        executorApplying.setApplyingExecutorEmail(applyingExecutorEmail);
+        executorApplying.setApplyingExecutorName(applyingExecutorName);
+        executorApplying.setApplyingExecutorApplicant(isApplicant);
+        grantOfRepresentationData.getExecutorsApplying().add(
+            new CollectionMember<ExecutorApplying>("1", executorApplying));
+    }
+
     public static void addExecutorApplying(GrantOfRepresentationData grantOfRepresentationData,
                                            String applyingExecutorEmail, String applyingExecutorName) {
         if (grantOfRepresentationData.getExecutorsApplying() == null) {

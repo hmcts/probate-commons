@@ -44,6 +44,11 @@ public class GrantOfRepresentationTest {
             "Graham Garderner", executorApplyingName);
         grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying(invitationId, Boolean.TRUE);
 
+
+        GrantOfRepresentationCreator.addExecutorApplying(grantOfRepresentationData,
+            "mainEmailExecutor", "Bobby Firmino", Boolean.TRUE);
+
+
         ExecutorApplying executorApplying = grantOfRepresentationData.getExecutorApplyingByEmailAddress(email);
         Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
             is(equalTo(Boolean.TRUE)));
@@ -77,6 +82,9 @@ public class GrantOfRepresentationTest {
 
     @Test
     public void shouldDetermineThatAllExecutorsHaveAgreed() {
+
+        GrantOfRepresentationCreator.addExecutorApplying(grantOfRepresentationData,
+            "mainEmailExecutor", "Main Exec", Boolean.TRUE);
 
         grantOfRepresentationData.setDeclarationCheckbox(Boolean.FALSE);
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, "123455",

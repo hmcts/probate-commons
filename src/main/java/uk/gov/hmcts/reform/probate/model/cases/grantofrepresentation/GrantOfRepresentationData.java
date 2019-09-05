@@ -410,7 +410,9 @@ public class GrantOfRepresentationData extends CaseData {
 
     @Transient
     public Boolean haveAllExecutorsAgreed() {
-        return this.getExecutorsApplying().stream().allMatch(executorApplying ->
+        return this.getExecutorsApplying().stream().filter(executorApplying ->
+            (executorApplying.getValue().getApplyingExecutorApplicant() == null
+                || !executorApplying.getValue().getApplyingExecutorApplicant())).allMatch(executorApplying ->
             executorApplying.getValue().getApplyingExecutorAgreed() != null
                 && executorApplying.getValue().getApplyingExecutorAgreed())
             && this.getDeclarationCheckbox();
@@ -453,7 +455,9 @@ public class GrantOfRepresentationData extends CaseData {
 
     @Transient
     public Boolean haveInvitesBeenSent() {
-        return this.getExecutorsApplying() != null ? this.getExecutorsApplying().stream()
+        return this.getExecutorsApplying() != null
+            ? this.getExecutorsApplying().stream().filter(e -> e.getValue().getApplyingExecutorApplicant() == null
+            || !e.getValue().getApplyingExecutorApplicant())
             .allMatch(e -> e.getValue().getApplyingExecutorInvitationId() != null) : null;
     }
 
