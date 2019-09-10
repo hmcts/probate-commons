@@ -138,7 +138,7 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     private LocalDate deceasedDateOfBirth;
 
-    private MaritalStatus deceasedMartialStatus;
+    private MaritalStatus deceasedMaritalStatus;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -272,15 +272,15 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean willAccessOriginal;
 
-    @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
+    @NotNull(groups = {PaNullCheck.class})
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean willHasCodicils;
 
     private Long willNumberOfCodicils;
 
-    @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
-    @Min(value = 1, groups = {IntestacyFieldCheck.class, PaFieldCheck.class})
+    @NotNull(groups = {PaNullCheck.class})
+    @Min(value = 1, groups = {PaFieldCheck.class})
     private Long numberOfExecutors;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -313,8 +313,8 @@ public class GrantOfRepresentationData extends CaseData {
     @Valid
     private LegalStatement legalStatement;
 
-    @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
-    @Min(value = 1, groups = {IntestacyFieldCheck.class, PaFieldCheck.class})
+    @NotNull(groups = {PaNullCheck.class})
+    @Min(value = 1, groups = {PaFieldCheck.class})
     private Long numberOfApplicants;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -504,20 +504,20 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
-    @AssertTrue(message = "when deceasedMartialStatus is DIVORCED, deceasedDivorcedInEnglandOrWales cannot be null",
+    @AssertTrue(message = "when deceasedMaritalStatus is DIVORCED, deceasedDivorcedInEnglandOrWales cannot be null",
         groups = {IntestacyCrossFieldCheck.class})
     public Boolean isDivorcedInEnglandOrWalesPopulatedWhenDeceasedDivorced() {
-        return ObjectUtils.allNotNull(deceasedMartialStatus)
-            && (deceasedMartialStatus.equals(MaritalStatus.DIVORCED) && deceasedDivorcedInEnglandOrWales == null);
+        return ObjectUtils.allNotNull(deceasedMaritalStatus)
+            && (deceasedMaritalStatus.equals(MaritalStatus.DIVORCED) && deceasedDivorcedInEnglandOrWales == null);
     }
 
     @Transient
-    @AssertTrue(message = "when deceasedMartialStatus is JUDICIALLY_SEPARATED, "
+    @AssertTrue(message = "when deceasedMaritalStatus is JUDICIALLY_SEPARATED, "
         + "deceasedDivorcedInEnglandOrWales cannot be null",
         groups = {IntestacyCrossFieldCheck.class})
     public Boolean isDivorcedInEnglandOrWalesPopulatedWhenDeceasedSeperated() {
-        return ObjectUtils.allNotNull(deceasedMartialStatus)
-            && (deceasedMartialStatus.equals(MaritalStatus.JUDICIALLY_SEPARATED)
+        return ObjectUtils.allNotNull(deceasedMaritalStatus)
+            && (deceasedMaritalStatus.equals(MaritalStatus.JUDICIALLY_SEPARATED)
             && deceasedDivorcedInEnglandOrWales == null);
     }
 

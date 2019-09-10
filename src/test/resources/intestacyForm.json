@@ -15,7 +15,7 @@
     "postCode": "SW17 0QT",
     "phoneNumber": "123455678",
     "addressFound": "true",
-    "relationshipToDeceased": "adoptedChild",
+    "relationshipToDeceased": "Child who was lawfully adopted",
     "adoptionInEnglandOrWales": "Yes"
   },
   "deceased": {
@@ -69,9 +69,9 @@
         "firstName": "King"
       }
     },
-    "maritalStatus": "marriedCivilPartnership",
+    "maritalStatus": "Married or in a civil partnership",
     "divorcedInEnglandOrWales": "No",
-    "spouseNotApplyingReason": "mentallyIncapable",
+    "spouseNotApplyingReason": "Mentally incapable",
     "otherChildren": "Yes",
     "allDeceasedChildrenOverEighteen": "Yes",
     "anyDeceasedChildrenDieBeforeDeceased": "No",

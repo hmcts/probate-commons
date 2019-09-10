@@ -9,8 +9,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.YesNo;
-import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
-import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.ProbateDeceased;
@@ -28,7 +26,7 @@ import java.util.Map;
 public class IntestacyDeceased extends ProbateDeceased {
 
     @ApiModelProperty(value = "Deceased marital status")
-    private MaritalStatus maritalStatus;
+    private String maritalStatus;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -40,34 +38,34 @@ public class IntestacyDeceased extends ProbateDeceased {
     private Boolean divorcedInEnglandOrWales;
 
     @ApiModelProperty(value = "Reason spouse not applying")
-    private SpouseNotApplyingReason spouseNotApplyingReason;
+    private String spouseNotApplyingReason;
 
     @ApiModelProperty(value = "Does the deceased have other children?",
-            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+        allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean otherChildren;
 
     @ApiModelProperty(value = "Are all the deceased's children over 18?",
-            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+        allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean allDeceasedChildrenOverEighteen;
 
     @ApiModelProperty(value = "Did any of the deceased's children die before the deceased?",
-            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+        allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean anyDeceasedChildrenDieBeforeDeceased;
 
     @ApiModelProperty(value = "Are any of the deceased children under 18?",
-            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+        allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean anyDeceasedGrandchildrenUnderEighteen;
 
     @ApiModelProperty(value = "Does the deceased have any children?",
-            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+        allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean anyChildren;
@@ -76,13 +74,13 @@ public class IntestacyDeceased extends ProbateDeceased {
     public IntestacyDeceased(String firstName, String lastName, Boolean alias, Map<String, AliasOtherNames> otherNames,
                              Boolean married, Address address, String postcode, String postcodeAddress,
                              Boolean addressFound, List<Map<String, Object>> addresses, LocalDateTime dateOfBirth,
-                             LocalDateTime dateOfDeath, String domicile, MaritalStatus maritalStatus,
+                             LocalDateTime dateOfDeath, String domicile, String maritalStatus,
                              Boolean domiciledInEnglandOrWales, Boolean divorcedInEnglandOrWales,
-                             SpouseNotApplyingReason spouseNotApplyingReason, Boolean otherChildren,
+                             String spouseNotApplyingReason, Boolean otherChildren,
                              Boolean allDeceasedChildrenOverEighteen, Boolean anyDeceasedChildrenDieBeforeDeceased,
                              Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren) {
         super(firstName, lastName, alias, otherNames, married, address, postcode, postcodeAddress, addressFound,
-                addresses, dateOfBirth, dateOfDeath, domicile);
+            addresses, dateOfBirth, dateOfDeath, domicile);
         this.maritalStatus = maritalStatus;
         this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
         this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;

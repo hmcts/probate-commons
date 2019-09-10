@@ -63,28 +63,28 @@ public class IntestacyFormTest {
         intestacyApplicant.setFirstName("Jon");
         intestacyApplicant.setLastName("Snow");
         Address applicantAddress = Address.builder().addressLine1("Pret a Manger")
-                .addressLine2("St. Georges Hospital")
-                .addressLine3("Blackshaw Road")
-                .postTown("London")
-                .postCode("SW17 0QT")
-                .formattedAddress("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT")
-                .build();
+            .addressLine2("St. Georges Hospital")
+            .addressLine3("Blackshaw Road")
+            .postTown("London")
+            .postCode("SW17 0QT")
+            .formattedAddress("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT")
+            .build();
         intestacyApplicant.setAddress(applicantAddress);
         intestacyApplicant.setPostCode("SW17 0QT");
         intestacyApplicant.setPhoneNumber("123455678");
         intestacyApplicant.setAdoptionInEnglandOrWales(true);
-        intestacyApplicant.setRelationshipToDeceased(Relationship.ADOPTED_CHILD);
+        intestacyApplicant.setRelationshipToDeceased(Relationship.ADOPTED_CHILD.getDescription());
         intestacyForm.setApplicant(intestacyApplicant);
 
         IntestacyDeceased intestacyDeceased = new IntestacyDeceased();
         intestacyDeceased.setFirstName("Ned");
         intestacyDeceased.setLastName("Stark");
-        intestacyDeceased.setDateOfBirth(LocalDateTime.of(1930, 1, 1,0,0,0));
-        intestacyDeceased.setDateOfDeath(LocalDateTime.of(2018, 1, 1,0,0,0));
+        intestacyDeceased.setDateOfBirth(LocalDateTime.of(1930, 1, 1, 0, 0, 0));
+        intestacyDeceased.setDateOfDeath(LocalDateTime.of(2018, 1, 1, 0, 0, 0));
         Address deceasedAddress = Address.builder().addressLine1("Winterfell")
-                .postTown("Kings Landing")
-                .formattedAddress("Winterfell Kings Landing Win1 Westeros")
-                .postCode("Win1").country("Westeros").build();
+            .postTown("Kings Landing")
+            .formattedAddress("Winterfell Kings Landing Win1 Westeros")
+            .postCode("Win1").country("Westeros").build();
         intestacyDeceased.setAddress(deceasedAddress);
         intestacyDeceased.setAddressFound(true);
         intestacyDeceased.setPostCode("SW17 0QT");
@@ -95,8 +95,8 @@ public class IntestacyFormTest {
         aliasOtherNames.setLastName("North");
         intestacyDeceased.setOtherNames(ImmutableMap.of("name_0", aliasOtherNames));
         intestacyDeceased.setDivorcedInEnglandOrWales(false);
-        intestacyDeceased.setSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE);
-        intestacyDeceased.setMaritalStatus(MaritalStatus.MARRIED);
+        intestacyDeceased.setSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE.getDescription());
+        intestacyDeceased.setMaritalStatus(MaritalStatus.MARRIED.getDescription());
         intestacyDeceased.setAllDeceasedChildrenOverEighteen(true);
         intestacyDeceased.setAnyDeceasedChildrenDieBeforeDeceased(false);
         intestacyDeceased.setAnyDeceasedGrandchildrenUnderEighteen(false);
@@ -171,7 +171,7 @@ public class IntestacyFormTest {
         address2.put("uprn", "10033604583");
         address2.put("formatted_address", "Ministry of Justice\nSeventh Floor\n103 Petty France\nLondon\nSW1H 9AJ");
 
-        List<Map<String,Object>> addressList = new ArrayList<>();
+        List<Map<String, Object>> addressList = new ArrayList<>();
         addressList.add(address1);
         addressList.add(address2);
         return addressList;

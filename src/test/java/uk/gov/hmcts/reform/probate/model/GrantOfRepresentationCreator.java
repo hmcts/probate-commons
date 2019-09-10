@@ -198,7 +198,7 @@ public class GrantOfRepresentationCreator {
 
         createAliasDetails(grantOfRepresentationData);
 
-        grantOfRepresentationData.setDeceasedMartialStatus(MaritalStatus.MARRIED);
+        grantOfRepresentationData.setDeceasedMaritalStatus(MaritalStatus.MARRIED);
         grantOfRepresentationData.setDeceasedDivorcedInEnglandOrWales(false);
         grantOfRepresentationData.setDeceasedOtherChildren(true);
         grantOfRepresentationData.setChildrenDied(false);

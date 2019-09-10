@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.YesNo;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.ProbateApplicant;
@@ -25,7 +24,7 @@ import java.util.Map;
 public class IntestacyApplicant extends ProbateApplicant {
 
     @ApiModelProperty(value = "Relationship to the deceased")
-    private Relationship relationshipToDeceased;
+    private String relationshipToDeceased;
 
     @ApiModelProperty(value = "Was adoption in England or Wales", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -36,10 +35,10 @@ public class IntestacyApplicant extends ProbateApplicant {
     public IntestacyApplicant(String firstName, String lastName, String alias, String aliasReason, Address address,
                               String postcode, String postcodeAddress, Boolean addressFound,
                               List<Map<String, Object>> addresses, String phoneNumber, Boolean nameAsOnTheWill,
-                              String otherReason, Relationship relationshipToDeceased,
+                              String otherReason, String relationshipToDeceased,
                               Boolean adoptionInEnglandOrWales) {
         super(firstName, lastName, alias, aliasReason, address, postcode, postcodeAddress, addressFound, addresses,
-                phoneNumber, nameAsOnTheWill, otherReason);
+            phoneNumber, nameAsOnTheWill, otherReason);
         this.relationshipToDeceased = relationshipToDeceased;
         this.adoptionInEnglandOrWales = adoptionInEnglandOrWales;
     }
