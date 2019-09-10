@@ -55,13 +55,16 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private Map<String, Object> checkAnswersSummary;
 
+    private String caseType;
+
+
     @Builder
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          Declaration declaration, Documents documents, Registry registry,
                          CcdCase ccdCase, List<Payment> payments, Copies copies,
                          InheritanceTax iht, Fees fees, Payment payment, LocalDate applicationSubmittedDate,
                          Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary,
-                         String applicantEmail, DocumentUpload statementOfTruthDocument) {
+                         String applicantEmail, DocumentUpload statementOfTruthDocument, String caseType) {
 
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment);
         this.declaration = declaration;
@@ -72,6 +75,8 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.checkAnswersSummary = checkAnswersSummary;
         this.applicantEmail = applicantEmail;
         this.statementOfTruthDocument = statementOfTruthDocument;
+        this.caseType = caseType;
+
     }
 
 }
