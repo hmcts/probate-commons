@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModelProperty;
@@ -29,6 +30,7 @@ public class IntestacyApplicant extends ProbateApplicant {
     @ApiModelProperty(value = "Was adoption in England or Wales", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    @JsonProperty("adoptionPlace")
     private Boolean adoptionInEnglandOrWales;
 
     @Builder

@@ -93,5 +93,6 @@ public class InheritanceTax {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean assetsOutside;
 
+    @JsonProperty("netValueAssetsOutside")
     private BigDecimal assetsOutsideNetValue;
 }

@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModelProperty;
@@ -35,6 +36,7 @@ public class IntestacyDeceased extends ProbateDeceased {
     @ApiModelProperty(value = "Was Divorced in England or Wales?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    @JsonProperty("divorcePlace")
     private Boolean divorcedInEnglandOrWales;
 
     @ApiModelProperty(value = "Reason spouse not applying")
@@ -44,24 +46,28 @@ public class IntestacyDeceased extends ProbateDeceased {
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    @JsonProperty("anyOtherChildren")
     private Boolean otherChildren;
 
     @ApiModelProperty(value = "Are all the deceased's children over 18?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    @JsonProperty("allChildrenOver18")
     private Boolean allDeceasedChildrenOverEighteen;
 
     @ApiModelProperty(value = "Did any of the deceased's children die before the deceased?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    @JsonProperty("anyDeceasedChildren")
     private Boolean anyDeceasedChildrenDieBeforeDeceased;
 
     @ApiModelProperty(value = "Are any of the deceased children under 18?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    @JsonProperty("anyGrandchildrenUnder18")
     private Boolean anyDeceasedGrandchildrenUnderEighteen;
 
     @ApiModelProperty(value = "Does the deceased have any children?",
