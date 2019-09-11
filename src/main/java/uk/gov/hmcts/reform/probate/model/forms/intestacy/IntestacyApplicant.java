@@ -33,15 +33,19 @@ public class IntestacyApplicant extends ProbateApplicant {
     @JsonProperty("adoptionPlace")
     private Boolean adoptionInEnglandOrWales;
 
+    @ApiModelProperty(value = "Reason spouse not applying")
+    private String spouseNotApplyingReason;
+
     @Builder
     public IntestacyApplicant(String firstName, String lastName, String alias, String aliasReason, Address address,
                               String postcode, String postcodeAddress, Boolean addressFound,
                               List<Map<String, Object>> addresses, String phoneNumber, Boolean nameAsOnTheWill,
                               String otherReason, String relationshipToDeceased,
-                              Boolean adoptionInEnglandOrWales) {
+                              Boolean adoptionInEnglandOrWales, String spouseNotApplyingReason) {
         super(firstName, lastName, alias, aliasReason, address, postcode, postcodeAddress, addressFound, addresses,
             phoneNumber, nameAsOnTheWill, otherReason);
         this.relationshipToDeceased = relationshipToDeceased;
         this.adoptionInEnglandOrWales = adoptionInEnglandOrWales;
+        this.spouseNotApplyingReason = spouseNotApplyingReason;
     }
 }

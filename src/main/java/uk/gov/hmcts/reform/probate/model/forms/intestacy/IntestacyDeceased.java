@@ -39,9 +39,6 @@ public class IntestacyDeceased extends ProbateDeceased {
     @JsonProperty("divorcePlace")
     private Boolean divorcedInEnglandOrWales;
 
-    @ApiModelProperty(value = "Reason spouse not applying")
-    private String spouseNotApplyingReason;
-
     @ApiModelProperty(value = "Does the deceased have other children?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -82,7 +79,7 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean addressFound, List<Map<String, Object>> addresses, LocalDateTime dateOfBirth,
                              LocalDateTime dateOfDeath, String domicile, String maritalStatus,
                              Boolean domiciledInEnglandOrWales, Boolean divorcedInEnglandOrWales,
-                             String spouseNotApplyingReason, Boolean otherChildren,
+                             Boolean otherChildren,
                              Boolean allDeceasedChildrenOverEighteen, Boolean anyDeceasedChildrenDieBeforeDeceased,
                              Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren) {
         super(firstName, lastName, alias, otherNames, married, address, postcode, postcodeAddress, addressFound,
@@ -90,7 +87,6 @@ public class IntestacyDeceased extends ProbateDeceased {
         this.maritalStatus = maritalStatus;
         this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
         this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;
-        this.spouseNotApplyingReason = spouseNotApplyingReason;
         this.otherChildren = otherChildren;
         this.allDeceasedChildrenOverEighteen = allDeceasedChildrenOverEighteen;
         this.anyDeceasedChildrenDieBeforeDeceased = anyDeceasedChildrenDieBeforeDeceased;

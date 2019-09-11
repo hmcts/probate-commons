@@ -74,6 +74,7 @@ public class IntestacyFormTest {
         intestacyApplicant.setPhoneNumber("123455678");
         intestacyApplicant.setAdoptionInEnglandOrWales(true);
         intestacyApplicant.setRelationshipToDeceased(Relationship.ADOPTED_CHILD.getDescription());
+        intestacyApplicant.setSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE.getDescription());
         intestacyForm.setApplicant(intestacyApplicant);
 
         IntestacyDeceased intestacyDeceased = new IntestacyDeceased();
@@ -95,7 +96,6 @@ public class IntestacyFormTest {
         aliasOtherNames.setLastName("North");
         intestacyDeceased.setOtherNames(ImmutableMap.of("name_0", aliasOtherNames));
         intestacyDeceased.setDivorcedInEnglandOrWales(false);
-        intestacyDeceased.setSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE.getDescription());
         intestacyDeceased.setMaritalStatus(MaritalStatus.MARRIED.getDescription());
         intestacyDeceased.setAllDeceasedChildrenOverEighteen(true);
         intestacyDeceased.setAnyDeceasedChildrenDieBeforeDeceased(false);

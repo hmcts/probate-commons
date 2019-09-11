@@ -16,6 +16,7 @@
     "phoneNumber": "123455678",
     "addressFound": "true",
     "relationshipToDeceased": "Child who was lawfully adopted",
+    "spouseNotApplyingReason": "Mentally incapable",
     "adoptionPlace": "Yes"
   },
   "deceased": {
@@ -71,7 +72,6 @@
     },
     "maritalStatus": "Married or in a civil partnership",
     "divorcePlace": "No",
-    "spouseNotApplyingReason": "Mentally incapable",
     "anyOtherChildren": "Yes",
     "allChildrenOver18": "Yes",
     "anyDeceasedChildren": "No",
