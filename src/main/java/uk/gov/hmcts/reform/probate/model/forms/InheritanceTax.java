@@ -95,4 +95,8 @@ public class InheritanceTax {
 
     @JsonProperty("netValueAssetsOutside")
     private BigDecimal assetsOutsideNetValue;
+
+    private String netValueAssetsOutsideField;
+
+
 }
