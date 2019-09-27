@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,5 +20,7 @@ public class CaseInfo {
     private String caseId;
 
     private CaseState state;
+
+    private LocalDate caseCreatedDate;
 
 }

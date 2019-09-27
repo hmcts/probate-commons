@@ -5,14 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CcdCase {
+public class CaseSummaryHolder {
 
-    private Long id;
-
-    private String state;
-
+    List<CaseSummary> applications;
 }
