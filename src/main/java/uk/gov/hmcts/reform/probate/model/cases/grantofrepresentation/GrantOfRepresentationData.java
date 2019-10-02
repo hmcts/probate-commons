@@ -415,7 +415,7 @@ public class GrantOfRepresentationData extends CaseData {
                 || !executorApplying.getValue().getApplyingExecutorApplicant())).allMatch(executorApplying ->
             executorApplying.getValue().getApplyingExecutorAgreed() != null
                 && executorApplying.getValue().getApplyingExecutorAgreed())
-            && this.getDeclarationCheckbox();
+            && (this.getDeclarationCheckbox() != null && this.getDeclarationCheckbox());
     }
 
     @Transient

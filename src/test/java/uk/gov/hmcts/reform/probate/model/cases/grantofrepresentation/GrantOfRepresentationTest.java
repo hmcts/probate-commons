@@ -122,6 +122,11 @@ public class GrantOfRepresentationTest {
 
         Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
             is(equalTo(Boolean.TRUE)));
+
+        grantOfRepresentationData.setDeclarationCheckbox(null);
+
+        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
+            is(equalTo(Boolean.FALSE)));
     }
 
     @Test
