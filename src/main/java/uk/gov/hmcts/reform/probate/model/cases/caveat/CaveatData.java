@@ -14,6 +14,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.ObjectUtils;
 import uk.gov.hmcts.reform.probate.model.ProbateDocument;
+import uk.gov.hmcts.reform.probate.model.ScannedDocument;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
@@ -122,6 +123,8 @@ public class CaveatData extends CaseData {
     private Boolean caveatRaisedEmailNotificationRequested;
 
     private List<CollectionMember<ProbateDocument>> notificationsGenerated;
+
+    private List<CollectionMember<ScannedDocument>> scannedDocuments;
 
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
