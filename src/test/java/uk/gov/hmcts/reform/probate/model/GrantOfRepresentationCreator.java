@@ -18,9 +18,13 @@ import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.LegalStatem
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.SpouseNotApplyingReason;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class GrantOfRepresentationCreator {
 
@@ -104,7 +108,6 @@ public class GrantOfRepresentationCreator {
             .build());
         return grantOfRepresentationData;
     }
-
 
     public static void addExecutorApplying(GrantOfRepresentationData grantOfRepresentationData,
                                            String applyingExecutorEmail, String applyingExecutorName,
@@ -233,6 +236,18 @@ public class GrantOfRepresentationCreator {
         return grantOfRepresentationData;
     }
 
+    public static GrantOfRepresentationData createIntestacyCaseWithBulkScanData() {
+
+        GrantOfRepresentationData grantOfRepresentationData = createIntestacyCase();
+        CollectionMember<ScannedDocument> scannedDocumentMember1 = new CollectionMember<>();
+        scannedDocumentMember1.setValue(getScannedDocument("1"));
+        CollectionMember<ScannedDocument> scannedDocumentMember2 = new CollectionMember<>();
+        scannedDocumentMember2.setValue(getScannedDocument("2"));
+        grantOfRepresentationData.setScannedDocuments((List<CollectionMember<ScannedDocument>>)
+                Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
+        return grantOfRepresentationData;
+    }
+
     private static void createLegacyDetails(GrantOfRepresentationData grantOfRepresentationData) {
         grantOfRepresentationData.setLegacyId("123456");
         grantOfRepresentationData.setLegacyType("Legacy LEGACY GRANT");
@@ -269,6 +284,24 @@ public class GrantOfRepresentationCreator {
         solsAliasNameCollectionMember.setValue(fullAliasName);
         grantOfRepresentationData.setSolsDeceasedAliasNamesList(Lists.newArrayList(solsAliasNameCollectionMember));
 
+    }
+
+    private static ScannedDocument getScannedDocument(String docReference) {
+        ProbateDocumentLink url = ProbateDocumentLink.builder()
+                .documentBinaryUrl("http://localhost/" + docReference + "000.pdf")
+                .documentFilename(docReference + "000.pdf")
+                .documentUrl("http://localhost/" + docReference + "000.pdf")
+                .build();
+        LocalDateTime dateTime = LocalDateTime.parse("2019-07-15T12:34:56.789Z", DateTimeFormatter.ISO_DATE_TIME);
+        return ScannedDocument.builder().controlNumber(docReference + "000")
+                .fileName(docReference + "000.pdf")
+                .type("form")
+                .subtype("PA1P")
+                .scannedDate(dateTime)
+                .exceptionRecordReference(null)
+                .deliveryDate(dateTime)
+                .url(url)
+                .build();
     }
 
     private GrantOfRepresentationCreator() {

@@ -22,14 +22,20 @@ public class CaveatDataTest {
 
     private CaveatData caveatData;
 
+    private CaveatData bulkScanCaveatData;
+
     private String json;
+
+    private String bulkScanJson;
 
     @Before
     public void setUp() throws Exception {
         json = TestUtils.getJsonFromFile("caveatData.json");
+        bulkScanJson = TestUtils.getJsonFromFile("bulkScanCaveatData.json");
         objectMapper = new ObjectMapper();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
         caveatData = CaveatCreator.createCaveatCase();
+        bulkScanCaveatData = CaveatCreator.createCaveatCaseWithBulkScanData();
     }
 
     @Test
@@ -44,5 +50,12 @@ public class CaveatDataTest {
         String actualJson = objectMapper.writeValueAsString(caveatData);
 
         JSONAssert.assertEquals(json, actualJson, true);
+    }
+
+    @Test
+    public void shouldSerializeCaveatDataFromBulkScanCorrectly() throws IOException, JSONException {
+        String actualJson = objectMapper.writeValueAsString(bulkScanCaveatData);
+
+        JSONAssert.assertEquals(bulkScanJson, actualJson, true);
     }
 }
