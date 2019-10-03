@@ -22,14 +22,20 @@ public class GrantOfRepresentationDataIntestacyTest {
 
     private GrantOfRepresentationData grantOfRepresentationData;
 
+    private GrantOfRepresentationData bulkScanGrantOfRepresentationData;
+
     private String gorJsonFromFile;
+
+    private String bulkScanGorJsonFromFile;
 
     @Before
     public void setUp() throws Exception {
         gorJsonFromFile = TestUtils.getJsonFromFile("intestacyGrantOfRepresentation.json");
+        bulkScanGorJsonFromFile = TestUtils.getJsonFromFile("bulkScanIntestacyGrantOfRepresentation.json");
         objectMapper = new ObjectMapper();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
         grantOfRepresentationData = GrantOfRepresentationCreator.createIntestacyCase();
+        bulkScanGrantOfRepresentationData = GrantOfRepresentationCreator.createIntestacyCaseWithBulkScanData();
     }
 
     @Test
@@ -44,6 +50,13 @@ public class GrantOfRepresentationDataIntestacyTest {
         String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationData);
 
         JSONAssert.assertEquals(gorJsonFromFile, intestacyGorAsJsonStr, true);
+    }
+
+    @Test
+    public void shouldSerializeGrantOfRepresentationDataFromBulkScanCorrectly() throws IOException, JSONException {
+        String actualJson = objectMapper.writeValueAsString(bulkScanGrantOfRepresentationData);
+
+        JSONAssert.assertEquals(bulkScanGorJsonFromFile, actualJson, true);
     }
 
 }

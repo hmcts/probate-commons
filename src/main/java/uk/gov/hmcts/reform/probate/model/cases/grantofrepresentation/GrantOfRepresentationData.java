@@ -19,6 +19,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.Relationship;
+import uk.gov.hmcts.reform.probate.model.ScannedDocument;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.AliasName;
 import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
@@ -371,6 +372,8 @@ public class GrantOfRepresentationData extends CaseData {
     private String ihtNetValueField;
 
     private List<CollectionMember<UploadDocument>> boDocumentsUploaded;
+
+    private List<CollectionMember<ScannedDocument>> scannedDocuments;
 
     private DocumentLink statementOfTruthDocument;
 

@@ -8,16 +8,17 @@ import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.List;
 
 public class CaveatCreator {
 
     public static CaveatData createCaveatCase() {
-
         CaveatData caveatData = new CaveatData();
         caveatData.setApplicationId("Id");
         caveatData.setApplicationType(ApplicationType.PERSONAL);
-
         caveatData.setCaveatorAddress(getAddress("caveator"));
         caveatData.setCaveatorEmailAddress("caveator@email.com");
         caveatData.setCaveatorForenames("caveator forename");
@@ -35,9 +36,18 @@ public class CaveatCreator {
         caveatData.setRegistryLocation(RegistryLocation.OXFORD);
         caveatData.setExpiryDate(LocalDate.of(2019, 2, 14));
         caveatData.setPaperForm(false);
-
         return caveatData;
+    }
 
+    public static CaveatData createCaveatCaseWithBulkScanData() {
+        CaveatData caveatData = createCaveatCase();
+        CollectionMember<ScannedDocument> scannedDocumentMember1 = new CollectionMember<>();
+        scannedDocumentMember1.setValue(getScannedDocument("1"));
+        CollectionMember<ScannedDocument> scannedDocumentMember2 = new CollectionMember<>();
+        scannedDocumentMember2.setValue(getScannedDocument("2"));
+        caveatData.setScannedDocuments((List<CollectionMember<ScannedDocument>>)
+                Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
+        return caveatData;
     }
 
     private static Address getAddress(String name) {
@@ -50,6 +60,24 @@ public class CaveatCreator {
         address.setPostCode(name + " post code");
         address.setCountry(name + " country");
         return address;
+    }
+
+    private static ScannedDocument getScannedDocument(String docReference) {
+        ProbateDocumentLink url = ProbateDocumentLink.builder()
+                .documentBinaryUrl("http://localhost/" + docReference + "000.pdf")
+                .documentFilename(docReference + "000.pdf")
+                .documentUrl("http://localhost/" + docReference + "000.pdf")
+                .build();
+        LocalDateTime dateTime = LocalDateTime.parse("2019-07-15T12:34:56.789Z", DateTimeFormatter.ISO_DATE_TIME);
+        return ScannedDocument.builder().controlNumber(docReference + "000")
+                .fileName(docReference + "000.pdf")
+                .type("form")
+                .subtype("PA1P")
+                .scannedDate(dateTime)
+                .exceptionRecordReference(null)
+                .deliveryDate(dateTime)
+                .url(url)
+                .build();
     }
 
     private CaveatCreator() {
