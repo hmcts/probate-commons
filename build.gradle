@@ -9,7 +9,7 @@ plugins {
 }
 
 group 'uk.gov.hmcts.reform.probate'
-version '0.0.58'
+version '0.0.60'
 
 checkstyle {
     maxWarnings = 0
