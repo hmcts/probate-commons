@@ -48,6 +48,7 @@ import uk.gov.hmcts.reform.probate.utils.CollectorUtils;
 import java.beans.Transient;
 import java.time.LocalDate;
 import java.util.List;
+
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
@@ -532,6 +533,34 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonSerialize(using = ToStringSerializer.class)
     private Long foreignAssetEstateValue;
+
+    private String primaryApplicantSecondPhoneNumber;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long applicationFeePaperForm;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long feeForCopiesPaperForm;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long totalFeePaperForm;
+
+    private String paperPaymentMethod;
+    private String paymentReferenceNumberPaperform;
+
+    @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate dateOfMarriageOrCP;
+
+    @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate dateOfDivorcedCPJudicially;
+
+    private String courtOfDecree;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
