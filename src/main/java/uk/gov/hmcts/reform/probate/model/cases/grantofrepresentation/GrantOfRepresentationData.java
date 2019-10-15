@@ -17,6 +17,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
+import uk.gov.hmcts.reform.probate.model.AdoptiveRelative;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.ScannedDocument;
@@ -373,9 +374,166 @@ public class GrantOfRepresentationData extends CaseData {
 
     private List<CollectionMember<UploadDocument>> boDocumentsUploaded;
 
+    private DocumentLink statementOfTruthDocument;
+
+
+    /* START: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
+
     private List<CollectionMember<ScannedDocument>> scannedDocuments;
 
-    private DocumentLink statementOfTruthDocument;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean adopted;
+
+    private List<CollectionMember<AdoptiveRelative>> adoptiveRelatives;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean spouseOrPartner;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean parentsExistUnderEighteenSurvived;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean parentsExistOverEighteenSurvived;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodSiblingsSurvived;
+    private String wholeBloodSiblingsSurvivedUnderEighteen;
+    private String wholeBloodSiblingsSurvivedOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodSiblingsDied;
+    private String wholeBloodSiblingsDiedUnderEighteen;
+    private String wholeBloodSiblingsDiedOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodNeicesAndNephews;
+    private String wholeBloodNeicesAndNephewsUnderEighteen;
+    private String wholeBloodNeicesAndNephewsOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodSiblingsSurvived;
+    private String halfBloodSiblingsSurvivedUnderEighteen;
+    private String halfBloodSiblingsSurvivedOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodSiblingsDied;
+    private String halfBloodSiblingsDiedUnderEighteen;
+    private String halfBloodSiblingsDiedOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodNeicesAndNephews;
+    private String halfBloodNeicesAndNephewsUnderEighteen;
+    private String halfBloodNeicesAndNephewsOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean grandparentsDied;
+    private String grandparentsDiedUnderEighteen;
+    private String grandparentsDiedOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodUnclesAndAuntsSurvived;
+    private String wholeBloodUnclesAndAuntsSurvivedUnderEighteen;
+    private String wholeBloodUnclesAndAuntsSurvivedOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodUnclesAndAuntsDied;
+    private String wholeBloodUnclesAndAuntsDiedUnderEighteen;
+    private String wholeBloodUnclesAndAuntsDiedOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodCousinsSurvived;
+    private String wholeBloodCousinsSurvivedUnderEighteen;
+    private String wholeBloodCousinsSurvivedOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodUnclesAndAuntsSurvived;
+    private String halfBloodUnclesAndAuntsSurvivedUnderEighteen;
+    private String halfBloodUnclesAndAuntsSurvivedOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodUnclesAndAuntsDied;
+    private String halfBloodUnclesAndAuntsDiedUnderEighteen;
+    private String halfBloodUnclesAndAuntsDiedOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodCousinsSurvived;
+    private String halfBloodCousinsSurvivedUnderEighteen;
+    private String halfBloodCousinsSurvivedOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean applyingAsAnAttorney;
+
+    private String attorneyOnBehalfOfName;
+    private Address attorneyOnBehalfOfAddress;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean mentalCapacity;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean courtOfProtection;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean epaOrLpa;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean epaRegistered;
+
+    private String domicilityCountry;
+
+    // If domicilityEntrustingDocument or domicilitySuccessionIHTCert is true
+    @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean domicilityIHTCert;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate willDate;
+
+    @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willsOutsideOfUK;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willGiftUnderEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean notifiedApplicants;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean foreignAsset;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long foreignAssetEstateValue;
+
+    /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
     @Transient
     public void setInvitationDetailsForExecutorApplying(String email, String invitationId, String leadApplicantName,
@@ -503,7 +661,6 @@ public class GrantOfRepresentationData extends CaseData {
     public Boolean isDeceasedOtherChildPopulatedWhenRelationshipToDeceasedIsChild() {
         return ObjectUtils.allNotNull(primaryApplicantRelationshipToDeceased)
             && (primaryApplicantRelationshipToDeceased.equals(Relationship.CHILD) && deceasedOtherChildren == null);
-
     }
 
     @Transient

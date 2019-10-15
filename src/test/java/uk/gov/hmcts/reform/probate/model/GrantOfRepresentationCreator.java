@@ -11,6 +11,8 @@ import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.Declaration;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.ExecutorApplying;
+import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.ExecutorNotApplying;
+import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.ExecutorNotApplyingReason;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentationData;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantType;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.LegalStatement;
@@ -132,7 +134,31 @@ public class GrantOfRepresentationCreator {
         executorApplying.setApplyingExecutorEmail(applyingExecutorEmail);
         executorApplying.setApplyingExecutorName(applyingExecutorName);
         grantOfRepresentationData.getExecutorsApplying().add(
-            new CollectionMember<ExecutorApplying>("1", executorApplying));
+                new CollectionMember<ExecutorApplying>("1", executorApplying));
+    }
+
+    public static void addExecutorNotApplying(GrantOfRepresentationData grantOfRepresentationData,
+                                           String notApplyingExecutorName,
+                                           ExecutorNotApplyingReason notApplyingExecutorReason) {
+        if (grantOfRepresentationData.getExecutorsNotApplying() == null) {
+            grantOfRepresentationData.setExecutorsNotApplying(new ArrayList<>());
+        }
+        ExecutorNotApplying executorNotApplying = new ExecutorNotApplying();
+        executorNotApplying.setNotApplyingExecutorName(notApplyingExecutorName);
+        executorNotApplying.setNotApplyingExecutorReason(notApplyingExecutorReason);
+        grantOfRepresentationData.getExecutorsNotApplying().add(
+                new CollectionMember<ExecutorNotApplying>("1", executorNotApplying));
+    }
+
+    public static void addAdoptiveRelative(GrantOfRepresentationData grantOfRepresentationData,
+                                              String adoptedName, String relationship, InOut adoptedInOut) {
+        if (grantOfRepresentationData.getAdoptiveRelatives() == null) {
+            grantOfRepresentationData.setAdoptiveRelatives(new ArrayList<>());
+        }
+        AdoptiveRelative adoptiveRelative = AdoptiveRelative.builder()
+                .adoptedInOrOut(adoptedInOut).name(adoptedName).relationship(relationship).build();
+        grantOfRepresentationData.getAdoptiveRelatives().add(
+                new CollectionMember<AdoptiveRelative>("1", adoptiveRelative));
     }
 
     private static void createSolicitorDetails(GrantOfRepresentationData grantOfRepresentationData) {
@@ -237,7 +263,6 @@ public class GrantOfRepresentationCreator {
     }
 
     public static GrantOfRepresentationData createIntestacyCaseWithBulkScanData() {
-
         GrantOfRepresentationData grantOfRepresentationData = createIntestacyCase();
         CollectionMember<ScannedDocument> scannedDocumentMember1 = new CollectionMember<>();
         scannedDocumentMember1.setValue(getScannedDocument("1"));
@@ -245,6 +270,12 @@ public class GrantOfRepresentationCreator {
         scannedDocumentMember2.setValue(getScannedDocument("2"));
         grantOfRepresentationData.setScannedDocuments((List<CollectionMember<ScannedDocument>>)
                 Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
+        addExecutorNotApplying(grantOfRepresentationData, "Bob Dylan", ExecutorNotApplyingReason.MENTALLY_INCAPABLE);
+        addAdoptiveRelative(grantOfRepresentationData, "Bob Taylor", "Cousin", InOut.OUT);
+        grantOfRepresentationData.setAdopted(true);
+        grantOfRepresentationData.setHalfBloodNeicesAndNephews(true);
+        grantOfRepresentationData.setHalfBloodNeicesAndNephewsOverEighteen("1");
+        grantOfRepresentationData.setNotifiedApplicants(false);
         return grantOfRepresentationData;
     }
 

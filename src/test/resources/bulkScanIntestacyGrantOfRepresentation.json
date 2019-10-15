@@ -85,6 +85,29 @@
   "ihtNetValueField": "100000",
   "outsideUKGrantCopies": 6,
   "caseType": "intestacy",
+  "adopted": "Yes",
+  "notifiedApplicants": "No",
+  "halfBloodNeicesAndNephews": "Yes",
+  "halfBloodNeicesAndNephewsOverEighteen": "1",
+  "executorsNotApplying": [
+    {
+      "id":"1",
+      "value": {
+        "notApplyingExecutorName": "Bob Dylan",
+        "notApplyingExecutorReason": "MentallyIncapable"
+      }
+    }
+  ],
+  "adoptiveRelatives": [
+    {
+      "id": "1",
+      "value": {
+        "name": "Bob Taylor",
+        "relationship": "Cousin",
+        "adoptedInOrOut": "OUT"
+      }
+    }
+  ],
   "scannedDocuments": [
     {
       "value": {
