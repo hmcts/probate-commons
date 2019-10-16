@@ -91,12 +91,12 @@ public class CaveatDataValidationTest {
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setDeceasedDateOfDeath(null);
         violations = executeCaveatValidator();
-        
+
         Assertions.assertThat(violations).hasSize(2)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("deceasedDateOfDeath", NULL_VALIDATION),
-                        tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
-                                "deceasedDateOfBirth must be before deceasedDateOfDeath"));
+            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
+            .containsExactlyInAnyOrder(tuple("deceasedDateOfDeath", NULL_VALIDATION),
+                tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
+                    "deceasedDateOfBirth must be before deceasedDateOfDeath"));
     }
 
     @Test
@@ -165,16 +165,6 @@ public class CaveatDataValidationTest {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setCaveatorAddress(null);
-        violations = executeCaveatValidator();
-        assertThat(violations, Matchers.hasSize(1));
-        assertThat(violations.iterator().next().getMessage(), is(equalTo(NULL_VALIDATION)));
-    }
-
-    @Test
-    public void shouldEnsureThatExpiryDateIsNotNull() {
-        Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
-        assertThat(violations, Matchers.hasSize(0));
-        caveatData.setExpiryDate(null);
         violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(1));
         assertThat(violations.iterator().next().getMessage(), is(equalTo(NULL_VALIDATION)));
