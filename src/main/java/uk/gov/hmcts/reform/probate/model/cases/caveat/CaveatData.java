@@ -90,7 +90,6 @@ public class CaveatData extends CaseData {
     @NotNull
     private Address caveatorAddress;
 
-    @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -130,6 +129,6 @@ public class CaveatData extends CaseData {
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
         return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath)
-                && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
+            && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
     }
 }
