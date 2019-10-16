@@ -46,6 +46,7 @@ public class Invitation implements Serializable {
     @JsonProperty("inviteId")
     private String inviteId;
 
+    @JsonProperty("agreed")
     private Boolean agreed;
 
 }
