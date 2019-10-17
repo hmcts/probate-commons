@@ -381,16 +381,20 @@ public class GrantOfRepresentationData extends CaseData {
     public void setInvitationDetailsForExecutorApplying(String email, String invitationId, String leadApplicantName,
                                                         String executorName) {
         ExecutorApplying e = this.getExecutorApplyingByEmailAddress(email, executorName);
-        e.setApplyingExecutorInvitationId(invitationId);
-        e.setApplyingExecutorLeadName(leadApplicantName);
+        if (e != null) {
+            e.setApplyingExecutorInvitationId(invitationId);
+            e.setApplyingExecutorLeadName(leadApplicantName);
+        }
     }
 
     @Transient
     public void setInvitationDetailsForExecutorApplying(String email, String invitationId,
                                                         boolean agreed) {
         ExecutorApplying e = this.getExecutorApplyingByEmailAddress(email);
-        e.setApplyingExecutorInvitationId(invitationId);
-        e.setApplyingExecutorAgreed(agreed);
+        if (e != null) {
+            e.setApplyingExecutorInvitationId(invitationId);
+            e.setApplyingExecutorAgreed(agreed);
+        }
     }
 
     @Transient
@@ -402,8 +406,10 @@ public class GrantOfRepresentationData extends CaseData {
     public void updateInvitationContactDetailsForExecutorApplying(String invitationId, String email,
                                                                   String phoneNumber) {
         ExecutorApplying e = this.getExecutorApplyingByInviteId(invitationId);
-        e.setApplyingExecutorPhoneNumber(phoneNumber);
-        e.setApplyingExecutorEmail(email);
+        if (e != null) {
+            e.setApplyingExecutorPhoneNumber(phoneNumber);
+            e.setApplyingExecutorEmail(email);
+        }
     }
 
     @Transient
@@ -440,7 +446,7 @@ public class GrantOfRepresentationData extends CaseData {
     public ExecutorApplying getExecutorApplyingByEmailAddress(String emailAddress, String executorName) {
         return this.getExecutorsApplying().stream()
             .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorEmail() != null
-                && executorApplying.getValue().getApplyingExecutorEmail().equals(emailAddress)
+                && executorApplying.getValue().getApplyingExecutorEmail().equalsIgnoreCase(emailAddress)
                 && executorApplying.getValue().getApplyingExecutorName() != null
                 && executorApplying.getValue().getApplyingExecutorName().equals(executorName)
             ).map(CollectionMember::getValue)
@@ -451,7 +457,7 @@ public class GrantOfRepresentationData extends CaseData {
     public ExecutorApplying getExecutorApplyingByEmailAddress(String emailAddress) {
         return this.getExecutorsApplying().stream()
             .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorEmail() != null
-                && executorApplying.getValue().getApplyingExecutorEmail().equals(emailAddress)
+                && executorApplying.getValue().getApplyingExecutorEmail().equalsIgnoreCase(emailAddress)
             ).map(CollectionMember::getValue)
             .collect(CollectorUtils.toSingleton());
     }

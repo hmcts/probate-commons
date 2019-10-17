@@ -13,7 +13,9 @@ public class CollectorUtils {
         return Collectors.collectingAndThen(
             Collectors.toList(),
             list -> {
-                if (list.size() != 1) {
+                if (list.size() == 0) {
+                    return null;
+                } else if (list.size() > 1) {
                     throw new IllegalStateException();
                 }
                 return list.get(0);
