@@ -13,19 +13,13 @@ public class YesNoTextSerializer extends JsonSerializer<Object> {
 
     @Override
     public void serialize(Object value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        System.out.println("YesNoTextSerializer start");
         if (value == null) {
-            System.out.println("YesNoTextSerializer null");
             gen.writeNull();
         } else if (value instanceof Boolean) {
-            System.out.println("YesNoTextSerializer bool");
             gen.writeString((Boolean)value ? YES.getDescription() : NO.getDescription());
         } else {
-            System.out.println("YesNoTextSerializer string?");
             gen.writeString(value.toString());
         }
-
-        System.out.println("YesNoTextSerializer done");
     }
 }
 
