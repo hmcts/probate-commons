@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import uk.gov.hmcts.reform.probate.model.AdoptiveRelative;
+import uk.gov.hmcts.reform.probate.model.AttorneyNamesAndAddress;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.ScannedDocument;
@@ -528,8 +529,7 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean applyingAsAnAttorney;
 
-    private String attorneyOnBehalfOfName;
-    private Address attorneyOnBehalfOfAddress;
+    private List<CollectionMember<AttorneyNamesAndAddress>> attorneyNamesAndAddress;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)

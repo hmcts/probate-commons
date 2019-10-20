@@ -67,6 +67,23 @@
       }
     }
   ],
+  "applyingAsAnAttorney": "Yes",
+  "attorneyNamesAndAddress": [
+    {
+      "value": {
+        "name": "1st Attorney Harrow",
+        "address": {
+          "AddressLine1": "Attorney Address Line 1",
+          "AddressLine2": "Attorney Address Line 2",
+          "AddressLine3": "Attorney Address Line 3",
+          "County": "Middlesex",
+          "PostTown": "Harrow",
+          "PostCode": "HA1 4ET",
+          "Country": "UK"
+        }
+      }
+    }
+  ],
   "legacyId": "123456",
   "legacyType": "Legacy LEGACY GRANT",
   "legacyCaseViewUrl": "http://locahost:8080/cases/1",

@@ -179,6 +179,27 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setSolsSolicitorFirmName("Solicitor Firm Name");
     }
 
+    private static void createAttorneyObBehalfOfDetails(GrantOfRepresentationData grantOfRepresentationData) {
+        Address attorneyOnBehalfOfAddress = Address.builder()
+                .addressLine1("Attorney Address Line 1")
+                .addressLine2("Attorney Address Line 2")
+                .addressLine3("Attorney Address Line 3")
+                .country("UK")
+                .county("Middlesex")
+                .postCode("HA1 4ET")
+                .postTown("Harrow")
+                .build();
+        final CollectionMember<AttorneyNamesAndAddress> attorneyNameAndAddressMember = new CollectionMember<>();
+        AttorneyNamesAndAddress attorneyNameAndAddress = AttorneyNamesAndAddress.builder()
+                .address(attorneyOnBehalfOfAddress)
+                .name("1st Attorney Harrow")
+                .build();
+        attorneyNameAndAddressMember.setValue(attorneyNameAndAddress);
+        grantOfRepresentationData.setAttorneyNamesAndAddress((List<CollectionMember<AttorneyNamesAndAddress>>)
+                Arrays.asList(attorneyNameAndAddressMember));
+        grantOfRepresentationData.setApplyingAsAnAttorney(Boolean.TRUE);
+    }
+
     private static void createIhtDetails(GrantOfRepresentationData grantOfRepresentationData) {
         grantOfRepresentationData.setIhtFormId(IhtFormType.IHT205);
         grantOfRepresentationData.setIhtFormCompletedOnline(true);
@@ -257,6 +278,8 @@ public class GrantOfRepresentationCreator {
         createLegacyDetails(grantOfRepresentationData);
 
         createSolicitorDetails(grantOfRepresentationData);
+
+        createAttorneyObBehalfOfDetails(grantOfRepresentationData);
 
         grantOfRepresentationData.setPaperForm(false);
 
