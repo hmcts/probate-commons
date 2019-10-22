@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -15,6 +16,7 @@ import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneSerializer;
 @AllArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Declaration {
 
     private Boolean softStop;
