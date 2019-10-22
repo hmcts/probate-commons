@@ -31,7 +31,7 @@ public enum CaseState {
 
     public static class Constants {
 
-        public static final String DRAFT_NAME = "Draft";
+        public static final String DRAFT_NAME = "Intermediate";
 
         public static final String PA_APP_CREATED_NAME = "PAAppCreated";
 
