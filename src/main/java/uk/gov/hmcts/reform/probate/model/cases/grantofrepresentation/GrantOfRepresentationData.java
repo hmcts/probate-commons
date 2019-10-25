@@ -51,7 +51,7 @@ import uk.gov.hmcts.reform.probate.utils.CollectorUtils;
 import java.beans.Transient;
 import java.time.LocalDate;
 import java.util.List;
-
+import java.util.stream.Collectors;
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
@@ -750,6 +750,16 @@ public class GrantOfRepresentationData extends CaseData {
         return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath)
                 && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
     }
+
+    @Transient
+    @AssertTrue(message = "payment.status should not be 'Pending",
+            groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
+    public boolean isPaymentStatusNotPending() {
+        return this.getPayments() == null ? true : this.getPayments().stream().filter(casePaymentCollectionMember ->
+                casePaymentCollectionMember.getValue().getStatus().getName().equals("Pending"))
+                .collect(Collectors.toList()).isEmpty();
+    }
+
 
     @Transient
     @AssertTrue(message = "deceasedAliasNameList must not be empty", groups = {IntestacyCrossFieldCheck.class})
