@@ -7,7 +7,8 @@ import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.isEmptyOrNullString;
+import static uk.gov.hmcts.reform.probate.model.YesNo.NO;
+import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
 
 public class GrantOfRepresentationTest {
 
@@ -231,56 +232,44 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldGetChildrenAndGrandChildrenIntestacyValuesAsBoolean() {
+    public void shouldGetChildrenAndGrandChildrenIntestacyBooleanSerialization() {
 
-        grantOfRepresentationData.setChildrenDiedOverEighteen(Boolean.TRUE);
+        grantOfRepresentationData.setChildrenDiedOverEighteen(null);
         grantOfRepresentationData.setChildrenDiedUnderEighteen(Boolean.FALSE);
         grantOfRepresentationData.setChildrenOverEighteenSurvived(Boolean.FALSE);
         grantOfRepresentationData.setChildrenUnderEighteenSurvived(Boolean.TRUE);
         grantOfRepresentationData.setGrandChildrenSurvivedOverEighteen(Boolean.FALSE);
         grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteen(Boolean.TRUE);
 
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedOverEighteen(), is(equalTo(Boolean.TRUE)));
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteen(), is(equalTo(Boolean.FALSE)));
+        Assert.assertThat(grantOfRepresentationData.getChildrenDiedOverEighteenText(),
+                is(equalTo(null)));
+        Assert.assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteenText(),
+                is(equalTo(NO.getDescription())));
+        Assert.assertThat(grantOfRepresentationData.getChildrenOverEighteenSurvivedText(),
+                is(equalTo(NO.getDescription())));
+        Assert.assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvivedText(),
+                is(equalTo(YES.getDescription())));
+        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteenText(),
+                is(equalTo(NO.getDescription())));
+        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteenText(),
+                is(equalTo(YES.getDescription())));
+    }
+
+    @Test
+    public void shouldGetChildrenAndGrandChildrenIntestacyTextAsBoolean() {
+
+        grantOfRepresentationData.setChildrenDiedOverEighteenText(null);
+        grantOfRepresentationData.setChildrenDiedUnderEighteenText("T");
+        grantOfRepresentationData.setChildrenOverEighteenSurvivedText("false");
+        grantOfRepresentationData.setChildrenUnderEighteenSurvivedText("Yes");
+        grantOfRepresentationData.setGrandChildrenSurvivedOverEighteenText("No");
+        grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteenText("true");
+
+        Assert.assertThat(grantOfRepresentationData.getChildrenDiedOverEighteen(), is(equalTo(null)));
+        Assert.assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteen(), is(equalTo(Boolean.TRUE)));
         Assert.assertThat(grantOfRepresentationData.getChildrenOverEighteenSurvived(), is(equalTo(Boolean.FALSE)));
         Assert.assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvived(), is(equalTo(Boolean.TRUE)));
         Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteen(), is(equalTo(Boolean.FALSE)));
         Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteen(), is(equalTo(Boolean.TRUE)));
-    }
-
-    @Test
-    public void shouldGetChildrenAndGrandChildrenIntestacyValuesAsText() {
-
-        grantOfRepresentationData.setChildrenDiedOverEighteen("1");
-        grantOfRepresentationData.setChildrenDiedUnderEighteen("2");
-        grantOfRepresentationData.setChildrenOverEighteenSurvived("3");
-        grantOfRepresentationData.setChildrenUnderEighteenSurvived("1");
-        grantOfRepresentationData.setGrandChildrenSurvivedOverEighteen("2");
-        grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteen("3");
-
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedOverEighteen(), is(equalTo("1")));
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteen(), is(equalTo("2")));
-        Assert.assertThat(grantOfRepresentationData.getChildrenOverEighteenSurvived(), is(equalTo("3")));
-        Assert.assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvived(), is(equalTo("1")));
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteen(), is(equalTo("2")));
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteen(), is(equalTo("3")));
-    }
-
-    @Test
-    public void shouldGetChildrenAndGrandChildrenIntestacyValuesNullOrEmptyValues() {
-
-        grantOfRepresentationData.setChildrenDiedOverEighteen("");
-        grantOfRepresentationData.setChildrenDiedUnderEighteen(null);
-        grantOfRepresentationData.setChildrenOverEighteenSurvived(null);
-        grantOfRepresentationData.setChildrenUnderEighteenSurvived("");
-        grantOfRepresentationData.setGrandChildrenSurvivedOverEighteen(null);
-        grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteen(null);
-
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedOverEighteen(), isEmptyOrNullString());
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteen(), isEmptyOrNullString());
-        Assert.assertThat(grantOfRepresentationData.getChildrenOverEighteenSurvived(), isEmptyOrNullString());
-        Assert.assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvived(), isEmptyOrNullString());
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteen(), isEmptyOrNullString());
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteen(), isEmptyOrNullString());
     }
 }

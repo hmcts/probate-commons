@@ -254,7 +254,7 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setChildrenDied(false);
         grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteen(false);
         grantOfRepresentationData.setChildrenOverEighteenSurvived(true);
-        grantOfRepresentationData.setChildrenUnderEighteenSurvived("2");
+        grantOfRepresentationData.setChildrenUnderEighteenSurvivedText("2");
         grantOfRepresentationData.setDeceasedAnyChildren(false);
         grantOfRepresentationData.setDeceasedAnyOtherNames(false);
 

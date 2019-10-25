@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,6 +17,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import uk.gov.hmcts.reform.probate.model.AdoptiveRelative;
 import uk.gov.hmcts.reform.probate.model.AttorneyNamesAndAddress;
@@ -36,7 +38,6 @@ import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoTextSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.IntestacyCrossFieldCheck;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.PaCrossFieldCheck;
 import uk.gov.hmcts.reform.probate.model.validation.groups.fieldcheck.IntestacyFieldCheck;
@@ -174,78 +175,117 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean childrenDied;
 
-    @JsonSerialize(using = YesNoTextSerializer.class)
-    private String childrenDiedOverEighteen;
+    @JsonProperty("childrenDiedOverEighteen")
+    public String childrenDiedOverEighteenText;
 
-    public void setChildrenDiedOverEighteen(Object childrenDiedOverEighteenObject) {
-        this.childrenDiedOverEighteen = setBooleanObjectAsString(childrenDiedOverEighteenObject);
+    @JsonProperty("childrenDiedUnderEighteen")
+    public String childrenDiedUnderEighteenText;
+
+    @JsonIgnore
+    public Boolean childrenDiedOverEighteen;
+
+    @JsonIgnore
+    public Boolean childrenDiedUnderEighteen;
+
+    public void setChildrenDiedOverEighteenText(String stringValue) {
+        this.childrenDiedOverEighteenText = stringValue;
+        this.childrenDiedOverEighteen = BooleanUtils.toBooleanObject(stringValue);
     }
 
-    public <T> T getChildrenDiedOverEighteen() {
-        return getBooleanFromString(this.childrenDiedOverEighteen);
+    public void setChildrenDiedOverEighteen(Boolean booleanValue) {
+        this.childrenDiedOverEighteen = booleanValue;
+        this.childrenDiedOverEighteenText
+                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
-    @JsonSerialize(using = YesNoTextSerializer.class)
-    private String childrenDiedUnderEighteen;
-
-    public void setChildrenDiedUnderEighteen(Object childrenDiedUnderEighteenObject) {
-        this.childrenDiedUnderEighteen = setBooleanObjectAsString(childrenDiedUnderEighteenObject);
+    public void setChildrenDiedUnderEighteenText(String stringValue) {
+        this.childrenDiedUnderEighteenText = stringValue;
+        this.childrenDiedUnderEighteen
+                = BooleanUtils.toBooleanObject(stringValue);
     }
 
-    public <T> T getChildrenDiedUnderEighteen() {
-        return getBooleanFromString(this.childrenDiedUnderEighteen);
+    public void setChildrenDiedUnderEighteen(Boolean booleanValue) {
+        this.childrenDiedUnderEighteen = booleanValue;
+        this.childrenDiedUnderEighteenText
+                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean childrenSurvived;
 
-    @JsonSerialize(using = YesNoTextSerializer.class)
-    public String childrenOverEighteenSurvived;
+    @JsonProperty("childrenOverEighteenSurvived")
+    public String childrenOverEighteenSurvivedText;
 
-    public void setChildrenOverEighteenSurvived(Object childrenOverEighteenSurvivedObject) {
-        this.childrenOverEighteenSurvived = setBooleanObjectAsString(childrenOverEighteenSurvivedObject);
+    @JsonProperty("childrenUnderEighteenSurvived")
+    public String childrenUnderEighteenSurvivedText;
+
+    @JsonIgnore
+    public Boolean childrenOverEighteenSurvived;
+
+    @JsonIgnore
+    public Boolean childrenUnderEighteenSurvived;
+
+    public void setChildrenOverEighteenSurvivedText(String stringValue) {
+        this.childrenOverEighteenSurvivedText = stringValue;
+        this.childrenOverEighteenSurvived = BooleanUtils.toBooleanObject(stringValue);
     }
 
-    public <T> T getChildrenOverEighteenSurvived() {
-        return getBooleanFromString(this.childrenOverEighteenSurvived);
+    public void setChildrenOverEighteenSurvived(Boolean booleanValue) {
+        this.childrenOverEighteenSurvived = booleanValue;
+        this.childrenOverEighteenSurvivedText
+                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
-    @JsonSerialize(using = YesNoTextSerializer.class)
-    public String childrenUnderEighteenSurvived;
-
-    public void setChildrenUnderEighteenSurvived(Object obj) {
-        this.childrenUnderEighteenSurvived = setBooleanObjectAsString(obj);
+    public void setChildrenUnderEighteenSurvivedText(String stringValue) {
+        this.childrenUnderEighteenSurvivedText = stringValue;
+        this.childrenUnderEighteenSurvived
+                = BooleanUtils.toBooleanObject(stringValue);
     }
 
-    public <T> T getChildrenUnderEighteenSurvived() {
-        return getBooleanFromString(this.childrenUnderEighteenSurvived);
+    public void setChildrenUnderEighteenSurvived(Boolean booleanValue) {
+        this.childrenUnderEighteenSurvived = booleanValue;
+        this.childrenUnderEighteenSurvivedText
+                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean grandChildrenSurvived;
 
-    @JsonSerialize(using = YesNoTextSerializer.class)
-    private String grandChildrenSurvivedUnderEighteen;
+    @JsonProperty("grandChildrenSurvivedUnderEighteen")
+    public String grandChildrenSurvivedUnderEighteenText;
 
-    public void setGrandChildrenSurvivedUnderEighteen(Object obj) {
-        this.grandChildrenSurvivedUnderEighteen = setBooleanObjectAsString(obj);
+    @JsonProperty("grandChildrenSurvivedOverEighteen")
+    public String grandChildrenSurvivedOverEighteenText;
+
+    @JsonIgnore
+    public Boolean grandChildrenSurvivedUnderEighteen;
+
+    @JsonIgnore
+    public Boolean grandChildrenSurvivedOverEighteen;
+
+    public void setGrandChildrenSurvivedUnderEighteenText(String stringValue) {
+        this.grandChildrenSurvivedUnderEighteenText = stringValue;
+        this.grandChildrenSurvivedUnderEighteen = BooleanUtils.toBooleanObject(stringValue);
     }
 
-    public <T> T getGrandChildrenSurvivedUnderEighteen() {
-        return getBooleanFromString(this.grandChildrenSurvivedUnderEighteen);
+    public void setGrandChildrenSurvivedUnderEighteen(Boolean booleanValue) {
+        this.grandChildrenSurvivedUnderEighteen = booleanValue;
+        this.grandChildrenSurvivedUnderEighteenText
+                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
-    @JsonSerialize(using = YesNoTextSerializer.class)
-    private String grandChildrenSurvivedOverEighteen;
-
-    public void setGrandChildrenSurvivedOverEighteen(Object obj) {
-        this.grandChildrenSurvivedOverEighteen = setBooleanObjectAsString(obj);
+    public void setGrandChildrenSurvivedOverEighteenText(String stringValue) {
+        this.grandChildrenSurvivedOverEighteenText = stringValue;
+        this.grandChildrenSurvivedOverEighteen
+                = BooleanUtils.toBooleanObject(stringValue);
     }
 
-    public <T> T getGrandChildrenSurvivedOverEighteen() {
-        return getBooleanFromString(this.grandChildrenSurvivedOverEighteen);
+    public void setGrandChildrenSurvivedOverEighteen(Boolean booleanValue) {
+        this.grandChildrenSurvivedOverEighteen = booleanValue;
+        this.grandChildrenSurvivedOverEighteenText
+                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
     private IhtFormType ihtFormId;
@@ -784,34 +824,5 @@ public class GrantOfRepresentationData extends CaseData {
     public Boolean isGrandChildrenSurvivedUnderEighteenPopulatedWhenMandatory() {
         return ObjectUtils.allNotNull(deceasedOtherChildren, childrenOverEighteenSurvived, childrenDied)
                 && (deceasedOtherChildren && childrenDied && childrenOverEighteenSurvived == null);
-    }
-
-    private <T> T getBooleanFromString(String stringValue) {
-        if (stringValue != null) {
-            if (YES.getDescription().equals(stringValue)) {
-                return (T) Boolean.TRUE;
-            } else if (NO.getDescription().equalsIgnoreCase(stringValue)) {
-                return (T) Boolean.FALSE;
-            } else {
-                return (T) stringValue;
-            }
-
-        } else {
-            return null;
-        }
-    }
-
-    private String setBooleanObjectAsString(Object booleanValue) {
-        if (booleanValue != null) {
-            if (booleanValue.toString().equalsIgnoreCase("true")) {
-                return YES.getDescription();
-            } else if (booleanValue.toString().equalsIgnoreCase("false")) {
-                return NO.getDescription();
-            } else {
-                return booleanValue.toString();
-            }
-        } else {
-            return null;
-        }
     }
 }
