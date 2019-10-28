@@ -16,7 +16,11 @@ public enum ExecutorNotApplyingReason {
     @JsonProperty("PowerReserved")
     POWER_RESERVED("optionPowerReserved"),
     @JsonProperty("Renunciation")
-    RENUNCIATION("optionRenunciated");
+    RENUNCIATION("optionRenunciated"),
+    @JsonProperty("PowerOfAttorney")
+    POWER_OF_ATTORNEY("optionPowerOfAttorney"),
+    @JsonProperty("MentallyIncapable")
+    MENTALLY_INCAPABLE("optionMentallyIncapable");
 
     @Getter
     private final String optionValue;

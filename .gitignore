@@ -10,5 +10,7 @@ out
 *.iml
 *.iws
 
+.DS_store
+
 .classpath
 .project

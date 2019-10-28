@@ -35,6 +35,7 @@
   "deceasedAnyChildren": "No",
   "childrenDied": "No",
   "childrenOverEighteenSurvived": "Yes",
+  "childrenUnderEighteenSurvived": "2",
   "grandChildrenSurvivedUnderEighteen": "No",
   "ihtFormId": "IHT205",
   "ihtFormCompletedOnline": "Yes",
@@ -85,6 +86,47 @@
   "ihtNetValueField": "100000",
   "outsideUKGrantCopies": 6,
   "caseType": "intestacy",
+  "adopted": "Yes",
+  "notifiedApplicants": "No",
+  "halfBloodNeicesAndNephews": "Yes",
+  "halfBloodNeicesAndNephewsOverEighteen": "1",
+
+  "applyingAsAnAttorney": "Yes",
+  "attorneyNamesAndAddress": [
+    {
+      "value": {
+        "name": "1st Attorney Harrow",
+        "address": {
+          "AddressLine1": "Attorney Address Line 1",
+          "AddressLine2": "Attorney Address Line 2",
+          "AddressLine3": "Attorney Address Line 3",
+          "County": "Middlesex",
+          "PostTown": "Harrow",
+          "PostCode": "HA1 4ET",
+          "Country": "UK"
+        }
+      }
+    }
+  ],
+  "executorsNotApplying": [
+    {
+      "id":"1",
+      "value": {
+        "notApplyingExecutorName": "Bob Dylan",
+        "notApplyingExecutorReason": "MentallyIncapable"
+      }
+    }
+  ],
+  "adoptiveRelatives": [
+    {
+      "id": "1",
+      "value": {
+        "name": "Bob Taylor",
+        "relationship": "Cousin",
+        "adoptedInOrOut": "OUT"
+      }
+    }
+  ],
   "scannedDocuments": [
     {
       "value": {

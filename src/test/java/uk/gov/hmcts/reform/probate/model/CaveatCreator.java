@@ -72,7 +72,7 @@ public class CaveatCreator {
         return ScannedDocument.builder().controlNumber(docReference + "000")
                 .fileName(docReference + "000.pdf")
                 .type("form")
-                .subtype("PA1P")
+                .subtype("PA8A")
                 .scannedDate(dateTime)
                 .exceptionRecordReference(null)
                 .deliveryDate(dateTime)
