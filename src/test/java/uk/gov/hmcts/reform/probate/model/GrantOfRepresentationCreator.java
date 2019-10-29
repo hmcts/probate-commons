@@ -257,7 +257,6 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setChildrenUnderEighteenSurvivedText("2");
         grantOfRepresentationData.setDeceasedAnyChildren(false);
         grantOfRepresentationData.setDeceasedAnyOtherNames(false);
-
         grantOfRepresentationData.setRegistryLocation(RegistryLocation.BIRMINGHAM);
         grantOfRepresentationData.setDeceasedHasAssetsOutsideUK(true);
         grantOfRepresentationData.setAssetsOutsideNetValue(10050L);
@@ -295,11 +294,21 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setScannedDocuments((List<CollectionMember<ScannedDocument>>)
                 Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
         addExecutorNotApplying(grantOfRepresentationData, "Bob Dylan", ExecutorNotApplyingReason.MENTALLY_INCAPABLE);
+        addExecutorNotApplying(grantOfRepresentationData, "Peter Smith", ExecutorNotApplyingReason.POWER_RESERVED);
         addAdoptiveRelative(grantOfRepresentationData, "Bob Taylor", "Cousin", InOut.OUT);
+        addAdoptiveRelative(grantOfRepresentationData, "Mark Ronson", "Cousin", InOut.IN);
         grantOfRepresentationData.setAdopted(true);
         grantOfRepresentationData.setHalfBloodNeicesAndNephews(true);
         grantOfRepresentationData.setHalfBloodNeicesAndNephewsOverEighteen("1");
         grantOfRepresentationData.setNotifiedApplicants(false);
+        grantOfRepresentationData.setPrimaryApplicantAdoptionInEnglandOrWales(false);
+        grantOfRepresentationData.setChildrenDied(true);
+        grantOfRepresentationData.setChildrenDiedOverEighteenText("1");
+        grantOfRepresentationData.setChildrenOverEighteenSurvivedText("2");
+        grantOfRepresentationData.setGrandChildrenSurvived(true);
+        grantOfRepresentationData.setAllDeceasedChildrenOverEighteen(true);
+        grantOfRepresentationData.setAnyDeceasedChildrenDieBeforeDeceased(false);
+        grantOfRepresentationData.setAnyDeceasedGrandChildrenUnderEighteen(true);
         return grantOfRepresentationData;
     }
 

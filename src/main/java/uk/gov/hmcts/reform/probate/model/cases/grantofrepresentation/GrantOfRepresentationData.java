@@ -173,6 +173,18 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean allDeceasedChildrenOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean anyDeceasedChildrenDieBeforeDeceased;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean anyDeceasedGrandChildrenUnderEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean childrenDied;
 
     @JsonProperty("childrenDiedOverEighteen")
@@ -332,6 +344,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean primaryApplicantSameWillName;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean primaryApplicantHasAlias;
 
     private String primaryApplicantAlias;
 
@@ -647,6 +663,14 @@ public class GrantOfRepresentationData extends CaseData {
     private LocalDate dateOfDivorcedCPJudicially;
 
     private String courtOfDecree;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean boEmailRequestInfoNotificationRequested;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean boSendToBulkPrintRequested;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
