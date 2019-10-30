@@ -33,9 +33,15 @@
   "deceasedDivorcedInEnglandOrWales": "No",
   "deceasedOtherChildren": "Yes",
   "deceasedAnyChildren": "No",
-  "childrenDied": "No",
-  "childrenOverEighteenSurvived": "Yes",
+  "childrenDied": "Yes",
+  "childrenOverEighteenSurvived": "2",
+  "childrenUnderEighteenSurvived": "2",
   "grandChildrenSurvivedUnderEighteen": "No",
+  "allDeceasedChildrenOverEighteen": "Yes",
+  "anyDeceasedChildrenDieBeforeDeceased": "No",
+  "anyDeceasedGrandChildrenUnderEighteen": "Yes",
+  "childrenDiedOverEighteen": "1",
+  "grandChildrenSurvived": "Yes",
   "ihtFormId": "IHT205",
   "ihtFormCompletedOnline": "Yes",
   "ihtNetValue": "100000",
@@ -49,7 +55,7 @@
   "primaryApplicantSurname": "Snow",
   "primaryApplicantPhoneNumber": "123455678",
   "primaryApplicantRelationshipToDeceased": "adoptedChild",
-  "primaryApplicantAdoptionInEnglandOrWales": "Yes",
+  "primaryApplicantAdoptionInEnglandOrWales": "No",
   "paperForm": "No",
   "deceasedHasAssetsOutsideUK": "Yes",
   "assetsOutsideNetValue": "10050",
@@ -85,6 +91,61 @@
   "ihtNetValueField": "100000",
   "outsideUKGrantCopies": 6,
   "caseType": "intestacy",
+  "adopted": "Yes",
+  "notifiedApplicants": "No",
+  "halfBloodNeicesAndNephews": "Yes",
+  "halfBloodNeicesAndNephewsOverEighteen": "1",
+  "applyingAsAnAttorney": "Yes",
+  "attorneyNamesAndAddress": [
+    {
+      "value": {
+        "name": "1st Attorney Harrow",
+        "address": {
+          "AddressLine1": "Attorney Address Line 1",
+          "AddressLine2": "Attorney Address Line 2",
+          "AddressLine3": "Attorney Address Line 3",
+          "County": "Middlesex",
+          "PostTown": "Harrow",
+          "PostCode": "HA1 4ET",
+          "Country": "UK"
+        }
+      }
+    }
+  ],
+  "executorsNotApplying": [
+    {
+      "id":"1",
+      "value": {
+        "notApplyingExecutorName": "Bob Dylan",
+        "notApplyingExecutorReason": "MentallyIncapable"
+      }
+    },
+    {
+      "id": "1",
+      "value": {
+        "notApplyingExecutorName": "Peter Smith",
+        "notApplyingExecutorReason": "PowerReserved"
+      }
+    }
+  ],
+  "adoptiveRelatives": [
+    {
+      "id": "1",
+      "value": {
+        "name": "Bob Taylor",
+        "relationship": "Cousin",
+        "adoptedInOrOut": "OUT"
+      }
+    },
+    {
+      "id": "1",
+      "value": {
+        "name": "Mark Ronson",
+        "relationship": "Cousin",
+        "adoptedInOrOut": "IN"
+      }
+    }
+  ],
   "scannedDocuments": [
     {
       "value": {
