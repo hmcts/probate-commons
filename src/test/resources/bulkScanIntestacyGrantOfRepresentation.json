@@ -1,5 +1,6 @@
 {
   "type": "GrantOfRepresentation",
+  "bulkScanCaseReference": "123",
   "applicationType": "Personal",
   "primaryApplicantEmailAddress": "jon.snow@thenorth.com",
   "registryLocation": "Birmingham",

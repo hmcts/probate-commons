@@ -309,6 +309,7 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setAllDeceasedChildrenOverEighteen(true);
         grantOfRepresentationData.setAnyDeceasedChildrenDieBeforeDeceased(false);
         grantOfRepresentationData.setAnyDeceasedGrandChildrenUnderEighteen(true);
+        grantOfRepresentationData.setBulkScanCaseReference("123");
         return grantOfRepresentationData;
     }
 
