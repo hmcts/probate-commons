@@ -129,6 +129,8 @@ public class CaveatData extends CaseData {
 
     private List<CollectionMember<ScannedDocument>> scannedDocuments;
 
+    private String bulkScanCaseReference;
+
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {

@@ -1,5 +1,6 @@
 {
   "type": "Caveat",
+  "bulkScanCaseReference": "123",
   "applicationId": "Id",
   "applicationType": "Personal",
   "registryLocation": "Oxford",

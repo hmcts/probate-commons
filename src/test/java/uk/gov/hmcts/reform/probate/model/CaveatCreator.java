@@ -47,6 +47,7 @@ public class CaveatCreator {
         scannedDocumentMember2.setValue(getScannedDocument("2"));
         caveatData.setScannedDocuments((List<CollectionMember<ScannedDocument>>)
                 Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
+        caveatData.setBulkScanCaseReference("123");
         return caveatData;
     }
 
