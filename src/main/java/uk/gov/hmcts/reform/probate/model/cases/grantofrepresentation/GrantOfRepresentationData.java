@@ -132,7 +132,6 @@ public class GrantOfRepresentationData extends CaseData {
     @Size(min = 2, groups = {IntestacyFieldCheck.class, PaFieldCheck.class})
     private String deceasedSurname;
 
-    //TODO: Remove?
     private String deceasedPostCode;
 
     @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})

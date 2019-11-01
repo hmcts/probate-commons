@@ -49,6 +49,7 @@ public abstract class ProbateDeceased extends Deceased {
 
     private Address address;
 
+    @JsonProperty(value = "postcode")
     private String postCode;
 
     private String postcodeAddress;

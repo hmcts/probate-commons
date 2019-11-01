@@ -30,6 +30,8 @@ public class ExecutorApplying {
 
     private Address applyingExecutorAddress;
 
+    private String applyingExecutorPostCode;
+
     private String applyingExecutorOtherNames;
 
     private String applyingExecutorOtherNamesReason;
