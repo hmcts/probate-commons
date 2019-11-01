@@ -48,6 +48,8 @@ public class Executor {
 
     private Address address;
 
+    private String postcode;
+
     private String freeTextAddress;
 
     private String inviteId;

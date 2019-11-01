@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
@@ -32,6 +33,7 @@ public abstract class ProbateApplicant extends Applicant {
 
     private Address address;
 
+    @JsonProperty(value = "postcode")
     private String postCode;
 
     private String postcodeAddress;
