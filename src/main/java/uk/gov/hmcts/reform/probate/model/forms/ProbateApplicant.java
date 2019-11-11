@@ -32,7 +32,7 @@ public abstract class ProbateApplicant extends Applicant {
 
     private Address address;
 
-    private String postCode;
+    private String postcode;
 
     private String postcodeAddress;
 

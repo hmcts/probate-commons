@@ -49,7 +49,7 @@ public abstract class ProbateDeceased extends Deceased {
 
     private Address address;
 
-    private String postCode;
+    private String postcode;
 
     private String postcodeAddress;
 

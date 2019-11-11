@@ -70,7 +70,7 @@ public class IntestacyFormTest {
             .formattedAddress("Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT")
             .build();
         intestacyApplicant.setAddress(applicantAddress);
-        intestacyApplicant.setPostCode("SW17 0QT");
+        intestacyApplicant.setPostcode("SW17 0QT");
         intestacyApplicant.setPhoneNumber("123455678");
         intestacyApplicant.setAdoptionInEnglandOrWales(true);
         intestacyApplicant.setRelationshipToDeceased(Relationship.ADOPTED_CHILD.getDescription());
@@ -88,7 +88,7 @@ public class IntestacyFormTest {
             .postCode("Win1").country("Westeros").build();
         intestacyDeceased.setAddress(deceasedAddress);
         intestacyDeceased.setAddressFound(true);
-        intestacyDeceased.setPostCode("SW17 0QT");
+        intestacyDeceased.setPostcode("SW17 0QT");
         intestacyDeceased.setAlias(true);
         intestacyDeceased.setDomiciledInEnglandOrWales(true);
         AliasOtherNames aliasOtherNames = new AliasOtherNames();

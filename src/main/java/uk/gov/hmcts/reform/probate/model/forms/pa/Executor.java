@@ -48,7 +48,7 @@ public class Executor {
 
     private Address address;
 
-    private String postCode;
+    private String postcode;
 
     private String freeTextAddress;
 
