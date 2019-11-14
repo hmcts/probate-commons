@@ -38,6 +38,8 @@ public class Executor {
 
     private Boolean hasOtherName;
 
+    private Boolean emailChanged;
+
     private String currentName;
 
     private String currentNameReason;
