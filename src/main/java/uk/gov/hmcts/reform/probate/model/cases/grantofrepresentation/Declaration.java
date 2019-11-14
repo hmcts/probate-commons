@@ -48,4 +48,5 @@ public class Declaration {
     @NotBlank(groups = {PaSubmission.class})
     private String understandItem2;
 
+    private String submitWarning;
 }
