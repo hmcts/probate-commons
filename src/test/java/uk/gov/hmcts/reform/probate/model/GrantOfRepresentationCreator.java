@@ -195,7 +195,7 @@ public class GrantOfRepresentationCreator {
                 .name("1st Attorney Harrow")
                 .build();
         attorneyNameAndAddressMember.setValue(attorneyNameAndAddress);
-        grantOfRepresentationData.setAttorneyNamesAndAddress((List<CollectionMember<AttorneyNamesAndAddress>>)
+        grantOfRepresentationData.setAttorneyOnBehalfOfNameAndAddress((List<CollectionMember<AttorneyNamesAndAddress>>)
                 Arrays.asList(attorneyNameAndAddressMember));
         grantOfRepresentationData.setApplyingAsAnAttorney(Boolean.TRUE);
     }
