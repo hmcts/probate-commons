@@ -97,7 +97,7 @@
   "halfBloodNeicesAndNephews": "Yes",
   "halfBloodNeicesAndNephewsOverEighteen": "1",
   "applyingAsAnAttorney": "Yes",
-  "attorneyNamesAndAddress": [
+  "attorneyOnBehalfOfNameAndAddress": [
     {
       "value": {
         "name": "1st Attorney Harrow",
