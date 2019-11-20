@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 
 import static uk.gov.hmcts.reform.probate.model.InOut.Constants.IN_VALUE;
 import static uk.gov.hmcts.reform.probate.model.InOut.Constants.OUT_VALUE;
-import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.PARENT_DESC;
 
 @RequiredArgsConstructor
 public enum InOut {
