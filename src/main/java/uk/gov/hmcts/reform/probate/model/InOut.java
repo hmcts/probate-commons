@@ -1,15 +1,18 @@
 package uk.gov.hmcts.reform.probate.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import static uk.gov.hmcts.reform.probate.model.InOut.Constants.IN_VALUE;
 import static uk.gov.hmcts.reform.probate.model.InOut.Constants.OUT_VALUE;
+import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.PARENT_DESC;
 
 @RequiredArgsConstructor
 public enum InOut {
 
-    IN(IN_VALUE), OUT(OUT_VALUE);
+    @JsonProperty(IN_VALUE) IN(IN_VALUE),
+    @JsonProperty(OUT_VALUE) OUT(OUT_VALUE);
 
     @Getter
     private final String description;
