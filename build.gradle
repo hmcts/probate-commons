@@ -1,4 +1,5 @@
 plugins {
+    id 'java'
     id 'checkstyle'
     id 'com.jfrog.bintray' version '1.8.4'
     id 'com.github.ben-manes.versions' version '0.20.0'
@@ -6,10 +7,17 @@ plugins {
     id 'maven'
     id 'maven-publish'
     id 'net.ltgt.apt' version '0.18'
+    // id 'pmd'
+    id 'jacoco'
 }
 
+
+def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
+
 group 'uk.gov.hmcts.reform.probate'
-version '0.0.75'
+// Do not change this version number
+version buildNumber
+
 
 checkstyle {
     maxWarnings = 0
@@ -82,14 +90,6 @@ publishing {
             groupId project.group
             artifactId 'probate-commons'
             version project.version
-
-            pom.withXml {
-                def root = asNode()
-                root.appendNode('description', 'Probate commons')
-                root.appendNode('name', 'Probate commons')
-                root.appendNode('url', 'https://github.com/hmcts/probate-commons')
-                root.children().last() + pomConfig
-            }
         }
     }
 }
@@ -110,6 +110,7 @@ bintray {
         }
     }
 }
+
 
 ext {
     lombokVersion = '1.16.18'

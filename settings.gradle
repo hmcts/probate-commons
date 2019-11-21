@@ -1,2 +1,3 @@
 
 rootProject.name = 'probate-commons'
+enableFeaturePreview('STABLE_PUBLISHING')
