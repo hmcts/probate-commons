@@ -46,8 +46,7 @@ For the versions available, see the tags on this repository.
 - Locally get latest of master
 - Creat a branch. push the changes code in branch.
 - Create tag `git tag -a 0.0.75_PRO_gradel_work_flow_test_1 -m "using gradel tage workflow" `
-- Push tags:
-"git push origin 0.0.75_PRO_gradel_work_flow_test_1"
+- Push tags: `git push origin 0.0.75_PRO_gradel_work_flow_test_1`
 - It create a new version
 
 ## License
