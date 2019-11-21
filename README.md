@@ -1,6 +1,6 @@
 # Probate Commons
 
-[![Build Status](https://travis-ci.org/hmcts/probate-commons.svg?branch=master)](https://travis-ci.org/hmcts/probate-commons)
+<!--[![Build Status](https://travis-ci.org/hmcts/probate-commons.svg?branch=master)](https://travis-ci.org/hmcts/probate-commons) -->
 [![Download](https://api.bintray.com/packages/hmcts/hmcts-maven/probate-commons/images/download.svg) ](https://bintray.com/hmcts/hmcts-maven/probate-commons/_latestVersion)
 
 This is a library for creating and using shared DTOs across microservices in probate.
@@ -67,9 +67,9 @@ Follow the steps below to tag a branch once the code review has completed.
 - Update version number in build.gradle and attach the JIRA reference.
     - version '1.0.1_PRO-1234'
 - Create the tag in git:
-    - git tag 1.0.1_PRO-1234
+    - git tag -a 1.0.1_PRO-1234 -m "Update to README.md file."
 - Push the new tag to the git remote server.
-    - git push --tags
+    - git push origin 1.0.1_PRO-1234
 
 #### Updating master
 
@@ -88,9 +88,9 @@ Once the JIRA has been merged follow the steps below to tag master.
 - Ensure build is successful: "./gradew clean build"
 - Check the version in build.gradle is correct.
 - Create the tag in git:
-    - git tag 1.0.1
+    - git tag -a 1.0.1 -m "Update to README.md file."
 - Push tags: 
-    - git push --tags
+    - git push origin 1.0.1
 
 ### Branch from a previous tag
 
