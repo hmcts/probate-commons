@@ -1,6 +1,6 @@
 # Probate Commons
 
-[![Build Status](https://travis-ci.org/hmcts/probate-commons.svg?branch=master)](https://travis-ci.org/hmcts/probate-commons)
+<!--[![Build Status](https://travis-ci.org/hmcts/probate-commons.svg?branch=master)](https://travis-ci.org/hmcts/probate-commons) -->
 [![Download](https://api.bintray.com/packages/hmcts/hmcts-maven/probate-commons/images/download.svg) ](https://bintray.com/hmcts/hmcts-maven/probate-commons/_latestVersion)
 
 This is a library for creating and using shared DTOs across microservices in probate.
@@ -42,13 +42,13 @@ We use [SemVer](http://semver.org/) for versioning.
 For the versions available, see the tags on this repository.
 
 ## Versioning
-- Update version number in build.gradle:
-version '0.0.17'
+- Update version number  is based on tags.
 - Locally get latest of master
-- Create tag:
-"git tag 0.0.17"
+- Creat a branch. push the changes code in branch.
+- Create tag `git tag -a 0.0.75_PRO_gradel_work_flow_test_1 -m "using gradel tage workflow" `
 - Push tags:
-"git push --tags"
+"git push origin 0.0.75_PRO_gradel_work_flow_test_1"
+- It create a new version
 
 ## License
 
