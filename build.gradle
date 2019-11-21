@@ -6,10 +6,16 @@ plugins {
     id 'maven'
     id 'maven-publish'
     id 'net.ltgt.apt' version '0.18'
+    id 'java'
+    id 'pmd'
+    id 'jacoco'
 }
 
 group 'uk.gov.hmcts.reform.probate'
-version '0.0.75'
+def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
+
+// Do not change this version number
+version buildNumber
 
 checkstyle {
     maxWarnings = 0
