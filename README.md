@@ -56,27 +56,24 @@ All release versions follow the format MAJOR.MINOR.PATCH and from November 2019 
 ### Applying a version tag
 
 Tags are applied to the branch and then to master. 
-Branch tags should include the JIRA. The JIRA reference will need to be removed BEFORE merging code with master.
+Branch tags should include the JIRA. The JIRA reference will need to be omitted when applying the tag to master.
+
+The *build.gradle* does **not** need to be updated as the tag version will be taken from the *git tag* once pushed to the remote.
 The example below uses version '1.0.1' as an example.
 
-#### Updating branch tags
+If master is not tagged, a release will not be created and therefore will be unavailable to other components.
+
+#### Updating branch tag
 
 Follow the steps below to tag a branch once the code review has completed. 
 - Ensure build is successful: 
     - ./gradew clean build
-- Update version number in build.gradle and attach the JIRA reference.
-    - version '1.0.1_PRO-1234'
-- Create the tag in git:
+- Create the tag in git with the new version and JIRA reference.
     - git tag -a 1.0.1_PRO-1234 -m "Update to README.md file."
 - Push the new tag to the git remote server.
     - git push origin 1.0.1_PRO-1234
 
-#### Updating master
-
-On the branch **before** merge.
-- Update version number in build.gradle and remove the JIRA reference
-- Create tag: 
-    - git tag 1.0.1
+#### Updating master tag
 
 Perform the necessary validation steps to merge the code to master. Ensure the branch build succeeds, tagging in git though shows up as errors in travis-ci.
 https://travis-ci.org/hmcts/probate-commons/
@@ -85,19 +82,21 @@ Once the JIRA has been merged follow the steps below to tag master.
 - Locally get latest of master.
     - git checkout master
     - git pull
-- Ensure build is successful: "./gradew clean build"
-- Check the version in build.gradle is correct.
-- Create the tag in git:
+- Ensure build is successful: 
+    - ./gradew clean build
+- Create the tag in git without the JIRA reference:
     - git tag -a 1.0.1 -m "Update to README.md file."
-- Push tags: 
+- Push the new tag to the git remote server.
     - git push origin 1.0.1
+
+You can verify the tag is correct in master by viewing the download link at the top of the readme, it should reflect the latest tag.
 
 ### Branch from a previous tag
 
 To revert code to a previous tag you can checkout the tag to a new branch as follows.
 
 ```bash
-    git checkout tags/<tag_name> -b <branch_name> 
+    git checkout tags/1.0.0 -b PRO-1235-Reverting-Back-To-Baseline 
 ```
 
 ## License
