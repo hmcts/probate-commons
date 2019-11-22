@@ -56,10 +56,13 @@ All release versions follow the format MAJOR.MINOR.PATCH and from November 2019 
 ### Applying a version tag
 
 Tags are applied to the branch and then to master. 
-Branch tags should include the JIRA. The JIRA reference will need to be omitted when applying the tag to master.
+Branch tags should be based off the **current** tag version but with the JIRA appended. 
+
+The JIRA reference will need to be **omitted** and the tag version **updated** when applying the tag to **master**.
 
 The *build.gradle* does **not** need to be updated as the tag version will be taken from the *git tag* once pushed to the remote.
-The example below uses version '1.0.1' as an example.
+
+The example below uses version '1.0.0' as the current release and '1.0.1' as the updated master release.
 
 If master is not tagged, a release will not be created and therefore will be unavailable to other components.
 
@@ -69,9 +72,9 @@ Follow the steps below to tag a branch once the code review has completed.
 - Ensure build is successful: 
     - ./gradew clean build
 - Create the tag in git with the new version and JIRA reference.
-    - git tag -a 1.0.1_PRO-1234 -m "Update to README.md file."
+    - git tag -a 1.0.0_PRO-1234-UpdateReadme -m "Update to README.md file."
 - Push the new tag to the git remote server.
-    - git push origin 1.0.1_PRO-1234
+    - git push origin 1.0.0_PRO-1234-UpdateReadme
 
 #### Updating master tag
 
@@ -84,7 +87,7 @@ Once the JIRA has been merged follow the steps below to tag master.
     - git pull
 - Ensure build is successful: 
     - ./gradew clean build
-- Create the tag in git without the JIRA reference:
+- Create the tag in git with the updated version:
     - git tag -a 1.0.1 -m "Update to README.md file."
 - Push the new tag to the git remote server.
     - git push origin 1.0.1
