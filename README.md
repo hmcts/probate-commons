@@ -23,7 +23,7 @@ The project uses [Gradle](https://gradle.org) as a build tool but you don't have
 To build project please execute the following command:
 
 ```bash
-    ./gradlew build
+    ./gradlew clean build
 ```
 
 ## Developing
@@ -36,18 +36,71 @@ To run all checks (including unit tests) please execute the following command:
     ./gradlew check
 ```
 
+To push the changes to your local repoository execute the following command.
+
+```bash
+    ./gradlew publishToMavenLocal
+```
+
+
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning.
-For the versions available, see the tags on this repository.
+For the versions available, see the tags on this repository. Always pull from master so that you've captured the latest update so all files are accurate.
 
-## Versioning
-- Update version number  is based on tags.
-- Locally get latest of master
-- Creat a branch. push the changes code in branch.
-- Create tag `git tag -a 0.0.75_PRO_gradel_work_flow_test_1 -m "using gradel tage workflow" `
-- Push tags: `git push origin 0.0.75_PRO_gradel_work_flow_test_1`
-- It create a new version
+```bash
+    git tag
+```
+
+All release versions follow the format MAJOR.MINOR.PATCH and from November 2019 have been baselined at '1.0.0'.
+
+### Applying a version tag
+
+Tags are applied to the branch and then to master. 
+Branch tags should be based off the **current** tag version but with the JIRA appended. 
+
+The JIRA reference will need to be **omitted** and the tag version **updated** when applying the tag to **master**.
+
+The *build.gradle* does **not** need to be updated as the tag version will be taken from the *git tag* once pushed to the remote.
+
+The example below uses version '1.0.0' as the current release and '1.0.1' as the updated master release.
+
+If master is not tagged, a release will not be created and therefore will be unavailable to other components.
+
+#### Updating branch tag
+
+Follow the steps below to tag a branch once the code review has completed. 
+- Ensure build is successful: 
+    - ./gradew clean build
+- Create the tag in git with the new version and JIRA reference.
+    - git tag -a 1.0.0_PRO-1234-UpdateReadme -m "Update to README.md file."
+- Push the new tag to the git remote server.
+    - git push origin 1.0.0_PRO-1234-UpdateReadme
+
+#### Updating master tag
+
+Perform the necessary validation steps to merge the code to master. Ensure the branch build succeeds, tagging in git though shows up as errors in travis-ci.
+https://travis-ci.org/hmcts/probate-commons/
+
+Once the JIRA has been merged follow the steps below to tag master. 
+- Locally get latest of master.
+    - git checkout master
+    - git pull
+- Ensure build is successful: 
+    - ./gradew clean build
+- Create the tag in git with the updated version:
+    - git tag -a 1.0.1 -m "Update to README.md file."
+- Push the new tag to the git remote server.
+    - git push origin 1.0.1
+
+You can verify the tag is correct in master by viewing the download link at the top of the readme, it should reflect the latest tag.
+
+### Branch from a previous tag
+
+To revert code to a previous tag you can checkout the tag to a new branch as follows.
+
+```bash
+    git checkout tags/1.0.0 -b PRO-1235-Reverting-Back-To-Baseline 
+```
 
 ## License
 
