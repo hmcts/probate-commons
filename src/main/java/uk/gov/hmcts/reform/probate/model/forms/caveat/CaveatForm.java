@@ -43,8 +43,9 @@ public class CaveatForm extends Form<CaveatDeceased, CaveatApplicant> {
     @Builder
     public CaveatForm(ProbateType type, CaveatDeceased deceased, CaveatApplicant applicant,
                       Registry registry, CcdCase ccdCase, List<Payment> payments, LocalDate expiryDate,
-                      String applicationId, Fees fees, Copies copies, Payment payment) {
-        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment);
+                      String applicationId, Fees fees, Copies copies, Payment payment,
+                      Boolean languagePreferenceWelsh) {
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, languagePreferenceWelsh);
         this.expiryDate = expiryDate;
         this.applicationId = applicationId;
     }

@@ -206,19 +206,19 @@ public class GrantOfRepresentationData extends CaseData {
     public void setChildrenDiedOverEighteen(Boolean booleanValue) {
         this.childrenDiedOverEighteen = booleanValue;
         this.childrenDiedOverEighteenText
-                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
+            = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
     public void setChildrenDiedUnderEighteenText(String stringValue) {
         this.childrenDiedUnderEighteenText = stringValue;
         this.childrenDiedUnderEighteen
-                = BooleanUtils.toBooleanObject(stringValue);
+            = BooleanUtils.toBooleanObject(stringValue);
     }
 
     public void setChildrenDiedUnderEighteen(Boolean booleanValue) {
         this.childrenDiedUnderEighteen = booleanValue;
         this.childrenDiedUnderEighteenText
-                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
+            = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -245,19 +245,19 @@ public class GrantOfRepresentationData extends CaseData {
     public void setChildrenOverEighteenSurvived(Boolean booleanValue) {
         this.childrenOverEighteenSurvived = booleanValue;
         this.childrenOverEighteenSurvivedText
-                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
+            = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
     public void setChildrenUnderEighteenSurvivedText(String stringValue) {
         this.childrenUnderEighteenSurvivedText = stringValue;
         this.childrenUnderEighteenSurvived
-                = BooleanUtils.toBooleanObject(stringValue);
+            = BooleanUtils.toBooleanObject(stringValue);
     }
 
     public void setChildrenUnderEighteenSurvived(Boolean booleanValue) {
         this.childrenUnderEighteenSurvived = booleanValue;
         this.childrenUnderEighteenSurvivedText
-                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
+            = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -284,19 +284,19 @@ public class GrantOfRepresentationData extends CaseData {
     public void setGrandChildrenSurvivedUnderEighteen(Boolean booleanValue) {
         this.grandChildrenSurvivedUnderEighteen = booleanValue;
         this.grandChildrenSurvivedUnderEighteenText
-                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
+            = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
     public void setGrandChildrenSurvivedOverEighteenText(String stringValue) {
         this.grandChildrenSurvivedOverEighteenText = stringValue;
         this.grandChildrenSurvivedOverEighteen
-                = BooleanUtils.toBooleanObject(stringValue);
+            = BooleanUtils.toBooleanObject(stringValue);
     }
 
     public void setGrandChildrenSurvivedOverEighteen(Boolean booleanValue) {
         this.grandChildrenSurvivedOverEighteen = booleanValue;
         this.grandChildrenSurvivedOverEighteenText
-                = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
+            = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
     private IhtFormType ihtFormId;
@@ -405,6 +405,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean paperForm;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean languagePreferenceWelsh;
 
     private List<CollectionMember<ExecutorApplying>> executorsApplying;
 
@@ -718,26 +722,26 @@ public class GrantOfRepresentationData extends CaseData {
     @Transient
     public Boolean haveAllExecutorsAgreed() {
         return this.getExecutorsApplying().stream().filter(executorApplying ->
-                (executorApplying.getValue().getApplyingExecutorApplicant() == null
-                        || !executorApplying.getValue().getApplyingExecutorApplicant())).allMatch(executorApplying ->
-                executorApplying.getValue().getApplyingExecutorAgreed() != null
-                        && executorApplying.getValue().getApplyingExecutorAgreed())
-                && (this.getDeclarationCheckbox() != null && this.getDeclarationCheckbox());
+            (executorApplying.getValue().getApplyingExecutorApplicant() == null
+                || !executorApplying.getValue().getApplyingExecutorApplicant())).allMatch(executorApplying ->
+            executorApplying.getValue().getApplyingExecutorAgreed() != null
+                && executorApplying.getValue().getApplyingExecutorAgreed())
+            && (this.getDeclarationCheckbox() != null && this.getDeclarationCheckbox());
     }
 
     @Transient
     public void resetExecutorsApplyingAgreedFlags() {
         this.getExecutorsApplying().forEach(executorsApplying ->
-                executorsApplying.getValue().setApplyingExecutorAgreed(null));
+            executorsApplying.getValue().setApplyingExecutorAgreed(null));
     }
 
     @Transient
     public ExecutorApplying getExecutorApplyingByInviteId(String invitationId) {
         return this.getExecutorsApplying().stream()
-                .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitationId() != null
-                        && executorApplying.getValue().getApplyingExecutorInvitationId()
-                        .equals(invitationId)).map(CollectionMember::getValue)
-                .collect(CollectorUtils.toSingleton());
+            .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitationId() != null
+                && executorApplying.getValue().getApplyingExecutorInvitationId()
+                .equals(invitationId)).map(CollectionMember::getValue)
+            .collect(CollectorUtils.toSingleton());
     }
 
     @Transient
@@ -763,26 +767,26 @@ public class GrantOfRepresentationData extends CaseData {
     @Transient
     public Boolean haveInvitesBeenSent() {
         return this.getExecutorsApplying() != null
-                ? this.getExecutorsApplying().stream().filter(e -> e.getValue().getApplyingExecutorApplicant() == null
-                || !e.getValue().getApplyingExecutorApplicant())
-                .allMatch(e -> e.getValue().getApplyingExecutorInvitationId() != null) : null;
+            ? this.getExecutorsApplying().stream().filter(e -> e.getValue().getApplyingExecutorApplicant() == null
+            || !e.getValue().getApplyingExecutorApplicant())
+            .allMatch(e -> e.getValue().getApplyingExecutorInvitationId() != null) : null;
     }
 
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath",
-            groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
+        groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
         return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath)
-                && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
+            && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
     }
 
     @Transient
     @AssertTrue(message = "payment.status should not be 'Pending",
-            groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
+        groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
     public boolean isPaymentStatusNotPending() {
         return this.getPayments() == null ? true : this.getPayments().stream().filter(casePaymentCollectionMember ->
-                casePaymentCollectionMember.getValue().getStatus().getName().equals("Pending"))
-                .collect(Collectors.toList()).isEmpty();
+            casePaymentCollectionMember.getValue().getStatus().getName().equals("Pending"))
+            .collect(Collectors.toList()).isEmpty();
     }
 
 
@@ -790,74 +794,74 @@ public class GrantOfRepresentationData extends CaseData {
     @AssertTrue(message = "deceasedAliasNameList must not be empty", groups = {IntestacyCrossFieldCheck.class})
     public Boolean isAliasNameListPopulated() {
         return ObjectUtils.allNotNull(deceasedAnyOtherNames)
-                && (deceasedAnyOtherNames && CollectionUtils.isEmpty(deceasedAliasNameList));
+            && (deceasedAnyOtherNames && CollectionUtils.isEmpty(deceasedAliasNameList));
     }
 
     @SuppressWarnings({"AbbreviationAsWordInName"})
     @Transient
     @AssertTrue(message = "when ihtNetValue is less than 2500000, deceasedHasAssetsOutsideUk cannot be null",
-            groups = {IntestacyCrossFieldCheck.class})
+        groups = {IntestacyCrossFieldCheck.class})
     public Boolean isDeceasedAssetsOutsideUKPopulated() {
         return ObjectUtils.allNotNull(ihtNetValue) && (ihtNetValue <= 2500000L && deceasedHasAssetsOutsideUK == null);
     }
 
     @Transient
     @AssertTrue(message = "when relationshipToDeceasedIsAdoptedChild is ADOPTED_CHILD, "
-            + "deceasedOtherChildren cannot be null and primaryApplicantAdoptionInEnglandOrWales cannot be false",
-            groups = {IntestacyCrossFieldCheck.class})
+        + "deceasedOtherChildren cannot be null and primaryApplicantAdoptionInEnglandOrWales cannot be false",
+        groups = {IntestacyCrossFieldCheck.class})
     public Boolean isDeceasedOtherChildPopulatedWhenRelationshipToDeceasedIsAdoptedChild() {
         return ObjectUtils.allNotNull(primaryApplicantRelationshipToDeceased, primaryApplicantAdoptionInEnglandOrWales)
-                && (primaryApplicantRelationshipToDeceased.equals(Relationship.ADOPTED_CHILD)
-                && !primaryApplicantAdoptionInEnglandOrWales && deceasedOtherChildren != null);
+            && (primaryApplicantRelationshipToDeceased.equals(Relationship.ADOPTED_CHILD)
+            && !primaryApplicantAdoptionInEnglandOrWales && deceasedOtherChildren != null);
     }
 
     @Transient
     @AssertTrue(message = "when relationshipToDeceasedIsChild is CHILD, deceasedOtherChildren cannot be null",
-            groups = {IntestacyCrossFieldCheck.class})
+        groups = {IntestacyCrossFieldCheck.class})
     public Boolean isDeceasedOtherChildPopulatedWhenRelationshipToDeceasedIsChild() {
         return ObjectUtils.allNotNull(primaryApplicantRelationshipToDeceased)
-                && (primaryApplicantRelationshipToDeceased.equals(Relationship.CHILD) && deceasedOtherChildren == null);
+            && (primaryApplicantRelationshipToDeceased.equals(Relationship.CHILD) && deceasedOtherChildren == null);
     }
 
     @Transient
     @AssertTrue(message = "when deceasedMaritalStatus is DIVORCED, deceasedDivorcedInEnglandOrWales cannot be null",
-            groups = {IntestacyCrossFieldCheck.class})
+        groups = {IntestacyCrossFieldCheck.class})
     public Boolean isDivorcedInEnglandOrWalesPopulatedWhenDeceasedDivorced() {
         return ObjectUtils.allNotNull(deceasedMaritalStatus)
-                && (deceasedMaritalStatus.equals(MaritalStatus.DIVORCED) && deceasedDivorcedInEnglandOrWales == null);
+            && (deceasedMaritalStatus.equals(MaritalStatus.DIVORCED) && deceasedDivorcedInEnglandOrWales == null);
     }
 
     @Transient
     @AssertTrue(message = "when deceasedMaritalStatus is JUDICIALLY_SEPARATED, "
-            + "deceasedDivorcedInEnglandOrWales cannot be null",
-            groups = {IntestacyCrossFieldCheck.class})
+        + "deceasedDivorcedInEnglandOrWales cannot be null",
+        groups = {IntestacyCrossFieldCheck.class})
     public Boolean isDivorcedInEnglandOrWalesPopulatedWhenDeceasedSeperated() {
         return ObjectUtils.allNotNull(deceasedMaritalStatus)
-                && (deceasedMaritalStatus.equals(MaritalStatus.JUDICIALLY_SEPARATED)
-                && deceasedDivorcedInEnglandOrWales == null);
+            && (deceasedMaritalStatus.equals(MaritalStatus.JUDICIALLY_SEPARATED)
+            && deceasedDivorcedInEnglandOrWales == null);
     }
 
     @Transient
     @AssertTrue(message = "when deceasedOtherChildren is true, childrenOverEighteenSurvived cannot be null",
-            groups = {IntestacyCrossFieldCheck.class})
+        groups = {IntestacyCrossFieldCheck.class})
     public Boolean isAllDeceasedChildrenOverEighteenPopulatedWhenDeceasedHasOtherChildren() {
         return ObjectUtils.allNotNull(deceasedOtherChildren) && (deceasedOtherChildren
-                && childrenOverEighteenSurvived == null);
+            && childrenOverEighteenSurvived == null);
     }
 
     @Transient
     @AssertTrue(message = "when deceasedOtherChildren is true, childrenDied cannot be null",
-            groups = {IntestacyCrossFieldCheck.class})
+        groups = {IntestacyCrossFieldCheck.class})
     public Boolean isChildrenDiedPopulatedWhenDeceasedHasOtherChildren() {
         return ObjectUtils.allNotNull(deceasedOtherChildren && (deceasedOtherChildren && childrenDied == null));
     }
 
     @Transient
     @AssertTrue(message = "when deceasedOtherChildren and childrenDied are true, "
-            + "childrenOverEighteenSurvived cannot be null",
-            groups = {IntestacyCrossFieldCheck.class})
+        + "childrenOverEighteenSurvived cannot be null",
+        groups = {IntestacyCrossFieldCheck.class})
     public Boolean isGrandChildrenSurvivedUnderEighteenPopulatedWhenMandatory() {
         return ObjectUtils.allNotNull(deceasedOtherChildren, childrenOverEighteenSurvived, childrenDied)
-                && (deceasedOtherChildren && childrenDied && childrenOverEighteenSurvived == null);
+            && (deceasedOtherChildren && childrenDied && childrenOverEighteenSurvived == null);
     }
 }
