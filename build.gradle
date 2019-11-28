@@ -12,7 +12,7 @@ plugins {
 }
 
 
-def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
+def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: getCurrentGitBranch()
 
 group 'uk.gov.hmcts.reform.probate'
 // Do not change this version number
@@ -165,4 +165,18 @@ test {
 
 jar {
     enabled = true
+}
+
+def getCurrentGitBranch() {
+    def gitBranch = "Unknown branch"
+    try {
+        def workingDir = new File("${project.projectDir}")
+        def result = 'git rev-parse --abbrev-ref HEAD'.execute(null, workingDir)
+        result.waitFor()
+        if (result.exitValue() == 0) {
+            gitBranch = result.text.trim()
+        }
+    } catch (e) {
+    }
+    return gitBranch
 }
