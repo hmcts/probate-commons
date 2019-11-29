@@ -9,8 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
+import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 
 @Data
 @NoArgsConstructor
@@ -32,8 +32,8 @@ public class Executor {
 
     private Boolean isDead;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean diedBefore;
 
     private Boolean hasOtherName;
@@ -62,14 +62,14 @@ public class Executor {
 
     private String otherReason;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean executorNotified;
 
     private String leadExecutorName;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean executorAgreed;
 
 }

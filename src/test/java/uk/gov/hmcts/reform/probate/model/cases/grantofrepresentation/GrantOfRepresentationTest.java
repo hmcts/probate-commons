@@ -242,17 +242,17 @@ public class GrantOfRepresentationTest {
         grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteen(Boolean.TRUE);
 
         Assert.assertThat(grantOfRepresentationData.getChildrenDiedOverEighteenText(),
-                is(equalTo(null)));
+            is(equalTo(null)));
         Assert.assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteenText(),
-                is(equalTo(NO.getDescription())));
+            is(equalTo(NO.getDescription())));
         Assert.assertThat(grantOfRepresentationData.getChildrenOverEighteenSurvivedText(),
-                is(equalTo(NO.getDescription())));
+            is(equalTo(NO.getDescription())));
         Assert.assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvivedText(),
-                is(equalTo(YES.getDescription())));
+            is(equalTo(YES.getDescription())));
         Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteenText(),
-                is(equalTo(NO.getDescription())));
+            is(equalTo(NO.getDescription())));
         Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteenText(),
-                is(equalTo(YES.getDescription())));
+            is(equalTo(YES.getDescription())));
     }
 
     @Test

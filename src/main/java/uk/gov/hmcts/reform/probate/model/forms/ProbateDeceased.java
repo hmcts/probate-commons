@@ -14,8 +14,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneSerializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
+import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -37,14 +37,14 @@ public abstract class ProbateDeceased extends Deceased {
 
     private String lastName;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean alias;
 
     private Map<String, AliasOtherNames> otherNames;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean married;
 
     private Address address;

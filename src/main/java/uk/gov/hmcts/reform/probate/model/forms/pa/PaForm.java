@@ -19,6 +19,7 @@ import uk.gov.hmcts.reform.probate.model.forms.Documents;
 import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
+import uk.gov.hmcts.reform.probate.model.forms.Language;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
 import uk.gov.hmcts.reform.probate.model.forms.Will;
@@ -78,8 +79,8 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   LocalDate applicationSubmittedDate, Long submissionReference,
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
-                  Boolean languagePreferenceWelsh) {
-        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, languagePreferenceWelsh);
+                  Language language) {
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language);
         this.applicantEmail = applicantEmail;
         this.declaration = declaration;
         this.documents = documents;

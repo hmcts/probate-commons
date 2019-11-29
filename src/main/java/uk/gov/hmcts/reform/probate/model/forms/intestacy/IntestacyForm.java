@@ -19,6 +19,7 @@ import uk.gov.hmcts.reform.probate.model.forms.Documents;
 import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
+import uk.gov.hmcts.reform.probate.model.forms.Language;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
 
@@ -65,9 +66,9 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
                          InheritanceTax iht, Fees fees, Payment payment, LocalDate applicationSubmittedDate,
                          Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary,
                          String applicantEmail, DocumentUpload statementOfTruthDocument, String caseType,
-                         Boolean languagePreferenceWelsh) {
+                         Language language) {
 
-        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, languagePreferenceWelsh);
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language);
         this.declaration = declaration;
         this.documents = documents;
         this.iht = iht;

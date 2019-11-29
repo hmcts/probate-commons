@@ -69,6 +69,7 @@ public abstract class Form<D extends Deceased, A extends Applicant> {
 
     private Payment payment;
 
-    private Boolean languagePreferenceWelsh;
+    private Language language;
+
 
 }
