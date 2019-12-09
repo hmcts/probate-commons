@@ -299,6 +299,7 @@ public class GrantOfRepresentationData extends CaseData {
                 = BooleanUtils.toString(booleanValue, YES.getDescription(), NO.getDescription(), null);
     }
 
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     private IhtFormType ihtFormId;
 
     @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
