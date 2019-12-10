@@ -1,28 +1,49 @@
 package uk.gov.hmcts.reform.probate.model.documents;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
+
+import java.util.List;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 @JsonRootName(value = "legalDeclaration")
 public class LegalDeclaration implements BusinessDocument {
 
-    Language en;
-    Language cy;
+    @JsonProperty("declarations")
+    @Valid
+    private List<Declaration> declarations;
 
-    public Language getEn() {
-        return en;
+    @NotBlank
+    @JsonProperty("dateCreated")
+    private String dateCreated;
+
+    @NotBlank
+    @JsonProperty("deceased")
+    private String deceased;
+
+    public String getDeceased() {
+        return deceased;
     }
 
-    public void setEn(Language en) {
-        this.en = en;
+    public void setDeceased(String deceased) {
+        this.deceased = deceased;
     }
 
-    public Language getCy() {
-        return cy;
+    public String getDateCreated() {
+        return dateCreated;
     }
 
-    public void setCy(Language cy) {
-        this.cy = cy;
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
+    public List<Declaration> getDeclarations() {
+        return declarations;
+    }
+
+    public void setDeclarations(List<Declaration> declarations) {
+        this.declarations = declarations;
+    }
 
 }

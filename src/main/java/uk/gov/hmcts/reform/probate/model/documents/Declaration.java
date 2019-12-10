@@ -2,13 +2,13 @@ package uk.gov.hmcts.reform.probate.model.documents;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-public class Language {
+public class Declaration implements Serializable {
 
     @NotEmpty
     @JsonProperty("headers")
@@ -19,29 +19,8 @@ public class Language {
     @JsonProperty("sections")
     private List<DeclarationSection> sections = new ArrayList<>();
 
-    @NotBlank
-    @JsonProperty("dateCreated")
-    private String dateCreated;
-
-    @NotBlank
-    @JsonProperty("deceased")
-    private String deceased;
-
-    public String getDeceased() {
-        return deceased;
-    }
-
-    public void setDeceased(String deceased) {
-        this.deceased = deceased;
-    }
-
-    public String getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(String dateCreated) {
-        this.dateCreated = dateCreated;
-    }
+    @JsonProperty("lastDeclaration")
+    private boolean lastDeclaration;
 
     public List<String> getHeaders() {
         return headers;
@@ -58,5 +37,14 @@ public class Language {
     public void setSections(List<DeclarationSection> sections) {
         this.sections = sections;
     }
+
+    public boolean isLastDeclaration() {
+        return lastDeclaration;
+    }
+
+    public void setLastDeclaration(boolean lastDeclaration) {
+        this.lastDeclaration = lastDeclaration;
+    }
+
 
 }
