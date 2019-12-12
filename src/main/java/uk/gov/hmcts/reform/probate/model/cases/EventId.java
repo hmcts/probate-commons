@@ -18,7 +18,11 @@ public enum EventId {
     GOP_CREATE_CASE_WITHOUT_PAYMENT("createCaseWithoutPayment"),
 
 
-    CAVEAT_APPLY_FOR_CAVEAT("applyForCaveat");
+    CAVEAT_APPLY_FOR_CAVEAT("applyForCaveat"),
+    CAVEAT_EXPIRED_FOR_AWAITING_RESOLUTION("caveatExpiredForAwaitingCaveatResolution"),
+    CAVEAT_EXPIRED_FOR_CAVEAT_NOT_MATCHED("caveatExpiredForCaveaNotMatched"),
+    CAVEAT_APPLY_FOR_WARNNG_VALIDATION("caveatExpiredForWarningValidation"),
+    CAVEAT_APPLY_FOR_AWAITING_WARNING_RESPONSE("caveatExpiredForAwaitingWarningResponse");
 
     @Getter
     private final String name;
