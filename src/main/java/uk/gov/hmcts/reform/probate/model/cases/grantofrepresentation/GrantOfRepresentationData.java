@@ -420,9 +420,15 @@ public class GrantOfRepresentationData extends CaseData {
     @Valid
     private Declaration declaration;
 
+    @Valid
+    private Declaration welshDeclaration;
+
     @NotNull(groups = {PaSubmission.class, IntestacySubmission.class})
     @Valid
     private LegalStatement legalStatement;
+
+    @Valid
+    private LegalStatement welshLegalStatement;
 
     @NotNull(groups = {PaNullCheck.class})
     @Min(value = 1, groups = {PaFieldCheck.class})
