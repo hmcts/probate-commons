@@ -20,6 +20,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import uk.gov.hmcts.reform.probate.model.AdoptiveRelative;
+import uk.gov.hmcts.reform.probate.model.AliasReason;
 import uk.gov.hmcts.reform.probate.model.AttorneyNamesAndAddress;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.Relationship;
@@ -350,7 +351,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String primaryApplicantAlias;
 
-    private String primaryApplicantAliasReason;
+    private AliasReason primaryApplicantAliasReason;
 
     private String primaryApplicantOtherReason;
 

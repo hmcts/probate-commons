@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.AliasReason;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
@@ -34,7 +35,7 @@ public class ExecutorApplying {
 
     private String applyingExecutorOtherNames;
 
-    private String applyingExecutorOtherNamesReason;
+    private AliasReason applyingExecutorOtherNamesReason;
 
     private String applyingExecutorOtherReason;
 
