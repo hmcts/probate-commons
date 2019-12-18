@@ -37,7 +37,7 @@ public enum IhtFormType {
 
         public static final String IHT400421_VALUE = "IHT400421";
 
-        public static final String NOT_APPLICABLE = "Not Applicable";
+        public static final String NOT_APPLICABLE = "Not applicable";
 
         private Constants() {
         }
