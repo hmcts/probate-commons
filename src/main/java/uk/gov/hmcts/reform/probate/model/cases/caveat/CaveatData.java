@@ -12,7 +12,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.ObjectUtils;
 import uk.gov.hmcts.reform.probate.model.ProbateDocument;
 import uk.gov.hmcts.reform.probate.model.ScannedDocument;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
@@ -138,7 +137,7 @@ public class CaveatData extends CaseData {
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
-        return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath)
-            && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
+        return deceasedDateOfDeath != null
+                && (deceasedDateOfBirth == null || deceasedDateOfBirth.isBefore(deceasedDateOfDeath));
     }
 }
