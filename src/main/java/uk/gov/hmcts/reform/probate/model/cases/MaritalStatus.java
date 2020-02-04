@@ -14,11 +14,11 @@ import static uk.gov.hmcts.reform.probate.model.cases.MaritalStatus.Constants.WI
 @RequiredArgsConstructor
 public enum MaritalStatus {
 
-    @JsonProperty(MARRIED_VALUE) MARRIED("Married or in a civil partnership"),
-    @JsonProperty(DIVORCED_VALUE) DIVORCED("Divorced or their civil partnership was dissolved"),
-    @JsonProperty(WIDOWED_VALUE) WIDOWED("Widowed"),
-    @JsonProperty(NEVER_MARRIED_VALUE) NEVER_MARRIED("Never married"),
-    @JsonProperty(JUDICIALLY_SEPARATED_VALUE) JUDICIALLY_SEPARATED("Judicially separated");
+    @JsonProperty(MARRIED_VALUE) MARRIED("optionMarried"),
+    @JsonProperty(DIVORCED_VALUE) DIVORCED("optionDivorced"),
+    @JsonProperty(WIDOWED_VALUE) WIDOWED("optionWidowed"),
+    @JsonProperty(NEVER_MARRIED_VALUE) NEVER_MARRIED("optionNotMarried"),
+    @JsonProperty(JUDICIALLY_SEPARATED_VALUE) JUDICIALLY_SEPARATED("optionSeparated");
 
     @Getter
     private final String description;

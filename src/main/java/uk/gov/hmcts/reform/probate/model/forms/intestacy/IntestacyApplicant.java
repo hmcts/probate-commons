@@ -9,11 +9,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import uk.gov.hmcts.reform.probate.model.YesNo;
+import uk.gov.hmcts.reform.probate.model.OptionYesNo;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.ProbateApplicant;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
+import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 
 import java.util.List;
 import java.util.Map;
@@ -27,9 +27,10 @@ public class IntestacyApplicant extends ProbateApplicant {
     @ApiModelProperty(value = "Relationship to the deceased")
     private String relationshipToDeceased;
 
-    @ApiModelProperty(value = "Was adoption in England or Wales", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
+    @ApiModelProperty(value = "Was adoption in England or Wales",
+        allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("adoptionPlace")
     private Boolean adoptionInEnglandOrWales;
 

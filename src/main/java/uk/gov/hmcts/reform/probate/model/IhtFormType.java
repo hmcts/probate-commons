@@ -9,12 +9,13 @@ import static uk.gov.hmcts.reform.probate.model.IhtFormType.Constants.IHT207_VAL
 import static uk.gov.hmcts.reform.probate.model.IhtFormType.Constants.IHT400421_VALUE;
 import static uk.gov.hmcts.reform.probate.model.IhtFormType.Constants.NOT_APPLICABLE_VALUE;
 
+
 @RequiredArgsConstructor
 public enum IhtFormType {
 
-    @JsonProperty(IHT205_VALUE) IHT205(IHT205_VALUE),
-    @JsonProperty(IHT207_VALUE) IHT207(IHT207_VALUE),
-    @JsonProperty(IHT400421_VALUE) IHT400421(IHT400421_VALUE),
+    @JsonProperty(IHT205_VALUE) optionIHT205(IHT205_VALUE),
+    @JsonProperty(IHT207_VALUE) optionIHT207(IHT207_VALUE),
+    @JsonProperty(IHT400421_VALUE) optionIHT400421(IHT400421_VALUE),
     @JsonProperty(NOT_APPLICABLE_VALUE) NOTAPPLICABLE(NOT_APPLICABLE_VALUE);
 
     @Getter

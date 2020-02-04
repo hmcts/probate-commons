@@ -10,10 +10,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.jackson.BigDecimalDeserializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
+import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 
 import java.math.BigDecimal;
 
@@ -29,7 +28,7 @@ public class InheritanceTax {
 
     private String ihtFormId;
 
-    private IhtFormType form;
+    private String form;
 
     private String identifier;
 
@@ -71,8 +70,8 @@ public class InheritanceTax {
     @JsonDeserialize(using = BigDecimalDeserializer.class)
     private BigDecimal netIht400421;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean completed;
 
     public String getGrossValueOnline() {
@@ -89,8 +88,8 @@ public class InheritanceTax {
         return netValue.toPlainString();
     }
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean assetsOutside;
 
     @JsonProperty("netValueAssetsOutside")

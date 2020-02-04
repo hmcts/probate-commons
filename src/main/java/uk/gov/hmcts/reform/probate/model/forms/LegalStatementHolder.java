@@ -7,14 +7,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LegalStatement {
+public class LegalStatementHolder {
 
-    private LegalStatementHolder en;
-    private LegalStatementHolder cy;
+    private String applicant;
+
+    private String deceased;
+
+    private String deceasedOtherNames;
+
+    private List<LegalStatementExecutorApplying> executorsApplying;
+
+    private String deceasedEstateValue;
+
+    private String deceasedEstateLand;
+
+    private List<String> executorsNotApplying;
+
+    private String intro;
 }
