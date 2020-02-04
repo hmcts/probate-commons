@@ -22,9 +22,6 @@ public class Declaration implements Serializable {
     @JsonProperty("lastDeclaration")
     private boolean lastDeclaration;
 
-    @JsonProperty("welshLanguage")
-    private boolean welshLanguage;
-
     public List<String> getHeaders() {
         return headers;
     }
@@ -47,14 +44,6 @@ public class Declaration implements Serializable {
 
     public void setLastDeclaration(boolean lastDeclaration) {
         this.lastDeclaration = lastDeclaration;
-    }
-
-    public boolean isWelshLanguage() {
-        return welshLanguage;
-    }
-
-    public void setWelshLanguage(boolean welshLanguage) {
-        this.welshLanguage = welshLanguage;
     }
 
 

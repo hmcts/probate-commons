@@ -22,6 +22,9 @@ public class LegalDeclaration implements BusinessDocument {
     @JsonProperty("deceased")
     private String deceased;
 
+    @JsonProperty("bilingual")
+    private boolean bilingual;
+
     public String getDeceased() {
         return deceased;
     }
@@ -45,5 +48,14 @@ public class LegalDeclaration implements BusinessDocument {
     public void setDeclarations(List<Declaration> declarations) {
         this.declarations = declarations;
     }
+
+    public boolean isBilingual() {
+        return bilingual;
+    }
+
+    public void setBilingual(boolean bilingual) {
+        this.bilingual = bilingual;
+    }
+
 
 }
