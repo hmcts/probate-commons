@@ -3,23 +3,16 @@ package uk.gov.hmcts.reform.probate.model.documents;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 @JsonRootName(value = "legalDeclaration")
 public class LegalDeclaration implements BusinessDocument {
 
-    @NotEmpty
-    @JsonProperty("headers")
-    private List<String> headers;
-
-    @NotEmpty
+    @JsonProperty("declarations")
     @Valid
-    @JsonProperty("sections")
-    private List<DeclarationSection> sections = new ArrayList<>();
+    private List<Declaration> declarations;
 
     @NotBlank
     @JsonProperty("dateCreated")
@@ -28,6 +21,9 @@ public class LegalDeclaration implements BusinessDocument {
     @NotBlank
     @JsonProperty("deceased")
     private String deceased;
+
+    @JsonProperty("bilingual")
+    private boolean bilingual;
 
     public String getDeceased() {
         return deceased;
@@ -45,20 +41,21 @@ public class LegalDeclaration implements BusinessDocument {
         this.dateCreated = dateCreated;
     }
 
-    public List<String> getHeaders() {
-        return headers;
+    public List<Declaration> getDeclarations() {
+        return declarations;
     }
 
-    public void setHeaders(List<String> headers) {
-        this.headers = headers;
+    public void setDeclarations(List<Declaration> declarations) {
+        this.declarations = declarations;
     }
 
-    public List<DeclarationSection> getSections() {
-        return sections;
+    public boolean isBilingual() {
+        return bilingual;
     }
 
-    public void setSections(List<DeclarationSection> sections) {
-        this.sections = sections;
+    public void setBilingual(boolean bilingual) {
+        this.bilingual = bilingual;
     }
+
 
 }

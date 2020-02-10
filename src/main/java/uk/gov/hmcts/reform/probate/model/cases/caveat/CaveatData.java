@@ -145,6 +145,10 @@ public class CaveatData extends CaseData {
 
     private String bulkScanCaseReference;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean languagePreferenceWelsh;
+
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {

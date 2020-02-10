@@ -14,13 +14,12 @@ import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.SIBLING_D
 @RequiredArgsConstructor
 public enum Relationship {
 
-    @JsonProperty(PARTNER_DESC) PARTNER("Husband, wife or civil partner (this does not include common law partners "
-        + "even if you lived together)"),
-    @JsonProperty(CHILD_DESC) CHILD("Child (this does not include stepchildren)"),
-    @JsonProperty(ADOPTED_CHILD_DESC) ADOPTED_CHILD("Child who was lawfully adopted"),
+    @JsonProperty(PARTNER_DESC) PARTNER("optionSpousePartner"),
+    @JsonProperty(CHILD_DESC) CHILD("optionChild"),
+    @JsonProperty(ADOPTED_CHILD_DESC) ADOPTED_CHILD("optionAdoptedChild"),
     @JsonProperty(SIBLING_DESC) SIBLING(SIBLING_DESC),
     @JsonProperty(PARENT_DESC) PARENT(PARENT_DESC),
-    @JsonProperty(OTHER_DESC) OTHER("Other");
+    @JsonProperty(OTHER_DESC) OTHER("optionOther");
 
     @Getter
     private final String description;

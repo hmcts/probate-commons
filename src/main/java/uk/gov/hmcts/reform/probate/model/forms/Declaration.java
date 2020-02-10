@@ -30,4 +30,6 @@ public class Declaration {
     @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
     @JsonSerialize(using = BooleanAndNoneSerializer.class)
     private Boolean declarationCheckbox;
+
+
 }
