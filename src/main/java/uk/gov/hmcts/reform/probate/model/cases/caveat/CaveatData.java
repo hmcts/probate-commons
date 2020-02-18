@@ -16,11 +16,14 @@ import uk.gov.hmcts.reform.probate.model.ProbateDocument;
 import uk.gov.hmcts.reform.probate.model.ScannedDocument;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
+import uk.gov.hmcts.reform.probate.model.cases.BulkPrint;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
+import uk.gov.hmcts.reform.probate.model.cases.CaseMatch;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
+import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
@@ -124,9 +127,23 @@ public class CaveatData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean sendToBulkPrintRequested;
 
+    private String caveatReopenReason;
+
     private List<CollectionMember<ProbateDocument>> notificationsGenerated;
 
     private List<CollectionMember<ScannedDocument>> scannedDocuments;
+    
+    private List<CollectionMember<ProbateDocument>> documentsGenerated;
+
+    private List<CollectionMember<BulkPrint>> bulkPrintId;
+
+    private List<CollectionMember<CaseMatch>> caseMatches;
+
+    private List<CollectionMember<UploadDocument>> documentsUploaded;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean autoClosedExpiry;
 
     private String bulkScanCaseReference;
 
