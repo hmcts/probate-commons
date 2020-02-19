@@ -157,4 +157,7 @@ public class CaveatData extends CaseData {
         return deceasedDateOfDeath != null
                 && (deceasedDateOfBirth == null || deceasedDateOfBirth.isBefore(deceasedDateOfDeath));
     }
+
+    private String messageContent;
+
 }
