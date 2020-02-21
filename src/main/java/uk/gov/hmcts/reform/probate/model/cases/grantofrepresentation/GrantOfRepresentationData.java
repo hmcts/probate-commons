@@ -466,6 +466,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String solsSolicitorFirmName;
 
+    private String solsEntrustingDoc;
+
+    private String solsDomicilityCert;
+
     // Will this be required if we remove submissionReference??
     @SuppressWarnings({"AbbreviationAsWordInName"})
     private Long applicationID;
