@@ -69,6 +69,8 @@ If master is not tagged, a release will not be created and therefore will be una
 #### Updating branch tag
 
 Follow the steps below to tag a branch once the code review has completed. 
+- Create branch on Github
+- Checkout locally
 - Ensure build is successful: 
     - ./gradew clean build
 - Create the tag in git with the new version and JIRA reference.
