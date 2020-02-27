@@ -11,8 +11,8 @@ public enum IhtMethod {
 
     public static class Constants {
 
-        public static final String ONLINE_DESC = "Through the HMRC online service";
-        public static final String BY_POST_DESC = "By post";
+        public static final String ONLINE_DESC = "optionOnline";
+        public static final String BY_POST_DESC = "optionPaper";
 
         private Constants() {
         }

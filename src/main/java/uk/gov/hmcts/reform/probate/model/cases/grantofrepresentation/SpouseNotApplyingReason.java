@@ -11,10 +11,9 @@ import static uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.Spou
 @RequiredArgsConstructor
 public enum SpouseNotApplyingReason {
 
-    @JsonProperty(RENUNCIATED_VALUE) RENUNCIATED("They don&rsquo;t want to apply and they give up the right to apply "
-        + "in the future (this is known as &lsquo;renunciation&rsquo;)"),
+    @JsonProperty(RENUNCIATED_VALUE) RENUNCIATED("optionRenouncing"),
     @JsonProperty(MENTALLY_INCAPABLE_VALUE) MENTALLY_INCAPABLE("Mentally incapable"),
-    @JsonProperty(OTHER_VALUE) OTHER("Other");
+    @JsonProperty(OTHER_VALUE) OTHER("optionOther");
 
     @Getter
     private final String description;

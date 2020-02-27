@@ -134,12 +134,12 @@ public class GrantOfRepresentationCreator {
         executorApplying.setApplyingExecutorEmail(applyingExecutorEmail);
         executorApplying.setApplyingExecutorName(applyingExecutorName);
         grantOfRepresentationData.getExecutorsApplying().add(
-                new CollectionMember<ExecutorApplying>("1", executorApplying));
+            new CollectionMember<ExecutorApplying>("1", executorApplying));
     }
 
     public static void addExecutorNotApplying(GrantOfRepresentationData grantOfRepresentationData,
-                                           String notApplyingExecutorName,
-                                           ExecutorNotApplyingReason notApplyingExecutorReason) {
+                                              String notApplyingExecutorName,
+                                              ExecutorNotApplyingReason notApplyingExecutorReason) {
         if (grantOfRepresentationData.getExecutorsNotApplying() == null) {
             grantOfRepresentationData.setExecutorsNotApplying(new ArrayList<>());
         }
@@ -147,18 +147,18 @@ public class GrantOfRepresentationCreator {
         executorNotApplying.setNotApplyingExecutorName(notApplyingExecutorName);
         executorNotApplying.setNotApplyingExecutorReason(notApplyingExecutorReason);
         grantOfRepresentationData.getExecutorsNotApplying().add(
-                new CollectionMember<ExecutorNotApplying>("1", executorNotApplying));
+            new CollectionMember<ExecutorNotApplying>("1", executorNotApplying));
     }
 
     public static void addAdoptiveRelative(GrantOfRepresentationData grantOfRepresentationData,
-                                              String adoptedName, String relationship, InOut adoptedInOut) {
+                                           String adoptedName, String relationship, InOut adoptedInOut) {
         if (grantOfRepresentationData.getAdoptiveRelatives() == null) {
             grantOfRepresentationData.setAdoptiveRelatives(new ArrayList<>());
         }
         AdoptiveRelative adoptiveRelative = AdoptiveRelative.builder()
-                .adoptedInOrOut(adoptedInOut).name(adoptedName).relationship(relationship).build();
+            .adoptedInOrOut(adoptedInOut).name(adoptedName).relationship(relationship).build();
         grantOfRepresentationData.getAdoptiveRelatives().add(
-                new CollectionMember<AdoptiveRelative>("1", adoptiveRelative));
+            new CollectionMember<AdoptiveRelative>("1", adoptiveRelative));
     }
 
     private static void createSolicitorDetails(GrantOfRepresentationData grantOfRepresentationData) {
@@ -181,27 +181,27 @@ public class GrantOfRepresentationCreator {
 
     private static void createAttorneyObBehalfOfDetails(GrantOfRepresentationData grantOfRepresentationData) {
         Address attorneyOnBehalfOfAddress = Address.builder()
-                .addressLine1("Attorney Address Line 1")
-                .addressLine2("Attorney Address Line 2")
-                .addressLine3("Attorney Address Line 3")
-                .country("UK")
-                .county("Middlesex")
-                .postCode("HA1 4ET")
-                .postTown("Harrow")
-                .build();
+            .addressLine1("Attorney Address Line 1")
+            .addressLine2("Attorney Address Line 2")
+            .addressLine3("Attorney Address Line 3")
+            .country("UK")
+            .county("Middlesex")
+            .postCode("HA1 4ET")
+            .postTown("Harrow")
+            .build();
         final CollectionMember<AttorneyNamesAndAddress> attorneyNameAndAddressMember = new CollectionMember<>();
         AttorneyNamesAndAddress attorneyNameAndAddress = AttorneyNamesAndAddress.builder()
-                .address(attorneyOnBehalfOfAddress)
-                .name("1st Attorney Harrow")
-                .build();
+            .address(attorneyOnBehalfOfAddress)
+            .name("1st Attorney Harrow")
+            .build();
         attorneyNameAndAddressMember.setValue(attorneyNameAndAddress);
         grantOfRepresentationData.setAttorneyOnBehalfOfNameAndAddress((List<CollectionMember<AttorneyNamesAndAddress>>)
-                Arrays.asList(attorneyNameAndAddressMember));
+            Arrays.asList(attorneyNameAndAddressMember));
         grantOfRepresentationData.setApplyingAsAnAttorney(Boolean.TRUE);
     }
 
     private static void createIhtDetails(GrantOfRepresentationData grantOfRepresentationData) {
-        grantOfRepresentationData.setIhtFormId(IhtFormType.IHT205);
+        grantOfRepresentationData.setIhtFormId(IhtFormType.optionIHT205);
         grantOfRepresentationData.setIhtFormCompletedOnline(true);
         grantOfRepresentationData.setIhtGrossValue(100000L);
         grantOfRepresentationData.setIhtNetValue(100000L);
@@ -292,7 +292,7 @@ public class GrantOfRepresentationCreator {
         CollectionMember<ScannedDocument> scannedDocumentMember2 = new CollectionMember<>();
         scannedDocumentMember2.setValue(getScannedDocument("2"));
         grantOfRepresentationData.setScannedDocuments((List<CollectionMember<ScannedDocument>>)
-                Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
+            Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
         addExecutorNotApplying(grantOfRepresentationData, "Bob Dylan", ExecutorNotApplyingReason.MENTALLY_INCAPABLE);
         addExecutorNotApplying(grantOfRepresentationData, "Peter Smith", ExecutorNotApplyingReason.POWER_RESERVED);
         addAdoptiveRelative(grantOfRepresentationData, "Bob Taylor", "Cousin", InOut.OUT);
@@ -353,20 +353,20 @@ public class GrantOfRepresentationCreator {
 
     private static ScannedDocument getScannedDocument(String docReference) {
         ProbateDocumentLink url = ProbateDocumentLink.builder()
-                .documentBinaryUrl("http://localhost/" + docReference + "000.pdf")
-                .documentFilename(docReference + "000.pdf")
-                .documentUrl("http://localhost/" + docReference + "000.pdf")
-                .build();
+            .documentBinaryUrl("http://localhost/" + docReference + "000.pdf")
+            .documentFilename(docReference + "000.pdf")
+            .documentUrl("http://localhost/" + docReference + "000.pdf")
+            .build();
         LocalDateTime dateTime = LocalDateTime.parse("2019-07-15T12:34:56.789Z", DateTimeFormatter.ISO_DATE_TIME);
         return ScannedDocument.builder().controlNumber(docReference + "000")
-                .fileName(docReference + "000.pdf")
-                .type("form")
-                .subtype("PA1P")
-                .scannedDate(dateTime)
-                .exceptionRecordReference(null)
-                .deliveryDate(dateTime)
-                .url(url)
-                .build();
+            .fileName(docReference + "000.pdf")
+            .type("form")
+            .subtype("PA1P")
+            .scannedDate(dateTime)
+            .exceptionRecordReference(null)
+            .deliveryDate(dateTime)
+            .url(url)
+            .build();
     }
 
     private GrantOfRepresentationCreator() {

@@ -107,7 +107,7 @@ public class IntestacyFormTest {
         intestacyForm.setDeceased(intestacyDeceased);
 
         InheritanceTax inheritanceTax = new InheritanceTax();
-        inheritanceTax.setForm(IhtFormType.IHT205);
+        inheritanceTax.setForm(IhtFormType.optionIHT205.toString());
         inheritanceTax.setMethod(IhtMethod.ONLINE);
         inheritanceTax.setNetValue(new BigDecimal("100000"));
         inheritanceTax.setGrossValue(new BigDecimal("100000"));

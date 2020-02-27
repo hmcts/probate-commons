@@ -37,4 +37,15 @@ public class CaseMatch {
 
     private CaseLink caseLink;
 
+    private String id;
+    
+    private String recordId;
+    
+    private String ccdCaseId;
+    
+    private String dob;
+    
+    private String legacyCaseViewUrl;
+    
+    private String doImport;
 }

@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.probate.model.forms;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
@@ -14,12 +13,10 @@ import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class Will {
+public class Language {
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean codicils;
+    private Boolean bilingual;
 
-    private Long codicilsNumber;
 }

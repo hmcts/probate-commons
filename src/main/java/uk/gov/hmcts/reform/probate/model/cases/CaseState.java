@@ -27,7 +27,12 @@ import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_SOT
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CASE_CREATED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CASE_PAYMENT_FAILED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CASE_PRINTED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_AWAITING_RESOLUTION_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_AWAITING_WARNING_RESPONSE_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_CLOSED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_NOT_MATCHED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_RAISED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_WARNING_VALIDATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.DRAFT_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.PA_APP_CREATED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.STOPPED_NAME;
@@ -83,7 +88,18 @@ public enum CaseState {
 
     @JsonProperty(BO_REDEC_NOTIFICATION_SENT_NAME) BO_REDEC_NOTIFICATION_SENT(BO_REDEC_NOTIFICATION_SENT_NAME),
 
-    @JsonProperty(BO_SOT_GENERATED_NAME) BO_SOT_GENERATED(BO_SOT_GENERATED_NAME);
+    @JsonProperty(BO_SOT_GENERATED_NAME) BO_SOT_GENERATED(BO_SOT_GENERATED_NAME),
+
+    @JsonProperty(CAVEAT_NOT_MATCHED_NAME) CAVEAT_NOT_MATCHED(CAVEAT_NOT_MATCHED_NAME),
+    
+    @JsonProperty(CAVEAT_AWAITING_RESOLUTION_NAME) CAVEAT_AWAITING_RESOLUTION(CAVEAT_AWAITING_RESOLUTION_NAME),
+    
+    @JsonProperty(CAVEAT_WARNING_VALIDATION_NAME) CAVEAT_WARNING_VALIDATION(CAVEAT_WARNING_VALIDATION_NAME),
+    
+    @JsonProperty(CAVEAT_AWAITING_WARNING_RESPONSE_NAME) 
+        CAVEAT_AWAITING_WARNING_RESPONSE(CAVEAT_AWAITING_WARNING_RESPONSE_NAME),
+
+    @JsonProperty(CAVEAT_CLOSED_NAME) CAVEAT_CLOSED(CAVEAT_CLOSED_NAME);
 
     @Getter
     private final String name;
@@ -144,6 +160,16 @@ public enum CaseState {
         public static final String BO_REDEC_NOTIFICATION_SENT_NAME = "BORedecNotificationSent";
 
         public static final String BO_SOT_GENERATED_NAME = "BOSotGenerated";
+
+        public static final String CAVEAT_NOT_MATCHED_NAME = "CaveatNotMatched";
+
+        public static final String CAVEAT_AWAITING_RESOLUTION_NAME = "AwaitingCaveatResolution";
+
+        public static final String CAVEAT_WARNING_VALIDATION_NAME = "WarningValidation";
+
+        public static final String CAVEAT_AWAITING_WARNING_RESPONSE_NAME = "AwaitingWarningResponse";
+        
+        public static final String CAVEAT_CLOSED_NAME = "CaveatClosed";
 
         private Constants() {
         }
