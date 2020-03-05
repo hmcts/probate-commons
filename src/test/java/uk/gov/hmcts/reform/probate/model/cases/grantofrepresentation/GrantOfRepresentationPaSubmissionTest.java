@@ -4,10 +4,7 @@ import com.google.common.collect.Lists;
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
-import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
-import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
-import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.PaCrossFieldCheck;
 import uk.gov.hmcts.reform.probate.model.validation.groups.fieldcheck.PaFieldCheck;
 import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.PaNullCheck;
@@ -153,22 +150,6 @@ public class GrantOfRepresentationPaSubmissionTest {
         assertThat(violations).hasSize(1)
                 .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
                 .containsExactlyInAnyOrder(tuple("payments", "must not be null"));
-    }
-
-    @Test
-    public void shouldFailWhenPaymentStatusIsPending() {
-        GrantOfRepresentationData caseData  = GrantOfRepresentationCreator.createProbateCase();
-        final CollectionMember<CasePayment> paymentCollectionMember = new CollectionMember<>();
-        CasePayment payment = new CasePayment();
-        payment.setStatus(PaymentStatus.PENDING);
-        paymentCollectionMember.setValue(payment);
-        caseData.setPayments(Lists.newArrayList(paymentCollectionMember));
-
-        Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_SUBMISSION);
-
-        assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("paymentStatusNotPending", "payment.status should not be 'Pending"));
     }
 
     @Test
