@@ -466,6 +466,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String solsSolicitorFirmName;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean solsSolicitorIsApplying;
+
     private SolsPaymentMethods solsPaymentMethods;
 
     private String solsFeeAccountNumber;
@@ -475,6 +479,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     @SuppressWarnings({"AbbreviationAsWordInName"})
     private String solsSOTSurname;
+
+    private String solsSolicitorEmail;
+
+    private String solsSolicitorPhoneNumber;
 
     // Will this be required if we remove submissionReference??
     @SuppressWarnings({"AbbreviationAsWordInName"})
