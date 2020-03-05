@@ -36,6 +36,7 @@ import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
+import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
@@ -465,6 +466,16 @@ public class GrantOfRepresentationData extends CaseData {
     private Address solsSolicitorAddress;
 
     private String solsSolicitorFirmName;
+
+    private SolsPaymentMethods solsPaymentMethods;
+
+    private String solsFeeAccountNumber;
+
+    @SuppressWarnings({"AbbreviationAsWordInName"})
+    private String solsSOTForenames;
+
+    @SuppressWarnings({"AbbreviationAsWordInName"})
+    private String solsSOTSurname;
 
     // Will this be required if we remove submissionReference??
     @SuppressWarnings({"AbbreviationAsWordInName"})
