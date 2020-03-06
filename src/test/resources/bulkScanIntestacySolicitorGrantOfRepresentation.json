@@ -1,9 +1,9 @@
 {
   "type": "GrantOfRepresentation",
   "bulkScanCaseReference": "123",
-  "applicationType": "Personal",
+  "applicationType": "Solicitor",
   "primaryApplicantEmailAddress": "jon.snow@thenorth.com",
-  "registryLocation": "Birmingham",
+  "registryLocation": "ctsc",
   "extraCopiesOfGrant": 5,
   "deceasedAddress": {
     "AddressLine1": "Winterfell, Westeros",
@@ -57,7 +57,7 @@
   "primaryApplicantPhoneNumber": "123455678",
   "primaryApplicantRelationshipToDeceased": "adoptedChild",
   "primaryApplicantAdoptionInEnglandOrWales": "No",
-  "paperForm": "No",
+  "paperForm": "Yes",
   "deceasedHasAssetsOutsideUK": "Yes",
   "assetsOutsideNetValue": "10050",
   "payments": [
@@ -87,6 +87,9 @@
     "Country": "UK"
   },
   "solsSolicitorFirmName": "Solicitor Firm Name",
+  "solsFeeAccountNumber": "PBA-123456",
+  "solsPaymentMethods": "fee account",
+  "solsSolicitorPhoneNumber": "0909 909 9909",
   "declarationCheckbox": "Yes",
   "ihtGrossValueField": "100000",
   "ihtNetValueField": "100000",
@@ -153,7 +156,7 @@
         "controlNumber": "1000",
         "fileName": "1000.pdf",
         "type": "form",
-        "subtype": "PA1P",
+        "subtype": "PA1A",
         "scannedDate": {
           "dayOfYear": 196,
           "dayOfWeek": "MONDAY",
@@ -199,7 +202,7 @@
         "controlNumber": "2000",
         "fileName": "2000.pdf",
         "type": "form",
-        "subtype": "PA1P",
+        "subtype": "PA1A",
         "scannedDate": {
           "dayOfYear": 196,
           "dayOfWeek": "MONDAY",
