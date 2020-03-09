@@ -684,6 +684,21 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String bulkScanCaseReference;
 
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate grantDelayedNotificationDate;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate grantStoppedDate;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private String grantDelayedNotificationSent;
+
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
     @Transient
