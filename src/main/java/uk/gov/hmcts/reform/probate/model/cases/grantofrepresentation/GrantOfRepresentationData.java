@@ -697,6 +697,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean grantDelayedNotificationIdentified;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean grantDelayedNotificationSent;
 
     private List<CollectionMember<ProbateDocument>> probateNotificationsGenerated;
