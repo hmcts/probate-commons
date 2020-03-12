@@ -475,6 +475,9 @@ public class GrantOfRepresentationData extends CaseData {
     private String solsFeeAccountNumber;
 
     @SuppressWarnings({"AbbreviationAsWordInName"})
+    private String solsSOTName;
+
+    @SuppressWarnings({"AbbreviationAsWordInName"})
     private String solsSOTForenames;
 
     @SuppressWarnings({"AbbreviationAsWordInName"})
