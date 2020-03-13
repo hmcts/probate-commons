@@ -9,7 +9,6 @@ import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
-import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.Declaration;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.ExecutorApplying;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.ExecutorNotApplying;
@@ -175,6 +174,9 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setSolsSolicitorAddress(solicitorAddress);
         grantOfRepresentationData.setSolsSolicitorAppReference("Solicitor Application Reference");
         grantOfRepresentationData.setSolsSolicitorFirmName("Solicitor Firm Name");
+        grantOfRepresentationData.setSolsSolicitorAddress(solicitorAddress);
+        grantOfRepresentationData.setSolsSolicitorAppReference("Solicitor Application Reference");
+        grantOfRepresentationData.setSolsSolicitorFirmName("Solicitor Firm Name");
     }
 
     private static void createAttorneyObBehalfOfDetails(GrantOfRepresentationData grantOfRepresentationData) {
@@ -283,39 +285,18 @@ public class GrantOfRepresentationCreator {
         return grantOfRepresentationData;
     }
 
-    public static GrantOfRepresentationData createCitizenIntestacyCaseWithBulkScanData() {
-        GrantOfRepresentationData grantOfRepresentationData = setBasicBulkScanData();
-        grantOfRepresentationData.setApplicationType(ApplicationType.PERSONAL);
-        grantOfRepresentationData.setSolsSolicitorAddress(null);
-        grantOfRepresentationData.setSolsSolicitorAppReference(null);
-        grantOfRepresentationData.setSolsSolicitorFirmName(null);
-        return grantOfRepresentationData;
-    }
-
-    public static GrantOfRepresentationData createSolicitorIntestacyCaseWithBulkScanData() {
-        GrantOfRepresentationData grantOfRepresentationData = setBasicBulkScanData();
-        grantOfRepresentationData.setApplicationType(ApplicationType.SOLICITORS);
-        grantOfRepresentationData.setSolsFeeAccountNumber("PBA-123456");
-        grantOfRepresentationData.setSolsPaymentMethods(SolsPaymentMethods.FEE_ACCOUNT);
-        grantOfRepresentationData.setSolsSolicitorPhoneNumber("0909 909 9909");
-        return grantOfRepresentationData;
-    }
-
-    private static GrantOfRepresentationData setBasicBulkScanData() {
+    public static GrantOfRepresentationData createIntestacyCaseWithBulkScanData() {
         GrantOfRepresentationData grantOfRepresentationData = createIntestacyCase();
         CollectionMember<ScannedDocument> scannedDocumentMember1 = new CollectionMember<>();
         scannedDocumentMember1.setValue(getScannedDocument("1"));
         CollectionMember<ScannedDocument> scannedDocumentMember2 = new CollectionMember<>();
         scannedDocumentMember2.setValue(getScannedDocument("2"));
         grantOfRepresentationData.setScannedDocuments((List<CollectionMember<ScannedDocument>>)
-                Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
+            Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
         addExecutorNotApplying(grantOfRepresentationData, "Bob Dylan", ExecutorNotApplyingReason.MENTALLY_INCAPABLE);
         addExecutorNotApplying(grantOfRepresentationData, "Peter Smith", ExecutorNotApplyingReason.POWER_RESERVED);
         addAdoptiveRelative(grantOfRepresentationData, "Bob Taylor", "Cousin", InOut.OUT);
         addAdoptiveRelative(grantOfRepresentationData, "Mark Ronson", "Cousin", InOut.IN);
-        grantOfRepresentationData.setRegistryLocation(RegistryLocation.CTSC);
-        grantOfRepresentationData.setPaperForm(Boolean.TRUE);
-        grantOfRepresentationData.setBulkScanCaseReference("123");
         grantOfRepresentationData.setAdopted(true);
         grantOfRepresentationData.setHalfBloodNeicesAndNephews(true);
         grantOfRepresentationData.setHalfBloodNeicesAndNephewsOverEighteen("1");
@@ -328,6 +309,7 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setAllDeceasedChildrenOverEighteen(true);
         grantOfRepresentationData.setAnyDeceasedChildrenDieBeforeDeceased(false);
         grantOfRepresentationData.setAnyDeceasedGrandChildrenUnderEighteen(true);
+        grantOfRepresentationData.setBulkScanCaseReference("123");
         return grantOfRepresentationData;
     }
 
@@ -379,7 +361,7 @@ public class GrantOfRepresentationCreator {
         return ScannedDocument.builder().controlNumber(docReference + "000")
             .fileName(docReference + "000.pdf")
             .type("form")
-            .subtype("PA1A")
+            .subtype("PA1P")
             .scannedDate(dateTime)
             .exceptionRecordReference(null)
             .deliveryDate(dateTime)

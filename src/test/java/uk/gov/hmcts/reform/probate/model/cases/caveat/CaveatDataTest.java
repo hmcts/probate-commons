@@ -22,26 +22,20 @@ public class CaveatDataTest {
 
     private CaveatData caveatData;
 
-    private CaveatData bulkScanCitizenCaveatData;
-
-    private CaveatData bulkScanSolicitorCaveatData;
+    private CaveatData bulkScanCaveatData;
 
     private String json;
 
     private String bulkScanJson;
 
-    private String bulkScanSolicitorJson;
-
     @Before
     public void setUp() throws Exception {
         json = TestUtils.getJsonFromFile("caveatData.json");
-        bulkScanJson = TestUtils.getJsonFromFile("bulkScanCitizenCaveatData.json");
-        bulkScanSolicitorJson = TestUtils.getJsonFromFile("bulkScanSolicitorCaveatData.json");
+        bulkScanJson = TestUtils.getJsonFromFile("bulkScanCaveatData.json");
         objectMapper = new ObjectMapper();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
         caveatData = CaveatCreator.createCaveatCase();
-        bulkScanCitizenCaveatData = CaveatCreator.createCaveatCaseWithCitizenBulkScanData();
-        bulkScanSolicitorCaveatData = CaveatCreator.createCaveatCaseWithSolicitorBulkScanData();
+        bulkScanCaveatData = CaveatCreator.createCaveatCaseWithBulkScanData();
     }
 
     @Test
@@ -60,15 +54,8 @@ public class CaveatDataTest {
 
     @Test
     public void shouldSerializeCaveatDataFromBulkScanCorrectly() throws IOException, JSONException {
-        String actualJson = objectMapper.writeValueAsString(bulkScanCitizenCaveatData);
+        String actualJson = objectMapper.writeValueAsString(bulkScanCaveatData);
 
         JSONAssert.assertEquals(bulkScanJson, actualJson, true);
-    }
-
-    @Test
-    public void shouldSerializeSolicitorCaveatDataFromBulkScanCorrectly() throws IOException, JSONException {
-        String actualJson = objectMapper.writeValueAsString(bulkScanSolicitorCaveatData);
-
-        JSONAssert.assertEquals(bulkScanSolicitorJson, actualJson, true);
     }
 }
