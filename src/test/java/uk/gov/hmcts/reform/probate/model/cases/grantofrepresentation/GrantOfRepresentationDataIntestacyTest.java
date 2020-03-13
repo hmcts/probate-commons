@@ -22,20 +22,30 @@ public class GrantOfRepresentationDataIntestacyTest {
 
     private GrantOfRepresentationData grantOfRepresentationData;
 
-    private GrantOfRepresentationData bulkScanGrantOfRepresentationData;
+    private GrantOfRepresentationData bulkScanCitizenGrantOfRepresentationData;
+
+    private GrantOfRepresentationData bulkScanSolicitorGrantOfRepresentationData;
 
     private String gorJsonFromFile;
 
-    private String bulkScanGorJsonFromFile;
+    private String bulkScanCitizenGorJsonFromFile;
+
+    private String bulkScanSolicitorGorJsonFromFile;
 
     @Before
     public void setUp() throws Exception {
         gorJsonFromFile = TestUtils.getJsonFromFile("intestacyGrantOfRepresentation.json");
-        bulkScanGorJsonFromFile = TestUtils.getJsonFromFile("bulkScanIntestacyGrantOfRepresentation.json");
+        bulkScanCitizenGorJsonFromFile =
+                TestUtils.getJsonFromFile("bulkScanIntestacyCitizenGrantOfRepresentation.json");
+        bulkScanSolicitorGorJsonFromFile =
+                TestUtils.getJsonFromFile("bulkScanIntestacySolicitorGrantOfRepresentation.json");
         objectMapper = new ObjectMapper();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
         grantOfRepresentationData = GrantOfRepresentationCreator.createIntestacyCase();
-        bulkScanGrantOfRepresentationData = GrantOfRepresentationCreator.createIntestacyCaseWithBulkScanData();
+        bulkScanCitizenGrantOfRepresentationData =
+                GrantOfRepresentationCreator.createCitizenIntestacyCaseWithBulkScanData();
+        bulkScanSolicitorGrantOfRepresentationData =
+                GrantOfRepresentationCreator.createSolicitorIntestacyCaseWithBulkScanData();
     }
 
     @Test
@@ -53,10 +63,18 @@ public class GrantOfRepresentationDataIntestacyTest {
     }
 
     @Test
-    public void shouldSerializeGrantOfRepresentationDataFromBulkScanCorrectly() throws IOException, JSONException {
-        String actualJson = objectMapper.writeValueAsString(bulkScanGrantOfRepresentationData);
+    public void shouldSerializeCitizenGrantOfRepresentationDataFromBulkScanCorrectly()
+            throws IOException, JSONException {
+        String actualJson = objectMapper.writeValueAsString(bulkScanCitizenGrantOfRepresentationData);
 
-        JSONAssert.assertEquals(bulkScanGorJsonFromFile, actualJson, true);
+        JSONAssert.assertEquals(bulkScanCitizenGorJsonFromFile, actualJson, true);
     }
 
+    @Test
+    public void shouldSerializeSolicitorGrantOfRepresentationDataFromBulkScanCorrectly()
+            throws IOException, JSONException {
+        String actualJson = objectMapper.writeValueAsString(bulkScanSolicitorGrantOfRepresentationData);
+
+        JSONAssert.assertEquals(bulkScanSolicitorGorJsonFromFile, actualJson, true);
+    }
 }

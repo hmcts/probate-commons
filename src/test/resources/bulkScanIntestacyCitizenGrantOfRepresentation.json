@@ -3,7 +3,7 @@
   "bulkScanCaseReference": "123",
   "applicationType": "Personal",
   "primaryApplicantEmailAddress": "jon.snow@thenorth.com",
-  "registryLocation": "Birmingham",
+  "registryLocation": "ctsc",
   "extraCopiesOfGrant": 5,
   "deceasedAddress": {
     "AddressLine1": "Winterfell, Westeros",
@@ -57,7 +57,7 @@
   "primaryApplicantPhoneNumber": "123455678",
   "primaryApplicantRelationshipToDeceased": "adoptedChild",
   "primaryApplicantAdoptionInEnglandOrWales": "No",
-  "paperForm": "No",
+  "paperForm": "Yes",
   "deceasedHasAssetsOutsideUK": "Yes",
   "assetsOutsideNetValue": "10050",
   "payments": [
@@ -76,17 +76,6 @@
   "legacyId": "123456",
   "legacyType": "Legacy LEGACY GRANT",
   "legacyCaseViewUrl": "http://locahost:8080/cases/1",
-  "solsSolicitorAppReference": "Solicitor Application Reference",
-  "solsSolicitorAddress": {
-    "AddressLine1": "Sol Address Line 1",
-    "AddressLine2": "Sol Address Line 2",
-    "AddressLine3": "Sol Address Line 3",
-    "County": "Middlesex",
-    "PostTown": "Harrow",
-    "PostCode": "HA1 4ET",
-    "Country": "UK"
-  },
-  "solsSolicitorFirmName": "Solicitor Firm Name",
   "declarationCheckbox": "Yes",
   "ihtGrossValueField": "100000",
   "ihtNetValueField": "100000",
@@ -153,7 +142,7 @@
         "controlNumber": "1000",
         "fileName": "1000.pdf",
         "type": "form",
-        "subtype": "PA1P",
+        "subtype": "PA1A",
         "scannedDate": {
           "dayOfYear": 196,
           "dayOfWeek": "MONDAY",
@@ -199,7 +188,7 @@
         "controlNumber": "2000",
         "fileName": "2000.pdf",
         "type": "form",
-        "subtype": "PA1P",
+        "subtype": "PA1A",
         "scannedDate": {
           "dayOfYear": 196,
           "dayOfWeek": "MONDAY",

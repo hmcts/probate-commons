@@ -2,8 +2,8 @@
   "type": "Caveat",
   "bulkScanCaseReference": "123",
   "applicationId": "Id",
-  "applicationType": "Personal",
-  "registryLocation": "Oxford",
+  "applicationType": "Solicitor",
+  "registryLocation": "ctsc",
   "deceasedForenames": "deceased forename",
   "applicationSubmittedDate": "2018-11-20",
   "deceasedSurname": "deceased surname",
@@ -38,8 +38,13 @@
     "PostCode": "caveator post code",
     "Country": "caveator country"
   },
+  "solsFeeAccountNumber": "PBA-123456",
+  "solsPaymentMethods": "fee account",
+  "solsSolicitorAppReference": "APP-123456",
+  "solsSolicitorFirmName": "solicitor firm",
+  "solsSolicitorPhoneNumber": "0909 909 9909",
   "expiryDate": "2019-02-14",
-  "paperForm": "No",
+  "paperForm": "Yes",
   "scannedDocuments": [
     {
       "value": {
@@ -67,6 +72,3 @@
     }
   ]
 }
-
-
-
