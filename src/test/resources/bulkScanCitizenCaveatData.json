@@ -3,7 +3,7 @@
   "bulkScanCaseReference": "123",
   "applicationId": "Id",
   "applicationType": "Personal",
-  "registryLocation": "Oxford",
+  "registryLocation": "ctsc",
   "deceasedForenames": "deceased forename",
   "applicationSubmittedDate": "2018-11-20",
   "deceasedSurname": "deceased surname",
@@ -39,7 +39,7 @@
     "Country": "caveator country"
   },
   "expiryDate": "2019-02-14",
-  "paperForm": "No",
+  "paperForm": "Yes",
   "scannedDocuments": [
     {
       "value": {
