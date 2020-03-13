@@ -5,7 +5,6 @@ import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
-import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
 
 import java.time.LocalDate;
@@ -40,19 +39,15 @@ public class CaveatCreator {
         return caveatData;
     }
 
-    public static CaveatData createCaveatCaseWithCitizenBulkScanData() {
-        CaveatData caveatData = setBasicBulkScanData();
-        return caveatData;
-    }
-
-    public static CaveatData createCaveatCaseWithSolicitorBulkScanData() {
-        CaveatData caveatData = setBasicBulkScanData();
-        caveatData.setApplicationType(ApplicationType.SOLICITORS);
-        caveatData.setSolsFeeAccountNumber("PBA-123456");
-        caveatData.setSolsPaymentMethods(SolsPaymentMethods.FEE_ACCOUNT);
-        caveatData.setSolsSolicitorAppReference("APP-123456");
-        caveatData.setSolsSolicitorFirmName("solicitor firm");
-        caveatData.setSolsSolicitorPhoneNumber("0909 909 9909");
+    public static CaveatData createCaveatCaseWithBulkScanData() {
+        CaveatData caveatData = createCaveatCase();
+        CollectionMember<ScannedDocument> scannedDocumentMember1 = new CollectionMember<>();
+        scannedDocumentMember1.setValue(getScannedDocument("1"));
+        CollectionMember<ScannedDocument> scannedDocumentMember2 = new CollectionMember<>();
+        scannedDocumentMember2.setValue(getScannedDocument("2"));
+        caveatData.setScannedDocuments((List<CollectionMember<ScannedDocument>>)
+                Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
+        caveatData.setBulkScanCaseReference("123");
         return caveatData;
     }
 
@@ -66,20 +61,6 @@ public class CaveatCreator {
         address.setPostCode(name + " post code");
         address.setCountry(name + " country");
         return address;
-    }
-
-    private static CaveatData setBasicBulkScanData() {
-        CaveatData caveatData = createCaveatCase();
-        caveatData.setRegistryLocation(RegistryLocation.CTSC);
-        caveatData.setPaperForm(Boolean.TRUE);
-        CollectionMember<ScannedDocument> scannedDocumentMember1 = new CollectionMember<>();
-        scannedDocumentMember1.setValue(getScannedDocument("1"));
-        CollectionMember<ScannedDocument> scannedDocumentMember2 = new CollectionMember<>();
-        scannedDocumentMember2.setValue(getScannedDocument("2"));
-        caveatData.setScannedDocuments((List<CollectionMember<ScannedDocument>>)
-                Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
-        caveatData.setBulkScanCaseReference("123");
-        return caveatData;
     }
 
     private static ScannedDocument getScannedDocument(String docReference) {
