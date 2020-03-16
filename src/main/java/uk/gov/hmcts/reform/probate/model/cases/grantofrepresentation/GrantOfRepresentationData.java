@@ -23,6 +23,7 @@ import uk.gov.hmcts.reform.probate.model.AdoptiveRelative;
 import uk.gov.hmcts.reform.probate.model.AliasReason;
 import uk.gov.hmcts.reform.probate.model.AttorneyNamesAndAddress;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
+import uk.gov.hmcts.reform.probate.model.ProbateDocument;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.ScannedDocument;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
@@ -682,6 +683,26 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean boSendToBulkPrintRequested;
 
     private String bulkScanCaseReference;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate grantDelayedNotificationDate;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate grantStoppedDate;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean grantDelayedNotificationIdentified;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean grantDelayedNotificationSent;
+
+    private List<CollectionMember<ProbateDocument>> probateNotificationsGenerated;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
