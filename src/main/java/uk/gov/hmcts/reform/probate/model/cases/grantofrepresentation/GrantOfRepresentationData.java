@@ -706,7 +706,11 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     private LocalDate grantAwaitingDocumentationNotificationDate;
-    
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean grantAwaitingDocumentatioNotificationSent;
+
     private List<CollectionMember<ProbateDocument>> probateNotificationsGenerated;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
