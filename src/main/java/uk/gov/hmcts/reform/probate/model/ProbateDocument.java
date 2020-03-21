@@ -16,13 +16,15 @@ public class ProbateDocument {
     public ProbateDocument() {
     }
 
-    public ProbateDocument(ProbateDocumentLink documentLink, ProbateDocumentType documentType, String documentFileName) {
+    public ProbateDocument(ProbateDocumentLink documentLink, ProbateDocumentType documentType,
+                           String documentFileName) {
         this.documentLink = documentLink;
         this.documentType = documentType;
         this.documentFileName = documentFileName;
     }
 
-    public ProbateDocument(ProbateDocumentLink documentLink, ProbateDocumentType documentType, String documentFileName, LocalDate documentDateAdded, String documentGeneratedBy) {
+    public ProbateDocument(ProbateDocumentLink documentLink, ProbateDocumentType documentType,
+                           String documentFileName, LocalDate documentDateAdded, String documentGeneratedBy) {
         this.documentLink = documentLink;
         this.documentType = documentType;
         this.documentFileName = documentFileName;
