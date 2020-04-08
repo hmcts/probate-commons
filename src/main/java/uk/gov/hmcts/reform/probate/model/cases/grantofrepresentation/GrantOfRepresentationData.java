@@ -470,6 +470,16 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String solsDomicilityCert;
 
+    private final String applicationGrounds;
+
+    private final String willDispose;
+
+    private final String englishWill;
+
+    private final String appointExec;
+
+    private final String appointExecByDuties;
+
     // Will this be required if we remove submissionReference??
     @SuppressWarnings({"AbbreviationAsWordInName"})
     private Long applicationID;
