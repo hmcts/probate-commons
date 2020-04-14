@@ -107,6 +107,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     private Long extraCopiesOfGrant;
 
+    private String bulkPrintSendLetterId;
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedDomicileInEngWales;
