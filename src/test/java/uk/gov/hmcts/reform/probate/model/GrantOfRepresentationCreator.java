@@ -52,6 +52,7 @@ public class GrantOfRepresentationCreator {
 
         grantOfRepresentationData.setExtraCopiesOfGrant(5L);
         grantOfRepresentationData.setBulkPrintSendLetterId("abc133");
+        grantOfRepresentationData.setBulkPrintPdfSize("2");
         grantOfRepresentationData.setOutsideUkGrantCopies(6L);
 
         final CollectionMember<CasePayment> paymentCollectionMember = new CollectionMember<>();
@@ -268,6 +269,7 @@ public class GrantOfRepresentationCreator {
 
         grantOfRepresentationData.setExtraCopiesOfGrant(5L);
         grantOfRepresentationData.setBulkPrintSendLetterId("abc123");
+        grantOfRepresentationData.setBulkPrintPdfSize("2");
         grantOfRepresentationData.setOutsideUkGrantCopies(6L);
 
         final CollectionMember<CasePayment> paymentCollectionMember = new CollectionMember<>();
