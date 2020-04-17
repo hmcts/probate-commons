@@ -51,8 +51,6 @@ public class GrantOfRepresentationCreator {
         createIhtDetails(grantOfRepresentationData);
 
         grantOfRepresentationData.setExtraCopiesOfGrant(5L);
-        grantOfRepresentationData.setBulkPrintSendLetterId("abc133");
-        grantOfRepresentationData.setBulkPrintPdfSize("2");
         grantOfRepresentationData.setOutsideUkGrantCopies(6L);
 
         final CollectionMember<CasePayment> paymentCollectionMember = new CollectionMember<>();
@@ -268,8 +266,6 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setDeclarationCheckbox(true);
 
         grantOfRepresentationData.setExtraCopiesOfGrant(5L);
-        grantOfRepresentationData.setBulkPrintSendLetterId("abc123");
-        grantOfRepresentationData.setBulkPrintPdfSize("2");
         grantOfRepresentationData.setOutsideUkGrantCopies(6L);
 
         final CollectionMember<CasePayment> paymentCollectionMember = new CollectionMember<>();
@@ -314,7 +310,6 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setAnyDeceasedChildrenDieBeforeDeceased(false);
         grantOfRepresentationData.setAnyDeceasedGrandChildrenUnderEighteen(true);
         grantOfRepresentationData.setBulkScanCaseReference("123");
-        grantOfRepresentationData.setBulkPrintSendLetterId("abc123");
         return grantOfRepresentationData;
     }
 
