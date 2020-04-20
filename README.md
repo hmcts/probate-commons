@@ -70,7 +70,7 @@ If master is not tagged, a release will not be created and therefore will be una
 
 Follow the steps below to tag a branch once the code review has completed. 
 - Ensure build is successful: 
-    - ./gradew clean build
+    - ./gradlew clean build
 - Create the tag in git with the new version and JIRA reference.
     - git tag -a 1.0.0_PRO-1234-UpdateReadme -m "Update to README.md file."
 - Push the new tag to the git remote server.

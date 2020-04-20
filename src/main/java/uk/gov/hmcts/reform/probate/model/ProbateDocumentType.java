@@ -61,7 +61,10 @@ public enum ProbateDocumentType {
     CAVEAT_COVERSHEET("caveatCoversheet"),
 
     @JsonProperty("caveatRaised")
-    CAVEAT_RAISED("caveatRaised");
+    CAVEAT_RAISED("caveatRaised"),
+
+    @JsonProperty("letterOfGrantDelay")
+    LETTER_OF_GRANT_DELAY("letterOfGrantDelay");
 
     private final String templateName;
 

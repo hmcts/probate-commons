@@ -4,6 +4,8 @@
   "primaryApplicantEmailAddress": "jon.snow@thenorth.com",
   "registryLocation": "Birmingham",
   "extraCopiesOfGrant": 5,
+  "bulkPrintSendLetterId": "abc123",
+  "bulkPrintPdfSize": "2",
   "deceasedAddress": {
     "AddressLine1": "Winterfell, Westeros",
     "PostCode": "SW17 TYH"
