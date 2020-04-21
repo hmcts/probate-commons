@@ -43,5 +43,8 @@
       "reference": "RC-1543-8527-2465-2900",
       "transactionId": "v5bf26kn5rq9rvdq7gsvn7v11d"
     }
-  ]
+  ],
+  "equality": {
+    "pcqId": "1000"
+  }
 }
