@@ -22,6 +22,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import uk.gov.hmcts.reform.probate.model.AdoptiveRelative;
 import uk.gov.hmcts.reform.probate.model.AliasReason;
 import uk.gov.hmcts.reform.probate.model.AttorneyNamesAndAddress;
+import uk.gov.hmcts.reform.probate.model.BulkScanEnvelope;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.ProbateDocument;
 import uk.gov.hmcts.reform.probate.model.Relationship;
@@ -705,6 +706,8 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean boSendToBulkPrintRequested;
 
     private String bulkScanCaseReference;
+
+    private List<CollectionMember<BulkScanEnvelope>> bulkScanEnvelopes;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)

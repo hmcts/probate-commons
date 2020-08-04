@@ -1,6 +1,14 @@
 {
   "type": "Caveat",
   "bulkScanCaseReference": "123",
+  "bulkScanEnvelopes": [
+    {
+      "value": {
+        "id": "1",
+        "action": "Action"
+      }
+    }
+  ],
   "applicationId": "Id",
   "applicationType": "Solicitor",
   "registryLocation": "ctsc",
