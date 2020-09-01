@@ -102,5 +102,6 @@
   "ihtGrossValueField": "100000",
   "ihtNetValueField": "100000",
   "outsideUKGrantCopies": 6,
-  "caseType": "intestacy"
+  "caseType": "intestacy",
+  "pcqId": "1004"
 }

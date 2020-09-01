@@ -131,5 +131,8 @@
   },
   "summary": {
     "readyToDeclare": true
+  },
+  "equality": {
+    "pcqId": "1002"
   }
 }

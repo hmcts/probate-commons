@@ -15,6 +15,7 @@ import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Declaration;
 import uk.gov.hmcts.reform.probate.model.forms.DeclarationDeclaration;
 import uk.gov.hmcts.reform.probate.model.forms.DeclarationHolder;
+import uk.gov.hmcts.reform.probate.model.forms.Equality;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.IhtMethod;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
@@ -188,9 +189,9 @@ public class PaFormTest {
                 .hasEmailChanged(false)
                 .declarationCheckbox(true)
                 .build())
+                .equality(Equality.builder()
+                        .pcqId("1002").build())
             .build();
-
-
     }
 
     @Test
