@@ -2,6 +2,7 @@ package uk.gov.hmcts.reform.probate.model.forms.pa;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -16,6 +17,7 @@ import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Declaration;
 import uk.gov.hmcts.reform.probate.model.forms.DocumentUpload;
 import uk.gov.hmcts.reform.probate.model.forms.Documents;
+import uk.gov.hmcts.reform.probate.model.forms.Equality;
 import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
@@ -70,6 +72,8 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private String caseType;
 
+    @JsonProperty(value = "equality")
+    private Equality equality;
 
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
@@ -79,7 +83,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   LocalDate applicationSubmittedDate, Long submissionReference,
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
-                  Language language) {
+                  Language language, Equality equality) {
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language);
         this.applicantEmail = applicantEmail;
         this.declaration = declaration;
@@ -95,6 +99,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.checkAnswersSummary = checkAnswersSummary;
         this.statementOfTruthDocument = statementOfTruthDocument;
         this.caseType = caseType;
-
+        this.equality = equality;
     }
+
 }

@@ -280,6 +280,8 @@ public class GrantOfRepresentationCreator {
 
         grantOfRepresentationData.setPaperForm(false);
 
+        grantOfRepresentationData.setPcqId("1004");
+
         return grantOfRepresentationData;
     }
 
