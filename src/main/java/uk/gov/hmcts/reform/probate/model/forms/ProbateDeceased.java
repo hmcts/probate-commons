@@ -73,6 +73,14 @@ public abstract class ProbateDeceased extends Deceased {
 
     private String domicile;
 
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean englishForeignDeathCert;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean foreignDeathCertTranslation;
+
     @JsonProperty(value = "dod-day")
     public Integer getDodDay() {
         if (dateOfDeath == null) {
@@ -136,5 +144,4 @@ public abstract class ProbateDeceased extends Deceased {
         }
         return dateOfDeath.format(DateTimeFormatter.ofPattern("d MMMM yyyy"));
     }
-
 }
