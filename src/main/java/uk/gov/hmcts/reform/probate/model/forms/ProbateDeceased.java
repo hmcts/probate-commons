@@ -73,6 +73,10 @@ public abstract class ProbateDeceased extends Deceased {
 
     private String domicile;
 
+    private Boolean deceasedDiedEngOrWales;
+
+    private String deathCertificate;
+
     @JsonProperty(value = "dod-day")
     public Integer getDodDay() {
         if (dateOfDeath == null) {

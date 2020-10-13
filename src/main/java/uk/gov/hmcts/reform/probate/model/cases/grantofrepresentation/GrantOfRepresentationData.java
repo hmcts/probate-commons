@@ -412,6 +412,12 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean languagePreferenceWelsh;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedDiedEngOrWales;
+
+    private String deathCertificate;
+
     private List<CollectionMember<ExecutorApplying>> executorsApplying;
 
     private List<CollectionMember<ExecutorNotApplying>> executorsNotApplying;
