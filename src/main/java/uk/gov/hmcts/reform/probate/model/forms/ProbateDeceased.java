@@ -73,7 +73,7 @@ public abstract class ProbateDeceased extends Deceased {
 
     private String domicile;
 
-    private Boolean deceasedDiedEngOrWales;
+    private Boolean diedEngOrWales;
 
     private String deathCertificate;
 
