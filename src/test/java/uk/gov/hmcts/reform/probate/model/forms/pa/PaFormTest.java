@@ -112,6 +112,8 @@ public class PaFormTest {
                 .firstName("Ned")
                 .diedEngOrWales(true)
                 .deathCertificate("optionDeathCertificate")
+                .englishForeignDeathCert(false)
+                .foreignDeathCertTranslation(true)
                 .build())
             .registry(Registry.builder()
                 .name("Manchester")
@@ -206,7 +208,6 @@ public class PaFormTest {
     @Test
     public void shouldSerializePaFormCorrectly() throws IOException, JSONException {
         String paFormAsJsonStr = objectMapper.writeValueAsString(paForm);
-        System.out.println(paFormAsJsonStr);
         JSONAssert.assertEquals(formJsonFromFile, paFormAsJsonStr, true);
     }
 

@@ -17,6 +17,8 @@
   "deceasedAnyOtherNames": "No",
   "deceasedDiedEngOrWales": "Yes",
   "deceasedDeathCertificate": "deathCertificate",
+  "deceasedForeignDeathCertInEnglish": "No",
+  "deceasedForeignDeathCertTranslation": "Yes",
   "deceasedAliasNameList": [
     {
       "value": {

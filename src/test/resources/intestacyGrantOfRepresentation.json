@@ -35,6 +35,8 @@
   "deceasedDivorcedInEnglandOrWales": "No",
   "deceasedOtherChildren": "Yes",
   "deceasedAnyChildren": "No",
+  "deceasedForeignDeathCertInEnglish": "No",
+  "deceasedForeignDeathCertTranslation": "Yes",
   "childrenDied": "No",
   "childrenOverEighteenSurvived": "Yes",
   "childrenUnderEighteenSurvived": "2",
