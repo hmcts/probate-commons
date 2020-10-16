@@ -920,4 +920,12 @@ public class GrantOfRepresentationData extends CaseData {
         return ObjectUtils.allNotNull(deceasedOtherChildren, childrenOverEighteenSurvived, childrenDied)
             && (deceasedOtherChildren && childrenDied && childrenOverEighteenSurvived == null);
     }
+
+    @Transient
+    @AssertTrue(message = "when deceasedDiedEngOrWales is true, deceasedDeathCertificate cannot be null",
+            groups = {IntestacyCrossFieldCheck.class})
+    public Boolean isDeceasedDeathCertificatePopulatedWhenDeceasedDiedEngOrWales() {
+        return ObjectUtils.allNotNull(deceasedDiedEngOrWales) && (deceasedDiedEngOrWales
+                && deceasedDeathCertificate == null);
+    }
 }

@@ -6,6 +6,7 @@ import uk.gov.hmcts.reform.probate.model.cases.AliasName;
 import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
+import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
@@ -219,6 +220,8 @@ public class GrantOfRepresentationCreator {
         deceasedAddress.setPostCode("SW17 TYH");
         grantOfRepresentationData.setDeceasedAddress(deceasedAddress);
         grantOfRepresentationData.setDeceasedAnyOtherNames(true);
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(true);
+        grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
     }
 
     private static void createPrimaryApplicantDetails(GrantOfRepresentationData grantOfRepresentationData) {
@@ -255,6 +258,8 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setChildrenUnderEighteenSurvivedText("2");
         grantOfRepresentationData.setDeceasedAnyChildren(false);
         grantOfRepresentationData.setDeceasedAnyOtherNames(false);
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(true);
+        grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
         grantOfRepresentationData.setRegistryLocation(RegistryLocation.BIRMINGHAM);
         grantOfRepresentationData.setDeceasedHasAssetsOutsideUK(true);
         grantOfRepresentationData.setAssetsOutsideNetValue(10050L);

@@ -110,6 +110,8 @@ public class PaFormTest {
                 .dateOfDeath(LocalDateTime.of(2019, 1, 1, 0, 0, 0))
                 .lastName("Stark")
                 .firstName("Ned")
+                .diedEngOrWales(true)
+                .deathCertificate("optionDeathCertificate")
                 .build())
             .registry(Registry.builder()
                 .name("Manchester")
