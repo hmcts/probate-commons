@@ -858,7 +858,14 @@ public class GrantOfRepresentationData extends CaseData {
     @AssertTrue(message = "deceasedAliasNameList must not be empty", groups = {IntestacyCrossFieldCheck.class})
     public Boolean isAliasNameListPopulated() {
         return ObjectUtils.allNotNull(deceasedAnyOtherNames)
-            && (deceasedAnyOtherNames && CollectionUtils.isEmpty(deceasedAliasNameList));
+                && (deceasedAnyOtherNames && CollectionUtils.isEmpty(deceasedAliasNameList));
+    }
+
+    @Transient
+    @AssertTrue(message = "deceasedForeignDeathCertTranslation is empty", groups = {IntestacyCrossFieldCheck.class})
+    public Boolean isDeceasedForeignDeathCertInEnglishTrue() {
+        return ObjectUtils.allNotNull(deceasedForeignDeathCertInEnglish)
+            && (deceasedForeignDeathCertInEnglish && deceasedForeignDeathCertTranslation == null);
     }
 
     @SuppressWarnings({"AbbreviationAsWordInName"})
