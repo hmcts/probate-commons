@@ -940,7 +940,7 @@ public class GrantOfRepresentationData extends CaseData {
     @AssertTrue(message = "when deceasedDiedEngOrWales is true, deceasedDeathCertificate cannot be null",
             groups = {IntestacyCrossFieldCheck.class})
     public Boolean isDeceasedDeathCertificatePopulatedWhenDeceasedDiedEngOrWales() {
-        return ObjectUtils.allNotNull(deceasedDiedEngOrWales) && (deceasedDiedEngOrWales
+        return ObjectUtils.allNotNull(deceasedDiedEngOrWales) && (!deceasedDiedEngOrWales
                 && deceasedDeathCertificate == null);
     }
 }
