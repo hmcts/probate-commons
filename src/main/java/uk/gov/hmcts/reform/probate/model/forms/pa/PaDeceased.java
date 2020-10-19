@@ -21,10 +21,10 @@ public class PaDeceased extends ProbateDeceased {
     public PaDeceased(String firstName, String lastName, Boolean alias, Map<String, AliasOtherNames> otherNames,
                       Boolean married, Address address, String postcode, String postcodeAddress, Boolean addressFound,
                       List<Map<String, Object>> addresses, LocalDateTime dateOfBirth, LocalDateTime dateOfDeath,
-                      String domicile, Boolean diedEngOrWales, String deathCertificate) {
-                      String domicile, Boolean englishForeignDeathCert, Boolean foreignDeathCertTranslation) {
+                      String domicile, Boolean diedEngOrWales, String deathCertificate, Boolean englishForeignDeathCert,
+                      Boolean foreignDeathCertTranslation) {
         super(firstName, lastName, alias, otherNames, married, address, postcode, postcodeAddress, addressFound,
-                addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate);
-                addresses, dateOfBirth, dateOfDeath, domicile, englishForeignDeathCert, foreignDeathCertTranslation);
+                addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
+                englishForeignDeathCert, foreignDeathCertTranslation);
     }
 }
