@@ -77,13 +77,15 @@ public class IntestacyDeceased extends ProbateDeceased {
     public IntestacyDeceased(String firstName, String lastName, Boolean alias, Map<String, AliasOtherNames> otherNames,
                              Boolean married, Address address, String postcode, String postcodeAddress,
                              Boolean addressFound, List<Map<String, Object>> addresses, LocalDateTime dateOfBirth,
-                             LocalDateTime dateOfDeath, String domicile, String maritalStatus,
-                             Boolean domiciledInEnglandOrWales, Boolean divorcedInEnglandOrWales,
-                             Boolean otherChildren,
+                             LocalDateTime dateOfDeath, String domicile, String maritalStatus, Boolean diedEngOrWales,
+                             String deathCertificate, Boolean domiciledInEnglandOrWales,
+                             Boolean divorcedInEnglandOrWales, Boolean otherChildren,
                              Boolean allDeceasedChildrenOverEighteen, Boolean anyDeceasedChildrenDieBeforeDeceased,
+                             Boolean englishForeignDeathCert, Boolean foreignDeathCertTranslation,
                              Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren) {
         super(firstName, lastName, alias, otherNames, married, address, postcode, postcodeAddress, addressFound,
-            addresses, dateOfBirth, dateOfDeath, domicile);
+            addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
+                englishForeignDeathCert, foreignDeathCertTranslation);
         this.maritalStatus = maritalStatus;
         this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
         this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;

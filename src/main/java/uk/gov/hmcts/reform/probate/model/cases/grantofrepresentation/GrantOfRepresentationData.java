@@ -32,6 +32,7 @@ import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
+import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 import uk.gov.hmcts.reform.probate.model.cases.DocumentLink;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
@@ -187,6 +188,14 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean childrenDied;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedForeignDeathCertInEnglish;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedForeignDeathCertTranslation;
 
     @JsonProperty("childrenDiedOverEighteen")
     public String childrenDiedOverEighteenText;
@@ -411,6 +420,12 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean languagePreferenceWelsh;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedDiedEngOrWales;
+
+    private DeathCertificate deceasedDeathCertificate;
 
     private List<CollectionMember<ExecutorApplying>> executorsApplying;
 
@@ -832,6 +847,23 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
+    public Boolean isDeceasedForeignDeathCertTranslated() {
+        if (this.getDeceasedForeignDeathCertInEnglish() != null
+                && this.getDeceasedForeignDeathCertTranslation() != null) {
+            return this.getDeceasedForeignDeathCertInEnglish() ? null : this.getDeceasedForeignDeathCertTranslation();
+        }
+        return null;
+    }
+
+    @Transient
+    public String getDeceasedDeathCert() {
+        if (this.getDeceasedDeathCertificate() != null && this.getDeceasedDiedEngOrWales() != null) {
+            return this.getDeceasedDiedEngOrWales() ? this.getDeceasedDeathCertificate().getDescription() : null;
+        }
+        return null;
+    }
+
+    @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath",
         groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
@@ -843,7 +875,7 @@ public class GrantOfRepresentationData extends CaseData {
     @AssertTrue(message = "deceasedAliasNameList must not be empty", groups = {IntestacyCrossFieldCheck.class})
     public Boolean isAliasNameListPopulated() {
         return ObjectUtils.allNotNull(deceasedAnyOtherNames)
-            && (deceasedAnyOtherNames && CollectionUtils.isEmpty(deceasedAliasNameList));
+                && (deceasedAnyOtherNames && CollectionUtils.isEmpty(deceasedAliasNameList));
     }
 
     @SuppressWarnings({"AbbreviationAsWordInName"})
