@@ -847,6 +847,23 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
+    public Boolean isDeceasedForeignDeathCertTranslated() {
+        if (this.getDeceasedForeignDeathCertInEnglish() != null
+                && this.getDeceasedForeignDeathCertTranslation() != null) {
+            return this.getDeceasedForeignDeathCertInEnglish() ? null : this.getDeceasedForeignDeathCertTranslation();
+        }
+        return null;
+    }
+
+    @Transient
+    public String getDeceasedDeathCert() {
+        if (this.getDeceasedDeathCertificate() != null && this.getDeceasedDiedEngOrWales() != null) {
+            return this.getDeceasedDiedEngOrWales() ? this.getDeceasedDeathCertificate().getDescription() : null;
+        }
+        return null;
+    }
+
+    @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath",
         groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
@@ -859,13 +876,6 @@ public class GrantOfRepresentationData extends CaseData {
     public Boolean isAliasNameListPopulated() {
         return ObjectUtils.allNotNull(deceasedAnyOtherNames)
                 && (deceasedAnyOtherNames && CollectionUtils.isEmpty(deceasedAliasNameList));
-    }
-
-    @Transient
-    @AssertTrue(message = "deceasedForeignDeathCertTranslation is empty", groups = {IntestacyCrossFieldCheck.class})
-    public Boolean isDeceasedForeignDeathCertInEnglishTrue() {
-        return ObjectUtils.allNotNull(deceasedForeignDeathCertInEnglish)
-            && (deceasedForeignDeathCertInEnglish && deceasedForeignDeathCertTranslation == null);
     }
 
     @SuppressWarnings({"AbbreviationAsWordInName"})
@@ -934,13 +944,5 @@ public class GrantOfRepresentationData extends CaseData {
     public Boolean isGrandChildrenSurvivedUnderEighteenPopulatedWhenMandatory() {
         return ObjectUtils.allNotNull(deceasedOtherChildren, childrenOverEighteenSurvived, childrenDied)
             && (deceasedOtherChildren && childrenDied && childrenOverEighteenSurvived == null);
-    }
-
-    @Transient
-    @AssertTrue(message = "when deceasedDiedEngOrWales is true, deceasedDeathCertificate cannot be null",
-            groups = {IntestacyCrossFieldCheck.class})
-    public Boolean isDeceasedDeathCertificatePopulatedWhenDeceasedDiedEngOrWales() {
-        return ObjectUtils.allNotNull(deceasedDiedEngOrWales) && (!deceasedDiedEngOrWales
-                && deceasedDeathCertificate == null);
     }
 }
