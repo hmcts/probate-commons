@@ -189,6 +189,14 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean childrenDied;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedForeignDeathCertInEnglish;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedForeignDeathCertTranslation;
+
     @JsonProperty("childrenDiedOverEighteen")
     public String childrenDiedOverEighteenText;
 
@@ -839,6 +847,23 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
+    public Boolean isDeceasedForeignDeathCertTranslated() {
+        if (this.getDeceasedForeignDeathCertInEnglish() != null
+                && this.getDeceasedForeignDeathCertTranslation() != null) {
+            return this.getDeceasedForeignDeathCertInEnglish() ? null : this.getDeceasedForeignDeathCertTranslation();
+        }
+        return null;
+    }
+
+    @Transient
+    public String getDeceasedDeathCert() {
+        if (this.getDeceasedDeathCertificate() != null && this.getDeceasedDiedEngOrWales() != null) {
+            return this.getDeceasedDiedEngOrWales() ? this.getDeceasedDeathCertificate().getDescription() : null;
+        }
+        return null;
+    }
+
+    @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath",
         groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
@@ -850,7 +875,7 @@ public class GrantOfRepresentationData extends CaseData {
     @AssertTrue(message = "deceasedAliasNameList must not be empty", groups = {IntestacyCrossFieldCheck.class})
     public Boolean isAliasNameListPopulated() {
         return ObjectUtils.allNotNull(deceasedAnyOtherNames)
-            && (deceasedAnyOtherNames && CollectionUtils.isEmpty(deceasedAliasNameList));
+                && (deceasedAnyOtherNames && CollectionUtils.isEmpty(deceasedAliasNameList));
     }
 
     @SuppressWarnings({"AbbreviationAsWordInName"})
@@ -919,13 +944,5 @@ public class GrantOfRepresentationData extends CaseData {
     public Boolean isGrandChildrenSurvivedUnderEighteenPopulatedWhenMandatory() {
         return ObjectUtils.allNotNull(deceasedOtherChildren, childrenOverEighteenSurvived, childrenDied)
             && (deceasedOtherChildren && childrenDied && childrenOverEighteenSurvived == null);
-    }
-
-    @Transient
-    @AssertTrue(message = "when deceasedDiedEngOrWales is true, deceasedDeathCertificate cannot be null",
-            groups = {IntestacyCrossFieldCheck.class})
-    public Boolean isDeceasedDeathCertificatePopulatedWhenDeceasedDiedEngOrWales() {
-        return ObjectUtils.allNotNull(deceasedDiedEngOrWales) && (deceasedDiedEngOrWales
-                && deceasedDeathCertificate == null);
     }
 }

@@ -222,6 +222,8 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setDeceasedAnyOtherNames(true);
         grantOfRepresentationData.setDeceasedDiedEngOrWales(true);
         grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(false);
+        grantOfRepresentationData.setDeceasedForeignDeathCertTranslation(true);
     }
 
     private static void createPrimaryApplicantDetails(GrantOfRepresentationData grantOfRepresentationData) {
@@ -260,6 +262,8 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setDeceasedAnyOtherNames(false);
         grantOfRepresentationData.setDeceasedDiedEngOrWales(true);
         grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(false);
+        grantOfRepresentationData.setDeceasedForeignDeathCertTranslation(true);
         grantOfRepresentationData.setRegistryLocation(RegistryLocation.BIRMINGHAM);
         grantOfRepresentationData.setDeceasedHasAssetsOutsideUK(true);
         grantOfRepresentationData.setAssetsOutsideNetValue(10050L);

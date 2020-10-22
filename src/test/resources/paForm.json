@@ -5,6 +5,8 @@
     "lastName": "Stark",
     "alias": "optionNo",
     "married": "optionNo",
+    "englishForeignDeathCert": "optionNo",
+    "foreignDeathCertTranslation": "optionYes",
     "address": {
       "addressLine1": "Winterfell",
       "postTown": "North Westeros",
