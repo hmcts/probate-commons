@@ -847,10 +847,20 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
+    public Boolean isDeceasedDeathCertInEnglish() {
+        if (this.getDeceasedDiedEngOrWales() != null && this.getDeceasedForeignDeathCertInEnglish() != null) {
+            return this.getDeceasedDiedEngOrWales() ? null : this.getDeceasedForeignDeathCertInEnglish();
+        }
+        return null;
+    }
+
+    @Transient
     public Boolean isDeceasedForeignDeathCertTranslated() {
-        if (this.getDeceasedForeignDeathCertInEnglish() != null
-                && this.getDeceasedForeignDeathCertTranslation() != null) {
-            return this.getDeceasedForeignDeathCertInEnglish() ? null : this.getDeceasedForeignDeathCertTranslation();
+        if (this.getDeceasedDiedEngOrWales() != null
+                && this.getDeceasedForeignDeathCertInEnglish() != null
+                        && this.getDeceasedForeignDeathCertTranslation() != null) {
+            return this.getDeceasedDiedEngOrWales() || this.getDeceasedForeignDeathCertInEnglish()
+                    ? null : this.getDeceasedForeignDeathCertTranslation();
         }
         return null;
     }
