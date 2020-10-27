@@ -11,7 +11,7 @@ import static uk.gov.hmcts.reform.probate.model.cases.DeathCertificate.Constants
 public enum DeathCertificate {
 
     @JsonProperty(DEATH_CERTIFICATE_VALUE) DEATH_CERTIFICATE("optionDeathCertificate"),
-    @JsonProperty(INTERIM_DEATH_CERTIFICATE_VALUE) INTERIM_DEATH_CERTIFICATE("optionInterimDeathCertificate");
+    @JsonProperty(INTERIM_DEATH_CERTIFICATE_VALUE) INTERIM_DEATH_CERTIFICATE("optionInterimCertificate");
 
     @Getter
     private final String description;
