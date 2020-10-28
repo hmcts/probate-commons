@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
+import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -271,5 +272,52 @@ public class GrantOfRepresentationTest {
         Assert.assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvived(), is(equalTo(Boolean.TRUE)));
         Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteen(), is(equalTo(Boolean.FALSE)));
         Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteen(), is(equalTo(Boolean.TRUE)));
+    }
+
+
+    @Test
+    public void shouldDetermineIfDeceasedDeathCertInEnglish() {
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.TRUE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.TRUE);
+        Assert.assertThat(grantOfRepresentationData.isDeceasedDeathCertInEnglish(),
+                is(equalTo(null)));
+
+
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
+        Assert.assertThat(grantOfRepresentationData.isDeceasedDeathCertInEnglish(),
+                is(equalTo(Boolean.TRUE)));
+    }
+
+    @Test
+    public void shouldDetermineIfDeceasedForeignDeathCertIsTranslated() {
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.TRUE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.TRUE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertTranslation(Boolean.FALSE);
+        Assert.assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
+                is(equalTo(null)));
+
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.TRUE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertTranslation(Boolean.FALSE);
+        Assert.assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
+                is(equalTo(null)));
+
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.FALSE);
+        Assert.assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
+                is(equalTo(Boolean.FALSE)));
+    }
+
+    @Test
+    public void shouldDetermineDeceasedDeathCertificateValue() {
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
+        grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
+        Assert.assertThat(grantOfRepresentationData.getDeceasedDeathCert(),
+                is(equalTo(null)));
+
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.TRUE);
+        grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
+        Assert.assertThat(grantOfRepresentationData.getDeceasedDeathCert(),
+                is(equalTo("optionDeathCertificate")));
     }
 }
