@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.Deceased;
+import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -46,6 +48,10 @@ public class CaveatDeceased extends Deceased {
     private Address address;
 
     private Map<String, AliasOtherNames> otherNames;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean alias;
 
 }
 

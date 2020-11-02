@@ -68,6 +68,7 @@ public class CaveatFormTest {
                 .addressLine1("Winterfell, Westeros")
                 .build();
         caveatDeceased.setAddress(deceasedAddress);
+        caveatDeceased.setAlias(true);
         AliasOtherNames aliasOtherNames = new AliasOtherNames();
         aliasOtherNames.setFirstName("King");
         aliasOtherNames.setLastName("North");
