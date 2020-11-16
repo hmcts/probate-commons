@@ -13,6 +13,7 @@ import uk.gov.hmcts.reform.probate.model.TestUtils;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
+import uk.gov.hmcts.reform.probate.model.forms.Equality;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
@@ -67,6 +68,7 @@ public class CaveatFormTest {
                 .addressLine1("Winterfell, Westeros")
                 .build();
         caveatDeceased.setAddress(deceasedAddress);
+        caveatDeceased.setAlias(true);
         AliasOtherNames aliasOtherNames = new AliasOtherNames();
         aliasOtherNames.setFirstName("King");
         aliasOtherNames.setLastName("North");
@@ -96,6 +98,9 @@ public class CaveatFormTest {
         payment.setTransactionId("v5bf26kn5rq9rvdq7gsvn7v11d");
         payment.setAmount(new BigDecimal("220.5"));
         caveatForm.setPayments(Lists.newArrayList(payment));
+
+        Equality equality = Equality.builder().pcqId("1000").build();
+        caveatForm.setEquality(equality);
     }
 
     @Test

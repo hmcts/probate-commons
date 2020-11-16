@@ -19,6 +19,7 @@ import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
 import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Declaration;
+import uk.gov.hmcts.reform.probate.model.forms.Equality;
 import uk.gov.hmcts.reform.probate.model.forms.IhtMethod;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
@@ -148,6 +149,9 @@ public class IntestacyFormTest {
         payment.setTransactionId("v5bf26kn5rq9rvdq7gsvn7v11d");
         payment.setAmount(new BigDecimal("220.5"));
         intestacyForm.setPayments(Lists.newArrayList(payment));
+
+        Equality equality = Equality.builder().pcqId("1001").build();
+        intestacyForm.setEquality(equality);
     }
 
     private List<Map<String, Object>> getAddresses() {

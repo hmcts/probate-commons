@@ -23,6 +23,10 @@
   "deceasedDateOfBirth": "1930-01-01",
   "deceasedMaritalStatus": "marriedCivilPartnership",
   "deceasedAnyOtherNames": "No",
+  "deceasedDiedEngOrWales": "Yes",
+  "deceasedDeathCertificate": "deathCertificate",
+  "deceasedForeignDeathCertInEnglish": "No",
+  "deceasedForeignDeathCertTranslation": "Yes",
   "deceasedAliasNameList": [
     {
       "value": {
@@ -251,5 +255,6 @@
         "exceptionRecordReference": null
       }
     }
-  ]
+  ],
+  "pcqId": "1004"
 }

@@ -15,6 +15,7 @@ import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Declaration;
 import uk.gov.hmcts.reform.probate.model.forms.DeclarationDeclaration;
 import uk.gov.hmcts.reform.probate.model.forms.DeclarationHolder;
+import uk.gov.hmcts.reform.probate.model.forms.Equality;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.IhtMethod;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
@@ -109,6 +110,10 @@ public class PaFormTest {
                 .dateOfDeath(LocalDateTime.of(2019, 1, 1, 0, 0, 0))
                 .lastName("Stark")
                 .firstName("Ned")
+                .diedEngOrWales(true)
+                .deathCertificate("optionDeathCertificate")
+                .englishForeignDeathCert(false)
+                .foreignDeathCertTranslation(true)
                 .build())
             .registry(Registry.builder()
                 .name("Manchester")
@@ -188,9 +193,9 @@ public class PaFormTest {
                 .hasEmailChanged(false)
                 .declarationCheckbox(true)
                 .build())
+                .equality(Equality.builder()
+                        .pcqId("1002").build())
             .build();
-
-
     }
 
     @Test
@@ -203,7 +208,6 @@ public class PaFormTest {
     @Test
     public void shouldSerializePaFormCorrectly() throws IOException, JSONException {
         String paFormAsJsonStr = objectMapper.writeValueAsString(paForm);
-        System.out.println(paFormAsJsonStr);
         JSONAssert.assertEquals(formJsonFromFile, paFormAsJsonStr, true);
     }
 

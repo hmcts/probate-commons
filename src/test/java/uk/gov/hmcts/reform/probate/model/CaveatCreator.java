@@ -37,6 +37,7 @@ public class CaveatCreator {
         caveatData.setRegistryLocation(RegistryLocation.OXFORD);
         caveatData.setExpiryDate(LocalDate.of(2019, 2, 14));
         caveatData.setPaperForm(false);
+        caveatData.setPcqId("1003");
         return caveatData;
     }
 
