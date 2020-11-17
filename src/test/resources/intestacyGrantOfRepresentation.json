@@ -14,6 +14,8 @@
   "deceasedDateOfBirth": "1930-01-01",
   "deceasedMaritalStatus": "marriedCivilPartnership",
   "deceasedAnyOtherNames": "No",
+  "deceasedDiedEngOrWales": "Yes",
+  "deceasedDeathCertificate": "deathCertificate",
   "deceasedAliasNameList": [
     {
       "value": {
@@ -33,6 +35,8 @@
   "deceasedDivorcedInEnglandOrWales": "No",
   "deceasedOtherChildren": "Yes",
   "deceasedAnyChildren": "No",
+  "deceasedForeignDeathCertInEnglish": "No",
+  "deceasedForeignDeathCertTranslation": "Yes",
   "childrenDied": "No",
   "childrenOverEighteenSurvived": "Yes",
   "childrenUnderEighteenSurvived": "2",
@@ -102,5 +106,6 @@
   "ihtGrossValueField": "100000",
   "ihtNetValueField": "100000",
   "outsideUKGrantCopies": 6,
-  "caseType": "intestacy"
+  "caseType": "intestacy",
+  "pcqId": "1004"
 }
