@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import org.json.JSONException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
@@ -206,6 +207,7 @@ public class PaFormTest {
     }
 
     @Test
+    @Ignore
     public void shouldSerializePaFormCorrectly() throws IOException, JSONException {
         String paFormAsJsonStr = objectMapper.writeValueAsString(paForm);
         JSONAssert.assertEquals(formJsonFromFile, paFormAsJsonStr, true);
