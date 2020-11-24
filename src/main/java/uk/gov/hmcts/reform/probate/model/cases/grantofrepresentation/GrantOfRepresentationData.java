@@ -795,6 +795,14 @@ public class GrantOfRepresentationData extends CaseData {
 
     @Transient
     public Boolean haveAllExecutorsAgreed() {
+        System.out.println("COMMON =============================> haveAllExecutorsAgreed");
+        System.out.println("DECLARATION CHECK BOX => " + String.valueOf(this.getDeclarationCheckbox()));
+
+        System.out.println("START FOR LOOP");
+        this.getExecutorsApplying().forEach(executorsApplying -> 
+            System.out.println("EXECUTORR AGREED => "
+            + String.valueOf(executorsApplying.getValue().getApplyingExecutorAgreed()))
+        );
         return this.getExecutorsApplying().stream().filter(executorApplying ->
             (executorApplying.getValue().getApplyingExecutorApplicant() == null
                 || !executorApplying.getValue().getApplyingExecutorApplicant())).allMatch(executorApplying ->
