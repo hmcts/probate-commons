@@ -791,18 +791,26 @@ public class GrantOfRepresentationData extends CaseData {
     @Transient
     public void setInvitationAgreedFlagForExecutorApplying(String invitationId, Boolean invitationAgreed) {
         this.getExecutorApplyingByInviteId(invitationId).setApplyingExecutorAgreed(invitationAgreed);
-    }
-
-    @Transient
-    public Boolean haveAllExecutorsAgreed() {
-        System.out.println("COMMON =============================> haveAllExecutorsAgreed");
-        System.out.println("DECLARATION CHECK BOX => " + String.valueOf(this.getDeclarationCheckbox()));
-
+        System.out.println("COMMON --------- setInvitationAgreedFlagForExecutorApplying");
         System.out.println("START FOR LOOP");
         this.getExecutorsApplying().forEach(executorsApplying -> 
             System.out.println("EXECUTORR AGREED => "
             + String.valueOf(executorsApplying.getValue().getApplyingExecutorAgreed()))
         );
+        System.out.println("FINISHED LOOP ==========");
+    }
+
+    @Transient
+    public Boolean haveAllExecutorsAgreed() {
+        System.out.println("COMMON =============================> haveAllExecutorsAgreed");
+        System.out.println("COMMON  DECLARATION CHECK BOX => " + String.valueOf(this.getDeclarationCheckbox()));
+
+        System.out.println("COMMON START FOR LOOP");
+        this.getExecutorsApplying().forEach(executorsApplying -> 
+            System.out.println("EXECUTORR AGREED => "
+            + String.valueOf(executorsApplying.getValue().getApplyingExecutorAgreed()))
+        );
+        System.out.println("================ END OF haveAllExecutorsAgreed");
         return this.getExecutorsApplying().stream().filter(executorApplying ->
             (executorApplying.getValue().getApplyingExecutorApplicant() == null
                 || !executorApplying.getValue().getApplyingExecutorApplicant())).allMatch(executorApplying ->
