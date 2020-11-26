@@ -59,12 +59,4 @@ public class ExecutorApplying {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean applyingExecutorHasOtherName;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean applyingExecutorEmailChanged;
-
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean applyingExecutorEmailSent;
-
 }
