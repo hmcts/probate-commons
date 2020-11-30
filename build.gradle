@@ -20,7 +20,7 @@ version buildNumber
 
 
 checkstyle {
-    maxWarnings = 0
+    maxWarnings = 250
     toolVersion = '8.5'
 }
 
@@ -120,7 +120,7 @@ def versions = [
         springfoxSwagger  : '2.9.2',
         springBoot        : '2.1.0.RELEASE',
         commonsIo         : '2.6',
-        pact_version      : '4.1.7'
+        pact_version      : '3.5.24'
 ]
 
 dependencies {
@@ -135,10 +135,6 @@ dependencies {
     compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: versions.hibernateValidator
     compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
     compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
-    compile group: 'au.com.dius.pact.consumer', name: 'junit5', version: versions.pact_version
-    compile group: 'au.com.dius.pact.consumer', name: 'java8', version: versions.pact_version
-    compile group: 'au.com.dius.pact.consumer', name: 'junit5', version: versions.pact_version
-    compile group: 'au.com.dius.pact.consumer', name: 'java8', version: versions.pact_version
 
     testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
@@ -146,7 +142,26 @@ dependencies {
     testCompile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
     testCompile group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
 
+    // pact
+
+    testCompile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.0'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+
+    compile group: 'au.com.dius', name: 'pact-jvm-provider-spring_2.12', version: versions.pact_version
+    compile group: 'au.com.dius', name: 'pact-jvm-consumer-junit5_2.12', version: versions.pact_version
+    compile group: 'au.com.dius', name: 'pact-jvm-consumer-java8_2.12', version: versions.pact_version
+    compile group: 'au.com.dius', name: 'pact-jvm-consumer-java8_2.12', version: versions.pact_version
+
     testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
+    testCompile("org.junit.jupiter:junit-jupiter-engine:5.3.2")
+    testCompile('org.junit.jupiter:junit-jupiter-api:5.3.2')
+
+    // pact
+
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
+
+
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.2")
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.3.2')
     testImplementation('org.mockito:mockito-core:2.7.22')
