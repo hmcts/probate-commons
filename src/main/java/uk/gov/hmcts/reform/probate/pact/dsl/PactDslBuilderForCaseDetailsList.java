@@ -77,7 +77,7 @@ public final class PactDslBuilderForCaseDetailsList {
                     .stringType("deceased", "Ned Stark was born on 6 October 1902 and died "
                        + "on 22 December 1983, domiciled in England and Wales.")
                     .stringType("applicant", "We, Jon Snow of place make the following statement:")
-                    .minArrayLike("executorsApplying", 4, 0, executorApplying -> executorApplying
+                    .minArrayLike("executorsApplying", 0, 2, executorApplying -> executorApplying
                                     .object("value", (value) -> value
                                         .stringType("name", "Jon Snow, an executor named in the "
                                                 + "will or codicils, is applying for probate.")
@@ -166,7 +166,7 @@ public final class PactDslBuilderForCaseDetailsList {
                                 + "Cathedral Wells BA5 2PA United Kingdom, Exec4 Name o Wells Cathedral Wells BA5 2PA "
                           + "United Kingdom, Exec5 Name o Wells Cathedral Wells BA5 2PA United Kingdom a/ac Exec6 Name "
                                 + "o Wells Cathedral Wells BA5 2PA United Kingdom, yn gwneud y datganiad canlynol:")
-                        .minArrayLike("executorsApplying", 4, 4,
+                        .minArrayLike("executorsApplying", 0, 4,
                                 executorsApplying -> executorsApplying
                                         .stringType("id", "b4c0e385-193e-4195-9657-a1091df50b28")
                                         .object("value", value -> value
@@ -184,13 +184,13 @@ public final class PactDslBuilderForCaseDetailsList {
                         .stringType("deceasedOtherNames", "")
                         .stringType("deceasedEstateValue", "Mae gwerth gros yr ystad yn "
                                 + "&pound;2000000.00 ac mae gwerth net yr ystad yn &pound;1000000.00.")
-                        .minArrayLike("executorsNotApplying", 4, 4, executorsNotApplying -> executorsNotApplying
+                        .minArrayLike("executorsNotApplying", 0, 4, executorsNotApplying -> executorsNotApplying
                         .stringType("id", "cb62d566-b252-4b8d-abd8-da6eedc26c26")
                         .object("value", value -> value
                         .stringType("executor", "executor:Nid yw Exec2 Name, ysgutor a enwir yn "
                          + "yr ewyllys, yn gwneud y cais hwn oherwydd bu iddynt farw cyn i Deceased "
                                 + "fn Deceased ln farw."))))
-                .minArrayLike("executorsNotApplying", 4, 4, executorNotApplying -> executorNotApplying
+                .minArrayLike("executorsNotApplying", 0, 4, executorNotApplying -> executorNotApplying
                         .stringType("id", "f803c7f0-d123-476d-acd5-7c736b3d76af")
                         .object("value", (value) -> value
                             .stringType("notApplyingExecutorName", "Burton Leonard")
@@ -536,9 +536,9 @@ freinio yn Deceased fn Deceased ln a setlwyd cyn marwolaeth (ac nid drwy ewyllys
                                               boolean withPayments) {
         return newJsonBody((o) -> {
             o.numberType("id", caseId)
-                    .stringType("jurisdiction", "DIVORCE")
+                    .stringType("jurisdiction", "PROBATE")
                     .stringMatcher("state", "Draft|PaAppCreated|CaseCreated", "CaseCreated")
-                    .stringValue("case_type", "AwaitingDecreeNisi")
+                    .stringValue("case_type_id", "GrantOfRepresentation")
                     .object("data", (dataMap) -> {
                         getCaseData(emailAddress, withExecutors, withPayments, dataMap);
                     });
