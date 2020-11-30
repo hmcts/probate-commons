@@ -384,9 +384,10 @@ public final class PactDslBuilderForCaseDetailsList {
                                               boolean isWelsh, boolean withPayments) {
         return newJsonBody((o) -> {
             o.numberType("id", caseId)
-                    .stringType("jurisdiction", "DIVORCE")
-                    .stringType("state", "Draft|PaAppCreated|CaseCreated", "CaseCreated")
-                    .stringType("case_type", "AwaitingDecreeNisi")
+                    .stringType("jurisdiction", "PROBATE")
+                    .stringType("state", "CaseCreated")
+                    .stringType("case_type", "GrantOfRepresentation")
+                    .stringType("security_classification", "PUBLIC")
                     .object("data", (dataMap) -> {
                         getCaseData(emailAddress, withExecutors, withPayments, isWelsh, dataMap);
                     });
