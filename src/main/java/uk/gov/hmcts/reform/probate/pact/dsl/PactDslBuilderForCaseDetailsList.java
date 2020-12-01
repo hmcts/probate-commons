@@ -22,9 +22,8 @@ public final class PactDslBuilderForCaseDetailsList {
                 .stringType("token", token)
                 .object("case_details", (cd) -> {
                     cd.numberType("id", 2000);
-                    cd.stringMatcher("jurisdiction",  ALPHABETIC_REGEX,"DIVORCE");
-                    cd.stringMatcher("callback_response_status", ALPHABETIC_REGEX,  "DONE");
-                    cd.stringMatcher("case_type", ALPHABETIC_REGEX,  "GRANT_OF_REPRESENTATION");
+                    cd.stringMatcher("jurisdiction",  ALPHABETIC_REGEX,"PROBATE");
+                    cd.stringMatcher("case_type", ALPHABETIC_REGEX,  "GrantOfRepresentation");
                     //Map<Object,Object> data property  of  CaseDetails object.
                     cd.object("data", (dataMap) -> {
                         getCaseData(emailAddress, withExecutors,isWelsh ,  withPayments, dataMap);
