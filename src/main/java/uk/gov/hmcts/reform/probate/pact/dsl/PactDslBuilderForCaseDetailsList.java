@@ -465,4 +465,14 @@ public final class PactDslBuilderForCaseDetailsList {
                            });
         }).build();
     }
+
+    public static DslPart buildListOfCaseDetailsDsl(Long caseId) {
+        return newJsonArray((rootArray) -> {
+            rootArray.object((dataMap) ->
+                    dataMap.stringValue("case_type_id", "DIVORCE")
+                            .object("case_data", (caseData) -> {
+                                getCaseData("email@mailnator.com", false,false,false,  dataMap);
+                            }));
+        }).build();
+    }
 }
