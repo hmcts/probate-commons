@@ -4,6 +4,7 @@ import au.com.dius.pact.consumer.dsl.DslPart;
 import au.com.dius.pact.consumer.dsl.PactDslJsonArray;
 import io.pactfoundation.consumer.dsl.LambdaDslObject;
 
+import static io.pactfoundation.consumer.dsl.LambdaDsl.newJsonArray;
 import static io.pactfoundation.consumer.dsl.LambdaDsl.newJsonBody;
 
 public final class PactDslBuilderForCaseDetailsList {
@@ -447,6 +448,16 @@ public final class PactDslBuilderForCaseDetailsList {
                                    getCaseData(emailAddress, withExecutors, isWelsh, withPayments,  dataMap);
                                });
                            });
+        }).build();
+    }
+
+    public static DslPart buildListOfCaseDetailsDsl(Long caseId) {
+        return newJsonArray((rootArray) -> {
+            rootArray.object((dataMap) ->
+                    dataMap.stringValue("case_type_id", "DIVORCE")
+                            .object("case_data", (caseData) -> {
+                                getCaseData("email@mailnator.com", false,false,false,  dataMap);
+                            }));
         }).build();
     }
 }
