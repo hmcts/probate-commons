@@ -1,7 +1,6 @@
 package uk.gov.hmcts.reform.probate.pact.dsl;
 
 import au.com.dius.pact.consumer.dsl.DslPart;
-import au.com.dius.pact.consumer.dsl.PactDslJsonArray;
 import io.pactfoundation.consumer.dsl.LambdaDslObject;
 
 import static io.pactfoundation.consumer.dsl.LambdaDsl.newJsonArray;
@@ -115,8 +114,14 @@ public final class PactDslBuilderForCaseDetailsList {
             .stringType("extraCopiesOfGrant", "4")
             .stringType("ihtReferenceNumber", "ref")
             .stringType("numberOfApplicants", "2")
-            .minArrayLike("boDocumentsUploaded", 1, 1,
-                boDocumentsUploaded -> boDocumentsUploaded.stringType("docs"))
+            .minArrayLike("boDocumentsUploaded", 1, 1, doc -> doc
+              .stringType("comment", "Comments")
+              .object("documentLink", (docLink) ->
+                  docLink.stringType("documentUrl", "http://localhost:8080/url")
+                    .stringType("fileName","documentfile.txt"))
+              .object("documentType", (docType) ->
+                docType.stringType("LEGAL_STATEMENT_NAME", "LEGAL_STATEMENT_NAME")))
+
             .stringMatcher("deceasedDateOfBirth", REGEX_DATE, "1930-01-01")
             .stringMatcher("deceasedDateOfDeath", REGEX_DATE, "2018-01-01")
             .stringType("declarationCheckbox", "Yes")
@@ -294,7 +299,7 @@ public final class PactDslBuilderForCaseDetailsList {
             .stringType("deceasedMarriedAfterWillOrCodicilDate", "No");
 
         // welsh executors
-         if(isWelsh) {
+        if (isWelsh) {
             dataMap.object("welshLegalStatement", welshLegalStatement -> welshLegalStatement
                 .stringType("intro", "Mae&rsquo;r datganiad hwn wedi&rsquo;i seilio ar yr "
                         + "wybodaeth y mae Applicant fn Applicant ln wedi&rsquo;i rhoi yn eu cais. Bydd "
@@ -334,9 +339,9 @@ public final class PactDslBuilderForCaseDetailsList {
         }
 
         // welsh declartion
-        if(isWelsh) {
+        if (isWelsh) {
             dataMap.object("welshDeclaration",
-                   (declaration) -> declaration
+                (declaration) -> declaration
                     .stringType("accept", "Rwy&rsquo;n cadarnhau y byddaf yn gweinyddu "
                                + " ystad yr unigolyn sydd wedi"
                                + " marw yn unol &acirc;&rsquo;r gyfraith, a bod fy  nghais yn gywir.")
@@ -362,7 +367,7 @@ public final class PactDslBuilderForCaseDetailsList {
         }
 
         // withExecutors
-        if(withExecutors) {
+        if (withExecutors) {
             dataMap.minArrayLike("executorsApplying", 1, 1,
                 executorApplying -> executorApplying
                 .stringType("id", "b4c0e385-193e-4195-9657-a1091df50b28")
@@ -381,8 +386,6 @@ public final class PactDslBuilderForCaseDetailsList {
 
     }
 
-
-    //TODO : this returns a Array of Array , rather than an Array . Needs to be fixed.
     public static DslPart buildNewListOfCaseDetailsDsl(Long caseId, String emailAddress, boolean withExecutors,
                                                        boolean isWelsh, boolean withPayments) {
         return newJsonArray((rootArray) -> {
@@ -409,47 +412,6 @@ public final class PactDslBuilderForCaseDetailsList {
         }).build();
     }
 
-    public static DslPart buildListOfCaseDetailsDsl(Long caseId, String emailAddress,
-                                         boolean withExecutors, boolean withPayments) {
-        return PactDslJsonArray
-            .arrayEachLike(2)
-                .stringValue("case_type", "AwaitingDecreeNisi")
-                .stringValue("jurisdiction","divorce")
-                .object("case_data")
-                    .numberType("outsideUKGrantCopies", 6)
-                    .stringValue("applicationType", "Personal")
-                    .stringMatcher("applicationSubmittedDate", REGEX_DATE, "2018-05-17")
-                    .stringType("primaryApplicantForenames", "Jon")
-                    .stringType("primaryApplicantSurname", "Snow")
-                    .stringMatcher("primaryApplicantAddressFound",
-                        "Yes|No", "Yes")
-                    .stringMatcher("primaryApplicantPhoneNumber", "[0-9]+", "123455678")
-                    .stringMatcher("primaryApplicantRelationshipToDeceased",
-                        "partner|child|sibling|partner|parent|adoptedChild|other", "adoptedChild")
-                    .stringMatcher("primaryApplicantAdoptionInEnglandOrWales", "(Yes|No)", "Yes")
-                    .stringValue("primaryApplicantEmailAddress", "someEmail....")
-                    .object("primaryApplicantAddress")
-                        .stringType("AddressLine1", "Pret a Manger")
-                        .stringType("AddressLine2", "St. Georges Hospital")
-                        .stringType("PostTown", "London")
-                        .stringType("PostCode", "SW17 0QT")
-                    .closeObject()
-                    .object("")
-                        .stringType("deceasedForenames", "Ned")
-                        .stringType("deceasedSurname", "Stark")
-                        .stringMatcher("deceasedDateOfBirth", REGEX_DATE, "1930-01-01")
-                        .stringMatcher("deceasedDateOfDeath", REGEX_DATE, "2018-01-01")
-                    .closeObject()
-                    .object("deceasedAddress")
-                        .stringType("AddressLine1", "Winterfell")
-                        .stringType("AddressLine2", "Westeros")
-                        .stringType("PostTown", "London")
-                        .stringType("PostCode", "SW17 0QT")
-                    .closeObject()
-                    //TODO Not able to add String types after this , only .object ... closeObject() types.
-                    .closeObject();
-    }
-
     public static DslPart buildSearchResultDsl(Long caseId, String emailAddress,
                                                boolean withExecutors,boolean isWelsh, boolean withPayments) {
         return newJsonBody((o) -> {
@@ -469,7 +431,7 @@ public final class PactDslBuilderForCaseDetailsList {
     public static DslPart buildListOfCaseDetailsDsl(Long caseId) {
         return newJsonArray((rootArray) -> {
             rootArray.object((dataMap) ->
-                    dataMap.stringValue("case_type_id", "DIVORCE")
+                    dataMap.stringValue("case_type_id", "PROBATE")
                             .object("case_data", (caseData) -> {
                                 getCaseData("email@mailnator.com", false,false,false,  dataMap);
                             }));
