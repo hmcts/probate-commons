@@ -128,8 +128,8 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
-    compileOnly group:'org.projectlombok', name: 'lombok', version: versions.lombok
-    annotationProcessor group:'org.projectlombok', name:'lombok', version: versions.lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: versions.lombok
 
     compile group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
     compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: versions.hibernateValidator
@@ -143,8 +143,6 @@ dependencies {
     testCompile group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
 
     // pact
-
-    testCompile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.0'
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 
     compile group: 'au.com.dius', name: 'pact-jvm-provider-spring_2.12', version: versions.pact_version
@@ -158,10 +156,7 @@ dependencies {
     testCompile('org.junit.jupiter:junit-jupiter-api:5.3.2')
 
     // pact
-
     testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
-
-
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.2")
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.3.2')
     testImplementation('org.mockito:mockito-core:2.7.22')
