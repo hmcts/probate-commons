@@ -453,7 +453,7 @@ public final class PactDslBuilderForCaseDetailsList {
             rootArray.object((dataMap) ->
                 dataMap.stringValue("case_type_id", "PROBATE")
                     .object("case_data", (caseData) -> {
-                        getCaseData(false, false, dataMap);
+                        getCaseData(true, true, dataMap);
                     }));
         }).build();
     }
