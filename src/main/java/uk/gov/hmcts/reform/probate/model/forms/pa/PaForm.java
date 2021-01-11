@@ -84,7 +84,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
                   Language language, Equality equality) {
-        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language);
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language, null);
         this.applicantEmail = applicantEmail;
         this.declaration = declaration;
         this.documents = documents;

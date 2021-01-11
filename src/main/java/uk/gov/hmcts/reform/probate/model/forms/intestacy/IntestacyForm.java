@@ -72,7 +72,7 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
                          String applicantEmail, DocumentUpload statementOfTruthDocument, String caseType,
                          Language language, Equality equality) {
 
-        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language);
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language, null);
         this.declaration = declaration;
         this.documents = documents;
         this.iht = iht;
