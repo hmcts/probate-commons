@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
+import uk.gov.hmcts.reform.probate.model.cases.ProbateCaseDetails;
 import uk.gov.hmcts.reform.probate.model.forms.caveat.CaveatApplicant;
 import uk.gov.hmcts.reform.probate.model.forms.caveat.CaveatDeceased;
 import uk.gov.hmcts.reform.probate.model.forms.caveat.CaveatForm;
@@ -71,5 +72,6 @@ public abstract class Form<D extends Deceased, A extends Applicant> {
 
     private Language language;
 
+    private ProbateCaseDetails probateCaseDetails;
 
 }
