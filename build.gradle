@@ -112,7 +112,7 @@ bintray {
 }
 
 def versions = [
-        jupiter           : '5.3.2',
+        jupiter           : '5.7.1',
         lombok            : '1.18.16',
         jackson           : '2.11.2',
         apacheCommons     : '3.10',
@@ -144,7 +144,7 @@ dependencies {
 
     testCompile("org.junit.jupiter:junit-jupiter-api:5.7.1")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.7.1")
-    testImplementation('org.junit.jupiter:junit-jupiter-api:5.3.2')
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.7.1')
     testImplementation('org.mockito:mockito-core:2.7.22')
 
 
