@@ -7,8 +7,6 @@ import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 import uk.gov.hmcts.reform.probate.model.TestUtils;
-import uk.gov.hmcts.reform.probate.model.payments.FeeDto;
-import uk.gov.hmcts.reform.probate.model.payments.PaymentDto;
 import uk.gov.hmcts.reform.probate.model.payments.PaymentDto.LinkDto;
 import uk.gov.hmcts.reform.probate.model.payments.PaymentDto.LinksDto;
 
@@ -41,19 +39,19 @@ public class PaymentDtoTest {
         final FeeDto fee1 = new FeeDto();
         fee1.setCode("FEE0226");
         fee1.setVersion("1");
-        fee1.setVolume(new Integer("1"));
+        fee1.setVolume(Integer.valueOf("1"));
         fee1.setCalculatedAmount(new BigDecimal("215.00"));
         
         final FeeDto fee2 = new FeeDto();
         fee2.setCode("FEE0003");
         fee2.setVersion("3");
-        fee2.setVolume(new Integer("2"));
+        fee2.setVolume(Integer.valueOf("2"));
         fee2.setCalculatedAmount(new BigDecimal("1.00"));
         
         final FeeDto fee3 = new FeeDto();
         fee3.setCode("FEE0003");
         fee3.setVersion("3");
-        fee3.setVolume(new Integer("1"));
+        fee3.setVolume(Integer.valueOf("1"));
         fee3.setCalculatedAmount(new BigDecimal("0.50"));
         
         LinkDto self = new LinkDto();

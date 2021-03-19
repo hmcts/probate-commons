@@ -112,6 +112,7 @@ public class CaveatFormTest {
 
     @Test
     public void shouldSerializeCaveatFormCorrectly() throws IOException, JSONException {
+        //objectMapper.setDateFormat(new StdDateFormat().withColonInTimeZone(Boolean.FALSE));
         String caveatFormAsJsonStr = objectMapper.writeValueAsString(caveatForm);
 
         JSONAssert.assertEquals(formJsonFromFile, caveatFormAsJsonStr, true);
