@@ -1,6 +1,14 @@
 {
   "type": "GrantOfRepresentation",
   "bulkScanCaseReference": "123",
+  "bulkScanEnvelopes": [
+    {
+      "value": {
+        "id": "1",
+        "action": "Action"
+      }
+    }
+  ],
   "applicationType": "Solicitor",
   "primaryApplicantEmailAddress": "jon.snow@thenorth.com",
   "registryLocation": "ctsc",
