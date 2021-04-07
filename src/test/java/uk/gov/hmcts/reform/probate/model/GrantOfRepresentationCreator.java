@@ -339,7 +339,17 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setAllDeceasedChildrenOverEighteen(true);
         grantOfRepresentationData.setAnyDeceasedChildrenDieBeforeDeceased(false);
         grantOfRepresentationData.setAnyDeceasedGrandChildrenUnderEighteen(true);
+        CollectionMember<BulkScanEnvelope> bulkScanEnvelopeCollectionMember = new CollectionMember<>();
+        bulkScanEnvelopeCollectionMember.setValue(getBulkScanEnvelope());
+        grantOfRepresentationData.setBulkScanEnvelopes((List<CollectionMember<BulkScanEnvelope>>)
+                Arrays.asList(bulkScanEnvelopeCollectionMember));
         return grantOfRepresentationData;
+    }
+
+    private static BulkScanEnvelope getBulkScanEnvelope() {
+        return BulkScanEnvelope.builder().id("1")
+                .action("Action")
+                .build();
     }
 
     private static void createLegacyDetails(GrantOfRepresentationData grantOfRepresentationData) {

@@ -12,6 +12,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.BulkScanEnvelope;
 import uk.gov.hmcts.reform.probate.model.ProbateDocument;
 import uk.gov.hmcts.reform.probate.model.ScannedDocument;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
@@ -147,6 +148,8 @@ public class CaveatData extends CaseData {
     private Boolean autoClosedExpiry;
 
     private String bulkScanCaseReference;
+
+    private List<CollectionMember<BulkScanEnvelope>> bulkScanEnvelopes;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
