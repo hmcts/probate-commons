@@ -18,6 +18,7 @@ import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.INT
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.LEGAL_STATEMENT_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.OTHER_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.SENT_EMAIL_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.WILL_NAME;
 
 @RequiredArgsConstructor
 @Getter
@@ -63,8 +64,11 @@ public enum DocumentType {
     DEATH_CERT(DEATH_CERTIFICATE_NAME),
 
     @JsonProperty(CORRESPONDENCE_NAME)
-    CORRESPONDENCE(CORRESPONDENCE_NAME);
+    CORRESPONDENCE(CORRESPONDENCE_NAME),
 
+    @JsonProperty(WILL_NAME)
+    WILL(WILL_NAME);
+        
     private final String templateName;
 
     public static class Constants {
@@ -96,6 +100,8 @@ public enum DocumentType {
         public static final String DEATH_CERTIFICATE_NAME = "deathCertificate";
 
         public static final String CORRESPONDENCE_NAME = "correspondence";
+        
+        public static final String WILL_NAME = "will";
 
         private Constants() {
         }
