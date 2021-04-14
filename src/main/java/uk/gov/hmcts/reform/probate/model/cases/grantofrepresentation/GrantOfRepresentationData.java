@@ -754,8 +754,6 @@ public class GrantOfRepresentationData extends CaseData {
 
     private List<CollectionMember<ProbateDocument>> probateNotificationsGenerated;
 
-    private List<CollectionMember<DeathRecord>> deathRecords;
-
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
     @Transient
