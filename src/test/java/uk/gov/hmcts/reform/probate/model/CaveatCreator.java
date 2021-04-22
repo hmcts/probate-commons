@@ -80,7 +80,17 @@ public class CaveatCreator {
         caveatData.setScannedDocuments((List<CollectionMember<ScannedDocument>>)
                 Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
         caveatData.setBulkScanCaseReference("123");
+        CollectionMember<BulkScanEnvelope> bulkScanEnvelopeCollectionMember = new CollectionMember<>();
+        bulkScanEnvelopeCollectionMember.setValue(getBulkScanEnvelope());
+        caveatData.setBulkScanEnvelopes((List<CollectionMember<BulkScanEnvelope>>)
+                Arrays.asList(bulkScanEnvelopeCollectionMember));
         return caveatData;
+    }
+
+    private static BulkScanEnvelope getBulkScanEnvelope() {
+        return BulkScanEnvelope.builder().id("1")
+                .action("Action")
+                .build();
     }
 
     private static ScannedDocument getScannedDocument(String docReference) {
