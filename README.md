@@ -102,6 +102,16 @@ To revert code to a previous tag you can checkout the tag to a new branch as fol
     git checkout tags/1.0.0 -b PRO-1235-Reverting-Back-To-Baseline 
 ```
 
+### Releasing
+The Probate-commons is now has been moved to jitpack.
+
+To check which versions is available on jitpack:
+https://jitpack.io/com/github/hmcts/probate-commons/
+
+To check on the build log on the version:
+https://jitpack.io/com/github/hmcts/probate-commons/{version}/build.log
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
