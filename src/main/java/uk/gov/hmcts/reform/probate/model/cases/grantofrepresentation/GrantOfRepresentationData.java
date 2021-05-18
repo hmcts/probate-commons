@@ -373,6 +373,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String paRelationshipToDeceasedOther;
 
+    private String isAutomatedProcess;
+
     private String primaryApplicantPostCode;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
