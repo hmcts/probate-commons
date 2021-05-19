@@ -373,7 +373,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String paRelationshipToDeceasedOther;
 
-    private String isAutomatedProcess;
+    private String automatedProcess;
 
     private String primaryApplicantPostCode;
 
