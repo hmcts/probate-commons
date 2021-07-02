@@ -7,8 +7,6 @@ import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 import uk.gov.hmcts.reform.probate.model.TestUtils;
-import uk.gov.hmcts.reform.probate.model.payments.FeeDto;
-import uk.gov.hmcts.reform.probate.model.payments.PaymentDto;
 import uk.gov.hmcts.reform.probate.model.payments.PaymentDto.LinkDto;
 import uk.gov.hmcts.reform.probate.model.payments.PaymentDto.LinksDto;
 
