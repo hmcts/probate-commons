@@ -165,6 +165,8 @@ public class CaveatData extends CaseData {
 
     private String solsFeeAccountNumber;
 
+    private String automatedProcess;
+
     private String pcqId;
 
     @Transient
