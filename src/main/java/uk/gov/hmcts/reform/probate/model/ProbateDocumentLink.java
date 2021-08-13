@@ -22,4 +22,7 @@ public class ProbateDocumentLink {
 
     @JsonProperty(value = "document_filename")
     private String documentFilename;
+
+    @JsonProperty(value = "document_hash")
+    private String documentHash;
 }

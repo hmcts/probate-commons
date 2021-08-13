@@ -70,11 +70,11 @@ If master is not tagged, a release will not be created and therefore will be una
 
 Follow the steps below to tag a branch once the code review has completed. 
 - Ensure build is successful: 
-    - ./gradew clean build
+    - ./gradlew clean build
 - Create the tag in git with the new version and JIRA reference.
-    - git tag -a 1.2.0_DTSPB-1599-add-uploaded-leg-state-doc-type -m "Update to doc types file."
+    - git tag -a 1.2.3_DTSPB-1238 -m "DTSPB-1238: update docs to include hash"
 - Push the new tag to the git remote server.
-    - git push origin 1.2.0_DTSPB-1599-add-uploaded-leg-state-doc-type
+    - git push origin 1.2.3_DTSPB-1238
 
 #### Updating master tag
 

@@ -23,4 +23,6 @@ public class DocumentLink {
     @JsonProperty(value = "document_filename")
     private String documentFilename;
 
+    @JsonProperty(value = "document_hash")
+    private String documentHash;
 }
