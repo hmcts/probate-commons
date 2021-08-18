@@ -57,6 +57,16 @@ public class CaseTypeTest {
         public void setPaperForm(Boolean paperForm) {
 
         }
+
+        @Override
+        public String getSummary() {
+            return null;
+        }
+
+        @Override
+        public void setSummary(String summary) {
+
+        }
     }
 
 }

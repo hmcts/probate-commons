@@ -107,4 +107,6 @@ public class WillLodgementData extends CaseData {
     private String legacyType;
 
     private String legacyCaseViewUrl;
+
+    private String summary;
 }
