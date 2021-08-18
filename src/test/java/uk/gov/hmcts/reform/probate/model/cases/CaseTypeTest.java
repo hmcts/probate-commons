@@ -59,12 +59,12 @@ public class CaseTypeTest {
         }
 
         @Override
-        public String getSummary() {
+        public String getDescription() {
             return null;
         }
 
         @Override
-        public void setSummary(String summary) {
+        public void setDescription(String description) {
 
         }
     }

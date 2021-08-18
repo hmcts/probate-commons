@@ -758,7 +758,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
-    private String summary;
+    private String description;
 
     @Transient
     public void setInvitationDetailsForExecutorApplying(String email, String invitationId, String leadApplicantName,

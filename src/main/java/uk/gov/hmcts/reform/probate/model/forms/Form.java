@@ -71,6 +71,6 @@ public abstract class Form<D extends Deceased, A extends Applicant> {
 
     private Language language;
 
-    private String summary;
+    private String description;
 
 }

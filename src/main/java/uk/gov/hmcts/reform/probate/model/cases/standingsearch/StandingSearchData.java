@@ -108,5 +108,5 @@ public class StandingSearchData extends CaseData {
 
     private String legacyCaseViewUrl;
     
-    private String summary;
+    private String description;
 }

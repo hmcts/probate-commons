@@ -42,8 +42,8 @@ public abstract class CaseData {
 
     public abstract void setPaperForm(Boolean paperForm);
 
-    public abstract String getSummary();
+    public abstract String getDescription();
     
-    public abstract void setSummary(String summary);
+    public abstract void setDescription(String description);
 
 }
