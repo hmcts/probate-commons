@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,6 +26,12 @@ public class ExecutorNotApplying {
     private String notApplyingExecutorNameDifferenceComment;
 
     private ExecutorNotApplyingReason notApplyingExecutorReason;
+
+    private String notApplyingExecutorDispenseWithNotice;
+
+    private String notApplyingExecutorDispenseWithNoticeLeaveGiven;
+
+    private LocalDate notApplyingExecutorDispenseWithNoticeLeaveGivenDate;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
