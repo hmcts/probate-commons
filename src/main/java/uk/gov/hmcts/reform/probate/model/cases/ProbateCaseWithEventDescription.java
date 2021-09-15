@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.validation.Valid;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
