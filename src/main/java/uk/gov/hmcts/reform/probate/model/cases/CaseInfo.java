@@ -23,6 +23,4 @@ public class CaseInfo {
 
     private LocalDate caseCreatedDate;
 
-    private String eventDescription;
-
 }
