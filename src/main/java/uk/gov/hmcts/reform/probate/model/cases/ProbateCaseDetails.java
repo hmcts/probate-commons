@@ -21,4 +21,5 @@ public class ProbateCaseDetails {
     private CaseData caseData;
 
     private CaseInfo caseInfo;
+    
 }
