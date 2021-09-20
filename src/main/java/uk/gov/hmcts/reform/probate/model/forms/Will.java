@@ -25,5 +25,5 @@ public class Will {
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean hasVisibleDamage;
+    private Boolean willHasVisibleDamage;
 }
