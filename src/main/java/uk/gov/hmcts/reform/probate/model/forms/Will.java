@@ -22,4 +22,6 @@ public class Will {
     private Boolean codicils;
 
     private Long codicilsNumber;
+
+    private Boolean hasVisibleDamage;
 }
