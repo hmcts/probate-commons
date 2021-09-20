@@ -23,5 +23,7 @@ public class Will {
 
     private Long codicilsNumber;
 
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean hasVisibleDamage;
 }
