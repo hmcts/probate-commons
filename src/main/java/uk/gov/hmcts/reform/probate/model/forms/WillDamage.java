@@ -8,7 +8,7 @@ import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 public class WillDamage {
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean stapleOrPunchMarks;
+    private Boolean stapleOrPunchHoles;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
@@ -16,7 +16,7 @@ public class WillDamage {
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean paperCLipMarks;
+    private Boolean paperClipMarks;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
