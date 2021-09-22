@@ -395,7 +395,7 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean willHasVisibleDamage;
 
-    private List<CollectionMember<WillDamage>> willDamage;
+    private WillDamage willDamage;
 
     @NotNull(groups = {PaNullCheck.class})
     @JsonDeserialize(using = YesNoDeserializer.class)
