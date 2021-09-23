@@ -10,31 +10,35 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @ApiModel(value = "WillDamageTypes", description = "Represents will condition selections in ccd")
 public class WillDamageTypes {
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean stapleOrPunchHoles;
+//    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+//    @JsonSerialize(using = OptionYesNoSerializer.class)
+//    private Boolean stapleOrPunchHoles;
+//
+//    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+//    @JsonSerialize(using = OptionYesNoSerializer.class)
+//    private Boolean rustMarks;
+//
+//    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+//    @JsonSerialize(using = OptionYesNoSerializer.class)
+//    private Boolean paperClipMarks;
+//
+//    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+//    @JsonSerialize(using = OptionYesNoSerializer.class)
+//    private Boolean tornEdges;
+//
+//    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+//    @JsonSerialize(using = OptionYesNoSerializer.class)
+//    private Boolean waterDamage;
 
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean rustMarks;
-
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean paperClipMarks;
-
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean tornEdges;
-
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean waterDamage;
+    private List<String> willDamageTypesList;
 
     private String otherDamageDescription;
 }
