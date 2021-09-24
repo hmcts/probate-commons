@@ -72,7 +72,8 @@ Follow the steps below to tag a branch (possibly once the code review has comple
 - Ensure build is successful: 
     - ./gradlew clean build
     - git add . 
-    - git commit "DTSPB-2231: updating commons for will condition v12"
+    - git commit -m  "DTSPB-2231: updating commons for will condition v13"
+    - git push
   
 - Create the tag in git with the new version and JIRA reference.
     - git tag -a DTSPB-2231-will-condition-v1.0.12 -m "Update version of commons for will condtion"
