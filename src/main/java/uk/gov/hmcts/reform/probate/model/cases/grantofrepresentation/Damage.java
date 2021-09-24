@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class WillDamage {
-    private List<String> willDamageTypesList;
+public class Damage {
+    private List<String> damageTypesList;
     private String otherDamageDescription;
 }

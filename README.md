@@ -68,13 +68,24 @@ If master is not tagged, a release will not be created and therefore will be una
 
 #### Updating branch tag
 
-Follow the steps below to tag a branch once the code review has completed. 
+Follow the steps below to tag a branch (possibly once the code review has completed) 
 - Ensure build is successful: 
-    - ./gradew clean build
+    - ./gradlew clean build
+    - git add . 
+    - git commit "DTSPB-2231: updating commons for will condition v12"
+  
 - Create the tag in git with the new version and JIRA reference.
-    - git tag -a 1.2.0_DTSPB-1599-add-uploaded-leg-state-doc-type -m "Update to doc types file."
+    - git tag -a DTSPB-2231-will-condition-v1.0.12 -m "Update version of commons for will condtion"
 - Push the new tag to the git remote server.
-    - git push origin 1.2.0_DTSPB-1599-add-uploaded-leg-state-doc-type
+    - git push origin DTSPB-2231-will-condition-v1.0.12
+
+To delete a tag from local
+
+git tag --delete DTSPB-2231-will-condition-v1.0.0
+
+To delete from server
+
+git push origin --delete DTSPB-2231-will-condition-v1.0.0
 
 #### Updating master tag
 
