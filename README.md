@@ -76,17 +76,21 @@ Follow the steps below to tag a branch (possibly once the code review has comple
     - git push
   
 - Create the tag in git with the new version and JIRA reference.
-    - git tag -a DTSPB-2231-will-condition-v1.0.12 -m "Update version of commons for will condtion"
+    - git tag -a DTSPB-2231-will-condition-v1.0.13 -m "Update version of commons for will condtion"
 - Push the new tag to the git remote server.
-    - git push origin DTSPB-2231-will-condition-v1.0.12
+    - git push origin DTSPB-2231-will-condition-v1.0.13
 
+- Check commons has built on
+    - https://jitpack.io/com/github/hmcts/probate-commons/DTSPB-2231-will-condition-v1.0.13/build.log
+    - once it appears here, you can use it = https://github.com/hmcts/probate-commons/releases
+  
 To delete a tag from local
 
-git tag --delete DTSPB-2231-will-condition-v1.0.0
+git tag --delete DTSPB-2231-will-condition-v1.0.13
 
 To delete from server
 
-git push origin --delete DTSPB-2231-will-condition-v1.0.0
+git push origin --delete DTSPB-2231-will-condition-v1.0.13
 
 #### Updating master tag
 
