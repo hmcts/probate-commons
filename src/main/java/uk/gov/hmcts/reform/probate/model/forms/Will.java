@@ -27,5 +27,5 @@ public class Will {
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean willHasVisibleDamage;
 
-    private DamageTypes willDamageTypes;
+    private Damage willDamage;
 }

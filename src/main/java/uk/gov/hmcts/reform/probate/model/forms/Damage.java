@@ -12,8 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "DamageTypes", description = "Represents will or codicil condition selections in ccd")
-public class DamageTypes {
+@ApiModel(value = "Damage", description = "Represents will or codicil condition selections in ccd")
+public class Damage {
     private List<String> damageTypesList;
     private String otherDamageDescription;
 }
