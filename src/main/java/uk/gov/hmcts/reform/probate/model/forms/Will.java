@@ -28,4 +28,10 @@ public class Will {
     private Boolean willHasVisibleDamage;
 
     private Damage willDamage;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean willDamageReasonKnown;
+
+    private String willDamageReasonDescription;
 }
