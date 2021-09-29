@@ -39,5 +39,5 @@ public class Will {
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean willDamageCulpritKnown;
 
-    private AliasOtherNames willDamageCulpritName;
+    private CombinedName willDamageCulpritName;
 }

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @ApiModel(value = "Name", description = "Represents a name in CCD")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Name {
+public class CombinedName {
 
     private String firstName;
 

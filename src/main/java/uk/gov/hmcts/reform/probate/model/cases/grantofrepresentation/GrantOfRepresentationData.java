@@ -33,10 +33,10 @@ import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
+import uk.gov.hmcts.reform.probate.model.cases.CombinedName;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 import uk.gov.hmcts.reform.probate.model.cases.DocumentLink;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
-import uk.gov.hmcts.reform.probate.model.cases.Name;
 import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
@@ -408,7 +408,7 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean willDamageCulpritKnown;
 
-    private Name willDamageCulpritName;
+    private CombinedName willDamageCulpritName;
 
     @NotNull(groups = {PaNullCheck.class})
     @JsonDeserialize(using = YesNoDeserializer.class)
