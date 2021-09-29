@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Name {
 
-    @JsonProperty(value = "Forenames")
+    @JsonProperty(value = "FirstName")
     private String firstName;
 
     @JsonProperty(value = "LastName")
