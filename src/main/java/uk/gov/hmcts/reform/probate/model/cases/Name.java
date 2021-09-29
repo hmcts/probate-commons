@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Name {
 
     @JsonProperty(value = "Forenames")
-    private String forenames;
+    private String firstName;
 
     @JsonProperty(value = "LastName")
     private String lastName;
