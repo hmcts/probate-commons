@@ -34,4 +34,10 @@ public class Will {
     private Boolean willDamageReasonKnown;
 
     private String willDamageReasonDescription;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean willDamageCulpritKnown;
+
+    private AliasOtherNames willDamageCulpritName;
 }
