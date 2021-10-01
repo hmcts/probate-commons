@@ -40,4 +40,10 @@ public class Will {
     private Boolean willDamageCulpritKnown;
 
     private CombinedName willDamageCulpritName;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean willDamageDateKnown;
+
+    private String willDamageDate;
 }
