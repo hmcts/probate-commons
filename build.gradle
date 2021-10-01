@@ -14,7 +14,7 @@ plugins {
 
 def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: getCurrentGitBranch()
 
-group 'com.github.hmcts'
+group 'uk.gov.hmcts.reform.probate'
 // Do not change this version number
 version buildNumber
 
