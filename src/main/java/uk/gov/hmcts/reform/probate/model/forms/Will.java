@@ -63,7 +63,7 @@ public class Will {
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean codicilsDamageCulpritKnown;
 
-    private uk.gov.hmcts.reform.probate.model.cases.CombinedName codicilsDamageCulpritName;
+    private CombinedName codicilsDamageCulpritName;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
