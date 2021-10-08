@@ -58,4 +58,21 @@ public class Will {
     private Boolean codicilsDamageReasonKnown;
 
     private String codicilsDamageReasonDescription;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean codicilsDamageCulpritKnown;
+
+    private uk.gov.hmcts.reform.probate.model.cases.CombinedName codicilsDamageCulpritName;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean codicilsDamageDateKnown;
+
+    private String codicilsDamageDate;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean deceasedWrittenWishes;
+
 }
