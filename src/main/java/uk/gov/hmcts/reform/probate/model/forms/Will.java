@@ -46,10 +46,4 @@ public class Will {
     private Boolean willDamageDateKnown;
 
     private String willDamageDate;
-
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean codicilsHasVisibleDamage;
-
-    private Damage codicilsDamage;
 }
