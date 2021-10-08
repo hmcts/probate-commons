@@ -52,10 +52,4 @@ public class Will {
     private Boolean codicilsHasVisibleDamage;
 
     private Damage codicilsDamage;
-
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean codicilsDamageReasonKnown;
-
-    private String codicilsDamageReasonDescription;
 }

@@ -428,13 +428,7 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean codicilsHasVisibleDamage;
 
     private Damage codicilsDamage;
-    
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean codicilsDamageReasonKnown;
 
-    private String codicilsDamageReasonDescription;
-    
     @NotNull(groups = {PaNullCheck.class})
     @Min(value = 1, groups = {PaFieldCheck.class})
     private Long numberOfExecutors;
