@@ -70,11 +70,15 @@ If master is not tagged, a release will not be created and therefore will be una
 
 Follow the steps below to tag a branch once the code review has completed. 
 - Ensure build is successful: 
-    - ./gradew clean build
+    - ./gradlew clean build
+    - git add . 
+    - git commit -m  "DTSPB-2132:add-probate-doc-type-caveats"
+    - git push
+  
 - Create the tag in git with the new version and JIRA reference.
-    - git tag -a 1.2.0_DTSPB-1599-add-uploaded-leg-state-doc-type -m "Update to doc types file."
+    - git tag -a 1.2.5_DTSPB-2132-add-probate-doc-type-caveats -m "Add missing caveat doc types"
 - Push the new tag to the git remote server.
-    - git push origin 1.2.0_DTSPB-1599-add-uploaded-leg-state-doc-type
+    - git push origin 1.2.5_DTSPB-2132-add-probate-doc-type-caveats
 
 #### Updating master tag
 
