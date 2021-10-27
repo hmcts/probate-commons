@@ -79,5 +79,7 @@
       }
     }
   ],
+  "evidenceHandled": "No",
+  "messageContent": "some message content",
   "pcqId": "1003"
 }
