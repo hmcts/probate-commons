@@ -38,6 +38,8 @@ public class CaveatCreator {
         caveatData.setExpiryDate(LocalDate.of(2019, 2, 14));
         caveatData.setPaperForm(false);
         caveatData.setPcqId("1003");
+        caveatData.setEvidenceHandled(false);
+        caveatData.setMessageContent("some message content");
         return caveatData;
     }
 

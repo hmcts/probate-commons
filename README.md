@@ -104,9 +104,9 @@ Once the JIRA has been merged follow the steps below to tag master.
 - Ensure build is successful: 
     - ./gradew clean build
 - Create the tag in git with the updated version:
-    - git tag -a 1.0.1 -m "Update to README.md file."
+    - git tag -a 1.2.6 -m "DTSPB-2132: add missing attr to commons to fix 500 errors"
 - Push the new tag to the git remote server.
-    - git push origin 1.0.1
+    - git push origin 1.2.6
 
 You can verify the tag is correct in master by viewing the download link at the top of the readme, it should reflect the latest tag.
 
