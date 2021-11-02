@@ -38,6 +38,8 @@
     "Country": "caveator country"
   },
   "expiryDate": "2019-02-14",
+  "evidenceHandled": "No",
+  "messageContent": "some message content",
   "paperForm": "No",
   "pcqId": "1003"
 }

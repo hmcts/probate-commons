@@ -167,6 +167,12 @@ public class CaveatData extends CaseData {
 
     private String pcqId;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean evidenceHandled;
+    
+    private String messageContent;
+
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
