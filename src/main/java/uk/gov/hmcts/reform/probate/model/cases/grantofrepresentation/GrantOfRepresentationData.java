@@ -23,6 +23,7 @@ import uk.gov.hmcts.reform.probate.model.AdoptiveRelative;
 import uk.gov.hmcts.reform.probate.model.AliasReason;
 import uk.gov.hmcts.reform.probate.model.AttorneyNamesAndAddress;
 import uk.gov.hmcts.reform.probate.model.BulkScanEnvelope;
+import uk.gov.hmcts.reform.probate.model.IhtFormEstate;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.ProbateDocument;
 import uk.gov.hmcts.reform.probate.model.Relationship;
@@ -325,6 +326,29 @@ public class GrantOfRepresentationData extends CaseData {
     @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
     @JsonSerialize(using = ToStringSerializer.class)
     private Long ihtGrossValue;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean ihtFormEstateValuesCompleted;
+
+    private IhtFormEstate ihtFormEstate;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long ihtEstateGrossValue;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long ihtEstateNetValue;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long ihtEstateNetQualifyingValue;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedHadLateSpouseOrCivilPartner;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean ihtUnusedAllowanceClaimed;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)

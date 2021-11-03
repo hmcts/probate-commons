@@ -74,6 +74,35 @@ public class InheritanceTax {
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean completed;
 
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean estateValueCompleted;
+
+    private String ihtFormEstateId;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal estateGrossValue;
+
+    private String estateGrossValueField;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal estateNetValue;
+
+    private String estateNetValueField;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private BigDecimal estateNetQualifyingValue;
+
+    private String estateNetQualifyingValueField;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean deceasedHadLateSpouseOrCivilPartner;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean unusedAllowanceClaimed;
+
     public String getGrossValueOnline() {
         if (grossValue == null) {
             return null;
