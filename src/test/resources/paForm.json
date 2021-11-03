@@ -133,7 +133,47 @@
     "netValueOnline": "20000"
   },
   "will": {
-    "codicils": "optionNo"
+    "codicils": "optionYes",
+    "codicilsNumber": 1,
+    "willHasVisibleDamage": "optionYes",
+    "willDamage": {
+      "damageTypesList": [
+        "stapleOrPunchHoles",
+        "paperClipMarks",
+        "tornEdges",
+        "otherVisibleDamage"
+      ],
+      "otherDamageDescription": "Some other damage description"
+    },
+    "willDamageReasonKnown": "optionYes",
+    "willDamageReasonDescription": "Some other damage description",
+    "willDamageCulpritKnown": "optionYes",
+    "willDamageCulpritName": {
+      "firstName": "CulpritFirst",
+      "lastName": "CulpritLast"
+    },
+    "willDamageDateKnown": "optionYes",
+    "willDamageDate": "4/10/2021",
+    "codicilsHasVisibleDamage": "optionYes",
+    "codicilsDamage": {
+      "damageTypesList": [
+        "stapleOrPunchHoles",
+        "paperClipMarks",
+        "tornEdges",
+        "otherVisibleDamage"
+      ],
+      "otherDamageDescription": "Some other damage description"
+    },
+    "codicilsDamageReasonKnown": "optionYes",
+    "codicilsDamageReasonDescription": "Some other codicil damage description",
+    "codicilsDamageCulpritKnown": "optionYes",
+    "codicilsDamageCulpritName": {
+      "firstName": "CodicilCulpritFirst",
+      "lastName": "CodicilCulpritLast"
+    },
+    "codicilsDamageDateKnown": "optionYes",
+    "codicilsDamageDate": "5/10/2021",
+    "deceasedWrittenWishes": "optionYes"
   },
   "summary": {
     "readyToDeclare": true

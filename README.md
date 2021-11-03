@@ -68,17 +68,29 @@ If master is not tagged, a release will not be created and therefore will be una
 
 #### Updating branch tag
 
-Follow the steps below to tag a branch once the code review has completed. 
+Follow the steps below to tag a branch (possibly once the code review has completed) 
 - Ensure build is successful: 
     - ./gradlew clean build
     - git add . 
-    - git commit -m  "DTSPB-2132:add-probate-doc-type-caveats3
+    - git commit -m  "DTSPB-2239: updating commons for codicils condition v3.0.3"
     - git push
   
 - Create the tag in git with the new version and JIRA reference.
-    - git tag -a 1.2.5_DTSPB-2132-add-probate-doc-type-caveats3 -m "Add missing caveat doc types3"
+    - git tag -a DTSPB-2339-codicils-condition-v3.0.3 -m "Update version of commons for codicils condtions - fix"
 - Push the new tag to the git remote server.
-    - git push origin 1.2.5_DTSPB-2132-add-probate-doc-type-caveats3
+    - git push origin DTSPB-2339-codicils-condition-v3.0.1
+
+- Check commons has built on
+    - https://jitpack.io/com/github/hmcts/probate-commons/DTSPB-2231-will-condition-v1.0.13/build.log
+    - once it appears here, you can use it = https://github.com/hmcts/probate-commons/releases
+  
+To delete a tag from local
+
+git tag --delete DTSPB-2231-will-condition-v1.0.13
+
+To delete from server
+
+git push origin --delete DTSPB-2231-will-condition-v1.0.13
 
 #### Updating master tag
 
