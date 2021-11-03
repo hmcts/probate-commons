@@ -72,13 +72,13 @@ Follow the steps below to tag a branch (possibly once the code review has comple
 - Ensure build is successful: 
     - ./gradlew clean build
     - git add . 
-    - git commit -m  "DTSPB-2452: add fields for EE v3.0.0"
+    - git commit -m  "DTSPB-2452: add fields for EE 1.3.0"
     - git push
   
 - Create the tag in git with the new version and JIRA reference.
-    - git tag -a DTSPB-2452-add-fields-for-EE-v3.0.0 -m "DTSPB-2452: add fields for EE v3.0.0"
+    - git tag -a DTSPB-2452-add-fields-for-EE-1.3.0 -m "DTSPB-2452: add fields for EE 1.3.0"
 - Push the new tag to the git remote server.
-    - git push origin DTSPB-2452-add-fields-for-EE-v3.0.0
+    - git push origin DTSPB-2452-add-fields-for-EE-1.3.0
 
 - Check commons has built on
     - https://jitpack.io/com/github/hmcts/probate-commons/DTSPB-2231-will-condition-v1.0.13/build.log
