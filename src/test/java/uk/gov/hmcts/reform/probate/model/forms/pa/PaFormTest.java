@@ -9,7 +9,26 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
-import uk.gov.hmcts.reform.probate.model.forms.*;
+import uk.gov.hmcts.reform.probate.model.forms.Address;
+import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
+import uk.gov.hmcts.reform.probate.model.forms.CombinedName;
+import uk.gov.hmcts.reform.probate.model.forms.Copies;
+import uk.gov.hmcts.reform.probate.model.forms.Damage;
+import uk.gov.hmcts.reform.probate.model.forms.Declaration;
+import uk.gov.hmcts.reform.probate.model.forms.DeclarationDeclaration;
+import uk.gov.hmcts.reform.probate.model.forms.DeclarationHolder;
+import uk.gov.hmcts.reform.probate.model.forms.Equality;
+import uk.gov.hmcts.reform.probate.model.forms.Form;
+import uk.gov.hmcts.reform.probate.model.forms.IhtMethod;
+import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
+import uk.gov.hmcts.reform.probate.model.forms.LegalStatement;
+import uk.gov.hmcts.reform.probate.model.forms.LegalStatementExecutorApplying;
+import uk.gov.hmcts.reform.probate.model.forms.LegalStatementHolder;
+import uk.gov.hmcts.reform.probate.model.forms.Payment;
+import uk.gov.hmcts.reform.probate.model.forms.PaymentCopies;
+import uk.gov.hmcts.reform.probate.model.forms.PaymentCopiesForRegion;
+import uk.gov.hmcts.reform.probate.model.forms.Registry;
+import uk.gov.hmcts.reform.probate.model.forms.Will;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -202,14 +221,15 @@ public class PaFormTest {
                                                 LegalStatementExecutorApplying.builder()
                                                         .name("I am an executor named in the will as Jon Snow, "
                                                                 + "and I am applying for probate.")
-                                                        .sign("I will send to the probate registry what I believe to be the "
-                                                                + "true and original last will and testament of Ned Stark.")
+                                                        .sign("I will send to the probate registry what I believe to " 
+                                                                + "be the true and original last will and testament of"
+                                                                + " Ned Stark.")
                                                         .build()
                                         ))
                                         .deceasedEstateLand("To the best of my knowledge, information and belief, "
-                                                + "there was no land vested in Ned Stark which was settled previously to "
-                                                + "the death (and not by the will) of Ned Stark and which remained settled "
-                                                + "land notwithstanding such death.")
+                                                + "there was no land vested in Ned Stark which was settled previously"
+                                                + " to the death (and not by the will) of Ned Stark and which remained" 
+                                                + "settled land notwithstanding such death.")
                                         .deceasedOtherNames("")
                                         .deceasedEstateValue("The gross value for the estate amounts to £20000 and the "
                                                 + "net value for the estate amounts to £20000.")
