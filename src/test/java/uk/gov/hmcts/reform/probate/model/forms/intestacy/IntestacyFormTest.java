@@ -36,6 +36,8 @@ import java.util.Map;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
 import static com.fasterxml.jackson.databind.util.StdDateFormat.DATE_FORMAT_STR_ISO8601;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -112,6 +114,13 @@ public class IntestacyFormTest {
         inheritanceTax.setMethod(IhtMethod.ONLINE);
         inheritanceTax.setNetValue(new BigDecimal("100000"));
         inheritanceTax.setGrossValue(new BigDecimal("100000"));
+        inheritanceTax.setEstateValueCompleted(FALSE);
+        inheritanceTax.setEstateGrossValue(new BigDecimal("400000"));
+        inheritanceTax.setEstateNetValue(new BigDecimal("300000"));
+        inheritanceTax.setEstateNetQualifyingValue(new BigDecimal("500000"));
+        inheritanceTax.setDeceasedHadLateSpouseOrCivilPartner(TRUE);
+        inheritanceTax.setUnusedAllowanceClaimed(FALSE);
+
         inheritanceTax.setIdentifier("GOT123456");
         inheritanceTax.setAssetsOutsideNetValue(new BigDecimal("100.50"));
         inheritanceTax.setAssetsOutside(true);

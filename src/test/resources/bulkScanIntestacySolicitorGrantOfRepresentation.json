@@ -60,6 +60,13 @@
   "ihtNetValue": "100000",
   "ihtGrossValue": "100000",
   "ihtReferenceNumber": "GOT123456",
+  "ihtFormEstateValuesCompleted": "Yes",
+  "ihtFormEstate": "IHT400421",
+  "ihtEstateGrossValue": "40050",
+  "ihtEstateNetValue": "30050",
+  "ihtEstateNetQualifyingValue": "20050",
+  "deceasedHadLateSpouseOrCivilPartner": "Yes",
+  "ihtUnusedAllowanceClaimed": "Yes",
   "primaryApplicantAddress": {
     "AddressLine1": "Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT",
     "PostCode": "SW17 0QT"

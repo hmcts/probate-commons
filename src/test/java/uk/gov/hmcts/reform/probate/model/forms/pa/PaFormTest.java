@@ -40,6 +40,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
+import static java.lang.Boolean.TRUE;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -77,6 +78,8 @@ public class PaFormTest {
                         .method(IhtMethod.ONLINE)
                         .netValue(new BigDecimal("20000"))
                         .grossValue(new BigDecimal("20000"))
+                .estateValueCompleted(TRUE)
+                .ihtFormEstateId("IHT207")
                         .identifier("IHT1234567")
                         .build())
                 .will(Will.builder()
