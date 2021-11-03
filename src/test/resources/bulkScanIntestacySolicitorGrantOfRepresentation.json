@@ -63,8 +63,11 @@
   "ihtFormEstateValuesCompleted": "Yes",
   "ihtFormEstate": "IHT400421",
   "ihtEstateGrossValue": "40050",
+  "ihtEstateGrossValueField": "40,050",
   "ihtEstateNetValue": "30050",
+  "ihtEstateNetValueField": "30,050",
   "ihtEstateNetQualifyingValue": "20050",
+  "ihtEstateNetQualifyingValueField": "20,050",
   "deceasedHadLateSpouseOrCivilPartner": "Yes",
   "ihtUnusedAllowanceClaimed": "Yes",
   "primaryApplicantAddress": {

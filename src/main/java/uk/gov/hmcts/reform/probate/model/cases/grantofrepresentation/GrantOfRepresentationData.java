@@ -337,11 +337,17 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = ToStringSerializer.class)
     private Long ihtEstateGrossValue;
 
+    private String ihtEstateGrossValueField;
+
     @JsonSerialize(using = ToStringSerializer.class)
     private Long ihtEstateNetValue;
 
+    private String ihtEstateNetValueField;
+
     @JsonSerialize(using = ToStringSerializer.class)
     private Long ihtEstateNetQualifyingValue;
+
+    private String ihtEstateNetQualifyingValueField;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)

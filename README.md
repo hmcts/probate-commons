@@ -72,13 +72,13 @@ Follow the steps below to tag a branch (possibly once the code review has comple
 - Ensure build is successful: 
     - ./gradlew clean build
     - git add . 
-    - git commit -m  "DTSPB-2239: updating commons for codicils condition v3.0.3"
+    - git commit -m  "DTSPB-2452: add fields for EE v3.0.0"
     - git push
   
 - Create the tag in git with the new version and JIRA reference.
-    - git tag -a DTSPB-2339-codicils-condition-v3.0.3 -m "Update version of commons for codicils condtions - fix"
+    - git tag -a DTSPB-2452-add-fields-for-EE-v3.0.0 -m "DTSPB-2452: add fields for EE v3.0.0"
 - Push the new tag to the git remote server.
-    - git push origin DTSPB-2339-codicils-condition-v3.0.1
+    - git push origin DTSPB-2452-add-fields-for-EE-v3.0.0
 
 - Check commons has built on
     - https://jitpack.io/com/github/hmcts/probate-commons/DTSPB-2231-will-condition-v1.0.13/build.log
@@ -102,11 +102,11 @@ Once the JIRA has been merged follow the steps below to tag master.
     - git checkout master
     - git pull
 - Ensure build is successful: 
-    - ./gradew clean build
+    - ./gradlew clean build
 - Create the tag in git with the updated version:
-    - git tag -a 1.2.6 -m "DTSPB-2132: add missing attr to commons to fix 500 errors"
+    - git tag -a 1.3.0 -m "DTSPB-2452: add fields for EE changes"
 - Push the new tag to the git remote server.
-    - git push origin 1.2.6
+    - git push origin 1.3.0
 
 You can verify the tag is correct in master by viewing the download link at the top of the readme, it should reflect the latest tag.
 
