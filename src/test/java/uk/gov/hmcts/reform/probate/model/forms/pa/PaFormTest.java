@@ -228,8 +228,8 @@ public class PaFormTest {
                                         ))
                                         .deceasedEstateLand("To the best of my knowledge, information and belief, "
                                                 + "there was no land vested in Ned Stark which was settled previously"
-                                                + " to the death (and not by the will) of Ned Stark and which remained " 
-                                                + "settled land notwithstanding such death.")
+                                                + " to the death (and not by the will) of Ned Stark and which remained" 
+                                                + " settled land notwithstanding such death.")
                                         .deceasedOtherNames("")
                                         .deceasedEstateValue("The gross value for the estate amounts to £20000 and the "
                                                 + "net value for the estate amounts to £20000.")
