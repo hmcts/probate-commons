@@ -93,6 +93,9 @@
     "estateGrossValue": "400000",
     "estateNetValue": "300000",
     "estateNetQualifyingValue": "500000",
+    "estateGrossValueField": "400,000",
+    "estateNetValueField": "300,000",
+    "estateNetQualifyingValueField": "500,000",
     "deceasedHadLateSpouseOrCivilPartner": "optionYes",
     "unusedAllowanceClaimed": "optionNo"
   },

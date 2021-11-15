@@ -210,8 +210,11 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setIhtFormEstateValuesCompleted(true);
         grantOfRepresentationData.setIhtFormEstate(IhtFormEstate.optionIHT400421);
         grantOfRepresentationData.setIhtEstateGrossValue(40050L);
+        grantOfRepresentationData.setIhtEstateGrossValueField("40,050");
         grantOfRepresentationData.setIhtEstateNetValue(30050L);
+        grantOfRepresentationData.setIhtEstateNetValueField("30,050");
         grantOfRepresentationData.setIhtEstateNetQualifyingValue(20050L);
+        grantOfRepresentationData.setIhtEstateNetQualifyingValueField("20,050");
         grantOfRepresentationData.setDeceasedHadLateSpouseOrCivilPartner(true);
         grantOfRepresentationData.setIhtUnusedAllowanceClaimed(true);
     }

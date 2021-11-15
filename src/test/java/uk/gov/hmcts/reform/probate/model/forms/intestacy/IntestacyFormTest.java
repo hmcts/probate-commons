@@ -118,6 +118,9 @@ public class IntestacyFormTest {
         inheritanceTax.setEstateGrossValue(new BigDecimal("400000"));
         inheritanceTax.setEstateNetValue(new BigDecimal("300000"));
         inheritanceTax.setEstateNetQualifyingValue(new BigDecimal("500000"));
+        inheritanceTax.setEstateGrossValueField("400,000");
+        inheritanceTax.setEstateNetValueField("300,000");
+        inheritanceTax.setEstateNetQualifyingValueField("500,000");
         inheritanceTax.setDeceasedHadLateSpouseOrCivilPartner(TRUE);
         inheritanceTax.setUnusedAllowanceClaimed(FALSE);
 
