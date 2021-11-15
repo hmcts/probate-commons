@@ -104,9 +104,9 @@ Once the JIRA has been merged follow the steps below to tag master.
 - Ensure build is successful: 
     - ./gradlew clean build
 - Create the tag in git with the updated version:
-    - git tag -a 1.3.0 -m "DTSPB-2452: add fields for EE changes"
+    - git tag -a 1.3.1 -m "DTSPB-2452: add fields for EE changes"
 - Push the new tag to the git remote server.
-    - git push origin 1.3.0
+    - git push origin 1.3.1
 
 You can verify the tag is correct in master by viewing the download link at the top of the readme, it should reflect the latest tag.
 
