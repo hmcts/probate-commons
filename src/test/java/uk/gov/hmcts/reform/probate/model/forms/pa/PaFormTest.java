@@ -236,6 +236,8 @@ public class PaFormTest {
                                         .deceasedOtherNames("")
                                         .deceasedEstateValue("The gross value for the estate amounts to £20000 and the "
                                                 + "net value for the estate amounts to £20000.")
+                                        .deceasedEstateValueExceptedEstateConfirmation("I confirm that the estate is "
+                                                + "an excepted estate.")
                                         .executorsNotApplying(Lists.newArrayList())
                                         .build())
                                 .build())
