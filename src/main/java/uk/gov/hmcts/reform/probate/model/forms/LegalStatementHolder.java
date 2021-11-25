@@ -26,7 +26,9 @@ public class LegalStatementHolder {
     private List<LegalStatementExecutorApplying> executorsApplying;
 
     private String deceasedEstateValue;
-
+    
+    private String deceasedEstateValueExceptedEstateConfirmation;
+    
     private String deceasedEstateLand;
 
     private List<String> executorsNotApplying;
