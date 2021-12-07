@@ -315,7 +315,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     private IhtFormType ihtFormId;
 
-    @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean ihtFormCompletedOnline;
