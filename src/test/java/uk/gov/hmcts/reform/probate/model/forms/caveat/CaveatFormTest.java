@@ -13,8 +13,11 @@ import uk.gov.hmcts.reform.probate.model.TestUtils;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
+import uk.gov.hmcts.reform.probate.model.forms.Copies;
 import uk.gov.hmcts.reform.probate.model.forms.Equality;
+import uk.gov.hmcts.reform.probate.model.forms.Fees;
 import uk.gov.hmcts.reform.probate.model.forms.Form;
+import uk.gov.hmcts.reform.probate.model.forms.Language;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
 
@@ -101,6 +104,16 @@ public class CaveatFormTest {
 
         Equality equality = Equality.builder().pcqId("1000").build();
         caveatForm.setEquality(equality);
+    }
+
+    @Test
+    public void shouldConstructWithEventDescription() {
+        CaveatForm caveatForm = new CaveatForm(ProbateType.CAVEAT, null, null,
+            null, null, null, null,
+            null, null, null, null,
+            null, null, "eventDescription");
+
+        assertThat(caveatForm.getEventDescription(), is(equalTo("eventDescription")));
     }
 
     @Test
