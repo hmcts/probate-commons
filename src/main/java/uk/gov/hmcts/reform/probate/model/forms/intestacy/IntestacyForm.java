@@ -70,9 +70,10 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
                          InheritanceTax iht, Fees fees, Payment payment, LocalDate applicationSubmittedDate,
                          Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary,
                          String applicantEmail, DocumentUpload statementOfTruthDocument, String caseType,
-                         Language language, Equality equality) {
+                         Language language, Equality equality, String eventDescription) {
 
-        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language);
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
+            eventDescription);
         this.declaration = declaration;
         this.documents = documents;
         this.iht = iht;
