@@ -3,8 +3,8 @@ package uk.gov.hmcts.reform.probate.model.documents;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
+import javax.validation.constraints.NotBlank;
 
 @JsonRootName(value = "bulkScanCoverSheet")
 public class BulkScanCoverSheet implements BusinessDocument {
@@ -144,9 +144,13 @@ public class BulkScanCoverSheet implements BusinessDocument {
         this.checkListItemsIntro = checkListItemsIntro;
     }
 
-    public List<String> getCheckListItems() { return this.checkListItems; }
+    public List<String> getCheckListItems() {
+        return this.checkListItems;
+    }
 
-    public void setCheckListItems(List<String> checkListItems) { this.checkListItems = checkListItems; }
+    public void setCheckListItems(List<String> checkListItems) {
+        this.checkListItems = checkListItems;
+    }
 
     private String addCaseReferenceHyphens(String number) {
         number = number.replaceAll("[^\\d.]", "");
