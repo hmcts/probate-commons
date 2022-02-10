@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @JsonRootName(value = "bulkScanCoverSheet")
 public class BulkScanCoverSheet implements BusinessDocument {
@@ -14,6 +15,7 @@ public class BulkScanCoverSheet implements BusinessDocument {
     public static final String DEFAULT_CASE_REFERENCE_INTRO = "Your unique reference\nnumber is";
     public static final String DEFAULT_SUBMIT_ADDRESS_INTRO =
         "Please send this cover sheet along with your document(s) to the address shown below";
+    public static final String DEFAULT_SEND_DOCS_INTRO = "Documents to send to probate registry:";
 
     private static final char CASE_REFERENCE_SEPARATOR_CHAR = '-';
     private static final int CASE_REFERENCE_SEPARATOR_INTERVAL_NUMBER = 4;
@@ -53,6 +55,13 @@ public class BulkScanCoverSheet implements BusinessDocument {
     @NotBlank
     @JsonProperty("submitAddress")
     private String submitAddress;
+
+    @NotBlank
+    @JsonProperty("checkListItemsIntro")
+    private String checkListItemsIntro = DEFAULT_SEND_DOCS_INTRO;
+
+    @JsonProperty("checkListItems")
+    private List<String> checkListItems;
 
     public String getTitle() {
         return title;
@@ -125,6 +134,19 @@ public class BulkScanCoverSheet implements BusinessDocument {
     public void setSubmitAddress(String submitAddress) {
         this.submitAddress = submitAddress;
     }
+
+
+    public String getCheckListItemsIntro() {
+        return checkListItemsIntro;
+    }
+
+    public void setCheckListItemsIntro(String checkListItemsIntro) {
+        this.checkListItemsIntro = checkListItemsIntro;
+    }
+
+    public List<String> getCheckListItems() { return this.checkListItems; }
+
+    public void setCheckListItems(List<String> checkListItems) { this.checkListItems = checkListItems; }
 
     private String addCaseReferenceHyphens(String number) {
         number = number.replaceAll("[^\\d.]", "");
