@@ -61,7 +61,7 @@ public class BulkScanCoverSheet implements BusinessDocument {
     private String checkListItemsIntro = DEFAULT_SEND_DOCS_INTRO;
 
     @JsonProperty("checkListItems")
-    private List<String> checkListItems;
+    private List<CheckListItem> checkListItems;
 
     public String getTitle() {
         return title;
@@ -144,11 +144,11 @@ public class BulkScanCoverSheet implements BusinessDocument {
         this.checkListItemsIntro = checkListItemsIntro;
     }
 
-    public List<String> getCheckListItems() {
+    public List<CheckListItem> getCheckListItems() {
         return this.checkListItems;
     }
 
-    public void setCheckListItems(List<String> checkListItems) {
+    public void setCheckListItems(List<CheckListItem> checkListItems) {
         this.checkListItems = checkListItems;
     }
 
