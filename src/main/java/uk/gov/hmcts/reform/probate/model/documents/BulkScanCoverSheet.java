@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.documents;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
@@ -61,6 +62,9 @@ public class BulkScanCoverSheet implements BusinessDocument {
     private String checkListItemsIntro = DEFAULT_SEND_DOCS_INTRO;
 
     @JsonProperty("checkListItems")
+    private String checkListItemsString;
+
+    @JsonIgnore
     private List<CheckListItem> checkListItems;
 
     public String getTitle() {
@@ -142,6 +146,14 @@ public class BulkScanCoverSheet implements BusinessDocument {
 
     public void setCheckListItemsIntro(String checkListItemsIntro) {
         this.checkListItemsIntro = checkListItemsIntro;
+    }
+
+    public String getCheckListItemsString() {
+        return this.checkListItemsString;
+    }
+
+    public void setCheckListItemsString(String checkListItemsString) {
+        this.checkListItemsString = checkListItemsString;
     }
 
     public List<CheckListItem> getCheckListItems() {
