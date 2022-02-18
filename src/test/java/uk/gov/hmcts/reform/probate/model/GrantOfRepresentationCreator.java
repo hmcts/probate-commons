@@ -44,6 +44,9 @@ public class GrantOfRepresentationCreator {
 
         grantOfRepresentationData.setWillHasCodicils(false);
         grantOfRepresentationData.setWillNumberOfCodicils(0L);
+        grantOfRepresentationData.setWillAccessOriginal(false);
+        grantOfRepresentationData.setWillAccessNotorial(true);
+        grantOfRepresentationData.setWillNumberOfCodicils(0L);
         grantOfRepresentationData.setNumberOfApplicants(1L);
         grantOfRepresentationData.setNumberOfExecutors(1L);
         grantOfRepresentationData.setDeclarationCheckbox(true);

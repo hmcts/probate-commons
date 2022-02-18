@@ -320,4 +320,12 @@ public class GrantOfRepresentationTest {
         Assert.assertThat(grantOfRepresentationData.getDeceasedDeathCert(),
                 is(equalTo("optionDeathCertificate")));
     }
+
+    @Test
+    public void shouldDetermineWillAccess() {
+        Assert.assertThat(grantOfRepresentationData.getWillAccessOriginal(),
+            is(equalTo(false)));
+        Assert.assertThat(grantOfRepresentationData.getWillAccessNotorial(),
+            is(equalTo(true)));
+    }
 }
