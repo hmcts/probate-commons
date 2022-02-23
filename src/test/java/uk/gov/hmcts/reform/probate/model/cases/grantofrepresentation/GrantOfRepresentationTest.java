@@ -325,7 +325,7 @@ public class GrantOfRepresentationTest {
     public void shouldDetermineWillAccess() {
         Assert.assertThat(grantOfRepresentationData.getWillAccessOriginal(),
             is(equalTo(false)));
-        Assert.assertThat(grantOfRepresentationData.getWillAccessNotorial(),
+        Assert.assertThat(grantOfRepresentationData.getWillAccessNotarial(),
             is(equalTo(true)));
     }
 }
