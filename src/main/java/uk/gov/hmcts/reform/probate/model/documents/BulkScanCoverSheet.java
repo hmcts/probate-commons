@@ -15,8 +15,8 @@ public class BulkScanCoverSheet implements BusinessDocument {
     public static final String DEFAULT_APPLICANT_ADDRESS_INTRO = "Your address";
     public static final String DEFAULT_CASE_REFERENCE_INTRO = "Your unique reference\nnumber is";
     public static final String DEFAULT_SUBMIT_ADDRESS_INTRO =
-        "Please send this cover sheet along with the above document(s) to the address shown below";
-    public static final String DEFAULT_SEND_DOCS_INTRO = "Documents to send to probate registry:";
+        "You must send these documents and this cover sheet to the address shown below";
+    public static final String DEFAULT_SEND_DOCS_INTRO = "Send your documents and coversheet";
 
     private static final char CASE_REFERENCE_SEPARATOR_CHAR = '-';
     private static final int CASE_REFERENCE_SEPARATOR_INTERVAL_NUMBER = 4;
