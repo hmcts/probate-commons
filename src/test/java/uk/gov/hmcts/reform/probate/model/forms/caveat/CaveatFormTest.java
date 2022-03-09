@@ -104,6 +104,16 @@ public class CaveatFormTest {
     }
 
     @Test
+    public void shouldConstructWithEventDescription() {
+        CaveatForm caveatForm = new CaveatForm(ProbateType.CAVEAT, null, null,
+            null, null, null, null,
+            null, null, null, null,
+            null, null, "eventDescription");
+
+        assertThat(caveatForm.getEventDescription(), is(equalTo("eventDescription")));
+    }
+
+    @Test
     public void shouldDeserializeCaveatFormCorrectly() throws IOException {
         Form form = objectMapper.readValue(formJsonFromFile, Form.class);
 

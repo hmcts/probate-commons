@@ -68,13 +68,29 @@ If master is not tagged, a release will not be created and therefore will be una
 
 #### Updating branch tag
 
-Follow the steps below to tag a branch once the code review has completed. 
+Follow the steps below to tag a branch (possibly once the code review has completed) 
 - Ensure build is successful: 
-    - ./gradew clean build
+    - ./gradlew clean build
+    - git add . 
+    - git commit -m  "DTSPB-2138 add details for events 1.3.3"
+    - git push
+  
 - Create the tag in git with the new version and JIRA reference.
-    - git tag -a 1.2.0_DTSPB-1599-add-uploaded-leg-state-doc-type -m "Update to doc types file."
+    - git tag -a DTSPB-2138-add-details-for-events-1.3.3 -m "DTSPB-2138 add details for events 1.3.3"
 - Push the new tag to the git remote server.
-    - git push origin 1.2.0_DTSPB-1599-add-uploaded-leg-state-doc-type
+    - git push origin DTSPB-2138-add-details-for-events-1.3.3
+
+- Check commons has built on
+    - https://jitpack.io/com/github/hmcts/probate-commons/DTSPB-2138-add-details-for-events-1.3.3/build.log
+    - once it appears here, you can use it = https://github.com/hmcts/probate-commons/releases
+  
+To delete a tag from local
+
+git tag --delete DTSPB-2231-will-condition-v1.0.13
+
+To delete from server
+
+git push origin --delete DTSPB-2231-will-condition-v1.0.13
 
 #### Updating master tag
 
@@ -86,11 +102,11 @@ Once the JIRA has been merged follow the steps below to tag master.
     - git checkout master
     - git pull
 - Ensure build is successful: 
-    - ./gradew clean build
+    - ./gradlew clean build
 - Create the tag in git with the updated version:
-    - git tag -a 1.0.1 -m "Update to README.md file."
+    - git tag -a 1.3.1 -m "DTSPB-2452: add fields for EE changes"
 - Push the new tag to the git remote server.
-    - git push origin 1.0.1
+    - git push origin 1.3.1
 
 You can verify the tag is correct in master by viewing the download link at the top of the readme, it should reflect the latest tag.
 

@@ -23,6 +23,7 @@ import uk.gov.hmcts.reform.probate.model.AdoptiveRelative;
 import uk.gov.hmcts.reform.probate.model.AliasReason;
 import uk.gov.hmcts.reform.probate.model.AttorneyNamesAndAddress;
 import uk.gov.hmcts.reform.probate.model.BulkScanEnvelope;
+import uk.gov.hmcts.reform.probate.model.IhtFormEstate;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.ProbateDocument;
 import uk.gov.hmcts.reform.probate.model.Relationship;
@@ -33,6 +34,7 @@ import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
+import uk.gov.hmcts.reform.probate.model.cases.CombinedName;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 import uk.gov.hmcts.reform.probate.model.cases.DocumentLink;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
@@ -313,7 +315,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     private IhtFormType ihtFormId;
 
-    @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean ihtFormCompletedOnline;
@@ -325,6 +327,35 @@ public class GrantOfRepresentationData extends CaseData {
     @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
     @JsonSerialize(using = ToStringSerializer.class)
     private Long ihtGrossValue;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean ihtFormEstateValuesCompleted;
+
+    private IhtFormEstate ihtFormEstate;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long ihtEstateGrossValue;
+
+    private String ihtEstateGrossValueField;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long ihtEstateNetValue;
+
+    private String ihtEstateNetValueField;
+
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long ihtEstateNetQualifyingValue;
+
+    private String ihtEstateNetQualifyingValueField;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedHadLateSpouseOrCivilPartner;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean ihtUnusedAllowanceClaimed;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -391,6 +422,30 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean willAccessOriginal;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willHasVisibleDamage;
+
+    private Damage willDamage;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willDamageReasonKnown;
+
+    private String willDamageReasonDescription;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willDamageCulpritKnown;
+
+    private CombinedName willDamageCulpritName;
+    
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willDamageDateKnown;
+
+    private String willDamageDate;
+
     @NotNull(groups = {PaNullCheck.class})
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -398,6 +453,34 @@ public class GrantOfRepresentationData extends CaseData {
 
     private Long willNumberOfCodicils;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean codicilsHasVisibleDamage;
+
+    private Damage codicilsDamage;
+    
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean codicilsDamageReasonKnown;
+
+    private String codicilsDamageReasonDescription;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean codicilsDamageCulpritKnown;
+
+    private CombinedName codicilsDamageCulpritName;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean codicilsDamageDateKnown;
+
+    private String codicilsDamageDate;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedWrittenWishes;
+    
     @NotNull(groups = {PaNullCheck.class})
     @Min(value = 1, groups = {PaFieldCheck.class})
     private Long numberOfExecutors;

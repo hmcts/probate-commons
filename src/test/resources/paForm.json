@@ -84,6 +84,7 @@
           }
         ],
         "deceasedEstateValue": "The gross value for the estate amounts to £20000 and the net value for the estate amounts to £20000.",
+        "deceasedEstateValueExceptedEstateConfirmation": "I confirm that the estate is an excepted estate.",
         "deceasedEstateLand": "To the best of my knowledge, information and belief, there was no land vested in Ned Stark which was settled previously to the death (and not by the will) of Ned Stark and which remained settled land notwithstanding such death.",
         "executorsNotApplying": [],
         "intro": "This statement is based on the information you&rsquo;ve given in your application. It will be stored as a public record."
@@ -127,11 +128,53 @@
     "identifier": "IHT1234567",
     "grossValue": 20000,
     "netValue": 20000,
+    "estateValueCompleted": "optionYes",
+    "ihtFormEstateId": "IHT207",
     "grossValueOnline": "20000",
     "netValueOnline": "20000"
   },
   "will": {
-    "codicils": "optionNo"
+    "codicils": "optionYes",
+    "codicilsNumber": 1,
+    "willHasVisibleDamage": "optionYes",
+    "willDamage": {
+      "damageTypesList": [
+        "stapleOrPunchHoles",
+        "paperClipMarks",
+        "tornEdges",
+        "otherVisibleDamage"
+      ],
+      "otherDamageDescription": "Some other damage description"
+    },
+    "willDamageReasonKnown": "optionYes",
+    "willDamageReasonDescription": "Some other damage description",
+    "willDamageCulpritKnown": "optionYes",
+    "willDamageCulpritName": {
+      "firstName": "CulpritFirst",
+      "lastName": "CulpritLast"
+    },
+    "willDamageDateKnown": "optionYes",
+    "willDamageDate": "4/10/2021",
+    "codicilsHasVisibleDamage": "optionYes",
+    "codicilsDamage": {
+      "damageTypesList": [
+        "stapleOrPunchHoles",
+        "paperClipMarks",
+        "tornEdges",
+        "otherVisibleDamage"
+      ],
+      "otherDamageDescription": "Some other damage description"
+    },
+    "codicilsDamageReasonKnown": "optionYes",
+    "codicilsDamageReasonDescription": "Some other codicil damage description",
+    "codicilsDamageCulpritKnown": "optionYes",
+    "codicilsDamageCulpritName": {
+      "firstName": "CodicilCulpritFirst",
+      "lastName": "CodicilCulpritLast"
+    },
+    "codicilsDamageDateKnown": "optionYes",
+    "codicilsDamageDate": "5/10/2021",
+    "deceasedWrittenWishes": "optionYes"
   },
   "summary": {
     "readyToDeclare": true
