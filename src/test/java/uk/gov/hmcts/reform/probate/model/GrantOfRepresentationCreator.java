@@ -207,6 +207,16 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setIhtNetValueField("100000");
         grantOfRepresentationData.setIhtGrossValueField("100000");
         grantOfRepresentationData.setIhtReferenceNumber("GOT123456");
+        grantOfRepresentationData.setIhtFormEstateValuesCompleted(true);
+        grantOfRepresentationData.setIhtFormEstate(IhtFormEstate.optionIHT400421);
+        grantOfRepresentationData.setIhtEstateGrossValue(40050L);
+        grantOfRepresentationData.setIhtEstateGrossValueField("40,050");
+        grantOfRepresentationData.setIhtEstateNetValue(30050L);
+        grantOfRepresentationData.setIhtEstateNetValueField("30,050");
+        grantOfRepresentationData.setIhtEstateNetQualifyingValue(20050L);
+        grantOfRepresentationData.setIhtEstateNetQualifyingValueField("20,050");
+        grantOfRepresentationData.setDeceasedHadLateSpouseOrCivilPartner(true);
+        grantOfRepresentationData.setIhtUnusedAllowanceClaimed(true);
     }
 
     private static void createDeceasedDetails(GrantOfRepresentationData grantOfRepresentationData) {

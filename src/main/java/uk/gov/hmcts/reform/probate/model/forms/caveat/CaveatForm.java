@@ -49,8 +49,9 @@ public class CaveatForm extends Form<CaveatDeceased, CaveatApplicant> {
     public CaveatForm(ProbateType type, CaveatDeceased deceased, CaveatApplicant applicant,
                       Registry registry, CcdCase ccdCase, List<Payment> payments, LocalDate expiryDate,
                       String applicationId, Fees fees, Copies copies, Payment payment,
-                      Language language, Equality equality) {
-        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language);
+                      Language language, Equality equality, String eventDescription) {
+        super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
+            eventDescription);
         this.expiryDate = expiryDate;
         this.applicationId = applicationId;
         this.equality = equality;

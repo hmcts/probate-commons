@@ -32,6 +32,8 @@ public class LegalStatement {
     private String deceasedOtherNames;
 
     private String deceasedEstateValue;
+    
+    private String deceasedEstateValueExceptedEstateConfirmation;
 
     @NotBlank(groups = {PaSubmission.class})
     private String deceasedEstateLand;

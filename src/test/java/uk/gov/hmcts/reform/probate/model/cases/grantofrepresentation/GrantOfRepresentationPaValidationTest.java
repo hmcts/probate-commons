@@ -221,19 +221,6 @@ public class GrantOfRepresentationPaValidationTest {
                 tuple("primaryApplicantAddress.postCode", "must not be blank"));
     }
 
-
-    @Test
-    public void shouldFailWhenIhtFormCompletedOnlineIsNull() {
-        GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
-        caseData.setIhtFormCompletedOnline(null);
-
-        Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
-
-        assertThat(violations).hasSize(1)
-            .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-            .containsExactlyInAnyOrder(tuple("ihtFormCompletedOnline", "must not be null"));
-    }
-
     @Test
     public void shouldFailWhenIhtNetValueIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
