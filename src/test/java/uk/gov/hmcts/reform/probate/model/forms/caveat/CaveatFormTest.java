@@ -87,7 +87,7 @@ public class CaveatFormTest {
         caveatForm.setRegistry(registry);
 
         Payment payment = new Payment();
-        String dateStr = "2018-12-03T15:58:44.954+0000";
+        String dateStr = "2018-12-03T15:58:44.954Z";
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_STR_ISO8601);
         payment.setDate(formatter.parse(dateStr));
         payment.setAmount(new BigDecimal("220.5"));
