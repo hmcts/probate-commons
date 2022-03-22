@@ -150,7 +150,7 @@ public class IntestacyFormTest {
         intestacyForm.setDeclaration(intestacyDeclaration);
 
         Payment payment = new Payment();
-        String dateStr = "2018-12-03T15:58:44.954Z";
+        String dateStr = "2018-12-03T15:58:44.954+0000";
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_STR_ISO8601);
         payment.setDate(formatter.parse(dateStr));
         payment.setAmount(new BigDecimal("220.5"));
