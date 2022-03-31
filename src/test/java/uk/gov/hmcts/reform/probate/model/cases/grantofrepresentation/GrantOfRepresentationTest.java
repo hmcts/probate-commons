@@ -327,5 +327,8 @@ public class GrantOfRepresentationTest {
             is(equalTo(false)));
         Assert.assertThat(grantOfRepresentationData.getWillAccessNotarial(),
             is(equalTo(true)));
+        Assert.assertThat(grantOfRepresentationData.getNoOriginalWillAccessReason(),
+            is(equalTo("No original will access reason")));
+
     }
 }
