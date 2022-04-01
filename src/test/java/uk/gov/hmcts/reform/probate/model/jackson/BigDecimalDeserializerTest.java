@@ -12,8 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BigDecimalDeserializerTest {
@@ -30,7 +29,7 @@ public class BigDecimalDeserializerTest {
         Mockito.when(mockJsonParser.getText()).thenReturn("£100,000.00");
         BigDecimal result = bigDecimalDeserializer.deserialize(mockJsonParser, mockDeserializarionContext);
 
-        assertThat(result, is(new BigDecimal("100000.00")));
+        assertEquals(new BigDecimal("100000.00"), result);
     }
 
     @Test(expected = IllegalArgumentException.class)

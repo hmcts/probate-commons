@@ -4,9 +4,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.BIRMINGHAM;
+import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.MANCHESTER;
+import static uk.gov.hmcts.reform.probate.model.cases.RegistryLocation.OXFORD;
 
 public class RegistryLocationTest {
 
@@ -18,13 +20,13 @@ public class RegistryLocationTest {
         RegistryLocation registryLocation;
 
         registryLocation = RegistryLocation.findRegistryLocationByName("birmingham");
-        assertThat(registryLocation, is(RegistryLocation.BIRMINGHAM));
+        assertEquals(BIRMINGHAM, registryLocation);
 
         registryLocation = RegistryLocation.findRegistryLocationByName("OXFORD");
-        assertThat(registryLocation, is(RegistryLocation.OXFORD));
+        assertEquals(OXFORD, registryLocation);
 
         registryLocation = RegistryLocation.findRegistryLocationByName("ManchesTer");
-        assertThat(registryLocation, is(RegistryLocation.MANCHESTER));
+        assertEquals(MANCHESTER, registryLocation);
     }
 
     @Test

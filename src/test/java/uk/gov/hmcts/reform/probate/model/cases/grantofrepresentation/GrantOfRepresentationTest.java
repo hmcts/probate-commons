@@ -1,13 +1,14 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static uk.gov.hmcts.reform.probate.model.YesNo.NO;
 import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
 
@@ -23,20 +24,19 @@ public class GrantOfRepresentationTest {
     public void setUpTest() {
         grantOfRepresentationData = GrantOfRepresentationCreator.createProbateCase();
         GrantOfRepresentationCreator.addExecutorApplying(grantOfRepresentationData,
-            email, executorApplyingName);
+                email, executorApplyingName);
     }
 
     @Test
     public void shouldSetInvitationAgreedFlagWithFirstNameAndLastName() {
         String invitationId = "123455";
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, invitationId,
-            "Graham Garderner", executorApplyingName);
-        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying(invitationId, Boolean.TRUE);
+                "Graham Garderner", executorApplyingName);
+        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying(invitationId, TRUE);
 
         ExecutorApplying executorApplying = grantOfRepresentationData.getExecutorApplyingByEmailAddress(email,
-            executorApplyingName);
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
-            is(equalTo(Boolean.TRUE)));
+                executorApplyingName);
+        assertEquals(TRUE, executorApplying.getApplyingExecutorAgreed());
     }
 
 
@@ -44,42 +44,39 @@ public class GrantOfRepresentationTest {
     public void shouldSetInvitationAgreedFlag() {
         String invitationId = "123455";
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, invitationId,
-            "Graham Garderner", executorApplyingName);
-        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying(invitationId, Boolean.TRUE);
+                "Graham Garderner", executorApplyingName);
+        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying(invitationId, TRUE);
 
 
         GrantOfRepresentationCreator.addExecutorApplying(grantOfRepresentationData,
-            "mainEmailExecutor", "Bobby Firmino", Boolean.TRUE);
+                "mainEmailExecutor", "Bobby Firmino", TRUE);
 
 
         ExecutorApplying executorApplying = grantOfRepresentationData.getExecutorApplyingByEmailAddress(email);
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
-            is(equalTo(Boolean.TRUE)));
+        assertEquals(TRUE, executorApplying.getApplyingExecutorAgreed());
     }
 
     @Test
     public void shouldResetInvitationAgreedFlag() {
 
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, "123455",
-            "Graham Garderner", executorApplyingName);
+                "Graham Garderner", executorApplyingName);
 
         String emailExecutor1 = "executor1@email.com";
         GrantOfRepresentationCreator.addExecutorApplying(grantOfRepresentationData,
-            emailExecutor1, "Helen Fisher");
+                emailExecutor1, "Helen Fisher");
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(emailExecutor1, "123456",
-            "Graham Garderner", "Helen Fisher");
+                "Graham Garderner", "Helen Fisher");
 
         grantOfRepresentationData.resetExecutorsApplyingAgreedFlags();
 
         ExecutorApplying executorApplying = grantOfRepresentationData.getExecutorApplyingByEmailAddress(email,
-            executorApplyingName);
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
-            is(equalTo(null)));
+                executorApplyingName);
+        assertNull(executorApplying.getApplyingExecutorAgreed());
 
         ExecutorApplying executorApplying1 =
-            grantOfRepresentationData.getExecutorApplyingByEmailAddress(emailExecutor1, "Helen Fisher");
-        Assert.assertThat(executorApplying1.getApplyingExecutorAgreed(),
-            is(equalTo(null)));
+                grantOfRepresentationData.getExecutorApplyingByEmailAddress(emailExecutor1, "Helen Fisher");
+        assertNull(executorApplying1.getApplyingExecutorAgreed());
     }
 
 
@@ -87,49 +84,43 @@ public class GrantOfRepresentationTest {
     public void shouldDetermineThatAllExecutorsHaveAgreed() {
 
         GrantOfRepresentationCreator.addExecutorApplying(grantOfRepresentationData,
-            "mainEmailExecutor", "Main Exec", Boolean.TRUE);
+                "mainEmailExecutor", "Main Exec", TRUE);
 
-        grantOfRepresentationData.setDeclarationCheckbox(Boolean.FALSE);
+        grantOfRepresentationData.setDeclarationCheckbox(FALSE);
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, "123455",
-            "Graham Garderner", executorApplyingName);
+                "Graham Garderner", executorApplyingName);
 
         String emailExecutor1 = "executor1@email.com";
         GrantOfRepresentationCreator.addExecutorApplying(grantOfRepresentationData,
-            emailExecutor1, "Bobby Firmino");
+                emailExecutor1, "Bobby Firmino");
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(emailExecutor1, "123456",
-            "Graham Garderner", "Bobby Firmino");
+                "Graham Garderner", "Bobby Firmino");
 
-        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123455", Boolean.TRUE);
+        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123455", TRUE);
 
-        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123456", Boolean.FALSE);
+        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123456", FALSE);
 
         ExecutorApplying executorApplying = grantOfRepresentationData
-            .getExecutorApplyingByEmailAddress(email, executorApplyingName);
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
-            is(equalTo(Boolean.TRUE)));
+                .getExecutorApplyingByEmailAddress(email, executorApplyingName);
+        assertEquals(TRUE, executorApplying.getApplyingExecutorAgreed());
 
         ExecutorApplying executorApplying1 =
-            grantOfRepresentationData.getExecutorApplyingByEmailAddress(emailExecutor1, "Bobby Firmino");
-        Assert.assertThat(executorApplying1.getApplyingExecutorAgreed(),
-            is(equalTo(Boolean.FALSE)));
+                grantOfRepresentationData.getExecutorApplyingByEmailAddress(emailExecutor1, "Bobby Firmino");
+        assertEquals(FALSE, executorApplying1.getApplyingExecutorAgreed());
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
-            is(equalTo(Boolean.FALSE)));
+        assertEquals(FALSE, grantOfRepresentationData.haveAllExecutorsAgreed());
 
-        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123456", Boolean.TRUE);
+        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123456", TRUE);
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
-            is(equalTo(Boolean.FALSE)));
+        assertEquals(FALSE, grantOfRepresentationData.haveAllExecutorsAgreed());
 
-        grantOfRepresentationData.setDeclarationCheckbox(Boolean.TRUE);
+        grantOfRepresentationData.setDeclarationCheckbox(TRUE);
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
-            is(equalTo(Boolean.TRUE)));
+        assertEquals(TRUE, grantOfRepresentationData.haveAllExecutorsAgreed());
 
         grantOfRepresentationData.setDeclarationCheckbox(null);
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
-            is(equalTo(Boolean.FALSE)));
+        assertEquals(FALSE, grantOfRepresentationData.haveAllExecutorsAgreed());
     }
 
     @Test
@@ -138,17 +129,16 @@ public class GrantOfRepresentationTest {
         String invitationId = "123455";
         String email = "executor@email.com";
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, invitationId,
-            "Graham Garderner", executorApplyingName);
+                "Graham Garderner", executorApplyingName);
 
         String newEmail = "newemail@email.com";
         String phoneNumber = "07989898981";
         grantOfRepresentationData.updateInvitationContactDetailsForExecutorApplying(invitationId, newEmail,
-            phoneNumber);
+                phoneNumber);
 
         ExecutorApplying executorApplying = grantOfRepresentationData.getExecutorApplyingByEmailAddress(newEmail,
-            executorApplyingName);
-        Assert.assertThat(executorApplying.getApplyingExecutorPhoneNumber(),
-            is(equalTo(phoneNumber)));
+                executorApplyingName);
+        assertEquals(phoneNumber, executorApplying.getApplyingExecutorPhoneNumber());
     }
 
     @Test
@@ -157,23 +147,21 @@ public class GrantOfRepresentationTest {
         String invitationId = "123455";
         String email = "executor@email.com";
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, invitationId,
-            "Graham Garderner", executorApplyingName);
+                "Graham Garderner", executorApplyingName);
 
         grantOfRepresentationData.deleteInvitation(invitationId);
 
         ExecutorApplying executorApplying = grantOfRepresentationData.getExecutorApplyingByEmailAddress(email,
-            executorApplyingName);
+                executorApplyingName);
 
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
-            is(equalTo(null)));
+        assertNull(executorApplying.getApplyingExecutorAgreed());
     }
 
     @Test
     public void shouldDetermineWhetherInvitesHaveBeenSentForExecutorsReturnsFalse() {
 
         Boolean result = grantOfRepresentationData.haveInvitesBeenSent();
-        Assert.assertThat(result,
-            is(equalTo(Boolean.FALSE)));
+        assertEquals(FALSE, result);
     }
 
     @Test
@@ -182,11 +170,10 @@ public class GrantOfRepresentationTest {
         String invitationId = "123455";
         String email = "executor@email.com";
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, invitationId,
-            "Graham Garderner", executorApplyingName);
+                "Graham Garderner", executorApplyingName);
 
         Boolean result = grantOfRepresentationData.haveInvitesBeenSent();
-        Assert.assertThat(result,
-            is(equalTo(Boolean.TRUE)));
+        assertEquals(TRUE, result);
     }
 
 
@@ -194,66 +181,54 @@ public class GrantOfRepresentationTest {
     public void shouldGetExecutorApplyingByEmailAddressAndNamesForSameEmailAddress() {
 
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, "123455",
-            "Graham Garderner", executorApplyingName);
+                "Graham Garderner", executorApplyingName);
 
         GrantOfRepresentationCreator.addExecutorApplying(grantOfRepresentationData,
-            email, "Bobby Firmino");
+                email, "Bobby Firmino");
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, "123456",
-            "Graham Garderner", "Bobby Firmino");
+                "Graham Garderner", "Bobby Firmino");
 
-        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123455", Boolean.TRUE);
+        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123455", TRUE);
 
-        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123456", Boolean.FALSE);
+        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123456", FALSE);
 
         ExecutorApplying executorApplying = grantOfRepresentationData
-            .getExecutorApplyingByEmailAddress(email, executorApplyingName);
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
-            is(equalTo(Boolean.TRUE)));
-        Assert.assertThat(executorApplying.getApplyingExecutorName(),
-            is(equalTo(executorApplyingName)));
+                .getExecutorApplyingByEmailAddress(email, executorApplyingName);
+        assertEquals(TRUE, executorApplying.getApplyingExecutorAgreed());
+        assertEquals(executorApplyingName, executorApplying.getApplyingExecutorName());
 
 
         ExecutorApplying executorApplying1 =
-            grantOfRepresentationData.getExecutorApplyingByEmailAddress(email, "Bobby Firmino");
-        Assert.assertThat(executorApplying1.getApplyingExecutorAgreed(),
-            is(equalTo(Boolean.FALSE)));
-        Assert.assertThat(executorApplying1.getApplyingExecutorName(),
-            is(equalTo("Bobby Firmino")));
+                grantOfRepresentationData.getExecutorApplyingByEmailAddress(email, "Bobby Firmino");
+        assertEquals(FALSE, executorApplying1.getApplyingExecutorAgreed());
+        assertEquals("Bobby Firmino", executorApplying1.getApplyingExecutorName());
 
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
-            is(equalTo(Boolean.FALSE)));
+        assertEquals(FALSE, grantOfRepresentationData.haveAllExecutorsAgreed());
 
-        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123456", Boolean.TRUE);
+        grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123456", TRUE);
 
-        grantOfRepresentationData.setDeclarationCheckbox(Boolean.TRUE);
+        grantOfRepresentationData.setDeclarationCheckbox(TRUE);
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
-            is(equalTo(Boolean.TRUE)));
+        assertEquals(TRUE, grantOfRepresentationData.haveAllExecutorsAgreed());
     }
 
     @Test
     public void shouldGetChildrenAndGrandChildrenIntestacyBooleanSerialization() {
 
         grantOfRepresentationData.setChildrenDiedOverEighteen(null);
-        grantOfRepresentationData.setChildrenDiedUnderEighteen(Boolean.FALSE);
-        grantOfRepresentationData.setChildrenOverEighteenSurvived(Boolean.FALSE);
-        grantOfRepresentationData.setChildrenUnderEighteenSurvived(Boolean.TRUE);
-        grantOfRepresentationData.setGrandChildrenSurvivedOverEighteen(Boolean.FALSE);
-        grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteen(Boolean.TRUE);
+        grantOfRepresentationData.setChildrenDiedUnderEighteen(FALSE);
+        grantOfRepresentationData.setChildrenOverEighteenSurvived(FALSE);
+        grantOfRepresentationData.setChildrenUnderEighteenSurvived(TRUE);
+        grantOfRepresentationData.setGrandChildrenSurvivedOverEighteen(FALSE);
+        grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteen(TRUE);
 
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedOverEighteenText(),
-            is(equalTo(null)));
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteenText(),
-            is(equalTo(NO.getDescription())));
-        Assert.assertThat(grantOfRepresentationData.getChildrenOverEighteenSurvivedText(),
-            is(equalTo(NO.getDescription())));
-        Assert.assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvivedText(),
-            is(equalTo(YES.getDescription())));
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteenText(),
-            is(equalTo(NO.getDescription())));
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteenText(),
-            is(equalTo(YES.getDescription())));
+        assertNull(grantOfRepresentationData.getChildrenDiedOverEighteenText());
+        assertEquals(NO.getDescription(), grantOfRepresentationData.getChildrenDiedUnderEighteenText());
+        assertEquals(NO.getDescription(), grantOfRepresentationData.getChildrenOverEighteenSurvivedText());
+        assertEquals(YES.getDescription(), grantOfRepresentationData.getChildrenUnderEighteenSurvivedText());
+        assertEquals(NO.getDescription(), grantOfRepresentationData.getGrandChildrenSurvivedOverEighteenText());
+        assertEquals(YES.getDescription(), grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteenText());
     }
 
     @Test
@@ -266,58 +241,51 @@ public class GrantOfRepresentationTest {
         grantOfRepresentationData.setGrandChildrenSurvivedOverEighteenText("No");
         grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteenText("true");
 
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedOverEighteen(), is(equalTo(null)));
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteen(), is(equalTo(Boolean.TRUE)));
-        Assert.assertThat(grantOfRepresentationData.getChildrenOverEighteenSurvived(), is(equalTo(Boolean.FALSE)));
-        Assert.assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvived(), is(equalTo(Boolean.TRUE)));
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteen(), is(equalTo(Boolean.FALSE)));
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteen(), is(equalTo(Boolean.TRUE)));
+        assertNull(grantOfRepresentationData.getChildrenDiedOverEighteen());
+        assertEquals(TRUE, grantOfRepresentationData.getChildrenDiedUnderEighteen());
+        assertEquals(FALSE, grantOfRepresentationData.getChildrenOverEighteenSurvived());
+        assertEquals(TRUE, grantOfRepresentationData.getChildrenUnderEighteenSurvived());
+        assertEquals(FALSE, grantOfRepresentationData.getGrandChildrenSurvivedOverEighteen());
+        assertEquals(TRUE, grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteen());
     }
 
 
     @Test
     public void shouldDetermineIfDeceasedDeathCertInEnglish() {
-        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.TRUE);
-        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.TRUE);
-        Assert.assertThat(grantOfRepresentationData.isDeceasedDeathCertInEnglish(),
-                is(equalTo(null)));
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(TRUE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(TRUE);
+        assertNull(grantOfRepresentationData.isDeceasedDeathCertInEnglish());
 
 
-        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
-        Assert.assertThat(grantOfRepresentationData.isDeceasedDeathCertInEnglish(),
-                is(equalTo(Boolean.TRUE)));
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(FALSE);
+        assertEquals(TRUE, grantOfRepresentationData.isDeceasedDeathCertInEnglish());
     }
 
     @Test
     public void shouldDetermineIfDeceasedForeignDeathCertIsTranslated() {
-        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.TRUE);
-        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.TRUE);
-        grantOfRepresentationData.setDeceasedForeignDeathCertTranslation(Boolean.FALSE);
-        Assert.assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
-                is(equalTo(null)));
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(TRUE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(TRUE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertTranslation(FALSE);
+        assertNull(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated());
 
-        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
-        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.TRUE);
-        grantOfRepresentationData.setDeceasedForeignDeathCertTranslation(Boolean.FALSE);
-        Assert.assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
-                is(equalTo(null)));
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(FALSE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(TRUE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertTranslation(FALSE);
+        assertNull(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated());
 
-        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
-        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.FALSE);
-        Assert.assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
-                is(equalTo(Boolean.FALSE)));
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(FALSE);
+        grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(FALSE);
+        assertEquals(FALSE, grantOfRepresentationData.isDeceasedForeignDeathCertTranslated());
     }
 
     @Test
     public void shouldDetermineDeceasedDeathCertificateValue() {
-        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(FALSE);
         grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
-        Assert.assertThat(grantOfRepresentationData.getDeceasedDeathCert(),
-                is(equalTo(null)));
+        assertNull(grantOfRepresentationData.getDeceasedDeathCert());
 
-        grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.TRUE);
+        grantOfRepresentationData.setDeceasedDiedEngOrWales(TRUE);
         grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
-        Assert.assertThat(grantOfRepresentationData.getDeceasedDeathCert(),
-                is(equalTo("optionDeathCertificate")));
+        assertEquals("optionDeathCertificate", grantOfRepresentationData.getDeceasedDeathCert());
     }
 }

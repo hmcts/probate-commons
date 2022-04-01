@@ -40,10 +40,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
-import static java.lang.Boolean.TRUE;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class PaFormTest {
 
@@ -224,14 +221,14 @@ public class PaFormTest {
                                                 LegalStatementExecutorApplying.builder()
                                                         .name("I am an executor named in the will as Jon Snow, "
                                                                 + "and I am applying for probate.")
-                                                        .sign("I will send to the probate registry what I believe to " 
+                                                        .sign("I will send to the probate registry what I believe to "
                                                                 + "be the true and original last will and testament of"
                                                                 + " Ned Stark.")
                                                         .build()
                                         ))
                                         .deceasedEstateLand("To the best of my knowledge, information and belief, "
                                                 + "there was no land vested in Ned Stark which was settled previously"
-                                                + " to the death (and not by the will) of Ned Stark and which remained" 
+                                                + " to the death (and not by the will) of Ned Stark and which remained"
                                                 + " settled land notwithstanding such death.")
                                         .deceasedOtherNames("")
                                         .deceasedEstateValue("The gross value for the estate amounts to £20000 and the "
@@ -253,7 +250,7 @@ public class PaFormTest {
     public void shouldDeserializePaFormCorrectly() throws IOException {
         Form form = objectMapper.readValue(formJsonFromFile, Form.class);
         boolean equals = form.getApplicant().equals(paForm.getApplicant());
-        assertThat(form, is(equalTo(paForm)));
+        assertEquals(paForm, form);
     }
 
     @Test

@@ -12,9 +12,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import java.io.IOException;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class WillLodgementDataTest {
 
@@ -36,7 +34,7 @@ public class WillLodgementDataTest {
     public void shouldDeserializeWillLodgementDataCorrectly() throws IOException {
         CaseData caseData = objectMapper.readValue(jsonFromFile, CaseData.class);
 
-        assertThat(willLodgementData, is(equalTo(caseData)));
+        assertEquals(caseData, willLodgementData);
     }
 
     @Test

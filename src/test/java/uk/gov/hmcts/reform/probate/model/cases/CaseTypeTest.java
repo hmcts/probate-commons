@@ -7,8 +7,7 @@ import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepr
 
 import java.util.List;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class CaseTypeTest {
 
@@ -19,7 +18,7 @@ public class CaseTypeTest {
     public void shouldGetCaseType() {
         CaseData caseData = new GrantOfRepresentationData();
         CaseType caseType = CaseType.getCaseType(caseData);
-        assertThat(caseType, is(CaseType.GRANT_OF_REPRESENTATION));
+        assertEquals(CaseType.GRANT_OF_REPRESENTATION, caseType);
     }
 
     @Test

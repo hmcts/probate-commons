@@ -38,9 +38,7 @@ import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISS
 import static com.fasterxml.jackson.databind.util.StdDateFormat.DATE_FORMAT_STR_ISO8601;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class IntestacyFormTest {
 
@@ -197,7 +195,7 @@ public class IntestacyFormTest {
     public void shouldDeserializeIntestacyFormCorrectly() throws IOException {
         IntestacyForm form = objectMapper.readValue(formJsonFromFile, IntestacyForm.class);
 
-        assertThat(form, is(equalTo(intestacyForm)));
+        assertEquals(intestacyForm, form);
     }
 
     @Test

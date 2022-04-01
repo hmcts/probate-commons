@@ -9,8 +9,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class AtLeastOneNonEmptyFieldValidatorTest {
 
@@ -25,13 +24,13 @@ public class AtLeastOneNonEmptyFieldValidatorTest {
     @Test
     public void shouldFailWhenNoFieldIsSet() {
         CaseData caseData = new GrantOfRepresentationData();
-        assertThat(validator.validate(caseData), hasSize(1));
+        assertEquals(1, validator.validate(caseData).size());
     }
 
     @Test
     public void shouldSucceedWhenAtLeastFieldIsSet() {
         CaseData caseData = new GrantOfRepresentationData();
         ((GrantOfRepresentationData) caseData).setDeceasedSurname("Stark");
-        assertThat(validator.validate(caseData), hasSize(0));
+        assertEquals(0, validator.validate(caseData).size());
     }
 }

@@ -25,9 +25,7 @@ import java.time.LocalDate;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
 import static com.fasterxml.jackson.databind.util.StdDateFormat.DATE_FORMAT_STR_ISO8601;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class CaveatFormTest {
 
@@ -110,14 +108,14 @@ public class CaveatFormTest {
             null, null, null, null,
             null, null, "eventDescription");
 
-        assertThat(caveatForm.getEventDescription(), is(equalTo("eventDescription")));
+        assertEquals(caveatForm.getEventDescription(), "eventDescription");
     }
 
     @Test
     public void shouldDeserializeCaveatFormCorrectly() throws IOException {
         Form form = objectMapper.readValue(formJsonFromFile, Form.class);
 
-        assertThat(form, is(equalTo(caveatForm)));
+        assertEquals(caveatForm, form);
     }
 
     @Test

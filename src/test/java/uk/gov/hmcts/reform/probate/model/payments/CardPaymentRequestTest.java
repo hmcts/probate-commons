@@ -8,13 +8,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotEquals;
 
 public class CardPaymentRequestTest {
 
@@ -67,26 +62,24 @@ public class CardPaymentRequestTest {
 
     @Test
     public void shouldSetValuesCorrectlyForPayment() throws IOException {
-        assertEquals(CARD_PAYMENT_CASE_REFERNCE, cardPaymentRequest.getCaseReference());
-        assertEquals(CARD_PAYMENT_AMOUNT, cardPaymentRequest.getAmount());
-        assertEquals(CARD_PAYMENT_CCD_CASE_NUMBER, cardPaymentRequest.getCcdCaseNumber());
-        assertEquals(CARD_PAYMENT_DESCRIPTION, cardPaymentRequest.getDescription());
-        assertEquals(CARD_PAYMENT_SERVICE, cardPaymentRequest.getService());
-        assertEquals(CARD_PAYMENT_CURRENCY, cardPaymentRequest.getCurrency());
-        assertEquals(CARD_PAYMENT_SITEID, cardPaymentRequest.getSiteId());
-        assertThat(CARD_PAYMENT_FEES, is(equalTo(cardPaymentRequest.getFees())));
+        assertEquals(cardPaymentRequest.getCaseReference(), CARD_PAYMENT_CASE_REFERNCE);
+        assertEquals(cardPaymentRequest.getAmount(), CARD_PAYMENT_AMOUNT);
+        assertEquals(cardPaymentRequest.getCcdCaseNumber(), CARD_PAYMENT_CCD_CASE_NUMBER);
+        assertEquals(cardPaymentRequest.getDescription(), CARD_PAYMENT_DESCRIPTION);
+        assertEquals(cardPaymentRequest.getService(), CARD_PAYMENT_SERVICE);
+        assertEquals(cardPaymentRequest.getCurrency(), CARD_PAYMENT_CURRENCY);
+        assertEquals(cardPaymentRequest.getSiteId(), CARD_PAYMENT_SITEID);
+        assertEquals(cardPaymentRequest.getFees(), CARD_PAYMENT_FEES);
     }
 
     @Test
     public void shouldComparePaymentsToEnsureTheyMatch() throws IOException {
-        assertThat(cardPaymentRequest, is(equalTo(cardPaymentRequestMatch)));
-        assertTrue(cardPaymentRequest.equals(cardPaymentRequestMatch));
+        assertEquals(cardPaymentRequestMatch, cardPaymentRequest);
     }
 
     @Test
     public void shouldComparePaymentsToEnsureTheyDontMatch() throws IOException {
         cardPaymentRequestMatch.setAmount(CARD_PAYMENT_AMOUNT_2);
-        assertThat(cardPaymentRequest, is(not(cardPaymentRequestMatch)));
-        assertFalse(cardPaymentRequest.equals(cardPaymentRequestMatch));
+        assertNotEquals(cardPaymentRequestMatch, cardPaymentRequest);
     }
 }

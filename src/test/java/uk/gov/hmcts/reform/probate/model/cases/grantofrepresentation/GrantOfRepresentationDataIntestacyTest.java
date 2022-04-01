@@ -12,9 +12,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import java.io.IOException;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class GrantOfRepresentationDataIntestacyTest {
 
@@ -52,7 +50,7 @@ public class GrantOfRepresentationDataIntestacyTest {
     public void shouldDeserializeGrantOfRepresentationDataCorrectly() throws IOException {
         CaseData caseData = objectMapper.readValue(gorJsonFromFile, CaseData.class);
 
-        assertThat(grantOfRepresentationData, is(equalTo(caseData)));
+        assertEquals(caseData, grantOfRepresentationData);
     }
 
     @Test
