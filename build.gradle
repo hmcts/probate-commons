@@ -4,9 +4,7 @@ plugins {
     id 'com.jfrog.bintray' version '1.8.4'
     id 'com.github.ben-manes.versions' version '0.20.0'
     id 'java-library'
-    id 'maven'
     id 'maven-publish'
-    id 'net.ltgt.apt' version '0.18'
     // id 'pmd'
     id 'jacoco'
 }
@@ -36,7 +34,10 @@ compileTestJava {
 
 repositories {
     mavenLocal()
+    mavenCentral()
     jcenter()
+    maven { url "https://repo.maven.apache.org/maven2" }
+    maven { url "https://jitpack.io" }
 }
 
 jar {
@@ -124,27 +125,27 @@ def versions = [
 ]
 
 dependencies {
-    compile group: 'org.projectlombok', name: 'lombok', version: versions.lombok
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
-    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
-    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
+    implementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
+    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
+    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
     compileOnly group:'org.projectlombok', name: 'lombok', version: versions.lombok
     annotationProcessor group:'org.projectlombok', name:'lombok', version: versions.lombok
 
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
-    compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: versions.hibernateValidator
-    compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
-    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
-    compile group: 'junit', name: 'junit', version: versions.junit
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: versions.hibernateValidator
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
+    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+    implementation group: 'junit', name: 'junit', version: versions.junit
 
-    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
-    testCompile group: 'commons-io', name: 'commons-io', version: versions.commonsIo
-    testCompile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
-    testCompile group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
+    testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
+    testImplementation group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+    testImplementation group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
 
-    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.2")
-    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.3.2")
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.3.2')
     testImplementation('org.mockito:mockito-core:2.7.22')
 
