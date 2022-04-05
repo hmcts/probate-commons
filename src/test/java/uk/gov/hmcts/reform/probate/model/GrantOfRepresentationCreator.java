@@ -47,7 +47,6 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setWillAccessOriginal(false);
         grantOfRepresentationData.setNoOriginalWillAccessReason("No original will access reason");
         grantOfRepresentationData.setWillAccessNotarial(true);
-        grantOfRepresentationData.setWillNumberOfCodicils(0L);
         grantOfRepresentationData.setNumberOfApplicants(1L);
         grantOfRepresentationData.setNumberOfExecutors(1L);
         grantOfRepresentationData.setDeclarationCheckbox(true);
