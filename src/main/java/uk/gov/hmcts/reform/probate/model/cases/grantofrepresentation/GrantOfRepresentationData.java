@@ -424,6 +424,12 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willAccessNotarial;
+
+    private String noOriginalWillAccessReason;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean willHasVisibleDamage;
 
     private Damage willDamage;
@@ -439,7 +445,7 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean willDamageCulpritKnown;
 
     private CombinedName willDamageCulpritName;
-    
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean willDamageDateKnown;
@@ -458,7 +464,7 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean codicilsHasVisibleDamage;
 
     private Damage codicilsDamage;
-    
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean codicilsDamageReasonKnown;
@@ -480,7 +486,7 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedWrittenWishes;
-    
+
     @NotNull(groups = {PaNullCheck.class})
     @Min(value = 1, groups = {PaFieldCheck.class})
     private Long numberOfExecutors;
