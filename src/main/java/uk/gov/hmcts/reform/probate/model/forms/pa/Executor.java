@@ -54,6 +54,8 @@ public class Executor {
 
     private String inviteId;
 
+    private Boolean emailChanged;
+
     private Boolean emailSent;
 
     private String notApplyingReason;
