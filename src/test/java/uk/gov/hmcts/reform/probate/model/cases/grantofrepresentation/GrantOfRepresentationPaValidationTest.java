@@ -167,7 +167,7 @@ public class GrantOfRepresentationPaValidationTest {
 
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
 
-        assertThat(violations).isEmpty();
+        assertThat(violations).hasSize(1);
     }
 
     @Test
