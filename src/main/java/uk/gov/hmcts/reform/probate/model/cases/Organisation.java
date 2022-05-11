@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "OrganisationPolicy", description = "Represents organisation in CCD")
+@ApiModel(value = "OrganisationPolicy", description = "Represents an organisation in CCD")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Organisation {
