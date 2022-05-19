@@ -23,6 +23,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseMatch;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
+import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
@@ -134,7 +135,7 @@ public class CaveatData extends CaseData {
     private List<CollectionMember<ProbateDocument>> notificationsGenerated;
 
     private List<CollectionMember<ScannedDocument>> scannedDocuments;
-    
+
     private List<CollectionMember<ProbateDocument>> documentsGenerated;
 
     private List<CollectionMember<BulkPrint>> bulkPrintId;
@@ -170,8 +171,10 @@ public class CaveatData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean evidenceHandled;
-    
+
     private String messageContent;
+
+    private OrganisationPolicy applicantOrganisationPolicy;
 
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
