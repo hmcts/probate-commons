@@ -971,11 +971,11 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
-    @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath",
+    @AssertTrue(message = "deceasedDateOfBirth must be on or before deceasedDateOfDeath",
         groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
         return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath)
-            && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
+            && !deceasedDateOfBirth.isAfter(deceasedDateOfDeath);
     }
 
     @Transient
