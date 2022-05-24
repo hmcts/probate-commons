@@ -38,6 +38,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CombinedName;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 import uk.gov.hmcts.reform.probate.model.cases.DocumentLink;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
+import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
@@ -845,6 +846,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     private List<CollectionMember<DeathRecord>> deathRecords;
 
+    private OrganisationPolicy applicantOrganisationPolicy;
+
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
     @Transient
@@ -968,11 +971,11 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
-    @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath",
+    @AssertTrue(message = "deceasedDateOfBirth must be on or before deceasedDateOfDeath",
         groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
         return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath)
-            && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
+            && !deceasedDateOfBirth.isAfter(deceasedDateOfDeath);
     }
 
     @Transient

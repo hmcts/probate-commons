@@ -4,6 +4,8 @@ import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
+import uk.gov.hmcts.reform.probate.model.cases.Organisation;
+import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
@@ -40,6 +42,19 @@ public class CaveatCreator {
         caveatData.setPcqId("1003");
         caveatData.setEvidenceHandled(false);
         caveatData.setMessageContent("some message content");
+        return caveatData;
+    }
+
+    public static CaveatData createCaveatCaseWithOrganisationInfo() {
+        CaveatData caveatData = createCaveatCase();
+        caveatData.setApplicantOrganisationPolicy(OrganisationPolicy.builder()
+                .organisation(Organisation.builder()
+                        .organisationID("orgId")
+                        .organisationName("orgName")
+                        .build())
+                .orgPolicyCaseAssignedRole("orgPolicyCaseAssignedRole")
+                .orgPolicyReference("orgPolicyReference")
+                .build());
         return caveatData;
     }
 
