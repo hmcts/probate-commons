@@ -164,7 +164,7 @@ public class BulkScanCoverSheet implements BusinessDocument {
         return this.noDocumentsRequired;
     }
 
-    public void setNoDocumentsRequired(Boolean noDocumentsRequired){
+    public void setNoDocumentsRequired(Boolean noDocumentsRequired) {
         this.noDocumentsRequired = noDocumentsRequired;
     }
 
