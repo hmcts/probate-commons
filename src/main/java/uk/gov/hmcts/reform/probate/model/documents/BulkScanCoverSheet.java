@@ -65,6 +65,13 @@ public class BulkScanCoverSheet implements BusinessDocument {
     @JsonProperty("checkListItems")
     private List<CheckListItem> checkListItems;
 
+    @NotNull
+    @JsonProperty("noDocumentsRequired")
+    private String noDocumentsRequired;
+
+    @JsonProperty("noDocumentsRequiredText")
+    private String noDocumentsRequiredText;
+
     public String getTitle() {
         return title;
     }
