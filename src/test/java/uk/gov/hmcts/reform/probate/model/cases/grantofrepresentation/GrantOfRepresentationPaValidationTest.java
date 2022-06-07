@@ -126,7 +126,7 @@ public class GrantOfRepresentationPaValidationTest {
             .containsExactlyInAnyOrder(
                 tuple("deceasedDateOfBirth", "must not be null"),
                 tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
-                    "deceasedDateOfBirth must be before deceasedDateOfDeath"));
+                    "deceasedDateOfBirth must be on or before deceasedDateOfDeath"));
     }
 
     @Test
@@ -141,7 +141,7 @@ public class GrantOfRepresentationPaValidationTest {
             .containsExactlyInAnyOrder(
                 tuple("deceasedDateOfDeath", "must not be null"),
                 tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
-                    "deceasedDateOfBirth must be before deceasedDateOfDeath"));
+                    "deceasedDateOfBirth must be on or before deceasedDateOfDeath"));
     }
 
     @Test
@@ -156,7 +156,18 @@ public class GrantOfRepresentationPaValidationTest {
             .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
             .containsExactlyInAnyOrder(
                 tuple("deceasedDateOfBirthBeforeDeceasedDateOfDeath",
-                    "deceasedDateOfBirth must be before deceasedDateOfDeath"));
+                    "deceasedDateOfBirth must be on or before deceasedDateOfDeath"));
+    }
+
+    @Test
+    public void shouldPassWhenDeceasedDateOfDeathEqualsDeceasedDateOfDeath() {
+        GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
+        caseData.setDeceasedDateOfDeath(LocalDate.of(2000, 1, 1));
+        caseData.setDeceasedDateOfBirth(LocalDate.of(2000, 1, 1));
+
+        Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
+
+        assertThat(violations).isEmpty();
     }
 
     @Test

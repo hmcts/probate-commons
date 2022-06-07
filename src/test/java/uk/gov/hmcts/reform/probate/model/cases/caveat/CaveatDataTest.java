@@ -12,7 +12,10 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import java.io.IOException;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class CaveatDataTest {
 
@@ -20,11 +23,15 @@ public class CaveatDataTest {
 
     private CaveatData caveatData;
 
+    private CaveatData caveatDataWithOrganisation;
+
     private CaveatData bulkScanCitizenCaveatData;
 
     private CaveatData bulkScanSolicitorCaveatData;
 
     private String json;
+
+    private String organisationJson;
 
     private String bulkScanJson;
 
@@ -33,12 +40,14 @@ public class CaveatDataTest {
     @Before
     public void setUp() throws Exception {
         json = TestUtils.getJsonFromFile("caveatData.json");
+        organisationJson = TestUtils.getJsonFromFile("caveatDataWithOrg.json");
         bulkScanJson = TestUtils.getJsonFromFile("bulkScanCitizenCaveatData.json");
         bulkScanSolicitorJson = TestUtils.getJsonFromFile("bulkScanSolicitorCaveatData.json");
         objectMapper = new ObjectMapper();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
         caveatData = CaveatCreator.createCaveatCase();
         bulkScanCitizenCaveatData = CaveatCreator.createCaveatCaseWithCitizenBulkScanData();
+        caveatDataWithOrganisation = CaveatCreator.createCaveatCaseWithOrganisationInfo();
         bulkScanSolicitorCaveatData = CaveatCreator.createCaveatCaseWithSolicitorBulkScanData();
     }
 
@@ -54,6 +63,20 @@ public class CaveatDataTest {
         String actualJson = objectMapper.writeValueAsString(caveatData);
 
         JSONAssert.assertEquals(json, actualJson, true);
+    }
+
+    @Test
+    public void shouldDeserializeCaveatDataWithOrgCorrectly() throws IOException {
+        CaseData caseData = objectMapper.readValue(organisationJson, CaseData.class);
+
+        assertThat(caveatDataWithOrganisation, is(equalTo(caseData)));
+    }
+
+    @Test
+    public void shouldSerializeCaveatDataWithOrgCorrectly() throws IOException, JSONException {
+        String actualJson = objectMapper.writeValueAsString(caveatDataWithOrganisation);
+
+        JSONAssert.assertEquals(organisationJson, actualJson, true);
     }
 
     @Test

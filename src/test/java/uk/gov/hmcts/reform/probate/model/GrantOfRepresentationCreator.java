@@ -8,6 +8,8 @@ import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
+import uk.gov.hmcts.reform.probate.model.cases.Organisation;
+import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
@@ -44,6 +46,9 @@ public class GrantOfRepresentationCreator {
 
         grantOfRepresentationData.setWillHasCodicils(false);
         grantOfRepresentationData.setWillNumberOfCodicils(0L);
+        grantOfRepresentationData.setWillAccessOriginal(false);
+        grantOfRepresentationData.setNoOriginalWillAccessReason("No original will access reason");
+        grantOfRepresentationData.setWillAccessNotarial(true);
         grantOfRepresentationData.setNumberOfApplicants(1L);
         grantOfRepresentationData.setNumberOfExecutors(1L);
         grantOfRepresentationData.setDeclarationCheckbox(true);
@@ -301,6 +306,19 @@ public class GrantOfRepresentationCreator {
 
         grantOfRepresentationData.setPcqId("1004");
 
+        return grantOfRepresentationData;
+    }
+
+    public static GrantOfRepresentationData createIntestacyCaseWithOrg() {
+        GrantOfRepresentationData grantOfRepresentationData = createIntestacyCase();
+        grantOfRepresentationData.setApplicantOrganisationPolicy(OrganisationPolicy.builder()
+                .organisation(Organisation.builder()
+                        .organisationID("orgId")
+                        .organisationName("orgName")
+                        .build())
+                .orgPolicyCaseAssignedRole("orgPolicyCaseAssignedRole")
+                .orgPolicyReference("orgPolicyReference")
+                .build());
         return grantOfRepresentationData;
     }
 

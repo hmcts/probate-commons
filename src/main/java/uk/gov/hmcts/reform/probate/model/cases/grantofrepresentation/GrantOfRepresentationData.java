@@ -38,6 +38,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CombinedName;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 import uk.gov.hmcts.reform.probate.model.cases.DocumentLink;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
+import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
@@ -424,6 +425,12 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean willAccessNotarial;
+
+    private String noOriginalWillAccessReason;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean willHasVisibleDamage;
 
     private Damage willDamage;
@@ -439,7 +446,7 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean willDamageCulpritKnown;
 
     private CombinedName willDamageCulpritName;
-    
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean willDamageDateKnown;
@@ -458,7 +465,7 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean codicilsHasVisibleDamage;
 
     private Damage codicilsDamage;
-    
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean codicilsDamageReasonKnown;
@@ -480,7 +487,7 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedWrittenWishes;
-    
+
     @NotNull(groups = {PaNullCheck.class})
     @Min(value = 1, groups = {PaFieldCheck.class})
     private Long numberOfExecutors;
@@ -839,6 +846,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     private List<CollectionMember<DeathRecord>> deathRecords;
 
+    private OrganisationPolicy applicantOrganisationPolicy;
+
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
     @Transient
@@ -962,11 +971,11 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
-    @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath",
+    @AssertTrue(message = "deceasedDateOfBirth must be on or before deceasedDateOfDeath",
         groups = {IntestacyCrossFieldCheck.class, PaCrossFieldCheck.class})
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
         return ObjectUtils.allNotNull(deceasedDateOfBirth, deceasedDateOfDeath)
-            && deceasedDateOfBirth.isBefore(deceasedDateOfDeath);
+            && !deceasedDateOfBirth.isAfter(deceasedDateOfDeath);
     }
 
     @Transient

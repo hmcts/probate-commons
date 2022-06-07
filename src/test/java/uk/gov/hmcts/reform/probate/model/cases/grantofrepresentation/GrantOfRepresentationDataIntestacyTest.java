@@ -12,7 +12,10 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import java.io.IOException;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class GrantOfRepresentationDataIntestacyTest {
 
@@ -20,11 +23,15 @@ public class GrantOfRepresentationDataIntestacyTest {
 
     private GrantOfRepresentationData grantOfRepresentationData;
 
+    private GrantOfRepresentationData grantOfRepresentationDataWithOrg;
+
     private GrantOfRepresentationData bulkScanCitizenGrantOfRepresentationData;
 
     private GrantOfRepresentationData bulkScanSolicitorGrantOfRepresentationData;
 
     private String gorJsonFromFile;
+
+    private String gorWithOrgJsonFromFile;
 
     private String bulkScanCitizenGorJsonFromFile;
 
@@ -33,6 +40,7 @@ public class GrantOfRepresentationDataIntestacyTest {
     @Before
     public void setUp() throws Exception {
         gorJsonFromFile = TestUtils.getJsonFromFile("intestacyGrantOfRepresentation.json");
+        gorWithOrgJsonFromFile = TestUtils.getJsonFromFile("intestacyGrantOfRepresentationWithOrg.json");
         bulkScanCitizenGorJsonFromFile =
                 TestUtils.getJsonFromFile("bulkScanIntestacyCitizenGrantOfRepresentation.json");
         bulkScanSolicitorGorJsonFromFile =
@@ -40,6 +48,7 @@ public class GrantOfRepresentationDataIntestacyTest {
         objectMapper = new ObjectMapper();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
         grantOfRepresentationData = GrantOfRepresentationCreator.createIntestacyCase();
+        grantOfRepresentationDataWithOrg = GrantOfRepresentationCreator.createIntestacyCaseWithOrg();
         bulkScanCitizenGrantOfRepresentationData =
                 GrantOfRepresentationCreator.createCitizenIntestacyCaseWithBulkScanData();
         bulkScanSolicitorGrantOfRepresentationData =
@@ -58,6 +67,20 @@ public class GrantOfRepresentationDataIntestacyTest {
         String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationData);
 
         JSONAssert.assertEquals(gorJsonFromFile, intestacyGorAsJsonStr, true);
+    }
+
+    @Test
+    public void shouldDeserializeGrantOfRepresentationWithOrgDataCorrectly() throws IOException {
+        CaseData caseData = objectMapper.readValue(gorWithOrgJsonFromFile, CaseData.class);
+
+        assertThat(grantOfRepresentationDataWithOrg, is(equalTo(caseData)));
+    }
+
+    @Test
+    public void shouldSerializeGrantOfRepresentationDataWithOrgCorrectly() throws IOException, JSONException {
+        String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationDataWithOrg);
+
+        JSONAssert.assertEquals(gorWithOrgJsonFromFile, intestacyGorAsJsonStr, true);
     }
 
     @Test

@@ -121,6 +121,7 @@ def versions = [
         springfoxSwagger  : '2.9.2',
         springBoot        : '2.6.6',
         commonsIo         : '2.6',
+        openfeign         : '3.8.0',
         junit             : '4.13.2'
 ]
 
@@ -129,6 +130,7 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
+    implementation group: 'io.github.openfeign.form', name: 'feign-form', version: versions.openfeign
     compileOnly group:'org.projectlombok', name: 'lombok', version: versions.lombok
     annotationProcessor group:'org.projectlombok', name:'lombok', version: versions.lombok
 

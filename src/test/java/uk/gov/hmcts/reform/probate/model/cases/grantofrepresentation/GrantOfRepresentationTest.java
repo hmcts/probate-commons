@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
@@ -7,6 +8,8 @@ import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static uk.gov.hmcts.reform.probate.model.YesNo.NO;
@@ -287,5 +290,16 @@ public class GrantOfRepresentationTest {
         grantOfRepresentationData.setDeceasedDiedEngOrWales(TRUE);
         grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
         assertEquals("optionDeathCertificate", grantOfRepresentationData.getDeceasedDeathCert());
+    }
+
+    @Test
+    public void shouldDetermineWillAccess() {
+        Assert.assertThat(grantOfRepresentationData.getWillAccessOriginal(),
+            is(equalTo(false)));
+        Assert.assertThat(grantOfRepresentationData.getWillAccessNotarial(),
+            is(equalTo(true)));
+        Assert.assertThat(grantOfRepresentationData.getNoOriginalWillAccessReason(),
+            is(equalTo("No original will access reason")));
+
     }
 }
