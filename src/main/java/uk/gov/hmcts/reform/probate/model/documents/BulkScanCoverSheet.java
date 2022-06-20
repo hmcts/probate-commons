@@ -65,6 +65,13 @@ public class BulkScanCoverSheet implements BusinessDocument {
     @JsonProperty("checkListItems")
     private List<CheckListItem> checkListItems;
 
+    @NotNull
+    @JsonProperty("noDocumentsRequired")
+    private Boolean noDocumentsRequired;
+
+    @JsonProperty("noDocumentsRequiredText")
+    private String noDocumentsRequiredText;
+
     public String getTitle() {
         return title;
     }
@@ -151,6 +158,22 @@ public class BulkScanCoverSheet implements BusinessDocument {
 
     public void setCheckListItems(List<CheckListItem> checkListItems) {
         this.checkListItems = checkListItems;
+    }
+
+    public Boolean getNoDocumentsRequired() {
+        return this.noDocumentsRequired;
+    }
+
+    public void setNoDocumentsRequired(Boolean noDocumentsRequired) {
+        this.noDocumentsRequired = noDocumentsRequired;
+    }
+
+    public String getNoDocumentsRequiredText() {
+        return this.noDocumentsRequiredText;
+    }
+
+    public void setNoDocumentsRequiredText(String noDocumentsRequiredText) {
+        this.noDocumentsRequiredText = noDocumentsRequiredText;
     }
 
     private String addCaseReferenceHyphens(String number) {
