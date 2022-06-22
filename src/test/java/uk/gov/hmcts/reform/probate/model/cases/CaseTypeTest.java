@@ -1,19 +1,15 @@
 package uk.gov.hmcts.reform.probate.model.cases;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentationData;
 
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CaseTypeTest {
-
-    @Rule
-    public ExpectedException exception = ExpectedException.none();
 
     @Test
     public void shouldGetCaseType() {
@@ -24,11 +20,12 @@ public class CaseTypeTest {
 
     @Test
     public void shouldThrowIllegalArgumentExceptionWhenCaseDataDoesNotHaveCaseType() {
-        exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Cannot find case type associated with class: RandomCase");
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> {
+            CaseData caseData = new RandomCaseData();
+            CaseType.getCaseType(caseData);
+        });
+        assertThat(iae.getMessage(), is("Cannot find case type associated with class: RandomCaseData"));
 
-        CaseData caseData = new RandomCaseData();
-        CaseType.getCaseType(caseData);
     }
 
     public class RandomCaseData extends CaseData {
