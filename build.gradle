@@ -1,7 +1,6 @@
 plugins {
     id 'java'
     id 'checkstyle'
-    id 'com.jfrog.bintray' version '1.8.4'
     id 'com.github.ben-manes.versions' version '0.20.0'
     id 'java-library'
     id 'maven'
@@ -94,25 +93,7 @@ publishing {
     }
 }
 
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    publications = ['Main']
-    publish = true
-    pkg {
-        repo = 'hmcts-maven'
-        name = 'probate-commons'
-        userOrg = 'hmcts'
-        licenses = ['MIT']
-        vcsUrl = 'https://github.com/hmcts/probate-commons'
-        version {
-            name = project.version
-        }
-    }
-}
-
 def versions = [
-        jupiter           : '5.6.2',
         lombok            : '1.18.12',
         jackson           : '2.9.7',
         apacheCommons     : '3.8.1',
@@ -137,15 +118,11 @@ dependencies {
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
     implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
 
-    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.jupiter
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
     testImplementation group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
     testImplementation group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.2")
-    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.2")
-    testImplementation('org.junit.jupiter:junit-jupiter-api:5.3.2')
     testImplementation('org.mockito:mockito-core:2.7.22')
 
 
