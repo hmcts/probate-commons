@@ -2,8 +2,8 @@ package uk.gov.hmcts.reform.probate.model.validation;
 
 import org.assertj.core.api.Assertions;
 import org.hamcrest.Matchers;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.reform.probate.model.CaveatCreator;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
 
@@ -30,7 +30,7 @@ public class CaveatDataValidationTest {
     private static final String MIN_CHARS = "size must be between 2 and 2147483647";
     private static final String NULL_VALIDATION = "must not be null";
 
-    @Before
+    @BeforeEach
     public void setUp() {
         caveatData = CaveatCreator.createCaveatCase();
         validator = Validation.buildDefaultValidatorFactory().getValidator();

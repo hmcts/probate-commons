@@ -2,8 +2,8 @@ package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONException;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
@@ -12,9 +12,9 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import java.io.IOException;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class GrantOfRepresentationDataIntestacyTest {
 
@@ -36,7 +36,7 @@ public class GrantOfRepresentationDataIntestacyTest {
 
     private String bulkScanSolicitorGorJsonFromFile;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         gorJsonFromFile = TestUtils.getJsonFromFile("intestacyGrantOfRepresentation.json");
         gorWithOrgJsonFromFile = TestUtils.getJsonFromFile("intestacyGrantOfRepresentationWithOrg.json");
