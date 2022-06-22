@@ -37,10 +37,7 @@ public class IntestacyApplicant extends ProbateApplicant {
     @ApiModelProperty(value = "Reason spouse not applying")
     private String spouseNotApplyingReason;
 
-    @ApiModelProperty(value = "Is applicant not required to send documents",
-        allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @ApiModelProperty(value = "Is applicant not required to send documents")
     private Boolean notRequiredToSendDocuments;
 
     @Builder
