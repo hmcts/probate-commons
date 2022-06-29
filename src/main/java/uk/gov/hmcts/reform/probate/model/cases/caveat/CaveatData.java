@@ -192,7 +192,7 @@ public class CaveatData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private String bilingualCorrepondenceRequested;
+    private String bilingualCorrespondenceRequested;
 
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
