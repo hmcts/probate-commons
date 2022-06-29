@@ -190,10 +190,6 @@ public class CaveatData extends CaseData {
 
     private String probateFeeAccountReference;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private String bilingualCorrespondenceRequested;
-
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
