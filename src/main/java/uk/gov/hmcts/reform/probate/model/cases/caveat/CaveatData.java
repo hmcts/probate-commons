@@ -178,9 +178,9 @@ public class CaveatData extends CaseData {
 
     private String caveatorPhoneNumber;
 
-    private String probateFee;
+    private ProbateFee probateFee;
 
-    private String probateFeeNotIncludedReason;
+    private ProbateFeeNotIncludedReason probateFeeNotIncludedReason;
 
     private String helpWithFeesReference;
 
