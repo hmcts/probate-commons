@@ -10,6 +10,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
+import uk.gov.hmcts.reform.probate.model.cases.caveat.ProbateFee;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
@@ -37,12 +38,15 @@ public class CaveatFormTest {
 
     private String formJsonFromFile;
 
+    private String formJsonFromFileV2;
+
     @BeforeEach
     public void setUp() throws Exception {
         formJsonFromFile = TestUtils.getJsonFromFile("caveatForm.json");
-
+        formJsonFromFileV2 = TestUtils.getJsonFromFile("caveatForm_v2.json");
         objectMapper = new ObjectMapper();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
+
 
         caveatForm = new CaveatForm();
         caveatForm.setType(ProbateType.CAVEAT);
@@ -125,5 +129,32 @@ public class CaveatFormTest {
         String caveatFormAsJsonStr = objectMapper.writeValueAsString(caveatForm);
 
         JSONAssert.assertEquals(formJsonFromFile, caveatFormAsJsonStr, true);
+    }
+    
+    @Test
+    public void shouldSerializeCaveatV2FormCorrectly() throws IOException, JSONException {
+        CaveatApplicant caveatApplicant = new CaveatApplicant();
+        caveatApplicant.setEmail("jon.snow@thenorth.com");
+        caveatApplicant.setFirstName("Jon");
+        caveatApplicant.setLastName("Snow");
+        Address caveatAddress = Address.builder()
+            .addressLine1("156 Blackshaw Road")
+            .postTown("London")
+            .postCode("SW17 0QT")
+            .build();
+        caveatApplicant.setAddress(caveatAddress);
+        caveatApplicant.setCaveatorPhoneNumber("12345");
+        caveatApplicant.setProbateFee(ProbateFee.PROBATE_FEE_ACCOUNT);
+        caveatApplicant.setProbateFeeAccountNumber("PBA1234564");
+        caveatApplicant.setProbateFeeAccountReference("actRef");
+        caveatApplicant.setHelpWithFeesReference(null);
+        caveatApplicant.setProbateFeeNotIncludedExplanation(null);
+        caveatApplicant.setProbateFeeNotIncludedReason(null);
+
+        CaveatForm caveatFormV2 = new CaveatForm();
+        caveatFormV2.setApplicant(caveatApplicant);
+        String caveatFormAsJsonStr = objectMapper.writeValueAsString(caveatFormV2);
+
+        JSONAssert.assertEquals(formJsonFromFileV2, caveatFormAsJsonStr, true);
     }
 }

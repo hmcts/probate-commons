@@ -45,6 +45,9 @@ public class CaveatForm extends Form<CaveatDeceased, CaveatApplicant> {
     @JsonProperty(value = "equality")
     private Equality equality;
 
+    @JsonProperty(value = "formVersion")
+    private String formVersion;
+
     @Builder
     public CaveatForm(ProbateType type, CaveatDeceased deceased, CaveatApplicant applicant,
                       Registry registry, CcdCase ccdCase, List<Payment> payments, LocalDate expiryDate,
@@ -55,6 +58,7 @@ public class CaveatForm extends Form<CaveatDeceased, CaveatApplicant> {
         this.expiryDate = expiryDate;
         this.applicationId = applicationId;
         this.equality = equality;
+        this.formVersion = "2";
     }
 
 }
