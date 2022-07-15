@@ -29,8 +29,7 @@
     "caveatorPhoneNumber": "12345",
     "probateFee": "probateFeeAccount",
     "probateFeeAccountNumber": "PBA1234564",
-    "probateFeeAccountReference": "actRef",
-    "formVersion": "2"
+    "probateFeeAccountReference": "actRef"
   },
   "ccdCase": {
     "id": 1535574519543819,
