@@ -37,6 +37,9 @@ public class IntestacyApplicant extends ProbateApplicant {
     @ApiModelProperty(value = "Reason spouse not applying")
     private String spouseNotApplyingReason;
 
+    @ApiModelProperty(value = "Is applicant not required to send documents")
+    private Boolean notRequiredToSendDocuments;
+
     @Builder
     public IntestacyApplicant(String firstName, String lastName, String alias, String aliasReason, Address address,
                               String postcode, String postcodeAddress, Boolean addressFound,

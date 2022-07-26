@@ -413,6 +413,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean primaryApplicantNotRequiredToSendDocuments;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean willLatestCodicilHasDate;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
