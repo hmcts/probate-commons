@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
@@ -25,7 +25,7 @@ public class GrantOfRepresentationPaValidationTest {
 
     private Validator validator;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();

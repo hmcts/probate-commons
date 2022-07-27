@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import org.json.JSONException;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
@@ -38,9 +38,9 @@ import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISS
 import static com.fasterxml.jackson.databind.util.StdDateFormat.DATE_FORMAT_STR_ISO8601;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class IntestacyFormTest {
 
@@ -50,7 +50,7 @@ public class IntestacyFormTest {
 
     private String formJsonFromFile;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         formJsonFromFile = TestUtils.getJsonFromFile("intestacyForm.json");
 
