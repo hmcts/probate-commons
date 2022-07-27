@@ -1,11 +1,11 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static uk.gov.hmcts.reform.probate.model.YesNo.NO;
@@ -19,7 +19,7 @@ public class GrantOfRepresentationTest {
     private String lastName = "Vegas";
     private String executorApplyingName = "Bobby Bryan";
 
-    @Before
+    @BeforeEach
     public void setUpTest() {
         grantOfRepresentationData = GrantOfRepresentationCreator.createProbateCase();
         GrantOfRepresentationCreator.addExecutorApplying(grantOfRepresentationData,
@@ -35,7 +35,7 @@ public class GrantOfRepresentationTest {
 
         ExecutorApplying executorApplying = grantOfRepresentationData.getExecutorApplyingByEmailAddress(email,
             executorApplyingName);
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
+        assertThat(executorApplying.getApplyingExecutorAgreed(),
             is(equalTo(Boolean.TRUE)));
     }
 
@@ -53,7 +53,7 @@ public class GrantOfRepresentationTest {
 
 
         ExecutorApplying executorApplying = grantOfRepresentationData.getExecutorApplyingByEmailAddress(email);
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
+        assertThat(executorApplying.getApplyingExecutorAgreed(),
             is(equalTo(Boolean.TRUE)));
     }
 
@@ -73,12 +73,12 @@ public class GrantOfRepresentationTest {
 
         ExecutorApplying executorApplying = grantOfRepresentationData.getExecutorApplyingByEmailAddress(email,
             executorApplyingName);
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
+        assertThat(executorApplying.getApplyingExecutorAgreed(),
             is(equalTo(null)));
 
         ExecutorApplying executorApplying1 =
             grantOfRepresentationData.getExecutorApplyingByEmailAddress(emailExecutor1, "Helen Fisher");
-        Assert.assertThat(executorApplying1.getApplyingExecutorAgreed(),
+        assertThat(executorApplying1.getApplyingExecutorAgreed(),
             is(equalTo(null)));
     }
 
@@ -105,30 +105,30 @@ public class GrantOfRepresentationTest {
 
         ExecutorApplying executorApplying = grantOfRepresentationData
             .getExecutorApplyingByEmailAddress(email, executorApplyingName);
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
+        assertThat(executorApplying.getApplyingExecutorAgreed(),
             is(equalTo(Boolean.TRUE)));
 
         ExecutorApplying executorApplying1 =
             grantOfRepresentationData.getExecutorApplyingByEmailAddress(emailExecutor1, "Bobby Firmino");
-        Assert.assertThat(executorApplying1.getApplyingExecutorAgreed(),
+        assertThat(executorApplying1.getApplyingExecutorAgreed(),
             is(equalTo(Boolean.FALSE)));
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
+        assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
             is(equalTo(Boolean.FALSE)));
 
         grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123456", Boolean.TRUE);
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
+        assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
             is(equalTo(Boolean.FALSE)));
 
         grantOfRepresentationData.setDeclarationCheckbox(Boolean.TRUE);
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
+        assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
             is(equalTo(Boolean.TRUE)));
 
         grantOfRepresentationData.setDeclarationCheckbox(null);
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
+        assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
             is(equalTo(Boolean.FALSE)));
     }
 
@@ -147,7 +147,7 @@ public class GrantOfRepresentationTest {
 
         ExecutorApplying executorApplying = grantOfRepresentationData.getExecutorApplyingByEmailAddress(newEmail,
             executorApplyingName);
-        Assert.assertThat(executorApplying.getApplyingExecutorPhoneNumber(),
+        assertThat(executorApplying.getApplyingExecutorPhoneNumber(),
             is(equalTo(phoneNumber)));
     }
 
@@ -164,7 +164,7 @@ public class GrantOfRepresentationTest {
         ExecutorApplying executorApplying = grantOfRepresentationData.getExecutorApplyingByEmailAddress(email,
             executorApplyingName);
 
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
+        assertThat(executorApplying.getApplyingExecutorAgreed(),
             is(equalTo(null)));
     }
 
@@ -172,7 +172,7 @@ public class GrantOfRepresentationTest {
     public void shouldDetermineWhetherInvitesHaveBeenSentForExecutorsReturnsFalse() {
 
         Boolean result = grantOfRepresentationData.haveInvitesBeenSent();
-        Assert.assertThat(result,
+        assertThat(result,
             is(equalTo(Boolean.FALSE)));
     }
 
@@ -185,7 +185,7 @@ public class GrantOfRepresentationTest {
             "Graham Garderner", executorApplyingName);
 
         Boolean result = grantOfRepresentationData.haveInvitesBeenSent();
-        Assert.assertThat(result,
+        assertThat(result,
             is(equalTo(Boolean.TRUE)));
     }
 
@@ -207,28 +207,28 @@ public class GrantOfRepresentationTest {
 
         ExecutorApplying executorApplying = grantOfRepresentationData
             .getExecutorApplyingByEmailAddress(email, executorApplyingName);
-        Assert.assertThat(executorApplying.getApplyingExecutorAgreed(),
+        assertThat(executorApplying.getApplyingExecutorAgreed(),
             is(equalTo(Boolean.TRUE)));
-        Assert.assertThat(executorApplying.getApplyingExecutorName(),
+        assertThat(executorApplying.getApplyingExecutorName(),
             is(equalTo(executorApplyingName)));
 
 
         ExecutorApplying executorApplying1 =
             grantOfRepresentationData.getExecutorApplyingByEmailAddress(email, "Bobby Firmino");
-        Assert.assertThat(executorApplying1.getApplyingExecutorAgreed(),
+        assertThat(executorApplying1.getApplyingExecutorAgreed(),
             is(equalTo(Boolean.FALSE)));
-        Assert.assertThat(executorApplying1.getApplyingExecutorName(),
+        assertThat(executorApplying1.getApplyingExecutorName(),
             is(equalTo("Bobby Firmino")));
 
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
+        assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
             is(equalTo(Boolean.FALSE)));
 
         grantOfRepresentationData.setInvitationAgreedFlagForExecutorApplying("123456", Boolean.TRUE);
 
         grantOfRepresentationData.setDeclarationCheckbox(Boolean.TRUE);
 
-        Assert.assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
+        assertThat(grantOfRepresentationData.haveAllExecutorsAgreed(),
             is(equalTo(Boolean.TRUE)));
     }
 
@@ -242,17 +242,17 @@ public class GrantOfRepresentationTest {
         grantOfRepresentationData.setGrandChildrenSurvivedOverEighteen(Boolean.FALSE);
         grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteen(Boolean.TRUE);
 
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedOverEighteenText(),
+        assertThat(grantOfRepresentationData.getChildrenDiedOverEighteenText(),
             is(equalTo(null)));
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteenText(),
+        assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteenText(),
             is(equalTo(NO.getDescription())));
-        Assert.assertThat(grantOfRepresentationData.getChildrenOverEighteenSurvivedText(),
+        assertThat(grantOfRepresentationData.getChildrenOverEighteenSurvivedText(),
             is(equalTo(NO.getDescription())));
-        Assert.assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvivedText(),
+        assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvivedText(),
             is(equalTo(YES.getDescription())));
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteenText(),
+        assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteenText(),
             is(equalTo(NO.getDescription())));
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteenText(),
+        assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteenText(),
             is(equalTo(YES.getDescription())));
     }
 
@@ -266,12 +266,12 @@ public class GrantOfRepresentationTest {
         grantOfRepresentationData.setGrandChildrenSurvivedOverEighteenText("No");
         grantOfRepresentationData.setGrandChildrenSurvivedUnderEighteenText("true");
 
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedOverEighteen(), is(equalTo(null)));
-        Assert.assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteen(), is(equalTo(Boolean.TRUE)));
-        Assert.assertThat(grantOfRepresentationData.getChildrenOverEighteenSurvived(), is(equalTo(Boolean.FALSE)));
-        Assert.assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvived(), is(equalTo(Boolean.TRUE)));
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteen(), is(equalTo(Boolean.FALSE)));
-        Assert.assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteen(), is(equalTo(Boolean.TRUE)));
+        assertThat(grantOfRepresentationData.getChildrenDiedOverEighteen(), is(equalTo(null)));
+        assertThat(grantOfRepresentationData.getChildrenDiedUnderEighteen(), is(equalTo(Boolean.TRUE)));
+        assertThat(grantOfRepresentationData.getChildrenOverEighteenSurvived(), is(equalTo(Boolean.FALSE)));
+        assertThat(grantOfRepresentationData.getChildrenUnderEighteenSurvived(), is(equalTo(Boolean.TRUE)));
+        assertThat(grantOfRepresentationData.getGrandChildrenSurvivedOverEighteen(), is(equalTo(Boolean.FALSE)));
+        assertThat(grantOfRepresentationData.getGrandChildrenSurvivedUnderEighteen(), is(equalTo(Boolean.TRUE)));
     }
 
 
@@ -279,12 +279,12 @@ public class GrantOfRepresentationTest {
     public void shouldDetermineIfDeceasedDeathCertInEnglish() {
         grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.TRUE);
         grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.TRUE);
-        Assert.assertThat(grantOfRepresentationData.isDeceasedDeathCertInEnglish(),
+        assertThat(grantOfRepresentationData.isDeceasedDeathCertInEnglish(),
                 is(equalTo(null)));
 
 
         grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
-        Assert.assertThat(grantOfRepresentationData.isDeceasedDeathCertInEnglish(),
+        assertThat(grantOfRepresentationData.isDeceasedDeathCertInEnglish(),
                 is(equalTo(Boolean.TRUE)));
     }
 
@@ -293,18 +293,18 @@ public class GrantOfRepresentationTest {
         grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.TRUE);
         grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.TRUE);
         grantOfRepresentationData.setDeceasedForeignDeathCertTranslation(Boolean.FALSE);
-        Assert.assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
+        assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
                 is(equalTo(null)));
 
         grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
         grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.TRUE);
         grantOfRepresentationData.setDeceasedForeignDeathCertTranslation(Boolean.FALSE);
-        Assert.assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
+        assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
                 is(equalTo(null)));
 
         grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
         grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.FALSE);
-        Assert.assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
+        assertThat(grantOfRepresentationData.isDeceasedForeignDeathCertTranslated(),
                 is(equalTo(Boolean.FALSE)));
     }
 
@@ -312,22 +312,22 @@ public class GrantOfRepresentationTest {
     public void shouldDetermineDeceasedDeathCertificateValue() {
         grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
         grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
-        Assert.assertThat(grantOfRepresentationData.getDeceasedDeathCert(),
+        assertThat(grantOfRepresentationData.getDeceasedDeathCert(),
                 is(equalTo(null)));
 
         grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.TRUE);
         grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
-        Assert.assertThat(grantOfRepresentationData.getDeceasedDeathCert(),
+        assertThat(grantOfRepresentationData.getDeceasedDeathCert(),
                 is(equalTo("optionDeathCertificate")));
     }
 
     @Test
     public void shouldDetermineWillAccess() {
-        Assert.assertThat(grantOfRepresentationData.getWillAccessOriginal(),
+        assertThat(grantOfRepresentationData.getWillAccessOriginal(),
             is(equalTo(false)));
-        Assert.assertThat(grantOfRepresentationData.getWillAccessNotarial(),
+        assertThat(grantOfRepresentationData.getWillAccessNotarial(),
             is(equalTo(true)));
-        Assert.assertThat(grantOfRepresentationData.getNoOriginalWillAccessReason(),
+        assertThat(grantOfRepresentationData.getNoOriginalWillAccessReason(),
             is(equalTo("No original will access reason")));
 
     }

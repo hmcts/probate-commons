@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import org.json.JSONException;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
@@ -27,9 +27,9 @@ import java.time.LocalDate;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
 import static com.fasterxml.jackson.databind.util.StdDateFormat.DATE_FORMAT_STR_ISO8601;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class CaveatFormTest {
 
@@ -41,13 +41,12 @@ public class CaveatFormTest {
 
     private String formJsonFromFileV2;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         formJsonFromFile = TestUtils.getJsonFromFile("caveatForm.json");
         formJsonFromFileV2 = TestUtils.getJsonFromFile("caveatForm_v2.json");
         objectMapper = new ObjectMapper();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
-
 
         caveatForm = new CaveatForm();
         caveatForm.setType(ProbateType.CAVEAT);
@@ -132,7 +131,7 @@ public class CaveatFormTest {
         JSONAssert.assertEquals(formJsonFromFile, caveatFormAsJsonStr, true);
     }
 
-    @Ignore
+    @Disabled//TODO
     @Test
     public void shouldSerializeCaveatV2FormCorrectly() throws IOException, JSONException {
         CaveatApplicant caveatApplicant = new CaveatApplicant();

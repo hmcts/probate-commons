@@ -1,17 +1,12 @@
 package uk.gov.hmcts.reform.probate.model.cases;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RegistryLocationTest {
-
-    @Rule
-    public ExpectedException exception = ExpectedException.none();
 
     @Test
     public void shouldGetRegistryLocationByName() {
@@ -29,11 +24,10 @@ public class RegistryLocationTest {
 
     @Test
     public void shouldThrowIllegalArgumentExceptionWhenRegistryLocationDoesNotExist() {
-        exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Unsupported RegistryLocation Birminghen");
-
-        RegistryLocation registryLocation = RegistryLocation.findRegistryLocationByName("Birminghen");
-        fail();
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> {
+            RegistryLocation registryLocation = RegistryLocation.findRegistryLocationByName("Birminghen");
+        });
+        assertThat(iae.getMessage(), is("Unsupported RegistryLocation Birminghen"));
     }
 
 }
