@@ -10,7 +10,6 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
-import uk.gov.hmcts.reform.probate.model.cases.caveat.ProbateFee;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.AliasOtherNames;
 import uk.gov.hmcts.reform.probate.model.forms.CcdCase;
@@ -38,12 +37,10 @@ public class CaveatFormTest {
 
     private String formJsonFromFile;
 
-    private String formJsonFromFileV2;
-
     @BeforeEach
     public void setUp() throws Exception {
         formJsonFromFile = TestUtils.getJsonFromFile("caveatForm.json");
-        formJsonFromFileV2 = TestUtils.getJsonFromFile("caveatForm_v2.json");
+
         objectMapper = new ObjectMapper();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
 
