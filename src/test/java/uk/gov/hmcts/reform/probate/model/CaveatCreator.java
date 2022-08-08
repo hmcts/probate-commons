@@ -71,6 +71,7 @@ public class CaveatCreator {
         caveatData.setSolsSolicitorAppReference("APP-123456");
         caveatData.setSolsSolicitorFirmName("solicitor firm");
         caveatData.setSolsSolicitorPhoneNumber("0909 909 9909");
+        caveatData.setSolsSolicitorRepresentativeName("representative name");
         return caveatData;
     }
 

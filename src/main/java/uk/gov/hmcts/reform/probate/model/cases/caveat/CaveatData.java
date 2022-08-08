@@ -156,6 +156,8 @@ public class CaveatData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean languagePreferenceWelsh;
 
+    private String solsSolicitorRepresentativeName;
+    
     private String solsSolicitorFirmName;
 
     private String solsSolicitorPhoneNumber;
