@@ -49,6 +49,7 @@
   "solsFeeAccountNumber": "PBA-123456",
   "solsPaymentMethods": "fee account",
   "solsSolicitorAppReference": "APP-123456",
+  "solsSolicitorRepresentativeName": "representative name",
   "solsSolicitorFirmName": "solicitor firm",
   "solsSolicitorPhoneNumber": "0909 909 9909",
   "expiryDate": "2019-02-14",
