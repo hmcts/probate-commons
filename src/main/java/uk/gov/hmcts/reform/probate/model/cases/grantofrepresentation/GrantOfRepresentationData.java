@@ -857,7 +857,7 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_TIME_FORMAT)
-    private LocalDate movedIntoDormantDate;
+    private LocalDateTime movedIntoDormantDate;
 
     private List<CollectionMember<ProbateDocument>> probateNotificationsGenerated;
 
