@@ -84,7 +84,7 @@ import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
 public class GrantOfRepresentationData extends CaseData {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
-    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss.SSSSSS";
+    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS";
 
     @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
     private ApplicationType applicationType;
