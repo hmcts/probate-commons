@@ -80,7 +80,8 @@ public class CaveatCreator {
         caveatData.setProbateFeeNotIncludedExplanation("feeNotIncludedExplanation");
         caveatData.setProbateFeeAccountNumber("AccountNumber1");
         caveatData.setProbateFeeAccountReference("AccountReference1");
-
+        caveatData.setDxNumber("123456789");
+        caveatData.setPractitionerAcceptsServiceByEmail(true);
         return caveatData;
     }
 

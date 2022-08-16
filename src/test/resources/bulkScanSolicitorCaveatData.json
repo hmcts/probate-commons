@@ -89,5 +89,7 @@
   ],
   "evidenceHandled": "No",
   "messageContent": "some message content",
-  "pcqId": "1003"
+  "pcqId": "1003",
+  "dxNumber": "123456789",
+  "practitionerAcceptsServiceByEmail": "Yes"
 }
