@@ -176,6 +176,12 @@ public class CaveatData extends CaseData {
 
     private OrganisationPolicy applicantOrganisationPolicy;
 
+    private String serviceRequestReference;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean paymentTaken;
+
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {
