@@ -852,6 +852,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     private OrganisationPolicy applicantOrganisationPolicy;
 
+    private String caseHandedOffToLegacySite;
+
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
     @Transient
