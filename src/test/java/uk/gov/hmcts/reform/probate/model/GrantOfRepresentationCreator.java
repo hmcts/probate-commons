@@ -322,6 +322,12 @@ public class GrantOfRepresentationCreator {
         return grantOfRepresentationData;
     }
 
+    public static GrantOfRepresentationData createIntestacyCaseWithLastEvidence() {
+        GrantOfRepresentationData grantOfRepresentationData = createIntestacyCase();
+        grantOfRepresentationData.setLastEvidenceAddedDate(LocalDate.of(2022, 5, 13));
+        return grantOfRepresentationData;
+    }
+
     public static GrantOfRepresentationData createCitizenIntestacyCaseWithBulkScanData() {
         GrantOfRepresentationData grantOfRepresentationData = setBasicBulkScanData();
         grantOfRepresentationData.setApplicationType(ApplicationType.PERSONAL);
