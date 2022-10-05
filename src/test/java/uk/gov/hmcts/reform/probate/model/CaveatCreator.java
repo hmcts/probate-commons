@@ -9,8 +9,6 @@ import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
-import uk.gov.hmcts.reform.probate.model.cases.caveat.ProbateFee;
-import uk.gov.hmcts.reform.probate.model.cases.caveat.ProbateFeeNotIncludedReason;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -32,7 +30,7 @@ public class CaveatCreator {
         caveatData.setDeceasedAddress(getAddress("deceased"));
         CollectionMember<FullAliasName> fullAliasNameCollectionMember = new CollectionMember<>();
         fullAliasNameCollectionMember.setValue(FullAliasName.builder().fullAliasName("fullAliasName").build());
-        caveatData.setDeceasedFullAliasNameList(List.of(fullAliasNameCollectionMember));
+        caveatData.setDeceasedFullAliasNameList(Arrays.asList(fullAliasNameCollectionMember));
         caveatData.setDeceasedDateOfBirth(LocalDate.of(1966, 3, 4));
         caveatData.setDeceasedDateOfDeath(LocalDate.of(2018, 11, 20));
         caveatData.setApplicationSubmittedDate(LocalDate.of(2018, 11, 20));
@@ -61,7 +59,8 @@ public class CaveatCreator {
     }
 
     public static CaveatData createCaveatCaseWithCitizenBulkScanData() {
-        return setBasicBulkScanData();
+        CaveatData caveatData = setBasicBulkScanData();
+        return caveatData;
     }
 
     public static CaveatData createCaveatCaseWithSolicitorBulkScanData() {
@@ -72,16 +71,6 @@ public class CaveatCreator {
         caveatData.setSolsSolicitorAppReference("APP-123456");
         caveatData.setSolsSolicitorFirmName("solicitor firm");
         caveatData.setSolsSolicitorPhoneNumber("0909 909 9909");
-        caveatData.setSolsSolicitorRepresentativeName("representative name");
-        caveatData.setCaveatorPhoneNumber("123456789");
-        caveatData.setProbateFee(ProbateFee.PROBATE_FEE_NOT_INCLUDED);
-        caveatData.setProbateFeeNotIncludedReason(ProbateFeeNotIncludedReason.OTHER);
-        caveatData.setHelpWithFeesReference("helpWithFeesReference");
-        caveatData.setProbateFeeNotIncludedExplanation("feeNotIncludedExplanation");
-        caveatData.setProbateFeeAccountNumber("AccountNumber1");
-        caveatData.setProbateFeeAccountReference("AccountReference1");
-        caveatData.setDxNumber("123456789");
-        caveatData.setPractitionerAcceptsServiceByEmail(true);
         return caveatData;
     }
 
@@ -105,11 +94,13 @@ public class CaveatCreator {
         scannedDocumentMember1.setValue(getScannedDocument("1"));
         CollectionMember<ScannedDocument> scannedDocumentMember2 = new CollectionMember<>();
         scannedDocumentMember2.setValue(getScannedDocument("2"));
-        caveatData.setScannedDocuments(Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
+        caveatData.setScannedDocuments((List<CollectionMember<ScannedDocument>>)
+                Arrays.asList(scannedDocumentMember1, scannedDocumentMember2));
         caveatData.setBulkScanCaseReference("123");
         CollectionMember<BulkScanEnvelope> bulkScanEnvelopeCollectionMember = new CollectionMember<>();
         bulkScanEnvelopeCollectionMember.setValue(getBulkScanEnvelope());
-        caveatData.setBulkScanEnvelopes(List.of(bulkScanEnvelopeCollectionMember));
+        caveatData.setBulkScanEnvelopes((List<CollectionMember<BulkScanEnvelope>>)
+                Arrays.asList(bulkScanEnvelopeCollectionMember));
         return caveatData;
     }
 
