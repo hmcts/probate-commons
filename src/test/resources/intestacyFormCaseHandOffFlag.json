@@ -117,5 +117,6 @@
   "ihtUnusedAllowanceClaimed": "Yes",
   "outsideUKGrantCopies": 6,
   "caseType": "intestacy",
-  "pcqId": "1004"
+  "pcqId": "1004",
+  "caseHandedOffToLegacySite": "Yes"
 }

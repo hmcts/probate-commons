@@ -36,6 +36,8 @@ public class GrantOfRepresentationDataIntestacyTest {
 
     private String gorWithEvidenceJsonFromFile;
 
+    private String gorWithCaseHandOffFlagFromFile;
+
     private String bulkScanCitizenGorJsonFromFile;
 
     private String bulkScanSolicitorGorJsonFromFile;
@@ -45,6 +47,7 @@ public class GrantOfRepresentationDataIntestacyTest {
         gorJsonFromFile = getJsonFromFile("intestacyGrantOfRepresentation.json");
         gorWithOrgJsonFromFile = getJsonFromFile("intestacyGrantOfRepresentationWithOrg.json");
         gorWithEvidenceJsonFromFile = getJsonFromFile("intestacyGrantOfRepresentationWithLastEvidenceAddedDate.json");
+        gorWithCaseHandOffFlagFromFile = getJsonFromFile("intestacyFormCaseHandOffFlag.json");
         bulkScanCitizenGorJsonFromFile =
                 getJsonFromFile("bulkScanIntestacyCitizenGrantOfRepresentation.json");
         bulkScanSolicitorGorJsonFromFile =
@@ -116,5 +119,12 @@ public class GrantOfRepresentationDataIntestacyTest {
         String actualJson = objectMapper.writeValueAsString(bulkScanSolicitorGrantOfRepresentationData);
 
         JSONAssert.assertEquals(bulkScanSolicitorGorJsonFromFile, actualJson, true);
+    }
+
+    @Test
+    public void shouldDeserializeCaseHandOffFlag() throws IOException {
+        CaseData caseData = objectMapper.readValue(gorWithCaseHandOffFlagFromFile, CaseData.class);
+        grantOfRepresentationData.setCaseHandedOffToLegacySite(true);
+        assertThat(grantOfRepresentationData, is(equalTo(caseData)));
     }
 }
