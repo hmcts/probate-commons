@@ -156,8 +156,6 @@ public class CaveatData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean languagePreferenceWelsh;
 
-    private String solsSolicitorRepresentativeName;
-    
     private String solsSolicitorFirmName;
 
     private String solsSolicitorPhoneNumber;
@@ -177,26 +175,6 @@ public class CaveatData extends CaseData {
     private String messageContent;
 
     private OrganisationPolicy applicantOrganisationPolicy;
-
-    private String caveatorPhoneNumber;
-
-    private ProbateFee probateFee;
-
-    private ProbateFeeNotIncludedReason probateFeeNotIncludedReason;
-
-    private String helpWithFeesReference;
-
-    private String probateFeeNotIncludedExplanation;
-
-    private String probateFeeAccountNumber;
-
-    private String probateFeeAccountReference;
-    
-    private String dxNumber;
-
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean practitionerAcceptsServiceByEmail;
 
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
