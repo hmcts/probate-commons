@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
-import uk.gov.hmcts.reform.probate.model.TestUtils;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 
 import java.io.IOException;
@@ -15,6 +14,7 @@ import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISS
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static uk.gov.hmcts.reform.probate.model.TestUtils.getJsonFromFile;
 
 public class GrantOfRepresentationDataIntestacyTest {
 
@@ -24,6 +24,8 @@ public class GrantOfRepresentationDataIntestacyTest {
 
     private GrantOfRepresentationData grantOfRepresentationDataWithOrg;
 
+    private GrantOfRepresentationData grantOfRepresentationDataWithLastEvidence;
+
     private GrantOfRepresentationData bulkScanCitizenGrantOfRepresentationData;
 
     private GrantOfRepresentationData bulkScanSolicitorGrantOfRepresentationData;
@@ -32,22 +34,26 @@ public class GrantOfRepresentationDataIntestacyTest {
 
     private String gorWithOrgJsonFromFile;
 
+    private String gorWithEvidenceJsonFromFile;
+
     private String bulkScanCitizenGorJsonFromFile;
 
     private String bulkScanSolicitorGorJsonFromFile;
 
     @BeforeEach
     public void setUp() throws Exception {
-        gorJsonFromFile = TestUtils.getJsonFromFile("intestacyGrantOfRepresentation.json");
-        gorWithOrgJsonFromFile = TestUtils.getJsonFromFile("intestacyGrantOfRepresentationWithOrg.json");
+        gorJsonFromFile = getJsonFromFile("intestacyGrantOfRepresentation.json");
+        gorWithOrgJsonFromFile = getJsonFromFile("intestacyGrantOfRepresentationWithOrg.json");
+        gorWithEvidenceJsonFromFile = getJsonFromFile("intestacyGrantOfRepresentationWithLastEvidenceAddedDate.json");
         bulkScanCitizenGorJsonFromFile =
-                TestUtils.getJsonFromFile("bulkScanIntestacyCitizenGrantOfRepresentation.json");
+                getJsonFromFile("bulkScanIntestacyCitizenGrantOfRepresentation.json");
         bulkScanSolicitorGorJsonFromFile =
-                TestUtils.getJsonFromFile("bulkScanIntestacySolicitorGrantOfRepresentation.json");
+                getJsonFromFile("bulkScanIntestacySolicitorGrantOfRepresentation.json");
         objectMapper = new ObjectMapper();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
         grantOfRepresentationData = GrantOfRepresentationCreator.createIntestacyCase();
         grantOfRepresentationDataWithOrg = GrantOfRepresentationCreator.createIntestacyCaseWithOrg();
+        grantOfRepresentationDataWithLastEvidence = GrantOfRepresentationCreator.createIntestacyCaseWithLastEvidence();
         bulkScanCitizenGrantOfRepresentationData =
                 GrantOfRepresentationCreator.createCitizenIntestacyCaseWithBulkScanData();
         bulkScanSolicitorGrantOfRepresentationData =
@@ -80,6 +86,20 @@ public class GrantOfRepresentationDataIntestacyTest {
         String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationDataWithOrg);
 
         JSONAssert.assertEquals(gorWithOrgJsonFromFile, intestacyGorAsJsonStr, true);
+    }
+
+    @Test
+    public void shouldDeserializeGrantOfRepresentationWithEvidenceCorrectly() throws IOException {
+        CaseData caseData = objectMapper.readValue(gorWithEvidenceJsonFromFile, CaseData.class);
+
+        assertThat(grantOfRepresentationDataWithLastEvidence, is(equalTo(caseData)));
+    }
+
+    @Test
+    public void shouldSerializeGrantOfRepresentationDataWithEvidenceCorrectly() throws IOException, JSONException {
+        String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationDataWithLastEvidence);
+
+        JSONAssert.assertEquals(gorWithEvidenceJsonFromFile, intestacyGorAsJsonStr, true);
     }
 
     @Test
