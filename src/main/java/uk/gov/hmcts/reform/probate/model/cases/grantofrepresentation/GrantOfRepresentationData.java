@@ -857,6 +857,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     private OrganisationPolicy applicantOrganisationPolicy;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean caseHandedOffToLegacySite;
+
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
     @Transient
