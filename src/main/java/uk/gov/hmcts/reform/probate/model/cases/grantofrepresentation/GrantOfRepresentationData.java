@@ -859,6 +859,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     private LocalDate lastEvidenceAddedDate;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean attachDocuments;
+
     private List<CollectionMember<ProbateDocument>> probateNotificationsGenerated;
 
     private List<CollectionMember<DeathRecord>> deathRecords;
