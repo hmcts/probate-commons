@@ -3,8 +3,8 @@ package uk.gov.hmcts.reform.probate.model.forms.pa;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import org.json.JSONException;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
@@ -40,10 +40,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
-import static java.lang.Boolean.TRUE;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class PaFormTest {
 
@@ -64,7 +63,7 @@ public class PaFormTest {
     private PaForm paForm;
     private String formJsonFromFile;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         formJsonFromFile = TestUtils.getJsonFromFile("paForm.json");
 
@@ -224,14 +223,14 @@ public class PaFormTest {
                                                 LegalStatementExecutorApplying.builder()
                                                         .name("I am an executor named in the will as Jon Snow, "
                                                                 + "and I am applying for probate.")
-                                                        .sign("I will send to the probate registry what I believe to " 
+                                                        .sign("I will send to the probate registry what I believe to "
                                                                 + "be the true and original last will and testament of"
                                                                 + " Ned Stark.")
                                                         .build()
                                         ))
                                         .deceasedEstateLand("To the best of my knowledge, information and belief, "
                                                 + "there was no land vested in Ned Stark which was settled previously"
-                                                + " to the death (and not by the will) of Ned Stark and which remained" 
+                                                + " to the death (and not by the will) of Ned Stark and which remained"
                                                 + " settled land notwithstanding such death.")
                                         .deceasedOtherNames("")
                                         .deceasedEstateValue("The gross value for the estate amounts to £20000 and the "

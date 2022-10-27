@@ -1,20 +1,20 @@
 package uk.gov.hmcts.reform.probate.model.payments;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CardPaymentRequestTest {
 
@@ -33,7 +33,7 @@ public class CardPaymentRequestTest {
 
     CardPaymentRequest cardPaymentRequestMatch;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         CARD_PAYMENT_FEES.add(FeeDto.builder()
                 .calculatedAmount(CARD_PAYMENT_AMOUNT)

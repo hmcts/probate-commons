@@ -49,6 +49,14 @@
   "solsFeeAccountNumber": "PBA-123456",
   "solsPaymentMethods": "fee account",
   "solsSolicitorAppReference": "APP-123456",
+  "solsSolicitorRepresentativeName": "representative name",
+  "caveatorPhoneNumber": "123456789",
+  "probateFee": "probateFeeNotIncluded",
+  "probateFeeNotIncludedReason": "other",
+  "helpWithFeesReference": "helpWithFeesReference",
+  "probateFeeNotIncludedExplanation": "feeNotIncludedExplanation",
+  "probateFeeAccountNumber": "AccountNumber1",
+  "probateFeeAccountReference": "AccountReference1",
   "solsSolicitorFirmName": "solicitor firm",
   "solsSolicitorPhoneNumber": "0909 909 9909",
   "expiryDate": "2019-02-14",
@@ -81,5 +89,7 @@
   ],
   "evidenceHandled": "No",
   "messageContent": "some message content",
-  "pcqId": "1003"
+  "pcqId": "1003",
+  "dxNumber": "123456789",
+  "practitionerAcceptsServiceByEmail": "Yes"
 }

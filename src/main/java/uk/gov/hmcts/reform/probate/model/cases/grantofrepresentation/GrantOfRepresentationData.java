@@ -413,6 +413,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean primaryApplicantNotRequiredToSendDocuments;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean willLatestCodicilHasDate;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -846,11 +850,20 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean evidenceHandled;
 
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate lastEvidenceAddedDate;
+
     private List<CollectionMember<ProbateDocument>> probateNotificationsGenerated;
 
     private List<CollectionMember<DeathRecord>> deathRecords;
 
     private OrganisationPolicy applicantOrganisationPolicy;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean caseHandedOffToLegacySite;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
