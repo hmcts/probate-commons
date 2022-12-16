@@ -92,12 +92,12 @@ public enum CaseState {
     @JsonProperty(BO_SOT_GENERATED_NAME) BO_SOT_GENERATED(BO_SOT_GENERATED_NAME),
 
     @JsonProperty(CAVEAT_NOT_MATCHED_NAME) CAVEAT_NOT_MATCHED(CAVEAT_NOT_MATCHED_NAME),
-
+    
     @JsonProperty(CAVEAT_AWAITING_RESOLUTION_NAME) CAVEAT_AWAITING_RESOLUTION(CAVEAT_AWAITING_RESOLUTION_NAME),
-
+    
     @JsonProperty(CAVEAT_WARNING_VALIDATION_NAME) CAVEAT_WARNING_VALIDATION(CAVEAT_WARNING_VALIDATION_NAME),
-
-    @JsonProperty(CAVEAT_AWAITING_WARNING_RESPONSE_NAME)
+    
+    @JsonProperty(CAVEAT_AWAITING_WARNING_RESPONSE_NAME) 
         CAVEAT_AWAITING_WARNING_RESPONSE(CAVEAT_AWAITING_WARNING_RESPONSE_NAME),
 
     @JsonProperty(CAVEAT_CLOSED_NAME) CAVEAT_CLOSED(CAVEAT_CLOSED_NAME),
@@ -171,10 +171,10 @@ public enum CaseState {
         public static final String CAVEAT_WARNING_VALIDATION_NAME = "WarningValidation";
 
         public static final String CAVEAT_AWAITING_WARNING_RESPONSE_NAME = "AwaitingWarningResponse";
-
+        
         public static final String CAVEAT_CLOSED_NAME = "CaveatClosed";
 
-	    public static final String DORMANT_NAME = "Dormant";
+        public static final String DORMANT_NAME = "Dormant";
 
         private Constants() {
         }
