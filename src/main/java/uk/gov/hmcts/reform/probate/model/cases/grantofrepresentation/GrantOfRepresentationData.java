@@ -857,6 +857,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean documentUploadedAfterCaseStopped;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean evidenceHandled;
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
