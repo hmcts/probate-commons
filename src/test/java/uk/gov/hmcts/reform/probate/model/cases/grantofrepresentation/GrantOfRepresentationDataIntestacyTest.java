@@ -62,7 +62,8 @@ public class GrantOfRepresentationDataIntestacyTest {
         grantOfRepresentationData = GrantOfRepresentationCreator.createIntestacyCase();
         grantOfRepresentationDataWithOrg = GrantOfRepresentationCreator.createIntestacyCaseWithOrg();
         grantOfRepresentationDataWithLastEvidence = GrantOfRepresentationCreator.createIntestacyCaseWithLastEvidence();
-        grantOfRepresentationDataStoppedWithEvidence = GrantOfRepresentationCreator.createStoppedIntestacyCaseWithEvidence();
+        grantOfRepresentationDataStoppedWithEvidence
+                = GrantOfRepresentationCreator.createStoppedIntestacyCaseWithEvidence();
         bulkScanCitizenGrantOfRepresentationData =
                 GrantOfRepresentationCreator.createCitizenIntestacyCaseWithBulkScanData();
         bulkScanSolicitorGrantOfRepresentationData =
@@ -117,6 +118,7 @@ public class GrantOfRepresentationDataIntestacyTest {
 
         assertThat(grantOfRepresentationDataStoppedWithEvidence, is(equalTo(caseData)));
     }
+
     @Test
     public void shouldSerializeStoppedGrantOfRepresentationWithEvidenceCorrectly() throws IOException, JSONException {
         String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationDataStoppedWithEvidence);
