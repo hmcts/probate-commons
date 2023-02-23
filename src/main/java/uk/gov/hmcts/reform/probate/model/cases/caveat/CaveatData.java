@@ -202,6 +202,8 @@ public class CaveatData extends CaseData {
 
     private String paymentTaken;
 
+    private String applicationSubmittedBy;
+
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
     public boolean isDeceasedDateOfBirthBeforeDeceasedDateOfDeath() {

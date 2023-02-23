@@ -880,6 +880,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String paymentTaken;
 
+    private String applicationSubmittedBy;
+
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
