@@ -10,11 +10,14 @@ import uk.gov.hmcts.reform.probate.model.TestUtils;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 
 public class CaveatDataTest {
 
@@ -91,4 +94,32 @@ public class CaveatDataTest {
 
         JSONAssert.assertEquals(bulkScanSolicitorJson, actualJson, true);
     }
+
+    @Test
+    public void shouldAddRegistrarDirections() {
+        CaveatData caveatData = CaveatCreator.createCaveatCaseWithRegistrarDirections();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        assertThat(caveatData.getRegistrarDirections().size(),
+                is(equalTo(2)));
+        assertThat(caveatData.getRegistrarDirections().get(0).getValue().getAddedDateTime(),
+                is(equalTo(LocalDateTime.parse("2023-01-01T23:45:45.890Z", dateTimeFormatter))));
+        assertThat(caveatData.getRegistrarDirections().get(0).getValue().getDecision(),
+                is(equalTo("Decision 1")));
+        assertThat(caveatData.getRegistrarDirections().get(0).getValue().getFurtherInformation(),
+                is(equalTo("Further information 1")));
+        assertThat(caveatData.getRegistrarDirections().get(1).getValue().getAddedDateTime(),
+                is(equalTo(LocalDateTime.parse("2023-01-02T23:45:45.890Z", dateTimeFormatter))));
+        assertThat(caveatData.getRegistrarDirections().get(1).getValue().getDecision(),
+                is(equalTo("Decision 2")));
+        assertThat(caveatData.getRegistrarDirections().get(1).getValue().getFurtherInformation(),
+                is(equalTo(null)));
+
+        assertThat(caveatData.getRegistrarDirectionToAdd().getDecision(),
+                is(equalTo("Decision NEWEST")));
+        assertThat(caveatData.getRegistrarDirectionToAdd().getFurtherInformation(),
+                is(equalTo("Further information NEWEST")));
+        assertThat(caveatData.getRegistrarDirectionToAdd().getAddedDateTime(),
+                is(not(equalTo(null))));
+    }
+
 }

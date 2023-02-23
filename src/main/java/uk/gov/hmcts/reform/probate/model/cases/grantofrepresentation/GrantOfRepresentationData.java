@@ -42,6 +42,7 @@ import uk.gov.hmcts.reform.probate.model.cases.DocumentLink;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
+import uk.gov.hmcts.reform.probate.model.cases.RegistrarDirection;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
@@ -873,6 +874,9 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean caseHandedOffToLegacySite;
+
+    private List<CollectionMember<RegistrarDirection>> registrarDirections;
+    private RegistrarDirection registrarDirectionToAdd;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 

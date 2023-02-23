@@ -24,6 +24,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
+import uk.gov.hmcts.reform.probate.model.cases.RegistrarDirection;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
@@ -157,7 +158,7 @@ public class CaveatData extends CaseData {
     private Boolean languagePreferenceWelsh;
 
     private String solsSolicitorRepresentativeName;
-    
+
     private String solsSolicitorFirmName;
 
     private String solsSolicitorPhoneNumber;
@@ -191,12 +192,15 @@ public class CaveatData extends CaseData {
     private String probateFeeAccountNumber;
 
     private String probateFeeAccountReference;
-    
+
     private String dxNumber;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean practitionerAcceptsServiceByEmail;
+
+    private List<CollectionMember<RegistrarDirection>> registrarDirections;
+    private RegistrarDirection registrarDirectionToAdd;
 
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")

@@ -6,6 +6,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.Organisation;
 import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
+import uk.gov.hmcts.reform.probate.model.cases.RegistrarDirection;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
@@ -135,6 +136,19 @@ public class CaveatCreator {
                 .deliveryDate(dateTime)
                 .url(url)
                 .build();
+    }
+
+    public static CaveatData createCaveatCaseWithRegistrarDirections() {
+        CaveatData caveatData = createCaveatCase();
+        caveatData.setRegistrarDirections(RegistrarDirectionCreator.buildRegistrarDirections());
+        RegistrarDirection registrarDirectionToAdd = RegistrarDirection.builder()
+                .addedDateTime(LocalDateTime.parse("2023-01-01T23:45:45.890Z", DateTimeFormatter.ISO_DATE_TIME))
+                .decision("Decision NEWEST")
+                .furtherInformation("Further information NEWEST")
+                .build();
+        caveatData.setRegistrarDirectionToAdd(registrarDirectionToAdd);
+
+        return caveatData;
     }
 
     private CaveatCreator() {
