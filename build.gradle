@@ -100,7 +100,7 @@ def versions = [
         hibernateValidator: '6.0.13.Final',
         springfoxSwagger  : '2.9.2',
         springBoot        : '2.6.6',
-        commonsIo         : '2.6',
+        commonsIo         : '2.11.0',
         openfeign         : '3.8.0'
 ]
 

@@ -42,6 +42,7 @@ import uk.gov.hmcts.reform.probate.model.cases.DocumentLink;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
+import uk.gov.hmcts.reform.probate.model.cases.RegistrarDirection;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
@@ -628,8 +629,6 @@ public class GrantOfRepresentationData extends CaseData {
 
     private DocumentLink statementOfTruthDocument;
 
-    private DocumentLink solsCoversheetDocument;
-
     private String pcqId;
 
     /* START: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
@@ -875,6 +874,9 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean caseHandedOffToLegacySite;
+
+    private List<CollectionMember<RegistrarDirection>> registrarDirections;
+    private RegistrarDirection registrarDirectionToAdd;
 
     private String serviceRequestReference;
 
