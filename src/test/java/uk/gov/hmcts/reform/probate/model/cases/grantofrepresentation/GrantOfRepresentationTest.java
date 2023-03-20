@@ -5,9 +5,13 @@ import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static uk.gov.hmcts.reform.probate.model.YesNo.NO;
 import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
 
@@ -330,5 +334,31 @@ public class GrantOfRepresentationTest {
         assertThat(grantOfRepresentationData.getNoOriginalWillAccessReason(),
             is(equalTo("No original will access reason")));
 
+    }
+
+    @Test
+    public void shouldAddRegistrarDirections() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        assertThat(grantOfRepresentationData.getRegistrarDirections().size(),
+                is(equalTo(2)));
+        assertThat(grantOfRepresentationData.getRegistrarDirections().get(0).getValue().getAddedDateTime(),
+                is(equalTo(LocalDateTime.parse("2023-01-01T23:45:45.890Z", dateTimeFormatter))));
+        assertThat(grantOfRepresentationData.getRegistrarDirections().get(0).getValue().getDecision(),
+                is(equalTo("Decision 1")));
+        assertThat(grantOfRepresentationData.getRegistrarDirections().get(0).getValue().getFurtherInformation(),
+                is(equalTo("Further information 1")));
+        assertThat(grantOfRepresentationData.getRegistrarDirections().get(1).getValue().getAddedDateTime(),
+                is(equalTo(LocalDateTime.parse("2023-01-02T23:45:45.890Z", dateTimeFormatter))));
+        assertThat(grantOfRepresentationData.getRegistrarDirections().get(1).getValue().getDecision(),
+                is(equalTo("Decision 2")));
+        assertThat(grantOfRepresentationData.getRegistrarDirections().get(1).getValue().getFurtherInformation(),
+                is(equalTo(null)));
+
+        assertThat(grantOfRepresentationData.getRegistrarDirectionToAdd().getDecision(),
+                is(equalTo("Decision NEWEST")));
+        assertThat(grantOfRepresentationData.getRegistrarDirectionToAdd().getFurtherInformation(),
+                is(equalTo("Further information NEWEST")));
+        assertThat(grantOfRepresentationData.getRegistrarDirectionToAdd().getAddedDateTime(),
+                is(not(equalTo(null))));
     }
 }
