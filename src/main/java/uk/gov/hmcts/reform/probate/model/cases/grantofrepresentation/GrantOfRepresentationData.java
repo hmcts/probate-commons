@@ -629,6 +629,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     private DocumentLink statementOfTruthDocument;
 
+    private DocumentLink solsCoversheetDocument;
+
     private String pcqId;
 
     /* START: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
