@@ -1,0 +1,124 @@
+{
+  "type": "GrantOfRepresentation",
+  "applicationType": "Personal",
+  "primaryApplicantEmailAddress": "jon.snow@thenorth.com",
+  "registryLocation": "Birmingham",
+  "extraCopiesOfGrant": 5,
+  "deceasedAddress": {
+    "AddressLine1": "Winterfell, Westeros",
+    "PostCode": "SW17 TYH"
+  },
+  "deceasedForenames": "Ned",
+  "deceasedSurname": "Stark",
+  "deceasedDateOfDeath": "2018-01-01",
+  "deceasedDateOfBirth": "1930-01-01",
+  "deceasedMaritalStatus": "marriedCivilPartnership",
+  "deceasedAnyOtherNames": "No",
+  "deceasedDiedEngOrWales": "Yes",
+  "deceasedDeathCertificate": "deathCertificate",
+  "deceasedAliasNameList": [
+    {
+      "value": {
+        "Forenames": "King",
+        "LastName": "North"
+      }
+    }
+  ],
+  "solsDeceasedAliasNamesList": [
+    {
+      "value": {
+        "SolsAliasname": "King North"
+      }
+    }
+  ],
+  "deceasedSpouseNotApplyingReason": "mentallyIncapable",
+  "deceasedDivorcedInEnglandOrWales": "No",
+  "deceasedOtherChildren": "Yes",
+  "deceasedAnyChildren": "No",
+  "deceasedForeignDeathCertInEnglish": "No",
+  "deceasedForeignDeathCertTranslation": "Yes",
+  "childrenDied": "No",
+  "childrenOverEighteenSurvived": "Yes",
+  "childrenUnderEighteenSurvived": "2",
+  "grandChildrenSurvivedUnderEighteen": "No",
+  "ihtFormId": "IHT205",
+  "ihtFormCompletedOnline": "Yes",
+  "ihtNetValue": "100000",
+  "ihtGrossValue": "100000",
+  "ihtReferenceNumber": "GOT123456",
+  "primaryApplicantAddress": {
+    "AddressLine1": "Pret a Manger St. Georges Hospital Blackshaw Road London SW17 0QT",
+    "PostCode": "SW17 0QT"
+  },
+  "primaryApplicantForenames": "Jon",
+  "primaryApplicantSurname": "Snow",
+  "primaryApplicantPhoneNumber": "123455678",
+  "primaryApplicantRelationshipToDeceased": "adoptedChild",
+  "primaryApplicantAdoptionInEnglandOrWales": "Yes",
+  "paperForm": "No",
+  "deceasedHasAssetsOutsideUK": "Yes",
+  "assetsOutsideNetValue": "10050",
+  "payments": [
+    {
+      "value": {
+        "status": "Success",
+        "date": "2018-12-03",
+        "reference": "RC-1537-1988-5489-1985",
+        "amount": "22050",
+        "method": "online",
+        "transactionId": "r23k178busa0rp2mh27m0vchja",
+        "siteId": "P223"
+      }
+    }
+  ],
+  "applyingAsAnAttorney": "Yes",
+  "attorneyOnBehalfOfNameAndAddress": [
+    {
+      "value": {
+        "name": "1st Attorney Harrow",
+        "address": {
+          "AddressLine1": "Attorney Address Line 1",
+          "AddressLine2": "Attorney Address Line 2",
+          "AddressLine3": "Attorney Address Line 3",
+          "County": "Middlesex",
+          "PostTown": "Harrow",
+          "PostCode": "HA1 4ET",
+          "Country": "UK"
+        }
+      }
+    }
+  ],
+  "legacyId": "123456",
+  "legacyType": "Legacy LEGACY GRANT",
+  "legacyCaseViewUrl": "http://locahost:8080/cases/1",
+  "solsSolicitorAppReference": "Solicitor Application Reference",
+  "solsSolicitorAddress": {
+    "AddressLine1": "Sol Address Line 1",
+    "AddressLine2": "Sol Address Line 2",
+    "AddressLine3": "Sol Address Line 3",
+    "County": "Middlesex",
+    "PostTown": "Harrow",
+    "PostCode": "HA1 4ET",
+    "Country": "UK"
+  },
+  "solsSolicitorFirmName": "Solicitor Firm Name",
+  "declarationCheckbox": "Yes",
+  "ihtGrossValueField": "100000",
+  "ihtNetValueField": "100000",
+  "ihtFormEstateValuesCompleted": "Yes",
+  "ihtFormEstate": "IHT400421",
+  "ihtEstateGrossValue": "40050",
+  "ihtEstateGrossValueField": "40,050",
+  "ihtEstateNetValue": "30050",
+  "ihtEstateNetValueField": "30,050",
+  "ihtEstateNetQualifyingValue": "20050",
+  "ihtEstateNetQualifyingValueField": "20,050",
+  "deceasedHadLateSpouseOrCivilPartner": "Yes",
+  "ihtUnusedAllowanceClaimed": "Yes",
+  "outsideUKGrantCopies": 6,
+  "caseType": "intestacy",
+  "pcqId": "1004",
+  "lastEvidenceAddedDate" : "2022-05-13",
+  "documentUploadedAfterCaseStopped" : "Yes",
+  "grantStoppedDate": "2022-05-13"
+}
