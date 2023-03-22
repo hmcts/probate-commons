@@ -10,6 +10,7 @@ import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.Organisation;
 import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
+import uk.gov.hmcts.reform.probate.model.cases.RegistrarDirection;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
@@ -115,6 +116,14 @@ public class GrantOfRepresentationCreator {
             .understandItem2("criminal proceedings for fraud may be brought against me if I am found "
                 + "to have been deliberately untruthful or dishonest")
             .build());
+
+        grantOfRepresentationData.setRegistrarDirections(RegistrarDirectionCreator.buildRegistrarDirections());
+        RegistrarDirection registrarDirectionToAdd = RegistrarDirection.builder()
+                        .addedDateTime(LocalDateTime.now())
+                        .decision("Decision NEWEST")
+                        .furtherInformation("Further information NEWEST")
+                        .build();
+        grantOfRepresentationData.setRegistrarDirectionToAdd(registrarDirectionToAdd);
         return grantOfRepresentationData;
     }
 
