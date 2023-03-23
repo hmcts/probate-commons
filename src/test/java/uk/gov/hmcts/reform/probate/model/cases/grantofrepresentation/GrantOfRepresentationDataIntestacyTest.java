@@ -26,6 +26,8 @@ public class GrantOfRepresentationDataIntestacyTest {
 
     private GrantOfRepresentationData grantOfRepresentationDataWithLastEvidence;
 
+    private GrantOfRepresentationData grantOfRepresentationDataStoppedWithEvidence;
+
     private GrantOfRepresentationData bulkScanCitizenGrantOfRepresentationData;
 
     private GrantOfRepresentationData bulkScanSolicitorGrantOfRepresentationData;
@@ -35,6 +37,8 @@ public class GrantOfRepresentationDataIntestacyTest {
     private String gorWithOrgJsonFromFile;
 
     private String gorWithEvidenceJsonFromFile;
+
+    private String gorStoppedWithEvidenceJsonFromFile;
 
     private String gorWithCaseHandOffFlagFromFile;
 
@@ -47,6 +51,7 @@ public class GrantOfRepresentationDataIntestacyTest {
         gorJsonFromFile = getJsonFromFile("intestacyGrantOfRepresentation.json");
         gorWithOrgJsonFromFile = getJsonFromFile("intestacyGrantOfRepresentationWithOrg.json");
         gorWithEvidenceJsonFromFile = getJsonFromFile("intestacyGrantOfRepresentationWithLastEvidenceAddedDate.json");
+        gorStoppedWithEvidenceJsonFromFile = getJsonFromFile("intestacyGrantOfRepresentationStoppedWithEvidence.json");
         gorWithCaseHandOffFlagFromFile = getJsonFromFile("intestacyFormCaseHandOffFlag.json");
         bulkScanCitizenGorJsonFromFile =
                 getJsonFromFile("bulkScanIntestacyCitizenGrantOfRepresentation.json");
@@ -57,6 +62,8 @@ public class GrantOfRepresentationDataIntestacyTest {
         grantOfRepresentationData = GrantOfRepresentationCreator.createIntestacyCase();
         grantOfRepresentationDataWithOrg = GrantOfRepresentationCreator.createIntestacyCaseWithOrg();
         grantOfRepresentationDataWithLastEvidence = GrantOfRepresentationCreator.createIntestacyCaseWithLastEvidence();
+        grantOfRepresentationDataStoppedWithEvidence
+                = GrantOfRepresentationCreator.createStoppedIntestacyCaseWithEvidence();
         bulkScanCitizenGrantOfRepresentationData =
                 GrantOfRepresentationCreator.createCitizenIntestacyCaseWithBulkScanData();
         bulkScanSolicitorGrantOfRepresentationData =
@@ -103,6 +110,20 @@ public class GrantOfRepresentationDataIntestacyTest {
         String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationDataWithLastEvidence);
 
         JSONAssert.assertEquals(gorWithEvidenceJsonFromFile, intestacyGorAsJsonStr, true);
+    }
+
+    @Test
+    public void shouldDeserializeStoppedGrantOfRepresentationWithEvidenceCorrectly() throws IOException {
+        CaseData caseData = objectMapper.readValue(gorStoppedWithEvidenceJsonFromFile, CaseData.class);
+
+        assertThat(grantOfRepresentationDataStoppedWithEvidence, is(equalTo(caseData)));
+    }
+
+    @Test
+    public void shouldSerializeStoppedGrantOfRepresentationWithEvidenceCorrectly() throws IOException, JSONException {
+        String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationDataStoppedWithEvidence);
+
+        JSONAssert.assertEquals(gorStoppedWithEvidenceJsonFromFile, intestacyGorAsJsonStr, true);
     }
 
     @Test

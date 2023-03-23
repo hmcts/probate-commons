@@ -337,6 +337,14 @@ public class GrantOfRepresentationCreator {
         return grantOfRepresentationData;
     }
 
+    public static GrantOfRepresentationData createStoppedIntestacyCaseWithEvidence() {
+        GrantOfRepresentationData grantOfRepresentationData = createIntestacyCase();
+        grantOfRepresentationData.setGrantStoppedDate(LocalDate.of(2022, 5, 13));
+        grantOfRepresentationData.setLastEvidenceAddedDate(LocalDate.of(2022, 5, 13));
+        grantOfRepresentationData.setDocumentUploadedAfterCaseStopped(true);
+        return grantOfRepresentationData;
+    }
+
     public static GrantOfRepresentationData createCitizenIntestacyCaseWithBulkScanData() {
         GrantOfRepresentationData grantOfRepresentationData = setBasicBulkScanData();
         grantOfRepresentationData.setApplicationType(ApplicationType.PERSONAL);
