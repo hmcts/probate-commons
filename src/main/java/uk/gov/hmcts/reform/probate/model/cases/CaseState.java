@@ -37,6 +37,7 @@ import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.DORMAN
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.DRAFT_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.PA_APP_CREATED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.STOPPED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_POST_GRANT_ISSUED_NAME;
 
 @RequiredArgsConstructor
 public enum CaseState {
@@ -92,17 +93,18 @@ public enum CaseState {
     @JsonProperty(BO_SOT_GENERATED_NAME) BO_SOT_GENERATED(BO_SOT_GENERATED_NAME),
 
     @JsonProperty(CAVEAT_NOT_MATCHED_NAME) CAVEAT_NOT_MATCHED(CAVEAT_NOT_MATCHED_NAME),
-    
+
     @JsonProperty(CAVEAT_AWAITING_RESOLUTION_NAME) CAVEAT_AWAITING_RESOLUTION(CAVEAT_AWAITING_RESOLUTION_NAME),
-    
+
     @JsonProperty(CAVEAT_WARNING_VALIDATION_NAME) CAVEAT_WARNING_VALIDATION(CAVEAT_WARNING_VALIDATION_NAME),
-    
-    @JsonProperty(CAVEAT_AWAITING_WARNING_RESPONSE_NAME) 
+
+    @JsonProperty(CAVEAT_AWAITING_WARNING_RESPONSE_NAME)
         CAVEAT_AWAITING_WARNING_RESPONSE(CAVEAT_AWAITING_WARNING_RESPONSE_NAME),
 
     @JsonProperty(CAVEAT_CLOSED_NAME) CAVEAT_CLOSED(CAVEAT_CLOSED_NAME),
 
-    @JsonProperty(DORMANT_NAME) DORMANT(DORMANT_NAME);
+    @JsonProperty(DORMANT_NAME) DORMANT(DORMANT_NAME),
+    @JsonProperty(BO_POST_GRANT_ISSUED_NAME) BO_POST_GRANT_ISSUED(BO_POST_GRANT_ISSUED_NAME);
 
     @Getter
     private final String name;
@@ -171,10 +173,11 @@ public enum CaseState {
         public static final String CAVEAT_WARNING_VALIDATION_NAME = "WarningValidation";
 
         public static final String CAVEAT_AWAITING_WARNING_RESPONSE_NAME = "AwaitingWarningResponse";
-        
+
         public static final String CAVEAT_CLOSED_NAME = "CaveatClosed";
 
         public static final String DORMANT_NAME = "Dormant";
+        public static final String BO_POST_GRANT_ISSUED_NAME = "BOPostGrantIssued";
 
         private Constants() {
         }
