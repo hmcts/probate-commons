@@ -104,6 +104,7 @@ public enum CaseState {
     @JsonProperty(CAVEAT_CLOSED_NAME) CAVEAT_CLOSED(CAVEAT_CLOSED_NAME),
 
     @JsonProperty(DORMANT_NAME) DORMANT(DORMANT_NAME),
+
     @JsonProperty(BO_POST_GRANT_ISSUED_NAME) BO_POST_GRANT_ISSUED(BO_POST_GRANT_ISSUED_NAME);
 
     @Getter
@@ -175,8 +176,8 @@ public enum CaseState {
         public static final String CAVEAT_AWAITING_WARNING_RESPONSE_NAME = "AwaitingWarningResponse";
         
         public static final String CAVEAT_CLOSED_NAME = "CaveatClosed";
-
-	public static final String BO_POST_GRANT_ISSUED_NAME = "BOPostGrantIssued";
+        
+        public static final String BO_POST_GRANT_ISSUED_NAME = "BOPostGrantIssued";
 
         public static final String DORMANT_NAME = "Dormant";
 
