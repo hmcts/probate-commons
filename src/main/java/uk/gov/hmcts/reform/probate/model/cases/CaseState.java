@@ -19,6 +19,7 @@ import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CAV
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_EXAMING_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_EXAMINING_REISSUE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_GRANT_ISSUED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_POST_GRANT_ISSUED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_READY_FOR_EXAMINATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_READY_TO_ISSUE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_REDEC_NOTIFICATION_SENT_NAME;
@@ -34,7 +35,6 @@ import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_RAISED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_WARNING_VALIDATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.DORMANT_NAME;
-import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_POST_GRANT_ISSUED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.DRAFT_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.PA_APP_CREATED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.STOPPED_NAME;
