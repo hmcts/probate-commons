@@ -176,9 +176,9 @@ public enum CaseState {
         
         public static final String CAVEAT_CLOSED_NAME = "CaveatClosed";
 
-        public static final String DORMANT_NAME = "Dormant";
-
 	public static final String BO_POST_GRANT_ISSUED_NAME = "BOPostGrantIssued";
+
+        public static final String DORMANT_NAME = "Dormant";
 
         private Constants() {
         }
