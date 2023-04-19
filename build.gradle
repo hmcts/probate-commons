@@ -3,9 +3,7 @@ plugins {
     id 'checkstyle'
     id 'com.github.ben-manes.versions' version '0.20.0'
     id 'java-library'
-    id 'maven'
     id 'maven-publish'
-    id 'net.ltgt.apt' version '0.18'
     // id 'pmd'
     id 'jacoco'
 }
@@ -23,10 +21,19 @@ checkstyle {
     toolVersion = '8.5'
 }
 
-sourceCompatibility = 11
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
 tasks.withType(JavaCompile) {
     options.compilerArgs << '-parameters' << '-Xlint:deprecation'
+}
+
+// https://github.com/gradle/gradle/issues/16791
+tasks.withType(JavaExec).configureEach {
+    javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
 }
 
 compileTestJava {
@@ -94,12 +101,12 @@ publishing {
 }
 
 def versions = [
-        lombok            : '1.18.12',
-        jackson           : '2.9.7',
-        apacheCommons     : '3.8.1',
-        hibernateValidator: '6.0.13.Final',
+        lombok            : '1.18.26',
+        jackson           : '2.14.2',
+        apacheCommons     : '3.12.0',
+        hibernateValidator: '8.0.0.Final',
         springfoxSwagger  : '2.9.2',
-        springBoot        : '2.6.6',
+        springBoot        : '3.0.5',
         commonsIo         : '2.11.0',
         openfeign         : '3.8.0'
 ]
@@ -122,7 +129,7 @@ dependencies {
     testImplementation group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
     testImplementation group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
 
-    testImplementation('org.mockito:mockito-core:2.7.22')
+    testImplementation('org.mockito:mockito-core:4.8.1')
 
 
 }
