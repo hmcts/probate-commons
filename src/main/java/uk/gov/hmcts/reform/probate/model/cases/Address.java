@@ -4,14 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.IntestacyNullCheck;
 import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.PaNullCheck;
-
-import javax.validation.constraints.NotBlank;
 
 @Data
 @AllArgsConstructor

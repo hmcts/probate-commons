@@ -27,8 +27,9 @@ import uk.gov.hmcts.reform.probate.model.forms.Registry;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -151,8 +152,8 @@ public class IntestacyFormTest {
 
         Payment payment = new Payment();
         String dateStr = "2018-12-03T15:58:44.954+0000";
-        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_STR_ISO8601);
-        payment.setDate(formatter.parse(dateStr));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT_STR_ISO8601);
+        payment.setDate(LocalDate.parse(dateStr, formatter));
         payment.setAmount(new BigDecimal("220.5"));
         payment.setSiteId("P223");
         payment.setStatus(PaymentStatus.SUCCESS);

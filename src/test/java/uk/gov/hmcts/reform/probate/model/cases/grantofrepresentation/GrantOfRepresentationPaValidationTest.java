@@ -1,5 +1,9 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
@@ -11,10 +15,6 @@ import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.PaNullCheck
 
 import java.time.LocalDate;
 import java.util.Set;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;

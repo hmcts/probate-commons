@@ -32,10 +32,8 @@ import uk.gov.hmcts.reform.probate.model.forms.Will;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.Arrays;
 import java.util.List;
 
@@ -126,7 +124,7 @@ public class PaFormTest {
                         .build())
                 .payments(Lists.newArrayList(
                         Payment.builder()
-                                .date(Date.from(LocalDate.of(2019, 2, 28).atStartOfDay().toInstant(ZoneOffset.UTC)))
+                                .date(LocalDate.of(2019, 2, 28))
                                 .amount(BigDecimal.valueOf(215.5))
                                 .siteId("P223")
                                 .status(PaymentStatus.SUCCESS)

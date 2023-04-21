@@ -1,6 +1,9 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,9 +12,6 @@ import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.validation.groups.submission.PaSubmission;
 
 import java.util.List;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
@@ -32,7 +32,7 @@ public class LegalStatement {
     private String deceasedOtherNames;
 
     private String deceasedEstateValue;
-    
+
     private String deceasedEstateValueExceptedEstateConfirmation;
 
     @NotBlank(groups = {PaSubmission.class})

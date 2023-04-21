@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,7 +29,6 @@ import uk.gov.hmcts.reform.probate.model.forms.Registry;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor

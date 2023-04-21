@@ -1,5 +1,9 @@
 package uk.gov.hmcts.reform.probate.model.validation;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.groups.Default;
 import org.assertj.core.api.Assertions;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,10 +13,6 @@ import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
 
 import java.time.LocalDate;
 import java.util.Set;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.groups.Default;
 
 import static org.assertj.core.api.Assertions.tuple;
 import static org.hamcrest.CoreMatchers.equalTo;
