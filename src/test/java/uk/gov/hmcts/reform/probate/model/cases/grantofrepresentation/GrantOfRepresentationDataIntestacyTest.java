@@ -57,7 +57,7 @@ public class GrantOfRepresentationDataIntestacyTest {
                 getJsonFromFile("bulkScanIntestacyCitizenGrantOfRepresentation.json");
         bulkScanSolicitorGorJsonFromFile =
                 getJsonFromFile("bulkScanIntestacySolicitorGrantOfRepresentation.json");
-        objectMapper = new ObjectMapper();
+        objectMapper = new ObjectMapper().findAndRegisterModules();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
         grantOfRepresentationData = GrantOfRepresentationCreator.createIntestacyCase();
         grantOfRepresentationDataWithOrg = GrantOfRepresentationCreator.createIntestacyCaseWithOrg();
