@@ -55,8 +55,8 @@
         "fileName": "1000.pdf",
         "type": "form",
         "subtype": "PA8A",
-        "scannedDate": {"dayOfYear":196,"dayOfWeek":"MONDAY","year":2019,"month":"JULY","nano":789000000,"monthValue":7,"dayOfMonth":15,"hour":12,"minute":34,"second":56,"chronology":{"id":"ISO","calendarType":"iso8601"}},
-        "deliveryDate": {"dayOfYear":196,"dayOfWeek":"MONDAY","year":2019,"month":"JULY","nano":789000000,"monthValue":7,"dayOfMonth":15,"hour":12,"minute":34,"second":56,"chronology":{"id":"ISO","calendarType":"iso8601"}},
+        "scannedDate": "2019-07-15T12:34:56.789Z",
+        "deliveryDate": "2019-07-15T12:34:56.789Z",
         "url":{"document_url":"http://localhost/1000.pdf","document_binary_url":"http://localhost/1000.pdf","document_filename":"1000.pdf"},
         "exceptionRecordReference": null
       }
@@ -67,8 +67,8 @@
         "fileName": "2000.pdf",
         "type": "form",
         "subtype": "PA8A",
-        "scannedDate": {"dayOfYear":196,"dayOfWeek":"MONDAY","year":2019,"month":"JULY","nano":789000000,"monthValue":7,"dayOfMonth":15,"hour":12,"minute":34,"second":56,"chronology":{"id":"ISO","calendarType":"iso8601"}},
-        "deliveryDate": {"dayOfYear":196,"dayOfWeek":"MONDAY","year":2019,"month":"JULY","nano":789000000,"monthValue":7,"dayOfMonth":15,"hour":12,"minute":34,"second":56,"chronology":{"id":"ISO","calendarType":"iso8601"}},
+        "scannedDate": "2019-07-15T12:34:56.789Z",
+        "deliveryDate": "2019-07-15T12:34:56.789Z",
         "url":{"document_url":"http://localhost/2000.pdf","document_binary_url":"http://localhost/2000.pdf","document_filename":"2000.pdf"},
         "exceptionRecordReference": null
       }
