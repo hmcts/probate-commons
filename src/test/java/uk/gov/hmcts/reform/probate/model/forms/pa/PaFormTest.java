@@ -245,6 +245,7 @@ public class PaFormTest {
                         .build())
                 .equality(Equality.builder()
                         .pcqId("1002").build())
+                .documentsReceivedNotificationSent("Yes")
                 .build();
     }
 
