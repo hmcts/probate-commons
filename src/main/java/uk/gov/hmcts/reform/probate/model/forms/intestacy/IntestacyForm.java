@@ -63,6 +63,8 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
     @JsonProperty(value = "equality")
     private Equality equality;
 
+    private String documentsReceivedNotificationSent;
+
     @Builder
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          Declaration declaration, Documents documents, Registry registry,
@@ -70,7 +72,8 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
                          InheritanceTax iht, Fees fees, Payment payment, LocalDate applicationSubmittedDate,
                          Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary,
                          String applicantEmail, DocumentUpload statementOfTruthDocument, String caseType,
-                         Language language, Equality equality, String eventDescription) {
+                         Language language, Equality equality, String documentsReceivedNotificationSent,
+                         String eventDescription) {
 
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
@@ -84,6 +87,7 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.statementOfTruthDocument = statementOfTruthDocument;
         this.caseType = caseType;
         this.equality = equality;
+        this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
     }
 
 }
