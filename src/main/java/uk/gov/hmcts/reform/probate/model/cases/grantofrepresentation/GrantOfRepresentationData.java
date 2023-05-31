@@ -890,6 +890,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String applicationSubmittedBy;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean documentsReceivedNotificationSent;
+
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 

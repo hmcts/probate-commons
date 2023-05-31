@@ -15,6 +15,7 @@ import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CAS
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CASE_STOPPED_AWAIT_REDEC_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CASE_STOPPED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CASE_STOPPED_REISSUE_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CASE_WORKER_ESCALATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CAVEAT_PERMENANT_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_EXAMING_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_EXAMINING_REISSUE_NAME;
@@ -92,6 +93,8 @@ public enum CaseState {
 
     @JsonProperty(BO_SOT_GENERATED_NAME) BO_SOT_GENERATED(BO_SOT_GENERATED_NAME),
 
+    @JsonProperty(BO_CASE_WORKER_ESCALATION_NAME) BO_CASE_WORKER_ESCALATION(BO_CASE_WORKER_ESCALATION_NAME),
+
     @JsonProperty(CAVEAT_NOT_MATCHED_NAME) CAVEAT_NOT_MATCHED(CAVEAT_NOT_MATCHED_NAME),
     
     @JsonProperty(CAVEAT_AWAITING_RESOLUTION_NAME) CAVEAT_AWAITING_RESOLUTION(CAVEAT_AWAITING_RESOLUTION_NAME),
@@ -166,6 +169,8 @@ public enum CaseState {
         public static final String BO_REDEC_NOTIFICATION_SENT_NAME = "BORedecNotificationSent";
 
         public static final String BO_SOT_GENERATED_NAME = "BOSotGenerated";
+
+        public static final String BO_CASE_WORKER_ESCALATION_NAME = "BOCaseWorkerEscalation";
 
         public static final String CAVEAT_NOT_MATCHED_NAME = "CaveatNotMatched";
 

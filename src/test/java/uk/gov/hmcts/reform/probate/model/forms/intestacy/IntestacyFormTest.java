@@ -164,6 +164,7 @@ public class IntestacyFormTest {
 
         Equality equality = Equality.builder().pcqId("1001").build();
         intestacyForm.setEquality(equality);
+        intestacyForm.setDocumentsReceivedNotificationSent("Yes");
     }
 
     private List<Map<String, Object>> getAddresses() {
