@@ -30,24 +30,7 @@ import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.ProbateDocument;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.ScannedDocument;
-import uk.gov.hmcts.reform.probate.model.cases.Address;
-import uk.gov.hmcts.reform.probate.model.cases.AliasName;
-import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
-import uk.gov.hmcts.reform.probate.model.cases.CaseData;
-import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
-import uk.gov.hmcts.reform.probate.model.cases.ChangeOfRepresentative;
-import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
-import uk.gov.hmcts.reform.probate.model.cases.CombinedName;
-import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
-import uk.gov.hmcts.reform.probate.model.cases.DocumentLink;
-import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
-import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
-import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
-import uk.gov.hmcts.reform.probate.model.cases.RegistrarDirection;
-import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
-import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
-import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
-import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
+import uk.gov.hmcts.reform.probate.model.cases.*;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.IntestacyCrossFieldCheck;
@@ -885,8 +868,10 @@ public class GrantOfRepresentationData extends CaseData {
     private List<CollectionMember<RegistrarDirection>> registrarDirections;
     private RegistrarDirection registrarDirectionToAdd;
 
+    private RemovedRepresentative changeOfRepresentative;
     private List<CollectionMember<ChangeOfRepresentative>> changeOfRepresentatives;
-    private ChangeOfRepresentative changeOfRepresentative;
+    private ChangeOfRepresentative removedRepresentative;
+    private ChangeOrganisationRequest changeOrganisationRequestField;
 
     private String serviceRequestReference;
 
