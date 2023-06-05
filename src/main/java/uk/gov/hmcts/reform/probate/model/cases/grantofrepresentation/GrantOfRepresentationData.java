@@ -889,7 +889,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     private RemovedRepresentative changeOfRepresentative;
     private List<CollectionMember<ChangeOfRepresentative>> changeOfRepresentatives;
-    private ChangeOfRepresentative removedRepresentative;
+    private RemovedRepresentative removedRepresentative;
     private ChangeOrganisationRequest changeOrganisationRequestField;
 
     private String serviceRequestReference;
