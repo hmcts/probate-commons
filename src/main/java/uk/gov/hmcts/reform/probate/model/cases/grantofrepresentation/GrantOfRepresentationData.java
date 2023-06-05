@@ -887,7 +887,7 @@ public class GrantOfRepresentationData extends CaseData {
     private List<CollectionMember<RegistrarDirection>> registrarDirections;
     private RegistrarDirection registrarDirectionToAdd;
 
-    private RemovedRepresentative changeOfRepresentative;
+    private ChangeOfRepresentative changeOfRepresentative;
     private List<CollectionMember<ChangeOfRepresentative>> changeOfRepresentatives;
     private RemovedRepresentative removedRepresentative;
     private ChangeOrganisationRequest changeOrganisationRequestField;
