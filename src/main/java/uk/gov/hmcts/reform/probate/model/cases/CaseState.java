@@ -15,10 +15,12 @@ import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CAS
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CASE_STOPPED_AWAIT_REDEC_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CASE_STOPPED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CASE_STOPPED_REISSUE_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CASE_WORKER_ESCALATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CAVEAT_PERMENANT_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_EXAMING_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_EXAMINING_REISSUE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_GRANT_ISSUED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_POST_GRANT_ISSUED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_READY_FOR_EXAMINATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_READY_TO_ISSUE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_REDEC_NOTIFICATION_SENT_NAME;
@@ -91,6 +93,8 @@ public enum CaseState {
 
     @JsonProperty(BO_SOT_GENERATED_NAME) BO_SOT_GENERATED(BO_SOT_GENERATED_NAME),
 
+    @JsonProperty(BO_CASE_WORKER_ESCALATION_NAME) BO_CASE_WORKER_ESCALATION(BO_CASE_WORKER_ESCALATION_NAME),
+
     @JsonProperty(CAVEAT_NOT_MATCHED_NAME) CAVEAT_NOT_MATCHED(CAVEAT_NOT_MATCHED_NAME),
     
     @JsonProperty(CAVEAT_AWAITING_RESOLUTION_NAME) CAVEAT_AWAITING_RESOLUTION(CAVEAT_AWAITING_RESOLUTION_NAME),
@@ -102,7 +106,9 @@ public enum CaseState {
 
     @JsonProperty(CAVEAT_CLOSED_NAME) CAVEAT_CLOSED(CAVEAT_CLOSED_NAME),
 
-    @JsonProperty(DORMANT_NAME) DORMANT(DORMANT_NAME);
+    @JsonProperty(DORMANT_NAME) DORMANT(DORMANT_NAME),
+
+    @JsonProperty(BO_POST_GRANT_ISSUED_NAME) BO_POST_GRANT_ISSUED(BO_POST_GRANT_ISSUED_NAME);
 
     @Getter
     private final String name;
@@ -164,6 +170,8 @@ public enum CaseState {
 
         public static final String BO_SOT_GENERATED_NAME = "BOSotGenerated";
 
+        public static final String BO_CASE_WORKER_ESCALATION_NAME = "BOCaseWorkerEscalation";
+
         public static final String CAVEAT_NOT_MATCHED_NAME = "CaveatNotMatched";
 
         public static final String CAVEAT_AWAITING_RESOLUTION_NAME = "AwaitingCaveatResolution";
@@ -173,6 +181,8 @@ public enum CaseState {
         public static final String CAVEAT_AWAITING_WARNING_RESPONSE_NAME = "AwaitingWarningResponse";
         
         public static final String CAVEAT_CLOSED_NAME = "CaveatClosed";
+        
+        public static final String BO_POST_GRANT_ISSUED_NAME = "BOPostGrantIssued";
 
         public static final String DORMANT_NAME = "Dormant";
 

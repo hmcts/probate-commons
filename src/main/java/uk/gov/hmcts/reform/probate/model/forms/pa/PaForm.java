@@ -75,6 +75,8 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
     @JsonProperty(value = "equality")
     private Equality equality;
 
+    private String documentsReceivedNotificationSent;
+
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   Declaration declaration, Registry registry,
@@ -83,7 +85,8 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   LocalDate applicationSubmittedDate, Long submissionReference,
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
-                  Language language, Equality equality, String eventDescription) {
+                  Language language, Equality equality, String documentsReceivedNotificationSent,
+                  String eventDescription) {
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
         this.applicantEmail = applicantEmail;
@@ -101,6 +104,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.statementOfTruthDocument = statementOfTruthDocument;
         this.caseType = caseType;
         this.equality = equality;
+        this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
     }
 
 }

@@ -45,7 +45,7 @@ public class CaveatDataTest {
         organisationJson = TestUtils.getJsonFromFile("caveatDataWithOrg.json");
         bulkScanJson = TestUtils.getJsonFromFile("bulkScanCitizenCaveatData.json");
         bulkScanSolicitorJson = TestUtils.getJsonFromFile("bulkScanSolicitorCaveatData.json");
-        objectMapper = new ObjectMapper();
+        objectMapper = new ObjectMapper().findAndRegisterModules();
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
         caveatData = CaveatCreator.createCaveatCase();
         bulkScanCitizenCaveatData = CaveatCreator.createCaveatCaseWithCitizenBulkScanData();

@@ -118,7 +118,7 @@
   },
   "payments": [
     {
-      "date": "2018-12-03",
+      "date": "2018-12-03T15:58:44.954Z",
       "amount": 220.5,
       "siteId": "P223",
       "status": "Success",
@@ -129,5 +129,6 @@
   ],
   "equality": {
     "pcqId": "1001"
-  }
+  },
+  "documentsReceivedNotificationSent": "Yes"
 }
