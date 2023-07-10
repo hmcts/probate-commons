@@ -17,8 +17,6 @@ import java.time.LocalDateTime;
 public class ScannedDocument {
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS";
 
-    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
-
     private final String controlNumber;
 
     private final String fileName;
