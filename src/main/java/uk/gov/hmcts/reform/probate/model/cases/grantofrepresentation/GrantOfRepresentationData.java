@@ -902,10 +902,6 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean documentsReceivedNotificationSent;
 
-    private String solsWillType;
-
-    private String solsWillTypeReason;
-
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
     @Transient
