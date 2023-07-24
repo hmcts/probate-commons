@@ -902,7 +902,7 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean documentsReceivedNotificationSent;
 
-    private String solsWillType;
+    private SolicitorWillType solsWillType;
 
     private String solsWillTypeReason;
 
