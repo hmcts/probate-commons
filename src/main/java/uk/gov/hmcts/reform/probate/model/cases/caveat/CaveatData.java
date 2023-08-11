@@ -24,11 +24,14 @@ import uk.gov.hmcts.reform.probate.model.cases.BulkPrint;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CaseMatch;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
+import uk.gov.hmcts.reform.probate.model.cases.ChangeOfRepresentative;
+import uk.gov.hmcts.reform.probate.model.cases.ChangeOrganisationRequest;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.FullAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.RegistrarDirection;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
+import uk.gov.hmcts.reform.probate.model.cases.RemovedRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
@@ -207,6 +210,11 @@ public class CaveatData extends CaseData {
     private String paymentTaken;
 
     private String applicationSubmittedBy;
+
+    private ChangeOfRepresentative changeOfRepresentative;
+    private List<CollectionMember<ChangeOfRepresentative>> changeOfRepresentatives;
+    private RemovedRepresentative removedRepresentative;
+    private ChangeOrganisationRequest changeOrganisationRequestField;
 
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")
