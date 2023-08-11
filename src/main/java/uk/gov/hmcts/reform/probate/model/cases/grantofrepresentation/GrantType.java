@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -10,7 +10,7 @@ import static uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.Gran
 import static uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantType.Constants.GRANT_OF_PROBATE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantType.Constants.INTESTACY_NAME;
 
-@ApiModel(value = "GrantType", description = "Represents grant type")
+@Schema(name = "GrantType", description = "Represents grant type")
 @RequiredArgsConstructor
 public enum GrantType {
 

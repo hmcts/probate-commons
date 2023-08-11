@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeId;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +23,7 @@ import uk.gov.hmcts.reform.probate.model.forms.pa.PaForm;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@ApiModel(value = "Form", description = "Abstract base model for all form types", discriminator = Form.TYPE_FIELD,
+@Schema(name = "Form", description = "Abstract base model for all form types", discriminatorProperty = Form.TYPE_FIELD,
     subTypes = {IntestacyForm.class, CaveatForm.class})
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type", visible = true)
 @JsonSubTypes(
@@ -72,5 +72,5 @@ public abstract class Form<D extends Deceased, A extends Applicant> {
     private Language language;
 
     private String eventDescription;
-    
+
 }

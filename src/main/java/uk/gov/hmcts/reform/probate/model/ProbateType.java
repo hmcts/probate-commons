@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.probate.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.cases.CaseType;
@@ -10,7 +10,7 @@ import static uk.gov.hmcts.reform.probate.model.ProbateType.Constants.CAVEAT_NAM
 import static uk.gov.hmcts.reform.probate.model.ProbateType.Constants.INTESTACY_NAME;
 import static uk.gov.hmcts.reform.probate.model.ProbateType.Constants.PA_NAME;
 
-@ApiModel(value = "ProbateType", description = "Represents probate type")
+@Schema(name = "ProbateType", description = "Represents probate type")
 @RequiredArgsConstructor
 public enum ProbateType {
 

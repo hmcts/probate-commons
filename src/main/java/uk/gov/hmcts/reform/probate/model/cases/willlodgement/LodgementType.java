@@ -1,14 +1,14 @@
 package uk.gov.hmcts.reform.probate.model.cases.willlodgement;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import static uk.gov.hmcts.reform.probate.model.cases.willlodgement.LodgementType.Constants.RENUNCIATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.willlodgement.LodgementType.Constants.SAFE_CUSTODY_NAME;
 
-@ApiModel(value = "LodgementType", description = "Represents lodgement type")
+@Schema(name = "LodgementType", description = "Represents lodgement type")
 @RequiredArgsConstructor
 public enum LodgementType {
 

@@ -1,14 +1,14 @@
 package uk.gov.hmcts.reform.probate.model.cases;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import static uk.gov.hmcts.reform.probate.model.cases.ApplicationType.Constants.PERSONAL_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.ApplicationType.Constants.SOLICITORS_NAME;
 
-@ApiModel(value = "ApplicationType", description = "Represents application type")
+@Schema(name = "ApplicationType", description = "Represents application type")
 @RequiredArgsConstructor
 public enum ApplicationType {
 

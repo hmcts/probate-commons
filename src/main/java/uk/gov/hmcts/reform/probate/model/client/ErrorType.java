@@ -1,14 +1,14 @@
 package uk.gov.hmcts.reform.probate.model.client;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import static uk.gov.hmcts.reform.probate.model.client.ErrorType.Constants.API_CLIENT_ERROR;
 import static uk.gov.hmcts.reform.probate.model.client.ErrorType.Constants.VALIDATION_ERROR;
 
-@ApiModel(value = "ErrorType", description = "Represents probate error response type")
+@Schema(name = "ErrorType", description = "Represents probate error response type")
 @RequiredArgsConstructor
 public enum ErrorType {
 

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,11 +31,11 @@ public class CaveatForm extends Form<CaveatDeceased, CaveatApplicant> {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 
-    @ApiModelProperty(value = "unique application id")
+    @Schema(name  = "unique application id")
     @JsonProperty(value = "applicationId")
     private String applicationId;
 
-    @ApiModelProperty(value = "expiry date of caveat")
+    @Schema(name  = "expiry date of caveat")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)

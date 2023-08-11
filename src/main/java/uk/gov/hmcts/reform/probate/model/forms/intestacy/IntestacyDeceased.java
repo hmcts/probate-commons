@@ -3,7 +3,7 @@ package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,48 +26,48 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = true)
 public class IntestacyDeceased extends ProbateDeceased {
 
-    @ApiModelProperty(value = "Deceased marital status")
+    @Schema(name  = "Deceased marital status")
     private String maritalStatus;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean domiciledInEnglandOrWales;
 
-    @ApiModelProperty(value = "Was Divorced in England or Wales?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @Schema(name  = "Was Divorced in England or Wales?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("divorcePlace")
     private Boolean divorcedInEnglandOrWales;
 
-    @ApiModelProperty(value = "Does the deceased have other children?",
+    @Schema(name  = "Does the deceased have other children?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("anyOtherChildren")
     private Boolean otherChildren;
 
-    @ApiModelProperty(value = "Are all the deceased's children over 18?",
+    @Schema(name  = "Are all the deceased's children over 18?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("allChildrenOver18")
     private Boolean allDeceasedChildrenOverEighteen;
 
-    @ApiModelProperty(value = "Did any of the deceased's children die before the deceased?",
+    @Schema(name  = "Did any of the deceased's children die before the deceased?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("anyDeceasedChildren")
     private Boolean anyDeceasedChildrenDieBeforeDeceased;
 
-    @ApiModelProperty(value = "Are any of the deceased children under 18?",
+    @Schema(name  = "Are any of the deceased children under 18?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("anyGrandchildrenUnder18")
     private Boolean anyDeceasedGrandchildrenUnderEighteen;
 
-    @ApiModelProperty(value = "Does the deceased have any children?",
+    @Schema(name  = "Does the deceased have any children?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)

@@ -3,7 +3,7 @@ package uk.gov.hmcts.reform.probate.model.cases;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,7 +16,7 @@ import uk.gov.hmcts.reform.probate.model.validation.AtLeastOneNonEmptyField;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@ApiModel(value = "CaseData", description = "Abstract base model for all case types", discriminator = "type",
+@Schema(name = "CaseData", description = "Abstract base model for all case types", discriminatorProperty = "type",
     subTypes = {GrantOfRepresentationData.class, CaveatData.class})
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({

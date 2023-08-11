@@ -3,7 +3,7 @@ package uk.gov.hmcts.reform.probate.model.cases;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +16,7 @@ import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.PaNullCheck
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel(value = "Address", description = "Represents address in CCD")
+@Schema(name = "Address", description = "Represents address in CCD")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Address {

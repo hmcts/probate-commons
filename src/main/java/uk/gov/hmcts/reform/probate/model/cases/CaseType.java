@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.cases;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
@@ -17,7 +17,7 @@ import static uk.gov.hmcts.reform.probate.model.cases.CaseType.Constants.STANDIN
 import static uk.gov.hmcts.reform.probate.model.cases.CaseType.Constants.WILL_LODGEMENT_NAME;
 
 
-@ApiModel(value = "CaseType", description = "Represents case type")
+@Schema(name = "CaseType", description = "Represents case type")
 @RequiredArgsConstructor
 @Getter
 public enum CaseType {

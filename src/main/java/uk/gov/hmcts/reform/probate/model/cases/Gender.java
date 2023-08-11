@@ -1,14 +1,14 @@
 package uk.gov.hmcts.reform.probate.model.cases;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import static uk.gov.hmcts.reform.probate.model.cases.Gender.Constants.FEMALE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.Gender.Constants.MALE_NAME;
 
-@ApiModel(value = "LodgementType", description = "Represents lodgement type")
+@Schema(name = "LodgementType", description = "Represents lodgement type")
 @RequiredArgsConstructor
 public enum Gender {
 

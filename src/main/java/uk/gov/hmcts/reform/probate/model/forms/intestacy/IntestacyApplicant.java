@@ -3,7 +3,7 @@ package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,20 +24,20 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = true)
 public class IntestacyApplicant extends ProbateApplicant {
 
-    @ApiModelProperty(value = "Relationship to the deceased")
+    @Schema(name = "Relationship to the deceased")
     private String relationshipToDeceased;
 
-    @ApiModelProperty(value = "Was adoption in England or Wales",
+    @Schema(name  = "Was adoption in England or Wales",
         allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("adoptionPlace")
     private Boolean adoptionInEnglandOrWales;
 
-    @ApiModelProperty(value = "Reason spouse not applying")
+    @Schema(name  = "Reason spouse not applying")
     private String spouseNotApplyingReason;
 
-    @ApiModelProperty(value = "Is applicant not required to send documents")
+    @Schema(name  = "Is applicant not required to send documents")
     private Boolean notRequiredToSendDocuments;
 
     @Builder
