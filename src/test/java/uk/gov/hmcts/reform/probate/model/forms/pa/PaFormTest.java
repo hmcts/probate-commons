@@ -246,6 +246,7 @@ public class PaFormTest {
                 .equality(Equality.builder()
                         .pcqId("1002").build())
                 .documentsReceivedNotificationSent("Yes")
+                .uniqueProbateCodeId("CTS04052311043tpps8e9")
                 .build();
     }
 

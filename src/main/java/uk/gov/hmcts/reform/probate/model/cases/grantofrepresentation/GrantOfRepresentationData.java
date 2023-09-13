@@ -892,6 +892,8 @@ public class GrantOfRepresentationData extends CaseData {
     private RemovedRepresentative removedRepresentative;
     private ChangeOrganisationRequest changeOrganisationRequestField;
 
+    private String uniqueProbateCodeId;
+
     private String serviceRequestReference;
 
     private String paymentTaken;

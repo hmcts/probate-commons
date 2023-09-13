@@ -65,6 +65,8 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String documentsReceivedNotificationSent;
 
+    private String uniqueProbateCodeId;
+
     @Builder
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          Declaration declaration, Documents documents, Registry registry,
@@ -73,6 +75,7 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
                          Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary,
                          String applicantEmail, DocumentUpload statementOfTruthDocument, String caseType,
                          Language language, Equality equality, String documentsReceivedNotificationSent,
+                         String uniqueProbateCodeId,
                          String eventDescription) {
 
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
@@ -88,6 +91,7 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.caseType = caseType;
         this.equality = equality;
         this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
+        this.uniqueProbateCodeId = uniqueProbateCodeId;
     }
 
 }
