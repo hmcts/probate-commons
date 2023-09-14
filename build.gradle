@@ -106,7 +106,7 @@ def versions = [
         apacheCommons     : '3.12.0',
         hibernateValidator: '6.0.13.Final',
         springdoc         : '2.1.0',
-        springBoot        : '3.1.1',
+        springBoot        : '3.1.3',
         commonsIo         : '2.11.0',
         openfeign         : '3.8.0'
 ]
