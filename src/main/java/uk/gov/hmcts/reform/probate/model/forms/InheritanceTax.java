@@ -40,6 +40,8 @@ public class InheritanceTax {
 
     private String netValueField;
 
+    private String uniqueProbateCodeId;
+
     @JsonProperty("grossValueFieldIHT205")
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonDeserialize(using = BigDecimalDeserializer.class)

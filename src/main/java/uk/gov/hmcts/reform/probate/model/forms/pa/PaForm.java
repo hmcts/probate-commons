@@ -88,7 +88,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
                   Language language, Equality equality, String documentsReceivedNotificationSent,
-                  String uniqueProbateCodeId,
                   String eventDescription) {
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
@@ -108,7 +107,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.caseType = caseType;
         this.equality = equality;
         this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
-        this.uniqueProbateCodeId = uniqueProbateCodeId;
     }
 
 }

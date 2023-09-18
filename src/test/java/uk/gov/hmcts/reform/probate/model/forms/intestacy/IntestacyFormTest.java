@@ -123,6 +123,7 @@ public class IntestacyFormTest {
         inheritanceTax.setEstateNetQualifyingValueField("500,000");
         inheritanceTax.setDeceasedHadLateSpouseOrCivilPartner(TRUE);
         inheritanceTax.setUnusedAllowanceClaimed(FALSE);
+        inheritanceTax.setUniqueProbateCodeId("CTS04052311043tpps8e9");
 
         inheritanceTax.setIdentifier("GOT123456");
         inheritanceTax.setAssetsOutsideNetValue(new BigDecimal("100.50"));
@@ -165,7 +166,6 @@ public class IntestacyFormTest {
         Equality equality = Equality.builder().pcqId("1001").build();
         intestacyForm.setEquality(equality);
         intestacyForm.setDocumentsReceivedNotificationSent("Yes");
-        intestacyForm.setUniqueProbateCodeId("CTS04052311043tpps8e9");
     }
 
     private List<Map<String, Object>> getAddresses() {

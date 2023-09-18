@@ -57,6 +57,7 @@ public class PaFormTest {
     private static final String CODICILS_DAMAGE_CULPRIT_FIRST_NAME = "CodicilCulpritFirst";
     private static final String CODICILS_DAMAGE_CULPRIT_LAST_NAME = "CodicilCulpritLast";
     private static final String CODICILS_DAMAGE_DATE = "5/10/2021";
+    private static final String UNIQUE_PROBATE_CODE_ID = "CTS04052311043tpps8e9";
     public static final boolean TRUE = true;
 
     private ObjectMapper objectMapper;
@@ -80,6 +81,7 @@ public class PaFormTest {
                         .estateValueCompleted(TRUE)
                         .ihtFormEstateId("IHT207")
                         .identifier("IHT1234567")
+                        .uniqueProbateCodeId(UNIQUE_PROBATE_CODE_ID)
                         .build())
                 .will(Will.builder()
                         .willHasVisibleDamage(TRUE)
@@ -246,7 +248,6 @@ public class PaFormTest {
                 .equality(Equality.builder()
                         .pcqId("1002").build())
                 .documentsReceivedNotificationSent("Yes")
-                .uniqueProbateCodeId("CTS04052311043tpps8e9")
                 .build();
     }
 

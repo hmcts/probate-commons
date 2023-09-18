@@ -131,7 +131,8 @@
     "estateValueCompleted": "optionYes",
     "ihtFormEstateId": "IHT207",
     "grossValueOnline": "20000",
-    "netValueOnline": "20000"
+    "netValueOnline": "20000",
+    "uniqueProbateCodeId":"CTS04052311043tpps8e9"
   },
   "will": {
     "codicils": "optionYes",
@@ -182,6 +183,5 @@
   "equality": {
     "pcqId": "1002"
   },
-  "uniqueProbateCodeId":"CTS04052311043tpps8e9",
   "documentsReceivedNotificationSent": "Yes"
 }
