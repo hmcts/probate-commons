@@ -8,8 +8,8 @@ import static uk.gov.hmcts.reform.probate.model.IhtFormType.Constants.IHT205_VAL
 import static uk.gov.hmcts.reform.probate.model.IhtFormType.Constants.IHT207_VALUE;
 import static uk.gov.hmcts.reform.probate.model.IhtFormType.Constants.IHT400421_VALUE;
 import static uk.gov.hmcts.reform.probate.model.IhtFormType.Constants.IHT400_VALUE;
-import static uk.gov.hmcts.reform.probate.model.IhtFormType.Constants.NOT_REQUIRED_VALUE;
 import static uk.gov.hmcts.reform.probate.model.IhtFormType.Constants.NOT_APPLICABLE_VALUE;
+import static uk.gov.hmcts.reform.probate.model.IhtFormType.Constants.NOT_REQUIRED_VALUE;
 
 
 @RequiredArgsConstructor
