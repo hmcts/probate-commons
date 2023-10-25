@@ -72,6 +72,26 @@ public class InheritanceTax {
     @JsonDeserialize(using = BigDecimalDeserializer.class)
     private BigDecimal netIht400421;
 
+    @JsonProperty("grossValueFieldIHT400")
+    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BigDecimalDeserializer.class)
+    private BigDecimal grossIht40021;
+
+    @JsonProperty("netValueFieldIHT400")
+    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BigDecimalDeserializer.class)
+    private BigDecimal netIht400;
+
+    @JsonProperty("grossValueFieldNotRequired")
+    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BigDecimalDeserializer.class)
+    private BigDecimal grossNotRequired;
+
+    @JsonProperty("netValueFieldNotRequired")
+    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = BigDecimalDeserializer.class)
+    private BigDecimal netNotRequired;
+
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean completed;
