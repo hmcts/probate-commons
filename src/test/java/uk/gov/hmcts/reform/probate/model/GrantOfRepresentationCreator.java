@@ -223,8 +223,6 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setIhtReferenceNumber("GOT123456");
         grantOfRepresentationData.setIhtFormEstateValuesCompleted(true);
         grantOfRepresentationData.setIhtFormEstate(IhtFormEstate.optionIHT400421);
-        grantOfRepresentationData.setIhtFormEstate(IhtFormEstate.optionIHT400);
-        grantOfRepresentationData.setIhtFormEstate(IhtFormEstate.optionNotRequired);
         grantOfRepresentationData.setIhtEstateGrossValue(40050L);
         grantOfRepresentationData.setIhtEstateGrossValueField("40,050");
         grantOfRepresentationData.setIhtEstateNetValue(30050L);
