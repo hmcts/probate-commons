@@ -65,8 +65,6 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String documentsReceivedNotificationSent;
 
-    private String uniqueProbateCodeId;
-
     @Builder
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          Declaration declaration, Documents documents, Registry registry,

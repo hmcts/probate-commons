@@ -77,8 +77,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private String documentsReceivedNotificationSent;
 
-    private String uniqueProbateCodeId;
-
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   Declaration declaration, Registry registry,
