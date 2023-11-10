@@ -892,6 +892,12 @@ public class GrantOfRepresentationData extends CaseData {
     private RemovedRepresentative removedRepresentative;
     private ChangeOrganisationRequest changeOrganisationRequestField;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean hmrcLetterId;
+
+    private String uniqueProbateCodeId;
+
     private String serviceRequestReference;
 
     private String paymentTaken;
