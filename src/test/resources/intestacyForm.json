@@ -89,6 +89,7 @@
     "identifier": "GOT123456",
     "netValueAssetsOutside": 100.50,
     "assetsOutside": "optionYes",
+    "calcCheckCompleted": "optionYes",
     "estateValueCompleted": "optionNo",
     "estateGrossValue": "400000",
     "estateNetValue": "300000",

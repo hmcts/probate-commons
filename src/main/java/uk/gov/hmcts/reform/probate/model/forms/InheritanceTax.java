@@ -48,6 +48,10 @@ public class InheritanceTax {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean hmrcLetterId;
 
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean calcCheckCompleted;
+
     @JsonProperty("grossValueFieldIHT205")
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonDeserialize(using = BigDecimalDeserializer.class)

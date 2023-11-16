@@ -128,6 +128,7 @@
     "identifier": "IHT1234567",
     "grossValue": 20000,
     "netValue": 20000,
+    "calcCheckCompleted": "optionYes",
     "estateValueCompleted": "optionYes",
     "ihtFormEstateId": "IHT207",
     "grossValueOnline": "20000",
