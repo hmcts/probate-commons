@@ -341,6 +341,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean ihtFormEstateValuesCompleted;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean calcCheckCompleted;
+
     private IhtFormEstate ihtFormEstate;
 
     @JsonSerialize(using = ToStringSerializer.class)
