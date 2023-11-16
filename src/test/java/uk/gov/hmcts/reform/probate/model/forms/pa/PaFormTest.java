@@ -79,6 +79,7 @@ public class PaFormTest {
                         .netValue(new BigDecimal("20000"))
                         .grossValue(new BigDecimal("20000"))
                         .estateValueCompleted(TRUE)
+                        .calcCheckCompleted(TRUE)
                         .ihtFormEstateId("IHT207")
                         .identifier("IHT1234567")
                         .uniqueProbateCodeId(UNIQUE_PROBATE_CODE_ID)
