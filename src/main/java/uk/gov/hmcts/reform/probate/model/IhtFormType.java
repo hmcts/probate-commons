@@ -19,7 +19,6 @@ public enum IhtFormType {
     @JsonProperty(IHT207_VALUE) optionIHT207(IHT207_VALUE),
     @JsonProperty(IHT400421_VALUE) optionIHT400421(IHT400421_VALUE),
     @JsonProperty(IHT400_VALUE) optionIHT400(IHT400_VALUE),
-    @JsonProperty(NOT_REQUIRED_VALUE) optionNotRequired(NOT_REQUIRED_VALUE),
     @JsonProperty(NOT_APPLICABLE_VALUE) NOTAPPLICABLE(NOT_APPLICABLE_VALUE);
 
     @Getter
