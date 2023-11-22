@@ -44,8 +44,8 @@ public class InheritanceTax {
 
     private String uniqueProbateCodeId;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean hmrcLetterId;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
