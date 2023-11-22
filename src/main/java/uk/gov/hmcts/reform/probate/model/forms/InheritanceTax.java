@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.jackson.BigDecimalDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
 import java.math.BigDecimal;
 
