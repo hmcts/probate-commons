@@ -101,7 +101,7 @@ publishing {
 }
 
 def versions = [
-        lombok            : '1.18.26',
+        lombok            : '1.18.30',
         jackson           : '2.14.2',
         apacheCommons     : '3.8.1',
         hibernateValidator: '6.0.13.Final',
