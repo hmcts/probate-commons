@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.jackson.BigDecimalDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
 import java.math.BigDecimal;
 
@@ -44,8 +42,8 @@ public class InheritanceTax {
 
     private String uniqueProbateCodeId;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean hmrcLetterId;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
@@ -85,7 +83,7 @@ public class InheritanceTax {
     @JsonProperty("grossValueFieldIHT400")
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonDeserialize(using = BigDecimalDeserializer.class)
-    private BigDecimal grossIht40021;
+    private BigDecimal grossIht400;
 
     @JsonProperty("netValueFieldIHT400")
     @JsonSerialize(using = ToStringSerializer.class)
