@@ -35,8 +35,6 @@ import uk.gov.hmcts.reform.probate.model.cases.AliasName;
 import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
-import uk.gov.hmcts.reform.probate.model.cases.ChangeOfRepresentative;
-import uk.gov.hmcts.reform.probate.model.cases.ChangeOrganisationRequest;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.CombinedName;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
@@ -46,7 +44,6 @@ import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
 import uk.gov.hmcts.reform.probate.model.cases.RegistrarDirection;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
-import uk.gov.hmcts.reform.probate.model.cases.RemovedRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
@@ -166,6 +163,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedAnyOtherNames;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedAnyOtherNameOnWill;
 
     private List<CollectionMember<AliasName>> deceasedAliasNameList;
 
@@ -405,6 +406,10 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean primaryApplicantHasAlias;
 
     private String primaryApplicantAlias;
+
+    private String deceasedAliasFirstNameOnWill;
+
+    private String deceasedAliasLastNameOnWill;
 
     private AliasReason primaryApplicantAliasReason;
 
@@ -890,11 +895,6 @@ public class GrantOfRepresentationData extends CaseData {
 
     private List<CollectionMember<RegistrarDirection>> registrarDirections;
     private RegistrarDirection registrarDirectionToAdd;
-
-    private ChangeOfRepresentative changeOfRepresentative;
-    private List<CollectionMember<ChangeOfRepresentative>> changeOfRepresentatives;
-    private RemovedRepresentative removedRepresentative;
-    private ChangeOrganisationRequest changeOrganisationRequestField;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
