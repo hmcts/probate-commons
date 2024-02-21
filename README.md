@@ -9,7 +9,7 @@ This is a library for creating and using shared DTOs across microservices in pro
 
 ### Prerequisites
 
-- [JDK 11](https://www.oracle.com/java)
+- [JDK 17](https://www.oracle.com/java)
 
 ## Usage
 
