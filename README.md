@@ -35,7 +35,7 @@ To run all checks (including unit tests) please execute the following command:
     ./gradlew check
 ```
 
-To push the changes to your local repoository execute the following command.
+To push the changes to your local repository execute the following command.
 
 ```bash
     ./gradlew publishToMavenLocal
