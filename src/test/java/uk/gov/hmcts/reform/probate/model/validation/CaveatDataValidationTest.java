@@ -1,5 +1,9 @@
 package uk.gov.hmcts.reform.probate.model.validation;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.groups.Default;
 import org.assertj.core.api.Assertions;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,17 +13,13 @@ import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
 
 import java.time.LocalDate;
 import java.util.Set;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.groups.Default;
 
 import static org.assertj.core.api.Assertions.tuple;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class CaveatDataValidationTest {
+class CaveatDataValidationTest {
 
     private Validator validator;
 
@@ -37,7 +37,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatDeceasedFornamesIsLongerThan2Chars() {
+    void shouldEnsureThatDeceasedFornamesIsLongerThan2Chars() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setDeceasedForenames("a");
@@ -47,7 +47,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatApplicationIdIsNotNull() {
+    void shouldEnsureThatApplicationIdIsNotNull() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setApplicationId(null);
@@ -56,7 +56,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatDeceasedFornamesIsNotNull() {
+    void shouldEnsureThatDeceasedFornamesIsNotNull() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setDeceasedForenames(null);
@@ -66,7 +66,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatDeceasedSurnameIsLongerThan2Chars() {
+    void shouldEnsureThatDeceasedSurnameIsLongerThan2Chars() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setDeceasedSurname("a");
@@ -76,7 +76,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatDeceasedSurnameIsNotNull() {
+    void shouldEnsureThatDeceasedSurnameIsNotNull() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setDeceasedSurname(null);
@@ -86,7 +86,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatDeceasedDateOfDeathIsNotNull() {
+    void shouldEnsureThatDeceasedDateOfDeathIsNotNull() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setDeceasedDateOfDeath(null);
@@ -100,7 +100,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatDeceasedAddressIsNotNull() {
+    void shouldEnsureThatDeceasedAddressIsNotNull() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setDeceasedAddress(null);
@@ -111,7 +111,7 @@ public class CaveatDataValidationTest {
 
 
     @Test
-    public void shouldEnsureThatCaveatorFornamesIsLongerThan2Chars() {
+    void shouldEnsureThatCaveatorFornamesIsLongerThan2Chars() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setCaveatorForenames("a");
@@ -121,7 +121,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatCaveatorFornamesIsNotNull() {
+    void shouldEnsureThatCaveatorFornamesIsNotNull() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setCaveatorForenames(null);
@@ -131,7 +131,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatCavetorSurnameIsLongerThan2Chars() {
+    void shouldEnsureThatCavetorSurnameIsLongerThan2Chars() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setCaveatorSurname("a");
@@ -141,7 +141,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatCaveatorSurnameIsNotNull() {
+    void shouldEnsureThatCaveatorSurnameIsNotNull() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setCaveatorSurname(null);
@@ -151,7 +151,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatCaveatorEmailIsNotNull() {
+    void shouldEnsureThatCaveatorEmailIsNotNull() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setCaveatorEmailAddress(null);
@@ -161,7 +161,7 @@ public class CaveatDataValidationTest {
     }
 
     @Test
-    public void shouldEnsureThatCaveatorAddressIsNotNull() {
+    void shouldEnsureThatCaveatorAddressIsNotNull() {
         Set<ConstraintViolation<CaveatData>> violations = executeCaveatValidator();
         assertThat(violations, Matchers.hasSize(0));
         caveatData.setCaveatorAddress(null);

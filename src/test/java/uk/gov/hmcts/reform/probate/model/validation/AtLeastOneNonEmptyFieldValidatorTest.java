@@ -1,18 +1,17 @@
 package uk.gov.hmcts.reform.probate.model.validation;
 
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentationData;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 
-public class AtLeastOneNonEmptyFieldValidatorTest {
+class AtLeastOneNonEmptyFieldValidatorTest {
 
     private Validator validator;
 
@@ -23,13 +22,13 @@ public class AtLeastOneNonEmptyFieldValidatorTest {
     }
 
     @Test
-    public void shouldFailWhenNoFieldIsSet() {
+    void shouldFailWhenNoFieldIsSet() {
         CaseData caseData = new GrantOfRepresentationData();
         assertThat(validator.validate(caseData), hasSize(1));
     }
 
     @Test
-    public void shouldSucceedWhenAtLeastFieldIsSet() {
+    void shouldSucceedWhenAtLeastFieldIsSet() {
         CaseData caseData = new GrantOfRepresentationData();
         ((GrantOfRepresentationData) caseData).setDeceasedSurname("Stark");
         assertThat(validator.validate(caseData), hasSize(0));

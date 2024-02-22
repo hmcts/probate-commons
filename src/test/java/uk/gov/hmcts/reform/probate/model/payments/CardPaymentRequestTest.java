@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CardPaymentRequestTest {
+class CardPaymentRequestTest {
 
     private static final BigDecimal CARD_PAYMENT_AMOUNT = new BigDecimal(120.00);
     private static final BigDecimal CARD_PAYMENT_AMOUNT_2 = new BigDecimal(90.00);
@@ -66,7 +66,7 @@ public class CardPaymentRequestTest {
     }
 
     @Test
-    public void shouldSetValuesCorrectlyForPayment() throws IOException {
+    void shouldSetValuesCorrectlyForPayment() throws IOException {
         assertEquals(CARD_PAYMENT_CASE_REFERNCE, cardPaymentRequest.getCaseReference());
         assertEquals(CARD_PAYMENT_AMOUNT, cardPaymentRequest.getAmount());
         assertEquals(CARD_PAYMENT_CCD_CASE_NUMBER, cardPaymentRequest.getCcdCaseNumber());
@@ -78,13 +78,13 @@ public class CardPaymentRequestTest {
     }
 
     @Test
-    public void shouldComparePaymentsToEnsureTheyMatch() throws IOException {
+    void shouldComparePaymentsToEnsureTheyMatch() throws IOException {
         assertThat(cardPaymentRequest, is(equalTo(cardPaymentRequestMatch)));
         assertTrue(cardPaymentRequest.equals(cardPaymentRequestMatch));
     }
 
     @Test
-    public void shouldComparePaymentsToEnsureTheyDontMatch() throws IOException {
+    void shouldComparePaymentsToEnsureTheyDontMatch() throws IOException {
         cardPaymentRequestMatch.setAmount(CARD_PAYMENT_AMOUNT_2);
         assertThat(cardPaymentRequest, is(not(cardPaymentRequestMatch)));
         assertFalse(cardPaymentRequest.equals(cardPaymentRequestMatch));

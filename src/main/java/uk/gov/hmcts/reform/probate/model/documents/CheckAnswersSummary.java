@@ -2,11 +2,11 @@ package uk.gov.hmcts.reform.probate.model.documents;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 @JsonRootName(value = "checkAnswersSummary")
 public class CheckAnswersSummary implements BusinessDocument {

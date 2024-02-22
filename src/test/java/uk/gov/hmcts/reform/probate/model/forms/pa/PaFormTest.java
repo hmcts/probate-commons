@@ -253,14 +253,14 @@ public class PaFormTest {
     }
 
     @Test
-    public void shouldDeserializePaFormCorrectly() throws IOException {
+    void shouldDeserializePaFormCorrectly() throws IOException {
         Form form = objectMapper.readValue(formJsonFromFile, Form.class);
         boolean equals = form.getApplicant().equals(paForm.getApplicant());
         assertThat(form, is(equalTo(paForm)));
     }
 
     @Test
-    public void shouldSerializePaFormCorrectly() throws IOException, JSONException {
+    void shouldSerializePaFormCorrectly() throws IOException, JSONException {
         String paFormAsJsonStr = objectMapper.writeValueAsString(paForm);
         JSONAssert.assertEquals(formJsonFromFile, paFormAsJsonStr, TRUE);
     }

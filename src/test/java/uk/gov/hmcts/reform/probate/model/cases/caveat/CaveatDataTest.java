@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
-public class CaveatDataTest {
+class CaveatDataTest {
 
     private ObjectMapper objectMapper;
 
@@ -54,49 +54,49 @@ public class CaveatDataTest {
     }
 
     @Test
-    public void shouldDeserializeCaveatDataCorrectly() throws IOException {
+    void shouldDeserializeCaveatDataCorrectly() throws IOException {
         CaseData caseData = objectMapper.readValue(json, CaseData.class);
 
         assertThat(caveatData, is(equalTo(caseData)));
     }
 
     @Test
-    public void shouldSerializeCaveatDataCorrectly() throws IOException, JSONException {
+    void shouldSerializeCaveatDataCorrectly() throws IOException, JSONException {
         String actualJson = objectMapper.writeValueAsString(caveatData);
 
         JSONAssert.assertEquals(json, actualJson, true);
     }
 
     @Test
-    public void shouldDeserializeCaveatDataWithOrgCorrectly() throws IOException {
+    void shouldDeserializeCaveatDataWithOrgCorrectly() throws IOException {
         CaseData caseData = objectMapper.readValue(organisationJson, CaseData.class);
 
         assertThat(caveatDataWithOrganisation, is(equalTo(caseData)));
     }
 
     @Test
-    public void shouldSerializeCaveatDataWithOrgCorrectly() throws IOException, JSONException {
+    void shouldSerializeCaveatDataWithOrgCorrectly() throws IOException, JSONException {
         String actualJson = objectMapper.writeValueAsString(caveatDataWithOrganisation);
 
         JSONAssert.assertEquals(organisationJson, actualJson, true);
     }
 
     @Test
-    public void shouldSerializeCaveatDataFromBulkScanCorrectly() throws IOException, JSONException {
+    void shouldSerializeCaveatDataFromBulkScanCorrectly() throws IOException, JSONException {
         String actualJson = objectMapper.writeValueAsString(bulkScanCitizenCaveatData);
 
         JSONAssert.assertEquals(bulkScanJson, actualJson, true);
     }
 
     @Test
-    public void shouldSerializeSolicitorCaveatDataFromBulkScanCorrectly() throws IOException, JSONException {
+    void shouldSerializeSolicitorCaveatDataFromBulkScanCorrectly() throws IOException, JSONException {
         String actualJson = objectMapper.writeValueAsString(bulkScanSolicitorCaveatData);
 
         JSONAssert.assertEquals(bulkScanSolicitorJson, actualJson, true);
     }
 
     @Test
-    public void shouldAddRegistrarDirections() {
+    void shouldAddRegistrarDirections() {
         CaveatData caveatData = CaveatCreator.createCaveatCaseWithRegistrarDirections();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         assertThat(caveatData.getRegistrarDirections().size(),

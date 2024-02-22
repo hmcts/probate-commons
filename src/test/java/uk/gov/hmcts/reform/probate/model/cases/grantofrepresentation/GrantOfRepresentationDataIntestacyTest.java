@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static uk.gov.hmcts.reform.probate.model.TestUtils.getJsonFromFile;
 
-public class GrantOfRepresentationDataIntestacyTest {
+class GrantOfRepresentationDataIntestacyTest {
 
     private ObjectMapper objectMapper;
 
@@ -71,63 +71,63 @@ public class GrantOfRepresentationDataIntestacyTest {
     }
 
     @Test
-    public void shouldDeserializeGrantOfRepresentationDataCorrectly() throws IOException {
+    void shouldDeserializeGrantOfRepresentationDataCorrectly() throws IOException {
         CaseData caseData = objectMapper.readValue(gorJsonFromFile, CaseData.class);
 
         assertThat(grantOfRepresentationData, is(equalTo(caseData)));
     }
 
     @Test
-    public void shouldSerializeGrantOfRepresentationDataCorrectly() throws IOException, JSONException {
+    void shouldSerializeGrantOfRepresentationDataCorrectly() throws IOException, JSONException {
         String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationData);
 
         JSONAssert.assertEquals(gorJsonFromFile, intestacyGorAsJsonStr, true);
     }
 
     @Test
-    public void shouldDeserializeGrantOfRepresentationWithOrgDataCorrectly() throws IOException {
+    void shouldDeserializeGrantOfRepresentationWithOrgDataCorrectly() throws IOException {
         CaseData caseData = objectMapper.readValue(gorWithOrgJsonFromFile, CaseData.class);
 
         assertThat(grantOfRepresentationDataWithOrg, is(equalTo(caseData)));
     }
 
     @Test
-    public void shouldSerializeGrantOfRepresentationDataWithOrgCorrectly() throws IOException, JSONException {
+    void shouldSerializeGrantOfRepresentationDataWithOrgCorrectly() throws IOException, JSONException {
         String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationDataWithOrg);
 
         JSONAssert.assertEquals(gorWithOrgJsonFromFile, intestacyGorAsJsonStr, true);
     }
 
     @Test
-    public void shouldDeserializeGrantOfRepresentationWithEvidenceCorrectly() throws IOException {
+    void shouldDeserializeGrantOfRepresentationWithEvidenceCorrectly() throws IOException {
         CaseData caseData = objectMapper.readValue(gorWithEvidenceJsonFromFile, CaseData.class);
 
         assertThat(grantOfRepresentationDataWithLastEvidence, is(equalTo(caseData)));
     }
 
     @Test
-    public void shouldSerializeGrantOfRepresentationDataWithEvidenceCorrectly() throws IOException, JSONException {
+    void shouldSerializeGrantOfRepresentationDataWithEvidenceCorrectly() throws IOException, JSONException {
         String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationDataWithLastEvidence);
 
         JSONAssert.assertEquals(gorWithEvidenceJsonFromFile, intestacyGorAsJsonStr, true);
     }
 
     @Test
-    public void shouldDeserializeStoppedGrantOfRepresentationWithEvidenceCorrectly() throws IOException {
+    void shouldDeserializeStoppedGrantOfRepresentationWithEvidenceCorrectly() throws IOException {
         CaseData caseData = objectMapper.readValue(gorStoppedWithEvidenceJsonFromFile, CaseData.class);
 
         assertThat(grantOfRepresentationDataStoppedWithEvidence, is(equalTo(caseData)));
     }
 
     @Test
-    public void shouldSerializeStoppedGrantOfRepresentationWithEvidenceCorrectly() throws IOException, JSONException {
+    void shouldSerializeStoppedGrantOfRepresentationWithEvidenceCorrectly() throws IOException, JSONException {
         String intestacyGorAsJsonStr = objectMapper.writeValueAsString(grantOfRepresentationDataStoppedWithEvidence);
 
         JSONAssert.assertEquals(gorStoppedWithEvidenceJsonFromFile, intestacyGorAsJsonStr, true);
     }
 
     @Test
-    public void shouldSerializeCitizenGrantOfRepresentationDataFromBulkScanCorrectly()
+    void shouldSerializeCitizenGrantOfRepresentationDataFromBulkScanCorrectly()
             throws IOException, JSONException {
         String actualJson = objectMapper.writeValueAsString(bulkScanCitizenGrantOfRepresentationData);
 
@@ -135,7 +135,7 @@ public class GrantOfRepresentationDataIntestacyTest {
     }
 
     @Test
-    public void shouldSerializeSolicitorGrantOfRepresentationDataFromBulkScanCorrectly()
+    void shouldSerializeSolicitorGrantOfRepresentationDataFromBulkScanCorrectly()
             throws IOException, JSONException {
         String actualJson = objectMapper.writeValueAsString(bulkScanSolicitorGrantOfRepresentationData);
 
@@ -143,7 +143,7 @@ public class GrantOfRepresentationDataIntestacyTest {
     }
 
     @Test
-    public void shouldDeserializeCaseHandOffFlag() throws IOException {
+    void shouldDeserializeCaseHandOffFlag() throws IOException {
         CaseData caseData = objectMapper.readValue(gorWithCaseHandOffFlagFromFile, CaseData.class);
         grantOfRepresentationData.setCaseHandedOffToLegacySite(true);
         assertThat(grantOfRepresentationData, is(equalTo(caseData)));
