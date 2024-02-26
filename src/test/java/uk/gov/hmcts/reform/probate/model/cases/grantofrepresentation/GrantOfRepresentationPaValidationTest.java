@@ -1,5 +1,9 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
@@ -11,15 +15,11 @@ import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.PaNullCheck
 
 import java.time.LocalDate;
 import java.util.Set;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
-public class GrantOfRepresentationPaValidationTest {
+class GrantOfRepresentationPaValidationTest {
 
     private static final Class[] PA_VALIDATION = {PaNullCheck.class, PaFieldCheck.class, PaCrossFieldCheck.class};
 
@@ -32,7 +32,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldValidateGrantOfRepresentation() {
+    void shouldValidateGrantOfRepresentation() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
 
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_VALIDATION);
@@ -41,7 +41,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenPrimaryApplicantForenamesIsBlank() {
+    void shouldFailWhenPrimaryApplicantForenamesIsBlank() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setPrimaryApplicantForenames(null);
 
@@ -53,7 +53,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenPrimaryApplicantSurnameIsBlank() {
+    void shouldFailWhenPrimaryApplicantSurnameIsBlank() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setPrimaryApplicantSurname(null);
 
@@ -65,7 +65,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenPrimaryApplicantEmailAddressIsBlank() {
+    void shouldFailWhenPrimaryApplicantEmailAddressIsBlank() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setPrimaryApplicantEmailAddress(null);
 
@@ -77,7 +77,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenPrimaryApplicantEmailAddressIsNotValid() {
+    void shouldFailWhenPrimaryApplicantEmailAddressIsNotValid() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setPrimaryApplicantEmailAddress("ssdfdsfd");
 
@@ -90,7 +90,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenDeceasedForenamesIsBlank() {
+    void shouldFailWhenDeceasedForenamesIsBlank() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeceasedForenames(null);
 
@@ -102,7 +102,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenDeceasedSurnameIsBlank() {
+    void shouldFailWhenDeceasedSurnameIsBlank() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeceasedSurname(null);
 
@@ -115,7 +115,7 @@ public class GrantOfRepresentationPaValidationTest {
 
 
     @Test
-    public void shouldFailWhenDeceasedDateOfBirthIsNull() {
+    void shouldFailWhenDeceasedDateOfBirthIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeceasedDateOfBirth(null);
 
@@ -130,7 +130,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenDeceasedDateOfDeathIsNull() {
+    void shouldFailWhenDeceasedDateOfDeathIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeceasedDateOfDeath(null);
 
@@ -145,7 +145,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenDeceasedDateOfDeathIsBeforeDeceasedDateOfBirth() {
+    void shouldFailWhenDeceasedDateOfDeathIsBeforeDeceasedDateOfBirth() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeceasedDateOfDeath(LocalDate.of(2000, 1, 1));
         caseData.setDeceasedDateOfBirth(LocalDate.of(2019, 1, 1));
@@ -160,7 +160,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldPassWhenDeceasedDateOfDeathEqualsDeceasedDateOfDeath() {
+    void shouldPassWhenDeceasedDateOfDeathEqualsDeceasedDateOfDeath() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeceasedDateOfDeath(LocalDate.of(2000, 1, 1));
         caseData.setDeceasedDateOfBirth(LocalDate.of(2000, 1, 1));
@@ -171,7 +171,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenApplicationTypeIsNull() {
+    void shouldFailWhenApplicationTypeIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setApplicationType(null);
 
@@ -183,7 +183,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenDeceasedAddressIsNull() {
+    void shouldFailWhenDeceasedAddressIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeceasedAddress(null);
 
@@ -195,7 +195,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenDeceasedAddressDoesNotContainAddressLine1AndPostcode() {
+    void shouldFailWhenDeceasedAddressDoesNotContainAddressLine1AndPostcode() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeceasedAddress(Address.builder().build());
 
@@ -208,7 +208,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenPrimaryApplicantAddressIsNull() {
+    void shouldFailWhenPrimaryApplicantAddressIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setPrimaryApplicantAddress(null);
 
@@ -220,7 +220,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenPrimaryApplicantAddressDoesNotContainAddressLine1AndPostcode() {
+    void shouldFailWhenPrimaryApplicantAddressDoesNotContainAddressLine1AndPostcode() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setPrimaryApplicantAddress(Address.builder().build());
 
@@ -233,7 +233,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenIhtNetValueIsNull() {
+    void shouldFailWhenIhtNetValueIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setIhtNetValue(null);
 
@@ -245,7 +245,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenIhtGrossValueIsNull() {
+    void shouldFailWhenIhtGrossValueIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setIhtGrossValue(null);
 
@@ -257,7 +257,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenPrimaryApplicantPhoneNumberIsBlank() {
+    void shouldFailWhenPrimaryApplicantPhoneNumberIsBlank() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setPrimaryApplicantPhoneNumber(null);
 
@@ -269,7 +269,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenWillHasCodicilsIsNull() {
+    void shouldFailWhenWillHasCodicilsIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setWillHasCodicils(null);
 
@@ -281,7 +281,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenNumberOfExecutorsIsNull() {
+    void shouldFailWhenNumberOfExecutorsIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setNumberOfExecutors(null);
 
@@ -293,7 +293,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenNumberOfExecutorsIsLessThan1() {
+    void shouldFailWhenNumberOfExecutorsIsLessThan1() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setNumberOfExecutors(0L);
 
@@ -305,7 +305,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenNumberOfApplicantsIsNull() {
+    void shouldFailWhenNumberOfApplicantsIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setNumberOfApplicants(null);
 
@@ -317,7 +317,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenNumberOfApplicantsIsLessThan1() {
+    void shouldFailWhenNumberOfApplicantsIsLessThan1() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setNumberOfApplicants(0L);
 
@@ -329,7 +329,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldFailWhenGrantTypeIsNull() {
+    void shouldFailWhenGrantTypeIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setGrantType(null);
 
@@ -341,7 +341,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldNotFailWhenIhtGrossValueFieldIsBlank() {
+    void shouldNotFailWhenIhtGrossValueFieldIsBlank() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setIhtGrossValueField(null);
 
@@ -351,7 +351,7 @@ public class GrantOfRepresentationPaValidationTest {
     }
 
     @Test
-    public void shouldNotFailWhenIhtNetValueFieldIsBlank() {
+    void shouldNotFailWhenIhtNetValueFieldIsBlank() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setIhtNetValueField(null);
 

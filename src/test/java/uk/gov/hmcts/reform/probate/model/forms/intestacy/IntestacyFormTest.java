@@ -42,7 +42,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class IntestacyFormTest {
+class IntestacyFormTest {
 
     private ObjectMapper objectMapper;
 
@@ -197,14 +197,14 @@ public class IntestacyFormTest {
     }
 
     @Test
-    public void shouldDeserializeIntestacyFormCorrectly() throws IOException {
+    void shouldDeserializeIntestacyFormCorrectly() throws IOException {
         IntestacyForm form = objectMapper.readValue(formJsonFromFile, IntestacyForm.class);
 
         assertThat(form, is(equalTo(intestacyForm)));
     }
 
     @Test
-    public void shouldSerializeIntestacyFormCorrectly() throws IOException, JSONException {
+    void shouldSerializeIntestacyFormCorrectly() throws IOException, JSONException {
         String intestacyFormAsJsonStr = objectMapper.writeValueAsString(intestacyForm);
 
         JSONAssert.assertEquals(formJsonFromFile, intestacyFormAsJsonStr, true);

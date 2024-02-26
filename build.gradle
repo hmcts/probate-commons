@@ -1,20 +1,17 @@
 plugins {
     id 'java'
     id 'checkstyle'
-    id 'com.github.ben-manes.versions' version '0.20.0'
+    id 'com.github.ben-manes.versions' version '0.51.0'
     id 'java-library'
     id 'maven-publish'
     // id 'pmd'
     id 'jacoco'
 }
 
-
-def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: getCurrentGitBranch()
-
 group 'uk.gov.hmcts.reform.probate'
-// Do not change this version number
-version buildNumber
 
+def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
+version buildNumber
 
 checkstyle {
     maxWarnings = 0
@@ -73,12 +70,12 @@ def pomConfig = {
 
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
+    archiveClassifier.set('sources')
     from sourceSets.main.allSource
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier.set('javadoc')
     from javadoc.destinationDir
 }
 
@@ -101,13 +98,13 @@ publishing {
 }
 
 def versions = [
-        lombok            : '1.18.26',
-        jackson           : '2.14.2',
-        apacheCommons     : '3.8.1',
-        hibernateValidator: '6.0.13.Final',
-        springfoxSwagger  : '2.9.2',
-        springBoot        : '2.6.6',
-        commonsIo         : '2.11.0',
+        lombok            : '1.18.30',
+        jackson           : '2.16.1',
+        apacheCommons     : '3.14.0',
+        hibernateValidator: '8.0.1.Final',
+        springfoxSwagger  : '3.0.0',
+        springBoot        : '3.2.2',
+        commonsIo         : '2.15.1',
         openfeign         : '3.8.0'
 ]
 
@@ -117,21 +114,19 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
     implementation group: 'io.github.openfeign.form', name: 'feign-form', version: versions.openfeign
+    implementation group: 'com.google.guava', name: 'guava', version: '33.0.0-jre'
     annotationProcessor group:'org.projectlombok', name:'lombok', version: versions.lombok
 
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
     implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: versions.hibernateValidator
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
-    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
-    testImplementation group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
-    testImplementation group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
-
-    testImplementation('org.mockito:mockito-core:2.7.22')
-
-
+    testImplementation group: 'jakarta.el', name: 'jakarta.el-api', version: '6.0.0-M2'
+    testImplementation group: 'org.glassfish', name: 'jakarta.el', version: '5.0.0-M1'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.10.0'
 }
 
 wrapper {
@@ -148,18 +143,4 @@ test {
 
 jar {
     enabled = true
-}
-
-def getCurrentGitBranch() {
-    def gitBranch = "DEV-SNAPSHOT"
-    try {
-        def workingDir = new File("${project.projectDir}")
-        def result = 'git rev-parse --abbrev-ref HEAD'.execute(null, workingDir)
-        result.waitFor()
-        if (result.exitValue() == 0) {
-            gitBranch = result.text.trim()
-        }
-    } catch (e) {
-    }
-    return gitBranch
 }

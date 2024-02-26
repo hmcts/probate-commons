@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.not;
 import static uk.gov.hmcts.reform.probate.model.YesNo.NO;
 import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
 
-public class GrantOfRepresentationTest {
+class GrantOfRepresentationTest {
 
     private GrantOfRepresentationData grantOfRepresentationData;
     private String email = "executor@email.com";
@@ -31,7 +31,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldSetInvitationAgreedFlagWithFirstNameAndLastName() {
+    void shouldSetInvitationAgreedFlagWithFirstNameAndLastName() {
         String invitationId = "123455";
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, invitationId,
             "Graham Garderner", executorApplyingName);
@@ -45,7 +45,7 @@ public class GrantOfRepresentationTest {
 
 
     @Test
-    public void shouldSetInvitationAgreedFlag() {
+    void shouldSetInvitationAgreedFlag() {
         String invitationId = "123455";
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, invitationId,
             "Graham Garderner", executorApplyingName);
@@ -62,7 +62,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldResetInvitationAgreedFlag() {
+    void shouldResetInvitationAgreedFlag() {
 
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, "123455",
             "Graham Garderner", executorApplyingName);
@@ -88,7 +88,7 @@ public class GrantOfRepresentationTest {
 
 
     @Test
-    public void shouldDetermineThatAllExecutorsHaveAgreed() {
+    void shouldDetermineThatAllExecutorsHaveAgreed() {
 
         GrantOfRepresentationCreator.addExecutorApplying(grantOfRepresentationData,
             "mainEmailExecutor", "Main Exec", Boolean.TRUE);
@@ -137,7 +137,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldUpdateContactDetailsForExecutor() {
+    void shouldUpdateContactDetailsForExecutor() {
 
         String invitationId = "123455";
         String email = "executor@email.com";
@@ -156,7 +156,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldDeleteInvitationForExecutor() {
+    void shouldDeleteInvitationForExecutor() {
 
         String invitationId = "123455";
         String email = "executor@email.com";
@@ -173,7 +173,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldDetermineWhetherInvitesHaveBeenSentForExecutorsReturnsFalse() {
+    void shouldDetermineWhetherInvitesHaveBeenSentForExecutorsReturnsFalse() {
 
         Boolean result = grantOfRepresentationData.haveInvitesBeenSent();
         assertThat(result,
@@ -181,7 +181,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldDetermineWhetherInvitesHaveBeenSentForExecutorsReturnsTrue() {
+    void shouldDetermineWhetherInvitesHaveBeenSentForExecutorsReturnsTrue() {
 
         String invitationId = "123455";
         String email = "executor@email.com";
@@ -195,7 +195,7 @@ public class GrantOfRepresentationTest {
 
 
     @Test
-    public void shouldGetExecutorApplyingByEmailAddressAndNamesForSameEmailAddress() {
+    void shouldGetExecutorApplyingByEmailAddressAndNamesForSameEmailAddress() {
 
         grantOfRepresentationData.setInvitationDetailsForExecutorApplying(email, "123455",
             "Graham Garderner", executorApplyingName);
@@ -237,7 +237,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldGetChildrenAndGrandChildrenIntestacyBooleanSerialization() {
+    void shouldGetChildrenAndGrandChildrenIntestacyBooleanSerialization() {
 
         grantOfRepresentationData.setChildrenDiedOverEighteen(null);
         grantOfRepresentationData.setChildrenDiedUnderEighteen(Boolean.FALSE);
@@ -261,7 +261,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldGetChildrenAndGrandChildrenIntestacyTextAsBoolean() {
+    void shouldGetChildrenAndGrandChildrenIntestacyTextAsBoolean() {
 
         grantOfRepresentationData.setChildrenDiedOverEighteenText(null);
         grantOfRepresentationData.setChildrenDiedUnderEighteenText("T");
@@ -280,7 +280,7 @@ public class GrantOfRepresentationTest {
 
 
     @Test
-    public void shouldDetermineIfDeceasedDeathCertInEnglish() {
+    void shouldDetermineIfDeceasedDeathCertInEnglish() {
         grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.TRUE);
         grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.TRUE);
         assertThat(grantOfRepresentationData.isDeceasedDeathCertInEnglish(),
@@ -293,7 +293,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldDetermineIfDeceasedForeignDeathCertIsTranslated() {
+    void shouldDetermineIfDeceasedForeignDeathCertIsTranslated() {
         grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.TRUE);
         grantOfRepresentationData.setDeceasedForeignDeathCertInEnglish(Boolean.TRUE);
         grantOfRepresentationData.setDeceasedForeignDeathCertTranslation(Boolean.FALSE);
@@ -313,7 +313,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldDetermineDeceasedDeathCertificateValue() {
+    void shouldDetermineDeceasedDeathCertificateValue() {
         grantOfRepresentationData.setDeceasedDiedEngOrWales(Boolean.FALSE);
         grantOfRepresentationData.setDeceasedDeathCertificate(DeathCertificate.DEATH_CERTIFICATE);
         assertThat(grantOfRepresentationData.getDeceasedDeathCert(),
@@ -326,7 +326,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldDetermineWillAccess() {
+    void shouldDetermineWillAccess() {
         assertThat(grantOfRepresentationData.getWillAccessOriginal(),
             is(equalTo(false)));
         assertThat(grantOfRepresentationData.getWillAccessNotarial(),
@@ -337,7 +337,7 @@ public class GrantOfRepresentationTest {
     }
 
     @Test
-    public void shouldAddRegistrarDirections() {
+    void shouldAddRegistrarDirections() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         assertThat(grantOfRepresentationData.getRegistrarDirections().size(),
                 is(equalTo(2)));

@@ -29,7 +29,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class CaveatFormTest {
+class CaveatFormTest {
 
     private ObjectMapper objectMapper;
 
@@ -104,7 +104,7 @@ public class CaveatFormTest {
     }
 
     @Test
-    public void shouldConstructWithEventDescription() {
+    void shouldConstructWithEventDescription() {
         CaveatForm caveatForm = new CaveatForm(ProbateType.CAVEAT, null, null,
             null, null, null, null,
             null, null, null, null,
@@ -114,14 +114,14 @@ public class CaveatFormTest {
     }
 
     @Test
-    public void shouldDeserializeCaveatFormCorrectly() throws IOException {
+    void shouldDeserializeCaveatFormCorrectly() throws IOException {
         Form form = objectMapper.readValue(formJsonFromFile, Form.class);
 
         assertThat(form, is(equalTo(caveatForm)));
     }
 
     @Test
-    public void shouldSerializeCaveatFormCorrectly() throws IOException, JSONException {
+    void shouldSerializeCaveatFormCorrectly() throws IOException, JSONException {
         String caveatFormAsJsonStr = objectMapper.writeValueAsString(caveatForm);
 
         JSONAssert.assertEquals(formJsonFromFile, caveatFormAsJsonStr, true);
