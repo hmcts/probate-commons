@@ -39,14 +39,6 @@ public abstract class ProbateDeceased extends Deceased {
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean nameAsOnTheWill;
-
-    private String aliasFirstNameOnWill;
-
-    private String aliasLastNameOnWill;
-
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean alias;
 
     private Map<String, AliasOtherNames> otherNames;
