@@ -13,11 +13,10 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.swagger.annotations.ApiModel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -73,7 +72,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 import static uk.gov.hmcts.reform.probate.model.YesNo.NO;
 import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
 
@@ -81,8 +79,7 @@ import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
 @ApiModel(value = "GrantOfRepresentationData", parent = CaseData.class)
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@SuperBuilder
 @EqualsAndHashCode(callSuper = false)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GrantOfRepresentationData extends CaseData {
