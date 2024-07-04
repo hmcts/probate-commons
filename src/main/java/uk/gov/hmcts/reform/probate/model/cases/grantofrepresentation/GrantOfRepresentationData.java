@@ -167,6 +167,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedAnyOtherNames;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedAnyOtherNameOnWill;
+
     private List<CollectionMember<AliasName>> deceasedAliasNameList;
 
     private List<CollectionMember<SolsAliasName>> solsDeceasedAliasNamesList;
@@ -405,6 +409,10 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean primaryApplicantHasAlias;
 
     private String primaryApplicantAlias;
+
+    private String deceasedAliasFirstNameOnWill;
+
+    private String deceasedAliasLastNameOnWill;
 
     private AliasReason primaryApplicantAliasReason;
 
