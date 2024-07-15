@@ -97,13 +97,13 @@ publishing {
 }
 
 def versions = [
-        lombok            : '1.18.32',
-        jackson           : '2.17.1',
-        apacheCommons     : '3.14.0',
-        hibernateValidator: '8.0.1.Final',
-        springfoxSwagger  : '3.0.0',
-        springBoot        : '2.7.18',
-        commonsIo         : '2.16.1',
+        lombok            : '1.18.26',
+        jackson           : '2.14.2',
+        apacheCommons     : '3.8.1',
+        hibernateValidator: '6.0.13.Final',
+        springfoxSwagger  : '2.9.2',
+        springBoot        : '2.6.6',
+        commonsIo         : '2.11.0',
         openfeign         : '3.8.0'
 ]
 
@@ -113,7 +113,6 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
     implementation group: 'io.github.openfeign.form', name: 'feign-form', version: versions.openfeign
-    implementation group: 'com.google.guava', name: 'guava', version: '33.2.0-jre'
     annotationProcessor group:'org.projectlombok', name:'lombok', version: versions.lombok
 
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
@@ -123,9 +122,12 @@ dependencies {
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
-    testImplementation group: 'jakarta.el', name: 'jakarta.el-api', version: '6.0.0-RC1'
-    testImplementation group: 'org.glassfish', name: 'jakarta.el', version: '5.0.0-M1'
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.11.0'
+    testImplementation group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+    testImplementation group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
+
+    testImplementation('org.mockito:mockito-core:2.7.22')
+
+
 }
 
 wrapper {

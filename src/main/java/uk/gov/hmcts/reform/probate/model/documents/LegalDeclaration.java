@@ -2,10 +2,10 @@ package uk.gov.hmcts.reform.probate.model.documents;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
 
 import java.util.List;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 @JsonRootName(value = "legalDeclaration")
 public class LegalDeclaration implements BusinessDocument {

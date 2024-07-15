@@ -38,4 +38,5 @@ public class Fees {
     private String overseasCopiesFeeVersion;
 
     private BigDecimal total;
+
 }
