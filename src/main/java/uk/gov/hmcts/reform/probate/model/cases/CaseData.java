@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.SuperBuilder;
 import uk.gov.hmcts.reform.probate.model.cases.caveat.CaveatData;
 import uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation.GrantOfRepresentationData;
 import uk.gov.hmcts.reform.probate.model.cases.standingsearch.StandingSearchData;
@@ -27,6 +28,7 @@ import java.util.List;
     @JsonSubTypes.Type(value = WillLodgementData.class, name = CaseType.Constants.WILL_LODGEMENT_NAME)
 })
 @Data
+@SuperBuilder
 @AllArgsConstructor
 @AtLeastOneNonEmptyField
 @EqualsAndHashCode
