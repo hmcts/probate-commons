@@ -408,10 +408,6 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String primaryApplicantAlias;
 
-    private String deceasedAliasFirstNameOnWill;
-
-    private String deceasedAliasLastNameOnWill;
-
     private AliasReason primaryApplicantAliasReason;
 
     private String primaryApplicantOtherReason;
