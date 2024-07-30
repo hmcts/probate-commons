@@ -888,7 +888,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime lastModifiedDateTime;
+    private LocalDateTime lastModifiedDateForDormant;
 
     private List<CollectionMember<ProbateDocument>> probateNotificationsGenerated;
 
