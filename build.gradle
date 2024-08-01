@@ -1,21 +1,16 @@
 plugins {
     id 'java'
-    id 'checkstyle'
     id 'com.github.ben-manes.versions' version '0.51.0'
     id 'java-library'
     id 'maven-publish'
     id 'jacoco'
+    id 'uk.gov.hmcts.java' version '0.12.61'
 }
 
 group 'uk.gov.hmcts.reform.probate'
 
 def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
 version buildNumber
-
-checkstyle {
-    maxWarnings = 0
-    toolVersion = '8.5'
-}
 
 java {
     toolchain {
@@ -102,7 +97,7 @@ def versions = [
         apacheCommons     : '3.14.0',
         hibernateValidator: '8.0.1.Final',
         springfoxSwagger  : '3.0.0',
-        springBoot        : '2.7.18',
+        springBoot        : '3.2.5',
         commonsIo         : '2.16.1',
         openfeign         : '3.8.0'
 ]
@@ -123,9 +118,9 @@ dependencies {
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
-    testImplementation group: 'jakarta.el', name: 'jakarta.el-api', version: '6.0.0-RC1'
+    testImplementation group: 'jakarta.el', name: 'jakarta.el-api', version: '6.0.0'
     testImplementation group: 'org.glassfish', name: 'jakarta.el', version: '5.0.0-M1'
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.11.0'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.12.0'
 }
 
 wrapper {
