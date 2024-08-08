@@ -32,9 +32,7 @@ public class ExecutorNotification implements Serializable {
     @JsonProperty("email")
     private String email;
 
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonProperty("deceasedDod")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate deceasedDod;
-
+    private String deceasedDod;
 }
