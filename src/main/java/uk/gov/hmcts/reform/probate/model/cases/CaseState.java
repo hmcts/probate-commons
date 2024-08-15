@@ -19,7 +19,9 @@ import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CAS
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_CAVEAT_PERMENANT_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_EXAMING_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_EXAMINING_REISSUE_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_GRANT_ISSUED_ESCALATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_GRANT_ISSUED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_POST_GRANT_ISSUED_ESCALATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_POST_GRANT_ISSUED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_READY_FOR_EXAMINATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.BO_READY_TO_ISSUE_NAME;
@@ -108,7 +110,10 @@ public enum CaseState {
 
     @JsonProperty(DORMANT_NAME) DORMANT(DORMANT_NAME),
 
-    @JsonProperty(BO_POST_GRANT_ISSUED_NAME) BO_POST_GRANT_ISSUED(BO_POST_GRANT_ISSUED_NAME);
+    @JsonProperty(BO_POST_GRANT_ISSUED_NAME) BO_POST_GRANT_ISSUED(BO_POST_GRANT_ISSUED_NAME),
+    @JsonProperty(BO_GRANT_ISSUED_ESCALATION_NAME) BO_GRANT_ISSUED_ESCALATION(BO_GRANT_ISSUED_ESCALATION_NAME),
+    @JsonProperty(BO_POST_GRANT_ISSUED_ESCALATION_NAME)
+    BO__POST_GRANT_ISSUED_ESCALATION(BO_POST_GRANT_ISSUED_ESCALATION_NAME);
 
     @Getter
     private final String name;
@@ -183,6 +188,10 @@ public enum CaseState {
         public static final String CAVEAT_CLOSED_NAME = "CaveatClosed";
         
         public static final String BO_POST_GRANT_ISSUED_NAME = "BOPostGrantIssued";
+
+        public static final String BO_GRANT_ISSUED_ESCALATION_NAME = "BOGrantIssuedRegistrarEscalation";
+
+        public static final String BO_POST_GRANT_ISSUED_ESCALATION_NAME = "BOPostGrantIssuedRegistrarEscalation";
 
         public static final String DORMANT_NAME = "Dormant";
 
