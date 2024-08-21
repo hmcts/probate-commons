@@ -17,8 +17,8 @@ public enum AliasReason {
     @JsonProperty(MARRIAGE_VALUE) MARRIAGE("optionMarriage"),
     @JsonProperty(DIVORCE_VALUE) DIVORCE("optionDivorce"),
     @JsonProperty(DEED_POLL_VALUE) DEED_POLL("optionDeedPoll"),
-    @JsonProperty(DIFFERENT_SPELLING_VALUE) DIFFERENT_SPELLING("differentSpelling"),
-    @JsonProperty(PART_OF_NAME_NOT_INCLUDED_VALUE) PART_OF_NAME_NOT_INCLUDED("partOfNameNotIncluded"),
+    @JsonProperty(DIFFERENT_SPELLING_VALUE) DIFFERENT_SPELLING("optionDifferentSpelling"),
+    @JsonProperty(PART_OF_NAME_NOT_INCLUDED_VALUE) PART_OF_NAME_NOT_INCLUDED("optionPartOfNameNotIncluded"),
     @JsonProperty(OTHER_VALUE) OTHER("optionOther");
 
     @Getter
