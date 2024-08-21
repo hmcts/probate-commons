@@ -5,11 +5,11 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import static uk.gov.hmcts.reform.probate.model.AliasReason.Constants.DEED_POLL_VALUE;
+import static uk.gov.hmcts.reform.probate.model.AliasReason.Constants.DIFFERENT_SPELLING_VALUE;
 import static uk.gov.hmcts.reform.probate.model.AliasReason.Constants.DIVORCE_VALUE;
 import static uk.gov.hmcts.reform.probate.model.AliasReason.Constants.MARRIAGE_VALUE;
-import static uk.gov.hmcts.reform.probate.model.AliasReason.Constants.DIFFERENT_SPELLING_VALUE;
-import static uk.gov.hmcts.reform.probate.model.AliasReason.Constants.PART_OF_NAME_NOT_INCLUDED_VALUE;
 import static uk.gov.hmcts.reform.probate.model.AliasReason.Constants.OTHER_VALUE;
+import static uk.gov.hmcts.reform.probate.model.AliasReason.Constants.PART_OF_NAME_NOT_INCLUDED_VALUE;
 
 @RequiredArgsConstructor
 public enum AliasReason {
