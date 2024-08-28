@@ -23,4 +23,8 @@ public class DocumentLink {
     @JsonProperty(value = "document_filename")
     private String documentFilename;
 
+    @JsonProperty(value = "upload_timestamp" )
+    private LocalDateTime uploadTimestamp;
+
+
 }
