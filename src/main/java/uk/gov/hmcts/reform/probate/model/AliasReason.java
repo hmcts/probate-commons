@@ -35,12 +35,12 @@ public enum AliasReason {
 
     public static class Constants {
 
-        public static final String MARRIAGE_VALUE = "Marriage or civil partnership";
-        public static final String DIVORCE_VALUE = "Divorce or dissolution";
-        public static final String DEED_POLL_VALUE = "Change by deed poll";
-        public static final String DIFFERENT_SPELLING_VALUE = "Different Spelling";
-        public static final String PART_OF_NAME_NOT_INCLUDED_VALUE = "Part of their name was not included";
-        public static final String OTHER_VALUE = "Other";
+        public static final String MARRIAGE_VALUE = "marriageOrCivilPartnership";
+        public static final String DIVORCE_VALUE = "divorceOrDissolution";
+        public static final String DEED_POLL_VALUE = "changeByDeedPoll";
+        public static final String DIFFERENT_SPELLING_VALUE = "differentSpelling";
+        public static final String PART_OF_NAME_NOT_INCLUDED_VALUE = "partOfNameNotIncluded";
+        public static final String OTHER_VALUE = "other";
 
         private Constants() {
         }
