@@ -45,6 +45,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.CombinedName;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 import uk.gov.hmcts.reform.probate.model.cases.DocumentLink;
+import uk.gov.hmcts.reform.probate.model.cases.HandoffReason;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
@@ -919,6 +920,8 @@ public class GrantOfRepresentationData extends CaseData {
     private SolicitorWillType solsWillType;
 
     private String solsWillTypeReason;
+
+    private List<CollectionMember<HandoffReason>> boHandoffReasonList;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
