@@ -74,7 +74,8 @@ public class IntestacyDeceased extends ProbateDeceased {
     private Boolean anyChildren;
 
     @Builder
-    public IntestacyDeceased(String firstName, String lastName, Boolean alias, Map<String, AliasOtherNames> otherNames,
+    public IntestacyDeceased(String firstName, String lastName, Boolean nameAsOnTheWill, String aliasFirstNameOnWill,
+                             String aliasLastNameOnWill, Boolean alias, Map<String, AliasOtherNames> otherNames,
                              Boolean married, Address address, String postcode, String postcodeAddress,
                              Boolean addressFound, List<Map<String, Object>> addresses, LocalDateTime dateOfBirth,
                              LocalDateTime dateOfDeath, String domicile, String maritalStatus, Boolean diedEngOrWales,
@@ -83,7 +84,8 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean allDeceasedChildrenOverEighteen, Boolean anyDeceasedChildrenDieBeforeDeceased,
                              Boolean englishForeignDeathCert, Boolean foreignDeathCertTranslation,
                              Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren) {
-        super(firstName, lastName, alias, otherNames, married, address, postcode, postcodeAddress, addressFound,
+        super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
+                married, address, postcode, postcodeAddress, addressFound,
             addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
                 englishForeignDeathCert, foreignDeathCertTranslation);
         this.maritalStatus = maritalStatus;
