@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @AllArgsConstructor
@@ -22,5 +24,8 @@ public class DocumentLink {
 
     @JsonProperty(value = "document_filename")
     private String documentFilename;
+
+    @JsonProperty(value = "upload_timestamp")
+    private LocalDateTime uploadTimestamp;
 
 }
