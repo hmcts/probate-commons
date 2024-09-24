@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 public class HandoffReason {
 
     @JsonProperty(value = "caseHandoffReason")
-    private HandoffReasonId caseHandoffReason;
+    private String caseHandoffReason;
 }
