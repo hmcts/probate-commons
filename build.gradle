@@ -94,7 +94,7 @@ publishing {
 def versions = [
         lombok            : '1.18.34',
         jackson           : '2.17.2',
-        apacheCommons     : '3.14.0',
+        apacheCommons     : '3.17.0',
         hibernateValidator: '8.0.1.Final',
         springfoxSwagger  : '3.0.0',
         springBoot        : '3.3.4',
@@ -108,7 +108,7 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
     implementation group: 'io.github.openfeign.form', name: 'feign-form', version: versions.openfeign
-    implementation group: 'com.google.guava', name: 'guava', version: '33.3.0-jre'
+    implementation group: 'com.google.guava', name: 'guava', version: '33.3.1-jre'
     annotationProcessor group:'org.projectlombok', name:'lombok', version: versions.lombok
 
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
@@ -120,7 +120,7 @@ dependencies {
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
     testImplementation group: 'jakarta.el', name: 'jakarta.el-api', version: '6.0.1'
     testImplementation group: 'org.glassfish', name: 'jakarta.el', version: '5.0.0-M1'
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.12.0'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.13.0'
 }
 
 wrapper {
