@@ -78,7 +78,7 @@ public enum HandoffReasonId {
         public static final String FIAT_WILL_NAME = "FiatWill";
         public static final String FOREIGN_DOMICILE_NAME = "ForeignDomicile";
         public static final String INCAPACITY_RULE35_NAME = "IncapacityRule35";
-        public static final String LEADING_FOLLOWING_GRANTS_NAME = "LeadingFollowing";
+        public static final String LEADING_FOLLOWING_GRANTS_NAME = "LeadingFollowing Grants";
         public static final String LITERARY_ESTATE_NAME = "LiteraryEstate";
         public static final String LOST_WILL_NAME = "LostWill";
         public static final String MINORITY_INTEREST_NAME = "MinorityInterest";
