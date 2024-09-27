@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Arrays;
+
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.ADMON_WILL_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.AD_COLLIGENDA_BONA_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.CODICIL_MIS_NAME;
@@ -58,12 +60,11 @@ public enum HandoffReasonId {
     private final String code;
 
     public static HandoffReasonId fromCode(String code) {
-        for (HandoffReasonId handoffReasonId : HandoffReasonId.values()) {
-            if (handoffReasonId.code.equals(code)) {
-                return handoffReasonId;
-            }
-        }
-        return null;
+        return Arrays.stream(HandoffReasonId.values())
+                .filter(e -> e.getCode().equalsIgnoreCase(code))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(
+                        String.format("Unsupported HandoffReasonId %s", code)));
     }
 
     public static class Constants {
