@@ -57,6 +57,7 @@ import uk.gov.hmcts.reform.probate.model.cases.RemovedRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
+import uk.gov.hmcts.reform.probate.model.forms.CitizenDocument;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.IntestacyCrossFieldCheck;
@@ -87,6 +88,7 @@ import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
 public class GrantOfRepresentationData extends CaseData {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
+    private static final String RESPONSE_DATE_FORMAT = "dd MMMM yyyy";
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
     @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
@@ -930,6 +932,15 @@ public class GrantOfRepresentationData extends CaseData {
     private String solsWillTypeReason;
 
     private List<CollectionMember<HandoffReason>> boHandoffReasonList;
+
+    private List<CitizenDocument> citizenUploadedDocuments;
+
+    private String citizenResponse;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = RESPONSE_DATE_FORMAT)
+    private LocalDate citizenResponseSubmittedDate;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
