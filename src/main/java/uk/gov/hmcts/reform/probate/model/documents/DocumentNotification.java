@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -36,7 +37,7 @@ public class DocumentNotification implements Serializable {
     @JsonProperty("citizenResponse")
     private String citizenResponse;
 
-    private String fileName;
+    private List<String> fileName;
 
     @JsonProperty("citizenResponseSubmittedDate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMMM yyyy")
