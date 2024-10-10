@@ -88,7 +88,6 @@ import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
 public class GrantOfRepresentationData extends CaseData {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
-    private static final String RESPONSE_DATE_FORMAT = "dd MMMM yyyy";
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
     @NotNull(groups = {IntestacyNullCheck.class, PaNullCheck.class})
@@ -937,10 +936,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String citizenResponse;
 
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = RESPONSE_DATE_FORMAT)
-    private LocalDate citizenResponseSubmittedDate;
+    private String citizenResponseSubmittedDate;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
