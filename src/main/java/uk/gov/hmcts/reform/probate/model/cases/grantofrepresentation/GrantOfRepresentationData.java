@@ -57,7 +57,6 @@ import uk.gov.hmcts.reform.probate.model.cases.RemovedRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
-import uk.gov.hmcts.reform.probate.model.forms.CitizenDocument;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.IntestacyCrossFieldCheck;
@@ -931,8 +930,6 @@ public class GrantOfRepresentationData extends CaseData {
     private String solsWillTypeReason;
 
     private List<CollectionMember<HandoffReason>> boHandoffReasonList;
-
-    private List<CitizenDocument> citizenUploadedDocuments;
 
     private String citizenResponse;
 
