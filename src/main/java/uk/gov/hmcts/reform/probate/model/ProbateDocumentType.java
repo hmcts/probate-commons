@@ -51,9 +51,6 @@ public enum ProbateDocumentType {
     @JsonProperty("other")
     OTHER("other"),
 
-    @JsonProperty("citizenHubUpload")
-    CITIZEN_HUB_UPLOAD("citizenHubUpload"),
-
     @JsonProperty("edgeCase")
     EDGE_CASE("edgeCase"),
 
