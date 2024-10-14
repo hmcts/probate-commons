@@ -25,6 +25,8 @@ import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Language;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
+import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneSerializer;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -65,6 +67,18 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String documentsReceivedNotificationSent;
 
+    private String citizenResponse;
+
+    private String citizenResponseSubmittedDate;
+
+    @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
+    @JsonSerialize(using = BooleanAndNoneSerializer.class)
+    private Boolean citizenResponseCheckbox;
+
+    @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
+    @JsonSerialize(using = BooleanAndNoneSerializer.class)
+    private Boolean documentUploadIssue;
+
     @Builder
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          Declaration declaration, Documents documents, Registry registry,
@@ -73,7 +87,8 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
                          Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary,
                          String applicantEmail, DocumentUpload statementOfTruthDocument, String caseType,
                          Language language, Equality equality, String documentsReceivedNotificationSent,
-                         String eventDescription) {
+                         String citizenResponse, String citizenResponseSubmittedDate, Boolean citizenResponseCheckbox,
+                         Boolean documentUploadIssue, String eventDescription) {
 
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
@@ -88,6 +103,10 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.caseType = caseType;
         this.equality = equality;
         this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
+        this.citizenResponse = citizenResponse;
+        this.citizenResponseSubmittedDate = citizenResponseSubmittedDate;
+        this.citizenResponseCheckbox = citizenResponseCheckbox;
+        this.documentUploadIssue = documentUploadIssue;
     }
 
 }

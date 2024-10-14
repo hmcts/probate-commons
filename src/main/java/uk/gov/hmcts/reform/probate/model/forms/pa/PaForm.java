@@ -26,6 +26,8 @@ import uk.gov.hmcts.reform.probate.model.forms.Language;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
 import uk.gov.hmcts.reform.probate.model.forms.Will;
+import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneDeserializer;
+import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneSerializer;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -77,6 +79,18 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private String documentsReceivedNotificationSent;
 
+    private String citizenResponse;
+
+    private String citizenResponseSubmittedDate;
+
+    @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
+    @JsonSerialize(using = BooleanAndNoneSerializer.class)
+    private Boolean citizenResponseCheckbox;
+
+    @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
+    @JsonSerialize(using = BooleanAndNoneSerializer.class)
+    private Boolean documentUploadIssue;
+
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   Declaration declaration, Registry registry,
@@ -86,7 +100,8 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
                   Language language, Equality equality, String documentsReceivedNotificationSent,
-                  String eventDescription) {
+                  String citizenResponse, String citizenResponseSubmittedDate, Boolean citizenResponseCheckbox,
+                  Boolean documentUploadIssue, String eventDescription) {
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
         this.applicantEmail = applicantEmail;
@@ -105,6 +120,10 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.caseType = caseType;
         this.equality = equality;
         this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
+        this.citizenResponse = citizenResponse;
+        this.citizenResponseSubmittedDate = citizenResponseSubmittedDate;
+        this.citizenResponseCheckbox = citizenResponseCheckbox;
+        this.documentUploadIssue = documentUploadIssue;
     }
 
 }
