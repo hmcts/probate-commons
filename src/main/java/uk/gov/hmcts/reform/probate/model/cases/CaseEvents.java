@@ -27,4 +27,6 @@ public class CaseEvents {
 
     private final EventId createCaseWithoutPaymentId;
 
+    private final EventId citizenHubResponseId;
+
 }
