@@ -79,9 +79,9 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private String documentsReceivedNotificationSent;
 
-    private ProvideInformation provideInformation;
+    private ProvideInformation provideinformation;
 
-    private ReviewResponse reviewResponse;
+    private ReviewResponse reviewresponse;
 
     private String citizenResponseSubmittedDate;
 
@@ -95,7 +95,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
                   Language language, Equality equality, String documentsReceivedNotificationSent,
-                  ProvideInformation provideInformation, ReviewResponse reviewResponse,
+                  ProvideInformation provideinformation, ReviewResponse reviewresponse,
                   String citizenResponseSubmittedDate, String eventDescription) {
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
@@ -115,8 +115,8 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.caseType = caseType;
         this.equality = equality;
         this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
-        this.provideInformation = provideInformation;
-        this.reviewResponse = reviewResponse;
+        this.provideinformation = provideinformation;
+        this.reviewresponse = reviewresponse;
         this.citizenResponseSubmittedDate = citizenResponseSubmittedDate;
     }
 
