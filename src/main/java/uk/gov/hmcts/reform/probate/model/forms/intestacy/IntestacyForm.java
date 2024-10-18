@@ -24,7 +24,9 @@ import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Language;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
+import uk.gov.hmcts.reform.probate.model.forms.ProvideInformation;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
+import uk.gov.hmcts.reform.probate.model.forms.ReviewResponse;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -65,6 +67,14 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String documentsReceivedNotificationSent;
 
+    @JsonProperty(value = "provideinformation")
+    private ProvideInformation provideinformation;
+
+    @JsonProperty(value = "reviewresponse")
+    private ReviewResponse reviewresponse;
+
+    private String citizenResponseSubmittedDate;
+
     @Builder
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          Declaration declaration, Documents documents, Registry registry,
@@ -73,7 +83,8 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
                          Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary,
                          String applicantEmail, DocumentUpload statementOfTruthDocument, String caseType,
                          Language language, Equality equality, String documentsReceivedNotificationSent,
-                         String eventDescription) {
+                         ProvideInformation provideinformation, ReviewResponse reviewresponse,
+                         String citizenResponseSubmittedDate,  String eventDescription) {
 
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
@@ -88,6 +99,9 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.caseType = caseType;
         this.equality = equality;
         this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
+        this.provideinformation = provideinformation;
+        this.reviewresponse = reviewresponse;
+        this.citizenResponseSubmittedDate = citizenResponseSubmittedDate;
     }
 
 }
