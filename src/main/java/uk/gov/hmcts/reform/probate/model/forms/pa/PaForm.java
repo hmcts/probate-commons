@@ -79,8 +79,10 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private String documentsReceivedNotificationSent;
 
+    @JsonProperty(value = "provideinformation")
     private ProvideInformation provideinformation;
 
+    @JsonProperty(value = "reviewresponse")
     private ReviewResponse reviewresponse;
 
     private String citizenResponseSubmittedDate;
