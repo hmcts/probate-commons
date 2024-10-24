@@ -87,6 +87,10 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private String citizenResponseSubmittedDate;
 
+    private String informationNeeded;
+
+    private String informationNeededByPost;
+
 
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
@@ -98,7 +102,8 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
                   Language language, Equality equality, String documentsReceivedNotificationSent,
                   ProvideInformation provideinformation, ReviewResponse reviewresponse,
-                  String citizenResponseSubmittedDate, String eventDescription) {
+                  String citizenResponseSubmittedDate, String informationNeeded, String informationNeededByPost,
+                  String eventDescription) {
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
         this.applicantEmail = applicantEmail;
@@ -120,6 +125,8 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.provideinformation = provideinformation;
         this.reviewresponse = reviewresponse;
         this.citizenResponseSubmittedDate = citizenResponseSubmittedDate;
+        this.informationNeeded = informationNeeded;
+        this.informationNeededByPost = informationNeededByPost;
     }
 
 }

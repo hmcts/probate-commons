@@ -184,5 +184,7 @@
   "equality": {
     "pcqId": "1002"
   },
-  "documentsReceivedNotificationSent": "Yes"
+  "documentsReceivedNotificationSent": "Yes",
+  "informationNeeded": "Yes",
+  "informationNeededByPost": "No"
 }
