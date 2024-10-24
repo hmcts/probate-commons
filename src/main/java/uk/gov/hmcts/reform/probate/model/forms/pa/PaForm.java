@@ -85,7 +85,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
     @JsonProperty(value = "reviewresponse")
     private ReviewResponse reviewresponse;
 
-    private String citizenResponseSubmittedDate;
+    private String expectedResponseDate;
 
     private String informationNeeded;
 
@@ -102,7 +102,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
                   Language language, Equality equality, String documentsReceivedNotificationSent,
                   ProvideInformation provideinformation, ReviewResponse reviewresponse,
-                  String citizenResponseSubmittedDate, String informationNeeded, String informationNeededByPost,
+                  String expectedResponseDate, String informationNeeded, String informationNeededByPost,
                   String eventDescription) {
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
@@ -124,7 +124,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
         this.provideinformation = provideinformation;
         this.reviewresponse = reviewresponse;
-        this.citizenResponseSubmittedDate = citizenResponseSubmittedDate;
+        this.expectedResponseDate = expectedResponseDate;
         this.informationNeeded = informationNeeded;
         this.informationNeededByPost = informationNeededByPost;
     }

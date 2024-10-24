@@ -39,7 +39,7 @@ public class DocumentNotification implements Serializable {
 
     private List<String> fileName;
 
-    @JsonProperty("citizenResponseSubmittedDate")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMMM yyyy")
-    private String citizenResponseSubmittedDate;
+    @JsonProperty("expectedResponseDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private String expectedResponseDate;
 }

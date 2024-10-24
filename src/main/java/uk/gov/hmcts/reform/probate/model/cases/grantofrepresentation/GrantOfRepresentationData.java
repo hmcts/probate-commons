@@ -933,7 +933,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String citizenResponse;
 
-    private String citizenResponseSubmittedDate;
+    private String expectedResponseDate;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
