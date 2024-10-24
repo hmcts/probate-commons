@@ -931,6 +931,26 @@ public class GrantOfRepresentationData extends CaseData {
 
     private List<CollectionMember<HandoffReason>> boHandoffReasonList;
 
+    private String citizenResponse;
+
+    private String expectedResponseDate;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean citizenResponseCheckbox;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean documentUploadIssue;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean informationNeeded;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean informationNeededByPost;
+
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
     @Transient
