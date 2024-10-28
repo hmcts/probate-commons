@@ -43,6 +43,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.ChangeOfRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.ChangeOrganisationRequest;
+import uk.gov.hmcts.reform.probate.model.cases.CitizenResponse;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.CombinedName;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
@@ -950,6 +951,14 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean informationNeededByPost;
+
+    private List<CollectionMember<UploadDocument>> citizenDocumentsUploaded;
+
+    private List<CollectionMember<CitizenResponse>> citizenResponses;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean isSaveAndClose;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 

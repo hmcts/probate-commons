@@ -24,4 +24,8 @@ public class ProvideInformation {
     @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
     @JsonSerialize(using = BooleanAndNoneSerializer.class)
     private Boolean documentUploadIssue;
+
+    @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
+    @JsonSerialize(using = BooleanAndNoneSerializer.class)
+    private Boolean isSaveAndClose;
 }
