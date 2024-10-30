@@ -973,6 +973,8 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     private LocalDate firstStopReminderSentDate;
 
+    private List<CollectionMember<ModifiedOCRField>> modifiedOCRFieldList;
+
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
     @Transient
