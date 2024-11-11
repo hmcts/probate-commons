@@ -29,4 +29,5 @@ public class CaseEvents {
 
     private final EventId citizenHubResponseId;
 
+    private final EventId citizenHubResponseDraftId;
 }
