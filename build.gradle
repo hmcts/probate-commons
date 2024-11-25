@@ -98,7 +98,7 @@ def versions = [
         hibernateValidator: '8.0.1.Final',
         springfoxSwagger  : '3.0.0',
         springBoot        : '3.3.5',
-        commonsIo         : '2.17.0',
+        commonsIo         : '2.18.0',
         openfeign         : '3.8.0'
 ]
 
