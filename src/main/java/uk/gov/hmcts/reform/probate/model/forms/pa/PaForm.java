@@ -24,7 +24,9 @@ import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Language;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
+import uk.gov.hmcts.reform.probate.model.forms.ProvideInformation;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
+import uk.gov.hmcts.reform.probate.model.forms.ReviewResponse;
 import uk.gov.hmcts.reform.probate.model.forms.Will;
 
 import java.time.LocalDate;
@@ -77,6 +79,19 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private String documentsReceivedNotificationSent;
 
+    @JsonProperty(value = "provideinformation")
+    private ProvideInformation provideinformation;
+
+    @JsonProperty(value = "reviewresponse")
+    private ReviewResponse reviewresponse;
+
+    private String expectedResponseDate;
+
+    private String informationNeeded;
+
+    private String informationNeededByPost;
+
+
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   Declaration declaration, Registry registry,
@@ -86,6 +101,8 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
                   Language language, Equality equality, String documentsReceivedNotificationSent,
+                  ProvideInformation provideinformation, ReviewResponse reviewresponse,
+                  String expectedResponseDate, String informationNeeded, String informationNeededByPost,
                   String eventDescription) {
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
@@ -105,6 +122,11 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.caseType = caseType;
         this.equality = equality;
         this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
+        this.provideinformation = provideinformation;
+        this.reviewresponse = reviewresponse;
+        this.expectedResponseDate = expectedResponseDate;
+        this.informationNeeded = informationNeeded;
+        this.informationNeededByPost = informationNeededByPost;
     }
 
 }
