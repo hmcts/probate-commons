@@ -23,6 +23,10 @@ public class Executors {
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean executorsNamed;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean allalive;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
