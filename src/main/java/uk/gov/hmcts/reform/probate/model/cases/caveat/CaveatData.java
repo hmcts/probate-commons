@@ -33,6 +33,7 @@ import uk.gov.hmcts.reform.probate.model.cases.RegistrarDirection;
 import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.RemovedRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
+import uk.gov.hmcts.reform.probate.model.cases.TTL;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
@@ -215,6 +216,8 @@ public class CaveatData extends CaseData {
     private List<CollectionMember<ChangeOfRepresentative>> changeOfRepresentatives;
     private RemovedRepresentative removedRepresentative;
     private ChangeOrganisationRequest changeOrganisationRequestField;
+
+    private TTL ttl;
 
     @Transient
     @AssertTrue(message = "deceasedDateOfBirth must be before deceasedDateOfDeath")

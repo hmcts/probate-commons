@@ -28,6 +28,7 @@ import uk.gov.hmcts.reform.probate.model.forms.Registry;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -139,6 +140,7 @@ class IntestacyFormTest {
         CcdCase ccdCase = new CcdCase();
         ccdCase.setId(1535574519543819L);
         ccdCase.setState("CaseCreated");
+        ccdCase.setLastModifiedDate(LocalDate.of(2018, 1, 1));
         intestacyForm.setCcdCase(ccdCase);
 
         Registry registry = new Registry();
