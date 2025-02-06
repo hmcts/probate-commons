@@ -78,6 +78,7 @@ class CaveatFormTest {
         CcdCase ccdCase = new CcdCase();
         ccdCase.setId(1535574519543819L);
         ccdCase.setState("CaseCreated");
+        ccdCase.setLastModifiedDate(LocalDate.of(2018, 1, 1));
         caveatForm.setCcdCase(ccdCase);
 
         caveatForm.setExpiryDate(LocalDate.of(2020, 2, 2));

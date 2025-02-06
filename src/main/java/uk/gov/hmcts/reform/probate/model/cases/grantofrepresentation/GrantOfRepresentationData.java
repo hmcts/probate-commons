@@ -57,6 +57,7 @@ import uk.gov.hmcts.reform.probate.model.cases.RegistryLocation;
 import uk.gov.hmcts.reform.probate.model.cases.RemovedRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
+import uk.gov.hmcts.reform.probate.model.cases.TTL;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
@@ -959,6 +960,8 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean isSaveAndClose;
+
+    private TTL ttl;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
