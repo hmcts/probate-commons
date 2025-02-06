@@ -23,4 +23,5 @@ public class CaseInfo {
 
     private LocalDate caseCreatedDate;
 
+    private LocalDate lastModifiedDate;
 }
