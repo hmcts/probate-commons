@@ -42,18 +42,6 @@ class GrantOfRepresentationPaSubmissionTest {
     }
 
     @Test
-    void shouldFailWhenApplicationSubmittedIsNull() {
-        GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
-        caseData.setApplicationSubmittedDate(null);
-
-        Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_SUBMISSION);
-
-        assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("applicationSubmittedDate", "must not be null"));
-    }
-
-    @Test
     void shouldFailWhenDeclarationCheckboxIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeclarationCheckbox(null);

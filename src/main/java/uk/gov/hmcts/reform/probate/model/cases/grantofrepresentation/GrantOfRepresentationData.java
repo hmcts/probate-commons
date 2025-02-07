@@ -98,7 +98,6 @@ public class GrantOfRepresentationData extends CaseData {
     @Size(min = 2, groups = {IntestacyFieldCheck.class, PaFieldCheck.class})
     private String primaryApplicantEmailAddress;
 
-    @NotNull(groups = {PaSubmission.class, IntestacySubmission.class})
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
