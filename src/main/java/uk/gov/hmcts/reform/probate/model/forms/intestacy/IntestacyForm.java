@@ -1,12 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
@@ -28,7 +23,6 @@ import uk.gov.hmcts.reform.probate.model.forms.ProvideInformation;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
 import uk.gov.hmcts.reform.probate.model.forms.ReviewResponse;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -50,11 +44,6 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
     private DocumentUpload statementOfTruthDocument;
 
     private InheritanceTax iht;
-
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-    private LocalDate applicationSubmittedDate;
 
     private Map<String, Object> legalDeclaration;
 
@@ -83,8 +72,8 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          Declaration declaration, Documents documents, Registry registry,
                          CcdCase ccdCase, List<Payment> payments, Copies copies,
-                         InheritanceTax iht, Fees fees, Payment payment, LocalDate applicationSubmittedDate,
-                         Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary,
+                         InheritanceTax iht, Fees fees, Payment payment, Map<String, Object> legalDeclaration,
+                         Map<String, Object> checkAnswersSummary,
                          String applicantEmail, DocumentUpload statementOfTruthDocument, String caseType,
                          Language language, Equality equality, String documentsReceivedNotificationSent,
                          ProvideInformation provideinformation, ReviewResponse reviewresponse,
@@ -96,7 +85,6 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.declaration = declaration;
         this.documents = documents;
         this.iht = iht;
-        this.applicationSubmittedDate = applicationSubmittedDate;
         this.legalDeclaration = legalDeclaration;
         this.checkAnswersSummary = checkAnswersSummary;
         this.applicantEmail = applicantEmail;

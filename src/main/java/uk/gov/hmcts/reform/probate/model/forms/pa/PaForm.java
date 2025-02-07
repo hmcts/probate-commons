@@ -1,12 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.forms.pa;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
@@ -29,7 +24,6 @@ import uk.gov.hmcts.reform.probate.model.forms.Registry;
 import uk.gov.hmcts.reform.probate.model.forms.ReviewResponse;
 import uk.gov.hmcts.reform.probate.model.forms.Will;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -57,11 +51,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
     private Will will;
 
     private Summary summary;
-
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-    private LocalDate applicationSubmittedDate;
 
     //submissionReference may need to be removed later on.
     private Long submissionReference;
@@ -96,8 +85,7 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   Declaration declaration, Registry registry,
                   CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
-                  InheritanceTax iht, Will will, Summary summary, Executors executors,
-                  LocalDate applicationSubmittedDate, Long submissionReference,
+                  InheritanceTax iht, Will will, Summary summary, Executors executors, Long submissionReference,
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
                   Language language, Equality equality, String documentsReceivedNotificationSent,
@@ -114,7 +102,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.will = will;
         this.summary = summary;
         this.executors = executors;
-        this.applicationSubmittedDate = applicationSubmittedDate;
         this.submissionReference = submissionReference;
         this.legalDeclaration = legalDeclaration;
         this.checkAnswersSummary = checkAnswersSummary;
