@@ -1,10 +1,10 @@
 plugins {
     id 'java'
-    id 'com.github.ben-manes.versions' version '0.51.0'
+    id 'com.github.ben-manes.versions' version '0.52.0'
     id 'java-library'
     id 'maven-publish'
     id 'jacoco'
-    id 'uk.gov.hmcts.java' version '0.12.63'
+    id 'uk.gov.hmcts.java' version '0.12.65'
 }
 
 group 'uk.gov.hmcts.reform.probate'
@@ -97,7 +97,7 @@ def versions = [
         apacheCommons     : '3.17.0',
         hibernateValidator: '8.0.2.Final',
         springfoxSwagger  : '3.0.0',
-        springBoot        : '3.4.1',
+        springBoot        : '3.4.2',
         commonsIo         : '2.18.0',
         openfeign         : '3.8.0'
 ]
@@ -114,13 +114,13 @@ dependencies {
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
     implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: versions.hibernateValidator
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
-    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
+    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.10.0'
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
     testImplementation group: 'jakarta.el', name: 'jakarta.el-api', version: '6.0.1'
     testImplementation group: 'org.glassfish', name: 'jakarta.el', version: '5.0.0-M1'
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.14.2'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.15.2'
 }
 
 wrapper {
