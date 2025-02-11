@@ -22,6 +22,7 @@ import uk.gov.hmcts.reform.probate.model.forms.Payment;
 import uk.gov.hmcts.reform.probate.model.forms.ProvideInformation;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
 import uk.gov.hmcts.reform.probate.model.forms.ReviewResponse;
+import uk.gov.hmcts.reform.probate.model.forms.pa.PaAssets;
 
 import java.util.List;
 import java.util.Map;
@@ -68,10 +69,12 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String informationNeededByPost;
 
+    private PaAssets assets;
+
     @Builder
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          Declaration declaration, Documents documents, Registry registry,
-                         CcdCase ccdCase, List<Payment> payments, Copies copies,
+                         CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
                          InheritanceTax iht, Fees fees, Payment payment, Map<String, Object> legalDeclaration,
                          Map<String, Object> checkAnswersSummary,
                          String applicantEmail, DocumentUpload statementOfTruthDocument, String caseType,
@@ -97,6 +100,7 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.expectedResponseDate = expectedResponseDate;
         this.informationNeeded = informationNeeded;
         this.informationNeededByPost = informationNeededByPost;
+        this.assets = assets;
     }
 
 }
