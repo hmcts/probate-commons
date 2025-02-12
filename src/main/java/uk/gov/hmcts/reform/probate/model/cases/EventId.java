@@ -18,6 +18,7 @@ public enum EventId {
     GOP_CREATE_CASE_WITHOUT_PAYMENT("createCaseWithoutPayment"),
     GOP_CITIZEN_HUB_RESPONSE("citizenHubResponse"),
     GOP_CITIZEN_HUB_RESPONSE_DRAFT("citizenHubResponseDraft"),
+    KEEP_DRAFT("keepDraft"),
 
     CAVEAT_APPLY_FOR_CAVEAT("applyForCaveat"),
     CAVEAT_EXPIRED_FOR_AWAITING_RESOLUTION("caveatExpiredForAwaitingCaveatResolution"),

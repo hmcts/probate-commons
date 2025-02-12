@@ -126,6 +126,7 @@ public class PaFormTest {
                 .ccdCase(CcdCase.builder()
                         .id(1551365512754035L)
                         .state("CaseCreated")
+                        .lastModifiedDate(LocalDate.of(2018, 1, 1))
                         .build())
                 .payments(Lists.newArrayList(
                         Payment.builder()
