@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.ADMON_WILL_GRANT_DRAFT_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.ADMON_WILL_GRANT_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.CAVEAT_EXTENSION_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.CITIZEN_HUB_UPLOAD_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.CORRESPONDENCE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.DEATH_CERTIFICATE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.DIGITAL_GRANT_DRAFT_NAME;
@@ -75,7 +76,10 @@ public enum DocumentType {
     UPLOADED_LEGAL_STATEMENT(UPLOADED_LEGAL_STATEMENT_NAME),
 
     @JsonProperty(CAVEAT_EXTENSION_NAME)
-    CAVEAT_EXTENSION(CAVEAT_EXTENSION_NAME);
+    CAVEAT_EXTENSION(CAVEAT_EXTENSION_NAME),
+
+    @JsonProperty(CITIZEN_HUB_UPLOAD_NAME)
+    CITIZEN_HUB_UPLOAD(CITIZEN_HUB_UPLOAD_NAME);
 
     private final String templateName;
 
@@ -108,12 +112,14 @@ public enum DocumentType {
         public static final String DEATH_CERTIFICATE_NAME = "deathCertificate";
 
         public static final String CORRESPONDENCE_NAME = "correspondence";
-        
+
         public static final String WILL_NAME = "will";
-        
+
         public static final String UPLOADED_LEGAL_STATEMENT_NAME = "uploadedLegalStatement";
 
         public static final String CAVEAT_EXTENSION_NAME = "caveatExtension";
+
+        public static final String CITIZEN_HUB_UPLOAD_NAME = "citizenHubUpload";
 
         private Constants() {
         }

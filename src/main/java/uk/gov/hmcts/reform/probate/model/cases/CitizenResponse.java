@@ -1,6 +1,5 @@
-package uk.gov.hmcts.reform.probate.model;
+package uk.gov.hmcts.reform.probate.model.cases;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -13,25 +12,16 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProbateDocumentLink {
-
-    @JsonProperty(value = "document_url")
-    private String documentUrl;
-
-    @JsonProperty(value = "document_binary_url")
-    private String documentBinaryUrl;
-
-    @JsonProperty(value = "document_filename")
-    private String documentFilename;
+public class CitizenResponse {
+    @JsonProperty(value = "citizenResponse")
+    private String response;
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @JsonProperty(value = "upload_timestamp")
-    private LocalDateTime uploadTimestamp;
-
+    @JsonProperty(value = "submittedDate")
+    private LocalDateTime submittedDate;
 }

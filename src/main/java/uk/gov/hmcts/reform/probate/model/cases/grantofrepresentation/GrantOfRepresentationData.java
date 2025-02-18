@@ -43,6 +43,7 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.ChangeOfRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.ChangeOrganisationRequest;
+import uk.gov.hmcts.reform.probate.model.cases.CitizenResponse;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.CombinedName;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
@@ -97,7 +98,6 @@ public class GrantOfRepresentationData extends CaseData {
     @Size(min = 2, groups = {IntestacyFieldCheck.class, PaFieldCheck.class})
     private String primaryApplicantEmailAddress;
 
-    @NotNull(groups = {PaSubmission.class, IntestacySubmission.class})
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
@@ -932,6 +932,34 @@ public class GrantOfRepresentationData extends CaseData {
     private List<CollectionMember<HandoffReason>> boHandoffReasonList;
 
     private List<CollectionMember<ModifiedOCRField>> modifiedOCRFieldList;
+
+    private String citizenResponse;
+
+    private String expectedResponseDate;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean citizenResponseCheckbox;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean documentUploadIssue;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean informationNeeded;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean informationNeededByPost;
+
+    private List<CollectionMember<UploadDocument>> citizenDocumentsUploaded;
+
+    private List<CollectionMember<CitizenResponse>> citizenResponses;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean isSaveAndClose;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 

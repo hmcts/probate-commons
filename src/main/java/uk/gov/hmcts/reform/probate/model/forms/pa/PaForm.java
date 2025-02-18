@@ -1,12 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.forms.pa;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
@@ -24,10 +19,11 @@ import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Language;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
+import uk.gov.hmcts.reform.probate.model.forms.ProvideInformation;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
+import uk.gov.hmcts.reform.probate.model.forms.ReviewResponse;
 import uk.gov.hmcts.reform.probate.model.forms.Will;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -56,11 +52,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private Summary summary;
 
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-    private LocalDate applicationSubmittedDate;
-
     //submissionReference may need to be removed later on.
     private Long submissionReference;
 
@@ -77,15 +68,29 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
 
     private String documentsReceivedNotificationSent;
 
+    @JsonProperty(value = "provideinformation")
+    private ProvideInformation provideinformation;
+
+    @JsonProperty(value = "reviewresponse")
+    private ReviewResponse reviewresponse;
+
+    private String expectedResponseDate;
+
+    private String informationNeeded;
+
+    private String informationNeededByPost;
+
+
     @Builder
     public PaForm(ProbateType type, String applicantEmail, PaDeceased deceased, PaApplicant applicant,
                   Declaration declaration, Registry registry,
                   CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
-                  InheritanceTax iht, Will will, Summary summary, Executors executors,
-                  LocalDate applicationSubmittedDate, Long submissionReference,
+                  InheritanceTax iht, Will will, Summary summary, Executors executors, Long submissionReference,
                   Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary, Payment payment,
                   Fees fees, Documents documents, DocumentUpload statementOfTruthDocument, String caseType,
                   Language language, Equality equality, String documentsReceivedNotificationSent,
+                  ProvideInformation provideinformation, ReviewResponse reviewresponse,
+                  String expectedResponseDate, String informationNeeded, String informationNeededByPost,
                   String eventDescription) {
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
@@ -97,7 +102,6 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.will = will;
         this.summary = summary;
         this.executors = executors;
-        this.applicationSubmittedDate = applicationSubmittedDate;
         this.submissionReference = submissionReference;
         this.legalDeclaration = legalDeclaration;
         this.checkAnswersSummary = checkAnswersSummary;
@@ -105,6 +109,11 @@ public class PaForm extends Form<PaDeceased, PaApplicant> {
         this.caseType = caseType;
         this.equality = equality;
         this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
+        this.provideinformation = provideinformation;
+        this.reviewresponse = reviewresponse;
+        this.expectedResponseDate = expectedResponseDate;
+        this.informationNeeded = informationNeeded;
+        this.informationNeededByPost = informationNeededByPost;
     }
 
 }
