@@ -41,7 +41,7 @@ To push the changes to your local repository execute the following command.
     ./gradlew publishToMavenLocal
 ```
 
-### Releasing
+### Releasing 
 Releases are created on [github](https://github.com/hmcts/probate-commons/releases/new) and are available on [jitpack](https://jitpack.io/#hmcts/probate-commons).
 
 To check on the build log on the version:
