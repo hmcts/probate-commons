@@ -22,7 +22,7 @@ jobs:
         count=1
         until [[ $count -gt 6 ]] || [[ $(cat ${PACKAGES_FILE} | wc -l | xargs ) -gt 1 ]] ; do
           echo "Attempt ${count}/6"
-          STATUS=$(curl -s -o ${PACKAGES_FILE} -w "%{http_code}" --max-time 900 ${PACKAGES_URL})
+          STATUS=$(curl -s -o packages.txt -w "%{http_code}" --max-time 900 ${PACKAGES_URL})
           
           let count+=1
           if [[ "${STATUS}" -gt 399 ]]; then
