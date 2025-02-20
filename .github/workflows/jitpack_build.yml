@@ -15,14 +15,14 @@ jobs:
     - name: Trigger Build in JitPack
       run: |
         echo "Triggering JitPack build"
-        PACKAGES_URL="https://jitpack.io/${GITHUB_REPOSITORY}/${GITHUB_REF#refs/tags/}"
+        PACKAGES_URL="https://jitpack.io/#${GITHUB_REPOSITORY}/${GITHUB_REF#refs/tags/}"
         PACKAGES_FILE="packages.txt"
         touch ${PACKAGES_FILE}
         # Try the URL 6 times before failing
         count=1
         until [[ $count -gt 6 ]] || [[ $(cat ${PACKAGES_FILE} | wc -l | xargs ) -gt 1 ]] ; do
           echo "Attempt ${count}/6"
-          STATUS=$(curl -s -o packages.txt -w "%{http_code}" --max-time 900 ${PACKAGES_URL})
+          STATUS=$(curl -s -o ${PACKAGES_FILE} -w "%{http_code}" --max-time 900 ${PACKAGES_URL})
           
           let count+=1
           if [[ "${STATUS}" -gt 399 ]]; then
