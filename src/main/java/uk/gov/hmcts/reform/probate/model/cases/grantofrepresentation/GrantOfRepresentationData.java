@@ -944,7 +944,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String expectedResponseDate;
 
-    private List<String> autoCaseWarnings;
+    private List<CollectionMember<String>> autoCaseWarnings;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
