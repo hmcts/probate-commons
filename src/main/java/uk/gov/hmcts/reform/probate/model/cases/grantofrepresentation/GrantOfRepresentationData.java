@@ -935,9 +935,13 @@ public class GrantOfRepresentationData extends CaseData {
 
     private List<CollectionMember<HandoffReason>> boHandoffReasonList;
 
+    private List<CollectionMember<ModifiedOCRField>> modifiedOCRFieldList;
+
     private String citizenResponse;
 
     private String expectedResponseDate;
+
+    private List<CollectionMember<String>> autoCaseWarnings;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
