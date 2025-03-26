@@ -114,7 +114,7 @@ dependencies {
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
     implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: versions.hibernateValidator
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
-    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.10.0'
+    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.10.1'
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
