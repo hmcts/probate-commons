@@ -108,7 +108,7 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
     implementation group: 'io.github.openfeign.form', name: 'feign-form', version: versions.openfeign
-    implementation group: 'com.google.guava', name: 'guava', version: '33.4.6-jre'
+    implementation group: 'com.google.guava', name: 'guava', version: '33.4.7-jre'
     annotationProcessor group:'org.projectlombok', name:'lombok', version: versions.lombok
 
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
