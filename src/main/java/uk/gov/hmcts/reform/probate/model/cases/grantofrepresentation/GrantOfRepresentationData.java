@@ -519,9 +519,14 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean executorsNamed;
 
+    @Deprecated
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean executorsAllAlive;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean anyExecutorsDied;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)

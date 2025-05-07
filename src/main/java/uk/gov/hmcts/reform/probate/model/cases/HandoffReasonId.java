@@ -15,7 +15,10 @@ import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.FIAT_WILL_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.FOREIGN_DOMICILE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.FOREIGN_WILL_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.HORIZON_SCHEME_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.INCAPACITY_RULE35_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.INFECTED_BLOOD_COMPENSATION_AUTHORITY_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.INFECTED_BLOOD_INTERIM_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.LEADING_FOLLOWING_GRANTS_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.LITERARY_ESTATE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.LOST_WILL_NAME;
@@ -27,6 +30,7 @@ import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.SPREADSHEET_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.TRUST_CORPORATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.WILL_CODICIL_NOTATED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.WINDRUSH_SCHEME_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.HandoffReasonId.Constants.WITNESS_INTERVIEW_NAME;
 
 
@@ -43,6 +47,10 @@ public enum HandoffReasonId {
     @JsonProperty(EXTENDED_INTESTACY_NAME) EXTENDED_INTESTACY(EXTENDED_INTESTACY_NAME),
     @JsonProperty(FIAT_WILL_NAME) FIAT_WILL(FIAT_WILL_NAME),
     @JsonProperty(FOREIGN_DOMICILE_NAME) FOREIGN_DOMICILE(FOREIGN_DOMICILE_NAME),
+    @JsonProperty(HORIZON_SCHEME_NAME) HORIZON_SCHEME(HORIZON_SCHEME_NAME),
+    @JsonProperty(INFECTED_BLOOD_COMPENSATION_AUTHORITY_NAME) INFECTED_BLOOD_COMPENSATION_AUTHORITY(
+            INFECTED_BLOOD_COMPENSATION_AUTHORITY_NAME),
+    @JsonProperty(INFECTED_BLOOD_INTERIM_NAME) INFECTED_BLOOD_INTERIM(INFECTED_BLOOD_INTERIM_NAME),
     @JsonProperty(INCAPACITY_RULE35_NAME) INCAPACITY_RULE35(INCAPACITY_RULE35_NAME),
     @JsonProperty(LEADING_FOLLOWING_GRANTS_NAME) LEADING_FOLLOWING_GRANTS(LEADING_FOLLOWING_GRANTS_NAME),
     @JsonProperty(LITERARY_ESTATE_NAME) LITERARY_ESTATE(LITERARY_ESTATE_NAME),
@@ -54,7 +62,8 @@ public enum HandoffReasonId {
     @JsonProperty(SPREADSHEET_NAME) SPREADSHEET(SPREADSHEET_NAME),
     @JsonProperty(TRUST_CORPORATION_NAME) TRUST_CORPORATION(TRUST_CORPORATION_NAME),
     @JsonProperty(WILL_CODICIL_NOTATED_NAME) WILL_CODICIL_NOTATED(WILL_CODICIL_NOTATED_NAME),
-    @JsonProperty(WITNESS_INTERVIEW_NAME) WITNESS_INTERVIEW(WITNESS_INTERVIEW_NAME);
+    @JsonProperty(WITNESS_INTERVIEW_NAME) WITNESS_INTERVIEW(WITNESS_INTERVIEW_NAME),
+    @JsonProperty(WINDRUSH_SCHEME_NAME) WINDRUSH_SCHEME(WINDRUSH_SCHEME_NAME);
 
     @Getter
     private final String code;
@@ -78,6 +87,9 @@ public enum HandoffReasonId {
         public static final String EXTENDED_INTESTACY_NAME = "ExtendedIntestacy";
         public static final String FIAT_WILL_NAME = "FiatWill";
         public static final String FOREIGN_DOMICILE_NAME = "ForeignDomicile";
+        public static final String HORIZON_SCHEME_NAME = "HorizonScheme";
+        public static final String INFECTED_BLOOD_COMPENSATION_AUTHORITY_NAME = "IBCA";
+        public static final String INFECTED_BLOOD_INTERIM_NAME = "IBIS";
         public static final String INCAPACITY_RULE35_NAME = "IncapacityRule35";
         public static final String LEADING_FOLLOWING_GRANTS_NAME = "LeadingFollowing Grants";
         public static final String LITERARY_ESTATE_NAME = "LiteraryEstate";
@@ -90,6 +102,7 @@ public enum HandoffReasonId {
         public static final String TRUST_CORPORATION_NAME = "TrustCorporation";
         public static final String WILL_CODICIL_NOTATED_NAME = "WillCodicilNotated";
         public static final String WITNESS_INTERVIEW_NAME = "WitnessInterview";
+        public static final String WINDRUSH_SCHEME_NAME = "WindrushScheme";
 
         private Constants() {
         }

@@ -93,12 +93,12 @@ publishing {
 
 def versions = [
         lombok            : '1.18.38',
-        jackson           : '2.18.3',
+        jackson           : '2.19.0',
         apacheCommons     : '3.17.0',
         hibernateValidator: '8.0.2.Final',
         springfoxSwagger  : '3.0.0',
-        springBoot        : '3.4.4',
-        commonsIo         : '2.18.0',
+        springBoot        : '3.4.5',
+        commonsIo         : '2.19.0',
         openfeign         : '3.8.0'
 ]
 
@@ -108,7 +108,7 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
     implementation group: 'io.github.openfeign.form', name: 'feign-form', version: versions.openfeign
-    implementation group: 'com.google.guava', name: 'guava', version: '33.4.7-jre'
+    implementation group: 'com.google.guava', name: 'guava', version: '33.4.8-jre'
     annotationProcessor group:'org.projectlombok', name:'lombok', version: versions.lombok
 
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
