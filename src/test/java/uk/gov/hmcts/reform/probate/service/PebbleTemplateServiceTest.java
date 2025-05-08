@@ -12,7 +12,6 @@ import org.mockito.MockitoAnnotations;
 import uk.gov.hmcts.reform.probate.exception.PebbleTemplateException;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.util.Locale;
 import java.util.Map;
 import java.util.SortedSet;

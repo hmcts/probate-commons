@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 public class PdfRenderServiceTest {
     PdfRenderService pdfRenderService = new PdfRenderService();
 
-    final static private String INPUT = "";
+    private static final String INPUT = "";
 
     @Test
     void shouldCallHtmlConverter() {
