@@ -99,7 +99,10 @@ def versions = [
         springfoxSwagger  : '3.0.0',
         springBoot        : '3.4.5',
         commonsIo         : '2.19.0',
-        openfeign         : '3.8.0'
+        openfeign         : '3.8.0',
+        pebble            : '3.2.4',
+        itextpdf          : '9.1.0',
+        itextpdf_html     : '6.1.0',
 ]
 
 dependencies {
@@ -116,11 +119,18 @@ dependencies {
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
     implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.10.1'
 
+    implementation group: 'com.itextpdf', name: 'html2pdf', version: versions.itextpdf_html
+    implementation group: 'com.itextpdf', name: 'itext-core', version: versions.itextpdf
+    implementation group: 'io.pebbletemplates', name: 'pebble', version: versions.pebble
+
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
     testImplementation group: 'jakarta.el', name: 'jakarta.el-api', version: '6.0.1'
     testImplementation group: 'org.glassfish', name: 'jakarta.el', version: '5.0.0-M1'
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.17.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 wrapper {
