@@ -9,7 +9,6 @@ import uk.gov.hmcts.reform.probate.exception.PebbleTemplateException;
 
 import java.io.IOException;
 import java.io.StringWriter;
-import java.io.Writer;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.Map;

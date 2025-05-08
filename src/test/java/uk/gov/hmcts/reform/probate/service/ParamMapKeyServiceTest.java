@@ -97,7 +97,7 @@ public class ParamMapKeyServiceTest {
     }
 
     @Test
-    void isNotRentrant_willAlwaysPushIdentity () {
+    void isNotRentrant_willAlwaysPushIdentity() {
         final Object o = new Object();
         final Integer oIdentity = System.identityHashCode(o);
 

@@ -52,8 +52,8 @@ public class PdfTemplateServiceTest {
 
         verify(pebbleTemplateService)
                 .applyTemplate(TEMPLATE_NAME, LOCALE, PARAMS);
-        verify(pdfRenderService).
-                renderHtml(templated);
+        verify(pdfRenderService)
+                .renderHtml(templated);
     }
 
 
