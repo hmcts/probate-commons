@@ -1,0 +1,177 @@
+{% macro address(adr) %}
+{% if adr != null %}
+{% if adr.AddressLine1 != null and adr.AddressLine1 != "" %}{{ adr.AddressLine1 }}, {% endif %}
+{% if adr.AddressLine2 != null and adr.AddressLine2 != "" %}{{ adr.AddressLine2 }}, {% endif %}
+{% if adr.AddressLine3 != null and adr.AddressLine3 != "" %}{{ adr.AddressLine3 }}, {% endif %}
+{% if adr.PostTown != null and adr.PostTown != "" %}{{ adr.PostTown }}, {% endif %}
+{% if adr.County != null and adr.County != "" %}{{ adr.County }}, {% endif %}
+{% if adr.PostCode != null and adr.PostCode != "" %}{{ adr.PostCode }}, {% endif %}
+{% if adr.Country != null and adr.Country != "" %}{{ adr.Country }}{% endif %}
+{% endif %}
+{% endmacro %}
+
+{% macro spacedAddress(adr) %}
+{% if adr != null %}
+{% if adr.AddressLine1 != null and adr.AddressLine1 != "" %} {{ adr.AddressLine1 }}{% endif %}
+{% if adr.AddressLine2 != null and adr.AddressLine2 != "" %} {{ adr.AddressLine2 }}{% endif %}
+{% if adr.AddressLine3 != null and adr.AddressLine3 != "" %} {{ adr.AddressLine3 }}{% endif %}
+{% if adr.PostTown != null and adr.PostTown != "" %} {{ adr.PostTown }}{% endif %}
+{% if adr.County != null and adr.County != "" %} {{ adr.County }}{% endif %}
+{% if adr.PostCode != null and adr.PostCode != "" %} {{ adr.PostCode }}{% endif %}
+{% if adr.Country != null and adr.Country != "" %} {{ adr.Country }}{% endif %} {% endif %}
+{% endmacro %}
+
+{% macro registryAddress(cd) %}
+{% if cd != null %}
+{% if cd.registryAddressLine1 != null and cd.registryAddressLine1 != "" %}{{ cd.registryAddressLine1 }}<br />{% endif %}
+{% if cd.registryAddressLine2 != null and cd.registryAddressLine2 != "" %}{{ cd.registryAddressLine2 }}<br />{% endif %}
+{% if cd.registryAddressLine3 != null and cd.registryAddressLine3 != "" %}{{ cd.registryAddressLine3 }}<br />{% endif %}
+{% if cd.registryAddressLine4 != null and cd.registryAddressLine4 != "" %}{{ cd.registryAddressLine4 }}<br />{% endif %}
+{% if cd.registryTown != null and cd.registryTown != "" %}{{ cd.registryTown }}<br />{% endif %}
+{% if cd.registryPostcode != null and cd.registryPostcode != "" %}{{ cd.registryPostcode }}<br />{% endif %}
+{% if cd.registryTelephone != null and cd.registryTelephone != "" %}{{ cd.registryTelephone }}{% endif %}
+{% endif %}
+{% endmacro %}
+
+{% macro executorAddress(executor) %}
+<strong>
+    <span class="camelCase">{{ spacedAddress(executor.value.applyingExecutorAddress) }}</span>
+</strong>
+{% endmacro %}
+
+{% macro primaryApplicantAddress(cd) %}
+<strong>
+    <span class="camelCase">{{ spacedAddress(cd.primaryApplicantAddress) }}</span>
+</strong>
+{% endmacro %}
+
+{% macro trustCorpAddress(cd) %}
+<strong>
+    <span class="camelCase">{{ spacedAddress(cd.trustCorpAddress) }}</span>
+</strong>
+{% endmacro %}
+
+{% macro deceasedNameAndAddress(cd) %}
+{% if cd.boDeceasedTitle != null and cd.boDeceasedTitle != "" %}{{ cd.boDeceasedTitle }}{% endif %} <strong>{{cd.deceasedForenames}} {{cd.deceasedSurname}}</strong> {% if cd.boDeceasedHonours != null and cd.boDeceasedHonours != "" %}{{ cd.boDeceasedHonours }}{% endif %}{% if cd.solsDeceasedAliasNamesList != null and cd.solsDeceasedAliasNamesList != "" %}{% for alias in cd.solsDeceasedAliasNamesList %}{% if loop.first %} otherwise {{alias.value.SolsAliasname}}{% else %}, {{alias.value.SolsAliasname}}{% endif %}{% endfor %}{% endif %} of  <strong>{{spacedAddress(cd.deceasedAddress)}}</strong><br />
+{% endmacro %}
+
+{% macro primaryApplicantNameAndAddress(cd) %}
+<strong>
+    <span style="text-transform: capitalize;">{{cd.primaryApplicantForenames}} {{cd.primaryApplicantSurname}}</span> </strong> of {{primaryApplicantAddress(cd)}}
+{% endmacro %}
+
+{% macro executorAnd(cd) %}
+<br/>
+<span>and </span>
+{% endmacro %}
+
+{% macro executor(cd, executor, addAnd) %}
+{% if addAnd == true %}
+    {{executorAnd(cd)}}
+{% endif %}
+<strong>
+    <span style="text-transform: capitalize;">
+        {% if cd.applicationType == "Personal" and cd.legalStatement != null and executor.value.applyingExecutorOtherNames != null and executor.value
+        .applyingExecutorOtherNames != ""%}{{executor.value.applyingExecutorOtherNames}}
+        {% elseif executor.value.applyingExecutorName != null and executor.value.applyingExecutorName != ""%}{{executor.value.applyingExecutorName}}{% else %}{{executor.value.applyingExecutorFirstName}} {{executor.value.applyingExecutorLastName}}{% endif %}
+    </span>
+</strong> of {{executorAddress(executor)}}
+{% endmacro %}
+
+{% macro diedOn(cd) %}
+{% if cd.dateOfDeathType == null %}
+Died on
+{% elseif cd.dateOfDeathType == "diedOnOrAbout" %}
+Died on or about
+{% elseif cd.dateOfDeathType == "presumedDiedOn" %}
+Presumed died on
+{% elseif cd.dateOfDeathType == "diedOnOrBefore" %}
+Died on or before
+{% elseif cd.dateOfDeathType == "diedOnOrSince" %}
+Died on or since
+{% elseif cd.dateOfDeathType == "diedOn" %}
+Died on
+{% endif %}
+{% endmacro %}
+
+{% macro domicilityCountry(cd) %}
+<strong>{{cd.deceasedDateOfDeathFormatted}}</strong> domiciled in <strong>{% if cd.domicilityCountry != null and cd.domicilityCountry != "" %}{{cd.domicilityCountry}}{% else %}England and Wales{% endif %}</strong>
+{% endmacro %}
+
+{% macro codicils(codicil) %}
+{% if codicil == 1 or codicil == "1" %} with one codicil
+{% elseif codicil == 2 or codicil == "2" %} with two codicils
+{% elseif codicil == 3 or codicil == "3" %} with three codicils
+{% elseif codicil == 4 or codicil == "4" %} with four codicils
+{% elseif codicil == 5 or codicil == "5" %} with five codicils
+{% endif %}
+{% endmacro %}
+
+{% macro lastWillAndTestamentParagraph(cd, applyingExecCounter) %}
+<p>The Last Will and Testament <strong>
+    {% if cd.boWillMessage != null and cd.boWillMessage != ""%}{{ cd.boWillMessage }}{% endif %}{% if cd.willHasCodicils == "Yes" %}{% if cd.codicilAddedDateList != null %}{{ codicils(cd.codicilAddedDateList|length) }}{% elseif cd.willNumberOfCodicils != null and cd.willNumberOfCodicils != "" %}{{ codicils(cd.willNumberOfCodicils) }}{% endif %}{% endif %}</strong> of <strong>{{ cd.deceasedForenames }} {{ cd.deceasedSurname }}</strong> (An official copy of which is available from the Court) was proved and registered before the High Court of Justice.
+    The Administration of <strong>{{ cd.deceasedForenames }} {{ cd.deceasedSurname }}</strong>'s estate is granted by this court to the following Executor{% if applyingExecCounter > 1 %}s{% endif %} </p>
+{% endmacro %}
+
+{% macro trustCorp(cd, primaryApplicantApplying) %}
+{% if primaryApplicantApplying == true %}
+    {{ executorAnd(cd) }}
+{% endif %}
+<strong>
+    <span style="text-transform: capitalize;">{{ cd.trustCorpName }}</span>
+</strong> of {{ trustCorpAddress(cd) }}
+{% endmacro %}
+
+{% macro applyingExecutors(cd, primaryApplicantApplying, isTc) %}
+    {% set addAnd = false %}
+    {% set atLeastOneExecAdded = false %}
+    {% for executor in cd.executorsApplying %}
+        {% if executor.value.applyingExecutorType != "TrustCorporation" %}
+            {% if atLeastOneExecAdded == true or primaryApplicantApplying == true or isTc == true %}
+                {% set addAnd = true %}
+            {% endif %}
+            {{ executor(cd, executor, addAnd) }}
+            {% set atLeastOneExecAdded = true %}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% macro powerReserved(cd, primaryApplicantApplying) %}
+<p>
+    {% set powerReservedCounter = 0 %}
+    {% if cd.executorsNotApplying != null %}
+        {% for executor in cd.executorsNotApplying %}
+            {% if executor.value.notApplyingExecutorReason == "PowerReserved" %}
+                {% set powerReservedCounter = powerReservedCounter + 1 %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if cd.titleAndClearingType == "TCTPartSuccPowerRes" or cd.titleAndClearingType == "TCTPartPowerRes" %}
+        {% set powerReservedCounter = powerReservedCounter + 1 %}
+        {% if cd.morePartnersHoldingPowerReserved == "Yes" %}
+            {% set powerReservedCounter = powerReservedCounter + 1 %}
+        {% endif %}
+    {% endif %}
+
+    {% if cd.primaryApplicantIsApplying == "No" and cd.solsPrimaryExecutorNotApplyingReason == "PowerReserved" %}
+        {% set powerReservedCounter = powerReservedCounter + 1 %}
+    {% endif %}
+
+    {% if powerReservedCounter == 1 %}Power reserved to another Executor<br/>
+    {% elseif powerReservedCounter > 1 %}Power reserved to other Executors<br/>
+    {% endif %}
+
+    {% if cd.boExecutorLimitation != null and cd.boExecutorLimitation != "" %}
+        {{ cd.boExecutorLimitation }}<br/>
+    {%endif %}
+
+    {% if cd.boAdminClauseLimitation != null and cd.boAdminClauseLimitation != "" %}
+        {{ cd.boAdminClauseLimitation}}<br/>
+    {% endif %}
+
+    {% if cd.boLimitationText != null and cd.boLimitationText != "" %}
+        {{ cd.boLimitationText }}
+    {% endif %}
+</p>
+{% endmacro %}
