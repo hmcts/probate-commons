@@ -7,7 +7,7 @@ plugins {
     id 'uk.gov.hmcts.java' version '0.12.66'
 }
 
-group 'uk.gov.hmcts.reform.probate'
+group 'com.github.hmcts'
 
 def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
 version buildNumber
