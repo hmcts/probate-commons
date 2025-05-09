@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.service;
+package uk.gov.hmcts.probate.commons.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

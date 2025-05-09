@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.service;
+package uk.gov.hmcts.probate.commons.service;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
