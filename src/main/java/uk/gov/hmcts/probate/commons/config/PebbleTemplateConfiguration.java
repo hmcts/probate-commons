@@ -13,6 +13,7 @@ public class PebbleTemplateConfiguration {
     @Bean
     public PebbleEngine pebbleEngine(Loader<?> pebbleLoader) {
         return new PebbleEngine.Builder()
+                .strictVariables(true)
                 .loader(pebbleLoader)
                 .build();
     }
