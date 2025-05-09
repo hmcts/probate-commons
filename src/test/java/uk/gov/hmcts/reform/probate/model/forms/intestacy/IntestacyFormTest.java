@@ -1,6 +1,9 @@
 package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import org.json.JSONException;
@@ -56,6 +59,9 @@ class IntestacyFormTest {
         formJsonFromFile = TestUtils.getJsonFromFile("intestacyForm.json");
 
         objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new Jdk8Module());
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
 
         intestacyForm = new IntestacyForm();
@@ -141,6 +147,8 @@ class IntestacyFormTest {
         ccdCase.setId(1535574519543819L);
         ccdCase.setState("CaseCreated");
         ccdCase.setLastModifiedDate(LocalDate.of(2018, 1, 1));
+        ccdCase.setLastModifiedDateTime(LocalDateTime.of(2018, 1, 1,
+                14, 30, 15, 123_000_000));
         intestacyForm.setCcdCase(ccdCase);
 
         Registry registry = new Registry();
