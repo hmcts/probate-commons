@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.config;
+package uk.gov.hmcts.probate.commons.config;
 
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.loader.ClasspathLoader;

@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.service;
+package uk.gov.hmcts.probate.commons.service;
 
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.error.PebbleException;

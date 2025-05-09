@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.probate.service;
+package uk.gov.hmcts.probate.commons.service;
 
 import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
