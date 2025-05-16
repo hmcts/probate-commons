@@ -1,6 +1,9 @@
 package uk.gov.hmcts.reform.probate.model.forms.pa;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.common.collect.Lists;
 import org.json.JSONException;
 import org.junit.jupiter.api.BeforeEach;
@@ -69,6 +72,10 @@ public class PaFormTest {
         formJsonFromFile = TestUtils.getJsonFromFile("paForm.json");
 
         objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new Jdk8Module());
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
 
         paForm = PaForm.builder()
@@ -126,6 +133,9 @@ public class PaFormTest {
                 .ccdCase(CcdCase.builder()
                         .id(1551365512754035L)
                         .state("CaseCreated")
+                        .lastModifiedDate(LocalDate.of(2018, 1, 1))
+                        .lastModifiedDateTime(LocalDateTime.of(2018, 1, 1,
+                                14, 30, 15, 123_000_000))
                         .build())
                 .payments(Lists.newArrayList(
                         Payment.builder()
