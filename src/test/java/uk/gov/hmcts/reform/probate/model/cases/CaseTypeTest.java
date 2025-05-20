@@ -9,17 +9,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CaseTypeTest {
+class CaseTypeTest {
 
     @Test
-    public void shouldGetCaseType() {
+    void shouldGetCaseType() {
         CaseData caseData = new GrantOfRepresentationData();
         CaseType caseType = CaseType.getCaseType(caseData);
         assertThat(caseType, is(CaseType.GRANT_OF_REPRESENTATION));
     }
 
     @Test
-    public void shouldThrowIllegalArgumentExceptionWhenCaseDataDoesNotHaveCaseType() {
+    void shouldThrowIllegalArgumentExceptionWhenCaseDataDoesNotHaveCaseType() {
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> {
             CaseData caseData = new RandomCaseData();
             CaseType.getCaseType(caseData);

@@ -1,6 +1,10 @@
 package uk.gov.hmcts.reform.probate.model.cases.grantofrepresentation;
 
 import com.google.common.collect.Lists;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uk.gov.hmcts.reform.probate.model.GrantOfRepresentationCreator;
@@ -11,15 +15,11 @@ import uk.gov.hmcts.reform.probate.model.validation.groups.nullcheck.PaNullCheck
 import uk.gov.hmcts.reform.probate.model.validation.groups.submission.PaSubmission;
 
 import java.util.Set;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
-public class GrantOfRepresentationPaSubmissionTest {
+class GrantOfRepresentationPaSubmissionTest {
 
     private static final Class[] PA_SUBMISSION =
         {PaNullCheck.class, PaFieldCheck.class, PaCrossFieldCheck.class, PaSubmission.class};
@@ -33,7 +33,7 @@ public class GrantOfRepresentationPaSubmissionTest {
     }
 
     @Test
-    public void shouldValidateGrantOfRepresentation() {
+    void shouldValidateGrantOfRepresentation() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
 
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_SUBMISSION);
@@ -42,19 +42,7 @@ public class GrantOfRepresentationPaSubmissionTest {
     }
 
     @Test
-    public void shouldFailWhenApplicationSubmittedIsNull() {
-        GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
-        caseData.setApplicationSubmittedDate(null);
-
-        Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_SUBMISSION);
-
-        assertThat(violations).hasSize(1)
-                .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
-                .containsExactlyInAnyOrder(tuple("applicationSubmittedDate", "must not be null"));
-    }
-
-    @Test
-    public void shouldFailWhenDeclarationCheckboxIsNull() {
+    void shouldFailWhenDeclarationCheckboxIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeclarationCheckbox(null);
 
@@ -66,7 +54,7 @@ public class GrantOfRepresentationPaSubmissionTest {
     }
 
     @Test
-    public void shouldFailWhenDeclarationCheckboxIsFalse() {
+    void shouldFailWhenDeclarationCheckboxIsFalse() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeclarationCheckbox(false);
 
@@ -78,7 +66,7 @@ public class GrantOfRepresentationPaSubmissionTest {
     }
 
     @Test
-    public void shouldFailWhenDeclarationInNull() {
+    void shouldFailWhenDeclarationInNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeclaration(null);
 
@@ -90,7 +78,7 @@ public class GrantOfRepresentationPaSubmissionTest {
     }
 
     @Test
-    public void shouldFailWhenDeclarationIsBlank() {
+    void shouldFailWhenDeclarationIsBlank() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setDeclaration(Declaration.builder().build());
 
@@ -112,7 +100,7 @@ public class GrantOfRepresentationPaSubmissionTest {
     }
 
     @Test
-    public void shouldFailWhenLegalStatementIsNull() {
+    void shouldFailWhenLegalStatementIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setLegalStatement(null);
 
@@ -124,7 +112,7 @@ public class GrantOfRepresentationPaSubmissionTest {
     }
 
     @Test
-    public void shouldFailWhenLegalStatementIsBlank() {
+    void shouldFailWhenLegalStatementIsBlank() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setLegalStatement(LegalStatement.builder().build());
 
@@ -141,7 +129,7 @@ public class GrantOfRepresentationPaSubmissionTest {
     }
 
     @Test
-    public void shouldFailWhenPaymentsIsNull() {
+    void shouldFailWhenPaymentsIsNull() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setPayments(null);
 
@@ -153,7 +141,7 @@ public class GrantOfRepresentationPaSubmissionTest {
     }
 
     @Test
-    public void shouldFailWhenPaymentsSizeIsZero() {
+    void shouldFailWhenPaymentsSizeIsZero() {
         GrantOfRepresentationData caseData = GrantOfRepresentationCreator.createProbateCase();
         caseData.setPayments(Lists.newArrayList());
 

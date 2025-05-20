@@ -6,10 +6,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class RegistryLocationTest {
+class RegistryLocationTest {
 
     @Test
-    public void shouldGetRegistryLocationByName() {
+    void shouldGetRegistryLocationByName() {
         RegistryLocation registryLocation;
 
         registryLocation = RegistryLocation.findRegistryLocationByName("birmingham");
@@ -23,7 +23,7 @@ public class RegistryLocationTest {
     }
 
     @Test
-    public void shouldThrowIllegalArgumentExceptionWhenRegistryLocationDoesNotExist() {
+    void shouldThrowIllegalArgumentExceptionWhenRegistryLocationDoesNotExist() {
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> {
             RegistryLocation registryLocation = RegistryLocation.findRegistryLocationByName("Birminghen");
         });

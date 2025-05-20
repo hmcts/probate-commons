@@ -22,7 +22,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class PaymentDtoTest {
+class PaymentDtoTest {
 
     private ObjectMapper objectMapper;
 
@@ -96,14 +96,14 @@ public class PaymentDtoTest {
     }
 
     @Test
-    public void shouldDeserializePaymentUpdateCorrectly() throws IOException {
+    void shouldDeserializePaymentUpdateCorrectly() throws IOException {
         PaymentDto paymentDtoData = objectMapper.readValue(jsonFromFile, PaymentDto.class);
 
         assertThat(paymentDto, is(equalTo(paymentDtoData)));
     }
 
     @Test
-    public void shouldSerializePaymentUpdateCorrectly() throws IOException, JSONException {
+    void shouldSerializePaymentUpdateCorrectly() throws IOException, JSONException {
         String json = objectMapper.writeValueAsString(paymentDto);
 
         JSONAssert.assertEquals(jsonSerializedVersionFromFile, json, true);

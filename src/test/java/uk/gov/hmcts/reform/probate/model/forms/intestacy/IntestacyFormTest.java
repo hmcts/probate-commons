@@ -1,6 +1,9 @@
 package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import org.json.JSONException;
@@ -28,6 +31,7 @@ import uk.gov.hmcts.reform.probate.model.forms.Registry;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,7 +46,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class IntestacyFormTest {
+class IntestacyFormTest {
 
     private ObjectMapper objectMapper;
 
@@ -55,6 +59,9 @@ public class IntestacyFormTest {
         formJsonFromFile = TestUtils.getJsonFromFile("intestacyForm.json");
 
         objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new Jdk8Module());
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
 
         intestacyForm = new IntestacyForm();
@@ -115,6 +122,7 @@ public class IntestacyFormTest {
         inheritanceTax.setNetValue(new BigDecimal("100000"));
         inheritanceTax.setGrossValue(new BigDecimal("100000"));
         inheritanceTax.setEstateValueCompleted(FALSE);
+        inheritanceTax.setCalcCheckCompleted(TRUE);
         inheritanceTax.setEstateGrossValue(new BigDecimal("400000"));
         inheritanceTax.setEstateNetValue(new BigDecimal("300000"));
         inheritanceTax.setEstateNetQualifyingValue(new BigDecimal("500000"));
@@ -123,6 +131,7 @@ public class IntestacyFormTest {
         inheritanceTax.setEstateNetQualifyingValueField("500,000");
         inheritanceTax.setDeceasedHadLateSpouseOrCivilPartner(TRUE);
         inheritanceTax.setUnusedAllowanceClaimed(FALSE);
+        inheritanceTax.setUniqueProbateCodeId("CTS04052311043tpps8e9");
 
         inheritanceTax.setIdentifier("GOT123456");
         inheritanceTax.setAssetsOutsideNetValue(new BigDecimal("100.50"));
@@ -137,6 +146,9 @@ public class IntestacyFormTest {
         CcdCase ccdCase = new CcdCase();
         ccdCase.setId(1535574519543819L);
         ccdCase.setState("CaseCreated");
+        ccdCase.setLastModifiedDate(LocalDate.of(2018, 1, 1));
+        ccdCase.setLastModifiedDateTime(LocalDateTime.of(2018, 1, 1,
+                14, 30, 15, 123_000_000));
         intestacyForm.setCcdCase(ccdCase);
 
         Registry registry = new Registry();
@@ -165,6 +177,8 @@ public class IntestacyFormTest {
         Equality equality = Equality.builder().pcqId("1001").build();
         intestacyForm.setEquality(equality);
         intestacyForm.setDocumentsReceivedNotificationSent("Yes");
+        intestacyForm.setInformationNeeded("Yes");
+        intestacyForm.setInformationNeededByPost("No");
     }
 
     private List<Map<String, Object>> getAddresses() {
@@ -195,14 +209,14 @@ public class IntestacyFormTest {
     }
 
     @Test
-    public void shouldDeserializeIntestacyFormCorrectly() throws IOException {
+    void shouldDeserializeIntestacyFormCorrectly() throws IOException {
         IntestacyForm form = objectMapper.readValue(formJsonFromFile, IntestacyForm.class);
 
         assertThat(form, is(equalTo(intestacyForm)));
     }
 
     @Test
-    public void shouldSerializeIntestacyFormCorrectly() throws IOException, JSONException {
+    void shouldSerializeIntestacyFormCorrectly() throws IOException, JSONException {
         String intestacyFormAsJsonStr = objectMapper.writeValueAsString(intestacyForm);
 
         JSONAssert.assertEquals(formJsonFromFile, intestacyFormAsJsonStr, true);

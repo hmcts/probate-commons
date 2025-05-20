@@ -1,5 +1,7 @@
 package uk.gov.hmcts.reform.probate.model.validation;
 
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
@@ -11,8 +13,6 @@ import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 
 import java.util.Collection;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class AssertExpressionValidator implements ConstraintValidator<AssertExpression, Object> {
 

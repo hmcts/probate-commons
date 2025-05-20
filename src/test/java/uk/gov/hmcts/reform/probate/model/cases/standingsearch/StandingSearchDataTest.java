@@ -16,7 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class StandingSearchDataTest {
+class StandingSearchDataTest {
 
     private ObjectMapper objectMapper;
 
@@ -33,14 +33,14 @@ public class StandingSearchDataTest {
     }
 
     @Test
-    public void shouldDeserializeStandingSearchDataCorrectly() throws IOException {
+    void shouldDeserializeStandingSearchDataCorrectly() throws IOException {
         CaseData caseData = objectMapper.readValue(jsonFromFile, CaseData.class);
 
         assertThat(standingSearchData, is(equalTo(caseData)));
     }
 
     @Test
-    public void shouldSerializeStandingSearchDataCorrectly() throws IOException, JSONException {
+    void shouldSerializeStandingSearchDataCorrectly() throws IOException, JSONException {
         String json = objectMapper.writeValueAsString(standingSearchData);
 
         JSONAssert.assertEquals(jsonFromFile, json, true);

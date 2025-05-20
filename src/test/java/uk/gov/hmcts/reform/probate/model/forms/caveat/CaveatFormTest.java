@@ -1,6 +1,9 @@
 package uk.gov.hmcts.reform.probate.model.forms.caveat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import org.json.JSONException;
@@ -22,6 +25,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY;
 import static com.fasterxml.jackson.databind.util.StdDateFormat.DATE_FORMAT_STR_ISO8601;
@@ -29,7 +33,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class CaveatFormTest {
+class CaveatFormTest {
 
     private ObjectMapper objectMapper;
 
@@ -42,6 +46,9 @@ public class CaveatFormTest {
         formJsonFromFile = TestUtils.getJsonFromFile("caveatForm.json");
 
         objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new Jdk8Module());
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
 
         caveatForm = new CaveatForm();
@@ -78,6 +85,9 @@ public class CaveatFormTest {
         CcdCase ccdCase = new CcdCase();
         ccdCase.setId(1535574519543819L);
         ccdCase.setState("CaseCreated");
+        ccdCase.setLastModifiedDate(LocalDate.of(2018, 1, 1));
+        ccdCase.setLastModifiedDateTime(LocalDateTime.of(2018, 1, 1,
+                14, 30, 15, 123_000_000));
         caveatForm.setCcdCase(ccdCase);
 
         caveatForm.setExpiryDate(LocalDate.of(2020, 2, 2));
@@ -87,6 +97,7 @@ public class CaveatFormTest {
         caveatForm.setRegistry(registry);
 
         Payment payment = new Payment();
+
         String dateStr = "2018-12-03T15:58:44.954+0000";
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_STR_ISO8601);
         payment.setDate(formatter.parse(dateStr));
@@ -104,7 +115,7 @@ public class CaveatFormTest {
     }
 
     @Test
-    public void shouldConstructWithEventDescription() {
+    void shouldConstructWithEventDescription() {
         CaveatForm caveatForm = new CaveatForm(ProbateType.CAVEAT, null, null,
             null, null, null, null,
             null, null, null, null,
@@ -114,14 +125,14 @@ public class CaveatFormTest {
     }
 
     @Test
-    public void shouldDeserializeCaveatFormCorrectly() throws IOException {
+    void shouldDeserializeCaveatFormCorrectly() throws IOException {
         Form form = objectMapper.readValue(formJsonFromFile, Form.class);
 
         assertThat(form, is(equalTo(caveatForm)));
     }
 
     @Test
-    public void shouldSerializeCaveatFormCorrectly() throws IOException, JSONException {
+    void shouldSerializeCaveatFormCorrectly() throws IOException, JSONException {
         String caveatFormAsJsonStr = objectMapper.writeValueAsString(caveatForm);
 
         JSONAssert.assertEquals(formJsonFromFile, caveatFormAsJsonStr, true);

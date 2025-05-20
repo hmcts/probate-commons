@@ -1,6 +1,9 @@
 package uk.gov.hmcts.reform.probate.model.forms.pa;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.common.collect.Lists;
 import org.json.JSONException;
 import org.junit.jupiter.api.BeforeEach;
@@ -57,6 +60,7 @@ public class PaFormTest {
     private static final String CODICILS_DAMAGE_CULPRIT_FIRST_NAME = "CodicilCulpritFirst";
     private static final String CODICILS_DAMAGE_CULPRIT_LAST_NAME = "CodicilCulpritLast";
     private static final String CODICILS_DAMAGE_DATE = "5/10/2021";
+    private static final String UNIQUE_PROBATE_CODE_ID = "CTS04052311043tpps8e9";
     public static final boolean TRUE = true;
 
     private ObjectMapper objectMapper;
@@ -68,6 +72,10 @@ public class PaFormTest {
         formJsonFromFile = TestUtils.getJsonFromFile("paForm.json");
 
         objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new Jdk8Module());
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
         objectMapper.disable(FAIL_ON_MISSING_EXTERNAL_TYPE_ID_PROPERTY);
 
         paForm = PaForm.builder()
@@ -78,8 +86,10 @@ public class PaFormTest {
                         .netValue(new BigDecimal("20000"))
                         .grossValue(new BigDecimal("20000"))
                         .estateValueCompleted(TRUE)
+                        .calcCheckCompleted(TRUE)
                         .ihtFormEstateId("IHT207")
                         .identifier("IHT1234567")
+                        .uniqueProbateCodeId(UNIQUE_PROBATE_CODE_ID)
                         .build())
                 .will(Will.builder()
                         .willHasVisibleDamage(TRUE)
@@ -123,6 +133,9 @@ public class PaFormTest {
                 .ccdCase(CcdCase.builder()
                         .id(1551365512754035L)
                         .state("CaseCreated")
+                        .lastModifiedDate(LocalDate.of(2018, 1, 1))
+                        .lastModifiedDateTime(LocalDateTime.of(2018, 1, 1,
+                                14, 30, 15, 123_000_000))
                         .build())
                 .payments(Lists.newArrayList(
                         Payment.builder()
@@ -246,18 +259,20 @@ public class PaFormTest {
                 .equality(Equality.builder()
                         .pcqId("1002").build())
                 .documentsReceivedNotificationSent("Yes")
+                .informationNeeded("Yes")
+                .informationNeededByPost("No")
                 .build();
     }
 
     @Test
-    public void shouldDeserializePaFormCorrectly() throws IOException {
+    void shouldDeserializePaFormCorrectly() throws IOException {
         Form form = objectMapper.readValue(formJsonFromFile, Form.class);
         boolean equals = form.getApplicant().equals(paForm.getApplicant());
         assertThat(form, is(equalTo(paForm)));
     }
 
     @Test
-    public void shouldSerializePaFormCorrectly() throws IOException, JSONException {
+    void shouldSerializePaFormCorrectly() throws IOException, JSONException {
         String paFormAsJsonStr = objectMapper.writeValueAsString(paForm);
         JSONAssert.assertEquals(formJsonFromFile, paFormAsJsonStr, TRUE);
     }

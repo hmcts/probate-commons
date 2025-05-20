@@ -13,11 +13,17 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.swagger.annotations.ApiModel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -37,10 +43,12 @@ import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.ChangeOfRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.ChangeOrganisationRequest;
+import uk.gov.hmcts.reform.probate.model.cases.CitizenResponse;
 import uk.gov.hmcts.reform.probate.model.cases.CollectionMember;
 import uk.gov.hmcts.reform.probate.model.cases.CombinedName;
 import uk.gov.hmcts.reform.probate.model.cases.DeathCertificate;
 import uk.gov.hmcts.reform.probate.model.cases.DocumentLink;
+import uk.gov.hmcts.reform.probate.model.cases.HandoffReason;
 import uk.gov.hmcts.reform.probate.model.cases.MaritalStatus;
 import uk.gov.hmcts.reform.probate.model.cases.OrganisationPolicy;
 import uk.gov.hmcts.reform.probate.model.cases.ProbateCalculatedFees;
@@ -66,13 +74,6 @@ import java.beans.Transient;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import javax.validation.Valid;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import static uk.gov.hmcts.reform.probate.model.YesNo.NO;
 import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
@@ -81,8 +82,7 @@ import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
 @ApiModel(value = "GrantOfRepresentationData", parent = CaseData.class)
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@SuperBuilder
 @EqualsAndHashCode(callSuper = false)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GrantOfRepresentationData extends CaseData {
@@ -98,7 +98,6 @@ public class GrantOfRepresentationData extends CaseData {
     @Size(min = 2, groups = {IntestacyFieldCheck.class, PaFieldCheck.class})
     private String primaryApplicantEmailAddress;
 
-    @NotNull(groups = {PaSubmission.class, IntestacySubmission.class})
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
@@ -166,6 +165,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedAnyOtherNames;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedAnyOtherNameOnWill;
 
     private List<CollectionMember<AliasName>> deceasedAliasNameList;
 
@@ -341,6 +344,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean ihtFormEstateValuesCompleted;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean calcCheckCompleted;
+
     private IhtFormEstate ihtFormEstate;
 
     @JsonSerialize(using = ToStringSerializer.class)
@@ -401,6 +408,10 @@ public class GrantOfRepresentationData extends CaseData {
     private Boolean primaryApplicantHasAlias;
 
     private String primaryApplicantAlias;
+
+    private String deceasedAliasFirstNameOnWill;
+
+    private String deceasedAliasLastNameOnWill;
 
     private AliasReason primaryApplicantAliasReason;
 
@@ -506,7 +517,16 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean executorsNamed;
+
+    @Deprecated
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean executorsAllAlive;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean anyExecutorsDied;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -519,6 +539,8 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean paperForm;
+
+    private String channelChoice;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -874,6 +896,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_TIME_FORMAT)
     private LocalDateTime moveToDormantDateTime;
 
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDateTime lastModifiedDateForDormant;
+
     private List<CollectionMember<ProbateDocument>> probateNotificationsGenerated;
 
     private List<CollectionMember<DeathRecord>> deathRecords;
@@ -896,6 +922,12 @@ public class GrantOfRepresentationData extends CaseData {
     private RemovedRepresentative removedRepresentative;
     private ChangeOrganisationRequest changeOrganisationRequestField;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean hmrcLetterId;
+
+    private String uniqueProbateCodeId;
+
     private String serviceRequestReference;
 
     private String paymentTaken;
@@ -909,6 +941,41 @@ public class GrantOfRepresentationData extends CaseData {
     private SolicitorWillType solsWillType;
 
     private String solsWillTypeReason;
+
+    private List<CollectionMember<HandoffReason>> boHandoffReasonList;
+
+    private String citizenResponse;
+
+    private String expectedResponseDate;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean citizenResponseCheckbox;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean documentUploadIssue;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean informationNeeded;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean informationNeededByPost;
+
+    private List<CollectionMember<UploadDocument>> citizenDocumentsUploaded;
+
+    private List<CollectionMember<CitizenResponse>> citizenResponses;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean isSaveAndClose;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    private LocalDate firstStopReminderSentDate;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 

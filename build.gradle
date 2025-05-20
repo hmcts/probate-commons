@@ -1,29 +1,20 @@
 plugins {
     id 'java'
-    id 'checkstyle'
-    id 'com.github.ben-manes.versions' version '0.20.0'
+    id 'com.github.ben-manes.versions' version '0.52.0'
     id 'java-library'
     id 'maven-publish'
-    // id 'pmd'
     id 'jacoco'
+    id 'uk.gov.hmcts.java' version '0.12.66'
 }
-
-
-def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: getCurrentGitBranch()
 
 group 'uk.gov.hmcts.reform.probate'
-// Do not change this version number
+
+def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
 version buildNumber
-
-
-checkstyle {
-    maxWarnings = 0
-    toolVersion = '8.5'
-}
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -73,12 +64,12 @@ def pomConfig = {
 
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
+    archiveClassifier.set('sources')
     from sourceSets.main.allSource
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier.set('javadoc')
     from javadoc.destinationDir
 }
 
@@ -101,14 +92,17 @@ publishing {
 }
 
 def versions = [
-        lombok            : '1.18.26',
-        jackson           : '2.14.2',
-        apacheCommons     : '3.8.1',
-        hibernateValidator: '6.0.13.Final',
-        springfoxSwagger  : '2.9.2',
-        springBoot        : '2.6.6',
-        commonsIo         : '2.11.0',
-        openfeign         : '3.8.0'
+        lombok            : '1.18.38',
+        jackson           : '2.19.0',
+        apacheCommons     : '3.17.0',
+        hibernateValidator: '8.0.2.Final',
+        springfoxSwagger  : '3.0.0',
+        springBoot        : '3.4.5',
+        commonsIo         : '2.19.0',
+        openfeign         : '3.8.0',
+        pebble            : '3.2.4',
+        itextpdf          : '9.1.0',
+        itextpdf_html     : '6.1.0',
 ]
 
 dependencies {
@@ -117,21 +111,26 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
     implementation group: 'io.github.openfeign.form', name: 'feign-form', version: versions.openfeign
+    implementation group: 'com.google.guava', name: 'guava', version: '33.4.8-jre'
     annotationProcessor group:'org.projectlombok', name:'lombok', version: versions.lombok
 
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
     implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: versions.hibernateValidator
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
-    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.10.1'
+
+    implementation group: 'com.itextpdf', name: 'html2pdf', version: versions.itextpdf_html
+    implementation group: 'com.itextpdf', name: 'itext-core', version: versions.itextpdf
+    implementation group: 'io.pebbletemplates', name: 'pebble', version: versions.pebble
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
-    testImplementation group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
-    testImplementation group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
+    testImplementation group: 'jakarta.el', name: 'jakarta.el-api', version: '6.0.1'
+    testImplementation group: 'org.glassfish', name: 'jakarta.el', version: '5.0.0-M1'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.17.0'
 
-    testImplementation('org.mockito:mockito-core:2.7.22')
-
-
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 wrapper {
@@ -148,18 +147,4 @@ test {
 
 jar {
     enabled = true
-}
-
-def getCurrentGitBranch() {
-    def gitBranch = "DEV-SNAPSHOT"
-    try {
-        def workingDir = new File("${project.projectDir}")
-        def result = 'git rev-parse --abbrev-ref HEAD'.execute(null, workingDir)
-        result.waitFor()
-        if (result.exitValue() == 0) {
-            gitBranch = result.text.trim()
-        }
-    } catch (e) {
-    }
-    return gitBranch
 }

@@ -1,12 +1,8 @@
 package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,12 +19,13 @@ import uk.gov.hmcts.reform.probate.model.forms.Form;
 import uk.gov.hmcts.reform.probate.model.forms.InheritanceTax;
 import uk.gov.hmcts.reform.probate.model.forms.Language;
 import uk.gov.hmcts.reform.probate.model.forms.Payment;
+import uk.gov.hmcts.reform.probate.model.forms.ProvideInformation;
 import uk.gov.hmcts.reform.probate.model.forms.Registry;
+import uk.gov.hmcts.reform.probate.model.forms.ReviewResponse;
+import uk.gov.hmcts.reform.probate.model.forms.pa.PaAssets;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -49,11 +46,6 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private InheritanceTax iht;
 
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-    private LocalDate applicationSubmittedDate;
-
     private Map<String, Object> legalDeclaration;
 
     private Map<String, Object> checkAnswersSummary;
@@ -65,14 +57,30 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String documentsReceivedNotificationSent;
 
+    @JsonProperty(value = "provideinformation")
+    private ProvideInformation provideinformation;
+
+    @JsonProperty(value = "reviewresponse")
+    private ReviewResponse reviewresponse;
+
+    private String expectedResponseDate;
+
+    private String informationNeeded;
+
+    private String informationNeededByPost;
+
+    private PaAssets assets;
+
     @Builder
     public IntestacyForm(ProbateType type, IntestacyDeceased deceased, IntestacyApplicant applicant,
                          Declaration declaration, Documents documents, Registry registry,
-                         CcdCase ccdCase, List<Payment> payments, Copies copies,
-                         InheritanceTax iht, Fees fees, Payment payment, LocalDate applicationSubmittedDate,
-                         Map<String, Object> legalDeclaration, Map<String, Object> checkAnswersSummary,
+                         CcdCase ccdCase, List<Payment> payments, Copies copies, PaAssets assets,
+                         InheritanceTax iht, Fees fees, Payment payment, Map<String, Object> legalDeclaration,
+                         Map<String, Object> checkAnswersSummary,
                          String applicantEmail, DocumentUpload statementOfTruthDocument, String caseType,
                          Language language, Equality equality, String documentsReceivedNotificationSent,
+                         ProvideInformation provideinformation, ReviewResponse reviewresponse,
+                         String expectedResponseDate, String informationNeeded, String informationNeededByPost,
                          String eventDescription) {
 
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
@@ -80,7 +88,6 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.declaration = declaration;
         this.documents = documents;
         this.iht = iht;
-        this.applicationSubmittedDate = applicationSubmittedDate;
         this.legalDeclaration = legalDeclaration;
         this.checkAnswersSummary = checkAnswersSummary;
         this.applicantEmail = applicantEmail;
@@ -88,6 +95,12 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.caseType = caseType;
         this.equality = equality;
         this.documentsReceivedNotificationSent = documentsReceivedNotificationSent;
+        this.provideinformation = provideinformation;
+        this.reviewresponse = reviewresponse;
+        this.expectedResponseDate = expectedResponseDate;
+        this.informationNeeded = informationNeeded;
+        this.informationNeededByPost = informationNeededByPost;
+        this.assets = assets;
     }
 
 }

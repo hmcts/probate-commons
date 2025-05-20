@@ -16,7 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class WillLodgementDataTest {
+class WillLodgementDataTest {
 
     private ObjectMapper objectMapper;
 
@@ -33,14 +33,14 @@ public class WillLodgementDataTest {
     }
 
     @Test
-    public void shouldDeserializeWillLodgementDataCorrectly() throws IOException {
+    void shouldDeserializeWillLodgementDataCorrectly() throws IOException {
         CaseData caseData = objectMapper.readValue(jsonFromFile, CaseData.class);
 
         assertThat(willLodgementData, is(equalTo(caseData)));
     }
 
     @Test
-    public void shouldSerializeWillLodgementDataCorrectly() throws IOException, JSONException {
+    void shouldSerializeWillLodgementDataCorrectly() throws IOException, JSONException {
         String json = objectMapper.writeValueAsString(willLodgementData);
 
         System.out.println(json);

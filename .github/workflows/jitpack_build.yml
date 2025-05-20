@@ -2,7 +2,7 @@ name: Trigger JitPack Build
 
 on:
   push:
-    tags: 
+    tags:
       - '*'
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Trigger Build in JitPack
       run: |
         echo "Triggering JitPack build"
@@ -21,7 +21,7 @@ jobs:
         touch ${PACKAGES_FILE}
         # Try the URL 6 times before failing
         count=1
-        until [[ $count -gt 6 ]] || grep -q build.log ${PACKAGES_FILE} ; do
+        until [[ $count -gt 6 ]] || [[ $(cat ${PACKAGES_FILE} | wc -l | xargs ) -gt 1 ]] ; do
           echo "Attempt ${count}/6"
           STATUS=$(curl -s -o packages.txt -w "%{http_code}" --max-time 900 ${PACKAGES_URL})
           

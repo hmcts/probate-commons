@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(SpringExtension.class)
-public class BigDecimalDeserializerTest {
+class BigDecimalDeserializerTest {
 
     BigDecimalDeserializer bigDecimalDeserializer = new BigDecimalDeserializer();
     @Mock
@@ -26,7 +26,7 @@ public class BigDecimalDeserializerTest {
     DeserializationContext mockDeserializarionContext;
 
     @Test
-    public void shouldDeserializeBigDecimal() throws IOException {
+    void shouldDeserializeBigDecimal() throws IOException {
         Mockito.when(mockJsonParser.getCurrentToken()).thenReturn(JsonToken.VALUE_STRING);
         Mockito.when(mockJsonParser.getText()).thenReturn("£100,000.00");
         BigDecimal result = bigDecimalDeserializer.deserialize(mockJsonParser, mockDeserializarionContext);
@@ -35,7 +35,7 @@ public class BigDecimalDeserializerTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenInvalidText() throws IOException {
+    void shouldThrowExceptionWhenInvalidText() throws IOException {
         Mockito.when(mockJsonParser.getCurrentToken()).thenReturn(JsonToken.VALUE_STRING);
         Mockito.when(mockJsonParser.getText()).thenReturn("$r100,000.00");
         assertThrows(IllegalArgumentException.class, () -> {
