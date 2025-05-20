@@ -1,0 +1,102 @@
+@page {
+    size: 21cm 29.7cm;
+    margin: 10mm 20mm 50mm 20mm;
+}
+
+body {
+    font-family: "Arial";
+}
+
+.table-content {
+    display: block;
+    padding-top: 8px;
+}
+
+.text-header {
+    font-size: 13pt;
+    text-align: center;
+}
+
+.text-rightAligned {
+    font-size: 11pt;
+    text-align: right;
+}
+
+.text-leftAligned {
+    font-size: 11pt;
+    text-align: left;
+}
+
+.text-centerAligned {
+    font-size: 11pt;
+    text-align: center;
+}
+
+.camelCase {
+    text-transform: capitalize;
+}
+
+.upperCase {
+    text-transform: uppercase;
+}
+
+.circle {
+    border-radius: 50%;
+    border: 1px solid black;
+    height: 200px;
+    width: 200px;
+    float: right;
+}
+
+#watermark {
+    height: 600px;
+    width: 600px;
+    background-position: center;
+    z-index: -1;
+    position: absolute;
+    overflow: hidden;
+    top: 30%;
+    text-align: left;
+    color: #ff8080;
+    margin-left: 50px;
+}
+
+.center {
+    display: block;
+    margin: 0 auto;
+    height: 140px;
+    width: 200px;
+    page-break-inside: avoid;
+}
+
+.line-top{
+    width: 700px;
+    height: 0px;
+    border-bottom: 1px solid black;
+    position: absolute;
+}
+
+.line-bottom{
+    width: 700px;
+    height: 0px;
+    border-bottom: 1px solid black;
+    position: absolute;
+}
+
+.image{
+    display: block;
+    margin-left: 0px;
+    height: 30mm;
+    width: 36mm;
+    page-break-inside: avoid;
+}
+
+
+.seal{
+    display: block;
+    margin-right: 0px;
+    float: right;
+    height: 30mm;
+    width: 30mm;
+    page-break-inside: avoid;
+}
