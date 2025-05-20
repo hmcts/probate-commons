@@ -1,5 +1,4 @@
 # Probate Commons
-[![](https://jitpack.io/v/hmcts/probate-commons.svg)](https://jitpack.io/#hmcts/probate-commons)
 [![](https://github.com/hmcts/probate-commons/actions/workflows/gradle.yml/badge.svg)](https://github.com/hmcts/probate-commons/actions/workflows/gradle.yml)
 
 This is a library for creating and using shared DTOs across microservices in probate.
@@ -42,10 +41,7 @@ To push the changes to your local repository execute the following command.
 ```
 
 ### Releasing
-Releases are created on [github](https://github.com/hmcts/probate-commons/releases/new) and are available on [jitpack](https://jitpack.io/#hmcts/probate-commons).
-
-To check on the build log on the version:
-https://jitpack.io/com/github/hmcts/probate-commons/{version}/build.log
+Releases are created on [github](https://github.com/hmcts/probate-commons/releases/new) and are internally available through azure artifacts [hmcts-lib](https://dev.azure.com/hmcts/Artifacts/_artifacts/feed/hmcts-lib) feed
 
 ## License
 
