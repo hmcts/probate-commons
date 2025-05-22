@@ -1,0 +1,148 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+    id 'com.github.ben-manes.versions' version '0.52.0'
+    id 'java-library'
+    id 'maven-publish'
+    // id 'pmd'
+    id 'jacoco'
+    id 'uk.gov.hmcts.java' version '0.12.66'
+}
+
+
+def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: getCurrentGitBranch()
+
+group 'com.github.hmcts'
+// Do not change this version number
+version buildNumber
+
+
+checkstyle {
+    maxWarnings = 0
+    toolVersion = '8.5'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << '-parameters' << '-Xlint:deprecation'
+}
+
+compileTestJava {
+    options.compilerArgs << '-Xlint:deprecation'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': project.name, 'Implementation-Version': project.version
+    }
+}
+
+task printVersion {
+    doLast {
+        print project.version
+    }
+}
+
+def pomConfig = {
+    licenses {
+        license {
+            name "MIT License"
+            url "http://www.opensource.org/licenses/mit-license.php"
+            distribution "repo"
+        }
+    }
+
+    scm {
+        url "https://github.com/hmcts/probate-pact-commons"
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    archiveClassifier.set('sources')
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    archiveClassifier.set('javadoc')
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+publishing {
+    publications {
+        Main(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId project.group
+            artifactId 'probate-pact-commons'
+            version project.version
+        }
+    }
+    repositories {
+        maven {
+            name = "AzureArtifacts"
+            url = uri("https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1")
+            credentials {
+                username = System.getenv("AZURE_DEVOPS_ARTIFACT_USERNAME")
+                password = System.getenv("AZURE_DEVOPS_ARTIFACT_TOKEN")
+            }
+        }
+    }
+}
+
+def versions = [
+        lombok            : '1.18.38',
+        jackson           : '2.19.0',
+        pact_version      : '4.1.43'
+]
+
+dependencies {
+    implementation group: 'org.projectlombok', name: 'lombok', version: versions.lombok
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: versions.jackson
+    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
+    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: versions.lombok
+    implementation group: 'au.com.dius.pact.consumer', name: 'java8', version: versions.pact_version
+
+}
+
+test {
+    useJUnit()
+    testLogging {
+        events "skipped", "failed"
+    }
+}
+
+jar {
+    enabled = true
+}
+
+def getCurrentGitBranch() {
+    def gitBranch = "DEV-SNAPSHOT"
+    try {
+        def workingDir = new File("${project.projectDir}")
+        def result = 'git rev-parse --abbrev-ref HEAD'.execute(null, workingDir)
+        result.waitFor()
+        if (result.exitValue() == 0) {
+            gitBranch = result.text.trim()
+        }
+    } catch (e) {
+    }
+    return gitBranch
+}
