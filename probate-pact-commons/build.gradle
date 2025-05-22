@@ -10,7 +10,7 @@ plugins {
 }
 
 
-def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: getCurrentGitBranch()
+def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
 
 group 'com.github.hmcts'
 // Do not change this version number
