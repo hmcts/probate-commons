@@ -912,7 +912,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean dormantNotificationSent;
+    private Boolean skipReactivateDormant;
 
     private List<CollectionMember<RegistrarDirection>> registrarDirections;
     private RegistrarDirection registrarDirectionToAdd;
