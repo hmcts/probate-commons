@@ -63,7 +63,7 @@ def pomConfig = {
     }
 
     scm {
-        url "https://github.com/hmcts/probate-pact-commons"
+        url "https://github.com/hmcts/probate-commons"
     }
 }
 
@@ -106,9 +106,9 @@ publishing {
 }
 
 def versions = [
-        lombok            : '1.18.38',
-        jackson           : '2.19.0',
-        pact_version      : '4.1.43'
+        lombok            : '1.18.12',
+        jackson           : '2.9.7',
+        pact_version      : '4.1.0'
 ]
 
 dependencies {
@@ -118,7 +118,7 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
     compileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: versions.lombok
-    implementation group: 'au.com.dius.pact.consumer', name: 'java8', version: versions.pact_version
+    implementation group: 'au.com.dius.pact', name: 'consumer', version: versions.pact_version
 
 }
 
