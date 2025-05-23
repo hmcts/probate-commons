@@ -119,7 +119,7 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
     compileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: versions.lombok
-    implementation group: 'au.com.dius.pact', name: 'consumer', version: versions.pact_version
+    implementation group: 'au.com.dius.pact.consumer', name: 'java8', version: versions.pact_version
 
 }
 
