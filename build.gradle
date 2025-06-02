@@ -105,7 +105,7 @@ def versions = [
         lombok            : '1.18.38',
         jackson           : '2.19.0',
         apacheCommons     : '3.17.0',
-        hibernateValidator: '8.0.2.Final',
+        hibernateValidator: '9.0.0.Final',
         springfoxSwagger  : '3.0.0',
         springBoot        : '3.4.5',
         commonsIo         : '2.19.0',
