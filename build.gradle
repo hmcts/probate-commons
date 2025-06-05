@@ -139,7 +139,7 @@ dependencies {
     testImplementation group: 'org.glassfish', name: 'jakarta.el', version: '5.0.0-M1'
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.17.0'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.13.0'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
