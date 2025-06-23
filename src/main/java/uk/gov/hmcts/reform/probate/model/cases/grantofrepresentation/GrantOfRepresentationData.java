@@ -944,6 +944,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String expectedResponseDate;
 
+    private List<CollectionMember<String>> autoCaseWarnings;
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean citizenResponseCheckbox;
@@ -972,6 +974,8 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     private LocalDate firstStopReminderSentDate;
+
+    private List<CollectionMember<ModifiedOCRField>> modifiedOCRFieldList;
 
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
