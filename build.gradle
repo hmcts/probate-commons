@@ -110,7 +110,7 @@ def versions = [
         springBoot        : '3.5.3',
         commonsIo         : '2.19.0',
         openfeign         : '3.8.0',
-        pebble            : '3.2.4',
+        pebble            : '2.6.0',
         itextpdf          : '9.1.0',
         itextpdf_html     : '6.1.0',
 ]
