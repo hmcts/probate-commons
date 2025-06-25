@@ -23,6 +23,7 @@ public class PebbleTemplateConfiguration {
         final ClasspathLoader classpathLoader = new ClasspathLoader();
         classpathLoader.setCharset(StandardCharsets.UTF_8.name());
         classpathLoader.setSuffix(".peb");
+        classpathLoader.setPrefix("templates/pdf_generation/");
         return classpathLoader;
     }
 }
