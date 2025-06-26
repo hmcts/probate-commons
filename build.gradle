@@ -110,7 +110,7 @@ def versions = [
         springBoot        : '3.5.3',
         commonsIo         : '2.19.0',
         openfeign         : '3.8.0',
-        pebble            : '2.6.2',
+        pebble            : '2.4.0',
         itextpdf          : '9.1.0',
         itextpdf_html     : '6.1.0',
 ]
@@ -131,7 +131,7 @@ dependencies {
 
     implementation group: 'com.itextpdf', name: 'html2pdf', version: versions.itextpdf_html
     implementation group: 'com.itextpdf', name: 'itext-core', version: versions.itextpdf
-    implementation group: 'io.pebbletemplates', name: 'pebble', version: versions.pebble
+    implementation group: 'com.mitchellbosecke', name: 'pebble', version: versions.pebble
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
