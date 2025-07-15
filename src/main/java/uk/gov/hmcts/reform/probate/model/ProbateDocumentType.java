@@ -3,11 +3,29 @@ package uk.gov.hmcts.reform.probate.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Getter
 public enum ProbateDocumentType {
 
+    @JsonProperty("legalStatementAdmon")
+    LEGAL_STATEMENT_ADMON("legalStatementAdmon"),
+
+    @JsonProperty("legalStatementProbate")
+    LEGAL_STATEMENT_PROBATE("legalStatementProbate"),
+
+    @JsonProperty("legalStatementGrantOfProbate")
+    LEGAL_STATEMENT_PROBATE_TRUST_CORPS("legalStatementGrantOfProbate"),
+
+    @JsonProperty("legalStatementIntestacy")
+    LEGAL_STATEMENT_INTESTACY("legalStatementIntestacy"),
+
     @JsonProperty("legalStatement")
     LEGAL_STATEMENT("legalStatement"),
+
+    @JsonProperty("uploadedLegalStatement")
+    UPLOADED_LEGAL_STATEMENT("uploadedLegalStatement"),
 
     @JsonProperty("digitalGrant")
     DIGITAL_GRANT("digitalGrant"),
@@ -27,6 +45,12 @@ public enum ProbateDocumentType {
     @JsonProperty("willLodgementDepositReceipt")
     WILL_LODGEMENT_DEPOSIT_RECEIPT("willLodgementDepositReceipt"),
 
+    @JsonProperty("will")
+    WILL("will"),
+
+    @JsonProperty("citizenHubUpload")
+    CITIZEN_HUB_UPLOAD("citizenHubUpload"),
+
     @JsonProperty("intestacyGrant")
     INTESTACY_GRANT("intestacyGrant"),
 
@@ -38,6 +62,12 @@ public enum ProbateDocumentType {
 
     @JsonProperty("admonWillGrantDraft")
     ADMON_WILL_GRANT_DRAFT("admonWillGrantDraft"),
+
+    @JsonProperty("adColligendaBonaGrant")
+    AD_COLLIGENDA_BONA_GRANT("adColligendaBonaGrant"),
+
+    @JsonProperty("adColligendaBonaGrantDraft")
+    AD_COLLIGENDA_BONA_GRANT_DRAFT("adColligendaBonaGrantDraft"),
 
     @JsonProperty("sentEmail")
     SENT_EMAIL("sentEmail"),
@@ -60,11 +90,17 @@ public enum ProbateDocumentType {
     @JsonProperty("correspondence")
     CORRESPONDENCE("correspondence"),
 
+    @JsonProperty("caveatExtension")
+    CAVEAT_EXTENSION("caveatExtension"),
+
     @JsonProperty("caveatCoversheet")
     CAVEAT_COVERSHEET("caveatCoversheet"),
 
     @JsonProperty("caveatRaised")
     CAVEAT_RAISED("caveatRaised"),
+
+    @JsonProperty("caveatStopped")
+    CAVEAT_STOPPED("caveatStopped"),
 
     @JsonProperty("caveatExtended")
     CAVEAT_EXTENDED("caveatExtended"),
@@ -72,32 +108,14 @@ public enum ProbateDocumentType {
     @JsonProperty("caveatWithdrawn")
     CAVEAT_WITHDRAWN("caveatWithdrawn"),
 
-    @JsonProperty("legalStatementAdmon")
-    LEGAL_STATEMENT_ADMON("legalStatementAdmon"),
-
-    @JsonProperty("legalStatementProbate")
-    LEGAL_STATEMENT_PROBATE("legalStatementProbate"),
-
-    @JsonProperty("legalStatementGrantOfProbate")
-    LEGAL_STATEMENT_GRANT_OF_PROBATE("legalStatementGrantOfProbate"),
-
-    @JsonProperty("legalStatementIntestacy")
-    LEGAL_STATEMENT_INTESTACY("legalStatementIntestacy"),
-
-    @JsonProperty("adColligendaBonaGrant")
-    AD_COLLIGENDA_BONA_GRANT("adColligendaBonaGrant"),
-
-    @JsonProperty("adColligendaBonaGrantDraft")
-    AD_COLLIGENDA_BONA_GRANT_DRAFT("adColligendaBonaGrantDraft"),
-
-    @JsonProperty("caveatStopped")
-    CAVEAT_STOPPED("caveatStopped"),
-
-    @JsonProperty("grantCoversheet")
-    GRANT_COVERSHEET("grantCoversheet"),
+    @JsonProperty("cherished")
+    CHERISHED("cherished"),
 
     @JsonProperty("grantRaised")
     GRANT_RAISED("grantRaised"),
+
+    @JsonProperty("grantCoversheet")
+    GRANT_COVERSHEET("grantCoversheet"),
 
     @JsonProperty("digitalGrantReissueDraft")
     DIGITAL_GRANT_REISSUE_DRAFT("digitalGrantReissueDraft"),
@@ -123,29 +141,44 @@ public enum ProbateDocumentType {
     @JsonProperty("adColligendaBonaGrantReissue")
     AD_COLLIGENDA_BONA_GRANT_REISSUE("adColligendaBonaGrantReissue"),
 
-    @JsonProperty("welshDigitalGrant")
-    WELSH_DIGITAL_GRANT("welshDigitalGrant"),
+    @JsonProperty("sotInformationRequest")
+    SOT_INFORMATION_REQUEST("sotInformationRequest"),
+
+    @JsonProperty("statementOfTruth")
+    STATEMENT_OF_TRUTH("statementOfTruth"),
+
+    @JsonProperty("welshStatementOfTruth")
+    WELSH_STATEMENT_OF_TRUTH("welshStatementOfTruth"),
+
+    @JsonProperty("assembledLetter")
+    ASSEMBLED_LETTER("assembledLetter"),
+
+    @JsonProperty("blankLetter")
+    BLANK_LETTER("blankLetter"),
 
     @JsonProperty("welshDigitalGrantDraft")
     WELSH_DIGITAL_GRANT_DRAFT("welshDigitalGrantDraft"),
 
-    @JsonProperty("welshIntestacyGrant")
-    WELSH_INTESTACY_GRANT("welshIntestacyGrant"),
-
-    @JsonProperty("welshIntestacyGrantDraft")
-    WELSH_INTESTACY_GRANT_DRAFT("welshIntestacyGrantDraft"),
-
-    @JsonProperty("welshAdmonWillGrant")
-    WELSH_ADMON_WILL_GRANT("welshAdmonWillGrant"),
+    @JsonProperty("welshDigitalGrant")
+    WELSH_DIGITAL_GRANT("welshDigitalGrant"),
 
     @JsonProperty("welshAdmonWillGrantDraft")
     WELSH_ADMON_WILL_GRANT_DRAFT("welshAdmonWillGrantDraft"),
 
-    @JsonProperty("welshAdColligendaBonaGrant")
-    WELSH_AD_COLLIGENDA_BONA_GRANT("welshAdColligendaBonaGrant"),
+    @JsonProperty("welshAdmonWillGrant")
+    WELSH_ADMON_WILL_GRANT("welshAdmonWillGrant"),
+
+    @JsonProperty("welshIntestacyGrantDraft")
+    WELSH_INTESTACY_GRANT_DRAFT("welshIntestacyGrantDraft"),
+
+    @JsonProperty("welshIntestacyGrant")
+    WELSH_INTESTACY_GRANT("welshIntestacyGrant"),
 
     @JsonProperty("welshAdColligendaBonaGrantDraft")
     WELSH_AD_COLLIGENDA_BONA_GRANT_DRAFT("welshAdColligendaBonaGrantDraft"),
+
+    @JsonProperty("welshAdColligendaBonaGrant")
+    WELSH_AD_COLLIGENDA_BONA_GRANT("welshAdColligendaBonaGrant"),
 
     @JsonProperty("welshDigitalGrantReissueDraft")
     WELSH_DIGITAL_GRANT_REISSUE_DRAFT("welshDigitalGrantReissueDraft"),
@@ -171,21 +204,6 @@ public enum ProbateDocumentType {
     @JsonProperty("welshAdColligendaBonaGrantReissue")
     WELSH_AD_COLLIGENDA_BONA_GRANT_REISSUE("welshAdColligendaBonaGrantReissue"),
 
-    @JsonProperty("sotInformationRequest")
-    SOT_INFORMATION_REQUEST("sotInformationRequest"),
-
-    @JsonProperty("statementOfTruth")
-    STATEMENT_OF_TRUTH("statementOfTruth"),
-
-    @JsonProperty("welshStatementOfTruth")
-    WELSH_STATEMENT_OF_TRUTH("welshStatementOfTruth"),
-
-    @JsonProperty("assembledLetter")
-    ASSEMBLED_LETTER("assembledLetter"),
-
-    @JsonProperty("blankLetter")
-    BLANK_LETTER("blankLetter"),
-
     @JsonProperty("dormantReminder")
     DORMANT_REMINDER("dormantReminder"),
 
@@ -196,5 +214,16 @@ public enum ProbateDocumentType {
 
     ProbateDocumentType(String templateName) {
         this.templateName = templateName;
+    }
+
+    private static final Map<String, ProbateDocumentType> TEMPLATE_MAP = new HashMap<>();
+    static {
+        for (ProbateDocumentType type : values()) {
+            TEMPLATE_MAP.put(type.templateName.toLowerCase(), type);
+        }
+    }
+
+    public static ProbateDocumentType lookup(String name) {
+        return TEMPLATE_MAP.get(name.toLowerCase());
     }
 }
