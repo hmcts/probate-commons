@@ -202,7 +202,13 @@ public enum ProbateDocumentType {
     WELSH_ADMON_WILL_GRANT_REISSUE("welshAdmonWillGrantReissue"),
 
     @JsonProperty("welshAdColligendaBonaGrantReissue")
-    WELSH_AD_COLLIGENDA_BONA_GRANT_REISSUE("welshAdColligendaBonaGrantReissue");
+    WELSH_AD_COLLIGENDA_BONA_GRANT_REISSUE("welshAdColligendaBonaGrantReissue"),
+
+    @JsonProperty("dormantReminder")
+    DORMANT_REMINDER("dormantReminder"),
+
+    @JsonProperty("welshDormantReminder")
+    WELSH_DORMANT_REMINDER("welshDormantReminder");
 
     private final String templateName;
 
