@@ -34,8 +34,13 @@ import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CASE_P
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_AWAITING_RESOLUTION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_AWAITING_WARNING_RESPONSE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_CLOSED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_IMPORTED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_MATCHING_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_NOT_MATCHED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_PERMANENT_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_RAISED_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_REVIEW_APPEARANCE_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_SUMMONS_ORDERED_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.CAVEAT_WARNING_VALIDATION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.DORMANT_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.CaseState.Constants.DRAFT_NAME;
@@ -98,15 +103,25 @@ public enum CaseState {
     @JsonProperty(BO_CASE_WORKER_ESCALATION_NAME) BO_CASE_WORKER_ESCALATION(BO_CASE_WORKER_ESCALATION_NAME),
 
     @JsonProperty(CAVEAT_NOT_MATCHED_NAME) CAVEAT_NOT_MATCHED(CAVEAT_NOT_MATCHED_NAME),
-    
+
     @JsonProperty(CAVEAT_AWAITING_RESOLUTION_NAME) CAVEAT_AWAITING_RESOLUTION(CAVEAT_AWAITING_RESOLUTION_NAME),
-    
+
     @JsonProperty(CAVEAT_WARNING_VALIDATION_NAME) CAVEAT_WARNING_VALIDATION(CAVEAT_WARNING_VALIDATION_NAME),
-    
-    @JsonProperty(CAVEAT_AWAITING_WARNING_RESPONSE_NAME) 
+
+    @JsonProperty(CAVEAT_AWAITING_WARNING_RESPONSE_NAME)
         CAVEAT_AWAITING_WARNING_RESPONSE(CAVEAT_AWAITING_WARNING_RESPONSE_NAME),
 
     @JsonProperty(CAVEAT_CLOSED_NAME) CAVEAT_CLOSED(CAVEAT_CLOSED_NAME),
+
+    @JsonProperty(CAVEAT_MATCHING_NAME) CAVEAT_MATCHING(CAVEAT_MATCHING_NAME),
+
+    @JsonProperty(CAVEAT_SUMMONS_ORDERED_NAME) CAVEAT_SUMMONS_ORDERED(CAVEAT_SUMMONS_ORDERED_NAME),
+
+    @JsonProperty(CAVEAT_REVIEW_APPEARANCE_NAME) CAVEAT_REVIEW_APPEARANCE(CAVEAT_REVIEW_APPEARANCE_NAME),
+
+    @JsonProperty(CAVEAT_IMPORTED_NAME) CAVEAT_IMPORTED(CAVEAT_IMPORTED_NAME),
+
+    @JsonProperty(CAVEAT_PERMANENT_NAME) CAVEAT_PERMANENT(CAVEAT_PERMANENT_NAME),
 
     @JsonProperty(DORMANT_NAME) DORMANT(DORMANT_NAME),
 
@@ -184,9 +199,9 @@ public enum CaseState {
         public static final String CAVEAT_WARNING_VALIDATION_NAME = "WarningValidation";
 
         public static final String CAVEAT_AWAITING_WARNING_RESPONSE_NAME = "AwaitingWarningResponse";
-        
+
         public static final String CAVEAT_CLOSED_NAME = "CaveatClosed";
-        
+
         public static final String BO_POST_GRANT_ISSUED_NAME = "BOPostGrantIssued";
 
         public static final String BO_GRANT_ISSUED_ESCALATION_NAME = "BOGrantIssuedRegistrarEscalation";
@@ -194,6 +209,16 @@ public enum CaseState {
         public static final String BO_POST_GRANT_ISSUED_ESCALATION_NAME = "BOPostGrantIssuedRegistrarEscalation";
 
         public static final String DORMANT_NAME = "Dormant";
+
+        public static final String CAVEAT_MATCHING_NAME = "CaveatMatching";
+
+        public static final String CAVEAT_SUMMONS_ORDERED_NAME = "SummonsOrdered";
+
+        public static final String CAVEAT_REVIEW_APPEARANCE_NAME = "ReviewAppearance";
+
+        public static final String CAVEAT_IMPORTED_NAME = "CaveatImported";
+
+        public static final String CAVEAT_PERMANENT_NAME = "CaveatPermanent";
 
         private Constants() {
         }
