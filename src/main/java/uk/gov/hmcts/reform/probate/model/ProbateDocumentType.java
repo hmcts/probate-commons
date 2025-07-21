@@ -184,7 +184,13 @@ public enum ProbateDocumentType {
     ASSEMBLED_LETTER("assembledLetter"),
 
     @JsonProperty("blankLetter")
-    BLANK_LETTER("blankLetter");
+    BLANK_LETTER("blankLetter"),
+
+    @JsonProperty("dormantReminder")
+    DORMANT_REMINDER("dormantReminder"),
+
+    @JsonProperty("welshDormantReminder")
+    WELSH_DORMANT_REMINDER("welshDormantReminder");
 
     private final String templateName;
 
