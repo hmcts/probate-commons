@@ -924,6 +924,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String uniqueProbateCodeId;
 
+    private String bulkPrintSendLetterId;
+
     private String serviceRequestReference;
 
     private String paymentTaken;
