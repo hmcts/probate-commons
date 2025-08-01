@@ -4,7 +4,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'jacoco'
-    id 'uk.gov.hmcts.java' version '0.12.66'
+    id 'uk.gov.hmcts.java' version '0.12.67'
 }
 
 group 'com.github.hmcts'
@@ -16,6 +16,10 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
+}
+
+checkstyle {
+    toolVersion = '10.26.1'
 }
 
 tasks.withType(JavaCompile).configureEach {

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public final class ObjectMapperTestUtil {
 
-    private ObjectMapperTestUtil(){
+    private ObjectMapperTestUtil() {
         // not called.
     }
 
