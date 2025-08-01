@@ -6,7 +6,7 @@ plugins {
     id 'maven-publish'
     // id 'pmd'
     id 'jacoco'
-    id 'uk.gov.hmcts.java' version '0.12.66'
+    id 'uk.gov.hmcts.java' version '0.12.67'
 }
 
 
@@ -28,7 +28,7 @@ java {
     }
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.compilerArgs << '-parameters' << '-Xlint:deprecation'
 }
 
@@ -47,7 +47,7 @@ jar {
     }
 }
 
-task printVersion {
+tasks.register('printVersion') {
     doLast {
         print project.version
     }
@@ -67,12 +67,14 @@ def pomConfig = {
     }
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
+tasks.register('sourcesJar', Jar) {
+    dependsOn classes
     archiveClassifier.set('sources')
     from sourceSets.main.allSource
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
+tasks.register('javadocJar', Jar) {
+    dependsOn javadoc
     archiveClassifier.set('javadoc')
     from javadoc.destinationDir
 }
