@@ -39,6 +39,7 @@ import uk.gov.hmcts.reform.probate.model.ScannedDocument;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.AliasName;
 import uk.gov.hmcts.reform.probate.model.cases.ApplicationType;
+import uk.gov.hmcts.reform.probate.model.cases.BulkPrint;
 import uk.gov.hmcts.reform.probate.model.cases.CaseData;
 import uk.gov.hmcts.reform.probate.model.cases.CasePayment;
 import uk.gov.hmcts.reform.probate.model.cases.ChangeOfRepresentative;
@@ -924,7 +925,7 @@ public class GrantOfRepresentationData extends CaseData {
 
     private String uniqueProbateCodeId;
 
-    private String bulkPrintSendLetterId;
+    private List<CollectionMember<BulkPrint>> bulkPrintId;
 
     private String serviceRequestReference;
 
