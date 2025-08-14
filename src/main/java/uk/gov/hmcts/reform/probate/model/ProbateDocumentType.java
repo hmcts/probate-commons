@@ -217,6 +217,7 @@ public enum ProbateDocumentType {
     }
 
     private static final Map<String, ProbateDocumentType> TEMPLATE_MAP = new HashMap<>();
+
     static {
         for (ProbateDocumentType type : values()) {
             TEMPLATE_MAP.put(type.templateName.toLowerCase(), type);
