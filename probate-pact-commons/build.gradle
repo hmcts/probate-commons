@@ -6,7 +6,7 @@ plugins {
     id 'maven-publish'
     // id 'pmd'
     id 'jacoco'
-    id 'uk.gov.hmcts.java' version '0.12.66'
+    id 'uk.gov.hmcts.java' version '0.12.67'
 }
 
 
