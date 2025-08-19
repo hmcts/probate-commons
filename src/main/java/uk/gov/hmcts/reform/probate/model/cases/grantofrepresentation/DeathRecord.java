@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Builder
@@ -14,5 +15,6 @@ public class DeathRecord {
     private final String sex;
     private final String address;
     private final LocalDate dateOfDeath;
+    private final List<Alias> aliases;
     private final String valid;
 }
