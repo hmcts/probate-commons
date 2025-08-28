@@ -6,6 +6,8 @@ public enum CheckListItemType {
     @JsonProperty("textOnly")
     TEXT_ONLY,
     @JsonProperty("textWithLink")
-    TEXT_WITH_LINK
+    TEXT_WITH_LINK,
+    @JsonProperty("textWithMultipleLinks")
+    TEXT_WITH_MULTIPLE_LINKS
 
 }

@@ -5,17 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CheckListItem {
-    private CheckListItemType type;
+public class Segment {
     private String text;
-    private String url;
-    private String beforeLinkText;
-    private String afterLinkText;
-    private List<Segment> segments;
+    private String link;
 }
