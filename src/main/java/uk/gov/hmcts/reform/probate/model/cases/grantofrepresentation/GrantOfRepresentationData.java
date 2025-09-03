@@ -108,6 +108,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean softStop;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean hasDataChanged;
+
     private RegistryLocation registryLocation;
 
     private String registryAddress;
