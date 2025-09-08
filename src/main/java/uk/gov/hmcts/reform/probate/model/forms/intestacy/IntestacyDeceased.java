@@ -39,6 +39,28 @@ public class IntestacyDeceased extends ProbateDeceased {
     @JsonProperty("divorcePlace")
     private Boolean divorcedInEnglandOrWales;
 
+    @ApiModelProperty(value = "Was Separated in England or Wales?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("separationPlace")
+    private Boolean separatedInEnglandOrWales;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("divorceDateKnown")
+    private Boolean divorcedDateKnown;
+
+    @JsonProperty("divorceDate")
+    private String divorcedDate;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("separationDateKnown")
+    private Boolean separatedDateKnown;
+
+    @JsonProperty("separationDate")
+    private String separatedDate;
+
     @ApiModelProperty(value = "Does the deceased have other children?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
@@ -80,7 +102,9 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean addressFound, List<Map<String, Object>> addresses, LocalDateTime dateOfBirth,
                              LocalDateTime dateOfDeath, String domicile, String maritalStatus, Boolean diedEngOrWales,
                              String deathCertificate, Boolean domiciledInEnglandOrWales,
-                             Boolean divorcedInEnglandOrWales, Boolean otherChildren,
+                             Boolean divorcedInEnglandOrWales, Boolean separatedInEnglandOrWales,
+                             Boolean divorcedDateKnown, String divorcedDate, Boolean separatedDateKnown,
+                             String separatedDate, Boolean otherChildren,
                              Boolean allDeceasedChildrenOverEighteen, Boolean anyDeceasedChildrenDieBeforeDeceased,
                              Boolean englishForeignDeathCert, Boolean foreignDeathCertTranslation,
                              Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren) {
@@ -91,6 +115,11 @@ public class IntestacyDeceased extends ProbateDeceased {
         this.maritalStatus = maritalStatus;
         this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
         this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;
+        this.separatedInEnglandOrWales = separatedInEnglandOrWales;
+        this.divorcedDateKnown = divorcedDateKnown;
+        this.divorcedDate = divorcedDate;
+        this.separatedDateKnown = separatedDateKnown;
+        this.separatedDate = separatedDate;
         this.otherChildren = otherChildren;
         this.allDeceasedChildrenOverEighteen = allDeceasedChildrenOverEighteen;
         this.anyDeceasedChildrenDieBeforeDeceased = anyDeceasedChildrenDieBeforeDeceased;
