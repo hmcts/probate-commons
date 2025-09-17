@@ -11,6 +11,7 @@ import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.OTHER_DES
 import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.PARENT_DESC;
 import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.PARTNER_DESC;
 import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.SIBLING_DESC;
+import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.GRANDCHILD_DESC;
 
 @RequiredArgsConstructor
 public enum Relationship {
