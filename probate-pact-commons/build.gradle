@@ -108,7 +108,7 @@ publishing {
 }
 
 def versions = [
-        lombok            : '1.18.40',
+        lombok            : '1.18.42',
         jackson           : '2.9.7',
         pact_version      : '4.1.34'
 ]
