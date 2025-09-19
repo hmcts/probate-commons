@@ -73,7 +73,7 @@
     "maritalStatus": "optionMarried",
     "divorcePlace": "optionYes",
     "divorceDateKnown": "optionYes",
-    "divorceDate": "4/08/2025",
+    "divorceDate": "2025-01-01",
     "anyOtherChildren": "optionYes",
     "allChildrenOver18": "optionYes",
     "anyDeceasedChildren": "optionNo",
