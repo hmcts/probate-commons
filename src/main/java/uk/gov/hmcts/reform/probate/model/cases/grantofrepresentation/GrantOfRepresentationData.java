@@ -183,6 +183,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedDivorcedDateKnown;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedOtherChildren;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
