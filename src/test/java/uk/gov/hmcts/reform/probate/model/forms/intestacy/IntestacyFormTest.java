@@ -53,7 +53,7 @@ class IntestacyFormTest {
     private IntestacyForm intestacyForm;
 
     private String formJsonFromFile;
-    private static final String DIVORCE_DATE = "4/08/2025";
+    private static final LocalDate DIVORCE_DATE = LocalDate.of(2025, 1, 1);
 
     @BeforeEach
     public void setUp() throws Exception {
