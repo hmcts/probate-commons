@@ -1,8 +1,11 @@
 package uk.gov.hmcts.reform.probate.model.forms.intestacy;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +19,7 @@ import uk.gov.hmcts.reform.probate.model.forms.ProbateDeceased;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +29,7 @@ import java.util.Map;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class IntestacyDeceased extends ProbateDeceased {
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
 
     @ApiModelProperty(value = "Deceased marital status")
     private String maritalStatus;
@@ -39,27 +44,16 @@ public class IntestacyDeceased extends ProbateDeceased {
     @JsonProperty("divorcePlace")
     private Boolean divorcedInEnglandOrWales;
 
-    @ApiModelProperty(value = "Was Separated in England or Wales?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    @JsonProperty("separationPlace")
-    private Boolean separatedInEnglandOrWales;
-
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("divorceDateKnown")
     private Boolean divorcedDateKnown;
 
-    @JsonProperty("divorceDate")
-    private String divorcedDate;
-
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    @JsonProperty("separationDateKnown")
-    private Boolean separatedDateKnown;
-
-    @JsonProperty("separationDate")
-    private String separatedDate;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    @JsonProperty(value = "divorceDate")
+    private LocalDate divorcedDate;
 
     @ApiModelProperty(value = "Does the deceased have other children?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
@@ -102,10 +96,9 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean addressFound, List<Map<String, Object>> addresses, LocalDateTime dateOfBirth,
                              LocalDateTime dateOfDeath, String domicile, String maritalStatus, Boolean diedEngOrWales,
                              String deathCertificate, Boolean domiciledInEnglandOrWales,
-                             Boolean divorcedInEnglandOrWales, Boolean separatedInEnglandOrWales,
-                             Boolean divorcedDateKnown, String divorcedDate, Boolean separatedDateKnown,
-                             String separatedDate, Boolean otherChildren,
-                             Boolean allDeceasedChildrenOverEighteen, Boolean anyDeceasedChildrenDieBeforeDeceased,
+                             Boolean divorcedInEnglandOrWales, Boolean divorcedDateKnown, LocalDate divorcedDate,
+                             Boolean otherChildren, Boolean allDeceasedChildrenOverEighteen,
+                             Boolean anyDeceasedChildrenDieBeforeDeceased,
                              Boolean englishForeignDeathCert, Boolean foreignDeathCertTranslation,
                              Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren) {
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
@@ -115,11 +108,8 @@ public class IntestacyDeceased extends ProbateDeceased {
         this.maritalStatus = maritalStatus;
         this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
         this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;
-        this.separatedInEnglandOrWales = separatedInEnglandOrWales;
         this.divorcedDateKnown = divorcedDateKnown;
         this.divorcedDate = divorcedDate;
-        this.separatedDateKnown = separatedDateKnown;
-        this.separatedDate = separatedDate;
         this.otherChildren = otherChildren;
         this.allDeceasedChildrenOverEighteen = allDeceasedChildrenOverEighteen;
         this.anyDeceasedChildrenDieBeforeDeceased = anyDeceasedChildrenDieBeforeDeceased;
