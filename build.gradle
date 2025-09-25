@@ -109,7 +109,7 @@ publishing {
 def versions = [
         lombok            : '1.18.42',
         jackson           : '2.19.0',
-        apacheCommons     : '3.18.0',
+        apacheCommons     : '3.19.0',
         hibernateValidator: '9.0.1.Final',
         springfoxSwagger  : '3.0.0',
         springBoot        : '3.5.6',
