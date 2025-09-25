@@ -53,6 +53,7 @@ class IntestacyFormTest {
     private IntestacyForm intestacyForm;
 
     private String formJsonFromFile;
+    private static final LocalDate DIVORCE_DATE = LocalDate.of(2025, 1, 1);
 
     @BeforeEach
     public void setUp() throws Exception {
@@ -105,7 +106,9 @@ class IntestacyFormTest {
         aliasOtherNames.setFirstName("King");
         aliasOtherNames.setLastName("North");
         intestacyDeceased.setOtherNames(ImmutableMap.of("name_0", aliasOtherNames));
-        intestacyDeceased.setDivorcedInEnglandOrWales(false);
+        intestacyDeceased.setDivorcedInEnglandOrWales(true);
+        intestacyDeceased.setDivorcedDateKnown(true);
+        intestacyDeceased.setDivorcedDate(DIVORCE_DATE);
         intestacyDeceased.setMaritalStatus(MaritalStatus.MARRIED.getDescription());
         intestacyDeceased.setAllDeceasedChildrenOverEighteen(true);
         intestacyDeceased.setAnyDeceasedChildrenDieBeforeDeceased(false);
