@@ -141,10 +141,10 @@ class IntestacyFormTest {
         inheritanceTax.setAssetsOutside(true);
         intestacyForm.setIht(inheritanceTax);
 
-        ApplicantFamilyDetails applicantFamilyDetails = new ApplicantFamilyDetails();
-        applicantFamilyDetails.setRelationshipToDeceased(Relationship.CHILD.getDescription());
-        applicantFamilyDetails.setChildAdoptedIn(TRUE);
-        intestacyForm.setFamilyDetails(applicantFamilyDetails);
+        FamilyDetails details = new FamilyDetails();
+        details.setRelationshipToDeceased(Relationship.CHILD.getDescription());
+        details.setChildAdoptedIn(TRUE);
+        intestacyForm.setDetails(details);
 
         Copies copies = new Copies();
         copies.setOverseas(6L);
