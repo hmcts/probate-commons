@@ -59,6 +59,7 @@ import uk.gov.hmcts.reform.probate.model.cases.RemovedRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
+import uk.gov.hmcts.reform.probate.model.cases.ApplicantFamilyDetails;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.IntestacyCrossFieldCheck;
@@ -228,6 +229,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonIgnore
     public Boolean childrenDiedUnderEighteen;
+
+    private ApplicantFamilyDetails applicantFamilyDetails;
 
     public void setChildrenDiedOverEighteenText(String stringValue) {
         this.childrenDiedOverEighteenText = stringValue;
