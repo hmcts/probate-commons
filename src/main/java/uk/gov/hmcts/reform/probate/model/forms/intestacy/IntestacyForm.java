@@ -69,7 +69,7 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String informationNeededByPost;
 
-    private ApplicantFamilyDetails familyDetails;
+    private FamilyDetails details;
 
     private PaAssets assets;
 
@@ -83,7 +83,7 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
                          Language language, Equality equality, String documentsReceivedNotificationSent,
                          ProvideInformation provideinformation, ReviewResponse reviewresponse,
                          String expectedResponseDate, String informationNeeded, String informationNeededByPost,
-                         ApplicantFamilyDetails familyDetails, String eventDescription) {
+                         FamilyDetails details, String eventDescription) {
 
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
@@ -102,7 +102,7 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.expectedResponseDate = expectedResponseDate;
         this.informationNeeded = informationNeeded;
         this.informationNeededByPost = informationNeededByPost;
-        this.familyDetails = familyDetails;
+        this.details = details;
         this.assets = assets;
     }
 

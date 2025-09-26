@@ -18,7 +18,7 @@ import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ApplicantFamilyDetails {
+public class FamilyDetails {
 
     private String relationshipToDeceased;
 
