@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
@@ -19,7 +20,7 @@ import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ApplicantFamilyDetails {
 
-    private String relationshipToDeceased;
+    private Relationship relationshipToDeceased;
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean childAdoptedIn;
