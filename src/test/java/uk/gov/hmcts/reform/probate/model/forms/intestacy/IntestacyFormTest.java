@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
+import uk.gov.hmcts.reform.probate.model.Predeceased;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
@@ -111,7 +112,8 @@ class IntestacyFormTest {
         intestacyDeceased.setDivorcedDate(DIVORCE_DATE);
         intestacyDeceased.setMaritalStatus(MaritalStatus.MARRIED.getDescription());
         intestacyDeceased.setAllDeceasedChildrenOverEighteen(true);
-        intestacyDeceased.setAnyDeceasedChildrenDieBeforeDeceased(false);
+        intestacyDeceased.setChildrenDiedBeforeDeceased(Predeceased.optionYesSome.toString());
+        intestacyDeceased.setGrandChildrenSurvived(true);
         intestacyDeceased.setAnyDeceasedGrandchildrenUnderEighteen(false);
         intestacyDeceased.setAnyChildren(false);
         intestacyDeceased.setOtherChildren(true);
