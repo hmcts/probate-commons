@@ -77,8 +77,7 @@ public class IntestacyDeceased extends ProbateDeceased {
     @JsonProperty("anyDeceasedChildren")
     private Boolean anyDeceasedChildrenDieBeforeDeceased;
 
-    @ApiModelProperty(value = "Did any of the deceased's children die before the deceased?",
-            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @ApiModelProperty(value = "Did any of the deceased's children die before the deceased?")
     @JsonProperty("anyPredeceasedChildren")
     private String childrenDiedBeforeDeceased;
 
