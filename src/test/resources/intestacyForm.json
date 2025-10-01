@@ -75,8 +75,9 @@
     "divorceDateKnown": "optionYes",
     "divorceDate": "2025-01-01",
     "anyOtherChildren": "optionYes",
+    "anyPredeceasedChildren": "optionYesSome",
+    "anySurvivingGrandchildren": "optionYes",
     "allChildrenOver18": "optionYes",
-    "anyDeceasedChildren": "optionNo",
     "anyGrandchildrenUnder18": "optionNo",
     "anyChildren": "optionNo",
     "domiciledInEnglandOrWales": "optionYes"
