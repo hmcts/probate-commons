@@ -388,7 +388,8 @@ public class GrantOfRepresentationCreator {
         grantOfRepresentationData.setChildrenOverEighteenSurvivedText("2");
         grantOfRepresentationData.setGrandChildrenSurvived(true);
         grantOfRepresentationData.setAllDeceasedChildrenOverEighteen(true);
-        grantOfRepresentationData.setAnyDeceasedChildrenDieBeforeDeceased(false);
+        grantOfRepresentationData.setChildrenDiedBeforeDeceased(Predeceased.optionYesSome);
+        grantOfRepresentationData.setGrandChildrenSurvived(true);
         grantOfRepresentationData.setAnyDeceasedGrandChildrenUnderEighteen(true);
         CollectionMember<BulkScanEnvelope> bulkScanEnvelopeCollectionMember = new CollectionMember<>();
         bulkScanEnvelopeCollectionMember.setValue(getBulkScanEnvelope());
