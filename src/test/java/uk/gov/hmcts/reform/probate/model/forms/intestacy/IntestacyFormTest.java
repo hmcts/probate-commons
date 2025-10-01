@@ -112,7 +112,7 @@ class IntestacyFormTest {
         intestacyDeceased.setDivorcedDate(DIVORCE_DATE);
         intestacyDeceased.setMaritalStatus(MaritalStatus.MARRIED.getDescription());
         intestacyDeceased.setAllDeceasedChildrenOverEighteen(true);
-        intestacyDeceased.setChildrenDiedBeforeDeceased(Predeceased.optionYesSome.toString());
+        intestacyDeceased.setChildrenDiedBeforeDeceased(Predeceased.SOME.getDescription());
         intestacyDeceased.setGrandChildrenSurvived(true);
         intestacyDeceased.setAnyDeceasedGrandchildrenUnderEighteen(false);
         intestacyDeceased.setAnyChildren(false);
