@@ -14,7 +14,7 @@ public enum Predeceased {
 
     @JsonProperty(YES_SOME_VALUE) SOME("optionYesSome"),
     @JsonProperty(YES_ALL_VALUE) ALL("optionYesAll"),
-    @JsonProperty(NO_VALUE) No("optionNo");
+    @JsonProperty(NO_VALUE) NO("optionNo");
 
     @Getter
     private final String description;
