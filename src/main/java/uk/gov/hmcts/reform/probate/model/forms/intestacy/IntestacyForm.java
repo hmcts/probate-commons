@@ -52,6 +52,8 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String caseType;
 
+    private CoApplicants coApplicants;
+
     @JsonProperty(value = "equality")
     private Equality equality;
 
