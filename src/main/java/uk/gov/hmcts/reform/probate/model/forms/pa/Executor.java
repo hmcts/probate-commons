@@ -74,4 +74,5 @@ public class Executor {
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean executorAgreed;
 
+    private String coApplicantRelationshipToDeceased;
 }
