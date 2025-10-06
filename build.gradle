@@ -9,7 +9,7 @@ plugins {
 
 group 'com.github.hmcts'
 
-def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
+def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-INTESTACY-SNAPSHOT"
 version buildNumber
 
 java {
