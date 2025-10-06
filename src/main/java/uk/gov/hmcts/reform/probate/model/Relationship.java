@@ -27,6 +27,7 @@ public enum Relationship {
     private final String description;
 
     public static Relationship fromString(String text) {
+        System.out.println("common.......Relationship fromString text: " + text);
         for (Relationship ms : Relationship.values()) {
             if (text != null && ms.description.equalsIgnoreCase(text)) {
                 return ms;
@@ -39,7 +40,7 @@ public enum Relationship {
 
         public static final String PARTNER_DESC = "partner";
         public static final String CHILD_DESC = "child";
-        public static final String GRANDCHILD_DESC = "Grandchild";
+        public static final String GRANDCHILD_DESC = "grandchild";
         public static final String ADOPTED_CHILD_DESC = "adoptedChild";
         public static final String SIBLING_DESC = "sibling";
         public static final String PARENT_DESC = "parent";
