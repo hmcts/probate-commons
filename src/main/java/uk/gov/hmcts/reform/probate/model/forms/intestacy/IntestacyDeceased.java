@@ -87,6 +87,13 @@ public class IntestacyDeceased extends ProbateDeceased {
     @JsonProperty("anySurvivingGrandchildren")
     private Boolean grandChildrenSurvived;
 
+    @ApiModelProperty(value = "Is your parent (deceased's child) alive?",
+            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("anySurvivingGrandchildren")
+    private Boolean childAlive;
+
     @ApiModelProperty(value = "Are any of the deceased children under 18?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
@@ -110,7 +117,7 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean divorcedInEnglandOrWales, Boolean divorcedDateKnown, LocalDate divorcedDate,
                              Boolean otherChildren, Boolean allDeceasedChildrenOverEighteen,
                              Boolean anyDeceasedChildrenDieBeforeDeceased, String childrenDiedBeforeDeceased,
-                             Boolean grandChildrenSurvived, Boolean englishForeignDeathCert,
+                             Boolean grandChildrenSurvived, Boolean childAlive, Boolean englishForeignDeathCert,
                              Boolean foreignDeathCertTranslation, Boolean anyDeceasedGrandchildrenUnderEighteen,
                              Boolean anyChildren) {
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
@@ -127,6 +134,7 @@ public class IntestacyDeceased extends ProbateDeceased {
         this.anyDeceasedChildrenDieBeforeDeceased = anyDeceasedChildrenDieBeforeDeceased;
         this.childrenDiedBeforeDeceased = childrenDiedBeforeDeceased;
         this.grandChildrenSurvived = grandChildrenSurvived;
+        this.childAlive = childAlive;
         this.anyDeceasedGrandchildrenUnderEighteen = anyDeceasedGrandchildrenUnderEighteen;
         this.anyChildren = anyChildren;
     }
