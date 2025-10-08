@@ -21,6 +21,7 @@ import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 public class ApplicantFamilyDetails {
 
     private Relationship relationshipToDeceased;
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean childAdoptedIn;
@@ -32,6 +33,10 @@ public class ApplicantFamilyDetails {
     private Boolean childAdoptedOut;
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean childAdoptionOutEnglandOrWales;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean grandchildAdoptedIn;
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -39,4 +44,7 @@ public class ApplicantFamilyDetails {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean grandchildAdoptedOut;
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean grandchildAdoptionOutEnglandOrWales;
 }
