@@ -102,14 +102,6 @@ public class Executor {
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean childAdoptionOutEnglandOrWales;
-
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean grandchildAdoptionOutEnglandOrWales;
-
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean applicantParentAdoptedIn;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
