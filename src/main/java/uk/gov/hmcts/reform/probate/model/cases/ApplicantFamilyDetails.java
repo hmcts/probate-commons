@@ -31,7 +31,9 @@ public class ApplicantFamilyDetails {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean childAdoptedOut;
-
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean childDieBeforeDeceased;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -42,16 +44,5 @@ public class ApplicantFamilyDetails {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean grandchildAdoptedOut;
-
-
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean applicantParentAdoptedIn;
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean applicantParentAdoptedOut;
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean applicantParentAdoptionInEnglandOrWales;
 
 }
