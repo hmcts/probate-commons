@@ -1,8 +1,9 @@
 package uk.gov.hmcts.probate.commons.service;
 
-import io.pebbletemplates.pebble.PebbleEngine;
-import io.pebbletemplates.pebble.error.PebbleException;
-import io.pebbletemplates.pebble.template.PebbleTemplate;
+
+import com.mitchellbosecke.pebble.PebbleEngine;
+import com.mitchellbosecke.pebble.error.PebbleException;
+import com.mitchellbosecke.pebble.template.PebbleTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import uk.gov.hmcts.reform.probate.exception.PebbleTemplateException;
