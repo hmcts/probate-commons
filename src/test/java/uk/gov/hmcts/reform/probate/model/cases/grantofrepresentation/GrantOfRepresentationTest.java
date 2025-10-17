@@ -12,6 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static uk.gov.hmcts.reform.probate.model.YesNo.NO;
 import static uk.gov.hmcts.reform.probate.model.YesNo.YES;
 
@@ -86,6 +87,14 @@ class GrantOfRepresentationTest {
             is(equalTo(null)));
     }
 
+    @Test
+    void shouldResetHasDataChangedFlag() {
+        grantOfRepresentationData.setHasDataChanged(true);
+
+        grantOfRepresentationData.resetHasDataChangedFlag();
+
+        assertNull(grantOfRepresentationData.getHasDataChanged());
+    }
 
     @Test
     void shouldDetermineThatAllExecutorsHaveAgreed() {

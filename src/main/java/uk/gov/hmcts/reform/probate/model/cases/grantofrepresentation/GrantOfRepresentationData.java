@@ -1043,6 +1043,11 @@ public class GrantOfRepresentationData extends CaseData {
     }
 
     @Transient
+    public void resetHasDataChangedFlag() {
+        this.setHasDataChanged(null);
+    }
+
+    @Transient
     public ExecutorApplying getExecutorApplyingByInviteId(String invitationId) {
         return this.getExecutorsApplying().stream()
             .filter(executorApplying -> executorApplying.getValue().getApplyingExecutorInvitationId() != null
