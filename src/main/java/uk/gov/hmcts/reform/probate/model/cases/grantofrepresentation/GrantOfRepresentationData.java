@@ -33,6 +33,7 @@ import uk.gov.hmcts.reform.probate.model.AttorneyNamesAndAddress;
 import uk.gov.hmcts.reform.probate.model.BulkScanEnvelope;
 import uk.gov.hmcts.reform.probate.model.IhtFormEstate;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
+import uk.gov.hmcts.reform.probate.model.Predeceased;
 import uk.gov.hmcts.reform.probate.model.ProbateDocument;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.ScannedDocument;
@@ -59,6 +60,7 @@ import uk.gov.hmcts.reform.probate.model.cases.RemovedRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
+import uk.gov.hmcts.reform.probate.model.cases.ApplicantFamilyDetails;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.IntestacyCrossFieldCheck;
@@ -197,9 +199,12 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean allDeceasedChildrenOverEighteen;
 
+    @Deprecated
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean anyDeceasedChildrenDieBeforeDeceased;
+
+    private Predeceased childrenDiedBeforeDeceased;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -228,6 +233,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonIgnore
     public Boolean childrenDiedUnderEighteen;
+
+    private ApplicantFamilyDetails applicantFamilyDetails;
 
     public void setChildrenDiedOverEighteenText(String stringValue) {
         this.childrenDiedOverEighteenText = stringValue;
