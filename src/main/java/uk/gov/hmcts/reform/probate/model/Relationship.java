@@ -22,8 +22,7 @@ public enum Relationship {
     @JsonProperty(ADOPTED_CHILD_DESC) ADOPTED_CHILD("optionAdoptedChild"),
     @JsonProperty(SIBLING_DESC) SIBLING(SIBLING_DESC),
     @JsonProperty(PARENT_DESC) PARENT(PARENT_DESC),
-    @JsonProperty(OTHER_DESC) OTHER("optionOther"),
-    @JsonProperty(GRANDCHILD_DESC) GRANDCHILD("optionGrandchild");
+    @JsonProperty(OTHER_DESC) OTHER("optionOther");
 
     @Getter
     private final String description;
@@ -46,7 +45,6 @@ public enum Relationship {
         public static final String SIBLING_DESC = "sibling";
         public static final String PARENT_DESC = "parent";
         public static final String OTHER_DESC = "other";
-        public static final String GRANDCHILD_DESC = "grandchild";
 
         private Constants() {
         }
