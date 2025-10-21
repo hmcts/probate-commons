@@ -31,5 +31,7 @@ public class Declaration {
     @JsonSerialize(using = BooleanAndNoneSerializer.class)
     private Boolean declarationCheckbox;
 
-
+    @JsonDeserialize(using = BooleanAndNoneDeserializer.class)
+    @JsonSerialize(using = BooleanAndNoneSerializer.class)
+    private Boolean hasDataChanged;
 }
