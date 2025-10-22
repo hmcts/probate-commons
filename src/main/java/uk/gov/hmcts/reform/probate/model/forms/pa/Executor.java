@@ -86,6 +86,10 @@ public class Executor {
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean grandchildParentAdoptedIn;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean childAdoptedOut;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
@@ -94,11 +98,19 @@ public class Executor {
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean grandchildParentAdoptedOut;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean childAdoptionInEnglandOrWales;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean grandchildAdoptionInEnglandOrWales;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean grandchildParentAdoptionInEnglandOrWales;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
