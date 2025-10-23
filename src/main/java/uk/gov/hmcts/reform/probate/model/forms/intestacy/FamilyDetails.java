@@ -66,4 +66,6 @@ public class FamilyDetails {
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("grandchildAdoptedOut")
     private Boolean grandchildAdoptedOut;
+
+
 }
