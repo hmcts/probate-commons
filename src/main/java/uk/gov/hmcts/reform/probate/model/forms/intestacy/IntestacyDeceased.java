@@ -91,7 +91,7 @@ public class IntestacyDeceased extends ProbateDeceased {
             allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
-    @JsonProperty("anySurvivingGrandchildren")
+    @JsonProperty("childAlive")
     private Boolean childAlive;
 
     @ApiModelProperty(value = "Are any of the deceased children under 18?",
