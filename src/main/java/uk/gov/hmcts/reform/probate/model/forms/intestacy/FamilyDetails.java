@@ -67,5 +67,17 @@ public class FamilyDetails {
     @JsonProperty("grandchildAdoptedOut")
     private Boolean grandchildAdoptedOut;
 
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean adoptedIn;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean adoptionPlace;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean adoptedOut;
+
 
 }
