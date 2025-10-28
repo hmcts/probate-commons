@@ -20,8 +20,8 @@ public enum Relationship {
     @JsonProperty(CHILD_DESC) CHILD("optionChild"),
     @JsonProperty(GRANDCHILD_DESC) GRANDCHILD("optionGrandchild"),
     @JsonProperty(ADOPTED_CHILD_DESC) ADOPTED_CHILD("optionAdoptedChild"),
-    @JsonProperty(SIBLING_DESC) SIBLING(SIBLING_DESC),
-    @JsonProperty(PARENT_DESC) PARENT(PARENT_DESC),
+    @JsonProperty(SIBLING_DESC) SIBLING("optionSibling"),
+    @JsonProperty(PARENT_DESC) PARENT("optionParent"),
     @JsonProperty(OTHER_DESC) OTHER("optionOther");
 
     @Getter

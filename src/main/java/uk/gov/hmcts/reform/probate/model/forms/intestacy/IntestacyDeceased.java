@@ -100,6 +100,20 @@ public class IntestacyDeceased extends ProbateDeceased {
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean anyChildren;
 
+    @ApiModelProperty(value = "Did the deceased have any living descendants?",
+            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("anyLivingDescendants")
+    private Boolean anyLivingDescendants;
+
+    @ApiModelProperty(value = "Is the deceased’s other parent alive?",
+            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("anyOtherParentAlive")
+    private Boolean anyOtherParentAlive;
+
     @Builder
     public IntestacyDeceased(String firstName, String lastName, Boolean nameAsOnTheWill, String aliasFirstNameOnWill,
                              String aliasLastNameOnWill, Boolean alias, Map<String, AliasOtherNames> otherNames,
@@ -112,7 +126,7 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean anyDeceasedChildrenDieBeforeDeceased, String childrenDiedBeforeDeceased,
                              Boolean grandChildrenSurvived, Boolean englishForeignDeathCert,
                              Boolean foreignDeathCertTranslation, Boolean anyDeceasedGrandchildrenUnderEighteen,
-                             Boolean anyChildren) {
+                             Boolean anyChildren, Boolean anyLivingDescendants, Boolean anyOtherParentAlive) {
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
                 married, address, postcode, postcodeAddress, addressFound,
             addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
@@ -129,5 +143,7 @@ public class IntestacyDeceased extends ProbateDeceased {
         this.grandChildrenSurvived = grandChildrenSurvived;
         this.anyDeceasedGrandchildrenUnderEighteen = anyDeceasedGrandchildrenUnderEighteen;
         this.anyChildren = anyChildren;
+        this.anyLivingDescendants = anyLivingDescendants;
+        this.anyOtherParentAlive = anyOtherParentAlive;
     }
 }
