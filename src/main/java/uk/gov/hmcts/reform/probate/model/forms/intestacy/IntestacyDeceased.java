@@ -87,6 +87,13 @@ public class IntestacyDeceased extends ProbateDeceased {
     @JsonProperty("anySurvivingGrandchildren")
     private Boolean grandChildrenSurvived;
 
+    @ApiModelProperty(value = "Is your parent (deceased's child) alive?",
+            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("childAlive")
+    private Boolean childAlive;
+
     @ApiModelProperty(value = "Are any of the deceased children under 18?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
@@ -100,6 +107,20 @@ public class IntestacyDeceased extends ProbateDeceased {
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean anyChildren;
 
+    @ApiModelProperty(value = "Does the grandchild parent have other children?",
+            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("grandchildParentHasOtherChildren")
+    private Boolean grandchildParentOtherChildren;
+
+    @ApiModelProperty(value = "Does the grandchild parent children are over 18?",
+            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("grandchildParentHasAllChildrenOver18")
+    private Boolean grandchildParentChildrenOverEighteen;
+
     @Builder
     public IntestacyDeceased(String firstName, String lastName, Boolean nameAsOnTheWill, String aliasFirstNameOnWill,
                              String aliasLastNameOnWill, Boolean alias, Map<String, AliasOtherNames> otherNames,
@@ -110,9 +131,10 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean divorcedInEnglandOrWales, Boolean divorcedDateKnown, LocalDate divorcedDate,
                              Boolean otherChildren, Boolean allDeceasedChildrenOverEighteen,
                              Boolean anyDeceasedChildrenDieBeforeDeceased, String childrenDiedBeforeDeceased,
-                             Boolean grandChildrenSurvived, Boolean englishForeignDeathCert,
+                             Boolean grandChildrenSurvived, Boolean childAlive, Boolean englishForeignDeathCert,
                              Boolean foreignDeathCertTranslation, Boolean anyDeceasedGrandchildrenUnderEighteen,
-                             Boolean anyChildren) {
+                             Boolean anyChildren, Boolean grandchildParentOtherChildren,
+                             Boolean grandchildParentChildrenOverEighteen) {
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
                 married, address, postcode, postcodeAddress, addressFound,
             addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
@@ -127,7 +149,10 @@ public class IntestacyDeceased extends ProbateDeceased {
         this.anyDeceasedChildrenDieBeforeDeceased = anyDeceasedChildrenDieBeforeDeceased;
         this.childrenDiedBeforeDeceased = childrenDiedBeforeDeceased;
         this.grandChildrenSurvived = grandChildrenSurvived;
+        this.childAlive = childAlive;
         this.anyDeceasedGrandchildrenUnderEighteen = anyDeceasedGrandchildrenUnderEighteen;
         this.anyChildren = anyChildren;
+        this.grandchildParentOtherChildren = grandchildParentOtherChildren;
+        this.grandchildParentChildrenOverEighteen = grandchildParentChildrenOverEighteen;
     }
 }
