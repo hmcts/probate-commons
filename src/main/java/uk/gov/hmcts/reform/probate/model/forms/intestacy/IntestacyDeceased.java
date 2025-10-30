@@ -107,6 +107,20 @@ public class IntestacyDeceased extends ProbateDeceased {
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean anyChildren;
 
+    @ApiModelProperty(value = "Does the grandchild parent have other children?",
+            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("grandchildParentHasOtherChildren")
+    private Boolean grandchildParentOtherChildren;
+
+    @ApiModelProperty(value = "Does the grandchild parent children are over 18?",
+            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("grandchildParentHasAllChildrenOver18")
+    private Boolean grandchildParentChildrenOverEighteen;
+
     @ApiModelProperty(value = "Did the deceased have any living descendants?",
             allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
@@ -133,7 +147,8 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean anyDeceasedChildrenDieBeforeDeceased, String childrenDiedBeforeDeceased,
                              Boolean grandChildrenSurvived, Boolean childAlive, Boolean englishForeignDeathCert,
                              Boolean foreignDeathCertTranslation, Boolean anyDeceasedGrandchildrenUnderEighteen,
-                             Boolean anyChildren, Boolean anyLivingDescendants, Boolean anyOtherParentAlive) {
+                             Boolean anyChildren, Boolean anyLivingDescendants, Boolean anyOtherParentAlive,
+                             Boolean grandchildParentOtherChildren, Boolean grandchildParentChildrenOverEighteen) {
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
                 married, address, postcode, postcodeAddress, addressFound,
             addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
@@ -153,5 +168,7 @@ public class IntestacyDeceased extends ProbateDeceased {
         this.anyChildren = anyChildren;
         this.anyLivingDescendants = anyLivingDescendants;
         this.anyOtherParentAlive = anyOtherParentAlive;
+        this.grandchildParentOtherChildren = grandchildParentOtherChildren;
+        this.grandchildParentChildrenOverEighteen = grandchildParentChildrenOverEighteen;
     }
 }
