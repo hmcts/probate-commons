@@ -69,6 +69,21 @@ public class FamilyDetails {
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("deceasedAdoptedIn")
+    private Boolean deceasedAdoptedIn;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("deceasedAdoptedOut")
+    private Boolean deceasedAdoptedOut;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("deceasedAdoptionPlace")
+    private Boolean deceasedAdoptionInEnglandOrWales;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean adoptedIn;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
@@ -78,6 +93,7 @@ public class FamilyDetails {
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean adoptedOut;
+
 
 
 }
