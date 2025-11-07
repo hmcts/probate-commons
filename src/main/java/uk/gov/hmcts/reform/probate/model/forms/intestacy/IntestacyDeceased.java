@@ -148,8 +148,9 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean grandChildrenSurvived, Boolean childAlive, Boolean englishForeignDeathCert,
                              Boolean foreignDeathCertTranslation, Boolean anyDeceasedGrandchildrenUnderEighteen,
                              Boolean anyChildren, Boolean grandchildParentOtherChildren,
-                             Boolean grandchildParentChildrenOverEighteen) {
-                             Boolean anyChildren, Boolean anyLivingDescendants, Boolean anyOtherParentAlive) {
+                             Boolean grandchildParentChildrenOverEighteen, Boolean anyLivingDescendants,
+                             Boolean anyOtherParentAlive) {
+
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
                 married, address, postcode, postcodeAddress, addressFound,
             addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
