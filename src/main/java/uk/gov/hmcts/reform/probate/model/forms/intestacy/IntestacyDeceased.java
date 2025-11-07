@@ -166,9 +166,9 @@ public class IntestacyDeceased extends ProbateDeceased {
         this.childAlive = childAlive;
         this.anyDeceasedGrandchildrenUnderEighteen = anyDeceasedGrandchildrenUnderEighteen;
         this.anyChildren = anyChildren;
-        this.anyLivingDescendants = anyLivingDescendants;
-        this.anyOtherParentAlive = anyOtherParentAlive;
         this.grandchildParentOtherChildren = grandchildParentOtherChildren;
         this.grandchildParentChildrenOverEighteen = grandchildParentChildrenOverEighteen;
+        this.anyLivingDescendants = anyLivingDescendants;
+        this.anyOtherParentAlive = anyOtherParentAlive;
     }
 }
