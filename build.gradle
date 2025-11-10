@@ -113,7 +113,7 @@ def versions = [
         hibernateValidator: '9.0.1.Final',
         springfoxSwagger  : '3.0.0',
         springBoot        : '3.5.7',
-        commonsIo         : '2.20.0',
+        commonsIo         : '2.21.0',
         openfeign         : '3.8.0',
         pebble            : '3.2.4',
         itextpdf          : '9.1.0',
