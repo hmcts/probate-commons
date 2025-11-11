@@ -135,6 +135,15 @@ public class IntestacyDeceased extends ProbateDeceased {
     @JsonProperty("anyOtherParentAlive")
     private Boolean anyOtherParentAlive;
 
+    @ApiModelProperty(value = "Does the deceased have any living parents at time of death?",
+            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean anyLivingParents;
+
+    @ApiModelProperty(value = "Do you have the same parents as deceased")
+    private String sameParentsAsDeceased;
+
     @Builder
     public IntestacyDeceased(String firstName, String lastName, Boolean nameAsOnTheWill, String aliasFirstNameOnWill,
                              String aliasLastNameOnWill, Boolean alias, Map<String, AliasOtherNames> otherNames,
@@ -149,7 +158,7 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean foreignDeathCertTranslation, Boolean anyDeceasedGrandchildrenUnderEighteen,
                              Boolean anyChildren, Boolean grandchildParentOtherChildren,
                              Boolean grandchildParentChildrenOverEighteen, Boolean anyLivingDescendants,
-                             Boolean anyOtherParentAlive) {
+                             Boolean anyOtherParentAlive, Boolean anyLivingParents, String sameParentsAsDeceased) {
 
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
                 married, address, postcode, postcodeAddress, addressFound,
@@ -172,5 +181,7 @@ public class IntestacyDeceased extends ProbateDeceased {
         this.grandchildParentChildrenOverEighteen = grandchildParentChildrenOverEighteen;
         this.anyLivingDescendants = anyLivingDescendants;
         this.anyOtherParentAlive = anyOtherParentAlive;
+        this.anyLivingParents = anyLivingParents;
+        this.sameParentsAsDeceased = sameParentsAsDeceased;
     }
 }
