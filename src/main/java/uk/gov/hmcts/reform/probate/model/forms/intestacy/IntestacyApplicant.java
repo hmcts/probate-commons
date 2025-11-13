@@ -40,16 +40,20 @@ public class IntestacyApplicant extends ProbateApplicant {
     @ApiModelProperty(value = "Is applicant not required to send documents")
     private Boolean notRequiredToSendDocuments;
 
+    @ApiModelProperty(value = "Do you have the same parents as deceased")
+    private String sameParentsAsDeceased;
+
     @Builder
     public IntestacyApplicant(String firstName, String lastName, String alias, String aliasReason, Address address,
                               String postcode, String postcodeAddress, Boolean addressFound,
                               List<Map<String, Object>> addresses, String phoneNumber, Boolean nameAsOnTheWill,
                               String otherReason, String relationshipToDeceased,
-                              Boolean adoptionInEnglandOrWales, String spouseNotApplyingReason) {
+                              Boolean adoptionInEnglandOrWales, String spouseNotApplyingReason, String sameParentsAsDeceased) {
         super(firstName, lastName, alias, aliasReason, address, postcode, postcodeAddress, addressFound, addresses,
             phoneNumber, nameAsOnTheWill, otherReason);
         this.relationshipToDeceased = relationshipToDeceased;
         this.adoptionInEnglandOrWales = adoptionInEnglandOrWales;
         this.spouseNotApplyingReason = spouseNotApplyingReason;
+        this.sameParentsAsDeceased = sameParentsAsDeceased;
     }
 }
