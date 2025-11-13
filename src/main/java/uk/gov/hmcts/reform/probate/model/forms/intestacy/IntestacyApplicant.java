@@ -48,7 +48,8 @@ public class IntestacyApplicant extends ProbateApplicant {
                               String postcode, String postcodeAddress, Boolean addressFound,
                               List<Map<String, Object>> addresses, String phoneNumber, Boolean nameAsOnTheWill,
                               String otherReason, String relationshipToDeceased,
-                              Boolean adoptionInEnglandOrWales, String spouseNotApplyingReason, String sameParentsAsDeceased) {
+                              Boolean adoptionInEnglandOrWales, String spouseNotApplyingReason,
+                              String sameParentsAsDeceased) {
         super(firstName, lastName, alias, aliasReason, address, postcode, postcodeAddress, addressFound, addresses,
             phoneNumber, nameAsOnTheWill, otherReason);
         this.relationshipToDeceased = relationshipToDeceased;
