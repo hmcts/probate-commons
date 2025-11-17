@@ -470,7 +470,7 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean primaryApplicantNotRequiredToSendDocuments;
 
-    private String ApplicantSameParentsAsDeceased;
+    private String applicantSameParentsAsDeceased;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
