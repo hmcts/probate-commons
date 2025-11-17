@@ -1076,7 +1076,7 @@ public class GrantOfRepresentationData extends CaseData {
         return this.getExecutorsApplying() != null
             ? this.getExecutorsApplying().stream().filter(e -> e.getValue().getApplyingExecutorApplicant() == null
             || !e.getValue().getApplyingExecutorApplicant())
-            .allMatch(e -> e.getValue().getApplyingExecutorInvitationId() != null) : null;
+            .anyMatch(e -> e.getValue().getApplyingExecutorInvitationId() != null) : null;
     }
 
     @Transient
