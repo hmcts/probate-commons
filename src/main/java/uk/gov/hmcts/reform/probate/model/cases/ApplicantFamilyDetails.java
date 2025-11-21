@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uk.gov.hmcts.reform.probate.model.Relationship;
+import uk.gov.hmcts.reform.probate.model.CoApplicantRelationship;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
@@ -20,7 +20,7 @@ import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ApplicantFamilyDetails {
 
-    private Relationship relationshipToDeceased;
+    private CoApplicantRelationship relationshipToDeceased;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -64,13 +64,29 @@ public class ApplicantFamilyDetails {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean deceasedAdoptedIn;
+    private Boolean halfBloodSiblingDiedBeforeDeceased;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean deceasedAdoptionInEnglandOrWales;
+    private Boolean halfBloodSiblingAdoptedIn;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean deceasedAdoptedOut;
+    private Boolean halfBloodSiblingAdoptionInEnglandOrWales;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodSiblingAdoptedOut;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodNieceOrNephewAdoptedIn;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodNieceOrNephewAdoptionInEnglandOrWales;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodNieceOrNephewAdoptedOut;
 }

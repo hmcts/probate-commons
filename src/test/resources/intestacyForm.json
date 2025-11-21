@@ -15,8 +15,9 @@
     "postcode": "SW17 0QT",
     "phoneNumber": "123455678",
     "addressFound": "true",
-    "relationshipToDeceased": "optionAdoptedChild",
+    "relationshipToDeceased": "optionChild",
     "spouseNotApplyingReason": "Mentally incapable",
+    "adoptedIn": "optionYes",
     "adoptionPlace": "optionYes"
   },
   "deceased": {
@@ -103,10 +104,6 @@
     "deceasedHadLateSpouseOrCivilPartner": "optionYes",
     "uniqueProbateCodeId":"CTS04052311043tpps8e9",
     "unusedAllowanceClaimed": "optionNo"
-  },
-  "details": {
-    "relationshipToDeceased": "optionChild",
-    "childAdoptedIn": "optionYes"
   },
   "copies": {
     "uk": 5,

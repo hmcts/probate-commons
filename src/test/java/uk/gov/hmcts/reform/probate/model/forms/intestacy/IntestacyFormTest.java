@@ -84,8 +84,9 @@ class IntestacyFormTest {
         intestacyApplicant.setAddress(applicantAddress);
         intestacyApplicant.setPostcode("SW17 0QT");
         intestacyApplicant.setPhoneNumber("123455678");
+        intestacyApplicant.setRelationshipToDeceased(Relationship.CHILD.getDescription());
+        intestacyApplicant.setAdoptedIn(true);
         intestacyApplicant.setAdoptionInEnglandOrWales(true);
-        intestacyApplicant.setRelationshipToDeceased(Relationship.ADOPTED_CHILD.getDescription());
         intestacyApplicant.setSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE.getDescription());
         intestacyForm.setApplicant(intestacyApplicant);
 
@@ -142,11 +143,6 @@ class IntestacyFormTest {
         inheritanceTax.setAssetsOutsideNetValue(new BigDecimal("100.50"));
         inheritanceTax.setAssetsOutside(true);
         intestacyForm.setIht(inheritanceTax);
-
-        FamilyDetails details = new FamilyDetails();
-        details.setRelationshipToDeceased(Relationship.CHILD.getDescription());
-        details.setChildAdoptedIn(TRUE);
-        intestacyForm.setDetails(details);
 
         Copies copies = new Copies();
         copies.setOverseas(6L);
