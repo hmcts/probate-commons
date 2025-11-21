@@ -10,7 +10,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.probate.model.OptionYesNo;
-import uk.gov.hmcts.reform.probate.model.YesNo;
 import uk.gov.hmcts.reform.probate.model.forms.Address;
 import uk.gov.hmcts.reform.probate.model.forms.ProbateApplicant;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
@@ -95,7 +94,7 @@ public class IntestacyApplicant extends ProbateApplicant {
     private String spouseNotApplyingReason;
 
     @ApiModelProperty(value = "Does the deceased have other half-siblings?",
-            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+            allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("anyOtherHalfSiblings")
@@ -105,21 +104,21 @@ public class IntestacyApplicant extends ProbateApplicant {
     private String halfBloodSiblingsDiedBeforeDeceased;
 
     @ApiModelProperty(value = "Are all the deceased's half-siblings over 18?",
-            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+            allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("allHalfSiblingsOver18")
     private Boolean halfBloodSiblingsOverEighteen;
 
     @ApiModelProperty(value = "Did any of these half-siblings have surviving children?",
-            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+            allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("anySurvivingHalfNiecesAndHalfNephews")
     private Boolean halfBloodNiecesAndNephewsSurvived;
 
     @ApiModelProperty(value = "Are all of half-nieces and half-nephews 18 or older?",
-            allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+            allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     @JsonProperty("allHalfNiecesAndHalfNephewsOver18")
@@ -127,6 +126,9 @@ public class IntestacyApplicant extends ProbateApplicant {
 
     @ApiModelProperty(value = "Is applicant not required to send documents")
     private Boolean notRequiredToSendDocuments;
+
+    @ApiModelProperty(value = "Do you have the same parents as deceased")
+    private String sameParentsAsDeceased;
 
     @Builder
     public IntestacyApplicant(String firstName, String lastName, String alias, String aliasReason, Address address,
@@ -139,7 +141,7 @@ public class IntestacyApplicant extends ProbateApplicant {
                               Boolean deceasedAdoptedOut, String spouseNotApplyingReason,
                               Boolean otherHalfBloodSiblings, String halfBloodSiblingsDiedBeforeDeceased,
                               Boolean halfBloodSiblingsOverEighteen, Boolean halfBloodNiecesAndNephewsSurvived,
-                              Boolean halfBloodNiecesAndNephewsOverEighteen) {
+                              Boolean halfBloodNiecesAndNephewsOverEighteen, String sameParentsAsDeceased) {
         super(firstName, lastName, alias, aliasReason, address, postcode, postcodeAddress, addressFound, addresses,
             phoneNumber, nameAsOnTheWill, otherReason);
         this.relationshipToDeceased = relationshipToDeceased;
@@ -158,5 +160,6 @@ public class IntestacyApplicant extends ProbateApplicant {
         this.halfBloodSiblingsOverEighteen = halfBloodSiblingsOverEighteen;
         this.halfBloodNiecesAndNephewsSurvived = halfBloodNiecesAndNephewsSurvived;
         this.halfBloodNiecesAndNephewsOverEighteen = halfBloodNiecesAndNephewsOverEighteen;
+        this.sameParentsAsDeceased = sameParentsAsDeceased;
     }
 }
