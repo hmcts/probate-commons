@@ -93,6 +93,37 @@ public class IntestacyApplicant extends ProbateApplicant {
     @ApiModelProperty(value = "Reason spouse not applying")
     private String spouseNotApplyingReason;
 
+    @ApiModelProperty(value = "Does the deceased have other siblings?",
+            allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("anyOtherWholeSiblings")
+    private Boolean otherWholeBloodSiblings;
+
+    @JsonProperty("anyPredeceasedWholeSiblings")
+    private String wholeBloodSiblingsDiedBeforeDeceased;
+
+    @ApiModelProperty(value = "Are all the deceased's siblings over 18?",
+            allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("allWholeSiblingsOver18")
+    private Boolean wholeBloodSiblingsOverEighteen;
+
+    @ApiModelProperty(value = "Did any of these siblings have surviving children?",
+            allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("anySurvivingWholeNiecesAndWholeNephews")
+    private Boolean wholeBloodNiecesAndNephewsSurvived;
+
+    @ApiModelProperty(value = "Are all of nieces and nephews 18 or older?",
+            allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("allWholeNiecesAndWholeNephewsOver18")
+    private Boolean wholeBloodNiecesAndNephewsOverEighteen;
+
     @ApiModelProperty(value = "Does the deceased have other half-siblings?",
             allowableValues = OptionYesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)

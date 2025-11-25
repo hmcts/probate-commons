@@ -233,6 +233,24 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean otherWholeBloodSiblings;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodSiblingsOverEighteen;
+
+    private Predeceased wholeBloodSiblingsDiedBeforeDeceased;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodNiecesAndNephewsSurvived;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodNiecesAndNephewsOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean otherHalfBloodSiblings;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
