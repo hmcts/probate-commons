@@ -84,8 +84,9 @@ class IntestacyFormTest {
         intestacyApplicant.setAddress(applicantAddress);
         intestacyApplicant.setPostcode("SW17 0QT");
         intestacyApplicant.setPhoneNumber("123455678");
+        intestacyApplicant.setRelationshipToDeceased(Relationship.CHILD.getDescription());
+        intestacyApplicant.setAdoptedIn(true);
         intestacyApplicant.setAdoptionInEnglandOrWales(true);
-        intestacyApplicant.setRelationshipToDeceased(Relationship.ADOPTED_CHILD.getDescription());
         intestacyApplicant.setSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE.getDescription());
         intestacyForm.setApplicant(intestacyApplicant);
 

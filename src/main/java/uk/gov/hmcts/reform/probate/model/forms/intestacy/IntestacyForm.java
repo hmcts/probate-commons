@@ -85,7 +85,7 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
                          Language language, Equality equality, String documentsReceivedNotificationSent,
                          ProvideInformation provideinformation, ReviewResponse reviewresponse,
                          String expectedResponseDate, String informationNeeded, String informationNeededByPost,
-                         FamilyDetails details, String eventDescription,CoApplicants executors) {
+                         String eventDescription,CoApplicants executors) {
 
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
