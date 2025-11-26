@@ -19,6 +19,7 @@ public enum EventId {
     GOP_CITIZEN_HUB_RESPONSE("citizenHubResponse"),
     GOP_CITIZEN_HUB_RESPONSE_DRAFT("citizenHubResponseDraft"),
     KEEP_DRAFT("keepDraft"),
+    INTESTACY_RELATIONSHIP_DRAFT("intestacyRelationshipDraft"),
 
     CAVEAT_APPLY_FOR_CAVEAT("applyForCaveat"),
     CAVEAT_EXPIRED_FOR_AWAITING_RESOLUTION("caveatExpiredForAwaitingCaveatResolution"),
