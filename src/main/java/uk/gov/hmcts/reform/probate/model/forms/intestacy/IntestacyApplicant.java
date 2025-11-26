@@ -159,6 +159,7 @@ public class IntestacyApplicant extends ProbateApplicant {
     private Boolean notRequiredToSendDocuments;
 
     @ApiModelProperty(value = "Do you have the same parents as deceased")
+    @JsonProperty("sameParents")
     private String sameParentsAsDeceased;
 
     @Builder
