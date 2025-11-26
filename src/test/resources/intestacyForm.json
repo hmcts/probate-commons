@@ -15,8 +15,9 @@
     "postcode": "SW17 0QT",
     "phoneNumber": "123455678",
     "addressFound": "true",
-    "relationshipToDeceased": "optionAdoptedChild",
+    "relationshipToDeceased": "optionChild",
     "spouseNotApplyingReason": "Mentally incapable",
+    "adoptedIn": "optionYes",
     "adoptionPlace": "optionYes"
   },
   "deceased": {
