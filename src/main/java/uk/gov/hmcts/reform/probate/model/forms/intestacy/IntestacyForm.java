@@ -71,6 +71,8 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String informationNeededByPost;
 
+    private FamilyDetails details;
+
     private PaAssets assets;
 
     @Builder
@@ -102,6 +104,7 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.expectedResponseDate = expectedResponseDate;
         this.informationNeeded = informationNeeded;
         this.informationNeededByPost = informationNeededByPost;
+        this.details = details;
         this.assets = assets;
         this.executors = executors;
     }

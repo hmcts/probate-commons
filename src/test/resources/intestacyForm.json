@@ -105,6 +105,10 @@
     "uniqueProbateCodeId":"CTS04052311043tpps8e9",
     "unusedAllowanceClaimed": "optionNo"
   },
+  "details": {
+    "relationshipToDeceased": "optionChild",
+    "childAdoptedIn": "optionYes"
+  },
   "copies": {
     "uk": 5,
     "overseas": 6
