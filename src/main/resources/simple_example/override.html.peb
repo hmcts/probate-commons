@@ -1,8 +1,0 @@
-{% extends "simple_example/main.html" %}
-
-{% block h1 %}{{  i18n("simple_example.override", "heading") }}{% endblock %}
-
-{% block main_content %}
-    <p>{{ i18n("simple_example.override", "pre_content", [ alt ]) }}</p>
-    {{  parent() }}
-{% endblock %}

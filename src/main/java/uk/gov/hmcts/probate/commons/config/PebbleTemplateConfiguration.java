@@ -1,8 +1,8 @@
 package uk.gov.hmcts.probate.commons.config;
 
-import io.pebbletemplates.pebble.PebbleEngine;
-import io.pebbletemplates.pebble.loader.ClasspathLoader;
-import io.pebbletemplates.pebble.loader.Loader;
+import com.mitchellbosecke.pebble.PebbleEngine;
+import com.mitchellbosecke.pebble.loader.ClasspathLoader;
+import com.mitchellbosecke.pebble.loader.Loader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,6 +23,7 @@ public class PebbleTemplateConfiguration {
         final ClasspathLoader classpathLoader = new ClasspathLoader();
         classpathLoader.setCharset(StandardCharsets.UTF_8.name());
         classpathLoader.setSuffix(".peb");
+        classpathLoader.setPrefix("templates/pdf_generation/");
         return classpathLoader;
     }
 }
