@@ -193,7 +193,6 @@ class GrantOfRepresentationTest {
             is(equalTo(Boolean.TRUE)));
     }
 
-
     @Test
     void shouldGetExecutorApplyingByEmailAddressAndNamesForSameEmailAddress() {
 

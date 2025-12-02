@@ -111,6 +111,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean softStop;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean hasDataChanged;
+
     private RegistryLocation registryLocation;
 
     private String registryAddress;
@@ -1182,7 +1186,7 @@ public class GrantOfRepresentationData extends CaseData {
         return this.getExecutorsApplying() != null
             ? this.getExecutorsApplying().stream().filter(e -> e.getValue().getApplyingExecutorApplicant() == null
             || !e.getValue().getApplyingExecutorApplicant())
-            .allMatch(e -> e.getValue().getApplyingExecutorInvitationId() != null) : null;
+            .anyMatch(e -> e.getValue().getApplyingExecutorInvitationId() != null) : null;
     }
 
     @Transient
