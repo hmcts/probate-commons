@@ -25,4 +25,6 @@ public class CoApplicants {
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean hasCoApplicant;
+
+    private Boolean invitesSent;
 }
