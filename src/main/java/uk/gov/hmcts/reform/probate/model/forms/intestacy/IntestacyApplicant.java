@@ -173,7 +173,10 @@ public class IntestacyApplicant extends ProbateApplicant {
                               Boolean deceasedAdoptedOut, String spouseNotApplyingReason,
                               Boolean otherHalfBloodSiblings, String halfBloodSiblingsDiedBeforeDeceased,
                               Boolean halfBloodSiblingsOverEighteen, Boolean halfBloodNiecesAndNephewsSurvived,
-                              Boolean halfBloodNiecesAndNephewsOverEighteen, String sameParentsAsDeceased) {
+                              Boolean halfBloodNiecesAndNephewsOverEighteen, String sameParentsAsDeceased,
+                              Boolean otherWholeBloodSiblings, String wholeBloodSiblingsDiedBeforeDeceased,
+                              Boolean wholeBloodSiblingsOverEighteen, Boolean wholeBloodNiecesAndNephewsSurvived,
+                              Boolean wholeBloodNiecesAndNephewsOverEighteen) {
         super(firstName, lastName, alias, aliasReason, address, postcode, postcodeAddress, addressFound, addresses,
             phoneNumber, nameAsOnTheWill, otherReason);
         this.relationshipToDeceased = relationshipToDeceased;
@@ -193,5 +196,10 @@ public class IntestacyApplicant extends ProbateApplicant {
         this.halfBloodNiecesAndNephewsSurvived = halfBloodNiecesAndNephewsSurvived;
         this.halfBloodNiecesAndNephewsOverEighteen = halfBloodNiecesAndNephewsOverEighteen;
         this.sameParentsAsDeceased = sameParentsAsDeceased;
+        this.otherWholeBloodSiblings = otherWholeBloodSiblings;
+        this.wholeBloodSiblingsDiedBeforeDeceased = wholeBloodSiblingsDiedBeforeDeceased;
+        this.wholeBloodSiblingsOverEighteen = wholeBloodSiblingsOverEighteen;
+        this.wholeBloodNiecesAndNephewsSurvived = wholeBloodNiecesAndNephewsSurvived;
+        this.wholeBloodNiecesAndNephewsOverEighteen = wholeBloodNiecesAndNephewsOverEighteen;
     }
 }
