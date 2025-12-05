@@ -33,8 +33,10 @@ import uk.gov.hmcts.reform.probate.model.AttorneyNamesAndAddress;
 import uk.gov.hmcts.reform.probate.model.BulkScanEnvelope;
 import uk.gov.hmcts.reform.probate.model.IhtFormEstate;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
+import uk.gov.hmcts.reform.probate.model.Predeceased;
 import uk.gov.hmcts.reform.probate.model.ProbateDocument;
 import uk.gov.hmcts.reform.probate.model.Relationship;
+import uk.gov.hmcts.reform.probate.model.SameParent;
 import uk.gov.hmcts.reform.probate.model.ScannedDocument;
 import uk.gov.hmcts.reform.probate.model.cases.Address;
 import uk.gov.hmcts.reform.probate.model.cases.AliasName;
@@ -59,6 +61,7 @@ import uk.gov.hmcts.reform.probate.model.cases.RemovedRepresentative;
 import uk.gov.hmcts.reform.probate.model.cases.SolsAliasName;
 import uk.gov.hmcts.reform.probate.model.cases.SolsPaymentMethods;
 import uk.gov.hmcts.reform.probate.model.cases.UploadDocument;
+import uk.gov.hmcts.reform.probate.model.cases.ApplicantFamilyDetails;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.validation.groups.crossfieldcheck.IntestacyCrossFieldCheck;
@@ -187,6 +190,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedDivorcedDateKnown;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedOtherChildren;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -195,15 +202,74 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedAnyLivingDescendants;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedAnyOtherParentAlive;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedAnyLivingParents;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean allDeceasedChildrenOverEighteen;
 
+    @Deprecated
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean anyDeceasedChildrenDieBeforeDeceased;
 
+    private Predeceased childrenDiedBeforeDeceased;
+
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean anyDeceasedGrandChildrenUnderEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean grandchildParentOtherChildren;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean grandchildParentChildrenOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean otherWholeBloodSiblings;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodSiblingsOverEighteen;
+
+    private Predeceased wholeBloodSiblingsDiedBeforeDeceased;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodNiecesAndNephewsSurvived;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeBloodNiecesAndNephewsOverEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean otherHalfBloodSiblings;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodSiblingsOverEighteen;
+
+    private Predeceased halfBloodSiblingsDiedBeforeDeceased;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodNiecesAndNephewsSurvived;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfBloodNiecesAndNephewsOverEighteen;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -228,6 +294,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonIgnore
     public Boolean childrenDiedUnderEighteen;
+
+    private ApplicantFamilyDetails applicantFamilyDetails;
 
     public void setChildrenDiedOverEighteenText(String stringValue) {
         this.childrenDiedOverEighteenText = stringValue;
@@ -303,6 +371,10 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonIgnore
     public Boolean grandChildrenSurvivedUnderEighteen;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean childAlive;
 
     @JsonIgnore
     public Boolean grandChildrenSurvivedOverEighteen;
@@ -433,11 +505,45 @@ public class GrantOfRepresentationData extends CaseData {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean primaryApplicantAdoptedIn;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean primaryApplicantAdoptionInEnglandOrWales;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean primaryApplicantAdoptedOut;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean primaryApplicantParentAdoptedIn;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean primaryApplicantParentAdoptionInEnglandOrWales;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean primaryApplicantParentAdoptedOut;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedAdoptedIn;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedAdoptionInEnglandOrWales;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedAdoptedOut;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean primaryApplicantNotRequiredToSendDocuments;
+
+    private SameParent applicantSameParentsAsDeceased;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
@@ -523,6 +629,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean executorsNamed;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean hasCoApplicant;
 
     @Deprecated
     @JsonDeserialize(using = YesNoDeserializer.class)
