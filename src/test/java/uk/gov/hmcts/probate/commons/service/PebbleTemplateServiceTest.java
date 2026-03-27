@@ -1,8 +1,8 @@
 package uk.gov.hmcts.probate.commons.service;
 
-import io.pebbletemplates.pebble.PebbleEngine;
-import io.pebbletemplates.pebble.error.PebbleException;
-import io.pebbletemplates.pebble.template.PebbleTemplate;
+import com.mitchellbosecke.pebble.PebbleEngine;
+import com.mitchellbosecke.pebble.error.PebbleException;
+import com.mitchellbosecke.pebble.template.PebbleTemplate;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
