@@ -29,6 +29,9 @@ public class LegalStatement {
     @NotBlank(groups = {PaSubmission.class})
     private String deceased;
 
+    @NotBlank(groups = {PaSubmission.class})
+    private String deceasedMaritalStatus;
+
     private String deceasedOtherNames;
 
     private String deceasedEstateValue;
