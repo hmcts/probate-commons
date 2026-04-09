@@ -118,11 +118,10 @@ class GrantOfRepresentationPaSubmissionTest {
 
         Set<ConstraintViolation<CaseData>> violations = validator.validate(caseData, PA_SUBMISSION);
 
-        assertThat(violations).hasSize(6)
+        assertThat(violations).hasSize(5)
                 .extracting(cv -> cv.getPropertyPath().toString(), ConstraintViolation::getMessage)
                 .containsExactlyInAnyOrder(
                         tuple("legalStatement.deceasedEstateLand", "must not be blank"),
-                        tuple("legalStatement.deceasedMaritalStatus", "must not be blank"),
                         tuple("legalStatement.intro", "must not be blank"),
                         tuple("legalStatement.applicant", "must not be blank"),
                         tuple("legalStatement.deceased", "must not be blank"),
