@@ -82,6 +82,7 @@ public class GrantOfRepresentationCreator {
             .deceased("Rob Stark was born on 1 January 1900 and died on 1 January 2019, "
                 + "domiciled in England and Wales.")
             .deceasedOtherNames("")
+            .deceasedMaritalStatus("Divorced")
             .deceasedEstateValue("The gross value for the estate amounts to £20000.00 "
                 + "and the net value for the estate amounts to £20000.00.")
             .deceasedEstateLand("To the best of my knowledge, information and belief, "
