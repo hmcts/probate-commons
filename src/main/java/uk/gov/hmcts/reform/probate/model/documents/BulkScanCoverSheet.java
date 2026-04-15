@@ -18,12 +18,23 @@ public class BulkScanCoverSheet implements BusinessDocument {
         "You must send these documents and this cover sheet to the address shown below";
     public static final String DEFAULT_SEND_DOCS_INTRO = "Send your documents and coversheet";
 
+    public static final String DEFAULT_APPLICANT_NAME_INTRO_WELSH = "Eich enw";
+    public static final String DEFAULT_APPLICANT_ADDRESS_INTRO_WELSH = "Eich cyfeiriad";
+    public static final String DEFAULT_CASE_REFERENCE_INTRO_WELSH = "Eich rhif cyfeirnod unigryw yw";
+    public static final String DEFAULT_SUBMIT_ADDRESS_INTRO_WELSH =
+            "Rhaid i chi anfon y dogfennau hyn a'r ddalen flaen hon i'r cyfeiriad a ddangosir isod";
+    public static final String DEFAULT_SEND_DOCS_INTRO_WELSH = "Anfonwch eich dogfennau a'ch dalen flaen";
+
     private static final char CASE_REFERENCE_SEPARATOR_CHAR = '-';
     private static final int CASE_REFERENCE_SEPARATOR_INTERVAL_NUMBER = 4;
 
     @NotBlank
     @JsonProperty("title")
     private String title = DEFAULT_TITLE;
+
+    @NotNull
+    @JsonProperty("isBilingual")
+    private Boolean isBilingual;
 
     @NotBlank
     @JsonProperty("applicantAddressIntro")
@@ -71,6 +82,33 @@ public class BulkScanCoverSheet implements BusinessDocument {
 
     @JsonProperty("noDocumentsRequiredText")
     private String noDocumentsRequiredText;
+
+    @NotBlank
+    @JsonProperty("applicantAddressIntroWelsh")
+    private String applicantAddressIntroWelsh = DEFAULT_APPLICANT_ADDRESS_INTRO_WELSH;
+
+    @NotBlank
+    @JsonProperty("applicantNameIntroWelsh")
+    private String applicantNameIntroWelsh = DEFAULT_APPLICANT_NAME_INTRO_WELSH;
+
+    @NotBlank
+    @JsonProperty("caseReferenceIntroWelsh")
+    private String caseReferenceIntroWelsh = DEFAULT_CASE_REFERENCE_INTRO_WELSH;
+
+    @NotBlank
+    @JsonProperty("submitAddressIntroWelsh")
+    private String submitAddressIntroWelsh = DEFAULT_SUBMIT_ADDRESS_INTRO_WELSH;
+
+    @NotBlank
+    @JsonProperty("checkListItemsIntroWelsh")
+    private String checkListItemsIntroWelsh = DEFAULT_SEND_DOCS_INTRO_WELSH;
+
+    @NotNull
+    @JsonProperty("checkListItemsWelsh")
+    private List<CheckListItem> checkListItemsWelsh;
+
+    @JsonProperty("noDocumentsRequiredTextWelsh")
+    private String noDocumentsRequiredTextWelsh;
 
     public String getTitle() {
         return title;
@@ -168,12 +206,77 @@ public class BulkScanCoverSheet implements BusinessDocument {
         this.noDocumentsRequired = noDocumentsRequired;
     }
 
+    public Boolean getIsBilingual() {
+        return this.isBilingual;
+    }
+
+    public void setIsBilingual(Boolean isBilingual) {
+        this.isBilingual = isBilingual;
+    }
+
     public String getNoDocumentsRequiredText() {
         return this.noDocumentsRequiredText;
     }
 
     public void setNoDocumentsRequiredText(String noDocumentsRequiredText) {
         this.noDocumentsRequiredText = noDocumentsRequiredText;
+    }
+
+    public String getApplicantAddressIntroWelsh() {
+        return applicantAddressIntroWelsh;
+    }
+
+    public String getApplicantNameIntroWelsh() {
+        return applicantNameIntroWelsh;
+    }
+
+    public void setApplicantAddressIntroWelsh(String applicantAddressIntroWelsh) {
+        this.applicantAddressIntroWelsh = applicantAddressIntroWelsh;
+    }
+
+    public void setApplicantNameIntroWelsh(String applicantNameIntroWelsh) {
+        this.applicantNameIntroWelsh = applicantNameIntroWelsh;
+    }
+
+    public String getCaseReferenceIntroWelsh() {
+        return caseReferenceIntroWelsh;
+    }
+
+    public void setCaseReferenceIntroWelsh(String caseReferenceIntroWelsh) {
+        this.caseReferenceIntroWelsh = caseReferenceIntroWelsh;
+    }
+
+    public String getSubmitAddressIntroWelsh() {
+        return submitAddressIntroWelsh;
+    }
+
+    public void setSubmitAddressIntroWelsh(String submitAddressIntroWelsh) {
+        this.submitAddressIntroWelsh = submitAddressIntroWelsh;
+    }
+
+
+    public String getCheckListItemsIntroWelsh() {
+        return checkListItemsIntroWelsh;
+    }
+
+    public void setCheckListItemsIntroWelsh(String checkListItemsIntroWelsh) {
+        this.checkListItemsIntroWelsh = checkListItemsIntroWelsh;
+    }
+
+    public List<CheckListItem> getCheckListItemsWelsh() {
+        return this.checkListItemsWelsh;
+    }
+
+    public void setCheckListItemsWelsh(List<CheckListItem> checkListItemsWelsh) {
+        this.checkListItemsWelsh = checkListItemsWelsh;
+    }
+
+    public String getNoDocumentsRequiredTextWelsh() {
+        return this.noDocumentsRequiredTextWelsh;
+    }
+
+    public void setNoDocumentsRequiredTextWelsh(String noDocumentsRequiredTextWelsh) {
+        this.noDocumentsRequiredTextWelsh = noDocumentsRequiredTextWelsh;
     }
 
     private String addCaseReferenceHyphens(String number) {
