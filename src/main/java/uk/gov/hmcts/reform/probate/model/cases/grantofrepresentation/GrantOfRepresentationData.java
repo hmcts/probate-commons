@@ -984,6 +984,8 @@ public class GrantOfRepresentationData extends CaseData {
 
     private List<CollectionMember<ModifiedOCRField>> modifiedOCRFieldList;
 
+    private String eventDescription;
+
     /* END: Additional Bulk Scanning PA1A PA1P Form fields for case creation */
 
     @Transient

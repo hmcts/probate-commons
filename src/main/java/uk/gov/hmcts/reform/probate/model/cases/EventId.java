@@ -8,6 +8,7 @@ public enum EventId {
 
     GOP_CREATE_DRAFT("createDraft"),
     GOP_UPDATE_DRAFT("updateDraft"),
+    GOP_UPDATE_DRAFT_WITH_CALLBACK("updateDraftWithCallback"),
     GOP_CREATE_APPLICATION("createApplication"),
     GOP_UPDATE_APPLICATION("updateApplication"),
     GOP_CREATE_CASE("createCase"),

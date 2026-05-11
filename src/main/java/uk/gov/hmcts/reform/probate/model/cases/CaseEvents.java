@@ -11,6 +11,8 @@ public class CaseEvents {
 
     private final EventId updateDraftEventId;
 
+    private final EventId updateDraftWithCallbackEventId;
+
     private final EventId createCaseApplicationEventId;
 
     private final EventId updateCaseApplicationEventId;
