@@ -114,10 +114,7 @@ def versions = [
         springfoxSwagger  : '3.0.0',
         springBoot        : '3.5.15',
         commonsIo         : '2.22.0',
-        openfeign         : '3.8.0',
-        pebble            : '3.2.4',
-        itextpdf          : '9.1.0',
-        itextpdf_html     : '6.1.0',
+        openfeign         : '3.8.0'
 ]
 
 dependencies {
@@ -133,10 +130,6 @@ dependencies {
     implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: versions.hibernateValidator
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
     implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.11.0'
-
-    implementation group: 'com.itextpdf', name: 'html2pdf', version: versions.itextpdf_html
-    implementation group: 'com.itextpdf', name: 'itext-core', version: versions.itextpdf
-    implementation group: 'io.pebbletemplates', name: 'pebble', version: versions.pebble
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
