@@ -4,19 +4,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.HALF_BLOOD_NIECE_OR_NEPHEW_DESC;
-import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.HALF_BLOOD_SIBLING_DESC;
-import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.WHOLE_BLOOD_NIECE_OR_NEPHEW_DESC;
-import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.WHOLE_BLOOD_SIBLING_DESC;
-import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.PARTNER_DESC;
 import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.CHILD_DESC;
 import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.GRANDCHILD_DESC;
+import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.HALF_BLOOD_NIECE_OR_NEPHEW_DESC;
+import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.HALF_BLOOD_SIBLING_DESC;
 import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.OTHER_DESC;
+import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.PARENT_DESC;
+import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.PARTNER_DESC;
+import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.WHOLE_BLOOD_NIECE_OR_NEPHEW_DESC;
+import static uk.gov.hmcts.reform.probate.model.CoApplicantRelationship.Constants.WHOLE_BLOOD_SIBLING_DESC;
 
 
 @RequiredArgsConstructor
 public enum CoApplicantRelationship {
 
+    @JsonProperty(PARENT_DESC) PARENT("optionParent"),
     @JsonProperty(PARTNER_DESC) PARTNER("optionSpousePartner"),
     @JsonProperty(CHILD_DESC) CHILD("optionChild"),
     @JsonProperty(GRANDCHILD_DESC) GRANDCHILD("optionGrandchild"),
@@ -31,7 +33,7 @@ public enum CoApplicantRelationship {
 
     public static CoApplicantRelationship fromString(String text) {
         for (CoApplicantRelationship ms : CoApplicantRelationship.values()) {
-            if (text != null && ms.description.equalsIgnoreCase(text)) {
+            if (ms.description.equalsIgnoreCase(text)) {
                 return ms;
             }
         }
@@ -40,6 +42,7 @@ public enum CoApplicantRelationship {
 
     public static class Constants {
 
+        public static final String PARENT_DESC = "parent";
         public static final String PARTNER_DESC = "partner";
         public static final String CHILD_DESC = "child";
         public static final String GRANDCHILD_DESC = "grandchild";
