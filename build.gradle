@@ -4,7 +4,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'jacoco'
-    id 'uk.gov.hmcts.java' version '0.12.68'
+    id 'uk.gov.hmcts.java' version '0.12.70'
 }
 
 group 'com.github.hmcts'
@@ -112,7 +112,7 @@ def versions = [
         apacheCommons     : '3.20.0',
         hibernateValidator: '9.1.0.Final',
         springfoxSwagger  : '3.0.0',
-        springBoot        : '3.5.14',
+        springBoot        : '3.5.15',
         commonsIo         : '2.22.0',
         openfeign         : '3.8.0',
         pebble            : '3.2.4',
