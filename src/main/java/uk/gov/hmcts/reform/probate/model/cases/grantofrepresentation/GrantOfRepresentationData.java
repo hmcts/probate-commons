@@ -143,6 +143,12 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean deceasedMarriedAfterWillOrCodicilDate;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean deceasedMarriedAfterWillOrCodicilDateYN;
+
+    private String deceasedSpouseName;
+
     @NotBlank(groups = {IntestacyNullCheck.class, PaNullCheck.class})
     @Size(min = 2, groups = {IntestacyFieldCheck.class, PaFieldCheck.class})
     private String deceasedForenames;
