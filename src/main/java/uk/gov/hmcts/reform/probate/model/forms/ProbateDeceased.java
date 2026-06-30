@@ -54,6 +54,11 @@ public abstract class ProbateDeceased extends Deceased {
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean married;
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean marriedYN;
+
+    private String deceasedSpouseName;
 
     private Address address;
 
