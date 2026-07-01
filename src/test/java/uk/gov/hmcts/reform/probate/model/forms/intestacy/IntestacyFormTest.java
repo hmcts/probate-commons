@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.probate.model.IhtFormType;
 import uk.gov.hmcts.reform.probate.model.PaymentStatus;
+import uk.gov.hmcts.reform.probate.model.Predeceased;
 import uk.gov.hmcts.reform.probate.model.ProbateType;
 import uk.gov.hmcts.reform.probate.model.Relationship;
 import uk.gov.hmcts.reform.probate.model.TestUtils;
@@ -53,6 +54,7 @@ class IntestacyFormTest {
     private IntestacyForm intestacyForm;
 
     private String formJsonFromFile;
+    private static final LocalDate DIVORCE_DATE = LocalDate.of(2025, 1, 1);
 
     @BeforeEach
     public void setUp() throws Exception {
@@ -82,8 +84,9 @@ class IntestacyFormTest {
         intestacyApplicant.setAddress(applicantAddress);
         intestacyApplicant.setPostcode("SW17 0QT");
         intestacyApplicant.setPhoneNumber("123455678");
+        intestacyApplicant.setRelationshipToDeceased(Relationship.CHILD.getDescription());
+        intestacyApplicant.setAdoptedIn(true);
         intestacyApplicant.setAdoptionInEnglandOrWales(true);
-        intestacyApplicant.setRelationshipToDeceased(Relationship.ADOPTED_CHILD.getDescription());
         intestacyApplicant.setSpouseNotApplyingReason(SpouseNotApplyingReason.MENTALLY_INCAPABLE.getDescription());
         intestacyForm.setApplicant(intestacyApplicant);
 
@@ -105,10 +108,13 @@ class IntestacyFormTest {
         aliasOtherNames.setFirstName("King");
         aliasOtherNames.setLastName("North");
         intestacyDeceased.setOtherNames(ImmutableMap.of("name_0", aliasOtherNames));
-        intestacyDeceased.setDivorcedInEnglandOrWales(false);
+        intestacyDeceased.setDivorcedInEnglandOrWales(true);
+        intestacyDeceased.setDivorcedDateKnown(true);
+        intestacyDeceased.setDivorcedDate(DIVORCE_DATE);
         intestacyDeceased.setMaritalStatus(MaritalStatus.MARRIED.getDescription());
         intestacyDeceased.setAllDeceasedChildrenOverEighteen(true);
-        intestacyDeceased.setAnyDeceasedChildrenDieBeforeDeceased(false);
+        intestacyDeceased.setChildrenDiedBeforeDeceased(Predeceased.SOME.getDescription());
+        intestacyDeceased.setGrandChildrenSurvived(true);
         intestacyDeceased.setAnyDeceasedGrandchildrenUnderEighteen(false);
         intestacyDeceased.setAnyChildren(false);
         intestacyDeceased.setOtherChildren(true);
@@ -137,6 +143,11 @@ class IntestacyFormTest {
         inheritanceTax.setAssetsOutsideNetValue(new BigDecimal("100.50"));
         inheritanceTax.setAssetsOutside(true);
         intestacyForm.setIht(inheritanceTax);
+
+        FamilyDetails details = new FamilyDetails();
+        details.setRelationshipToDeceased(Relationship.CHILD.getDescription());
+        details.setChildAdoptedIn(TRUE);
+        intestacyForm.setDetails(details);
 
         Copies copies = new Copies();
         copies.setOverseas(6L);
