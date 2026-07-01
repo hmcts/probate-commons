@@ -25,10 +25,9 @@ public class PaDeceased extends ProbateDeceased {
                       List<Map<String, Object>> addresses, LocalDateTime dateOfBirth, LocalDateTime dateOfDeath,
                       String domicile, Boolean diedEngOrWales, String deathCertificate, Boolean englishForeignDeathCert,
                       Boolean foreignDeathCertTranslation) {
-        super(
-                firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
+        super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
                 married, marriedYN, deceasedSpouseName, address, postcode, postcodeAddress, addressFound, addresses,
-                dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate, englishForeignDeathCert,
-                foreignDeathCertTranslation);
+                dateOfBirth, dateOfDeath,
+                domicile, diedEngOrWales, deathCertificate, englishForeignDeathCert, foreignDeathCertTranslation);
     }
 }
