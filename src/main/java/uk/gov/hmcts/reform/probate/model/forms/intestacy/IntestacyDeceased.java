@@ -26,9 +26,6 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = true)
 public class IntestacyDeceased extends ProbateDeceased {
 
-    @ApiModelProperty(value = "Deceased marital status")
-    private String maritalStatus;
-
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean domiciledInEnglandOrWales;
@@ -76,7 +73,8 @@ public class IntestacyDeceased extends ProbateDeceased {
     @Builder
     public IntestacyDeceased(String firstName, String lastName, Boolean nameAsOnTheWill, String aliasFirstNameOnWill,
                              String aliasLastNameOnWill, Boolean alias, Map<String, AliasOtherNames> otherNames,
-                             Boolean married, Address address, String postcode, String postcodeAddress,
+                             Boolean married, Boolean marriedYN, String deceasedSpouseName, Address address,
+                             String postcode, String postcodeAddress,
                              Boolean addressFound, List<Map<String, Object>> addresses, LocalDateTime dateOfBirth,
                              LocalDateTime dateOfDeath, String domicile, String maritalStatus, Boolean diedEngOrWales,
                              String deathCertificate, Boolean domiciledInEnglandOrWales,
@@ -85,10 +83,9 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean englishForeignDeathCert, Boolean foreignDeathCertTranslation,
                              Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren) {
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
-                married, address, postcode, postcodeAddress, addressFound,
+                married, marriedYN, deceasedSpouseName, address, postcode, postcodeAddress, addressFound,
             addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
-                englishForeignDeathCert, foreignDeathCertTranslation);
-        this.maritalStatus = maritalStatus;
+                englishForeignDeathCert, foreignDeathCertTranslation, maritalStatus);
         this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
         this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;
         this.otherChildren = otherChildren;

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -54,6 +55,11 @@ public abstract class ProbateDeceased extends Deceased {
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean married;
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean marriedYN;
+
+    private String deceasedSpouseName;
 
     private Address address;
 
@@ -94,6 +100,9 @@ public abstract class ProbateDeceased extends Deceased {
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean foreignDeathCertTranslation;
+
+    @ApiModelProperty(value = "Deceased marital status")
+    private String maritalStatus;
 
     @JsonProperty(value = "dod-day")
     public Integer getDodDay() {
