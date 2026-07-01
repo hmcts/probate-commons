@@ -26,9 +26,6 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = true)
 public class IntestacyDeceased extends ProbateDeceased {
 
-    @ApiModelProperty(value = "Deceased marital status")
-    private String maritalStatus;
-
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean domiciledInEnglandOrWales;
@@ -88,8 +85,7 @@ public class IntestacyDeceased extends ProbateDeceased {
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
                 married, marriedYN, deceasedSpouseName, address, postcode, postcodeAddress, addressFound,
             addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
-                englishForeignDeathCert, foreignDeathCertTranslation);
-        this.maritalStatus = maritalStatus;
+                englishForeignDeathCert, foreignDeathCertTranslation, maritalStatus);
         this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
         this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;
         this.otherChildren = otherChildren;
