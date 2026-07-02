@@ -1,18 +1,18 @@
 package uk.gov.hmcts.reform.probate.pact.dsl;
 
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public final  class ResourceLoader {
+public final class ResourceLoader {
 
     private ResourceLoader() {
 
     }
 
     public static String loadJson(final String filePath) throws Exception {
-        return new String(loadResource(filePath), Charset.forName("utf-8"));
+        return new String(loadResource(filePath), StandardCharsets.UTF_8);
     }
 
     private static byte[] loadResource(final String filePath) throws Exception {
