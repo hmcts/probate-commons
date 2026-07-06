@@ -30,12 +30,6 @@ public class IntestacyDeceased extends ProbateDeceased {
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean domiciledInEnglandOrWales;
 
-    @ApiModelProperty(value = "Was Divorced in England or Wales?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    @JsonProperty("divorcePlace")
-    private Boolean divorcedInEnglandOrWales;
-
     @ApiModelProperty(value = "Does the deceased have other children?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
@@ -85,9 +79,8 @@ public class IntestacyDeceased extends ProbateDeceased {
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
                 married, marriedYN, deceasedSpouseName, address, postcode, postcodeAddress, addressFound,
             addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
-                englishForeignDeathCert, foreignDeathCertTranslation, maritalStatus);
+                englishForeignDeathCert, foreignDeathCertTranslation, maritalStatus, divorcedInEnglandOrWales);
         this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
-        this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;
         this.otherChildren = otherChildren;
         this.allDeceasedChildrenOverEighteen = allDeceasedChildrenOverEighteen;
         this.anyDeceasedChildrenDieBeforeDeceased = anyDeceasedChildrenDieBeforeDeceased;
