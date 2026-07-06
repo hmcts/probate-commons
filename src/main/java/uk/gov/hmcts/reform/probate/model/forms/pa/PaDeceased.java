@@ -24,11 +24,11 @@ public class PaDeceased extends ProbateDeceased {
                       String postcodeAddress, Boolean addressFound,
                       List<Map<String, Object>> addresses, LocalDateTime dateOfBirth, LocalDateTime dateOfDeath,
                       String domicile, Boolean diedEngOrWales, String deathCertificate, Boolean englishForeignDeathCert,
-                      Boolean foreignDeathCertTranslation, String maritalStatus) {
+                      Boolean foreignDeathCertTranslation, String maritalStatus, Boolean divorcedInEnglandOrWales) {
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
                 married, marriedYN, deceasedSpouseName, address, postcode, postcodeAddress, addressFound, addresses,
                 dateOfBirth, dateOfDeath,
                 domicile, diedEngOrWales, deathCertificate, englishForeignDeathCert, foreignDeathCertTranslation,
-                maritalStatus);
+                maritalStatus, divorcedInEnglandOrWales);
     }
 }

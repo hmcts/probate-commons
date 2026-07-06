@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import uk.gov.hmcts.reform.probate.model.YesNo;
 import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.BooleanAndNoneSerializer;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
@@ -103,6 +104,12 @@ public abstract class ProbateDeceased extends Deceased {
 
     @ApiModelProperty(value = "Deceased marital status")
     private String maritalStatus;
+
+    @ApiModelProperty(value = "Was Divorced in England or Wales?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    @JsonProperty("divorcePlace")
+    private Boolean divorcedInEnglandOrWales;
 
     @JsonProperty(value = "dod-day")
     public Integer getDodDay() {
