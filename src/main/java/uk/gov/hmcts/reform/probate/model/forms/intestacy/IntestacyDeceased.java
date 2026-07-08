@@ -16,6 +16,7 @@ import uk.gov.hmcts.reform.probate.model.forms.ProbateDeceased;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -72,14 +73,16 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean addressFound, List<Map<String, Object>> addresses, LocalDateTime dateOfBirth,
                              LocalDateTime dateOfDeath, String domicile, String maritalStatus, Boolean diedEngOrWales,
                              String deathCertificate, Boolean domiciledInEnglandOrWales,
-                             Boolean divorcedInEnglandOrWales, Boolean otherChildren,
+                             Boolean divorcedInEnglandOrWales, Boolean divorcedDateKnown, LocalDate divorcedDate,
+                             Boolean otherChildren,
                              Boolean allDeceasedChildrenOverEighteen, Boolean anyDeceasedChildrenDieBeforeDeceased,
                              Boolean englishForeignDeathCert, Boolean foreignDeathCertTranslation,
                              Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren) {
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
                 married, marriedYN, deceasedSpouseName, address, postcode, postcodeAddress, addressFound,
             addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
-                englishForeignDeathCert, foreignDeathCertTranslation, maritalStatus, divorcedInEnglandOrWales);
+                englishForeignDeathCert, foreignDeathCertTranslation, maritalStatus, divorcedInEnglandOrWales,
+                divorcedDateKnown, divorcedDate);
         this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
         this.otherChildren = otherChildren;
         this.allDeceasedChildrenOverEighteen = allDeceasedChildrenOverEighteen;
