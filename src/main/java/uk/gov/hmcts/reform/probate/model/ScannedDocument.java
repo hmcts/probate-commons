@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.probate.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -10,12 +9,15 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Builder
 @AllArgsConstructor
 public class ScannedDocument {
-    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss[.S][.SS][.SSS]";
+
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+    // accepts up to 9 digits in ms
 
     private final String controlNumber;
 
@@ -27,7 +29,6 @@ public class ScannedDocument {
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_TIME_FORMAT)
     private final LocalDateTime scannedDate;
 
     private final ProbateDocumentLink url;
@@ -36,6 +37,5 @@ public class ScannedDocument {
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_TIME_FORMAT)
     private final LocalDateTime deliveryDate;
 }
