@@ -15,7 +15,6 @@ import java.time.format.DateTimeFormatter;
 @Builder
 @AllArgsConstructor
 public class ScannedDocument {
-
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
     // accepts up to 9 digits in ms
 
