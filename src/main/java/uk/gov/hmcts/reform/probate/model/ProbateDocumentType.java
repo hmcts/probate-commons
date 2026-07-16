@@ -6,6 +6,9 @@ import lombok.Getter;
 import java.util.HashMap;
 import java.util.Map;
 
+import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.AFFIDAVITS_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.WITNESS_QUESTIONNAIRES_NAME;
+
 @Getter
 public enum ProbateDocumentType {
 
@@ -53,6 +56,12 @@ public enum ProbateDocumentType {
 
     @JsonProperty("pa1Form")
     PA1_FORM("pa1Form"),
+
+    @JsonProperty("affidavits")
+    AFFIDAVITS("affidavits"),
+
+    @JsonProperty("witnessQuestionnaires")
+    WITNESS_QUESTIONNAIRES("witnessQuestionnaires"),
 
     @JsonProperty("intestacyGrant")
     INTESTACY_GRANT("intestacyGrant"),

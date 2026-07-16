@@ -9,6 +9,8 @@ import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.ADM
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.CAVEAT_EXTENSION_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.CITIZEN_HUB_UPLOAD_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.PA1_FORM_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.AFFIDAVITS_NAME;
+import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.WITNESS_QUESTIONNAIRES_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.CORRESPONDENCE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.DEATH_CERTIFICATE_NAME;
 import static uk.gov.hmcts.reform.probate.model.cases.DocumentType.Constants.DIGITAL_GRANT_DRAFT_NAME;
@@ -83,7 +85,13 @@ public enum DocumentType {
     CITIZEN_HUB_UPLOAD(CITIZEN_HUB_UPLOAD_NAME),
 
     @JsonProperty(PA1_FORM_NAME)
-    PA1_FORM(PA1_FORM_NAME);
+    PA1_FORM(PA1_FORM_NAME),
+
+    @JsonProperty(AFFIDAVITS_NAME)
+    AFFIDAVITS(AFFIDAVITS_NAME),
+
+    @JsonProperty(WITNESS_QUESTIONNAIRES_NAME)
+    WITNESS_QUESTIONNAIRES(WITNESS_QUESTIONNAIRES_NAME);
 
     private final String templateName;
 
@@ -126,6 +134,10 @@ public enum DocumentType {
         public static final String CITIZEN_HUB_UPLOAD_NAME = "citizenHubUpload";
 
         public static final String PA1_FORM_NAME = "pa1Form";
+
+        public static final String AFFIDAVITS_NAME = "affidavits";
+
+        public static final String WITNESS_QUESTIONNAIRES_NAME = "witnessQuestionnaires";
 
         private Constants() {
         }
