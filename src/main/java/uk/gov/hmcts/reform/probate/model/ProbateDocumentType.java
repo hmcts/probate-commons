@@ -51,6 +51,15 @@ public enum ProbateDocumentType {
     @JsonProperty("citizenHubUpload")
     CITIZEN_HUB_UPLOAD("citizenHubUpload"),
 
+    @JsonProperty("pa1Form")
+    PA1_FORM("pa1Form"),
+
+    @JsonProperty("affidavits")
+    AFFIDAVITS("affidavits"),
+
+    @JsonProperty("witnessQuestionnaires")
+    WITNESS_QUESTIONNAIRES("witnessQuestionnaires"),
+
     @JsonProperty("intestacyGrant")
     INTESTACY_GRANT("intestacyGrant"),
 
