@@ -376,6 +376,10 @@ public class GrantOfRepresentationData extends CaseData {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean childAlive;
 
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean isApplicantParentDeceasedChild;
+
     @JsonIgnore
     public Boolean grandChildrenSurvivedOverEighteen;
 
