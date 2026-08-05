@@ -20,8 +20,6 @@ import uk.gov.hmcts.reform.probate.model.jackson.InvertOptionYesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.InvertOptionYesNoSerializer;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoDeserializer;
-import uk.gov.hmcts.reform.probate.model.jackson.YesNoSerializer;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -94,8 +92,8 @@ public class IntestacyDeceased extends ProbateDeceased {
     @ApiModelProperty(
             value = "Was your parent (deceased's child) alive at the time of deceased's death?",
             allowableValues = YesNo.Constants.ALLOWABLE_VALUES,
-            notes = "The value stored in ccd is inverted to the value used in the frontend" +
-                    " (ccd stores was your parent dead)")
+            notes = "The value stored in ccd is inverted to the value used in the frontend"
+                   + " (ccd stores was your parent dead)")
     @JsonDeserialize(using = InvertOptionYesNoDeserializer.class)
     @JsonSerialize(using = InvertOptionYesNoSerializer.class)
     @JsonProperty("childAlive")
