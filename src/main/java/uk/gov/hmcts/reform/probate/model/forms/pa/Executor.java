@@ -171,4 +171,36 @@ public class Executor {
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean wholeBloodSiblingDiedBeforeDeceased;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean wholeNieceOrNephewParentDieBeforeDeceased;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean wholeNieceOrNephewParentAdoptionInEnglandOrWales;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean wholeNieceOrNephewParentAdoptedIn;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean wholeNieceOrNephewParentAdoptedOut;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean halfNieceOrNephewParentDieBeforeDeceased;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean halfNieceOrNephewParentAdoptionInEnglandOrWales;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean halfNieceOrNephewParentAdoptedIn;
+
+    @JsonDeserialize(using = OptionYesNoDeserializer.class)
+    @JsonSerialize(using = OptionYesNoSerializer.class)
+    private Boolean halfNieceOrNephewParentAdoptedOut;
 }
