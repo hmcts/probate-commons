@@ -78,10 +78,6 @@ public class ApplicantFamilyDetails {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean wholeBloodSiblingAdoptedOut;
 
-    /*
-     * Placeholder fields for future direct niece/nephew parent persistence.
-     * Current mappings intentionally persist these answers through the existing sibling fields.
-     */
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean wholeNieceOrNephewParentDieBeforeDeceased;
@@ -126,10 +122,6 @@ public class ApplicantFamilyDetails {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean halfBloodSiblingAdoptedOut;
 
-    /*
-     * Placeholder fields for future direct niece/nephew parent persistence.
-     * Current mappings intentionally persist these answers through the existing sibling fields.
-     */
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean halfNieceOrNephewParentDieBeforeDeceased;
