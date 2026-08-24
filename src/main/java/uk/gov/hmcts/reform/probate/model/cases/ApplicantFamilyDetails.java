@@ -40,6 +40,18 @@ public class ApplicantFamilyDetails {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean coApplicantAdoptedDeceasedIn;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean coApplicantAdoptedDeceasedInEnglandOrWales;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean coApplicantAdoptedDeceasedOut;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean grandchildParentAdoptedIn;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
