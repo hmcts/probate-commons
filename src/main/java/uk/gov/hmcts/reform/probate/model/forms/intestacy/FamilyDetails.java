@@ -44,8 +44,8 @@ public class FamilyDetails {
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
-    @JsonProperty("coApplicantAdoptedDeceasedInEnglandOrWales")
-    private Boolean coApplicantAdoptedDeceasedInEnglandOrWales;
+    @JsonProperty("coApplicantAdoptionDeceasedInEnglandOrWales")
+    private Boolean coApplicantAdoptionDeceasedInEnglandOrWales;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)

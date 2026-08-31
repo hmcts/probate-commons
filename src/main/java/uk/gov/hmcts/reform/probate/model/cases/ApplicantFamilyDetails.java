@@ -44,7 +44,7 @@ public class ApplicantFamilyDetails {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean coApplicantAdoptedDeceasedInEnglandOrWales;
+    private Boolean coApplicantAdoptionDeceasedInEnglandOrWales;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
