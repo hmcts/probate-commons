@@ -40,6 +40,18 @@ public class ApplicantFamilyDetails {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean coApplicantAdoptedDeceasedIn;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean coApplicantAdoptionDeceasedInEnglandOrWales;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean coApplicantAdoptedDeceasedOut;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean grandchildParentAdoptedIn;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -80,6 +92,22 @@ public class ApplicantFamilyDetails {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeNieceOrNephewParentDieBeforeDeceased;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeNieceOrNephewParentAdoptionInEnglandOrWales;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeNieceOrNephewParentAdoptedIn;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean wholeNieceOrNephewParentAdoptedOut;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean wholeBloodNieceOrNephewAdoptedIn;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -105,6 +133,22 @@ public class ApplicantFamilyDetails {
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean halfBloodSiblingAdoptedOut;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfNieceOrNephewParentDieBeforeDeceased;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfNieceOrNephewParentAdoptionInEnglandOrWales;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfNieceOrNephewParentAdoptedIn;
+
+    @JsonDeserialize(using = YesNoDeserializer.class)
+    @JsonSerialize(using = YesNoSerializer.class)
+    private Boolean halfNieceOrNephewParentAdoptedOut;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
