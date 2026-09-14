@@ -6,19 +6,22 @@ import lombok.RequiredArgsConstructor;
 
 import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.ADOPTED_CHILD_DESC;
 import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.CHILD_DESC;
+import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.GRANDCHILD_DESC;
 import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.OTHER_DESC;
 import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.PARENT_DESC;
 import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.PARTNER_DESC;
 import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.SIBLING_DESC;
+import static uk.gov.hmcts.reform.probate.model.Relationship.Constants.GRANDCHILD_DESC;
 
 @RequiredArgsConstructor
 public enum Relationship {
 
     @JsonProperty(PARTNER_DESC) PARTNER("optionSpousePartner"),
     @JsonProperty(CHILD_DESC) CHILD("optionChild"),
+    @JsonProperty(GRANDCHILD_DESC) GRANDCHILD("optionGrandchild"),
     @JsonProperty(ADOPTED_CHILD_DESC) ADOPTED_CHILD("optionAdoptedChild"),
-    @JsonProperty(SIBLING_DESC) SIBLING(SIBLING_DESC),
-    @JsonProperty(PARENT_DESC) PARENT(PARENT_DESC),
+    @JsonProperty(SIBLING_DESC) SIBLING("optionSibling"),
+    @JsonProperty(PARENT_DESC) PARENT("optionParent"),
     @JsonProperty(OTHER_DESC) OTHER("optionOther");
 
     @Getter
@@ -37,6 +40,7 @@ public enum Relationship {
 
         public static final String PARTNER_DESC = "partner";
         public static final String CHILD_DESC = "child";
+        public static final String GRANDCHILD_DESC = "grandchild";
         public static final String ADOPTED_CHILD_DESC = "adoptedChild";
         public static final String SIBLING_DESC = "sibling";
         public static final String PARENT_DESC = "parent";
