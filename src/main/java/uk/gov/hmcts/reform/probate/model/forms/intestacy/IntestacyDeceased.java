@@ -16,6 +16,7 @@ import uk.gov.hmcts.reform.probate.model.forms.ProbateDeceased;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoDeserializer;
 import uk.gov.hmcts.reform.probate.model.jackson.OptionYesNoSerializer;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -26,18 +27,9 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = true)
 public class IntestacyDeceased extends ProbateDeceased {
 
-    @ApiModelProperty(value = "Deceased marital status")
-    private String maritalStatus;
-
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean domiciledInEnglandOrWales;
-
-    @ApiModelProperty(value = "Was Divorced in England or Wales?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    @JsonProperty("divorcePlace")
-    private Boolean divorcedInEnglandOrWales;
 
     @ApiModelProperty(value = "Does the deceased have other children?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
@@ -76,21 +68,22 @@ public class IntestacyDeceased extends ProbateDeceased {
     @Builder
     public IntestacyDeceased(String firstName, String lastName, Boolean nameAsOnTheWill, String aliasFirstNameOnWill,
                              String aliasLastNameOnWill, Boolean alias, Map<String, AliasOtherNames> otherNames,
-                             Boolean married, Address address, String postcode, String postcodeAddress,
+                             Boolean married, Boolean marriedYN, String deceasedSpouseName, Address address,
+                             String postcode, String postcodeAddress,
                              Boolean addressFound, List<Map<String, Object>> addresses, LocalDateTime dateOfBirth,
                              LocalDateTime dateOfDeath, String domicile, String maritalStatus, Boolean diedEngOrWales,
                              String deathCertificate, Boolean domiciledInEnglandOrWales,
-                             Boolean divorcedInEnglandOrWales, Boolean otherChildren,
+                             Boolean divorcedInEnglandOrWales, Boolean divorcedDateKnown, LocalDate divorcedDate,
+                             Boolean otherChildren,
                              Boolean allDeceasedChildrenOverEighteen, Boolean anyDeceasedChildrenDieBeforeDeceased,
                              Boolean englishForeignDeathCert, Boolean foreignDeathCertTranslation,
                              Boolean anyDeceasedGrandchildrenUnderEighteen, Boolean anyChildren) {
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
-                married, address, postcode, postcodeAddress, addressFound,
+                married, marriedYN, deceasedSpouseName, address, postcode, postcodeAddress, addressFound,
             addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
-                englishForeignDeathCert, foreignDeathCertTranslation);
-        this.maritalStatus = maritalStatus;
+                englishForeignDeathCert, foreignDeathCertTranslation, maritalStatus, divorcedInEnglandOrWales,
+                divorcedDateKnown, divorcedDate);
         this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
-        this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;
         this.otherChildren = otherChildren;
         this.allDeceasedChildrenOverEighteen = allDeceasedChildrenOverEighteen;
         this.anyDeceasedChildrenDieBeforeDeceased = anyDeceasedChildrenDieBeforeDeceased;
