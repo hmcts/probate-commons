@@ -76,10 +76,6 @@ public class ApplicantFamilyDetails {
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean wholeBloodSiblingDiedBeforeDeceased;
-
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
     private Boolean wholeBloodSiblingAdoptedIn;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
@@ -118,9 +114,6 @@ public class ApplicantFamilyDetails {
     @JsonSerialize(using = YesNoSerializer.class)
     private Boolean wholeBloodNieceOrNephewAdoptedOut;
 
-    @JsonDeserialize(using = YesNoDeserializer.class)
-    @JsonSerialize(using = YesNoSerializer.class)
-    private Boolean halfBloodSiblingDiedBeforeDeceased;
 
     @JsonDeserialize(using = YesNoDeserializer.class)
     @JsonSerialize(using = YesNoSerializer.class)
