@@ -176,13 +176,6 @@ public class Executor {
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean childDieBeforeDeceased;
 
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean halfBloodSiblingDiedBeforeDeceased;
-
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    private Boolean wholeBloodSiblingDiedBeforeDeceased;
 
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
