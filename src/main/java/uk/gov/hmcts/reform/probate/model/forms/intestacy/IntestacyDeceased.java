@@ -33,29 +33,9 @@ import java.util.Map;
 public class IntestacyDeceased extends ProbateDeceased {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 
-    @ApiModelProperty(value = "Deceased marital status")
-    private String maritalStatus;
-
     @JsonDeserialize(using = OptionYesNoDeserializer.class)
     @JsonSerialize(using = OptionYesNoSerializer.class)
     private Boolean domiciledInEnglandOrWales;
-
-    @ApiModelProperty(value = "Was Divorced in England or Wales?", allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    @JsonProperty("divorcePlace")
-    private Boolean divorcedInEnglandOrWales;
-
-    @JsonDeserialize(using = OptionYesNoDeserializer.class)
-    @JsonSerialize(using = OptionYesNoSerializer.class)
-    @JsonProperty("divorceDateKnown")
-    private Boolean divorcedDateKnown;
-
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-    @JsonProperty(value = "divorceDate")
-    private LocalDate divorcedDate;
 
     @ApiModelProperty(value = "Does the deceased have other children?",
         allowableValues = YesNo.Constants.ALLOWABLE_VALUES)
@@ -149,7 +129,8 @@ public class IntestacyDeceased extends ProbateDeceased {
     @Builder
     public IntestacyDeceased(String firstName, String lastName, Boolean nameAsOnTheWill, String aliasFirstNameOnWill,
                              String aliasLastNameOnWill, Boolean alias, Map<String, AliasOtherNames> otherNames,
-                             Boolean married, Address address, String postcode, String postcodeAddress,
+                             Boolean married, Boolean marriedYN, String deceasedSpouseName, Address address,
+                             String postcode, String postcodeAddress,
                              Boolean addressFound, List<Map<String, Object>> addresses, LocalDateTime dateOfBirth,
                              LocalDateTime dateOfDeath, String domicile, String maritalStatus, Boolean diedEngOrWales,
                              String deathCertificate, Boolean domiciledInEnglandOrWales,
@@ -163,14 +144,11 @@ public class IntestacyDeceased extends ProbateDeceased {
                              Boolean anyOtherParentAlive, Boolean anyLivingParents) {
 
         super(firstName, lastName, nameAsOnTheWill, aliasFirstNameOnWill, aliasLastNameOnWill, alias, otherNames,
-                married, address, postcode, postcodeAddress, addressFound,
+                married, marriedYN, deceasedSpouseName, address, postcode, postcodeAddress, addressFound,
             addresses, dateOfBirth, dateOfDeath, domicile, diedEngOrWales, deathCertificate,
-                englishForeignDeathCert, foreignDeathCertTranslation);
-        this.maritalStatus = maritalStatus;
+                englishForeignDeathCert, foreignDeathCertTranslation, maritalStatus, divorcedInEnglandOrWales,
+                divorcedDateKnown, divorcedDate);
         this.domiciledInEnglandOrWales = domiciledInEnglandOrWales;
-        this.divorcedInEnglandOrWales = divorcedInEnglandOrWales;
-        this.divorcedDateKnown = divorcedDateKnown;
-        this.divorcedDate = divorcedDate;
         this.otherChildren = otherChildren;
         this.allDeceasedChildrenOverEighteen = allDeceasedChildrenOverEighteen;
         this.anyDeceasedChildrenDieBeforeDeceased = anyDeceasedChildrenDieBeforeDeceased;
