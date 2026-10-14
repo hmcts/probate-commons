@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'io.github.ben-manes.versions' version '0.64.0'
+    id 'io.github.ben-manes.versions' version '0.66.0'
     id 'java-library'
     id 'maven-publish'
     id 'jacoco'
@@ -109,7 +109,7 @@ publishing {
 def versions = [
         lombok            : '1.18.48',
         jackson           : '2.22.2',
-        apacheCommons     : '3.20.0',
+        apacheCommons     : '3.21.0',
         hibernateValidator: '9.1.4.Final',
         springfoxSwagger  : '3.0.0',
         springBoot        : '3.5.16',
@@ -123,7 +123,7 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: versions.jackson
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: versions.jackson
     implementation group: 'io.github.openfeign.form', name: 'feign-form', version: versions.openfeign
-    implementation group: 'com.google.guava', name: 'guava', version: '33.7.1-jre'
+    implementation group: 'com.google.guava', name: 'guava', version: '33.7.2-jre'
     annotationProcessor group:'org.projectlombok', name:'lombok', version: versions.lombok
 
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: versions.apacheCommons
@@ -135,7 +135,7 @@ dependencies {
     testImplementation group: 'commons-io', name: 'commons-io', version: versions.commonsIo
     testImplementation group: 'jakarta.el', name: 'jakarta.el-api', version: '6.0.1'
     testImplementation group: 'org.glassfish', name: 'jakarta.el', version: '5.0.0-M1'
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.23.0'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.24.0'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.14.4'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
