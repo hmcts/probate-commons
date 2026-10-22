@@ -42,7 +42,7 @@ class CaveatFormTest {
     private String formJsonFromFile;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() throws Exception {
         formJsonFromFile = TestUtils.getJsonFromFile("caveatForm.json");
 
         objectMapper = new ObjectMapper();
