@@ -34,4 +34,6 @@ public class LegalStatementHolder {
     private List<String> executorsNotApplying;
 
     private String intro;
+
+    private String deceasedMaritalStatus;
 }
