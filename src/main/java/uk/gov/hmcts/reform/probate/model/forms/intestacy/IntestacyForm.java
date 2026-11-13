@@ -52,6 +52,8 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String caseType;
 
+    private CoApplicants executors;
+
     @JsonProperty(value = "equality")
     private Equality equality;
 
@@ -69,6 +71,8 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
 
     private String informationNeededByPost;
 
+    private FamilyDetails details;
+
     private PaAssets assets;
 
     @Builder
@@ -81,7 +85,7 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
                          Language language, Equality equality, String documentsReceivedNotificationSent,
                          ProvideInformation provideinformation, ReviewResponse reviewresponse,
                          String expectedResponseDate, String informationNeeded, String informationNeededByPost,
-                         String eventDescription) {
+                         String eventDescription,CoApplicants executors) {
 
         super(type, deceased, applicant, registry, ccdCase, payments, fees, copies, payment, language,
             eventDescription);
@@ -100,7 +104,9 @@ public class IntestacyForm extends Form<IntestacyDeceased, IntestacyApplicant> {
         this.expectedResponseDate = expectedResponseDate;
         this.informationNeeded = informationNeeded;
         this.informationNeededByPost = informationNeededByPost;
+        this.details = details;
         this.assets = assets;
+        this.executors = executors;
     }
 
 }
