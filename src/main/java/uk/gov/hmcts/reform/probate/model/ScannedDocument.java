@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.probate.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -23,6 +24,9 @@ public class ScannedDocument {
     private final String type;
 
     private final String subtype;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private final String finalWill;
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
