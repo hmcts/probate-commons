@@ -20,6 +20,9 @@ public class UploadDocument {
     @JsonProperty("DocumentType")
     private DocumentType documentType;
 
+    @JsonProperty("FinalWill")
+    private String finalWill;
+
     @JsonProperty("Comment")
     private String comment;
 }
