@@ -6,40 +6,42 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
 
-@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 class BigDecimalDeserializerTest {
 
-    BigDecimalDeserializer bigDecimalDeserializer = new BigDecimalDeserializer();
+    private final BigDecimalDeserializer bigDecimalDeserializer = new BigDecimalDeserializer();
+
     @Mock
-    JsonParser mockJsonParser;
+    private JsonParser mockJsonParser;
+
     @Mock
-    DeserializationContext mockDeserializarionContext;
+    private DeserializationContext mockDeserializationContext;
 
     @Test
     void shouldDeserializeBigDecimal() throws IOException {
-        Mockito.when(mockJsonParser.getCurrentToken()).thenReturn(JsonToken.VALUE_STRING);
-        Mockito.when(mockJsonParser.getText()).thenReturn("£100,000.00");
-        BigDecimal result = bigDecimalDeserializer.deserialize(mockJsonParser, mockDeserializarionContext);
+        when(mockJsonParser.getCurrentToken()).thenReturn(JsonToken.VALUE_STRING);
+        when(mockJsonParser.getText()).thenReturn("£100,000.00");
 
-        assertThat(result, is(new BigDecimal("100000.00")));
+        BigDecimal result = bigDecimalDeserializer.deserialize(mockJsonParser, mockDeserializationContext);
+
+        assertEquals(new BigDecimal("100000.00"), result);
     }
 
     @Test
     void shouldThrowExceptionWhenInvalidText() throws IOException {
-        Mockito.when(mockJsonParser.getCurrentToken()).thenReturn(JsonToken.VALUE_STRING);
-        Mockito.when(mockJsonParser.getText()).thenReturn("$r100,000.00");
-        assertThrows(IllegalArgumentException.class, () -> {
-            bigDecimalDeserializer.deserialize(mockJsonParser, mockDeserializarionContext);
-        });
+        when(mockJsonParser.getCurrentToken()).thenReturn(JsonToken.VALUE_STRING);
+        when(mockJsonParser.getText()).thenReturn("$r100,000.00");
+
+        assertThrows(IllegalArgumentException.class, () ->
+            bigDecimalDeserializer.deserialize(mockJsonParser, mockDeserializationContext));
     }
 }
