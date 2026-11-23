@@ -56,7 +56,7 @@ class IntestacyFormTest {
     private static final LocalDate DIVORCE_DATE = LocalDate.of(2025, 1, 1);
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() throws Exception {
         formJsonFromFile = TestUtils.getJsonFromFile("intestacyForm.json");
 
         objectMapper = new ObjectMapper();
