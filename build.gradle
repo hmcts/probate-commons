@@ -112,7 +112,7 @@ def versions = [
         apacheCommons     : '3.22.0',
         hibernateValidator: '9.2.0.Final',
         springfoxSwagger  : '3.0.0',
-        springBoot        : '4.1.2',
+        springBoot        : '4.2.0',
         commonsIo         : '2.22.0',
         openfeign         : '3.8.0'
 ]
